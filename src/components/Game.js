@@ -12,8 +12,7 @@ export class Game extends React.Component {
     }
 
     handleBettingSquareClick(i) {
-        const bettingHistory = this.state.bettingHistory;
-        const copyBettingHistory = bettingHistory.slice();
+        const copyBettingHistory = this.state.bettingHistory.slice();
 
         copyBettingHistory.push(i);
 
@@ -23,21 +22,7 @@ export class Game extends React.Component {
     }
 
     render() {
-        const bets = this.state.bettingHistory.map((bettingSquare, betOrderZeroIndexed) => {
-            const betOrderOneIndexed = betOrderZeroIndexed + 1;
-
-            const desc = `#${betOrderOneIndexed} - ${bettingSquare}`;
-
-            return (
-                <li key={betOrderOneIndexed}>
-                    <button
-                        className="historical-move-button"
-                    >
-                        {desc}
-                    </button>
-                </li>
-            );
-        });
+        const bettingHistoryButtons = createBettingHistoryButtons(this.state.bettingHistory);
 
         return (
             <div className="game">
@@ -47,13 +32,31 @@ export class Game extends React.Component {
                         bettingHistory={this.state.bettingHistory}
                     />
                 </div>
-                <div className="game-info">
+                <div className="betting-history">
                     <BettingHistory
                         statusMessage={"Betting History"}
-                        buttons={bets}
+                        buttons={bettingHistoryButtons}
                     />
                 </div>
             </div>
         );
     }
+}
+
+function createBettingHistoryButtons(bettingHistory) {
+    return bettingHistory.map((bettingSquare, betOrderZeroIndexed) => {
+        const betOrderOneIndexed = betOrderZeroIndexed + 1;
+
+        const desc = `#${betOrderOneIndexed} - ${bettingSquare}`;
+
+        return (
+            <li key={betOrderOneIndexed}>
+                <button
+                    className="betting-history-button"
+                >
+                    {desc}
+                </button>
+            </li>
+        );
+    });
 }

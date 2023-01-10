@@ -50,16 +50,16 @@ ul {
     flex-direction: row;
 }
 
-.game-info {
+.betting-history {
     width: 180px;
     text-align: center;
     margin-left: 20px;
 }
 
-.historical-move-button {
+.betting-history-button {
     text-align: left;
     font-size: 16px;
     font-family: inherit;
-    width: 100px;
+    width: 80px;
     margin: 1px;
 }
