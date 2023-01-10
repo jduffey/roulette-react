@@ -1,13 +1,14 @@
 import React from 'react';
 
-import { Board } from "./Board.js";
-import { BettingHistory } from './BettingHistory';
+import { Board } from "./Board";
+import { GameInfo } from './GameInfo';
 
 export class Game extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             bettingHistory: [],
+            playerBalance: 1000,
         };
     }
 
@@ -16,14 +17,15 @@ export class Game extends React.Component {
 
         copyBettingHistory.push(i);
 
+        const newBalance = this.state.playerBalance - 1;
+
         this.setState({
             bettingHistory: copyBettingHistory,
+            playerBalance: newBalance,
         });
     }
 
     render() {
-        const bettingHistoryButtons = createBettingHistoryButtons(this.state.bettingHistory);
-
         return (
             <div className="game">
                 <div className="game-board">
@@ -32,31 +34,13 @@ export class Game extends React.Component {
                         bettingHistory={this.state.bettingHistory}
                     />
                 </div>
-                <div className="betting-history">
-                    <BettingHistory
-                        statusMessage={"Betting History"}
-                        buttons={bettingHistoryButtons}
+                <div className="game-info">
+                    <GameInfo
+                        bettingHistory={this.state.bettingHistory}
+                        playerBalance={this.state.playerBalance}
                     />
                 </div>
             </div>
         );
     }
-}
-
-function createBettingHistoryButtons(bettingHistory) {
-    return bettingHistory.map((bettingSquare, betOrderZeroIndexed) => {
-        const betOrderOneIndexed = betOrderZeroIndexed + 1;
-
-        const desc = `#${betOrderOneIndexed} - ${bettingSquare}`;
-
-        return (
-            <li key={betOrderOneIndexed}>
-                <button
-                    className="betting-history-button"
-                >
-                    {desc}
-                </button>
-            </li>
-        );
-    });
 }

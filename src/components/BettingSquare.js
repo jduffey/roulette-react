@@ -1,5 +1,5 @@
 export function BettingSquare(props) {
-    const bgColor = props.isSelected ? "lightgreen" : "inherit";
+    const bgColor = props.isSelected ? "lightgreen" : "white";
     const betAmountText = props.betAmount > 0 ?
         "$" + props.betAmount :
         String.fromCharCode(160); // non-breaking space

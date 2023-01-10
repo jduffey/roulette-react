@@ -1,8 +1,8 @@
 export function BettingHistory(props) {
     return (
-        <div>
+        <div className="betting-history">
             <div className="status-message">
-                {props.statusMessage}
+                {"Betting History"}
             </div>
             <ol>
                 {props.buttons}

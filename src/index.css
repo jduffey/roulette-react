@@ -1,6 +1,7 @@
 body {
     margin: 20px;
     font-family: "Century Gothic", Futura, sans-serif;
+    background-color: lightskyblue;
 }
 
 ol,
@@ -11,6 +12,12 @@ ul {
     list-style-type: none;
 }
 
+.game-board {
+    width: 1010px;
+    text-align: center;
+    /* border: 1px solid black; */
+}
+
 .status-message {
     font-size: 24px;
 }
@@ -19,10 +26,10 @@ ul {
     height: 80px;
     width: 80px;
     margin: 2px;
-    background: #fff;
-    border: 3px solid black;
+    background: white;
     border-radius: 16px;
     font-weight: bold;
+    border: 3px solid black;
 
     /* TODO this can go away if we make this element not a button */
     font-family: inherit;
@@ -36,17 +43,25 @@ ul {
     font-size: 16px;
 }
 
-.game {
+.game-info {
+    width: 1010px;
+    text-align: center;
+    margin-left: 10px;
     display: flex;
+    justify-content: center;
+    /* border: 2px solid black; */
+}
 
-    /* TODO doesn't seem to do anything */
-    flex-direction: row;
+.game-info>div {
+    width: 600px;
 }
 
 .betting-history {
-    width: 180px;
-    text-align: center;
-    margin-left: 20px;
+    /* border: 2px solid red; */
+}
+
+.player-info {
+    /* border: 2px solid green; */
 }
 
 /* TODO change this to not a button, unless we're going to do something with it */
