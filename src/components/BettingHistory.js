@@ -1,4 +1,4 @@
-export function GameInfo(props) {
+export function BettingHistory(props) {
     return (
         <div>
             <div className="status-message">

@@ -1,81 +1,37 @@
 import React from 'react';
 
 import { Board } from "./Board.js";
-import { GameInfo } from './GameInfo';
-import { calculateWinner } from '../utils/calculateWinner';
-
-const [playerOneMark, playerTwoMark] = ['X', 'O'];
-const MAXIMUM_MOVES = 9;
+import { BettingHistory } from './BettingHistory';
 
 export class Game extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            history: [{
-                squares: Array(9).fill(null),
-            }],
-            stepNumber: 0,
-            isPlayerOneNext: true,
-            hasGameBeenWon: false,
-            winningMark: null,
-            isGameADraw: false,
+            bettingHistory: [],
         };
     }
 
-    handleClick(i) {
-        const history = this.state.history;
-        const current = history[history.length - 1];
-        const squares = current.squares.slice(); // Make a copy of the data instead of mutating it
+    handleBettingSquareClick(i) {
+        const bettingHistory = this.state.bettingHistory;
+        const copyBettingHistory = bettingHistory.slice();
 
-        if (this.state.hasGameBeenWon || squares[i]) {
-            return;
-        }
+        copyBettingHistory.push(i);
 
-        squares[i] = this.state.isPlayerOneNext ? playerOneMark : playerTwoMark;
         this.setState({
-            history: history.concat([{
-                squares: squares,
-            }]),
-            stepNumber: history.length,
-            isPlayerOneNext: !this.state.isPlayerOneNext,
-        });
-
-        const winner = calculateWinner(squares).winner;
-        if (winner) {
-            this.setState({
-                hasGameBeenWon: true,
-                winningMark: winner,
-            });
-        }
-        if (this.state.history.length === MAXIMUM_MOVES && !winner) {
-            this.setState({
-                isGameADraw: true,
-            });
-        }
-    }
-
-    jumpTo(step) {
-        this.setState({
-            stepNumber: step,
+            bettingHistory: copyBettingHistory,
         });
     }
 
     render() {
-        const history = this.state.history;
-        const current = history[this.state.stepNumber];
-        const winningData = calculateWinner(current.squares);
+        const bets = this.state.bettingHistory.map((bettingSquare, betOrderZeroIndexed) => {
+            const betOrderOneIndexed = betOrderZeroIndexed + 1;
 
-        const moves = history.map((_, move) => {
-            if (move === 0) return null;
-
-            const playerMark = move % 2 !== 0 ? playerOneMark : playerTwoMark
-            const desc = `Move #${move} - ${playerMark}`;
+            const desc = `#${betOrderOneIndexed} - ${bettingSquare}`;
 
             return (
-                <li key={move}>
+                <li key={betOrderOneIndexed}>
                     <button
                         className="historical-move-button"
-                        onClick={() => this.jumpTo(move)}
                     >
                         {desc}
                     </button>
@@ -83,33 +39,21 @@ export class Game extends React.Component {
             );
         });
 
-        const statusMessage = getStatusMessage(this.state);
-
         return (
             <div className="game">
                 <div className="game-board">
                     <Board
-                        squares={current.squares}
-                        onClick={(i) => this.handleClick(i)}
-                        winningSquares={winningData?.winningSquares}
+                        onClick={(i) => this.handleBettingSquareClick(i)}
+                        bettingHistory={this.state.bettingHistory}
                     />
                 </div>
                 <div className="game-info">
-                    <GameInfo
-                        statusMessage={statusMessage}
-                        buttons={moves}
+                    <BettingHistory
+                        statusMessage={"Betting History"}
+                        buttons={bets}
                     />
                 </div>
             </div>
         );
     }
-}
-
-function getStatusMessage(props) {
-    if (props.isGameADraw) {
-        return "Draw";
-    } else if (props.hasGameBeenWon) {
-        return 'Winner: ' + props.winningMark;
-    }
-    return 'Next player: ' + (props.isPlayerOneNext ? playerOneMark : playerTwoMark);
 }

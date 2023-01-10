@@ -7,8 +7,8 @@ export class Board extends React.Component {
         return (
             <BettingSquare
                 onClick={() => this.props.onClick(i)}
-                playerMark={this.props.squares[i]}
-                isWinningSquare={this.props.winningSquares?.includes(i)}
+                label={i}
+                isSelected={this.props.bettingHistory.includes(i)}
             />
         );
     }
@@ -17,19 +17,13 @@ export class Board extends React.Component {
         return (
             <div>
                 <div className="board-row">
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
+                    {[...Array(12).keys()].map((i) => this.renderSquare(3 * i + 3))}
                 </div>
                 <div className="board-row">
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
+                    {[...Array(12).keys()].map((i) => this.renderSquare(3 * i + 2))}
                 </div>
                 <div className="board-row">
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
+                    {[...Array(12).keys()].map((i) => this.renderSquare(3 * i + 1))}
                 </div>
             </div>
         );
