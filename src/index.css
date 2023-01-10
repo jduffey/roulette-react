@@ -11,42 +11,35 @@ ul {
     list-style-type: none;
 }
 
-.board-row:after {
-    clear: both;
-    content: "";
-    display: table;
-}
-
 .status-message {
     font-size: 24px;
 }
 
-.square {
-    font-family: inherit;
-    background: #fff;
-    border: 2px solid black;
-    float: left;
-    font-size: 36px;
-    font-weight: bold;
-    line-height: 0px;
+.betting-square {
     height: 80px;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: 0;
-    text-align: center;
     width: 80px;
+    margin: 2px;
+    background: #fff;
+    border: 3px solid black;
+    border-radius: 16px;
+    font-weight: bold;
+
+    /* TODO this can go away if we make this element not a button */
+    font-family: inherit;
 }
 
-.square:focus {
-    outline: none;
+.square-label {
+    font-size: 24px;
 }
 
-.kbd-navigation .square:focus {
-    background: #ddd;
+.square-bet-amount {
+    font-size: 16px;
 }
 
 .game {
     display: flex;
+
+    /* TODO doesn't seem to do anything */
     flex-direction: row;
 }
 
@@ -56,6 +49,7 @@ ul {
     margin-left: 20px;
 }
 
+/* TODO change this to not a button, unless we're going to do something with it */
 .betting-history-button {
     text-align: left;
     font-size: 16px;

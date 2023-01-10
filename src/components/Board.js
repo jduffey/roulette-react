@@ -9,6 +9,7 @@ export class Board extends React.Component {
                 onClick={() => this.props.onClick(i)}
                 label={i}
                 isSelected={this.props.bettingHistory.includes(i)}
+                betAmount={this.props.bettingHistory.filter((bet) => bet === i).length} // TODO replace this with key-value pair
             />
         );
     }
