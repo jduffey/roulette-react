@@ -64,12 +64,6 @@ export class Game extends React.Component {
                         />
                     </div>
                 </div>
-                <div className="game-info">
-                    <GameInfo
-                        bettingHistory={this.state.bettingHistory}
-                        playerBalance={this.state.playerBalance}
-                    />
-                </div>
             </div>
         );
     }
