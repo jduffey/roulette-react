@@ -15,7 +15,36 @@ ul {
 .game-board {
     width: 1000px;
     text-align: center;
-    border: 2px solid pink;
+}
+
+.wheel-area {
+    display: flex;
+    flex: 1;
+}
+
+.spin-button {
+    width: 200px;
+    height: 200px;
+    border: 20px solid black;
+    border-radius: 50%;
+    font-family: inherit;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.spin-result {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    /* flex-direction: column; */
+}
+
+#spin-result-title {
+    font-size: 24px;
+}
+
+#spin-result-number {
+    font-size: 48px;
 }
 
 .status-message {
@@ -49,20 +78,11 @@ ul {
     margin-left: 10px;
     display: flex;
     justify-content: center;
-    border: 2px solid pink;
     margin-top: 20px;
 }
 
 .game-info>div {
     width: 600px;
-}
-
-.betting-history {
-    border: 2px solid pink;
-}
-
-.player-info {
-    border: 2px solid pink;
 }
 
 /* TODO change this to not a button, unless we're going to do something with it */

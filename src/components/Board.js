@@ -6,6 +6,7 @@ export class Board extends React.Component {
     renderSquare(i) {
         return (
             <BettingSquare
+                key={i}
                 onClick={() => this.props.onClick(i)}
                 label={i}
                 isSelected={this.props.bettingHistory.includes(i)}

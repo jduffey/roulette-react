@@ -26,7 +26,9 @@ function createBettingHistoryButtons(bettingHistory) {
         const desc = `#${betOrderOneIndexed} - ${bettingSquare}`;
 
         return (
-            <li key={betOrderOneIndexed}>
+            <li
+                key={betOrderOneIndexed}
+            >
                 <button
                     className="betting-history-button"
                 >
