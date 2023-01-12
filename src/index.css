@@ -1,7 +1,7 @@
 body {
     margin: 20px;
     font-family: "Century Gothic", Futura, sans-serif;
-    background-color: lightskyblue;
+    background-color: #016D29;
 }
 
 ol,
@@ -13,9 +13,9 @@ ul {
 }
 
 .game-board {
-    width: 1010px;
+    width: 1000px;
     text-align: center;
-    /* border: 1px solid black; */
+    border: 2px solid pink;
 }
 
 .status-message {
@@ -23,16 +23,16 @@ ul {
 }
 
 .betting-square {
-    height: 80px;
+    height: 120px;
     width: 80px;
-    margin: 2px;
-    background: white;
-    border-radius: 16px;
+    margin: -1px;
+
     font-weight: bold;
-    border: 3px solid black;
+    border: 1px solid white;
 
     /* TODO this can go away if we make this element not a button */
     font-family: inherit;
+    color: white;
 }
 
 .square-label {
@@ -49,7 +49,8 @@ ul {
     margin-left: 10px;
     display: flex;
     justify-content: center;
-    /* border: 2px solid black; */
+    border: 2px solid pink;
+    margin-top: 20px;
 }
 
 .game-info>div {
@@ -57,11 +58,11 @@ ul {
 }
 
 .betting-history {
-    /* border: 2px solid red; */
+    border: 2px solid pink;
 }
 
 .player-info {
-    /* border: 2px solid green; */
+    border: 2px solid pink;
 }
 
 /* TODO change this to not a button, unless we're going to do something with it */
