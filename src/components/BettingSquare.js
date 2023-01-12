@@ -11,7 +11,9 @@ export function BettingSquare(props) {
             onClick={props.onClick}
             style={{
                 backgroundColor: bgColor,
-                color: fontColor
+                color: fontColor,
+                left: props.positionData.left,
+                top: props.positionData.top,
             }}
         >
             <span className="square-label">{props.betName}</span>
