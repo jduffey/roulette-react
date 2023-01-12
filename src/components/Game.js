@@ -40,14 +40,14 @@ export class Game extends React.Component {
 
     render() {
         return (
-            <div className="game">
-                <div className="game-board">
+            <div>
+                <div>
                     <Board
                         onClick={(i) => this.handleBettingSquareClick(i)}
                         bettingHistory={this.state.bettingHistory}
                     />
                 </div>
-                <div className="wheel-area">
+                <div className="under-board">
                     <div className="spin-area">
                         <SpinButton
                             onClick={() => this.handleSpinAreaClick()}
@@ -58,13 +58,17 @@ export class Game extends React.Component {
                         <SpinResult
                             spinResult={this.state.mostRecentSpinResult}
                         />
+                        <GameInfo
+                            bettingHistory={this.state.bettingHistory}
+                            playerBalance={this.state.playerBalance}
+                        />
                     </div>
                 </div>
                 <div className="game-info">
-                    <GameInfo
+                    {/* <GameInfo
                         bettingHistory={this.state.bettingHistory}
                         playerBalance={this.state.playerBalance}
-                    />
+                    /> */}
                 </div>
             </div>
         );

@@ -7,7 +7,7 @@ export function BettingSquare(props) {
 
     return (
         <button
-            className="betting-square"
+            className={`betting-square-${props.label}`}
             onClick={props.onClick}
             style={{
                 backgroundColor: bgColor,

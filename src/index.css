@@ -14,10 +14,197 @@ ul {
 
 .game-board {
     width: 1000px;
-    text-align: center;
+    height: 400px;
+    position: relative;
 }
 
-.wheel-area {
+.game-board>button {
+    position: absolute;
+    height: 120px;
+    width: 80px;
+    margin: -1px;
+
+    font-weight: bold;
+    border: 1px solid white;
+
+    /* TODO this can go away if we make this element not a button */
+    font-family: inherit;
+    color: white;
+}
+
+.betting-square-3 {
+    transform: translate(0px, 0px);
+}
+
+.betting-square-3 {
+    left: 0px;
+}
+
+.betting-square-6 {
+    left: 80px;
+}
+
+.betting-square-9 {
+    left: 160px;
+}
+
+.betting-square-12 {
+    left: 240px;
+}
+
+.betting-square-15 {
+    left: 320px;
+}
+
+.betting-square-18 {
+    left: 400px;
+}
+
+.betting-square-21 {
+    left: 480px;
+}
+
+.betting-square-24 {
+    left: 560px;
+}
+
+.betting-square-27 {
+    left: 640px;
+}
+
+.betting-square-30 {
+    left: 720px;
+}
+
+.betting-square-33 {
+    left: 800px;
+}
+
+.betting-square-36 {
+    left: 880px;
+}
+
+.betting-square-2 {
+    left: 0px;
+    top: 120px;
+}
+
+.betting-square-5 {
+    left: 80px;
+    top: 120px;
+}
+
+.betting-square-8 {
+    left: 160px;
+    top: 120px;
+}
+
+.betting-square-11 {
+    left: 240px;
+    top: 120px;
+}
+
+.betting-square-14 {
+    left: 320px;
+    top: 120px;
+}
+
+.betting-square-17 {
+    left: 400px;
+    top: 120px;
+}
+
+.betting-square-20 {
+    left: 480px;
+    top: 120px;
+}
+
+.betting-square-23 {
+    left: 560px;
+    top: 120px;
+}
+
+.betting-square-26 {
+    left: 640px;
+    top: 120px;
+}
+
+.betting-square-29 {
+    left: 720px;
+    top: 120px;
+}
+
+.betting-square-32 {
+    left: 800px;
+    top: 120px;
+}
+
+.betting-square-35 {
+    left: 880px;
+    top: 120px;
+}
+
+.betting-square-1 {
+    left: 0px;
+    top: 240px;
+}
+
+.betting-square-4 {
+    left: 80px;
+    top: 240px;
+}
+
+.betting-square-7 {
+    left: 160px;
+    top: 240px;
+}
+
+.betting-square-10 {
+    left: 240px;
+    top: 240px;
+}
+
+.betting-square-13 {
+    left: 320px;
+    top: 240px;
+}
+
+.betting-square-16 {
+    left: 400px;
+    top: 240px;
+}
+
+.betting-square-19 {
+    left: 480px;
+    top: 240px;
+}
+
+.betting-square-22 {
+    left: 560px;
+    top: 240px;
+}
+
+.betting-square-25 {
+    left: 640px;
+    top: 240px;
+}
+
+.betting-square-28 {
+    left: 720px;
+    top: 240px;
+}
+
+.betting-square-31 {
+    left: 800px;
+    top: 240px;
+}
+
+.betting-square-34 {
+    left: 880px;
+    top: 240px;
+}
+
+.under-board {
     display: flex;
     flex: 1;
 }
@@ -33,9 +220,9 @@ ul {
 }
 
 .spin-result {
-    width: 200px;
-    height: 200px;
-    display: flex;
+    /* width: 200px; */
+    /* height: 200px; */
+    /* display: flex; */
     /* flex-direction: column; */
 }
 
@@ -51,19 +238,6 @@ ul {
     font-size: 24px;
 }
 
-.betting-square {
-    height: 120px;
-    width: 80px;
-    margin: -1px;
-
-    font-weight: bold;
-    border: 1px solid white;
-
-    /* TODO this can go away if we make this element not a button */
-    font-family: inherit;
-    color: white;
-}
-
 .square-label {
     font-size: 24px;
 }
@@ -73,16 +247,12 @@ ul {
 }
 
 .game-info {
-    width: 1010px;
+    /* width: 1010px; */
     text-align: center;
     margin-left: 10px;
-    display: flex;
-    justify-content: center;
+    /* display: flex; */
+    /* justify-content: center; */
     margin-top: 20px;
-}
-
-.game-info>div {
-    width: 600px;
 }
 
 /* TODO change this to not a button, unless we're going to do something with it */
