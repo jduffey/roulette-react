@@ -41,6 +41,18 @@ const BET_OPTION_POSITION_DATA = [
     ["28", 720, 240, 120, 80, "#222222"],
     ["31", 800, 240, 120, 80, "#d94848"],
     ["34", 880, 240, 120, 80, "#222222"],
+    ["1st 12", 0, 360, 80, 320, "#016D29"],
+    ["2nd 12", 320, 360, 80, 320, "#016D29"],
+    ["3rd 12", 640, 360, 80, 320, "#016D29"],
+    ["Top", 960, 0, 120, 120, "#016D29"],
+    ["Middle", 960, 120, 120, 120, "#016D29"],
+    ["Bottom", 960, 240, 120, 120, "#016D29"],
+    ["1 to 18", 0, 440, 80, 160, "#016D29"],
+    ["Even", 160, 440, 80, 160, "#016D29"],
+    ["Red", 320, 440, 80, 160, "#d94848"],
+    ["Black", 480, 440, 80, 160, "#222222"],
+    ["Odd", 640, 440, 80, 160, "#016D29"],
+    ["19 to 36", 800, 440, 80, 160, "#016D29"],
 ].reduce((acc, next) => {
     return {
         ...acc,
@@ -55,12 +67,13 @@ const BET_OPTION_POSITION_DATA = [
     };
 }, {});
 
-console.log(BET_OPTION_POSITION_DATA);
-
 const ZEROS_STRAIGHT_UP = ["0", "00"];
 const TOP_ROW_STRAIGHT_UP = ["3", "6", "9", "12", "15", "18", "21", "24", "27", "30", "33", "36"];
 const MIDDLE_ROW_STRAIGHT_UP = ["2", "5", "8", "11", "14", "17", "20", "23", "26", "29", "32", "35"];
 const BOTTOM_ROW_STRAIGHT_UP = ["1", "4", "7", "10", "13", "16", "19", "22", "25", "28", "31", "34"];
+const DOZENS = ["1st 12", "2nd 12", "3rd 12"];
+const ROWS = ["Top", "Middle", "Bottom"];
+const HALVES = ["1 to 18", "Even", "Red", "Black", "Odd", "19 to 36"];
 
 export class Board extends React.Component {
     renderSquare(betName, positionData) {
@@ -83,6 +96,9 @@ export class Board extends React.Component {
                 {TOP_ROW_STRAIGHT_UP.map((betName) => this.renderSquare(betName, BET_OPTION_POSITION_DATA[betName]))}
                 {MIDDLE_ROW_STRAIGHT_UP.map((betName) => this.renderSquare(betName, BET_OPTION_POSITION_DATA[betName]))}
                 {BOTTOM_ROW_STRAIGHT_UP.map((betName) => this.renderSquare(betName, BET_OPTION_POSITION_DATA[betName]))}
+                {DOZENS.map((betName) => this.renderSquare(betName, BET_OPTION_POSITION_DATA[betName]))}
+                {ROWS.map((betName) => this.renderSquare(betName, BET_OPTION_POSITION_DATA[betName]))}
+                {HALVES.map((betName) => this.renderSquare(betName, BET_OPTION_POSITION_DATA[betName]))}
             </div>
         );
     }
