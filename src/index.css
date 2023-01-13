@@ -131,8 +131,23 @@ ul {
     color: white;
 }
 
-.status-message {
+.player-info {
+    position: relative;
+    left: 980px;
+    top: -460px;
+
+    height: 200px;
+    width: 200px;
+
+    border: 8px solid black;
+    border-radius: 24px;
+
     font-size: 24px;
+    font-weight: bold;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .square-label {

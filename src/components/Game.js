@@ -66,33 +66,25 @@ export class Game extends React.Component {
     render() {
         return (
             <div>
-                <div>
-                    <Board
-                        onClick={(bettingSquareName) => this.handleBettingSquareClick(bettingSquareName)}
-                        bettingHistory={this.state.bettingHistory}
-                    />
-                </div>
-                <div>
-                    <ChipSelection
-                        onClick={(chipAmount) => this.handleChipAmountClick(chipAmount)}
-                    />
-                </div>
-                <div className="spin-area">
-                    <SpinButton
-                        onClick={() => this.handleSpinAreaClick()}
-                        spinResult={this.state.mostRecentSpinResult}
-                    />
-                </div>
-                <div>
-                    <SpinResult
-                        spinResult={this.state.mostRecentSpinResult}
-                        bgColor={this.getWheelNumberColor(this.state.mostRecentSpinResult)}
-                    />
-                    <GameInfo
-                        bettingHistory={this.state.bettingHistory}
-                        playerBalance={this.state.playerBalance}
-                    />
-                </div>
+                <Board
+                    onClick={(bettingSquareName) => this.handleBettingSquareClick(bettingSquareName)}
+                    bettingHistory={this.state.bettingHistory}
+                />
+                <ChipSelection
+                    onClick={(chipAmount) => this.handleChipAmountClick(chipAmount)}
+                />
+                <SpinButton
+                    onClick={() => this.handleSpinAreaClick()}
+                    spinResult={this.state.mostRecentSpinResult}
+                />
+                <SpinResult
+                    spinResult={this.state.mostRecentSpinResult}
+                    bgColor={this.getWheelNumberColor(this.state.mostRecentSpinResult)}
+                />
+                <GameInfo
+                    bettingHistory={this.state.bettingHistory}
+                    playerBalance={this.state.playerBalance}
+                />
             </div>
         );
     }
