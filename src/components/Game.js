@@ -29,13 +29,18 @@ export class Game extends React.Component {
     }
 
     handleSpinAreaClick() {
-        console.log("spin button clicked");
-        const wheelNumbers = [...Array(36).keys()].map((i) => i + 1);
+        const wheelNumbers = [
+            "0", "00",
+            "1", "2", "3", "4", "5", "6", "7", "8", "9",
+            "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
+            "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",
+            "30", "31", "32", "33", "34", "35", "36"
+        ];
+
         const randomWheelNumber = wheelNumbers[Math.floor(Math.random() * wheelNumbers.length)];
         this.setState({
             mostRecentSpinResult: randomWheelNumber,
         });
-        console.log(this.state.mostRecentSpinResult);
     }
 
     render() {
