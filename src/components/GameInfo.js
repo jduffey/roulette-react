@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BettingHistory } from './BettingHistory';
+// import { BettingHistory } from './BettingHistory';
 import { PlayerInfo } from './PlayerInfo';
 
 export function GameInfo(props) {
