@@ -1,6 +1,6 @@
-export function StraightUp1To36(props) {
-    const betAmountText = "$" + props.betAmount;
+import { Chip } from '../Chip';
 
+export function StraightUp1To36(props) {
     return (
         <div
             className={`betting-square-visible betting-square-${props.betName}`}
@@ -14,47 +14,18 @@ export function StraightUp1To36(props) {
             }}
         >
             <div className="betting-square-contents">
-                <div className="betting-square-label straightUp1to36-square-label">
+                <div
+                    className="betting-square-label straightUp1to36-square-label"
+                >
                     {props.displayLabel}
                 </div>
-                <div
+                <Chip
+                    key={props.chipAmount}
+                    onClick={props.onClick}
                     className="betting-square-chip"
-                    style={getChipStyles(props.betAmount)}
-                >
-                    {betAmountText}
-                </div>
+                    chipAmount={props.betAmount}
+                />
             </div>
         </div>
     );
-}
-
-function getChipStyles(betAmount) {
-    let bgColor;
-    let borderColor = "#222222";
-    let color = "white";
-    if (betAmount < 5) {
-        bgColor = "#dfdfdf";
-        color = "black";
-    } else if (betAmount < 25) {
-        bgColor = "#d94848";
-    } else if (betAmount < 100) {
-        bgColor = "#00b341";
-    } else if (betAmount < 500) {
-        bgColor = "#222222";
-        borderColor = "#2a8a8a";
-    } else if (betAmount < 1000) {
-        bgColor = "rebeccapurple";
-        borderColor = "#2a8a8a";
-    } else {
-        bgColor = "#f4f488";
-        color = "black";
-    }
-
-    const chipStyles = {
-        display: betAmount > 0 ? "" : "none",
-        backgroundColor: bgColor,
-        borderColor: borderColor,
-        color: color,
-    };
-    return chipStyles;
 }

@@ -11,6 +11,7 @@ export function ChipSelection(props) {
             {[1, 5, 25, 100, 500, 1000].map((chipAmount) => {
                 return Chip({
                     key: chipAmount,
+                    className: "chip-selection-chip",
                     chipAmount: chipAmount,
                     onClick: props.onClick,
                     isSelected: isSelectedChip(chipAmount)

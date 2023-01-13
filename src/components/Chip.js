@@ -7,7 +7,7 @@ export function Chip(props) {
     return (
         <div
             key={props.chipAmount}
-            className={`chip`}
+            className={props.className}
             onClick={() => props.onClick(props.chipAmount)}
             style={styles}
         >
