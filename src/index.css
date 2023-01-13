@@ -1,5 +1,4 @@
 body {
-    margin: 20px;
     font-family: "Century Gothic", Futura, sans-serif;
     background-color: #016D29;
     user-select: none;
@@ -17,7 +16,6 @@ ul {
     width: 1000px;
     height: 520px;
     position: relative;
-    margin-left: 200px;
 }
 
 .game-board>button {
@@ -34,7 +32,7 @@ ul {
 
 .chip-selection-bar {
     position: relative;
-    left: 388px;
+    left: 268px;
     top: 20px;
     width: 580px;
     height: 100px;
@@ -91,7 +89,7 @@ ul {
 
 .spin-button {
     position: relative;
-    left: 1200px;
+    left: 1080px;
     top: -240px;
     width: 200px;
     height: 200px;
@@ -108,7 +106,7 @@ ul {
 
 .spin-result-container {
     position: relative;
-    left: 1220px;
+    left: 1100px;
     top: -230px;
     width: 160px;
     height: 100px;
@@ -133,8 +131,8 @@ ul {
 
 .player-info {
     position: relative;
-    left: 980px;
-    top: -460px;
+    left: 856px;
+    top: -440px;
 
     height: 200px;
     width: 200px;
@@ -164,10 +162,10 @@ ul {
 }
 
 /* TODO change this to not a button, unless we're going to do something with it */
-.betting-history-button {
+/* .betting-history-button {
     text-align: left;
     font-size: 16px;
     font-family: inherit;
     width: 80px;
     margin: 1px;
-}
+} */

@@ -8,9 +8,9 @@ export function GameInfo(props) {
 
     return (
         <div className="game-info">
-            <BettingHistory
+            {/* <BettingHistory
                 buttons={bettingHistoryButtons}
-            />
+            /> */}
             <PlayerInfo
                 playerBalance={props.playerBalance}
                 totalBetAmount={props.bettingHistory.length}
@@ -23,17 +23,18 @@ function createBettingHistoryButtons(bettingHistory) {
     return bettingHistory.map((bettingSquare, betOrderZeroIndexed) => {
         const betOrderOneIndexed = betOrderZeroIndexed + 1;
 
-        const desc = `#${betOrderOneIndexed} - ${bettingSquare}`;
+        // const desc = `#${betOrderOneIndexed} - ${bettingSquare}`;
 
         return (
             <li
                 key={betOrderOneIndexed}
             >
-                <button
+                "NAME"
+                {/* <button
                     className="betting-history-button"
                 >
                     {desc}
-                </button>
+                </button> */}
             </li>
         );
     });
