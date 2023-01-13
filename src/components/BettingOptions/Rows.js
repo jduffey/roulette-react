@@ -1,4 +1,4 @@
-export function BettingSquare(props) {
+export function Rows(props) {
     const fontColor = "#FFFFFF";
     const betAmountText = props.betAmount > 0 ?
         "$" + props.betAmount :

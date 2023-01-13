@@ -1,6 +1,10 @@
 import React from 'react';
 
-import { BettingSquare } from "./BettingSquare";
+import { StraightUp1To36 } from './BettingOptions/StraightUp1To36';
+import { StraightUpZeroes } from './BettingOptions/StraightUpZeroes';
+import { Dozens } from './BettingOptions/Dozens';
+import { Rows } from './BettingOptions/Rows';
+import { Halves } from './BettingOptions/Halves';
 
 const convertBettingSquareDataToObject = (bettingSquareData) => {
     return bettingSquareData.reduce((acc, next) => {
@@ -17,11 +21,6 @@ const convertBettingSquareDataToObject = (bettingSquareData) => {
         };
     }, {});
 };
-
-const BETTING_SQUARES_STRAIGHT_UP_ZEROES = convertBettingSquareDataToObject([
-    ["0", 0, 0, 180, 80, "#016D29"],
-    ["00", 0, 180, 180, 80, "#016D29"],
-]);
 
 const BETTING_SQUARES_STRAIGHT_UP_1_36 = convertBettingSquareDataToObject([
     ["3", 80, 0, 120, 80, "#d94848"],
@@ -62,6 +61,11 @@ const BETTING_SQUARES_STRAIGHT_UP_1_36 = convertBettingSquareDataToObject([
     ["34", 960, 240, 120, 80, "#222222"],
 ]);
 
+const BETTING_SQUARES_STRAIGHT_UP_ZEROES = convertBettingSquareDataToObject([
+    ["0", 0, 0, 180, 80, "#016D29"],
+    ["00", 0, 180, 180, 80, "#016D29"],
+]);
+
 const BETTING_SQUARES_DOZENS = convertBettingSquareDataToObject([
     ["1st 12", 80, 360, 80, 320, "#016D29"],
     ["2nd 12", 400, 360, 80, 320, "#016D29"],
@@ -83,16 +87,64 @@ const BETTING_SQUARES_HALVES = convertBettingSquareDataToObject([
     ["19 to 36", 880, 440, 80, 160, "#016D29"],
 ]);
 
-const bettingSquareStraightUp1_36Names = Object.keys(BETTING_SQUARES_STRAIGHT_UP_1_36);
+const bettingSquares1To36Names = Object.keys(BETTING_SQUARES_STRAIGHT_UP_1_36);
 const bettingSquareStraightUpZeroesNames = Object.keys(BETTING_SQUARES_STRAIGHT_UP_ZEROES);
 const bettingSquareDozensNames = Object.keys(BETTING_SQUARES_DOZENS);
 const bettingSquareRowsNames = Object.keys(BETTING_SQUARES_ROWS);
 const bettingSquareHalvesNames = Object.keys(BETTING_SQUARES_HALVES);
 
 export class Board extends React.Component {
-    renderSquare(betName, styleData) {
+    render1To36Squares(betName, styleData) {
         return (
-            <BettingSquare
+            <StraightUp1To36
+                key={betName}
+                onClick={() => this.props.onClick(betName)}
+                betName={betName}
+                betAmount={this.props.bettingHistory[betName]}
+                styleData={styleData}
+            />
+        );
+    }
+
+    renderZeroesSquares(betName, styleData) {
+        return (
+            <StraightUpZeroes
+                key={betName}
+                onClick={() => this.props.onClick(betName)}
+                betName={betName}
+                betAmount={this.props.bettingHistory[betName]}
+                styleData={styleData}
+            />
+        );
+    }
+
+    renderDozensSquares(betName, styleData) {
+        return (
+            <Dozens
+                key={betName}
+                onClick={() => this.props.onClick(betName)}
+                betName={betName}
+                betAmount={this.props.bettingHistory[betName]}
+                styleData={styleData}
+            />
+        );
+    }
+
+    renderRowsSquares(betName, styleData) {
+        return (
+            <Rows
+                key={betName}
+                onClick={() => this.props.onClick(betName)}
+                betName={betName}
+                betAmount={this.props.bettingHistory[betName]}
+                styleData={styleData}
+            />
+        );
+    }
+
+    renderHalvesSquares(betName, styleData) {
+        return (
+            <Halves
                 key={betName}
                 onClick={() => this.props.onClick(betName)}
                 betName={betName}
@@ -105,11 +157,11 @@ export class Board extends React.Component {
     render() {
         return (
             <div className="game-board">
-                {bettingSquareStraightUp1_36Names.map((betName) => this.renderSquare(betName, BETTING_SQUARES_STRAIGHT_UP_1_36[betName]))}
-                {bettingSquareStraightUpZeroesNames.map((betName) => this.renderSquare(betName, BETTING_SQUARES_STRAIGHT_UP_ZEROES[betName]))}
-                {bettingSquareDozensNames.map((betName) => this.renderSquare(betName, BETTING_SQUARES_DOZENS[betName]))}
-                {bettingSquareRowsNames.map((betName) => this.renderSquare(betName, BETTING_SQUARES_ROWS[betName]))}
-                {bettingSquareHalvesNames.map((betName) => this.renderSquare(betName, BETTING_SQUARES_HALVES[betName]))}
+                {bettingSquares1To36Names.map((betName) => this.render1To36Squares(betName, BETTING_SQUARES_STRAIGHT_UP_1_36[betName]))}
+                {bettingSquareStraightUpZeroesNames.map((betName) => this.renderZeroesSquares(betName, BETTING_SQUARES_STRAIGHT_UP_ZEROES[betName]))}
+                {bettingSquareDozensNames.map((betName) => this.renderDozensSquares(betName, BETTING_SQUARES_DOZENS[betName]))}
+                {bettingSquareRowsNames.map((betName) => this.renderRowsSquares(betName, BETTING_SQUARES_ROWS[betName]))}
+                {bettingSquareHalvesNames.map((betName) => this.renderHalvesSquares(betName, BETTING_SQUARES_HALVES[betName]))}
             </div>
         );
     }
