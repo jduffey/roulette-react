@@ -7,11 +7,11 @@ export function Chip(props) {
     return (
         <div
             key={props.chipAmount}
-            className={`chip chip-amount-${props.chipAmount}`}
+            className={`chip`}
             onClick={() => props.onClick(props.chipAmount)}
             style={styles}
         >
-            {props.chipAmount}
+            {"$" + props.chipAmount}
         </div>
     )
 }
