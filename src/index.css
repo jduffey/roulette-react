@@ -18,7 +18,7 @@ ul {
     position: relative;
 }
 
-/* Note: naming this "visible" to because we'll have "invisible" betting options later
+/* Note: naming this "visible" because we'll have "invisible" betting options later
 (e.g. split, basket) */
 .betting-square-visible {
     position: absolute;
@@ -41,82 +41,41 @@ ul {
     align-items: center;
 }
 
+.betting-square-label,
+.betting-square-chip {
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.betting-square-chip {
+    font-size: 16px;
+    height: 60px;
+    width: 60px;
+    color: black;
+    background-color: #dfdfdf;
+    border: 4px dashed black;
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .zero-square-label {
     font-size: 60px;
     transform: rotate(-90deg);
 }
 
-.zero-square-label,
-.zero-square-chip {
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-}
-
-.zero-square-chip {
-    font-size: 16px;
-    height: 60px;
-    width: 60px;
-    color: black;
-    background-color: #dfdfdf;
-    border: 4px dashed black;
-    border-radius: 50%;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .rows-square-label {
-    font-size: 20px;
+    font-size: 28px;
     transform: rotate(-90deg);
-}
-
-.rows-square-label,
-.rows-square-chip {
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-}
-
-.rows-square-chip {
-    font-size: 16px;
-    height: 60px;
-    width: 60px;
-    color: black;
-    background-color: #dfdfdf;
-    border: 4px dashed black;
-    border-radius: 50%;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.straightUp1to36-square-label,
-.straightUp1to36-square-chip {
-    position: absolute;
-    justify-content: center;
-    align-items: center;
 }
 
 .straightUp1to36-square-label {
     font-size: 48px;
     transform: rotate(-90deg);
-}
-
-.straightUp1to36-square-chip {
-    font-size: 16px;
-    height: 60px;
-    width: 60px;
-    color: black;
-    background-color: #dfdfdf;
-    border: 4px dashed black;
-    border-radius: 50%;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .chip-selection-bar {
@@ -247,10 +206,6 @@ ul {
 
 .square-label {
     font-size: 24px;
-}
-
-.square-bet-amount {
-    font-size: 16px;
 }
 
 .game-info {

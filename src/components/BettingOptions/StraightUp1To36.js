@@ -15,11 +15,11 @@ export function StraightUp1To36(props) {
             }}
         >
             <div className="betting-square-contents">
-                <div className="straightUp1to36-square-label">
+                <div className="betting-square-label straightUp1to36-square-label">
                     {props.displayLabel}
                 </div>
                 <div
-                    className="straightUp1to36-square-chip"
+                    className="betting-square-chip"
                     style={{
                         display: isVisible
                     }}

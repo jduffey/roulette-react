@@ -16,12 +16,12 @@ export function Rows(props) {
         >
             <div className="betting-square-contents">
                 <div
-                    className="rows-square-label"
+                    className="betting-square-label rows-square-label"
                 >
                     {props.displayLabel}
                 </div>
                 <div
-                    className="rows-square-chip"
+                    className="betting-square-chip"
                     style={{
                         display: isVisible
                     }}

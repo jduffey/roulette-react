@@ -15,11 +15,11 @@ export function StraightUpZeroes(props) {
             }}
         >
             <div className="betting-square-contents">
-                <div className="zero-square-label">
+                <div className="betting-square-label zero-square-label">
                     {props.displayLabel}
                 </div>
                 <div
-                    className="zero-square-chip"
+                    className="betting-square-chip"
                     style={{
                         display: isVisible
                     }}
