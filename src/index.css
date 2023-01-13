@@ -119,14 +119,13 @@ ul {
 }
 
 .spin-result-label {
-    height: 80px;
-    width: 120px;
-    border: 1px solid black;
+    height: 90px;
+    width: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 32px;
-    background-color: pink;
+    color: white;
 }
 
 .status-message {
