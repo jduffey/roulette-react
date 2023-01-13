@@ -2,7 +2,7 @@ import React from 'react';
 
 import { BettingSquare } from "./BettingSquare";
 
-const BET_OPTION_POSITION_DATA = [
+const BETTING_SQUARES_STYLE_DATA = [
     ["0", -80, 0, 180, 80, "#016D29"],
     ["00", -80, 180, 180, 80, "#016D29"],
     ["3", 0, 0, 120, 80, "#d94848"],
@@ -67,16 +67,10 @@ const BET_OPTION_POSITION_DATA = [
     };
 }, {});
 
-const ZEROS_STRAIGHT_UP = ["0", "00"];
-const TOP_ROW_STRAIGHT_UP = ["3", "6", "9", "12", "15", "18", "21", "24", "27", "30", "33", "36"];
-const MIDDLE_ROW_STRAIGHT_UP = ["2", "5", "8", "11", "14", "17", "20", "23", "26", "29", "32", "35"];
-const BOTTOM_ROW_STRAIGHT_UP = ["1", "4", "7", "10", "13", "16", "19", "22", "25", "28", "31", "34"];
-const DOZENS = ["1st 12", "2nd 12", "3rd 12"];
-const ROWS = ["Top", "Middle", "Bottom"];
-const HALVES = ["1 to 18", "Even", "Red", "Black", "Odd", "19 to 36"];
+const BETTING_SQUARES_NAMES = Object.keys(BETTING_SQUARES_STYLE_DATA);
 
 export class Board extends React.Component {
-    renderSquare(betName, positionData) {
+    renderSquare(betName, styleData) {
         return (
             <BettingSquare
                 key={betName}
@@ -84,7 +78,7 @@ export class Board extends React.Component {
                 betName={betName}
                 isSelected={this.props.bettingHistory.includes(betName)}
                 betAmount={this.props.bettingHistory.filter((bet) => bet === betName).length} // TODO replace this with key-value pair
-                positionData={positionData}
+                styleData={styleData}
             />
         );
     }
@@ -92,13 +86,7 @@ export class Board extends React.Component {
     render() {
         return (
             <div className="game-board">
-                {ZEROS_STRAIGHT_UP.map((betName) => this.renderSquare(betName, BET_OPTION_POSITION_DATA[betName]))}
-                {TOP_ROW_STRAIGHT_UP.map((betName) => this.renderSquare(betName, BET_OPTION_POSITION_DATA[betName]))}
-                {MIDDLE_ROW_STRAIGHT_UP.map((betName) => this.renderSquare(betName, BET_OPTION_POSITION_DATA[betName]))}
-                {BOTTOM_ROW_STRAIGHT_UP.map((betName) => this.renderSquare(betName, BET_OPTION_POSITION_DATA[betName]))}
-                {DOZENS.map((betName) => this.renderSquare(betName, BET_OPTION_POSITION_DATA[betName]))}
-                {ROWS.map((betName) => this.renderSquare(betName, BET_OPTION_POSITION_DATA[betName]))}
-                {HALVES.map((betName) => this.renderSquare(betName, BET_OPTION_POSITION_DATA[betName]))}
+                {BETTING_SQUARES_NAMES.map((betName) => this.renderSquare(betName, BETTING_SQUARES_STYLE_DATA[betName]))}
             </div>
         );
     }

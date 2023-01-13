@@ -15,7 +15,7 @@ ul {
 
 .game-board {
     width: 1000px;
-    height: 600px;
+    height: 520px;
     position: relative;
     margin-left: 200px;
 }
@@ -32,9 +32,56 @@ ul {
     color: white;
 }
 
-.under-board {
+.chip-selection-bar {
+    /* position: absolute; */
+    /* left: 300px; */
+    /* top: 600px; */
+    width: 800px;
+    height: 100px;
+    margin-left: 278px;
+    margin-top: 20px;
     display: flex;
-    flex: 1;
+    justify-content: center;
+    border: 1px solid white;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.chip {
+    color: white;
+    border: 1px solid white;
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    text-align: center;
+    margin: auto;
+    font-size: 24px;    
+}
+
+.chip-amount-1 {
+    background-color: white;
+    color: black;
+}
+
+.chip-amount-5 {
+    background-color: red;
+    color: white;
+}
+
+.chip-amount-25 {
+    background-color: blue;
+    color: white;
+}
+
+.chip-amount-100 {
+    background-color: black;
+    color: white;
+}
+
+.chip-amount-500 {
+    background-color: yellow;
+    color: black;
 }
 
 .spin-button {

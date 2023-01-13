@@ -4,6 +4,7 @@ import { Board } from "./Board";
 import { GameInfo } from './GameInfo';
 import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
+import { ChipSelection } from './ChipSelection';
 
 export class Game extends React.Component {
     constructor(props) {
@@ -15,10 +16,10 @@ export class Game extends React.Component {
         };
     }
 
-    handleBettingSquareClick(i) {
+    handleBettingSquareClick(bettingSquareName) {
         const copyBettingHistory = this.state.bettingHistory.slice();
 
-        copyBettingHistory.push(i);
+        copyBettingHistory.push(bettingSquareName);
 
         const newBalance = this.state.playerBalance - 1;
 
@@ -43,31 +44,38 @@ export class Game extends React.Component {
         });
     }
 
+    handleChipAmountClick(chipAmount) {
+        console.log(`Chip amount ${chipAmount} clicked`);
+    }
+
     render() {
         return (
             <div>
                 <div>
                     <Board
-                        onClick={(i) => this.handleBettingSquareClick(i)}
+                        onClick={(bettingSquareName) => this.handleBettingSquareClick(bettingSquareName)}
                         bettingHistory={this.state.bettingHistory}
                     />
                 </div>
-                <div className="under-board">
-                    <div className="spin-area">
-                        <SpinButton
-                            onClick={() => this.handleSpinAreaClick()}
-                            spinResult={this.state.mostRecentSpinResult}
-                        />
-                    </div>
-                    <div>
-                        <SpinResult
-                            spinResult={this.state.mostRecentSpinResult}
-                        />
-                        <GameInfo
-                            bettingHistory={this.state.bettingHistory}
-                            playerBalance={this.state.playerBalance}
-                        />
-                    </div>
+                <div>
+                    <ChipSelection
+                        onClick={(chipAmount) => this.handleChipAmountClick(chipAmount)}
+                    />
+                </div>
+                <div className="spin-area">
+                    <SpinButton
+                        onClick={() => this.handleSpinAreaClick()}
+                        spinResult={this.state.mostRecentSpinResult}
+                    />
+                </div>
+                <div>
+                    <SpinResult
+                        spinResult={this.state.mostRecentSpinResult}
+                    />
+                    <GameInfo
+                        bettingHistory={this.state.bettingHistory}
+                        playerBalance={this.state.playerBalance}
+                    />
                 </div>
             </div>
         );
