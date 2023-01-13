@@ -3,7 +3,6 @@ import React from 'react';
 import { BettingSquare } from "./BettingSquare";
 
 const convertBettingSquareDataToObject = (bettingSquareData) => {
-    console.log("called convert");
     return bettingSquareData.reduce((acc, next) => {
         return {
             ...acc,
@@ -92,13 +91,12 @@ const bettingSquareHalvesNames = Object.keys(BETTING_SQUARES_HALVES);
 
 export class Board extends React.Component {
     renderSquare(betName, styleData) {
-        console.log("Rendering square: " + betName + " with styleData: " + styleData);
         return (
             <BettingSquare
                 key={betName}
                 onClick={() => this.props.onClick(betName)}
                 betName={betName}
-                betAmount={this.props.bettingHistory.filter((bet) => bet === betName).length}
+                betAmount={this.props.bettingHistory[betName]}
                 styleData={styleData}
             />
         );

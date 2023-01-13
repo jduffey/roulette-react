@@ -10,18 +10,24 @@ export class Game extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            bettingHistory: [],
+            bettingHistory: {},
             playerBalance: 1000,
             mostRecentSpinResult: null,
+            currentChipAmountSelected: 1,
         };
     }
 
     handleBettingSquareClick(bettingSquareName) {
-        const copyBettingHistory = this.state.bettingHistory.slice();
+        const currentChipAmountSelected = this.state.currentChipAmountSelected;
+        const copyBettingHistory = Object.assign({}, this.state.bettingHistory);
 
-        copyBettingHistory.push(bettingSquareName);
+        if (copyBettingHistory[bettingSquareName]) {
+            copyBettingHistory[bettingSquareName] += currentChipAmountSelected;
+        } else {
+            copyBettingHistory[bettingSquareName] = currentChipAmountSelected;
+        }
 
-        const newBalance = this.state.playerBalance - 1;
+        const newBalance = this.state.playerBalance - currentChipAmountSelected;
 
         this.setState({
             bettingHistory: copyBettingHistory,
@@ -46,6 +52,9 @@ export class Game extends React.Component {
 
     handleChipAmountClick(chipAmount) {
         console.log(`Chip amount ${chipAmount} clicked`);
+        this.setState({
+            currentChipAmountSelected: chipAmount,
+        });
     }
 
     getWheelNumberColor(wheelNumber) {
