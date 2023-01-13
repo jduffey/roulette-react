@@ -17,10 +17,18 @@ export function Rows(props) {
                 backgroundColor: props.styleData.backgroundColor,
             }}
         >
-            <span className="square-label">{props.betName}</span>
-            <br />
-            <br />
-            <span className="square-bet-amount">{betAmountText}</span>
+            <span
+                className="square-label"
+                style={{
+                    fontSize: "20px",
+                    transform: "rotate(-90deg)",
+                    display: "inline-block",
+                }}
+            >
+                {props.displayLabel}
+                <br />
+                <span className="square-bet-amount">{betAmountText}</span>
+            </span>
         </button>
     );
 }

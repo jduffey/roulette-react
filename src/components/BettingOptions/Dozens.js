@@ -17,7 +17,7 @@ export function Dozens(props) {
                 backgroundColor: props.styleData.backgroundColor,
             }}
         >
-            <span className="square-label">{props.betName}</span>
+            <span className="square-label">{props.displayLabel}</span>
             <br />
             <br />
             <span className="square-bet-amount">{betAmountText}</span>

@@ -73,9 +73,9 @@ const BETTING_SQUARES_DOZENS = convertBettingSquareDataToObject([
 ]);
 
 const BETTING_SQUARES_ROWS = convertBettingSquareDataToObject([
-    ["Top", 1040, 0, 120, 120, "#016D29"],
-    ["Middle", 1040, 120, 120, 120, "#016D29"],
-    ["Bottom", 1040, 240, 120, 120, "#016D29"],
+    ["Top", 1040, 0, 120, 80, "#016D29"],
+    ["Middle", 1040, 120, 120, 80, "#016D29"],
+    ["Bottom", 1040, 240, 120, 80, "#016D29"],
 ]);
 
 const BETTING_SQUARES_HALVES = convertBettingSquareDataToObject([
@@ -99,7 +99,7 @@ export class Board extends React.Component {
             <StraightUp1To36
                 key={betName}
                 onClick={() => this.props.onClick(betName)}
-                betName={betName}
+                displayLabel={betName}
                 betAmount={this.props.bettingHistory[betName]}
                 styleData={styleData}
             />
@@ -111,7 +111,7 @@ export class Board extends React.Component {
             <StraightUpZeroes
                 key={betName}
                 onClick={() => this.props.onClick(betName)}
-                betName={betName}
+                displayLabel={betName}
                 betAmount={this.props.bettingHistory[betName]}
                 styleData={styleData}
             />
@@ -123,7 +123,7 @@ export class Board extends React.Component {
             <Dozens
                 key={betName}
                 onClick={() => this.props.onClick(betName)}
-                betName={betName}
+                displayLabel={betName}
                 betAmount={this.props.bettingHistory[betName]}
                 styleData={styleData}
             />
@@ -135,7 +135,7 @@ export class Board extends React.Component {
             <Rows
                 key={betName}
                 onClick={() => this.props.onClick(betName)}
-                betName={betName}
+                displayLabel={"2 to 1"}
                 betAmount={this.props.bettingHistory[betName]}
                 styleData={styleData}
             />
@@ -147,7 +147,7 @@ export class Board extends React.Component {
             <Halves
                 key={betName}
                 onClick={() => this.props.onClick(betName)}
-                betName={betName}
+                displayLabel={betName}
                 betAmount={this.props.bettingHistory[betName]}
                 styleData={styleData}
             />
