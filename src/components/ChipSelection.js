@@ -10,6 +10,7 @@ export function ChipSelection(props) {
             {Chip({ chipAmount: 25, onClick: props.onClick })}
             {Chip({ chipAmount: 100, onClick: props.onClick })}
             {Chip({ chipAmount: 500, onClick: props.onClick })}
+            {Chip({ chipAmount: 1000, onClick: props.onClick })}
         </div>
     );
 }

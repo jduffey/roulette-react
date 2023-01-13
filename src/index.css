@@ -33,24 +33,22 @@ ul {
 }
 
 .chip-selection-bar {
-    width: 800px;
+    position: relative;
+    left: 388px;
+    top: 20px;
+    width: 580px;
     height: 100px;
-    margin-left: 278px;
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
     border: 1px solid white;
     border-radius: 16px;
     display: flex;
-    justify-content: space-around;
-    background-color: grey;
+    background-color: #34a45d;
 }
 
 .chip {
     color: white;
-    border: 1px solid white;
-    height: 75px;
-    width: 75px;
+    border: 6px dashed black;
+    height: 70px;
+    width: 70px;
     border-radius: 50%;
     text-align: center;
     margin: auto;
@@ -68,11 +66,11 @@ ul {
 
 .chip-amount-5 {
     background-color: #d94848;
-    color: black;
+    color: white;
 }
 
 .chip-amount-25 {
-    background-color: rgb(51, 51, 253);
+    background-color: #016D29;
     color: white;
 }
 
@@ -82,6 +80,11 @@ ul {
 }
 
 .chip-amount-500 {
+    background-color: rebeccapurple;
+    color: white;
+}
+
+.chip-amount-1000 {
     background-color: rgb(244, 244, 136);
     color: black;
 }
