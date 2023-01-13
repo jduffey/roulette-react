@@ -22,7 +22,6 @@ ul {
 (e.g. split, basket) */
 .betting-square-visible {
     position: absolute;
-    /* margin: -1px; */
 
     font-weight: bold;
     border: 1px solid white;
