@@ -1,6 +1,5 @@
 export function Halves(props) {
     const betAmountText = "$" + props.betAmount;
-    const isVisible = props.betAmount > 0 ? "" : "none";
 
     return (
         <div
@@ -41,7 +40,7 @@ function getChipStyles(betAmount) {
     } else if (betAmount < 25) {
         bgColor = "#d94848";
     } else if (betAmount < 100) {
-        bgColor = "#016D29";
+        bgColor = "#00b341";
     } else if (betAmount < 500) {
         bgColor = "#222222";
         borderColor = "#2a8a8a";

@@ -1,6 +1,5 @@
 export function Rows(props) {
     const betAmountText = "$" + props.betAmount;
-    const isVisible = props.betAmount > 0 ? "" : "none";
 
     return (
         <div
@@ -22,9 +21,7 @@ export function Rows(props) {
                 </div>
                 <div
                     className="betting-square-chip"
-                    style={{
-                        display: isVisible
-                    }}
+                    style={getChipStyles(props.betAmount)}
                 >
                     {betAmountText}
                 </div>
@@ -32,3 +29,35 @@ export function Rows(props) {
         </div>
     );
 }
+
+function getChipStyles(betAmount) {
+    let bgColor;
+    let borderColor = "#222222";
+    let color = "white";
+    if (betAmount < 5) {
+        bgColor = "#dfdfdf";
+        color = "black";
+    } else if (betAmount < 25) {
+        bgColor = "#d94848";
+    } else if (betAmount < 100) {
+        bgColor = "#00b341";
+    } else if (betAmount < 500) {
+        bgColor = "#222222";
+        borderColor = "#2a8a8a";
+    } else if (betAmount < 1000) {
+        bgColor = "rebeccapurple";
+        borderColor = "#2a8a8a";
+    } else {
+        bgColor = "#f4f488";
+        color = "black";
+    }
+
+    const chipStyles = {
+        display: betAmount > 0 ? "" : "none",
+        backgroundColor: bgColor,
+        borderColor: borderColor,
+        color: color,
+    };
+    return chipStyles;
+}
+
