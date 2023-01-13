@@ -1,7 +1,6 @@
 export function StraightUpZeroes(props) {
-    const betAmountText = props.betAmount > 0 ?
-        "$" + props.betAmount :
-        String.fromCharCode(160); // non-breaking space
+    const betAmountText = "$" + props.betAmount;
+    const isVisible = props.betAmount > 0 ? "" : "none";
 
     return (
         <div
@@ -15,11 +14,18 @@ export function StraightUpZeroes(props) {
                 backgroundColor: props.styleData.backgroundColor,
             }}
         >
-            <div className="square-label">
-                {props.displayLabel}
-            </div>
-            <div className="square-bet-amount">
-                {betAmountText}
+            <div className="zero-square-contents">
+                <div className="zero-square-label">
+                    {props.displayLabel}
+                </div>
+                <div
+                    className="zero-square-chip"
+                    style={{
+                        display: isVisible
+                    }}
+                >
+                    {betAmountText}
+                </div>
             </div>
         </div>
     );
