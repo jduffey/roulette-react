@@ -1,12 +1,13 @@
 export function PlayerInfo(props) {
     return (
         <div className="player-info">
-            {"Player Info"}
+            {"Balance"}
             <br />
+            {"$ " + props.playerBalance}
             <br />
-            {"Bal: $" + props.playerBalance}
+            {"Total Bet"}
             <br />
-            {"Bet: $" + props.totalBetAmount}
+            {"$ " + props.totalBetAmount}
         </div>
     );
 }

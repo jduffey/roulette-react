@@ -32,10 +32,10 @@ ul {
 
 .chip-selection-bar {
     position: relative;
-    left: 268px;
+    left: 242px;
     top: 20px;
-    width: 580px;
-    height: 100px;
+    width: 640px;
+    height: 140px;
     border: 1px solid white;
     border-radius: 16px;
     display: flex;
@@ -59,37 +59,43 @@ ul {
 
 .chip-amount-1 {
     background-color: rgb(223, 223, 223);
+    border-color: #222222;
     color: black;
 }
 
 .chip-amount-5 {
     background-color: #d94848;
+    border-color: #222222;
     color: white;
 }
 
 .chip-amount-25 {
     background-color: #016D29;
+    border-color: #222222;
     color: white;
 }
 
 .chip-amount-100 {
     background-color: #222222;
+    border-color: rgb(42, 138, 138);
     color: white;
 }
 
 .chip-amount-500 {
     background-color: rebeccapurple;
+    border-color: rgb(42, 138, 138);
     color: white;
 }
 
 .chip-amount-1000 {
     background-color: rgb(244, 244, 136);
+    border-color: #222222;
     color: black;
 }
 
 .spin-button {
     position: relative;
-    left: 1080px;
+    left: 1120px;
     top: -240px;
     width: 200px;
     height: 200px;
@@ -106,7 +112,7 @@ ul {
 
 .spin-result-container {
     position: relative;
-    left: 1100px;
+    left: 1140px;
     top: -230px;
     width: 160px;
     height: 100px;
@@ -131,13 +137,13 @@ ul {
 
 .player-info {
     position: relative;
-    left: 856px;
-    top: -440px;
+    left: 890px;
+    top: -474px;
 
     height: 200px;
     width: 200px;
 
-    border: 8px solid black;
+    border: 1px solid white;
     border-radius: 24px;
 
     font-size: 24px;
@@ -146,6 +152,9 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+
+    background-color: #34a45d;
 }
 
 .square-label {

@@ -81,6 +81,7 @@ export class Game extends React.Component {
                 />
                 <ChipSelection
                     onClick={(chipAmount) => this.handleChipAmountClick(chipAmount)}
+                    currentChipAmountSelected={this.state.currentChipAmountSelected}
                 />
                 <SpinButton
                     onClick={() => this.handleSpinAreaClick()}
