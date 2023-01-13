@@ -35,7 +35,7 @@ ul {
     align-items: center;
 }
 
-.zero-square-contents {
+.betting-square-contents {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,12 +67,6 @@ ul {
     align-items: center;
 }
 
-.rows-square-contents {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .rows-square-label {
     font-size: 20px;
     transform: rotate(-90deg);
@@ -86,6 +80,32 @@ ul {
 }
 
 .rows-square-chip {
+    font-size: 16px;
+    height: 60px;
+    width: 60px;
+    color: black;
+    background-color: #dfdfdf;
+    border: 4px dashed black;
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.straightUp1to36-square-label,
+.straightUp1to36-square-chip {
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+}
+
+.straightUp1to36-square-label {
+    font-size: 48px;
+    transform: rotate(-90deg);
+}
+
+.straightUp1to36-square-chip {
     font-size: 16px;
     height: 60px;
     width: 60px;

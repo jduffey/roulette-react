@@ -14,7 +14,7 @@ export function Rows(props) {
                 backgroundColor: props.styleData.backgroundColor,
             }}
         >
-            <div className="rows-square-contents">
+            <div className="betting-square-contents">
                 <div
                     className="rows-square-label"
                 >
