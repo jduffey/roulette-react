@@ -65,8 +65,8 @@ const BETTING_SQUARES_STRAIGHT_UP_1_36 = convertBettingSquareDataToObject([
 ]);
 
 const BETTING_SQUARES_STRAIGHT_UP_ZEROES = convertBettingSquareDataToObject([
-    ["0", 0, 0, 180, 80, "#016D29"],
-    ["00", 0, 180, 180, 80, "#016D29"],
+    ["0", 0, 180, 180, 80, "#016D29"],
+    ["00", 0, 0, 180, 80, "#016D29"],
 ]);
 
 const BETTING_SQUARES_DOZENS = convertBettingSquareDataToObject([
