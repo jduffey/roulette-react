@@ -1,5 +1,4 @@
 export function Halves(props) {
-    const fontColor = "#FFFFFF";
     const betAmountText = props.betAmount > 0 ?
         "$" + props.betAmount :
         String.fromCharCode(160); // non-breaking space
@@ -9,7 +8,6 @@ export function Halves(props) {
             className={`betting-square-${props.betName}`}
             onClick={props.onClick}
             style={{
-                color: fontColor,
                 left: props.styleData.left,
                 top: props.styleData.top,
                 height: props.styleData.height,
