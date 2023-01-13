@@ -112,42 +112,6 @@ ul {
     align-items: center;
 }
 
-.chip-amount-1 {
-    background-color: #dfdfdf;
-    border-color: #222222;
-    color: black;
-}
-
-.chip-amount-5 {
-    background-color: #d94848;
-    border-color: #222222;
-    color: white;
-}
-
-.chip-amount-25 {
-    background-color: #00b341;
-    border-color: #222222;
-    color: white;
-}
-
-.chip-amount-100 {
-    background-color: #222222;
-    border-color: #2a8a8a;
-    color: white;
-}
-
-.chip-amount-500 {
-    background-color: rebeccapurple;
-    border-color: #2a8a8a;
-    color: white;
-}
-
-.chip-amount-1000 {
-    background-color: #f4f488;
-    border-color: #222222;
-    color: black;
-}
-
 .spin-button {
     position: relative;
     left: 1120px;
@@ -210,10 +174,6 @@ ul {
     text-align: center;
 
     background-color: #34a45d;
-}
-
-.square-label {
-    font-size: 24px;
 }
 
 .game-info {
