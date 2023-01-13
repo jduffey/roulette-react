@@ -1,7 +1,6 @@
 export function Rows(props) {
-    const betAmountText = props.betAmount > 0 ?
-        "$" + props.betAmount :
-        String.fromCharCode(160); // non-breaking space
+    const betAmountText = "$" + props.betAmount;
+    const isVisible = props.betAmount > 0 ? "" : "none";
 
     return (
         <div
@@ -15,16 +14,20 @@ export function Rows(props) {
                 backgroundColor: props.styleData.backgroundColor,
             }}
         >
-            <div
-                className="square-label"
-                style={{
-                    fontSize: "20px",
-                }}
-            >
-                {props.displayLabel}
-            </div>
-            <div className="square-bet-amount">
-                {betAmountText}
+            <div className="rows-square-contents">
+                <div
+                    className="rows-square-label"
+                >
+                    {props.displayLabel}
+                </div>
+                <div
+                    className="rows-square-chip"
+                    style={{
+                        display: isVisible
+                    }}
+                >
+                    {betAmountText}
+                </div>
             </div>
         </div>
     );
