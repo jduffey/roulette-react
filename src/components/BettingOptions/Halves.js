@@ -4,8 +4,8 @@ export function Halves(props) {
         String.fromCharCode(160); // non-breaking space
 
     return (
-        <button
-            className={`betting-square-${props.betName}`}
+        <div
+            className={`betting-square-visible betting-square-${props.betName}`}
             onClick={props.onClick}
             style={{
                 left: props.styleData.left,
@@ -15,10 +15,12 @@ export function Halves(props) {
                 backgroundColor: props.styleData.backgroundColor,
             }}
         >
-            <span className="square-label">{props.displayLabel}</span>
-            <br />
-            <br />
-            <span className="square-bet-amount">{betAmountText}</span>
-        </button>
+            <div className="square-label">
+                {props.displayLabel}
+            </div>
+            <div className="square-bet-amount">
+                {betAmountText}
+            </div>
+        </div >
     );
 }

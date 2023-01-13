@@ -18,16 +18,21 @@ ul {
     position: relative;
 }
 
-.game-board>button {
+/* Note: naming this "visible" to because we'll have "invisible" betting options later
+(e.g. split, basket) */
+.betting-square-visible {
     position: absolute;
-    margin: -1px;
+    /* margin: -1px; */
 
     font-weight: bold;
     border: 1px solid white;
 
-    /* TODO this can go away if we make this element not a button */
-    font-family: inherit;
     color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .chip-selection-bar {
