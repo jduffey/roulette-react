@@ -46,7 +46,6 @@ ul {
     position: absolute;
     justify-content: center;
     align-items: center;
-    white-space: nowrap;
 }
 
 .betting-square-chip {
@@ -71,11 +70,20 @@ ul {
 .rows-square-label {
     font-size: 28px;
     transform: rotate(-90deg);
+    white-space: nowrap;
 }
 
 .straightUp1to36-square-label {
     font-size: 48px;
     transform: rotate(-90deg);
+}
+
+.dozens-square-label {
+    font-size: 40px;
+}
+
+.halves-square-label {
+    font-size: 28px;
 }
 
 .chip-selection-bar {

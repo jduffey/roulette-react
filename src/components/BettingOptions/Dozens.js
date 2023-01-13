@@ -1,7 +1,6 @@
 export function Dozens(props) {
-    const betAmountText = props.betAmount > 0 ?
-        "$" + props.betAmount :
-        String.fromCharCode(160); // non-breaking space
+    const betAmountText = "$" + props.betAmount;
+    const isVisible = props.betAmount > 0 ? "" : "none";
 
     return (
         <div
@@ -13,15 +12,22 @@ export function Dozens(props) {
                 height: props.styleData.height,
                 width: props.styleData.width,
                 backgroundColor: props.styleData.backgroundColor,
-                display: "flex",
-                flexDirection: "row",
             }}
         >
-            <div className="square-label">
-                {props.displayLabel}
-            </div>
-            <div className="square-bet-amount">
-                {betAmountText}
+            <div className="betting-square-contents">
+                <div
+                    className="betting-square-label dozens-square-label"
+                >
+                    {props.displayLabel}
+                </div>
+                <div
+                    className="betting-square-chip"
+                    style={{
+                        display: isVisible
+                    }}
+                >
+                    {betAmountText}
+                </div>
             </div>
         </div>
     );
