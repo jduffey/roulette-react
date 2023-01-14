@@ -11,7 +11,7 @@ export class Game extends React.Component {
         super(props);
         this.state = {
             bettingHistory: {},
-            playerBalance: 1000,
+            playerBalance: 10000,
             mostRecentSpinResult: null,
             currentChipAmountSelected: 1,
         };
