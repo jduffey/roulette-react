@@ -1,5 +1,10 @@
 import { Chip } from "../Chip";
 
+const sizeData = {
+    width: 80,
+    height: 180,
+}
+
 export function StraightUpZeroes(props) {
     return (
         <div
@@ -8,8 +13,8 @@ export function StraightUpZeroes(props) {
             style={{
                 left: props.styleData.left,
                 top: props.styleData.top,
-                height: props.styleData.height,
-                width: props.styleData.width,
+                height: sizeData.height,
+                width: sizeData.width,
                 backgroundColor: props.styleData.backgroundColor,
             }}
         >

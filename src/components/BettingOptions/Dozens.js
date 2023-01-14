@@ -1,5 +1,10 @@
 import { Chip } from "../Chip";
 
+const sizeData = {
+    width: 320,
+    height: 80,
+}
+
 export function Dozens(props) {
     return (
         <div
@@ -8,8 +13,8 @@ export function Dozens(props) {
             style={{
                 left: props.styleData.left,
                 top: props.styleData.top,
-                height: props.styleData.height,
-                width: props.styleData.width,
+                height: sizeData.height,
+                width: sizeData.width,
                 backgroundColor: props.styleData.backgroundColor,
             }}
         >
