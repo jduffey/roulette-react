@@ -1,17 +1,17 @@
 import React from 'react';
 
-// import { BettingHistory } from './BettingHistory';
+import { BetsOnBoard } from './BetsOnBoard';
 import { PlayerInfo } from './PlayerInfo';
 
 export function GameInfo(props) {
-    // const bettingHistoryButtons = createBettingHistoryButtons(props.bettingHistory);
-    const totalBetAmount = calculateTotalBetAmount(props.bettingHistory);
+    const betsOnBoard = createBetsOnBoard(props.betsOnBoard);
+    const totalBetAmount = calculateTotalBetAmount(props.betsOnBoard);
 
     return (
         <div className="game-info">
-            {/* <BettingHistory
-                buttons={bettingHistoryButtons}
-            /> */}
+            <BetsOnBoard
+                buttons={betsOnBoard}
+            />
             <PlayerInfo
                 playerBalance={props.playerBalance}
                 totalBetAmount={totalBetAmount}
@@ -20,27 +20,18 @@ export function GameInfo(props) {
     );
 }
 
-function calculateTotalBetAmount(bettingHistory) {
-    return Object.values(bettingHistory).reduce((total, betAmount) => total + betAmount, 0);
+function calculateTotalBetAmount(betsOnBoard) {
+    return Object.values(betsOnBoard).reduce((total, betAmount) => total + betAmount, 0);
 }
 
-// function createBettingHistoryButtons(bettingHistory) {
-//     return bettingHistory.map((bettingSquare, betOrderZeroIndexed) => {
-//         const betOrderOneIndexed = betOrderZeroIndexed + 1;
+function createBetsOnBoard(betsOnBoard) {
+    return Object.keys(betsOnBoard).map((bettingSquare) => {
+        const desc = `${bettingSquare}: $${betsOnBoard[bettingSquare].toLocaleString()}`;
 
-//         // const desc = `#${betOrderOneIndexed} - ${bettingSquare}`;
-
-//         return (
-//             <li
-//                 key={betOrderOneIndexed}
-//             >
-//                 "NAME"
-//                 {/* <button
-//                     className="betting-history-button"
-//                 >
-//                     {desc}
-//                 </button> */}
-//             </li>
-//         );
-//     });
-// }
+        return (
+            <li key={bettingSquare}>
+                {desc}
+            </li>
+        );
+    });
+}

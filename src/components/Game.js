@@ -10,7 +10,7 @@ export class Game extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            bettingHistory: {},
+            betsOnBoard: {},
             playerBalance: 10000,
             mostRecentSpinResult: null,
             currentChipAmountSelected: 1,
@@ -19,18 +19,18 @@ export class Game extends React.Component {
 
     handleBettingSquareClick(bettingSquareName) {
         const currentChipAmountSelected = this.state.currentChipAmountSelected;
-        const copyBettingHistory = Object.assign({}, this.state.bettingHistory);
+        const copyBetsOnBoard = Object.assign({}, this.state.betsOnBoard);
 
-        if (copyBettingHistory[bettingSquareName]) {
-            copyBettingHistory[bettingSquareName] += currentChipAmountSelected;
+        if (copyBetsOnBoard[bettingSquareName]) {
+            copyBetsOnBoard[bettingSquareName] += currentChipAmountSelected;
         } else {
-            copyBettingHistory[bettingSquareName] = currentChipAmountSelected;
+            copyBetsOnBoard[bettingSquareName] = currentChipAmountSelected;
         }
 
         const newBalance = this.state.playerBalance - currentChipAmountSelected;
 
         this.setState({
-            bettingHistory: copyBettingHistory,
+            betsOnBoard: copyBetsOnBoard,
             playerBalance: newBalance,
         });
     }
@@ -77,7 +77,7 @@ export class Game extends React.Component {
             <div>
                 <Board
                     onClick={(bettingSquareName) => this.handleBettingSquareClick(bettingSquareName)}
-                    bettingHistory={this.state.bettingHistory}
+                    betsOnBoard={this.state.betsOnBoard}
                 />
                 <ChipSelection
                     onClick={(chipAmount) => this.handleChipAmountClick(chipAmount)}
@@ -92,7 +92,7 @@ export class Game extends React.Component {
                     bgColor={this.getWheelNumberColor(this.state.mostRecentSpinResult)}
                 />
                 <GameInfo
-                    bettingHistory={this.state.bettingHistory}
+                    betsOnBoard={this.state.betsOnBoard}
                     playerBalance={this.state.playerBalance}
                 />
             </div>

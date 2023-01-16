@@ -104,7 +104,7 @@ export class Board extends React.Component {
                 key={betName}
                 onClick={() => this.props.onClick(betName)}
                 displayLabel={displayData.displayText}
-                betAmount={this.props.bettingHistory[betName]}
+                betAmount={this.props.betsOnBoard[betName]}
                 styleData={displayData.styleData}
             />
         );
@@ -116,7 +116,7 @@ export class Board extends React.Component {
                 key={betName}
                 onClick={() => this.props.onClick(betName)}
                 displayLabel={displayData.displayText}
-                betAmount={this.props.bettingHistory[betName]}
+                betAmount={this.props.betsOnBoard[betName]}
                 styleData={displayData.styleData}
             />
         );
@@ -128,7 +128,7 @@ export class Board extends React.Component {
                 key={betName}
                 onClick={() => this.props.onClick(betName)}
                 displayLabel={displayData.displayText}
-                betAmount={this.props.bettingHistory[betName]}
+                betAmount={this.props.betsOnBoard[betName]}
                 styleData={displayData.styleData}
             />
         );
@@ -140,7 +140,7 @@ export class Board extends React.Component {
                 key={betName}
                 onClick={() => this.props.onClick(betName)}
                 displayLabel={displayData.displayText}
-                betAmount={this.props.bettingHistory[betName]}
+                betAmount={this.props.betsOnBoard[betName]}
                 styleData={displayData.styleData}
             />
         );
@@ -152,7 +152,7 @@ export class Board extends React.Component {
                 key={betName}
                 onClick={() => this.props.onClick(betName)}
                 displayLabel={displayData.displayText}
-                betAmount={this.props.bettingHistory[betName]}
+                betAmount={this.props.betsOnBoard[betName]}
                 styleData={displayData.styleData}
             />
         );
