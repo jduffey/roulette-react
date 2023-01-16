@@ -1,0 +1,1 @@
+export const BETTING_SQUARE_OUTLINE_SIZE = 1;

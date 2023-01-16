@@ -1,8 +1,9 @@
 import { Chip } from '../Chip';
+import { BETTING_SQUARE_OUTLINE_SIZE } from '../../common/project-globals';
 
 const sizeData = {
-    width: 80,
-    height: 120,
+    width: 80 - BETTING_SQUARE_OUTLINE_SIZE,
+    height: 120 - BETTING_SQUARE_OUTLINE_SIZE,
 }
 
 export function StraightUp1To36(props) {

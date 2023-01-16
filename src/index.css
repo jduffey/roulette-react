@@ -24,7 +24,7 @@ ul {
     position: absolute;
 
     font-weight: bold;
-    border: 1px solid white;
+    outline: 1px solid white;
 
     color: white;
 

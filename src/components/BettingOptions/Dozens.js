@@ -1,8 +1,9 @@
 import { Chip } from "../Chip";
+import { BETTING_SQUARE_OUTLINE_SIZE } from "../../common/project-globals";
 
 const sizeData = {
-    width: 320,
-    height: 80,
+    width: 320 - BETTING_SQUARE_OUTLINE_SIZE,
+    height: 80 - BETTING_SQUARE_OUTLINE_SIZE,
 }
 
 export function Dozens(props) {
