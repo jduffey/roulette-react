@@ -2,7 +2,7 @@ export function BetsOnBoard(props) {
     return (
         <div className="betting-history">
             <div className="status-message">
-                {"Bets on Board"}
+                {"PLACEHOLDER FOR MOST RECENT SPIN RESULTS"}
             </div>
             <ol>
                 {props.buttons}

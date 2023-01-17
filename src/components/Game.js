@@ -1,7 +1,8 @@
 import React from 'react';
 
+import { BetsOnBoard } from './BetsOnBoard';
 import { Board } from "./Board";
-import { GameInfo } from './GameInfo';
+import { PlayerInfo } from './PlayerInfo';
 import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
 import { ChipSelection } from './ChipSelection';
@@ -72,6 +73,22 @@ export class Game extends React.Component {
         }
     }
 
+    calculateTotalBetAmount(bets) {
+        return Object.values(bets).reduce((total, betAmount) => total + betAmount, 0);
+    }
+
+    createBetsOnBoard(bets) {
+        return Object.keys(bets).map((bettingSquare) => {
+            const desc = `${bettingSquare}: $${bets[bettingSquare].toLocaleString()}`;
+
+            return (
+                <li key={bettingSquare}>
+                    {desc}
+                </li>
+            );
+        });
+    }
+
     render() {
         return (
             <div>
@@ -91,9 +108,12 @@ export class Game extends React.Component {
                     spinResult={this.state.mostRecentSpinResult}
                     bgColor={this.getWheelNumberColor(this.state.mostRecentSpinResult)}
                 />
-                <GameInfo
-                    betsOnBoard={this.state.betsOnBoard}
+                <BetsOnBoard
+                    buttons={this.createBetsOnBoard(this.state.betsOnBoard)}
+                />
+                <PlayerInfo
                     playerBalance={this.state.playerBalance}
+                    totalBetAmount={this.calculateTotalBetAmount(this.state.betsOnBoard)}
                 />
             </div>
         );

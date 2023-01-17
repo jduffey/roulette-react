@@ -1,7 +1,8 @@
 export function Chip(props) {
     const styles = getChipStyles(props.chipAmount);
     if (props.isSelected) {
-        styles.boxShadow = "2px 6px 4px 4px rgba(0,0,0,.6)";
+        styles.boxShadow = "0px 8px 6px 4px rgba(0,0,0,.6)";
+        styles.marginTop = "12px";
     }
 
     return (
