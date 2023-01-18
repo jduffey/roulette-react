@@ -72,6 +72,14 @@ ul {
 .straightUp1to36-square-label {
     font-size: 48px;
     transform: rotate(-90deg);
+    outline: 2px solid white;
+    width: 110px;
+    height: 70px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
 }
 
 .dozens-square-label {
@@ -181,4 +189,24 @@ ul {
     outline: 8px solid black;
     background-color: #dfdfdf;
     font-size: 24px;
+}
+
+.bet-results-info {
+    position: absolute;
+    top: 700px;
+    left: 50px;
+    border: 1px solid white;
+    border-radius: 16px;
+    background-color: #34a45d;
+    padding: 12px;
+}
+
+.bet-results-info-table {
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.bet-results-info-table * {
+    font-size: 24px;
+    width: 200px;
 }

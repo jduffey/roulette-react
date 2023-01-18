@@ -77,9 +77,9 @@ const BETTING_SQUARES_DOZENS = convertBettingSquareDataToObject([
 ]);
 
 const BETTING_SQUARES_ROWS = convertBettingSquareDataToObject([
-    ["Top", 1040, 0, "#016D29", "2 to 1"],
-    ["Middle", 1040, 120, "#016D29", "2 to 1"],
-    ["Bottom", 1040, 240, "#016D29", "2 to 1"],
+    ["Top Row", 1040, 0, "#016D29", "2 to 1"],
+    ["Middle Row", 1040, 120, "#016D29", "2 to 1"],
+    ["Bottom Row", 1040, 240, "#016D29", "2 to 1"],
 ]);
 
 const BETTING_SQUARES_HALVES = convertBettingSquareDataToObject([

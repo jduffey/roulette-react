@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { BetResultsInfo } from './BetResultsInfo';
 import { Board } from "./Board";
 import { ChipSelection } from './ChipSelection';
 import { MostRecentSpinResults } from './MostRecentSpinResults';
@@ -60,8 +61,10 @@ export class Game extends React.Component {
         const wereThereAnyWinners = betsOptionsPlaced.some((betOptionPlaced) => winningCriteria.includes(betOptionPlaced));
         console.log("Were there any winners?", wereThereAnyWinners);
 
-        const whichBetOptionsWon = betsOptionsPlaced.filter((betOptionPlaced) => winningCriteria.includes(betOptionPlaced));
-        console.log("Which bet options won?", whichBetOptionsWon);
+        if (wereThereAnyWinners) {
+            const whichBetOptionsWon = betsOptionsPlaced.filter((betOptionPlaced) => winningCriteria.includes(betOptionPlaced));
+            console.log("Which bet options won?", whichBetOptionsWon);
+        }
 
         // TODO clear the bets on the board
 
@@ -123,6 +126,9 @@ export class Game extends React.Component {
                 <PlayerInfo
                     playerBalance={this.state.playerBalance}
                     totalBetAmount={this.calculateTotalBetAmount(this.state.betsOnBoard)}
+                />
+                <BetResultsInfo
+                    betsOnBoard={this.state.betsOnBoard}
                 />
             </div>
         );
