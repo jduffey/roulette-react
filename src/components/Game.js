@@ -7,6 +7,8 @@ import { PlayerInfo } from './PlayerInfo';
 import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
 
+import { WINNING_CRITERIA } from '../common/winning-criteria';
+
 export class Game extends React.Component {
     constructor(props) {
         super(props);
@@ -36,7 +38,8 @@ export class Game extends React.Component {
         });
     }
 
-    handleSpinAreaClick() {
+    handleSpinButtonClick() {
+        // TODO check that there are actually bets on the board
         const wheelNumbers = [
             "0", "00",
             "1", "2", "3", "4", "5", "6", "7", "8", "9",
@@ -44,11 +47,28 @@ export class Game extends React.Component {
             "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",
             "30", "31", "32", "33", "34", "35", "36"
         ];
-
         const randomWheelNumber = wheelNumbers[Math.floor(Math.random() * wheelNumbers.length)];
+        // const randomWheelNumber = "1";
+
+        // TODO check if any bets match the criteria for winning based on the randomWheelNumber
+        const betsOptionsPlaced = Object.keys(this.state.betsOnBoard);
+        console.log("Bets options placed:", betsOptionsPlaced);
+
+        const winningCriteria = WINNING_CRITERIA[randomWheelNumber];
+        console.log("Winning criteria:", winningCriteria);
+
+        const wereThereAnyWinners = betsOptionsPlaced.some((betOptionPlaced) => winningCriteria.includes(betOptionPlaced));
+        console.log("Were there any winners?", wereThereAnyWinners);
+
+        const whichBetOptionsWon = betsOptionsPlaced.filter((betOptionPlaced) => winningCriteria.includes(betOptionPlaced));
+        console.log("Which bet options won?", whichBetOptionsWon);
+
+        // TODO clear the bets on the board
+
         const numberOfResultsToDisplay = 20;
         const mostRecentSpinResults = this.state.mostRecentSpinResults.slice(-(numberOfResultsToDisplay - 1));
         mostRecentSpinResults.push(randomWheelNumber);
+
         this.setState({
             mostRecentSpinResults: mostRecentSpinResults,
         });
@@ -91,7 +111,7 @@ export class Game extends React.Component {
                     currentChipAmountSelected={this.state.currentChipAmountSelected}
                 />
                 <SpinButton
-                    onClick={() => this.handleSpinAreaClick()}
+                    onClick={() => this.handleSpinButtonClick()}
                 />
                 <SpinResult
                     spinResult={mostRecentSpinResult}
