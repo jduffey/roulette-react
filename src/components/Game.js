@@ -18,6 +18,7 @@ export class Game extends React.Component {
             playerBalance: 10000,
             currentChipAmountSelected: 1,
             mostRecentSpinResults: [],
+            mostRecentWinningBetOptions: [],
         };
     }
 
@@ -39,6 +40,22 @@ export class Game extends React.Component {
         });
     }
 
+    getWinningBetOptions(wheelNumber) {
+        const betsOptionsPlaced = Object.keys(this.state.betsOnBoard);
+        console.log("Bets options placed:", betsOptionsPlaced);
+
+        const winningCriteria = WINNING_CRITERIA[wheelNumber];
+        console.log("Winning criteria:", winningCriteria);
+
+        const wereThereAnyWinners = betsOptionsPlaced.some((betOptionPlaced) => winningCriteria.includes(betOptionPlaced));
+        console.log("Were there any winners?", wereThereAnyWinners);
+
+        const whichBetOptionsWon = betsOptionsPlaced.filter((betOptionPlaced) => winningCriteria.includes(betOptionPlaced));
+        console.log("Which bet options won?", whichBetOptionsWon);
+
+        return whichBetOptionsWon;
+    }
+
     handleSpinButtonClick() {
         // TODO check that there are actually bets on the board
         const wheelNumbers = [
@@ -49,24 +66,12 @@ export class Game extends React.Component {
             "30", "31", "32", "33", "34", "35", "36"
         ];
         const randomWheelNumber = wheelNumbers[Math.floor(Math.random() * wheelNumbers.length)];
-        // const randomWheelNumber = "1";
 
-        // TODO check if any bets match the criteria for winning based on the randomWheelNumber
-        const betsOptionsPlaced = Object.keys(this.state.betsOnBoard);
-        console.log("Bets options placed:", betsOptionsPlaced);
-
-        const winningCriteria = WINNING_CRITERIA[randomWheelNumber];
-        console.log("Winning criteria:", winningCriteria);
-
-        const wereThereAnyWinners = betsOptionsPlaced.some((betOptionPlaced) => winningCriteria.includes(betOptionPlaced));
-        console.log("Were there any winners?", wereThereAnyWinners);
-
-        if (wereThereAnyWinners) {
-            const whichBetOptionsWon = betsOptionsPlaced.filter((betOptionPlaced) => winningCriteria.includes(betOptionPlaced));
-            console.log("Which bet options won?", whichBetOptionsWon);
-        }
-
-        // TODO clear the bets on the board
+        const winningBetOptions = this.getWinningBetOptions(randomWheelNumber);
+        console.log(winningBetOptions);
+        this.setState({
+            mostRecentWinningBetOptions: winningBetOptions,
+        });
 
         const numberOfResultsToDisplay = 20;
         const mostRecentSpinResults = this.state.mostRecentSpinResults.slice(-(numberOfResultsToDisplay - 1));
@@ -129,6 +134,7 @@ export class Game extends React.Component {
                 />
                 <BetResultsInfo
                     betsOnBoard={this.state.betsOnBoard}
+                    winningBetOptions={this.state.mostRecentWinningBetOptions}
                 />
             </div>
         );

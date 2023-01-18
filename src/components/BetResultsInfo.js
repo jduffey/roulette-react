@@ -18,7 +18,7 @@ export function BetResultsInfo(props) {
                             <tr key={betOption}>
                                 <td>{betOption}</td>
                                 <td>{props.betsOnBoard[betOption]}</td>
-                                <td>Pending</td>
+                                <td>{props.winningBetOptions.includes(betOption) ? "WINNER" : "LOSER"}</td>
                             </tr>
                         );
                     })}
