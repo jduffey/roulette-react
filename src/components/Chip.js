@@ -19,24 +19,32 @@ export function Chip(props) {
 
 function getChipStyles(betAmount) {
     let bgColor;
-    let borderColor = "#222222";
-    let color = "white";
+    let borderColor;
+    let color;
     if (betAmount < 5) {
-        bgColor = "#dfdfdf";
-        color = "black";
+        bgColor = "#DFDFDF";
+        color = "#000000";
+        borderColor = "#000000";
     } else if (betAmount < 25) {
-        bgColor = "#d94848";
+        bgColor = "#D94848";
+        color = "#FFFFFF";
+        borderColor = "#000000";
     } else if (betAmount < 100) {
-        bgColor = "#00b341";
+        bgColor = "#00B341";
+        color = "#FFFFFF";
+        borderColor = "#000000";
     } else if (betAmount < 500) {
         bgColor = "#222222";
-        borderColor = "#2a8a8a";
+        color = "#FFFFFF";
+        borderColor = "#2A8A8A";
     } else if (betAmount < 1000) {
-        bgColor = "rebeccapurple";
-        borderColor = "#2a8a8a";
+        bgColor = "#663399";
+        color = "#FFFFFF";
+        borderColor = "#2A8A8A";
     } else {
-        bgColor = "#f4f488";
-        color = "black";
+        bgColor = "#F4F488";
+        color = "#000000";
+        borderColor = "#000000";
     }
 
     return {

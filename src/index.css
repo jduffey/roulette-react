@@ -30,7 +30,6 @@ ul {
 
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     justify-content: center;
     align-items: center;
 }
@@ -44,16 +43,12 @@ ul {
 .betting-square-label,
 .betting-square-chip {
     position: absolute;
-    justify-content: center;
-    align-items: center;
 }
 
 .betting-square-chip {
     font-size: 16px;
     height: 60px;
     width: 60px;
-    color: black;
-    background-color: #dfdfdf;
     border: 4px dashed black;
     border-radius: 50%;
     z-index: 1;
@@ -104,7 +99,7 @@ ul {
     width: 70px;
     border-radius: 50%;
     text-align: center;
-    margin: auto;
+    margin: auto auto 15px auto;
     font-weight: bold;
     display: flex;
     justify-content: center;

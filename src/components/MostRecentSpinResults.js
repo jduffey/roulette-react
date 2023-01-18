@@ -1,5 +1,4 @@
 export function MostRecentSpinResults(props) {
-    console.log(props);
     return (
         <div className="most-recent-spin-results">
             <ul>
