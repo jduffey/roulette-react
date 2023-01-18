@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { BetsOnBoard } from './BetsOnBoard';
 import { Board } from "./Board";
+import { ChipSelection } from './ChipSelection';
+import { MostRecentSpinResults } from './MostRecentSpinResults';
 import { PlayerInfo } from './PlayerInfo';
 import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
-import { ChipSelection } from './ChipSelection';
 
 export class Game extends React.Component {
     constructor(props) {
@@ -13,8 +13,8 @@ export class Game extends React.Component {
         this.state = {
             betsOnBoard: {},
             playerBalance: 10000,
-            mostRecentSpinResult: null,
             currentChipAmountSelected: 1,
+            mostRecentSpinResults: [],
         };
     }
 
@@ -46,8 +46,11 @@ export class Game extends React.Component {
         ];
 
         const randomWheelNumber = wheelNumbers[Math.floor(Math.random() * wheelNumbers.length)];
+        const numberOfResultsToDisplay = 20;
+        const mostRecentSpinResults = this.state.mostRecentSpinResults.slice(-(numberOfResultsToDisplay - 1));
+        mostRecentSpinResults.push(randomWheelNumber);
         this.setState({
-            mostRecentSpinResult: randomWheelNumber,
+            mostRecentSpinResults: mostRecentSpinResults,
         });
     }
 
@@ -59,8 +62,6 @@ export class Game extends React.Component {
     }
 
     getWheelNumberColor(wheelNumber) {
-        if (this.state.mostRecentSpinResult === null) { return "#dfdfdf"; }
-
         const redNumbers = new Set(["1", "3", "5", "7", "9", "12", "14", "16", "18", "19", "21", "23", "25", "27", "30", "32", "34", "36"]);
         const blackNumbers = new Set(["2", "4", "6", "8", "10", "11", "13", "15", "17", "20", "22", "24", "26", "28", "29", "31", "33", "35"]);
         const greenNumbers = new Set(["0", "00"]);
@@ -74,22 +75,11 @@ export class Game extends React.Component {
     }
 
     calculateTotalBetAmount(bets) {
-        return Object.values(bets).reduce((total, betAmount) => total + betAmount, 0);
-    }
-
-    createBetsOnBoard(bets) {
-        return Object.keys(bets).map((bettingSquare) => {
-            const desc = `${bettingSquare}: $${bets[bettingSquare].toLocaleString()}`;
-
-            return (
-                <li key={bettingSquare}>
-                    {desc}
-                </li>
-            );
-        });
+        return Object.values(bets).reduce((acc, betAmount) => acc + betAmount, 0);
     }
 
     render() {
+        const mostRecentSpinResult = this.state.mostRecentSpinResults.slice(-1)[0];
         return (
             <div>
                 <Board
@@ -102,14 +92,13 @@ export class Game extends React.Component {
                 />
                 <SpinButton
                     onClick={() => this.handleSpinAreaClick()}
-                    spinResult={this.state.mostRecentSpinResult}
                 />
                 <SpinResult
-                    spinResult={this.state.mostRecentSpinResult}
-                    bgColor={this.getWheelNumberColor(this.state.mostRecentSpinResult)}
+                    spinResult={mostRecentSpinResult}
+                    bgColor={this.getWheelNumberColor(mostRecentSpinResult)}
                 />
-                <BetsOnBoard
-                    buttons={this.createBetsOnBoard(this.state.betsOnBoard)}
+                <MostRecentSpinResults
+                    spinResults={this.state.mostRecentSpinResults}
                 />
                 <PlayerInfo
                     playerBalance={this.state.playerBalance}
