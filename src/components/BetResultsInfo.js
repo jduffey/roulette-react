@@ -8,17 +8,23 @@ export function BetResultsInfo(props) {
         <div className={className}>
             <table className="bet-results-info-table">
                 <tbody>
-                    <tr>
+                    <tr style={{
+                        textAlign: "center",
+                    }}>
                         <th>Bet Name</th>
                         <th>Bet Amount</th>
                         <th>Result</th>
                     </tr>
                     {Object.keys(props.betsOnBoard).map((betOption) => {
                         return (
-                            <tr key={betOption}>
+                            <tr
+                                key={betOption}
+                                style={{
+                                    textAlign: "center",
+                                }}>
                                 <td>{betOption}</td>
-                                <td>{props.betsOnBoard[betOption]}</td>
-                                <td>{props.winningBetOptions.includes(betOption) ? "WINNER" : "LOSER"}</td>
+                                <td className="bet-results-info-table-bet-amount">{"$ " + props.betsOnBoard[betOption].toString()}</td>
+                                <td>{getBetResultMessage(props, betOption)}</td>
                             </tr>
                         );
                     })}
@@ -26,4 +32,10 @@ export function BetResultsInfo(props) {
             </table>
         </div>
     );
+}
+
+function getBetResultMessage(props, betOption) {
+    const winner = "WINNER";
+    const loser = "LOSER";
+    return props.winningBetOptions.includes(betOption) ? winner : loser;
 }
