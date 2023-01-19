@@ -2,6 +2,11 @@ const className = "bet-results-info";
 export function BetResultsInfo(props) {
     return (
         <div className={className}>
+            <div
+                className="bet-info-table-title"
+            >
+                BET RESULTS
+            </div>
             <table className="bet-results-info-table">
                 <tbody>
                     <tr style={{

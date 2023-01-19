@@ -201,10 +201,10 @@ ul {
     border-radius: 16px;
     background-color: #34a45d;
     padding: 12px;
+    text-align: center;
 }
 
 .bet-results-info-table {
-    text-align: left;
     border-collapse: collapse;
 }
 
@@ -222,10 +222,10 @@ ul {
     border-radius: 16px;
     background-color: #34a45d;
     padding: 12px;
+    text-align: center;
 }
 
 .current-bets-info-table {
-    text-align: left;
     border-collapse: collapse;
 }
 
@@ -240,4 +240,10 @@ ul {
     top: 130px;
     font-size: 20px;
     color: red;
+}
+
+.bet-info-table-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 12px;
 }
