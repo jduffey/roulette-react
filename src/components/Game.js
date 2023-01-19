@@ -3,6 +3,7 @@ import React from 'react';
 import { BetResultsInfo } from './BetResultsInfo';
 import { Board } from "./Board";
 import { ChipSelection } from './ChipSelection';
+import { CurrentBetsInfo } from './CurrentBetsInfo';
 import { MostRecentSpinResults } from './MostRecentSpinResults';
 import { PlayerInfo } from './PlayerInfo';
 import { SpinButton } from './SpinButton';
@@ -19,6 +20,7 @@ export class Game extends React.Component {
             currentChipAmountSelected: 1,
             mostRecentSpinResults: [],
             mostRecentWinningBetOptions: [],
+            previousSpinResults: {},
         };
     }
 
@@ -71,6 +73,14 @@ export class Game extends React.Component {
         console.log(winningBetOptions);
         this.setState({
             mostRecentWinningBetOptions: winningBetOptions,
+        });
+
+        this.setState({
+            previousSpinResults: this.state.betsOnBoard,
+        });
+
+        this.setState({
+            betsOnBoard: {},
         });
 
         const numberOfResultsToDisplay = 20;
@@ -132,8 +142,11 @@ export class Game extends React.Component {
                     playerBalance={this.state.playerBalance}
                     totalBetAmount={this.calculateTotalBetAmount(this.state.betsOnBoard)}
                 />
-                <BetResultsInfo
+                <CurrentBetsInfo
                     betsOnBoard={this.state.betsOnBoard}
+                />
+                <BetResultsInfo
+                    betResults={this.state.previousSpinResults}
                     winningBetOptions={this.state.mostRecentWinningBetOptions}
                 />
             </div>

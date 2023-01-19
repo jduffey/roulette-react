@@ -59,8 +59,16 @@ ul {
 }
 
 .zero-square-label {
-    font-size: 60px;
+    font-size: 48px;
     transform: rotate(-90deg);
+    outline: 1px solid white;
+    width: 110px;
+    height: 70px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
 }
 
 .rows-square-label {
@@ -72,7 +80,7 @@ ul {
 .straightUp1to36-square-label {
     font-size: 48px;
     transform: rotate(-90deg);
-    outline: 2px solid white;
+    outline: 1px solid white;
     width: 110px;
     height: 70px;
     display: flex;
@@ -194,7 +202,7 @@ ul {
 .bet-results-info {
     position: absolute;
     top: 700px;
-    left: 50px;
+    left: 370px;
     border: 1px solid white;
     border-radius: 16px;
     background-color: #34a45d;
@@ -212,7 +220,23 @@ ul {
     border: 1px dashed black;
 }
 
-.bet-results-info-table-bet-amount {
-    text-align: right;
-    margin: 12px;
+.current-bets-info {
+    position: absolute;
+    top: 700px;
+    left: 80px;
+    border: 1px solid white;
+    border-radius: 16px;
+    background-color: #34a45d;
+    padding: 12px;
+}
+
+.current-bets-info-table {
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.current-bets-info-table * {
+    font-size: 16px;
+    width: 120px;
+    border: 1px dashed black;
 }
