@@ -48,16 +48,8 @@ export class Game extends React.Component {
 
     getWinningBetOptions(wheelNumber) {
         const betsOptionsPlaced = Object.keys(this.state.betsOnBoard);
-        console.log("Bets options placed:", betsOptionsPlaced);
-
         const winningCriteria = WINNING_CRITERIA[wheelNumber];
-        console.log("Winning criteria:", winningCriteria);
-
-        const wereThereAnyWinners = betsOptionsPlaced.some((betOptionPlaced) => winningCriteria.includes(betOptionPlaced));
-        console.log("Were there any winners?", wereThereAnyWinners);
-
         const whichBetOptionsWon = betsOptionsPlaced.filter((betOptionPlaced) => winningCriteria.includes(betOptionPlaced));
-        console.log("Which bet options won?", whichBetOptionsWon);
 
         return whichBetOptionsWon;
     }

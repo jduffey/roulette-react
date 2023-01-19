@@ -1,18 +1,18 @@
 const className = "bet-results-info";
 export function BetResultsInfo(props) {
-    const sumWinnings = Object.keys(props.betResults).reduce((acc, betOption) => {
-        const winningsOnBet = calculateWinningsOnBet(props, betOption);
-        return acc + winningsOnBet;
-    }, 0);
-
     const sumBetAmounts = Object.keys(props.betResults).reduce((acc, betOption) => {
         const betAmountOnBet = props.betResults[betOption];
         return acc + betAmountOnBet;
     }, 0);
 
+    const sumWinnings = Object.keys(props.betResults).reduce((acc, betOption) => {
+        const winningsOnBet = calculateWinningsOnBet(props, betOption);
+        return acc + winningsOnBet;
+    }, 0);
+
     const sumBetsReturned = Object.keys(props.betResults).reduce((acc, betOption) => {
-        const betReturned = betReturnedAmount(props, betOption);
-        return acc + betReturned;
+        const betReturnedAmount = calculateBetReturnedAmount(props, betOption);
+        return acc + betReturnedAmount;
     }, 0);
 
     return (
@@ -34,32 +34,33 @@ export function BetResultsInfo(props) {
                     </tr>
                     {Object.keys(props.betResults).map((betOption) => {
                         const betAmountOnBet = props.betResults[betOption];
-                        const winningsOnBet = calculateWinningsOnBet(props, betOption);
+
+                        let winningsOnBet = calculateWinningsOnBet(props, betOption);
+                        const winningsOnBetText = winningsOnBet ? "$ " + winningsOnBet.toString() : "";
+
+                        let betReturnedAmount = calculateBetReturnedAmount(props, betOption);
+                        const betReturnedAmountText = betReturnedAmount ? "$ " + betReturnedAmount.toString() : "";
 
                         return (
-                            <tr
-                                key={betOption}
-                                style={{
-                                    textAlign: "center",
-                                }}>
+                            <tr key={betOption}>
                                 <td>{betOption}</td>
                                 <td className="bet-results-info-table-bet-amount">{"$ " + betAmountOnBet.toString()}</td>
-                                <td>{winningsOnBet}</td>
-                                <td>{betReturnedAmount(props, betOption)}</td>
+                                <td>{winningsOnBetText}</td>
+                                <td>{betReturnedAmountText}</td>
                             </tr>
                         );
                     })}
                     <tr style={{ height: "10px" }}></tr>
                     <tr>
                         <td>TOTALS</td>
-                        <td>{sumBetAmounts}</td>
-                        <td>{sumWinnings}</td>
-                        <td>{sumBetsReturned}</td>
+                        <td>{"$ " + sumBetAmounts}</td>
+                        <td>{"$ " + sumWinnings}</td>
+                        <td>{"$ " + sumBetsReturned}</td>
                     </tr>
                     <tr style={{ height: "10px" }}></tr>
                     <tr>
                         <td>Net Change in Balance</td>
-                        <td colSpan={3}>{sumWinnings + sumBetsReturned - sumBetAmounts}</td>
+                        <td colSpan={3}>{"$ " + (sumWinnings + sumBetsReturned - sumBetAmounts)}</td>
                     </tr>
                 </tbody>
             </table>
@@ -128,7 +129,7 @@ function calculateWinningsOnBet(props, betOption) {
         0;
 }
 
-function betReturnedAmount(props, betOption) {
+function calculateBetReturnedAmount(props, betOption) {
     return props.winningBetOptions.includes(betOption) ?
         props.betResults[betOption] :
         0;
