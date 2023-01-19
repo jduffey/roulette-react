@@ -1,5 +1,20 @@
 const className = "bet-results-info";
 export function BetResultsInfo(props) {
+    const sumWinnings = Object.keys(props.betResults).reduce((acc, betOption) => {
+        const winningsOnBet = calculateWinningsOnBet(props, betOption);
+        return acc + winningsOnBet;
+    }, 0);
+
+    const sumBetAmounts = Object.keys(props.betResults).reduce((acc, betOption) => {
+        const betAmountOnBet = props.betResults[betOption];
+        return acc + betAmountOnBet;
+    }, 0);
+
+    const sumBetsReturned = Object.keys(props.betResults).reduce((acc, betOption) => {
+        const betReturned = betReturnedAmount(props, betOption);
+        return acc + betReturned;
+    }, 0);
+
     return (
         <div className={className}>
             <div
@@ -15,12 +30,11 @@ export function BetResultsInfo(props) {
                         <th>Bet Name</th>
                         <th>Bet Amount</th>
                         <th>Winnings</th>
-                        <th>Net</th>
+                        <th>Bet Returned</th>
                     </tr>
                     {Object.keys(props.betResults).map((betOption) => {
                         const betAmountOnBet = props.betResults[betOption];
                         const winningsOnBet = calculateWinningsOnBet(props, betOption);
-                        const netOnBet = calculateNetOnBet(betAmountOnBet, winningsOnBet);
 
                         return (
                             <tr
@@ -31,17 +45,22 @@ export function BetResultsInfo(props) {
                                 <td>{betOption}</td>
                                 <td className="bet-results-info-table-bet-amount">{"$ " + betAmountOnBet.toString()}</td>
                                 <td>{winningsOnBet}</td>
-                                <td>{netOnBet}</td>
+                                <td>{betReturnedAmount(props, betOption)}</td>
                             </tr>
                         );
                     })}
                     <tr style={{ height: "10px" }}></tr>
-                    {<tr>
-                        <td>Total</td>
-                        <td>Sum</td>
-                        <td>Sum</td>
-                        <td>Sum</td>
-                    </tr>}
+                    <tr>
+                        <td>TOTALS</td>
+                        <td>{sumBetAmounts}</td>
+                        <td>{sumWinnings}</td>
+                        <td>{sumBetsReturned}</td>
+                    </tr>
+                    <tr style={{ height: "10px" }}></tr>
+                    <tr>
+                        <td>Net Change in Balance</td>
+                        <td colSpan={3}>{sumWinnings + sumBetsReturned - sumBetAmounts}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -109,8 +128,8 @@ function calculateWinningsOnBet(props, betOption) {
         0;
 }
 
-function calculateNetOnBet(betAmount, winnings) {
-    return winnings ?
-        winnings + betAmount :
-        -betAmount;
+function betReturnedAmount(props, betOption) {
+    return props.winningBetOptions.includes(betOption) ?
+        props.betResults[betOption] :
+        0;
 }
