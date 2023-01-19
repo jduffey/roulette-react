@@ -1,16 +1,18 @@
+import { WINNING_CRITERIA } from "../common/winning-criteria";
+
 const className = "bet-results-info";
 export function BetResultsInfo(props) {
-    const sumBetAmounts = Object.keys(props.betResults).reduce((acc, betOption) => {
-        const betAmountOnBet = props.betResults[betOption];
+    const sumBetAmounts = Object.keys(props.bets).reduce((acc, betOption) => {
+        const betAmountOnBet = props.bets[betOption];
         return acc + betAmountOnBet;
     }, 0);
 
-    const sumWinnings = Object.keys(props.betResults).reduce((acc, betOption) => {
+    const sumWinnings = Object.keys(props.bets).reduce((acc, betOption) => {
         const winningsOnBet = calculateWinningsOnBet(props, betOption);
         return acc + winningsOnBet;
     }, 0);
 
-    const sumBetsReturned = Object.keys(props.betResults).reduce((acc, betOption) => {
+    const sumBetsReturned = Object.keys(props.bets).reduce((acc, betOption) => {
         const betReturnedAmount = calculateBetReturnedAmount(props, betOption);
         return acc + betReturnedAmount;
     }, 0);
@@ -20,7 +22,7 @@ export function BetResultsInfo(props) {
             <div
                 className="bet-info-table-title"
             >
-                BET RESULTS
+                PREVIOUS ROUND RESULTS
             </div>
             <table className="bet-results-info-table">
                 <tbody>
@@ -32,8 +34,8 @@ export function BetResultsInfo(props) {
                         <th>Winnings</th>
                         <th>Bet Returned</th>
                     </tr>
-                    {Object.keys(props.betResults).map((betOption) => {
-                        const betAmountOnBet = props.betResults[betOption];
+                    {Object.keys(props.bets).map((betOption) => {
+                        const betAmountOnBet = props.bets[betOption];
 
                         let winningsOnBet = calculateWinningsOnBet(props, betOption);
                         const winningsOnBetText = winningsOnBet ? "$ " + winningsOnBet.toString() : "";
@@ -122,15 +124,15 @@ function calculateWinningsOnBet(props, betOption) {
         "Black": 1,
     };
 
-    const betAmount = props.betResults[betOption];
+    const betAmount = props.bets[betOption];
 
-    return props.winningBetOptions.includes(betOption) ?
+    return WINNING_CRITERIA[props.winningWheelNumber].includes(betOption) ?
         betAmount * multipliers[betOption] :
         0;
 }
 
 function calculateBetReturnedAmount(props, betOption) {
-    return props.winningBetOptions.includes(betOption) ?
-        props.betResults[betOption] :
+    return WINNING_CRITERIA[props.winningWheelNumber].includes(betOption) ?
+        props.bets[betOption] :
         0;
 }

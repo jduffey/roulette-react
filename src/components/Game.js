@@ -20,7 +20,7 @@ export class Game extends React.Component {
             currentChipAmountSelected: 1,
             mostRecentSpinResults: [],
             mostRecentWinningBetOptions: [],
-            previousSpinResults: {},
+            previousRoundBets: {},
         };
     }
 
@@ -69,13 +69,19 @@ export class Game extends React.Component {
         const randomWheelNumber = wheelNumbers[Math.floor(Math.random() * wheelNumbers.length)];
 
         const winningBetOptions = this.getWinningBetOptions(randomWheelNumber);
-        console.log(winningBetOptions);
+
+        const winningsPlusReturnedBets = this.calculateWinningsPlusReturnedBets(this.state.betsOnBoard, winningBetOptions);
+
+        this.setState({
+            playerBalance: this.state.playerBalance + winningsPlusReturnedBets,
+        });
+
         this.setState({
             mostRecentWinningBetOptions: winningBetOptions,
         });
 
         this.setState({
-            previousSpinResults: this.state.betsOnBoard,
+            previousRoundBets: this.state.betsOnBoard,
         });
 
         this.setState({
@@ -146,10 +152,81 @@ export class Game extends React.Component {
                     betsOnBoard={this.state.betsOnBoard}
                 />
                 <BetResultsInfo
-                    betResults={this.state.previousSpinResults}
-                    winningBetOptions={this.state.mostRecentWinningBetOptions}
+                    bets={this.state.previousRoundBets}
+                    winningWheelNumber={mostRecentSpinResult}
                 />
             </div>
         );
+    }
+
+    calculateWinningsPlusReturnedBets(betsOnBoard, winningBetOptions) {
+        const winnings = Object.keys(betsOnBoard).reduce((acc, betOption) => {
+            const multipliers = {
+                "1": 35,
+                "2": 35,
+                "3": 35,
+                "4": 35,
+                "5": 35,
+                "6": 35,
+                "7": 35,
+                "8": 35,
+                "9": 35,
+                "10": 35,
+                "11": 35,
+                "12": 35,
+                "13": 35,
+                "14": 35,
+                "15": 35,
+                "16": 35,
+                "17": 35,
+                "18": 35,
+                "19": 35,
+                "20": 35,
+                "21": 35,
+                "22": 35,
+                "23": 35,
+                "24": 35,
+                "25": 35,
+                "26": 35,
+                "27": 35,
+                "28": 35,
+                "29": 35,
+                "30": 35,
+                "31": 35,
+                "32": 35,
+                "33": 35,
+                "34": 35,
+                "35": 35,
+                "36": 35,
+                "0": 35,
+                "00": 35,
+                "1st 12": 2,
+                "2nd 12": 2,
+                "3rd 12": 2,
+                "Top Row": 2,
+                "Middle Row": 2,
+                "Bottom Row": 2,
+                "1 to 18": 1,
+                "19 to 36": 1,
+                "Even": 1,
+                "Odd": 1,
+                "Red": 1,
+                "Black": 1,
+            };
+
+            const betAmount = betsOnBoard[betOption];
+
+            return winningBetOptions.includes(betOption) ?
+                betAmount * multipliers[betOption] :
+                0;
+        }, 0);
+
+        const betsReturned = Object.keys(betsOnBoard).reduce((acc, betOption) => {
+            return winningBetOptions.includes(betOption) ?
+                betsOnBoard[betOption] :
+                0;
+        }, 0);
+
+        return winnings + betsReturned;
     }
 }
