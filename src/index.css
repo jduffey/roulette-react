@@ -240,3 +240,10 @@ ul {
     width: 120px;
     border: 1px dashed black;
 }
+
+.place-a-bet-message {
+    position: absolute;
+    top: 130px;
+    font-size: 20px;
+    color: red;
+}

@@ -24,6 +24,10 @@ export class Game extends React.Component {
         };
     }
 
+    isSpinAllowed() {
+        return Object.keys(this.state.betsOnBoard).length > 0;
+    }
+
     handleBettingSquareClick(bettingSquareName) {
         const currentChipAmountSelected = this.state.currentChipAmountSelected;
         const copyBetsOnBoard = Object.assign({}, this.state.betsOnBoard);
@@ -59,7 +63,10 @@ export class Game extends React.Component {
     }
 
     handleSpinButtonClick() {
-        // TODO check that there are actually bets on the board
+        if (!this.isSpinAllowed()) {
+            return;
+        }
+
         const wheelNumbers = [
             "0", "00",
             "1", "2", "3", "4", "5", "6", "7", "8", "9",
@@ -83,6 +90,7 @@ export class Game extends React.Component {
             betsOnBoard: {},
         });
 
+        // TODO not terribly worried about this atm but setting this to 1 returns the entire slice/array; find a more robust solution
         const numberOfResultsToDisplay = 20;
         const mostRecentSpinResults = this.state.mostRecentSpinResults.slice(-(numberOfResultsToDisplay - 1));
         mostRecentSpinResults.push(randomWheelNumber);
@@ -93,7 +101,6 @@ export class Game extends React.Component {
     }
 
     handleChipAmountClick(chipAmount) {
-        console.log(`Chip amount ${chipAmount} clicked`);
         this.setState({
             currentChipAmountSelected: chipAmount,
         });
@@ -130,6 +137,7 @@ export class Game extends React.Component {
                 />
                 <SpinButton
                     onClick={() => this.handleSpinButtonClick()}
+                    isSpinAllowed={this.isSpinAllowed()}
                 />
                 <SpinResult
                     spinResult={mostRecentSpinResult}
