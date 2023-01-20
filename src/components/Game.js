@@ -34,6 +34,11 @@ export class Game extends React.Component {
         const currentChipAmountSelected = this.state.currentChipAmountSelected;
         const copyBetsOnBoard = Object.assign({}, this.state.betsOnBoard);
 
+        if (currentChipAmountSelected > this.state.playerBalance) {
+            alert("You don't have enough money to place that bet!");
+            return;
+        }
+
         if (copyBetsOnBoard[bettingSquareName]) {
             copyBetsOnBoard[bettingSquareName] += currentChipAmountSelected;
         } else {
