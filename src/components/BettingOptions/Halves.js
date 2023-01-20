@@ -9,7 +9,8 @@ const sizeData = {
 export function Halves(props) {
     return (
         <div
-            className={`betting-square-visible betting-square-${props.betName}`}
+            id={`betting-square-${props.id}`}
+            className={`betting-square-visible`}
             onClick={props.onClick}
             style={{
                 left: props.styleData.left,

@@ -246,4 +246,11 @@ ul {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 12px;
+    height: 20px;
+}
+
+.balance-change-value {
+    font-weight: bold;
+    margin-bottom: 12px;
+    height: 20px;
 }

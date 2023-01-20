@@ -1,9 +1,10 @@
 export function PlayerInfo(props) {
     return (
         <div className="player-info">
-            {"Balance"}
+            {"Avail. Balance"}
             <br />
-            {"$ " + props.playerBalance.toLocaleString()}
+            {"$ " + props.availableBalance.toLocaleString()}
+            <br />
             <br />
             {"Total Bet"}
             <br />

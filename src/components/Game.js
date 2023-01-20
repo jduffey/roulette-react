@@ -14,13 +14,15 @@ import { WINNING_CRITERIA } from '../common/winning-criteria';
 export class Game extends React.Component {
     constructor(props) {
         super(props);
+        const initialPlayerBalance = 10000;
         this.state = {
             betsOnBoard: {},
-            playerBalance: 10000,
+            playerBalance: initialPlayerBalance,
             currentChipAmountSelected: 1,
             mostRecentSpinResults: [],
             mostRecentWinningBetOptions: [],
             previousRoundBets: {},
+            previousRoundStartingBalance: null,
         };
     }
 
@@ -72,21 +74,7 @@ export class Game extends React.Component {
 
         const winningsPlusReturnedBets = this.calculateWinningsPlusReturnedBets(this.state.betsOnBoard, winningBetOptions);
 
-        this.setState({
-            playerBalance: this.state.playerBalance + winningsPlusReturnedBets,
-        });
-
-        this.setState({
-            mostRecentWinningBetOptions: winningBetOptions,
-        });
-
-        this.setState({
-            previousRoundBets: this.state.betsOnBoard,
-        });
-
-        this.setState({
-            betsOnBoard: {},
-        });
+        const newPlayerBalance = this.state.playerBalance + winningsPlusReturnedBets;
 
         // TODO not terribly worried about this atm but setting this to 1 returns the entire slice/array; find a more robust solution
         const numberOfResultsToDisplay = 20;
@@ -94,6 +82,11 @@ export class Game extends React.Component {
         mostRecentSpinResults.push(randomWheelNumber);
 
         this.setState({
+            previousRoundStartingBalance: this.state.playerBalance + this.calculateTotalBetAmount(this.state.betsOnBoard),
+            playerBalance: newPlayerBalance,
+            mostRecentWinningBetOptions: winningBetOptions,
+            previousRoundBets: this.state.betsOnBoard,
+            betsOnBoard: {},
             mostRecentSpinResults: mostRecentSpinResults,
         });
     }
@@ -123,6 +116,7 @@ export class Game extends React.Component {
 
     render() {
         const mostRecentSpinResult = this.state.mostRecentSpinResults.slice(-1)[0];
+        const playerBalance = this.state.playerBalance;
         return (
             <div>
                 <Board
@@ -145,17 +139,18 @@ export class Game extends React.Component {
                     spinResults={this.state.mostRecentSpinResults}
                 />
                 <PlayerInfo
-                    playerBalance={this.state.playerBalance}
+                    availableBalance={playerBalance} // TODO bug is here? Appears to not always add winnings to balance, but sometimes does..?
                     totalBetAmount={this.calculateTotalBetAmount(this.state.betsOnBoard)}
                 />
                 <CurrentBetsInfo
                     betsOnBoard={this.state.betsOnBoard}
                 />
                 <BetResultsInfo
+                    startingBalance={this.state.previousRoundStartingBalance}
                     bets={this.state.previousRoundBets}
                     winningWheelNumber={mostRecentSpinResult}
                 />
-            </div>
+            </div >
         );
     }
 
@@ -214,17 +209,17 @@ export class Game extends React.Component {
                 "Black": 1,
             };
 
-            const betAmount = betsOnBoard[betOption];
-
-            return winningBetOptions.includes(betOption) ?
-                betAmount * multipliers[betOption] :
-                0;
+            return acc +
+                (winningBetOptions.includes(betOption) ?
+                    betsOnBoard[betOption] * multipliers[betOption] :
+                    0);
         }, 0);
 
         const betsReturned = Object.keys(betsOnBoard).reduce((acc, betOption) => {
-            return winningBetOptions.includes(betOption) ?
-                betsOnBoard[betOption] :
-                0;
+            return acc +
+                (winningBetOptions.includes(betOption) ?
+                    betsOnBoard[betOption] :
+                    0);
         }, 0);
 
         return winnings + betsReturned;

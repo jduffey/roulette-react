@@ -17,6 +17,20 @@ export function BetResultsInfo(props) {
         return acc + betReturnedAmount;
     }, 0);
 
+    const startingBalanceText = props.startingBalance ?
+        "$ " + props.startingBalance.toString() :
+        "";
+
+    const netChangeInBalance = sumWinnings + sumBetsReturned - sumBetAmounts;
+    const netChangeInBalanceText = props.startingBalance ?
+        "$ " + netChangeInBalance.toString() :
+        "";
+
+    const finalBalance = props.startingBalance + netChangeInBalance;
+    const finalBalanceText = props.startingBalance ?
+        "$ " + finalBalance.toString() :
+        "";
+
     return (
         <div className={className}>
             <div
@@ -60,9 +74,29 @@ export function BetResultsInfo(props) {
                         <td>{"$ " + sumBetsReturned}</td>
                     </tr>
                     <tr style={{ height: "10px" }}></tr>
-                    <tr>
-                        <td>Net Change in Balance</td>
-                        <td colSpan={3}>{"$ " + (sumWinnings + sumBetsReturned - sumBetAmounts)}</td>
+                    <tr className="balance-change-value">
+                        <td>
+                            Starting
+                        </td>
+                        <td colSpan={3}>
+                            {startingBalanceText}
+                        </td>
+                    </tr>
+                    <tr className="balance-change-value">
+                        <td>
+                            Net
+                        </td>
+                        <td colSpan={3}>
+                            {netChangeInBalanceText}
+                        </td>
+                    </tr>
+                    <tr className="balance-change-value">
+                        <td>
+                            Final
+                        </td>
+                        <td colSpan={3}>
+                            {finalBalanceText}
+                        </td>
                     </tr>
                 </tbody>
             </table>

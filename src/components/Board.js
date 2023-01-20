@@ -150,6 +150,7 @@ export class Board extends React.Component {
         return (
             <Halves
                 key={betName}
+                id={betName}
                 onClick={() => this.props.onClick(betName)}
                 displayLabel={displayData.displayText}
                 betAmount={this.props.betsOnBoard[betName]}
