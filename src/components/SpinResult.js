@@ -1,10 +1,12 @@
+import { getWheelNumberColor } from "../common/getWheelNumberColor";
+
 export function SpinResult(props) {
     return (
         <div className="spin-result-container">
             <div
                 className="spin-result-label"
                 style={{
-                    backgroundColor: props.bgColor,
+                    backgroundColor: getWheelNumberColor(props.spinResult),
                 }}
             >
                 {props.spinResult}
