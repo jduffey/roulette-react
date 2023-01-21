@@ -106,6 +106,8 @@ export function BetResultsInfo(props) {
 
 function calculateWinningsOnBet(props, betOption) {
     const multipliers = {
+        "0": 35,
+        "00": 35,
         "1": 35,
         "2": 35,
         "3": 35,
@@ -142,14 +144,12 @@ function calculateWinningsOnBet(props, betOption) {
         "34": 35,
         "35": 35,
         "36": 35,
-        "0": 35,
-        "00": 35,
         "1st 12": 2,
         "2nd 12": 2,
         "3rd 12": 2,
-        "Top Row": 2,
-        "Middle Row": 2,
-        "Bottom Row": 2,
+        "1st Column": 2,
+        "2nd Column": 2,
+        "3rd Column": 2,
         "1 to 18": 1,
         "19 to 36": 1,
         "Even": 1,

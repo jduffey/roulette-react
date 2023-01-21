@@ -6,7 +6,7 @@ const sizeData = {
     height: 120 - BETTING_SQUARE_OUTLINE_SIZE,
 }
 
-export function Rows(props) {
+export function Column(props) {
     return (
         <div
             className={`betting-square-visible betting-square-${props.betName}`}
@@ -21,7 +21,7 @@ export function Rows(props) {
         >
             <div className="betting-square-contents">
                 <div
-                    className="betting-square-label rows-square-label"
+                    className="betting-square-label column-square-label"
                 >
                     {props.displayLabel}
                 </div>

@@ -71,7 +71,7 @@ ul {
     border-radius: 50%;
 }
 
-.rows-square-label {
+.column-square-label {
     font-size: 28px;
     transform: rotate(-90deg);
     white-space: nowrap;
