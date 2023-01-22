@@ -110,13 +110,13 @@ function calculateWinningsOnBet(props, betOption) {
 
     const betAmount = props.bets[betOption];
 
-    return getWinningCriteria(props.winningWheelNumber).includes(betOption) ?
+    return getWinningCriteria(props.winningWheelNumber).has(betOption) ?
         betAmount * multiplier :
         0;
 }
 
 function calculateBetReturnedAmount(props, betOption) {
-    return getWinningCriteria(props.winningWheelNumber).includes(betOption) ?
+    return getWinningCriteria(props.winningWheelNumber).has(betOption) ?
         props.bets[betOption] :
         0;
 }

@@ -10,6 +10,7 @@ import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
 
 import { getBetNameMultiplier } from '../common/getBetNameMultiplier';
+import { getNewBalance } from '../common/getNewBalance';
 import { getRandomWheelNumber } from '../common/getRandomWheelNumber';
 import { getWinningCriteria } from '../common/getWinningCriteria';
 
@@ -58,7 +59,7 @@ export class Game extends React.Component {
     getWinningBetOptions(wheelNumber) {
         const betsOptionsPlaced = Object.keys(this.state.betsOnBoard);
         const winningCriteria = getWinningCriteria(wheelNumber);
-        const whichBetOptionsWon = betsOptionsPlaced.filter((betOptionPlaced) => winningCriteria.includes(betOptionPlaced));
+        const whichBetOptionsWon = betsOptionsPlaced.filter((betOptionPlaced) => winningCriteria.has(betOptionPlaced));
 
         return whichBetOptionsWon;
     }
@@ -70,11 +71,14 @@ export class Game extends React.Component {
 
         const randomWheelNumber = getRandomWheelNumber();
 
+        // TODO where is this used since it's not in getNewBalance?
         const winningBetOptions = this.getWinningBetOptions(randomWheelNumber);
 
-        const winningsPlusReturnedBets = this.calculateWinningsPlusReturnedBets(this.state.betsOnBoard, winningBetOptions);
+        const betAmountOnBoard = this.calculateTotalBetAmount(this.state.betsOnBoard);
 
-        const newPlayerBalance = this.state.playerBalance + winningsPlusReturnedBets;
+        const startingBalance = this.state.playerBalance + betAmountOnBoard;
+        const newPlayerBalance =
+            getNewBalance(startingBalance, this.state.betsOnBoard, randomWheelNumber);
 
         // TODO not terribly worried about this atm but setting this to 1 returns the entire slice/array; find a more robust solution
         const numberOfResultsToDisplay = 20;

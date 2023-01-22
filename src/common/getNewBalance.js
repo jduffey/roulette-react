@@ -7,7 +7,7 @@ export const getNewBalance = (startingBalance, betAmounts, wheelNumber) => {
 
     const winningCriteria = getWinningCriteria(wheelNumber);
 
-    const betNamesThatPlayerWon = Object.keys(betAmounts).filter((betName) => winningCriteria.includes(betName));
+    const betNamesThatPlayerWon = Object.keys(betAmounts).filter((betName) => winningCriteria.has(betName));
 
     const winnings = betNamesThatPlayerWon.reduce((acc, betName) => {
         const multiplier = getBetNameMultiplier(betName);
