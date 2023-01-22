@@ -10,7 +10,7 @@ import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
 
 import { getRandomWheelNumber } from '../common/getRandomWheelNumber';
-import { WINNING_CRITERIA } from '../common/winning-criteria';
+import { getWinningCriteria } from '../common/winning-criteria';
 
 export class Game extends React.Component {
     constructor(props) {
@@ -56,7 +56,7 @@ export class Game extends React.Component {
 
     getWinningBetOptions(wheelNumber) {
         const betsOptionsPlaced = Object.keys(this.state.betsOnBoard);
-        const winningCriteria = WINNING_CRITERIA[wheelNumber];
+        const winningCriteria = getWinningCriteria(wheelNumber);
         const whichBetOptionsWon = betsOptionsPlaced.filter((betOptionPlaced) => winningCriteria.includes(betOptionPlaced));
 
         return whichBetOptionsWon;

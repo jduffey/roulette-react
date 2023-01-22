@@ -1,4 +1,4 @@
-import { WINNING_CRITERIA } from "../common/winning-criteria";
+import { getWinningCriteria } from "../common/winning-criteria";
 
 const className = "bet-results-info";
 export function BetResultsInfo(props) {
@@ -160,13 +160,13 @@ function calculateWinningsOnBet(props, betOption) {
 
     const betAmount = props.bets[betOption];
 
-    return WINNING_CRITERIA[props.winningWheelNumber].includes(betOption) ?
+    return getWinningCriteria(props.winningWheelNumber).includes(betOption) ?
         betAmount * multipliers[betOption] :
         0;
 }
 
 function calculateBetReturnedAmount(props, betOption) {
-    return WINNING_CRITERIA[props.winningWheelNumber].includes(betOption) ?
+    return getWinningCriteria(props.winningWheelNumber).includes(betOption) ?
         props.bets[betOption] :
         0;
 }
