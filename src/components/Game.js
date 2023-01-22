@@ -12,7 +12,6 @@ import { SpinResult } from './SpinResult';
 import { getBetNameMultiplier } from '../common/getBetNameMultiplier';
 import { getNewBalance } from '../common/getNewBalance';
 import { getRandomWheelNumber } from '../common/getRandomWheelNumber';
-import { getWinningCriteria } from '../common/getWinningCriteria';
 
 export class Game extends React.Component {
     constructor(props) {
@@ -23,7 +22,6 @@ export class Game extends React.Component {
             availableBalance: initialBalance,
             currentChipAmountSelected: 1,
             mostRecentSpinResults: [],
-            mostRecentWinningBetOptions: [],
             previousRoundBets: {},
             previousRoundStartingBalance: null,
         };
@@ -56,23 +54,12 @@ export class Game extends React.Component {
         });
     }
 
-    getWinningBetOptions(wheelNumber) {
-        const betsOptionsPlaced = Object.keys(this.state.betsOnBoard);
-        const winningCriteria = getWinningCriteria(wheelNumber);
-        const whichBetOptionsWon = betsOptionsPlaced.filter((betOptionPlaced) => winningCriteria.has(betOptionPlaced));
-
-        return whichBetOptionsWon;
-    }
-
     handleSpinButtonClick() {
         if (!this.isSpinAllowed()) {
             return;
         }
 
         const randomWheelNumber = getRandomWheelNumber();
-
-        // TODO where is this used since it's not in getNewBalance?
-        const winningBetOptions = this.getWinningBetOptions(randomWheelNumber);
 
         const betAmountOnBoard = this.calculateTotalBetAmount(this.state.betsOnBoard);
 
@@ -81,6 +68,8 @@ export class Game extends React.Component {
             getNewBalance(startingBalance, this.state.betsOnBoard, randomWheelNumber);
 
         // TODO not terribly worried about this atm but setting this to 1 returns the entire slice/array; find a more robust solution
+        // maybe keep track of all previous bets and just slice the last 20?
+        // this will likely eventually just use a call to a db to get the last 20 results
         const numberOfResultsToDisplay = 20;
         const mostRecentSpinResults = this.state.mostRecentSpinResults.slice(-(numberOfResultsToDisplay - 1));
         mostRecentSpinResults.push(randomWheelNumber);
@@ -88,7 +77,6 @@ export class Game extends React.Component {
         this.setState({
             previousRoundStartingBalance: this.state.availableBalance + this.calculateTotalBetAmount(this.state.betsOnBoard),
             availableBalance: newBalance,
-            mostRecentWinningBetOptions: winningBetOptions,
             previousRoundBets: this.state.betsOnBoard,
             betsOnBoard: {},
             mostRecentSpinResults: mostRecentSpinResults,
