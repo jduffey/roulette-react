@@ -1,4 +1,4 @@
-import { getWinningCriteria } from "../common/winning-criteria";
+import { getWinningCriteria } from "../common/getWinningCriteria";
 
 const className = "bet-results-info";
 export function BetResultsInfo(props) {

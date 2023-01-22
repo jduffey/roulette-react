@@ -10,7 +10,7 @@ import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
 
 import { getRandomWheelNumber } from '../common/getRandomWheelNumber';
-import { getWinningCriteria } from '../common/winning-criteria';
+import { getWinningCriteria } from '../common/getWinningCriteria';
 
 export class Game extends React.Component {
     constructor(props) {
