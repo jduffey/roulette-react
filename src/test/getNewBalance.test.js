@@ -118,6 +118,7 @@ describe("Straight Up", () => {
 });
 
 describe("First 18", () => {
+    const betName = BET_NAMES.FIRST_18;
     it.each([
         [WHEEL_NUMBERS.WN_0, 99],
         [WHEEL_NUMBERS.WN_00, 99],
@@ -125,7 +126,6 @@ describe("First 18", () => {
         [WHEEL_NUMBERS.WN_18, 101],
         [WHEEL_NUMBERS.WN_19, 99],
     ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
-        const betName = BET_NAMES.FIRST_18;
         const betAmounts = {
             [betName]: chipAmount,
         };
@@ -137,6 +137,7 @@ describe("First 18", () => {
 });
 
 describe("Second 18", () => {
+    const betName = BET_NAMES.SECOND_18;
     it.each([
         [WHEEL_NUMBERS.WN_0, 99],
         [WHEEL_NUMBERS.WN_00, 99],
@@ -144,7 +145,6 @@ describe("Second 18", () => {
         [WHEEL_NUMBERS.WN_19, 101],
         [WHEEL_NUMBERS.WN_36, 101],
     ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
-        const betName = BET_NAMES.SECOND_18;
         const betAmounts = {
             [betName]: chipAmount,
         };
@@ -156,6 +156,7 @@ describe("Second 18", () => {
 });
 
 describe("Even", () => {
+    const betName = BET_NAMES.EVEN;
     it.each([
         [WHEEL_NUMBERS.WN_0, 99],
         [WHEEL_NUMBERS.WN_00, 99],
@@ -196,7 +197,6 @@ describe("Even", () => {
         [WHEEL_NUMBERS.WN_34, 101],
         [WHEEL_NUMBERS.WN_36, 101],
     ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
-        const betName = BET_NAMES.EVEN;
         const betAmounts = {
             [betName]: chipAmount,
         };
@@ -208,6 +208,7 @@ describe("Even", () => {
 });
 
 describe("Odd", () => {
+    const betName = BET_NAMES.ODD;
     it.each([
         [WHEEL_NUMBERS.WN_0, 99],
         [WHEEL_NUMBERS.WN_00, 99],
@@ -248,7 +249,6 @@ describe("Odd", () => {
         [WHEEL_NUMBERS.WN_34, 99],
         [WHEEL_NUMBERS.WN_36, 99],
     ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
-        const betName = BET_NAMES.ODD;
         const betAmounts = {
             [betName]: chipAmount,
         };
@@ -260,6 +260,7 @@ describe("Odd", () => {
 });
 
 describe("Red", () => {
+    const betName = BET_NAMES.RED;
     it.each([
         [WHEEL_NUMBERS.WN_0, 99],
         [WHEEL_NUMBERS.WN_00, 99],
@@ -300,7 +301,6 @@ describe("Red", () => {
         [WHEEL_NUMBERS.WN_33, 99],
         [WHEEL_NUMBERS.WN_35, 99],
     ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
-        const betName = BET_NAMES.RED;
         const betAmounts = {
             [betName]: chipAmount,
         };
@@ -312,6 +312,7 @@ describe("Red", () => {
 });
 
 describe("Black", () => {
+    const betName = BET_NAMES.BLACK;
     it.each([
         [WHEEL_NUMBERS.WN_0, 99],
         [WHEEL_NUMBERS.WN_00, 99],
@@ -352,7 +353,6 @@ describe("Black", () => {
         [WHEEL_NUMBERS.WN_34, 99],
         [WHEEL_NUMBERS.WN_36, 99],
     ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
-        const betName = BET_NAMES.BLACK;
         const betAmounts = {
             [betName]: chipAmount,
         };
@@ -364,6 +364,7 @@ describe("Black", () => {
 });
 
 describe("First Dozen", () => {
+    const betName = BET_NAMES.FIRST_DOZEN;
     it.each([
         [WHEEL_NUMBERS.WN_0, 99],
         [WHEEL_NUMBERS.WN_00, 99],
@@ -404,7 +405,6 @@ describe("First Dozen", () => {
         [WHEEL_NUMBERS.WN_35, 99],
         [WHEEL_NUMBERS.WN_36, 99],
     ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
-        const betName = BET_NAMES.FIRST_DOZEN;
         const betAmounts = {
             [betName]: chipAmount,
         };
@@ -416,6 +416,7 @@ describe("First Dozen", () => {
 });
 
 describe("Second Dozen", () => {
+    const betName = BET_NAMES.SECOND_DOZEN;
     it.each([
         [WHEEL_NUMBERS.WN_0, 99],
         [WHEEL_NUMBERS.WN_00, 99],
@@ -456,7 +457,6 @@ describe("Second Dozen", () => {
         [WHEEL_NUMBERS.WN_35, 99],
         [WHEEL_NUMBERS.WN_36, 99],
     ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
-        const betName = BET_NAMES.SECOND_DOZEN;
         const betAmounts = {
             [betName]: chipAmount,
         };
@@ -468,6 +468,7 @@ describe("Second Dozen", () => {
 });
 
 describe("Third Dozen", () => {
+    const betName = BET_NAMES.THIRD_DOZEN;
     it.each([
         [WHEEL_NUMBERS.WN_0, 99],
         [WHEEL_NUMBERS.WN_00, 99],
@@ -508,7 +509,6 @@ describe("Third Dozen", () => {
         [WHEEL_NUMBERS.WN_35, 102],
         [WHEEL_NUMBERS.WN_36, 102],
     ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
-        const betName = BET_NAMES.THIRD_DOZEN;
         const betAmounts = {
             [betName]: chipAmount,
         };
@@ -520,6 +520,7 @@ describe("Third Dozen", () => {
 });
 
 describe("First Column", () => {
+    const betName = BET_NAMES.FIRST_COLUMN;
     it.each([
         [WHEEL_NUMBERS.WN_0, 99],
         [WHEEL_NUMBERS.WN_00, 99],
@@ -560,7 +561,6 @@ describe("First Column", () => {
         [WHEEL_NUMBERS.WN_35, 99],
         [WHEEL_NUMBERS.WN_36, 99],
     ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
-        const betName = BET_NAMES.FIRST_COLUMN;
         const betAmounts = {
             [betName]: chipAmount,
         };
@@ -572,6 +572,7 @@ describe("First Column", () => {
 });
 
 describe("Second Column", () => {
+    const betName = BET_NAMES.SECOND_COLUMN;
     it.each([
         [WHEEL_NUMBERS.WN_0, 99],
         [WHEEL_NUMBERS.WN_00, 99],
@@ -612,7 +613,6 @@ describe("Second Column", () => {
         [WHEEL_NUMBERS.WN_35, 102],
         [WHEEL_NUMBERS.WN_36, 99],
     ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
-        const betName = BET_NAMES.SECOND_COLUMN;
         const betAmounts = {
             [betName]: chipAmount,
         };
@@ -624,6 +624,7 @@ describe("Second Column", () => {
 });
 
 describe("Third Column", () => {
+    const betName = BET_NAMES.THIRD_COLUMN;
     it.each([
         [WHEEL_NUMBERS.WN_0, 99],
         [WHEEL_NUMBERS.WN_00, 99],
@@ -664,7 +665,6 @@ describe("Third Column", () => {
         [WHEEL_NUMBERS.WN_35, 99],
         [WHEEL_NUMBERS.WN_36, 102],
     ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
-        const betName = BET_NAMES.THIRD_COLUMN;
         const betAmounts = {
             [betName]: chipAmount,
         };
