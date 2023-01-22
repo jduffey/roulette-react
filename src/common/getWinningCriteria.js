@@ -1,7 +1,6 @@
 import { BET_NAMES } from "./betNames";
 import { WHEEL_NUMBERS } from "./wheelNumbers";
 
-// TODO WIP till tests written
 export const getWinningCriteria = (wheelNumber) => {
     switch (wheelNumber) {
         case WHEEL_NUMBERS.WN_0:

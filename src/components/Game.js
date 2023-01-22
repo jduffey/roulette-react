@@ -17,10 +17,10 @@ import { getWinningCriteria } from '../common/getWinningCriteria';
 export class Game extends React.Component {
     constructor(props) {
         super(props);
-        const initialPlayerBalance = 10000;
+        const initialBalance = 10000;
         this.state = {
             betsOnBoard: {},
-            playerBalance: initialPlayerBalance,
+            availableBalance: initialBalance,
             currentChipAmountSelected: 1,
             mostRecentSpinResults: [],
             mostRecentWinningBetOptions: [],
@@ -37,7 +37,7 @@ export class Game extends React.Component {
         const currentChipAmountSelected = this.state.currentChipAmountSelected;
         const copyBetsOnBoard = Object.assign({}, this.state.betsOnBoard);
 
-        if (currentChipAmountSelected > this.state.playerBalance) {
+        if (currentChipAmountSelected > this.state.availableBalance) {
             alert("You don't have enough money to place that bet!");
             return;
         }
@@ -48,11 +48,11 @@ export class Game extends React.Component {
             copyBetsOnBoard[bettingSquareName] = currentChipAmountSelected;
         }
 
-        const newBalance = this.state.playerBalance - currentChipAmountSelected;
+        const newBalance = this.state.availableBalance - currentChipAmountSelected;
 
         this.setState({
             betsOnBoard: copyBetsOnBoard,
-            playerBalance: newBalance,
+            availableBalance: newBalance,
         });
     }
 
@@ -76,8 +76,8 @@ export class Game extends React.Component {
 
         const betAmountOnBoard = this.calculateTotalBetAmount(this.state.betsOnBoard);
 
-        const startingBalance = this.state.playerBalance + betAmountOnBoard;
-        const newPlayerBalance =
+        const startingBalance = this.state.availableBalance + betAmountOnBoard;
+        const newBalance =
             getNewBalance(startingBalance, this.state.betsOnBoard, randomWheelNumber);
 
         // TODO not terribly worried about this atm but setting this to 1 returns the entire slice/array; find a more robust solution
@@ -86,8 +86,8 @@ export class Game extends React.Component {
         mostRecentSpinResults.push(randomWheelNumber);
 
         this.setState({
-            previousRoundStartingBalance: this.state.playerBalance + this.calculateTotalBetAmount(this.state.betsOnBoard),
-            playerBalance: newPlayerBalance,
+            previousRoundStartingBalance: this.state.availableBalance + this.calculateTotalBetAmount(this.state.betsOnBoard),
+            availableBalance: newBalance,
             mostRecentWinningBetOptions: winningBetOptions,
             previousRoundBets: this.state.betsOnBoard,
             betsOnBoard: {},
@@ -107,7 +107,7 @@ export class Game extends React.Component {
 
     render() {
         const mostRecentSpinResult = this.state.mostRecentSpinResults.slice(-1)[0];
-        const playerBalance = this.state.playerBalance;
+        const availableBalance = this.state.availableBalance;
         return (
             <div>
                 <Board
@@ -129,7 +129,7 @@ export class Game extends React.Component {
                     spinResults={this.state.mostRecentSpinResults}
                 />
                 <PlayerInfo
-                    availableBalance={playerBalance} // TODO bug is here? Appears to not always add winnings to balance, but sometimes does..?
+                    availableBalance={availableBalance}
                     totalBetAmount={this.calculateTotalBetAmount(this.state.betsOnBoard)}
                 />
                 <CurrentBetsInfo
