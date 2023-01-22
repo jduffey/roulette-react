@@ -9,7 +9,7 @@ import { Halves } from './BettingOptions/Halves';
 const convertBettingSquareDataToObject = (bettingSquareData) => {
     return bettingSquareData.reduce((acc, next) => {
         return {
-            ...acc,
+            ...acc, // TODO does this really need to be destructured?
             [next[0]]: // bet name
             {
                 styleData: {
