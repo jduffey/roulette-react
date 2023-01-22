@@ -6,6 +6,8 @@ import { Dozens } from './BettingOptions/Dozens';
 import { Column } from './BettingOptions/Column';
 import { Halves } from './BettingOptions/Halves';
 
+import { BET_NAMES } from '../common/betNames';
+
 const convertBettingSquareDataToObject = (bettingSquareData) => {
     return bettingSquareData.reduce((acc, next) => {
         return {
@@ -25,70 +27,72 @@ const convertBettingSquareDataToObject = (bettingSquareData) => {
 
 const BETTING_SQUARES_STRAIGHT_UP_1_36 = convertBettingSquareDataToObject([
     // 1st Column
-    ["StraightUp_1", 80, 240, "#d94848", "1"],
-    ["StraightUp_4", 160, 240, "#222222", "4"],
-    ["StraightUp_7", 240, 240, "#d94848", "7"],
-    ["StraightUp_10", 320, 240, "#222222", "10"],
-    ["StraightUp_13", 400, 240, "#222222", "13"],
-    ["StraightUp_16", 480, 240, "#d94848", "16"],
-    ["StraightUp_19", 560, 240, "#d94848", "19"],
-    ["StraightUp_22", 640, 240, "#222222", "22"],
-    ["StraightUp_25", 720, 240, "#d94848", "25"],
-    ["StraightUp_28", 800, 240, "#222222", "28"],
-    ["StraightUp_31", 880, 240, "#222222", "31"],
-    ["StraightUp_34", 960, 240, "#d94848", "34"],
+    [BET_NAMES.STRAIGHT_UP_1, 80, 240, "#d94848", "1"],
+    [BET_NAMES.STRAIGHT_UP_4, 160, 240, "#222222", "4"],
+    [BET_NAMES.STRAIGHT_UP_7, 240, 240, "#d94848", "7"],
+    [BET_NAMES.STRAIGHT_UP_10, 320, 240, "#222222", "10"],
+    [BET_NAMES.STRAIGHT_UP_13, 400, 240, "#222222", "13"],
+    [BET_NAMES.STRAIGHT_UP_16, 480, 240, "#d94848", "16"],
+    [BET_NAMES.STRAIGHT_UP_19, 560, 240, "#d94848", "19"],
+    [BET_NAMES.STRAIGHT_UP_22, 640, 240, "#222222", "22"],
+    [BET_NAMES.STRAIGHT_UP_25, 720, 240, "#d94848", "25"],
+    [BET_NAMES.STRAIGHT_UP_28, 800, 240, "#222222", "28"],
+    [BET_NAMES.STRAIGHT_UP_31, 880, 240, "#222222", "31"],
+    [BET_NAMES.STRAIGHT_UP_34, 960, 240, "#d94848", "34"],
+
     // 2nd Column
-    ["StraightUp_2", 80, 120, "#222222", "2"],
-    ["StraightUp_5", 160, 120, "#d94848", "5"],
-    ["StraightUp_8", 240, 120, "#222222", "8"],
-    ["StraightUp_11", 320, 120, "#222222", "11"],
-    ["StraightUp_14", 400, 120, "#d94848", "14"],
-    ["StraightUp_17", 480, 120, "#222222", "17"],
-    ["StraightUp_20", 560, 120, "#222222", "20"],
-    ["StraightUp_23", 640, 120, "#d94848", "23"],
-    ["StraightUp_26", 720, 120, "#222222", "26"],
-    ["StraightUp_29", 800, 120, "#222222", "29"],
-    ["StraightUp_32", 880, 120, "#d94848", "32"],
-    ["StraightUp_35", 960, 120, "#222222", "35"],
+    [BET_NAMES.STRAIGHT_UP_2, 80, 120, "#222222", "2"],
+    [BET_NAMES.STRAIGHT_UP_5, 160, 120, "#d94848", "5"],
+    [BET_NAMES.STRAIGHT_UP_8, 240, 120, "#222222", "8"],
+    [BET_NAMES.STRAIGHT_UP_11, 320, 120, "#222222", "11"],
+    [BET_NAMES.STRAIGHT_UP_14, 400, 120, "#d94848", "14"],
+    [BET_NAMES.STRAIGHT_UP_17, 480, 120, "#222222", "17"],
+    [BET_NAMES.STRAIGHT_UP_20, 560, 120, "#222222", "20"],
+    [BET_NAMES.STRAIGHT_UP_23, 640, 120, "#d94848", "23"],
+    [BET_NAMES.STRAIGHT_UP_26, 720, 120, "#222222", "26"],
+    [BET_NAMES.STRAIGHT_UP_29, 800, 120, "#222222", "29"],
+    [BET_NAMES.STRAIGHT_UP_32, 880, 120, "#d94848", "32"],
+    [BET_NAMES.STRAIGHT_UP_35, 960, 120, "#222222", "35"],
+
     // 3rd Column
-    ["StraightUp_3", 80, 0, "#d94848", "3"],
-    ["StraightUp_6", 160, 0, "#222222", "6"],
-    ["StraightUp_9", 240, 0, "#d94848", "9"],
-    ["StraightUp_12", 320, 0, "#d94848", "12"],
-    ["StraightUp_15", 400, 0, "#222222", "15"],
-    ["StraightUp_18", 480, 0, "#d94848", "18"],
-    ["StraightUp_21", 560, 0, "#d94848", "21"],
-    ["StraightUp_24", 640, 0, "#222222", "24"],
-    ["StraightUp_27", 720, 0, "#d94848", "27"],
-    ["StraightUp_30", 800, 0, "#d94848", "30"],
-    ["StraightUp_33", 880, 0, "#222222", "33"],
-    ["StraightUp_36", 960, 0, "#d94848", "36"],
+    [BET_NAMES.STRAIGHT_UP_3, 80, 0, "#d94848", "3"],
+    [BET_NAMES.STRAIGHT_UP_6, 160, 0, "#222222", "6"],
+    [BET_NAMES.STRAIGHT_UP_9, 240, 0, "#d94848", "9"],
+    [BET_NAMES.STRAIGHT_UP_12, 320, 0, "#d94848", "12"],
+    [BET_NAMES.STRAIGHT_UP_15, 400, 0, "#222222", "15"],
+    [BET_NAMES.STRAIGHT_UP_18, 480, 0, "#d94848", "18"],
+    [BET_NAMES.STRAIGHT_UP_21, 560, 0, "#d94848", "21"],
+    [BET_NAMES.STRAIGHT_UP_24, 640, 0, "#222222", "24"],
+    [BET_NAMES.STRAIGHT_UP_27, 720, 0, "#d94848", "27"],
+    [BET_NAMES.STRAIGHT_UP_30, 800, 0, "#d94848", "30"],
+    [BET_NAMES.STRAIGHT_UP_33, 880, 0, "#222222", "33"],
+    [BET_NAMES.STRAIGHT_UP_36, 960, 0, "#d94848", "36"],
 ]);
 
 const BETTING_SQUARES_STRAIGHT_UP_ZEROES = convertBettingSquareDataToObject([
-    ["StraightUp_0", 0, 180, "#016D29", "0"],
-    ["StraightUp_00", 0, 0, "#016D29", "00"],
+    [BET_NAMES.STRAIGHT_UP_0, 0, 180, "#016D29", "0"],
+    [BET_NAMES.STRAIGHT_UP_00, 0, 0, "#016D29", "00"],
 ]);
 
 const BETTING_SQUARES_DOZENS = convertBettingSquareDataToObject([
-    ["1st 12", 80, 360, "#016D29", "1st 12"],
-    ["2nd 12", 400, 360, "#016D29", "2nd 12"],
-    ["3rd 12", 720, 360, "#016D29", "3rd 12"],
+    [BET_NAMES.FIRST_DOZEN, 80, 360, "#016D29", "1st 12"],
+    [BET_NAMES.SECOND_DOZEN, 400, 360, "#016D29", "2nd 12"],
+    [BET_NAMES.THIRD_DOZEN, 720, 360, "#016D29", "3rd 12"],
 ]);
 
 const BETTING_SQUARES_COLUMNS = convertBettingSquareDataToObject([
-    ["1st Column", 1040, 240, "#016D29", "2 to 1"],
-    ["2nd Column", 1040, 120, "#016D29", "2 to 1"],
-    ["3rd Column", 1040, 0, "#016D29", "2 to 1"],
+    [BET_NAMES.FIRST_COLUMN, 1040, 240, "#016D29", "2 to 1"],
+    [BET_NAMES.SECOND_COLUMN, 1040, 120, "#016D29", "2 to 1"],
+    [BET_NAMES.THIRD_COLUMN, 1040, 0, "#016D29", "2 to 1"],
 ]);
 
 const BETTING_SQUARES_HALVES = convertBettingSquareDataToObject([
-    ["1 to 18", 80, 440, "#016D29", "1 to 18"],
-    ["Even", 240, 440, "#016D29", "Even"],
-    ["Red", 400, 440, "#d94848", "Red"],
-    ["Black", 560, 440, "#222222", "Black"],
-    ["Odd", 720, 440, "#016D29", "Odd"],
-    ["19 to 36", 880, 440, "#016D29", "19 to 36"],
+    [BET_NAMES.FIRST_18, 80, 440, "#016D29", "1 to 18"],
+    [BET_NAMES.EVEN, 240, 440, "#016D29", "Even"],
+    [BET_NAMES.RED, 400, 440, "#d94848", "Red"],
+    [BET_NAMES.BLACK, 560, 440, "#222222", "Black"],
+    [BET_NAMES.ODD, 720, 440, "#016D29", "Odd"],
+    [BET_NAMES.SECOND_18, 880, 440, "#016D29", "19 to 36"],
 ]);
 
 const bettingSquares1To36Names = Object.keys(BETTING_SQUARES_STRAIGHT_UP_1_36);
