@@ -9,6 +9,7 @@ import { PlayerInfo } from './PlayerInfo';
 import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
 
+import { getRandomWheelNumber } from '../common/getRandomWheelNumber';
 import { WINNING_CRITERIA } from '../common/winning-criteria';
 
 export class Game extends React.Component {
@@ -66,14 +67,7 @@ export class Game extends React.Component {
             return;
         }
 
-        const wheelNumbers = [
-            "0", "00",
-            "1", "2", "3", "4", "5", "6", "7", "8", "9",
-            "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
-            "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",
-            "30", "31", "32", "33", "34", "35", "36"
-        ];
-        const randomWheelNumber = wheelNumbers[Math.floor(Math.random() * wheelNumbers.length)];
+        const randomWheelNumber = getRandomWheelNumber();
 
         const winningBetOptions = this.getWinningBetOptions(randomWheelNumber);
 
@@ -148,44 +142,44 @@ export class Game extends React.Component {
     calculateWinningsPlusReturnedBets(betsOnBoard, winningBetOptions) {
         const winnings = Object.keys(betsOnBoard).reduce((acc, betOption) => {
             const multipliers = {
-                "1": 35,
-                "2": 35,
-                "3": 35,
-                "4": 35,
-                "5": 35,
-                "6": 35,
-                "7": 35,
-                "8": 35,
-                "9": 35,
-                "10": 35,
-                "11": 35,
-                "12": 35,
-                "13": 35,
-                "14": 35,
-                "15": 35,
-                "16": 35,
-                "17": 35,
-                "18": 35,
-                "19": 35,
-                "20": 35,
-                "21": 35,
-                "22": 35,
-                "23": 35,
-                "24": 35,
-                "25": 35,
-                "26": 35,
-                "27": 35,
-                "28": 35,
-                "29": 35,
-                "30": 35,
-                "31": 35,
-                "32": 35,
-                "33": 35,
-                "34": 35,
-                "35": 35,
-                "36": 35,
-                "0": 35,
-                "00": 35,
+                "StraightUp_1": 35,
+                "StraightUp_2": 35,
+                "StraightUp_3": 35,
+                "StraightUp_4": 35,
+                "StraightUp_5": 35,
+                "StraightUp_6": 35,
+                "StraightUp_7": 35,
+                "StraightUp_8": 35,
+                "StraightUp_9": 35,
+                "StraightUp_10": 35,
+                "StraightUp_11": 35,
+                "StraightUp_12": 35,
+                "StraightUp_13": 35,
+                "StraightUp_14": 35,
+                "StraightUp_15": 35,
+                "StraightUp_16": 35,
+                "StraightUp_17": 35,
+                "StraightUp_18": 35,
+                "StraightUp_19": 35,
+                "StraightUp_20": 35,
+                "StraightUp_21": 35,
+                "StraightUp_22": 35,
+                "StraightUp_23": 35,
+                "StraightUp_24": 35,
+                "StraightUp_25": 35,
+                "StraightUp_26": 35,
+                "StraightUp_27": 35,
+                "StraightUp_28": 35,
+                "StraightUp_29": 35,
+                "StraightUp_30": 35,
+                "StraightUp_31": 35,
+                "StraightUp_32": 35,
+                "StraightUp_33": 35,
+                "StraightUp_34": 35,
+                "StraightUp_35": 35,
+                "StraightUp_36": 35,
+                "StraightUp_0": 35,
+                "StraightUp_00": 35,
                 "1st 12": 2,
                 "2nd 12": 2,
                 "3rd 12": 2,
