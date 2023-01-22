@@ -66,8 +66,7 @@ describe("1 chip on all bet names", () => {
     });
 });
 
-// TODO WIP committing to save work, will split these out next commit
-describe("1 chip on each bet name", () => {
+describe("Straight Up", () => {
     it.each([
         [BET_NAMES.STRAIGHT_UP_0, WHEEL_NUMBERS.WN_0, 135],
         [BET_NAMES.STRAIGHT_UP_00, WHEEL_NUMBERS.WN_00, 135],
@@ -107,17 +106,565 @@ describe("1 chip on each bet name", () => {
         [BET_NAMES.STRAIGHT_UP_34, WHEEL_NUMBERS.WN_34, 135],
         [BET_NAMES.STRAIGHT_UP_35, WHEEL_NUMBERS.WN_35, 135],
         [BET_NAMES.STRAIGHT_UP_36, WHEEL_NUMBERS.WN_36, 135],
-        [BET_NAMES.FIRST_18, WHEEL_NUMBERS.WN_0, 99],
-        [BET_NAMES.FIRST_18, WHEEL_NUMBERS.WN_00, 99],
-        [BET_NAMES.FIRST_18, WHEEL_NUMBERS.WN_1, 101],
-        [BET_NAMES.FIRST_18, WHEEL_NUMBERS.WN_18, 101],
-        [BET_NAMES.FIRST_18, WHEEL_NUMBERS.WN_19, 99],
-        [BET_NAMES.SECOND_18, WHEEL_NUMBERS.WN_0, 99],
-        [BET_NAMES.SECOND_18, WHEEL_NUMBERS.WN_00, 99],
-        [BET_NAMES.SECOND_18, WHEEL_NUMBERS.WN_18, 99],
-        [BET_NAMES.SECOND_18, WHEEL_NUMBERS.WN_19, 101],
-        [BET_NAMES.SECOND_18, WHEEL_NUMBERS.WN_36, 101],
-    ])("bet name %s, wheel number %s -> ending balance %i", (betName, wheelNumber, expectedBalance) => {
+    ])("%s, wheel number %s -> ending balance %i", (betName, wheelNumber, expectedBalance) => {
+        const betAmounts = {
+            [betName]: chipAmount,
+        };
+
+        const actual = getNewBalance(startingBalance, betAmounts, wheelNumber);
+
+        expect(actual).toBe(expectedBalance);
+    });
+});
+
+describe("First 18", () => {
+    it.each([
+        [WHEEL_NUMBERS.WN_0, 99],
+        [WHEEL_NUMBERS.WN_00, 99],
+        [WHEEL_NUMBERS.WN_1, 101],
+        [WHEEL_NUMBERS.WN_18, 101],
+        [WHEEL_NUMBERS.WN_19, 99],
+    ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
+        const betName = BET_NAMES.FIRST_18;
+        const betAmounts = {
+            [betName]: chipAmount,
+        };
+
+        const actual = getNewBalance(startingBalance, betAmounts, wheelNumber);
+
+        expect(actual).toBe(expectedBalance);
+    });
+});
+
+describe("Second 18", () => {
+    it.each([
+        [WHEEL_NUMBERS.WN_0, 99],
+        [WHEEL_NUMBERS.WN_00, 99],
+        [WHEEL_NUMBERS.WN_18, 99],
+        [WHEEL_NUMBERS.WN_19, 101],
+        [WHEEL_NUMBERS.WN_36, 101],
+    ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
+        const betName = BET_NAMES.SECOND_18;
+        const betAmounts = {
+            [betName]: chipAmount,
+        };
+
+        const actual = getNewBalance(startingBalance, betAmounts, wheelNumber);
+
+        expect(actual).toBe(expectedBalance);
+    });
+});
+
+describe("Even", () => {
+    it.each([
+        [WHEEL_NUMBERS.WN_0, 99],
+        [WHEEL_NUMBERS.WN_00, 99],
+        [WHEEL_NUMBERS.WN_1, 99],
+        [WHEEL_NUMBERS.WN_3, 99],
+        [WHEEL_NUMBERS.WN_5, 99],
+        [WHEEL_NUMBERS.WN_7, 99],
+        [WHEEL_NUMBERS.WN_9, 99],
+        [WHEEL_NUMBERS.WN_11, 99],
+        [WHEEL_NUMBERS.WN_13, 99],
+        [WHEEL_NUMBERS.WN_15, 99],
+        [WHEEL_NUMBERS.WN_17, 99],
+        [WHEEL_NUMBERS.WN_19, 99],
+        [WHEEL_NUMBERS.WN_21, 99],
+        [WHEEL_NUMBERS.WN_23, 99],
+        [WHEEL_NUMBERS.WN_25, 99],
+        [WHEEL_NUMBERS.WN_27, 99],
+        [WHEEL_NUMBERS.WN_29, 99],
+        [WHEEL_NUMBERS.WN_31, 99],
+        [WHEEL_NUMBERS.WN_33, 99],
+        [WHEEL_NUMBERS.WN_35, 99],
+        [WHEEL_NUMBERS.WN_2, 101],
+        [WHEEL_NUMBERS.WN_4, 101],
+        [WHEEL_NUMBERS.WN_6, 101],
+        [WHEEL_NUMBERS.WN_8, 101],
+        [WHEEL_NUMBERS.WN_10, 101],
+        [WHEEL_NUMBERS.WN_12, 101],
+        [WHEEL_NUMBERS.WN_14, 101],
+        [WHEEL_NUMBERS.WN_16, 101],
+        [WHEEL_NUMBERS.WN_18, 101],
+        [WHEEL_NUMBERS.WN_20, 101],
+        [WHEEL_NUMBERS.WN_22, 101],
+        [WHEEL_NUMBERS.WN_24, 101],
+        [WHEEL_NUMBERS.WN_26, 101],
+        [WHEEL_NUMBERS.WN_28, 101],
+        [WHEEL_NUMBERS.WN_30, 101],
+        [WHEEL_NUMBERS.WN_32, 101],
+        [WHEEL_NUMBERS.WN_34, 101],
+        [WHEEL_NUMBERS.WN_36, 101],
+    ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
+        const betName = BET_NAMES.EVEN;
+        const betAmounts = {
+            [betName]: chipAmount,
+        };
+
+        const actual = getNewBalance(startingBalance, betAmounts, wheelNumber);
+
+        expect(actual).toBe(expectedBalance);
+    });
+});
+
+describe("Odd", () => {
+    it.each([
+        [WHEEL_NUMBERS.WN_0, 99],
+        [WHEEL_NUMBERS.WN_00, 99],
+        [WHEEL_NUMBERS.WN_1, 101],
+        [WHEEL_NUMBERS.WN_3, 101],
+        [WHEEL_NUMBERS.WN_5, 101],
+        [WHEEL_NUMBERS.WN_7, 101],
+        [WHEEL_NUMBERS.WN_9, 101],
+        [WHEEL_NUMBERS.WN_11, 101],
+        [WHEEL_NUMBERS.WN_13, 101],
+        [WHEEL_NUMBERS.WN_15, 101],
+        [WHEEL_NUMBERS.WN_17, 101],
+        [WHEEL_NUMBERS.WN_19, 101],
+        [WHEEL_NUMBERS.WN_21, 101],
+        [WHEEL_NUMBERS.WN_23, 101],
+        [WHEEL_NUMBERS.WN_25, 101],
+        [WHEEL_NUMBERS.WN_27, 101],
+        [WHEEL_NUMBERS.WN_29, 101],
+        [WHEEL_NUMBERS.WN_31, 101],
+        [WHEEL_NUMBERS.WN_33, 101],
+        [WHEEL_NUMBERS.WN_35, 101],
+        [WHEEL_NUMBERS.WN_2, 99],
+        [WHEEL_NUMBERS.WN_4, 99],
+        [WHEEL_NUMBERS.WN_6, 99],
+        [WHEEL_NUMBERS.WN_8, 99],
+        [WHEEL_NUMBERS.WN_10, 99],
+        [WHEEL_NUMBERS.WN_12, 99],
+        [WHEEL_NUMBERS.WN_14, 99],
+        [WHEEL_NUMBERS.WN_16, 99],
+        [WHEEL_NUMBERS.WN_18, 99],
+        [WHEEL_NUMBERS.WN_20, 99],
+        [WHEEL_NUMBERS.WN_22, 99],
+        [WHEEL_NUMBERS.WN_24, 99],
+        [WHEEL_NUMBERS.WN_26, 99],
+        [WHEEL_NUMBERS.WN_28, 99],
+        [WHEEL_NUMBERS.WN_30, 99],
+        [WHEEL_NUMBERS.WN_32, 99],
+        [WHEEL_NUMBERS.WN_34, 99],
+        [WHEEL_NUMBERS.WN_36, 99],
+    ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
+        const betName = BET_NAMES.ODD;
+        const betAmounts = {
+            [betName]: chipAmount,
+        };
+
+        const actual = getNewBalance(startingBalance, betAmounts, wheelNumber);
+
+        expect(actual).toBe(expectedBalance);
+    });
+});
+
+describe("Red", () => {
+    it.each([
+        [WHEEL_NUMBERS.WN_0, 99],
+        [WHEEL_NUMBERS.WN_00, 99],
+        [WHEEL_NUMBERS.WN_1, 101],
+        [WHEEL_NUMBERS.WN_3, 101],
+        [WHEEL_NUMBERS.WN_5, 101],
+        [WHEEL_NUMBERS.WN_7, 101],
+        [WHEEL_NUMBERS.WN_9, 101],
+        [WHEEL_NUMBERS.WN_12, 101],
+        [WHEEL_NUMBERS.WN_14, 101],
+        [WHEEL_NUMBERS.WN_16, 101],
+        [WHEEL_NUMBERS.WN_18, 101],
+        [WHEEL_NUMBERS.WN_19, 101],
+        [WHEEL_NUMBERS.WN_21, 101],
+        [WHEEL_NUMBERS.WN_23, 101],
+        [WHEEL_NUMBERS.WN_25, 101],
+        [WHEEL_NUMBERS.WN_27, 101],
+        [WHEEL_NUMBERS.WN_30, 101],
+        [WHEEL_NUMBERS.WN_32, 101],
+        [WHEEL_NUMBERS.WN_34, 101],
+        [WHEEL_NUMBERS.WN_36, 101],
+        [WHEEL_NUMBERS.WN_2, 99],
+        [WHEEL_NUMBERS.WN_4, 99],
+        [WHEEL_NUMBERS.WN_6, 99],
+        [WHEEL_NUMBERS.WN_8, 99],
+        [WHEEL_NUMBERS.WN_10, 99],
+        [WHEEL_NUMBERS.WN_11, 99],
+        [WHEEL_NUMBERS.WN_13, 99],
+        [WHEEL_NUMBERS.WN_15, 99],
+        [WHEEL_NUMBERS.WN_17, 99],
+        [WHEEL_NUMBERS.WN_20, 99],
+        [WHEEL_NUMBERS.WN_22, 99],
+        [WHEEL_NUMBERS.WN_24, 99],
+        [WHEEL_NUMBERS.WN_26, 99],
+        [WHEEL_NUMBERS.WN_28, 99],
+        [WHEEL_NUMBERS.WN_29, 99],
+        [WHEEL_NUMBERS.WN_31, 99],
+        [WHEEL_NUMBERS.WN_33, 99],
+        [WHEEL_NUMBERS.WN_35, 99],
+    ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
+        const betName = BET_NAMES.RED;
+        const betAmounts = {
+            [betName]: chipAmount,
+        };
+
+        const actual = getNewBalance(startingBalance, betAmounts, wheelNumber);
+
+        expect(actual).toBe(expectedBalance);
+    });
+});
+
+describe("Black", () => {
+    it.each([
+        [WHEEL_NUMBERS.WN_0, 99],
+        [WHEEL_NUMBERS.WN_00, 99],
+        [WHEEL_NUMBERS.WN_2, 101],
+        [WHEEL_NUMBERS.WN_4, 101],
+        [WHEEL_NUMBERS.WN_6, 101],
+        [WHEEL_NUMBERS.WN_8, 101],
+        [WHEEL_NUMBERS.WN_10, 101],
+        [WHEEL_NUMBERS.WN_11, 101],
+        [WHEEL_NUMBERS.WN_13, 101],
+        [WHEEL_NUMBERS.WN_15, 101],
+        [WHEEL_NUMBERS.WN_17, 101],
+        [WHEEL_NUMBERS.WN_20, 101],
+        [WHEEL_NUMBERS.WN_22, 101],
+        [WHEEL_NUMBERS.WN_24, 101],
+        [WHEEL_NUMBERS.WN_26, 101],
+        [WHEEL_NUMBERS.WN_28, 101],
+        [WHEEL_NUMBERS.WN_29, 101],
+        [WHEEL_NUMBERS.WN_31, 101],
+        [WHEEL_NUMBERS.WN_33, 101],
+        [WHEEL_NUMBERS.WN_35, 101],
+        [WHEEL_NUMBERS.WN_1, 99],
+        [WHEEL_NUMBERS.WN_3, 99],
+        [WHEEL_NUMBERS.WN_5, 99],
+        [WHEEL_NUMBERS.WN_7, 99],
+        [WHEEL_NUMBERS.WN_9, 99],
+        [WHEEL_NUMBERS.WN_12, 99],
+        [WHEEL_NUMBERS.WN_14, 99],
+        [WHEEL_NUMBERS.WN_16, 99],
+        [WHEEL_NUMBERS.WN_18, 99],
+        [WHEEL_NUMBERS.WN_19, 99],
+        [WHEEL_NUMBERS.WN_21, 99],
+        [WHEEL_NUMBERS.WN_23, 99],
+        [WHEEL_NUMBERS.WN_25, 99],
+        [WHEEL_NUMBERS.WN_27, 99],
+        [WHEEL_NUMBERS.WN_30, 99],
+        [WHEEL_NUMBERS.WN_32, 99],
+        [WHEEL_NUMBERS.WN_34, 99],
+        [WHEEL_NUMBERS.WN_36, 99],
+    ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
+        const betName = BET_NAMES.BLACK;
+        const betAmounts = {
+            [betName]: chipAmount,
+        };
+
+        const actual = getNewBalance(startingBalance, betAmounts, wheelNumber);
+
+        expect(actual).toBe(expectedBalance);
+    });
+});
+
+describe("First Dozen", () => {
+    it.each([
+        [WHEEL_NUMBERS.WN_0, 99],
+        [WHEEL_NUMBERS.WN_00, 99],
+        [WHEEL_NUMBERS.WN_1, 102],
+        [WHEEL_NUMBERS.WN_2, 102],
+        [WHEEL_NUMBERS.WN_3, 102],
+        [WHEEL_NUMBERS.WN_4, 102],
+        [WHEEL_NUMBERS.WN_5, 102],
+        [WHEEL_NUMBERS.WN_6, 102],
+        [WHEEL_NUMBERS.WN_7, 102],
+        [WHEEL_NUMBERS.WN_8, 102],
+        [WHEEL_NUMBERS.WN_9, 102],
+        [WHEEL_NUMBERS.WN_10, 102],
+        [WHEEL_NUMBERS.WN_11, 102],
+        [WHEEL_NUMBERS.WN_12, 102],
+        [WHEEL_NUMBERS.WN_13, 99],
+        [WHEEL_NUMBERS.WN_14, 99],
+        [WHEEL_NUMBERS.WN_15, 99],
+        [WHEEL_NUMBERS.WN_16, 99],
+        [WHEEL_NUMBERS.WN_17, 99],
+        [WHEEL_NUMBERS.WN_18, 99],
+        [WHEEL_NUMBERS.WN_19, 99],
+        [WHEEL_NUMBERS.WN_20, 99],
+        [WHEEL_NUMBERS.WN_21, 99],
+        [WHEEL_NUMBERS.WN_22, 99],
+        [WHEEL_NUMBERS.WN_23, 99],
+        [WHEEL_NUMBERS.WN_24, 99],
+        [WHEEL_NUMBERS.WN_25, 99],
+        [WHEEL_NUMBERS.WN_26, 99],
+        [WHEEL_NUMBERS.WN_27, 99],
+        [WHEEL_NUMBERS.WN_28, 99],
+        [WHEEL_NUMBERS.WN_29, 99],
+        [WHEEL_NUMBERS.WN_30, 99],
+        [WHEEL_NUMBERS.WN_31, 99],
+        [WHEEL_NUMBERS.WN_32, 99],
+        [WHEEL_NUMBERS.WN_33, 99],
+        [WHEEL_NUMBERS.WN_34, 99],
+        [WHEEL_NUMBERS.WN_35, 99],
+        [WHEEL_NUMBERS.WN_36, 99],
+    ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
+        const betName = BET_NAMES.FIRST_DOZEN;
+        const betAmounts = {
+            [betName]: chipAmount,
+        };
+
+        const actual = getNewBalance(startingBalance, betAmounts, wheelNumber);
+
+        expect(actual).toBe(expectedBalance);
+    });
+});
+
+describe("Second Dozen", () => {
+    it.each([
+        [WHEEL_NUMBERS.WN_0, 99],
+        [WHEEL_NUMBERS.WN_00, 99],
+        [WHEEL_NUMBERS.WN_1, 99],
+        [WHEEL_NUMBERS.WN_2, 99],
+        [WHEEL_NUMBERS.WN_3, 99],
+        [WHEEL_NUMBERS.WN_4, 99],
+        [WHEEL_NUMBERS.WN_5, 99],
+        [WHEEL_NUMBERS.WN_6, 99],
+        [WHEEL_NUMBERS.WN_7, 99],
+        [WHEEL_NUMBERS.WN_8, 99],
+        [WHEEL_NUMBERS.WN_9, 99],
+        [WHEEL_NUMBERS.WN_10, 99],
+        [WHEEL_NUMBERS.WN_11, 99],
+        [WHEEL_NUMBERS.WN_12, 99],
+        [WHEEL_NUMBERS.WN_13, 102],
+        [WHEEL_NUMBERS.WN_14, 102],
+        [WHEEL_NUMBERS.WN_15, 102],
+        [WHEEL_NUMBERS.WN_16, 102],
+        [WHEEL_NUMBERS.WN_17, 102],
+        [WHEEL_NUMBERS.WN_18, 102],
+        [WHEEL_NUMBERS.WN_19, 102],
+        [WHEEL_NUMBERS.WN_20, 102],
+        [WHEEL_NUMBERS.WN_21, 102],
+        [WHEEL_NUMBERS.WN_22, 102],
+        [WHEEL_NUMBERS.WN_23, 102],
+        [WHEEL_NUMBERS.WN_24, 102],
+        [WHEEL_NUMBERS.WN_25, 99],
+        [WHEEL_NUMBERS.WN_26, 99],
+        [WHEEL_NUMBERS.WN_27, 99],
+        [WHEEL_NUMBERS.WN_28, 99],
+        [WHEEL_NUMBERS.WN_29, 99],
+        [WHEEL_NUMBERS.WN_30, 99],
+        [WHEEL_NUMBERS.WN_31, 99],
+        [WHEEL_NUMBERS.WN_32, 99],
+        [WHEEL_NUMBERS.WN_33, 99],
+        [WHEEL_NUMBERS.WN_34, 99],
+        [WHEEL_NUMBERS.WN_35, 99],
+        [WHEEL_NUMBERS.WN_36, 99],
+    ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
+        const betName = BET_NAMES.SECOND_DOZEN;
+        const betAmounts = {
+            [betName]: chipAmount,
+        };
+
+        const actual = getNewBalance(startingBalance, betAmounts, wheelNumber);
+
+        expect(actual).toBe(expectedBalance);
+    });
+});
+
+describe("Third Dozen", () => {
+    it.each([
+        [WHEEL_NUMBERS.WN_0, 99],
+        [WHEEL_NUMBERS.WN_00, 99],
+        [WHEEL_NUMBERS.WN_1, 99],
+        [WHEEL_NUMBERS.WN_2, 99],
+        [WHEEL_NUMBERS.WN_3, 99],
+        [WHEEL_NUMBERS.WN_4, 99],
+        [WHEEL_NUMBERS.WN_5, 99],
+        [WHEEL_NUMBERS.WN_6, 99],
+        [WHEEL_NUMBERS.WN_7, 99],
+        [WHEEL_NUMBERS.WN_8, 99],
+        [WHEEL_NUMBERS.WN_9, 99],
+        [WHEEL_NUMBERS.WN_10, 99],
+        [WHEEL_NUMBERS.WN_11, 99],
+        [WHEEL_NUMBERS.WN_12, 99],
+        [WHEEL_NUMBERS.WN_13, 99],
+        [WHEEL_NUMBERS.WN_14, 99],
+        [WHEEL_NUMBERS.WN_15, 99],
+        [WHEEL_NUMBERS.WN_16, 99],
+        [WHEEL_NUMBERS.WN_17, 99],
+        [WHEEL_NUMBERS.WN_18, 99],
+        [WHEEL_NUMBERS.WN_19, 99],
+        [WHEEL_NUMBERS.WN_20, 99],
+        [WHEEL_NUMBERS.WN_21, 99],
+        [WHEEL_NUMBERS.WN_22, 99],
+        [WHEEL_NUMBERS.WN_23, 99],
+        [WHEEL_NUMBERS.WN_24, 99],
+        [WHEEL_NUMBERS.WN_25, 102],
+        [WHEEL_NUMBERS.WN_26, 102],
+        [WHEEL_NUMBERS.WN_27, 102],
+        [WHEEL_NUMBERS.WN_28, 102],
+        [WHEEL_NUMBERS.WN_29, 102],
+        [WHEEL_NUMBERS.WN_30, 102],
+        [WHEEL_NUMBERS.WN_31, 102],
+        [WHEEL_NUMBERS.WN_32, 102],
+        [WHEEL_NUMBERS.WN_33, 102],
+        [WHEEL_NUMBERS.WN_34, 102],
+        [WHEEL_NUMBERS.WN_35, 102],
+        [WHEEL_NUMBERS.WN_36, 102],
+    ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
+        const betName = BET_NAMES.THIRD_DOZEN;
+        const betAmounts = {
+            [betName]: chipAmount,
+        };
+
+        const actual = getNewBalance(startingBalance, betAmounts, wheelNumber);
+
+        expect(actual).toBe(expectedBalance);
+    });
+});
+
+describe("First Column", () => {
+    it.each([
+        [WHEEL_NUMBERS.WN_0, 99],
+        [WHEEL_NUMBERS.WN_00, 99],
+        [WHEEL_NUMBERS.WN_1, 102],
+        [WHEEL_NUMBERS.WN_2, 99],
+        [WHEEL_NUMBERS.WN_3, 99],
+        [WHEEL_NUMBERS.WN_4, 102],
+        [WHEEL_NUMBERS.WN_5, 99],
+        [WHEEL_NUMBERS.WN_6, 99],
+        [WHEEL_NUMBERS.WN_7, 102],
+        [WHEEL_NUMBERS.WN_8, 99],
+        [WHEEL_NUMBERS.WN_9, 99],
+        [WHEEL_NUMBERS.WN_10, 102],
+        [WHEEL_NUMBERS.WN_11, 99],
+        [WHEEL_NUMBERS.WN_12, 99],
+        [WHEEL_NUMBERS.WN_13, 102],
+        [WHEEL_NUMBERS.WN_14, 99],
+        [WHEEL_NUMBERS.WN_15, 99],
+        [WHEEL_NUMBERS.WN_16, 102],
+        [WHEEL_NUMBERS.WN_17, 99],
+        [WHEEL_NUMBERS.WN_18, 99],
+        [WHEEL_NUMBERS.WN_19, 102],
+        [WHEEL_NUMBERS.WN_20, 99],
+        [WHEEL_NUMBERS.WN_21, 99],
+        [WHEEL_NUMBERS.WN_22, 102],
+        [WHEEL_NUMBERS.WN_23, 99],
+        [WHEEL_NUMBERS.WN_24, 99],
+        [WHEEL_NUMBERS.WN_25, 102],
+        [WHEEL_NUMBERS.WN_26, 99],
+        [WHEEL_NUMBERS.WN_27, 99],
+        [WHEEL_NUMBERS.WN_28, 102],
+        [WHEEL_NUMBERS.WN_29, 99],
+        [WHEEL_NUMBERS.WN_30, 99],
+        [WHEEL_NUMBERS.WN_31, 102],
+        [WHEEL_NUMBERS.WN_32, 99],
+        [WHEEL_NUMBERS.WN_33, 99],
+        [WHEEL_NUMBERS.WN_34, 102],
+        [WHEEL_NUMBERS.WN_35, 99],
+        [WHEEL_NUMBERS.WN_36, 99],
+    ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
+        const betName = BET_NAMES.FIRST_COLUMN;
+        const betAmounts = {
+            [betName]: chipAmount,
+        };
+
+        const actual = getNewBalance(startingBalance, betAmounts, wheelNumber);
+
+        expect(actual).toBe(expectedBalance);
+    });
+});
+
+describe("Second Column", () => {
+    it.each([
+        [WHEEL_NUMBERS.WN_0, 99],
+        [WHEEL_NUMBERS.WN_00, 99],
+        [WHEEL_NUMBERS.WN_1, 99],
+        [WHEEL_NUMBERS.WN_2, 102],
+        [WHEEL_NUMBERS.WN_3, 99],
+        [WHEEL_NUMBERS.WN_4, 99],
+        [WHEEL_NUMBERS.WN_5, 102],
+        [WHEEL_NUMBERS.WN_6, 99],
+        [WHEEL_NUMBERS.WN_7, 99],
+        [WHEEL_NUMBERS.WN_8, 102],
+        [WHEEL_NUMBERS.WN_9, 99],
+        [WHEEL_NUMBERS.WN_10, 99],
+        [WHEEL_NUMBERS.WN_11, 102],
+        [WHEEL_NUMBERS.WN_12, 99],
+        [WHEEL_NUMBERS.WN_13, 99],
+        [WHEEL_NUMBERS.WN_14, 102],
+        [WHEEL_NUMBERS.WN_15, 99],
+        [WHEEL_NUMBERS.WN_16, 99],
+        [WHEEL_NUMBERS.WN_17, 102],
+        [WHEEL_NUMBERS.WN_18, 99],
+        [WHEEL_NUMBERS.WN_19, 99],
+        [WHEEL_NUMBERS.WN_20, 102],
+        [WHEEL_NUMBERS.WN_21, 99],
+        [WHEEL_NUMBERS.WN_22, 99],
+        [WHEEL_NUMBERS.WN_23, 102],
+        [WHEEL_NUMBERS.WN_24, 99],
+        [WHEEL_NUMBERS.WN_25, 99],
+        [WHEEL_NUMBERS.WN_26, 102],
+        [WHEEL_NUMBERS.WN_27, 99],
+        [WHEEL_NUMBERS.WN_28, 99],
+        [WHEEL_NUMBERS.WN_29, 102],
+        [WHEEL_NUMBERS.WN_30, 99],
+        [WHEEL_NUMBERS.WN_31, 99],
+        [WHEEL_NUMBERS.WN_32, 102],
+        [WHEEL_NUMBERS.WN_33, 99],
+        [WHEEL_NUMBERS.WN_34, 99],
+        [WHEEL_NUMBERS.WN_35, 102],
+        [WHEEL_NUMBERS.WN_36, 99],
+    ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
+        const betName = BET_NAMES.SECOND_COLUMN;
+        const betAmounts = {
+            [betName]: chipAmount,
+        };
+
+        const actual = getNewBalance(startingBalance, betAmounts, wheelNumber);
+
+        expect(actual).toBe(expectedBalance);
+    });
+});
+
+describe("Third Column", () => {
+    it.each([
+        [WHEEL_NUMBERS.WN_0, 99],
+        [WHEEL_NUMBERS.WN_00, 99],
+        [WHEEL_NUMBERS.WN_1, 99],
+        [WHEEL_NUMBERS.WN_2, 99],
+        [WHEEL_NUMBERS.WN_3, 102],
+        [WHEEL_NUMBERS.WN_4, 99],
+        [WHEEL_NUMBERS.WN_5, 99],
+        [WHEEL_NUMBERS.WN_6, 102],
+        [WHEEL_NUMBERS.WN_7, 99],
+        [WHEEL_NUMBERS.WN_8, 99],
+        [WHEEL_NUMBERS.WN_9, 102],
+        [WHEEL_NUMBERS.WN_10, 99],
+        [WHEEL_NUMBERS.WN_11, 99],
+        [WHEEL_NUMBERS.WN_12, 102],
+        [WHEEL_NUMBERS.WN_13, 99],
+        [WHEEL_NUMBERS.WN_14, 99],
+        [WHEEL_NUMBERS.WN_15, 102],
+        [WHEEL_NUMBERS.WN_16, 99],
+        [WHEEL_NUMBERS.WN_17, 99],
+        [WHEEL_NUMBERS.WN_18, 102],
+        [WHEEL_NUMBERS.WN_19, 99],
+        [WHEEL_NUMBERS.WN_20, 99],
+        [WHEEL_NUMBERS.WN_21, 102],
+        [WHEEL_NUMBERS.WN_22, 99],
+        [WHEEL_NUMBERS.WN_23, 99],
+        [WHEEL_NUMBERS.WN_24, 102],
+        [WHEEL_NUMBERS.WN_25, 99],
+        [WHEEL_NUMBERS.WN_26, 99],
+        [WHEEL_NUMBERS.WN_27, 102],
+        [WHEEL_NUMBERS.WN_28, 99],
+        [WHEEL_NUMBERS.WN_29, 99],
+        [WHEEL_NUMBERS.WN_30, 102],
+        [WHEEL_NUMBERS.WN_31, 99],
+        [WHEEL_NUMBERS.WN_32, 99],
+        [WHEEL_NUMBERS.WN_33, 102],
+        [WHEEL_NUMBERS.WN_34, 99],
+        [WHEEL_NUMBERS.WN_35, 99],
+        [WHEEL_NUMBERS.WN_36, 102],
+    ])("wheel number %s -> ending balance %i", (wheelNumber, expectedBalance) => {
+        const betName = BET_NAMES.THIRD_COLUMN;
         const betAmounts = {
             [betName]: chipAmount,
         };
