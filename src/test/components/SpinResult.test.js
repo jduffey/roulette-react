@@ -4,8 +4,6 @@ import { SpinResult } from '../../components/SpinResult';
 
 import { WHEEL_NUMBERS } from '../../common/wheelNumbers';
 
-// TODO need tests to verify that the color of the spin result is correct..?
-
 describe('SpinResult', () => {
     it.each([
         [WHEEL_NUMBERS.WN_0],
