@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpinResult renders 0 as green 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#016D29",
+      }
+    }
+  >
+    0
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 1 as red 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#d94848",
+      }
+    }
+  >
+    1
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 2 as black 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#222222",
+      }
+    }
+  >
+    2
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders undefined as undefined 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
+  />
+</div>
+`;
