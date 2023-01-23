@@ -1,0 +1,457 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chip boundary tests for chip colors when isSelected is false chip amount 0 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#DFDFDF",
+      "borderColor": "#000000",
+      "color": "#000000",
+      "display": "none",
+    }
+  }
+>
+  $0
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is false chip amount 1 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#DFDFDF",
+      "borderColor": "#000000",
+      "color": "#000000",
+      "display": "",
+    }
+  }
+>
+  $1
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is false chip amount 4 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#DFDFDF",
+      "borderColor": "#000000",
+      "color": "#000000",
+      "display": "",
+    }
+  }
+>
+  $4
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is false chip amount 5 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#D94848",
+      "borderColor": "#000000",
+      "color": "#FFFFFF",
+      "display": "",
+    }
+  }
+>
+  $5
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is false chip amount 24 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#D94848",
+      "borderColor": "#000000",
+      "color": "#FFFFFF",
+      "display": "",
+    }
+  }
+>
+  $24
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is false chip amount 25 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#00B341",
+      "borderColor": "#000000",
+      "color": "#FFFFFF",
+      "display": "",
+    }
+  }
+>
+  $25
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is false chip amount 99 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#00B341",
+      "borderColor": "#000000",
+      "color": "#FFFFFF",
+      "display": "",
+    }
+  }
+>
+  $99
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is false chip amount 100 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#222222",
+      "borderColor": "#2A8A8A",
+      "color": "#FFFFFF",
+      "display": "",
+    }
+  }
+>
+  $100
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is false chip amount 499 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#222222",
+      "borderColor": "#2A8A8A",
+      "color": "#FFFFFF",
+      "display": "",
+    }
+  }
+>
+  $499
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is false chip amount 500 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#663399",
+      "borderColor": "#2A8A8A",
+      "color": "#FFFFFF",
+      "display": "",
+    }
+  }
+>
+  $500
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is false chip amount 999 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#663399",
+      "borderColor": "#2A8A8A",
+      "color": "#FFFFFF",
+      "display": "",
+    }
+  }
+>
+  $999
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is false chip amount 1000 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#F4F488",
+      "borderColor": "#000000",
+      "color": "#000000",
+      "display": "",
+    }
+  }
+>
+  $1000
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is true chip amount 0 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#DFDFDF",
+      "borderColor": "#000000",
+      "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+      "color": "#000000",
+      "display": "none",
+      "marginTop": "12px",
+    }
+  }
+>
+  $0
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is true chip amount 1 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#DFDFDF",
+      "borderColor": "#000000",
+      "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+      "color": "#000000",
+      "display": "",
+      "marginTop": "12px",
+    }
+  }
+>
+  $1
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is true chip amount 4 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#DFDFDF",
+      "borderColor": "#000000",
+      "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+      "color": "#000000",
+      "display": "",
+      "marginTop": "12px",
+    }
+  }
+>
+  $4
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is true chip amount 5 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#D94848",
+      "borderColor": "#000000",
+      "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+      "color": "#FFFFFF",
+      "display": "",
+      "marginTop": "12px",
+    }
+  }
+>
+  $5
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is true chip amount 24 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#D94848",
+      "borderColor": "#000000",
+      "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+      "color": "#FFFFFF",
+      "display": "",
+      "marginTop": "12px",
+    }
+  }
+>
+  $24
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is true chip amount 25 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#00B341",
+      "borderColor": "#000000",
+      "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+      "color": "#FFFFFF",
+      "display": "",
+      "marginTop": "12px",
+    }
+  }
+>
+  $25
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is true chip amount 99 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#00B341",
+      "borderColor": "#000000",
+      "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+      "color": "#FFFFFF",
+      "display": "",
+      "marginTop": "12px",
+    }
+  }
+>
+  $99
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is true chip amount 100 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#222222",
+      "borderColor": "#2A8A8A",
+      "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+      "color": "#FFFFFF",
+      "display": "",
+      "marginTop": "12px",
+    }
+  }
+>
+  $100
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is true chip amount 499 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#222222",
+      "borderColor": "#2A8A8A",
+      "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+      "color": "#FFFFFF",
+      "display": "",
+      "marginTop": "12px",
+    }
+  }
+>
+  $499
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is true chip amount 500 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#663399",
+      "borderColor": "#2A8A8A",
+      "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+      "color": "#FFFFFF",
+      "display": "",
+      "marginTop": "12px",
+    }
+  }
+>
+  $500
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is true chip amount 999 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#663399",
+      "borderColor": "#2A8A8A",
+      "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+      "color": "#FFFFFF",
+      "display": "",
+      "marginTop": "12px",
+    }
+  }
+>
+  $999
+</div>
+`;
+
+exports[`Chip boundary tests for chip colors when isSelected is true chip amount 1000 1`] = `
+<div
+  className="CLASSNAME"
+  id="ID"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#F4F488",
+      "borderColor": "#000000",
+      "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+      "color": "#000000",
+      "display": "",
+      "marginTop": "12px",
+    }
+  }
+>
+  $1000
+</div>
+`;
