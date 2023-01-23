@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MostRecentSpinResults renders when there are multiple spin results 1`] = `
+<div
+  className="most-recent-spin-results"
+>
+  <ul>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#222222",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      2
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#d94848",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      1
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#016D29",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      00
+    </div>
+  </ul>
+</div>
+`;
+
+exports[`MostRecentSpinResults renders when there are no spin results 1`] = `
+<div
+  className="most-recent-spin-results"
+>
+  <ul />
+</div>
+`;
