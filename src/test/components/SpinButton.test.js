@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 
-import { SpinButton } from '../components/SpinButton';
+import { SpinButton } from '../../components/SpinButton';
 
 describe('SpinButton', () => {
     it.each([

@@ -1,8 +1,8 @@
 import renderer from 'react-test-renderer';
 
-import { SpinResult } from '../components/SpinResult';
+import { SpinResult } from '../../components/SpinResult';
 
-import { WHEEL_NUMBERS } from '../common/wheelNumbers';
+import { WHEEL_NUMBERS } from '../../common/wheelNumbers';
 
 // TODO need tests to verify that the color of the spin result is correct..?
 
