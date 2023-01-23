@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SpinResult renders 0 as green 1`] = `
+exports[`SpinResult renders 0 1`] = `
 <div
   className="spin-result-container"
 >
@@ -17,7 +17,24 @@ exports[`SpinResult renders 0 as green 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 1 as red 1`] = `
+exports[`SpinResult renders 00 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#016D29",
+      }
+    }
+  >
+    00
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 1 1`] = `
 <div
   className="spin-result-container"
 >
@@ -34,7 +51,7 @@ exports[`SpinResult renders 1 as red 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 2 as black 1`] = `
+exports[`SpinResult renders 2 1`] = `
 <div
   className="spin-result-container"
 >
@@ -51,7 +68,585 @@ exports[`SpinResult renders 2 as black 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders undefined as undefined 1`] = `
+exports[`SpinResult renders 3 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#d94848",
+      }
+    }
+  >
+    3
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 4 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#222222",
+      }
+    }
+  >
+    4
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 5 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#d94848",
+      }
+    }
+  >
+    5
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 6 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#222222",
+      }
+    }
+  >
+    6
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 7 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#d94848",
+      }
+    }
+  >
+    7
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 8 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#222222",
+      }
+    }
+  >
+    8
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 9 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#d94848",
+      }
+    }
+  >
+    9
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 10 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#222222",
+      }
+    }
+  >
+    10
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 11 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#222222",
+      }
+    }
+  >
+    11
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 12 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#d94848",
+      }
+    }
+  >
+    12
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 13 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#222222",
+      }
+    }
+  >
+    13
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 14 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#d94848",
+      }
+    }
+  >
+    14
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 15 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#222222",
+      }
+    }
+  >
+    15
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 16 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#d94848",
+      }
+    }
+  >
+    16
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 17 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#222222",
+      }
+    }
+  >
+    17
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 18 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#d94848",
+      }
+    }
+  >
+    18
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 19 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#d94848",
+      }
+    }
+  >
+    19
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 20 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#222222",
+      }
+    }
+  >
+    20
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 21 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#d94848",
+      }
+    }
+  >
+    21
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 22 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#222222",
+      }
+    }
+  >
+    22
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 23 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#d94848",
+      }
+    }
+  >
+    23
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 24 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#222222",
+      }
+    }
+  >
+    24
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 25 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#d94848",
+      }
+    }
+  >
+    25
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 26 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#222222",
+      }
+    }
+  >
+    26
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 27 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#d94848",
+      }
+    }
+  >
+    27
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 28 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#222222",
+      }
+    }
+  >
+    28
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 29 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#222222",
+      }
+    }
+  >
+    29
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 30 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#d94848",
+      }
+    }
+  >
+    30
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 31 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#222222",
+      }
+    }
+  >
+    31
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 32 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#d94848",
+      }
+    }
+  >
+    32
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 33 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#222222",
+      }
+    }
+  >
+    33
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 34 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#d94848",
+      }
+    }
+  >
+    34
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 35 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#222222",
+      }
+    }
+  >
+    35
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders 36 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": "#d94848",
+      }
+    }
+  >
+    36
+  </div>
+</div>
+`;
+
+exports[`SpinResult renders undefined 1`] = `
 <div
   className="spin-result-container"
 >

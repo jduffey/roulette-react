@@ -1,3 +1,4 @@
+import { STANDARD_COLORS } from "./standardColors";
 import { WHEEL_NUMBERS } from "./wheelNumbers";
 
 export const getWheelNumberColor = (wheelNumber) => {
@@ -46,10 +47,10 @@ export const getWheelNumberColor = (wheelNumber) => {
         WHEEL_NUMBERS.WN_00
     ]);
     if (redNumbers.has(wheelNumber)) {
-        return "#d94848";
+        return STANDARD_COLORS.FELT_RED;
     } else if (blackNumbers.has(wheelNumber)) {
-        return "#222222";
+        return STANDARD_COLORS.FELT_BLACK;
     } else if (greenNumbers.has(wheelNumber)) {
-        return "#016D29";
+        return STANDARD_COLORS.FELT_GREEN;
     }
 }
