@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlayerInfo renders when availableBalance is 123456 and totalBetAmount is 56789 1`] = `
+<div
+  className="player-info"
+>
+  Avail. Balance
+  <br />
+  $ 123,456
+  <br />
+  <br />
+  Total Bet
+  <br />
+  $ 56,789
+</div>
+`;
+
+exports[`PlayerInfo renders when availableBalance is foo and totalBetAmount is bar 1`] = `
+<div
+  className="player-info"
+>
+  Avail. Balance
+  <br />
+  $ foo
+  <br />
+  <br />
+  Total Bet
+  <br />
+  $ bar
+</div>
+`;
