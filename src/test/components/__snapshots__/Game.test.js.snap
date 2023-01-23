@@ -1,0 +1,2281 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Game renders 1`] = `
+<div>
+  <div
+    className="game-board"
+  >
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 80,
+          "top": 240,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#d94848",
+            }
+          }
+        >
+          1
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 160,
+          "top": 240,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#222222",
+            }
+          }
+        >
+          4
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 240,
+          "top": 240,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#d94848",
+            }
+          }
+        >
+          7
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 320,
+          "top": 240,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#222222",
+            }
+          }
+        >
+          10
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 400,
+          "top": 240,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#222222",
+            }
+          }
+        >
+          13
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 480,
+          "top": 240,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#d94848",
+            }
+          }
+        >
+          16
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 560,
+          "top": 240,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#d94848",
+            }
+          }
+        >
+          19
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 640,
+          "top": 240,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#222222",
+            }
+          }
+        >
+          22
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 720,
+          "top": 240,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#d94848",
+            }
+          }
+        >
+          25
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 800,
+          "top": 240,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#222222",
+            }
+          }
+        >
+          28
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 880,
+          "top": 240,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#222222",
+            }
+          }
+        >
+          31
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 960,
+          "top": 240,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#d94848",
+            }
+          }
+        >
+          34
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 80,
+          "top": 120,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#222222",
+            }
+          }
+        >
+          2
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 160,
+          "top": 120,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#d94848",
+            }
+          }
+        >
+          5
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 240,
+          "top": 120,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#222222",
+            }
+          }
+        >
+          8
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 320,
+          "top": 120,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#222222",
+            }
+          }
+        >
+          11
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 400,
+          "top": 120,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#d94848",
+            }
+          }
+        >
+          14
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 480,
+          "top": 120,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#222222",
+            }
+          }
+        >
+          17
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 560,
+          "top": 120,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#222222",
+            }
+          }
+        >
+          20
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 640,
+          "top": 120,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#d94848",
+            }
+          }
+        >
+          23
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 720,
+          "top": 120,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#222222",
+            }
+          }
+        >
+          26
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 800,
+          "top": 120,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#222222",
+            }
+          }
+        >
+          29
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 880,
+          "top": 120,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#d94848",
+            }
+          }
+        >
+          32
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 960,
+          "top": 120,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#222222",
+            }
+          }
+        >
+          35
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 80,
+          "top": 0,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#d94848",
+            }
+          }
+        >
+          3
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 160,
+          "top": 0,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#222222",
+            }
+          }
+        >
+          6
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 240,
+          "top": 0,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#d94848",
+            }
+          }
+        >
+          9
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 320,
+          "top": 0,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#d94848",
+            }
+          }
+        >
+          12
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 400,
+          "top": 0,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#222222",
+            }
+          }
+        >
+          15
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 480,
+          "top": 0,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#d94848",
+            }
+          }
+        >
+          18
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 560,
+          "top": 0,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#d94848",
+            }
+          }
+        >
+          21
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 640,
+          "top": 0,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#222222",
+            }
+          }
+        >
+          24
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 720,
+          "top": 0,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#d94848",
+            }
+          }
+        >
+          27
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 800,
+          "top": 0,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#d94848",
+            }
+          }
+        >
+          30
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 880,
+          "top": 0,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#222222",
+            }
+          }
+        >
+          33
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 119,
+          "left": 960,
+          "top": 0,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label straightUp1to36-square-label"
+          style={
+            Object {
+              "backgroundColor": "#d94848",
+            }
+          }
+        >
+          36
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#016D29",
+          "height": 179,
+          "left": 0,
+          "top": 180,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label zero-square-label"
+        >
+          0
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#016D29",
+          "height": 179,
+          "left": 0,
+          "top": 0,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label zero-square-label"
+        >
+          00
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#016D29",
+          "height": 119,
+          "left": 1040,
+          "top": 240,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label column-square-label"
+        >
+          2 to 1
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#016D29",
+          "height": 119,
+          "left": 1040,
+          "top": 120,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label column-square-label"
+        >
+          2 to 1
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#016D29",
+          "height": 119,
+          "left": 1040,
+          "top": 0,
+          "width": 79,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label column-square-label"
+        >
+          2 to 1
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#016D29",
+          "height": 79,
+          "left": 80,
+          "top": 360,
+          "width": 319,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label dozens-square-label"
+        >
+          1st 12
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#016D29",
+          "height": 79,
+          "left": 400,
+          "top": 360,
+          "width": 319,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label dozens-square-label"
+        >
+          2nd 12
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible betting-square-undefined"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#016D29",
+          "height": 79,
+          "left": 720,
+          "top": 360,
+          "width": 319,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label dozens-square-label"
+        >
+          3rd 12
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible"
+      id="betting-square-1 to 18"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#016D29",
+          "height": 79,
+          "left": 80,
+          "top": 440,
+          "width": 159,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label halves-square-label"
+        >
+          1 to 18
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible"
+      id="betting-square-Even"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#016D29",
+          "height": 79,
+          "left": 240,
+          "top": 440,
+          "width": 159,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label halves-square-label"
+        >
+          Even
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible"
+      id="betting-square-Red"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#d94848",
+          "height": 79,
+          "left": 400,
+          "top": 440,
+          "width": 159,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label halves-square-label"
+        >
+          Red
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible"
+      id="betting-square-Black"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#222222",
+          "height": 79,
+          "left": 560,
+          "top": 440,
+          "width": 159,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label halves-square-label"
+        >
+          Black
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible"
+      id="betting-square-Odd"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#016D29",
+          "height": 79,
+          "left": 720,
+          "top": 440,
+          "width": 159,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label halves-square-label"
+        >
+          Odd
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+    <div
+      className="betting-square-visible"
+      id="betting-square-19 to 36"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#016D29",
+          "height": 79,
+          "left": 880,
+          "top": 440,
+          "width": 159,
+        }
+      }
+    >
+      <div
+        className="betting-square-contents"
+      >
+        <div
+          className="betting-square-label halves-square-label"
+        >
+          19 to 36
+        </div>
+        <div
+          className="betting-square-chip"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#F4F488",
+              "borderColor": "#000000",
+              "color": "#000000",
+              "display": "none",
+            }
+          }
+        >
+          $undefined
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="chip-selection-bar"
+  >
+    <div
+      className="chip-selection-chip"
+      id="chip-1"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#DFDFDF",
+          "borderColor": "#000000",
+          "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+          "color": "#000000",
+          "display": "",
+          "marginTop": "12px",
+        }
+      }
+    >
+      $1
+    </div>
+    <div
+      className="chip-selection-chip"
+      id="chip-5"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#D94848",
+          "borderColor": "#000000",
+          "color": "#FFFFFF",
+          "display": "",
+        }
+      }
+    >
+      $5
+    </div>
+    <div
+      className="chip-selection-chip"
+      id="chip-25"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#00B341",
+          "borderColor": "#000000",
+          "color": "#FFFFFF",
+          "display": "",
+        }
+      }
+    >
+      $25
+    </div>
+    <div
+      className="chip-selection-chip"
+      id="chip-100"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#222222",
+          "borderColor": "#2A8A8A",
+          "color": "#FFFFFF",
+          "display": "",
+        }
+      }
+    >
+      $100
+    </div>
+    <div
+      className="chip-selection-chip"
+      id="chip-500"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#663399",
+          "borderColor": "#2A8A8A",
+          "color": "#FFFFFF",
+          "display": "",
+        }
+      }
+    >
+      $500
+    </div>
+    <div
+      className="chip-selection-chip"
+      id="chip-1000"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#F4F488",
+          "borderColor": "#000000",
+          "color": "#000000",
+          "display": "",
+        }
+      }
+    >
+      $1000
+    </div>
+  </div>
+  <div
+    className="spin-button"
+    onClick={[Function]}
+  >
+    <span
+      style={
+        Object {
+          "color": "#999999",
+        }
+      }
+    >
+      SPIN
+    </span>
+    <span
+      className="place-a-bet-message"
+      style={
+        Object {
+          "zIndex": 1,
+        }
+      }
+    >
+      Place a bet!
+    </span>
+  </div>
+  <div
+    className="spin-result-container"
+  >
+    <div
+      className="spin-result-label"
+      style={
+        Object {
+          "backgroundColor": undefined,
+        }
+      }
+    />
+  </div>
+  <div
+    className="most-recent-spin-results"
+  >
+    <ul />
+  </div>
+  <div
+    className="player-info"
+  >
+    Avail. Balance
+    <br />
+    $ 10,000
+    <br />
+    <br />
+    Total Bet
+    <br />
+    $ 0
+  </div>
+  <div
+    className="current-bets-info"
+  >
+    <div
+      className="bet-info-table-title"
+    >
+      CURRENT BETS
+    </div>
+    <table
+      className="current-bets-info-table"
+    >
+      <tbody>
+        <tr
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
+        >
+          <th>
+            Bet Name
+          </th>
+          <th>
+            Bet Amount
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div
+    className="bet-results-info"
+  >
+    <div
+      className="bet-info-table-title"
+    >
+      PREVIOUS ROUND RESULTS
+    </div>
+    <table
+      className="bet-results-info-table"
+    >
+      <tbody>
+        <tr
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
+        >
+          <th>
+            Bet Name
+          </th>
+          <th>
+            Bet Amount
+          </th>
+          <th>
+            Winnings
+          </th>
+          <th>
+            Bet Returned
+          </th>
+        </tr>
+        <tr
+          style={
+            Object {
+              "height": "10px",
+            }
+          }
+        />
+        <tr>
+          <td>
+            TOTALS
+          </td>
+          <td>
+            $ 0
+          </td>
+          <td>
+            $ 0
+          </td>
+          <td>
+            $ 0
+          </td>
+        </tr>
+        <tr
+          style={
+            Object {
+              "height": "10px",
+            }
+          }
+        />
+        <tr
+          className="balance-change-value"
+        >
+          <td>
+            Starting
+          </td>
+          <td
+            colSpan={3}
+          />
+        </tr>
+        <tr
+          className="balance-change-value"
+        >
+          <td>
+            Net
+          </td>
+          <td
+            colSpan={3}
+          />
+        </tr>
+        <tr
+          className="balance-change-value"
+        >
+          <td>
+            Final
+          </td>
+          <td
+            colSpan={3}
+          />
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
