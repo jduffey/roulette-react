@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurrentBetsInfo renders with bets 1`] = `
+<div
+  className="current-bets-info"
+>
+  <div
+    className="bet-info-table-title"
+  >
+    CURRENT BETS
+  </div>
+  <table
+    className="current-bets-info-table"
+  >
+    <tbody>
+      <tr
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
+      >
+        <th>
+          Bet Name
+        </th>
+        <th>
+          Bet Amount
+        </th>
+      </tr>
+      <tr>
+        <td>
+          foo
+        </td>
+        <td
+          className="current-bets-info-table-bet-amount"
+        >
+          $ 10
+        </td>
+      </tr>
+      <tr>
+        <td>
+          bar
+        </td>
+        <td
+          className="current-bets-info-table-bet-amount"
+        >
+          $ 20
+        </td>
+      </tr>
+      <tr>
+        <td>
+          baz
+        </td>
+        <td
+          className="current-bets-info-table-bet-amount"
+        >
+          $ 30
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`CurrentBetsInfo renders with no bets 1`] = `
+<div
+  className="current-bets-info"
+>
+  <div
+    className="bet-info-table-title"
+  >
+    CURRENT BETS
+  </div>
+  <table
+    className="current-bets-info-table"
+  >
+    <tbody>
+      <tr
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
+      >
+        <th>
+          Bet Name
+        </th>
+        <th>
+          Bet Amount
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
