@@ -4,6 +4,7 @@ export function ChipSelection(props) {
     const isSelectedChip = (chipAmount) => {
         return props.currentChipAmountSelected === chipAmount;
     };
+
     return (
         <div
             className="chip-selection-bar"

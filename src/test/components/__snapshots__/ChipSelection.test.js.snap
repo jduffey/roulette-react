@@ -1,0 +1,595 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChipSelection renders when currentChipAmountSelected is 1 1`] = `
+<div
+  className="chip-selection-bar"
+>
+  <div
+    className="chip-selection-chip"
+    id="chip-1"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#DFDFDF",
+        "borderColor": "#000000",
+        "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+        "color": "#000000",
+        "display": "",
+        "marginTop": "12px",
+      }
+    }
+  >
+    $1
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-5"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#D94848",
+        "borderColor": "#000000",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $5
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-25"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#00B341",
+        "borderColor": "#000000",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $25
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-100"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#222222",
+        "borderColor": "#2A8A8A",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $100
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-500"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#663399",
+        "borderColor": "#2A8A8A",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $500
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-1000"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#F4F488",
+        "borderColor": "#000000",
+        "color": "#000000",
+        "display": "",
+      }
+    }
+  >
+    $1000
+  </div>
+</div>
+`;
+
+exports[`ChipSelection renders when currentChipAmountSelected is 5 1`] = `
+<div
+  className="chip-selection-bar"
+>
+  <div
+    className="chip-selection-chip"
+    id="chip-1"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#DFDFDF",
+        "borderColor": "#000000",
+        "color": "#000000",
+        "display": "",
+      }
+    }
+  >
+    $1
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-5"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#D94848",
+        "borderColor": "#000000",
+        "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+        "color": "#FFFFFF",
+        "display": "",
+        "marginTop": "12px",
+      }
+    }
+  >
+    $5
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-25"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#00B341",
+        "borderColor": "#000000",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $25
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-100"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#222222",
+        "borderColor": "#2A8A8A",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $100
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-500"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#663399",
+        "borderColor": "#2A8A8A",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $500
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-1000"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#F4F488",
+        "borderColor": "#000000",
+        "color": "#000000",
+        "display": "",
+      }
+    }
+  >
+    $1000
+  </div>
+</div>
+`;
+
+exports[`ChipSelection renders when currentChipAmountSelected is 25 1`] = `
+<div
+  className="chip-selection-bar"
+>
+  <div
+    className="chip-selection-chip"
+    id="chip-1"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#DFDFDF",
+        "borderColor": "#000000",
+        "color": "#000000",
+        "display": "",
+      }
+    }
+  >
+    $1
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-5"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#D94848",
+        "borderColor": "#000000",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $5
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-25"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#00B341",
+        "borderColor": "#000000",
+        "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+        "color": "#FFFFFF",
+        "display": "",
+        "marginTop": "12px",
+      }
+    }
+  >
+    $25
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-100"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#222222",
+        "borderColor": "#2A8A8A",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $100
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-500"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#663399",
+        "borderColor": "#2A8A8A",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $500
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-1000"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#F4F488",
+        "borderColor": "#000000",
+        "color": "#000000",
+        "display": "",
+      }
+    }
+  >
+    $1000
+  </div>
+</div>
+`;
+
+exports[`ChipSelection renders when currentChipAmountSelected is 100 1`] = `
+<div
+  className="chip-selection-bar"
+>
+  <div
+    className="chip-selection-chip"
+    id="chip-1"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#DFDFDF",
+        "borderColor": "#000000",
+        "color": "#000000",
+        "display": "",
+      }
+    }
+  >
+    $1
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-5"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#D94848",
+        "borderColor": "#000000",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $5
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-25"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#00B341",
+        "borderColor": "#000000",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $25
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-100"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#222222",
+        "borderColor": "#2A8A8A",
+        "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+        "color": "#FFFFFF",
+        "display": "",
+        "marginTop": "12px",
+      }
+    }
+  >
+    $100
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-500"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#663399",
+        "borderColor": "#2A8A8A",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $500
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-1000"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#F4F488",
+        "borderColor": "#000000",
+        "color": "#000000",
+        "display": "",
+      }
+    }
+  >
+    $1000
+  </div>
+</div>
+`;
+
+exports[`ChipSelection renders when currentChipAmountSelected is 500 1`] = `
+<div
+  className="chip-selection-bar"
+>
+  <div
+    className="chip-selection-chip"
+    id="chip-1"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#DFDFDF",
+        "borderColor": "#000000",
+        "color": "#000000",
+        "display": "",
+      }
+    }
+  >
+    $1
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-5"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#D94848",
+        "borderColor": "#000000",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $5
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-25"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#00B341",
+        "borderColor": "#000000",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $25
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-100"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#222222",
+        "borderColor": "#2A8A8A",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $100
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-500"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#663399",
+        "borderColor": "#2A8A8A",
+        "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+        "color": "#FFFFFF",
+        "display": "",
+        "marginTop": "12px",
+      }
+    }
+  >
+    $500
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-1000"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#F4F488",
+        "borderColor": "#000000",
+        "color": "#000000",
+        "display": "",
+      }
+    }
+  >
+    $1000
+  </div>
+</div>
+`;
+
+exports[`ChipSelection renders when currentChipAmountSelected is 1000 1`] = `
+<div
+  className="chip-selection-bar"
+>
+  <div
+    className="chip-selection-chip"
+    id="chip-1"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#DFDFDF",
+        "borderColor": "#000000",
+        "color": "#000000",
+        "display": "",
+      }
+    }
+  >
+    $1
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-5"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#D94848",
+        "borderColor": "#000000",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $5
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-25"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#00B341",
+        "borderColor": "#000000",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $25
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-100"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#222222",
+        "borderColor": "#2A8A8A",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $100
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-500"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#663399",
+        "borderColor": "#2A8A8A",
+        "color": "#FFFFFF",
+        "display": "",
+      }
+    }
+  >
+    $500
+  </div>
+  <div
+    className="chip-selection-chip"
+    id="chip-1000"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#F4F488",
+        "borderColor": "#000000",
+        "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+        "color": "#000000",
+        "display": "",
+        "marginTop": "12px",
+      }
+    }
+  >
+    $1000
+  </div>
+</div>
+`;
