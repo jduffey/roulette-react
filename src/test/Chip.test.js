@@ -21,7 +21,7 @@ describe('Chip', () => {
         const id = "ID";
         const key = "KEY";
         const className = "CLASSNAME";
-        const onClick = jest.fn();
+        const onClickFunction = () => { };
 
         describe('when isSelected is false', () => {
             it.each(boundaryValues)('chip amount %s', (chipAmount) => {
@@ -33,7 +33,7 @@ describe('Chip', () => {
                         key: key,
                         className: className,
                         chipAmount: chipAmount,
-                        onClick: onClick,
+                        onClick: onClickFunction,
                         isSelected: isSelected,
                     });
 
@@ -53,7 +53,7 @@ describe('Chip', () => {
                         key: key,
                         className: className,
                         chipAmount: chipAmount,
-                        onClick: onClick,
+                        onClick: onClickFunction,
                         isSelected: isSelected,
                     });
 

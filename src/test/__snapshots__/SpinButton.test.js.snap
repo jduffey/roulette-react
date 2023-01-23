@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpinButton renders when isSpinAllowed is false 1`] = `
+<div
+  className="spin-button"
+  onClick={[Function]}
+>
+  <span
+    style={
+      Object {
+        "color": "#999999",
+      }
+    }
+  >
+    SPIN
+  </span>
+  <span
+    className="place-a-bet-message"
+    style={
+      Object {
+        "zIndex": 1,
+      }
+    }
+  >
+    Place a bet!
+  </span>
+</div>
+`;
+
+exports[`SpinButton renders when isSpinAllowed is true 1`] = `
+<div
+  className="spin-button"
+  onClick={[Function]}
+>
+  <span
+    style={
+      Object {
+        "color": "inherit",
+      }
+    }
+  >
+    SPIN
+  </span>
+  <span
+    className="place-a-bet-message"
+    style={
+      Object {
+        "zIndex": -1,
+      }
+    }
+  >
+    Place a bet!
+  </span>
+</div>
+`;
