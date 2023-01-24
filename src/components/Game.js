@@ -88,8 +88,8 @@ export class Game extends React.Component {
         });
     }
 
-    calculateTotalBetAmount(bets) {
-        return Object.values(bets).reduce((acc, betAmount) => acc + betAmount, 0);
+    calculateTotalBetAmount() {
+        return Object.values(this.state.betsOnBoard).reduce((acc, betAmount) => acc + betAmount, 0);
     }
 
     render() {
@@ -117,7 +117,7 @@ export class Game extends React.Component {
                 />
                 <PlayerInfo
                     availableBalance={availableBalance}
-                    totalBetAmount={this.calculateTotalBetAmount(this.state.betsOnBoard)}
+                    totalBetAmount={this.calculateTotalBetAmount()}
                 />
                 <CurrentBetsInfo
                     betsOnBoard={this.state.betsOnBoard}
