@@ -16,7 +16,7 @@ import {
 } from './betOptionParameters';
 
 export function Board(props) {
-    function render1To36Squares(betName, displayData) {
+    function renderBetOption(betName, displayData, classNamePrefix) {
         return (
             <BetOption
                 key={betName}
@@ -24,71 +24,18 @@ export function Board(props) {
                 displayText={displayData.displayText}
                 betAmount={props.betsOnBoard[betName]}
                 styleData={displayData.styleData}
-                classNamePrefix="straightUp1to36"
-            />
-        );
-    }
-
-    function renderZeroesSquares(betName, displayData) {
-        return (
-            <BetOption
-                key={betName}
-                onClick={() => props.onClick(betName)}
-                displayText={displayData.displayText}
-                betAmount={props.betsOnBoard[betName]}
-                styleData={displayData.styleData}
-                classNamePrefix="zero"
-            />
-        );
-    }
-
-    function renderDozensSquares(betName, displayData) {
-        return (
-            <BetOption
-                key={betName}
-                onClick={() => props.onClick(betName)}
-                displayText={displayData.displayText}
-                betAmount={props.betsOnBoard[betName]}
-                styleData={displayData.styleData}
-                classNamePrefix="dozens"
-            />
-        );
-    }
-
-    function renderColumnSquares(betName, displayData) {
-        return (
-            <BetOption
-                key={betName}
-                onClick={() => props.onClick(betName)}
-                displayText={displayData.displayText}
-                betAmount={props.betsOnBoard[betName]}
-                styleData={displayData.styleData}
-                classNamePrefix="column"
-            />
-        );
-    }
-
-    function renderHalvesSquares(betName, displayData) {
-        return (
-            <BetOption
-                key={betName}
-                id={betName}
-                onClick={() => props.onClick(betName)}
-                displayText={displayData.displayText}
-                betAmount={props.betsOnBoard[betName]}
-                styleData={displayData.styleData}
-                classNamePrefix="halves"
+                classNamePrefix={classNamePrefix}
             />
         );
     }
 
     return (
         <div className="game-board">
-            {bettingSquares1To36Names.map((betName) => render1To36Squares(betName, BETTING_SQUARES_STRAIGHT_UP_1_36[betName]))}
-            {bettingSquareStraightUpZeroesNames.map((betName) => renderZeroesSquares(betName, BETTING_SQUARES_STRAIGHT_UP_ZEROES[betName]))}
-            {bettingSquareColumnNames.map((betName) => renderColumnSquares(betName, BETTING_SQUARES_COLUMNS[betName]))}
-            {bettingSquareDozensNames.map((betName) => renderDozensSquares(betName, BETTING_SQUARES_DOZENS[betName]))}
-            {bettingSquareHalvesNames.map((betName) => renderHalvesSquares(betName, BETTING_SQUARES_HALVES[betName]))}
+            {bettingSquares1To36Names.map((betName) => renderBetOption(betName, BETTING_SQUARES_STRAIGHT_UP_1_36[betName], "straightUp1to36"))}
+            {bettingSquareStraightUpZeroesNames.map((betName) => renderBetOption(betName, BETTING_SQUARES_STRAIGHT_UP_ZEROES[betName], "zero"))}
+            {bettingSquareColumnNames.map((betName) => renderBetOption(betName, BETTING_SQUARES_COLUMNS[betName], "column"))}
+            {bettingSquareDozensNames.map((betName) => renderBetOption(betName, BETTING_SQUARES_DOZENS[betName], "dozens"))}
+            {bettingSquareHalvesNames.map((betName) => renderBetOption(betName, BETTING_SQUARES_HALVES[betName], "halves"))}
         </div>
     );
 }
