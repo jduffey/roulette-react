@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Game renders 1`] = `
+exports[`Game renders without props 1`] = `
 <div>
   <div
     className="game-board"
@@ -2228,16 +2228,7 @@ exports[`Game renders 1`] = `
   </div>
   <div
     className="spin-result-container"
-  >
-    <div
-      className="spin-result-label"
-      style={
-        Object {
-          "backgroundColor": "inherit",
-        }
-      }
-    />
-  </div>
+  />
   <div
     className="most-recent-spin-results"
   >

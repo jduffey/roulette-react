@@ -649,29 +649,11 @@ exports[`SpinResult renders when spin result is 36 1`] = `
 exports[`SpinResult renders when spin result is not defined (null) 1`] = `
 <div
   className="spin-result-container"
->
-  <div
-    className="spin-result-label"
-    style={
-      Object {
-        "backgroundColor": "inherit",
-      }
-    }
-  />
-</div>
+/>
 `;
 
 exports[`SpinResult renders when spin result is not defined (undefined) 1`] = `
 <div
   className="spin-result-container"
->
-  <div
-    className="spin-result-label"
-    style={
-      Object {
-        "backgroundColor": "inherit",
-      }
-    }
-  />
-</div>
+/>
 `;

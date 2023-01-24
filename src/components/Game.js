@@ -14,8 +14,8 @@ import { getNewBalance } from '../common/getNewBalance';
 import { getRandomWheelNumber } from '../common/getRandomWheelNumber';
 
 export class Game extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         const initialBalance = 10000;
         this.state = {
             betsOnBoard: {},
