@@ -1853,7 +1853,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
     </div>
   </div>
   <div
-    className="betting-square-visible"
+    className="betting-square-visible betting-square-undefined"
     onClick={[Function]}
     style={
       Object {
@@ -1895,7 +1895,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
     </div>
   </div>
   <div
-    className="betting-square-visible"
+    className="betting-square-visible betting-square-undefined"
     onClick={[Function]}
     style={
       Object {
@@ -1937,7 +1937,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
     </div>
   </div>
   <div
-    className="betting-square-visible"
+    className="betting-square-visible betting-square-undefined"
     onClick={[Function]}
     style={
       Object {
@@ -1979,7 +1979,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
     </div>
   </div>
   <div
-    className="betting-square-visible"
+    className="betting-square-visible betting-square-undefined"
     onClick={[Function]}
     style={
       Object {
@@ -2021,7 +2021,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
     </div>
   </div>
   <div
-    className="betting-square-visible"
+    className="betting-square-visible betting-square-undefined"
     onClick={[Function]}
     style={
       Object {
@@ -2063,7 +2063,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
     </div>
   </div>
   <div
-    className="betting-square-visible"
+    className="betting-square-visible betting-square-undefined"
     onClick={[Function]}
     style={
       Object {
@@ -3960,7 +3960,7 @@ exports[`Board renders with no bets placed 1`] = `
     </div>
   </div>
   <div
-    className="betting-square-visible"
+    className="betting-square-visible betting-square-undefined"
     onClick={[Function]}
     style={
       Object {
@@ -4002,7 +4002,7 @@ exports[`Board renders with no bets placed 1`] = `
     </div>
   </div>
   <div
-    className="betting-square-visible"
+    className="betting-square-visible betting-square-undefined"
     onClick={[Function]}
     style={
       Object {
@@ -4044,7 +4044,7 @@ exports[`Board renders with no bets placed 1`] = `
     </div>
   </div>
   <div
-    className="betting-square-visible"
+    className="betting-square-visible betting-square-undefined"
     onClick={[Function]}
     style={
       Object {
@@ -4086,7 +4086,7 @@ exports[`Board renders with no bets placed 1`] = `
     </div>
   </div>
   <div
-    className="betting-square-visible"
+    className="betting-square-visible betting-square-undefined"
     onClick={[Function]}
     style={
       Object {
@@ -4128,7 +4128,7 @@ exports[`Board renders with no bets placed 1`] = `
     </div>
   </div>
   <div
-    className="betting-square-visible"
+    className="betting-square-visible betting-square-undefined"
     onClick={[Function]}
     style={
       Object {
@@ -4170,7 +4170,7 @@ exports[`Board renders with no bets placed 1`] = `
     </div>
   </div>
   <div
-    className="betting-square-visible"
+    className="betting-square-visible betting-square-undefined"
     onClick={[Function]}
     style={
       Object {

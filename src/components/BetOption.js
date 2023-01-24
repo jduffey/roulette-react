@@ -1,12 +1,7 @@
-import { Chip } from "../Chip";
-import { BETTING_SQUARE_OUTLINE_SIZE } from "../../common/project-globals";
+import { Chip } from "./Chip";
+import { BETTING_SQUARE_OUTLINE_SIZE } from "../common/project-globals";
 
-const sizeData = {
-    width: 80 - BETTING_SQUARE_OUTLINE_SIZE,
-    height: 180 - BETTING_SQUARE_OUTLINE_SIZE,
-}
-
-export function StraightUpZeroes(props) {
+export function BetOption(props) {
     return (
         <div
             className={`betting-square-visible betting-square-${props.betName}`}
@@ -14,14 +9,14 @@ export function StraightUpZeroes(props) {
             style={{
                 left: props.styleData.left,
                 top: props.styleData.top,
-                height: sizeData.height,
-                width: sizeData.width,
+                height: props.styleData.height - BETTING_SQUARE_OUTLINE_SIZE,
+                width: props.styleData.width - BETTING_SQUARE_OUTLINE_SIZE,
                 backgroundColor: props.styleData.backgroundColor,
             }}
         >
             <div className="betting-square-contents">
                 <div
-                    className="betting-square-label zero-square-label"
+                    className={`betting-square-label ${props.classNamePrefix}-square-label`}
                     style={{
                         backgroundColor: props.styleData.labelBackgroundColor,
                     }}

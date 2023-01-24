@@ -1,10 +1,6 @@
 import React from 'react';
 
-import { StraightUp1To36 } from './BettingOptions/StraightUp1To36';
-import { StraightUpZeroes } from './BettingOptions/StraightUpZeroes';
-import { Dozens } from './BettingOptions/Dozens';
-import { Column } from './BettingOptions/Column';
-import { Halves } from './BettingOptions/Halves';
+import { BetOption } from './BetOption';
 
 import { BET_NAMES } from '../common/betNames';
 import { STANDARD_COLORS } from '../common/standardColors';
@@ -102,62 +98,77 @@ const bettingSquareHalvesNames = Object.keys(BETTING_SQUARES_HALVES);
 
 export class Board extends React.Component {
     render1To36Squares(betName, displayData) {
+        displayData.styleData.width = 80;
+        displayData.styleData.height = 120;
         return (
-            <StraightUp1To36
+            <BetOption
                 key={betName}
                 onClick={() => this.props.onClick(betName)}
                 displayLabel={displayData.displayText}
                 betAmount={this.props.betsOnBoard[betName]}
                 styleData={displayData.styleData}
+                classNamePrefix="straightUp1to36"
             />
         );
     }
 
     renderZeroesSquares(betName, displayData) {
+        displayData.styleData.width = 80;
+        displayData.styleData.height = 180;
         return (
-            <StraightUpZeroes
+            <BetOption
                 key={betName}
                 onClick={() => this.props.onClick(betName)}
                 displayLabel={displayData.displayText}
                 betAmount={this.props.betsOnBoard[betName]}
                 styleData={displayData.styleData}
+                classNamePrefix="zero"
             />
         );
     }
 
     renderDozensSquares(betName, displayData) {
+        displayData.styleData.width = 320;
+        displayData.styleData.height = 80;
         return (
-            <Dozens
+            <BetOption
                 key={betName}
                 onClick={() => this.props.onClick(betName)}
                 displayLabel={displayData.displayText}
                 betAmount={this.props.betsOnBoard[betName]}
                 styleData={displayData.styleData}
+                classNamePrefix="dozens"
             />
         );
     }
 
     renderColumnSquares(betName, displayData) {
+        displayData.styleData.width = 80 ;
+        displayData.styleData.height = 120;
         return (
-            <Column
+            <BetOption
                 key={betName}
                 onClick={() => this.props.onClick(betName)}
                 displayLabel={displayData.displayText}
                 betAmount={this.props.betsOnBoard[betName]}
                 styleData={displayData.styleData}
+                classNamePrefix="column"
             />
         );
     }
 
     renderHalvesSquares(betName, displayData) {
+        displayData.styleData.width = 160;
+        displayData.styleData.height = 80;
         return (
-            <Halves
+            <BetOption
                 key={betName}
                 id={betName}
                 onClick={() => this.props.onClick(betName)}
                 displayLabel={displayData.displayText}
                 betAmount={this.props.betsOnBoard[betName]}
                 styleData={displayData.styleData}
+                classNamePrefix="halves"
             />
         );
     }
