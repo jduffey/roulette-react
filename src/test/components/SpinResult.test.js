@@ -44,8 +44,9 @@ describe('SpinResult', () => {
         [WHEEL_NUMBERS.WN_34],
         [WHEEL_NUMBERS.WN_35],
         [WHEEL_NUMBERS.WN_36],
-        [undefined, 'undefined'],
-    ])('renders %s', (spinResult) => {
+        [undefined],
+        [null],
+    ])('renders spin result %s', (spinResult) => {
         const sut =
             <SpinResult
                 spinResult={spinResult}

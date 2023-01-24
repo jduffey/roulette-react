@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SpinResult renders 0 1`] = `
+exports[`SpinResult renders spin result 0 1`] = `
 <div
   className="spin-result-container"
 >
@@ -17,7 +17,7 @@ exports[`SpinResult renders 0 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 00 1`] = `
+exports[`SpinResult renders spin result 00 1`] = `
 <div
   className="spin-result-container"
 >
@@ -34,7 +34,7 @@ exports[`SpinResult renders 00 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 1 1`] = `
+exports[`SpinResult renders spin result 1 1`] = `
 <div
   className="spin-result-container"
 >
@@ -51,7 +51,7 @@ exports[`SpinResult renders 1 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 2 1`] = `
+exports[`SpinResult renders spin result 2 1`] = `
 <div
   className="spin-result-container"
 >
@@ -68,7 +68,7 @@ exports[`SpinResult renders 2 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 3 1`] = `
+exports[`SpinResult renders spin result 3 1`] = `
 <div
   className="spin-result-container"
 >
@@ -85,7 +85,7 @@ exports[`SpinResult renders 3 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 4 1`] = `
+exports[`SpinResult renders spin result 4 1`] = `
 <div
   className="spin-result-container"
 >
@@ -102,7 +102,7 @@ exports[`SpinResult renders 4 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 5 1`] = `
+exports[`SpinResult renders spin result 5 1`] = `
 <div
   className="spin-result-container"
 >
@@ -119,7 +119,7 @@ exports[`SpinResult renders 5 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 6 1`] = `
+exports[`SpinResult renders spin result 6 1`] = `
 <div
   className="spin-result-container"
 >
@@ -136,7 +136,7 @@ exports[`SpinResult renders 6 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 7 1`] = `
+exports[`SpinResult renders spin result 7 1`] = `
 <div
   className="spin-result-container"
 >
@@ -153,7 +153,7 @@ exports[`SpinResult renders 7 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 8 1`] = `
+exports[`SpinResult renders spin result 8 1`] = `
 <div
   className="spin-result-container"
 >
@@ -170,7 +170,7 @@ exports[`SpinResult renders 8 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 9 1`] = `
+exports[`SpinResult renders spin result 9 1`] = `
 <div
   className="spin-result-container"
 >
@@ -187,7 +187,7 @@ exports[`SpinResult renders 9 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 10 1`] = `
+exports[`SpinResult renders spin result 10 1`] = `
 <div
   className="spin-result-container"
 >
@@ -204,7 +204,7 @@ exports[`SpinResult renders 10 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 11 1`] = `
+exports[`SpinResult renders spin result 11 1`] = `
 <div
   className="spin-result-container"
 >
@@ -221,7 +221,7 @@ exports[`SpinResult renders 11 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 12 1`] = `
+exports[`SpinResult renders spin result 12 1`] = `
 <div
   className="spin-result-container"
 >
@@ -238,7 +238,7 @@ exports[`SpinResult renders 12 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 13 1`] = `
+exports[`SpinResult renders spin result 13 1`] = `
 <div
   className="spin-result-container"
 >
@@ -255,7 +255,7 @@ exports[`SpinResult renders 13 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 14 1`] = `
+exports[`SpinResult renders spin result 14 1`] = `
 <div
   className="spin-result-container"
 >
@@ -272,7 +272,7 @@ exports[`SpinResult renders 14 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 15 1`] = `
+exports[`SpinResult renders spin result 15 1`] = `
 <div
   className="spin-result-container"
 >
@@ -289,7 +289,7 @@ exports[`SpinResult renders 15 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 16 1`] = `
+exports[`SpinResult renders spin result 16 1`] = `
 <div
   className="spin-result-container"
 >
@@ -306,7 +306,7 @@ exports[`SpinResult renders 16 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 17 1`] = `
+exports[`SpinResult renders spin result 17 1`] = `
 <div
   className="spin-result-container"
 >
@@ -323,7 +323,7 @@ exports[`SpinResult renders 17 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 18 1`] = `
+exports[`SpinResult renders spin result 18 1`] = `
 <div
   className="spin-result-container"
 >
@@ -340,7 +340,7 @@ exports[`SpinResult renders 18 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 19 1`] = `
+exports[`SpinResult renders spin result 19 1`] = `
 <div
   className="spin-result-container"
 >
@@ -357,7 +357,7 @@ exports[`SpinResult renders 19 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 20 1`] = `
+exports[`SpinResult renders spin result 20 1`] = `
 <div
   className="spin-result-container"
 >
@@ -374,7 +374,7 @@ exports[`SpinResult renders 20 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 21 1`] = `
+exports[`SpinResult renders spin result 21 1`] = `
 <div
   className="spin-result-container"
 >
@@ -391,7 +391,7 @@ exports[`SpinResult renders 21 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 22 1`] = `
+exports[`SpinResult renders spin result 22 1`] = `
 <div
   className="spin-result-container"
 >
@@ -408,7 +408,7 @@ exports[`SpinResult renders 22 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 23 1`] = `
+exports[`SpinResult renders spin result 23 1`] = `
 <div
   className="spin-result-container"
 >
@@ -425,7 +425,7 @@ exports[`SpinResult renders 23 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 24 1`] = `
+exports[`SpinResult renders spin result 24 1`] = `
 <div
   className="spin-result-container"
 >
@@ -442,7 +442,7 @@ exports[`SpinResult renders 24 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 25 1`] = `
+exports[`SpinResult renders spin result 25 1`] = `
 <div
   className="spin-result-container"
 >
@@ -459,7 +459,7 @@ exports[`SpinResult renders 25 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 26 1`] = `
+exports[`SpinResult renders spin result 26 1`] = `
 <div
   className="spin-result-container"
 >
@@ -476,7 +476,7 @@ exports[`SpinResult renders 26 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 27 1`] = `
+exports[`SpinResult renders spin result 27 1`] = `
 <div
   className="spin-result-container"
 >
@@ -493,7 +493,7 @@ exports[`SpinResult renders 27 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 28 1`] = `
+exports[`SpinResult renders spin result 28 1`] = `
 <div
   className="spin-result-container"
 >
@@ -510,7 +510,7 @@ exports[`SpinResult renders 28 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 29 1`] = `
+exports[`SpinResult renders spin result 29 1`] = `
 <div
   className="spin-result-container"
 >
@@ -527,7 +527,7 @@ exports[`SpinResult renders 29 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 30 1`] = `
+exports[`SpinResult renders spin result 30 1`] = `
 <div
   className="spin-result-container"
 >
@@ -544,7 +544,7 @@ exports[`SpinResult renders 30 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 31 1`] = `
+exports[`SpinResult renders spin result 31 1`] = `
 <div
   className="spin-result-container"
 >
@@ -561,7 +561,7 @@ exports[`SpinResult renders 31 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 32 1`] = `
+exports[`SpinResult renders spin result 32 1`] = `
 <div
   className="spin-result-container"
 >
@@ -578,7 +578,7 @@ exports[`SpinResult renders 32 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 33 1`] = `
+exports[`SpinResult renders spin result 33 1`] = `
 <div
   className="spin-result-container"
 >
@@ -595,7 +595,7 @@ exports[`SpinResult renders 33 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 34 1`] = `
+exports[`SpinResult renders spin result 34 1`] = `
 <div
   className="spin-result-container"
 >
@@ -612,7 +612,7 @@ exports[`SpinResult renders 34 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 35 1`] = `
+exports[`SpinResult renders spin result 35 1`] = `
 <div
   className="spin-result-container"
 >
@@ -629,7 +629,7 @@ exports[`SpinResult renders 35 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders 36 1`] = `
+exports[`SpinResult renders spin result 36 1`] = `
 <div
   className="spin-result-container"
 >
@@ -646,7 +646,22 @@ exports[`SpinResult renders 36 1`] = `
 </div>
 `;
 
-exports[`SpinResult renders undefined 1`] = `
+exports[`SpinResult renders spin result null 1`] = `
+<div
+  className="spin-result-container"
+>
+  <div
+    className="spin-result-label"
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
+  />
+</div>
+`;
+
+exports[`SpinResult renders spin result undefined 1`] = `
 <div
   className="spin-result-container"
 >
