@@ -9,8 +9,8 @@ export function BetOption(props) {
             style={{
                 left: props.styleData.left,
                 top: props.styleData.top,
-                height: props.styleData.height - BETTING_SQUARE_OUTLINE_SIZE,
                 width: props.styleData.width - BETTING_SQUARE_OUTLINE_SIZE,
+                height: props.styleData.height - BETTING_SQUARE_OUTLINE_SIZE,
                 backgroundColor: props.styleData.backgroundColor,
             }}
         >
@@ -21,7 +21,7 @@ export function BetOption(props) {
                         backgroundColor: props.styleData.labelBackgroundColor,
                     }}
                 >
-                    {props.displayLabel}
+                    {props.displayText}
                 </div>
                 <Chip
                     key={props.chipAmount}

@@ -17,13 +17,11 @@ import {
 
 export function Board(props) {
     function render1To36Squares(betName, displayData) {
-        displayData.styleData.width = 80;
-        displayData.styleData.height = 120;
         return (
             <BetOption
                 key={betName}
                 onClick={() => props.onClick(betName)}
-                displayLabel={displayData.displayText}
+                displayText={displayData.displayText}
                 betAmount={props.betsOnBoard[betName]}
                 styleData={displayData.styleData}
                 classNamePrefix="straightUp1to36"
@@ -32,13 +30,11 @@ export function Board(props) {
     }
 
     function renderZeroesSquares(betName, displayData) {
-        displayData.styleData.width = 80;
-        displayData.styleData.height = 180;
         return (
             <BetOption
                 key={betName}
                 onClick={() => props.onClick(betName)}
-                displayLabel={displayData.displayText}
+                displayText={displayData.displayText}
                 betAmount={props.betsOnBoard[betName]}
                 styleData={displayData.styleData}
                 classNamePrefix="zero"
@@ -47,13 +43,11 @@ export function Board(props) {
     }
 
     function renderDozensSquares(betName, displayData) {
-        displayData.styleData.width = 320;
-        displayData.styleData.height = 80;
         return (
             <BetOption
                 key={betName}
                 onClick={() => props.onClick(betName)}
-                displayLabel={displayData.displayText}
+                displayText={displayData.displayText}
                 betAmount={props.betsOnBoard[betName]}
                 styleData={displayData.styleData}
                 classNamePrefix="dozens"
@@ -62,13 +56,11 @@ export function Board(props) {
     }
 
     function renderColumnSquares(betName, displayData) {
-        displayData.styleData.width = 80;
-        displayData.styleData.height = 120;
         return (
             <BetOption
                 key={betName}
                 onClick={() => props.onClick(betName)}
-                displayLabel={displayData.displayText}
+                displayText={displayData.displayText}
                 betAmount={props.betsOnBoard[betName]}
                 styleData={displayData.styleData}
                 classNamePrefix="column"
@@ -77,14 +69,12 @@ export function Board(props) {
     }
 
     function renderHalvesSquares(betName, displayData) {
-        displayData.styleData.width = 160;
-        displayData.styleData.height = 80;
         return (
             <BetOption
                 key={betName}
                 id={betName}
                 onClick={() => props.onClick(betName)}
-                displayLabel={displayData.displayText}
+                displayText={displayData.displayText}
                 betAmount={props.betsOnBoard[betName]}
                 styleData={displayData.styleData}
                 classNamePrefix="halves"
