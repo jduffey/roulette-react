@@ -6,6 +6,7 @@ import { ChipSelection } from './ChipSelection';
 import { CurrentBetsInfo } from './CurrentBetsInfo';
 import { MostRecentSpinResults } from './MostRecentSpinResults';
 import { PlayerInfo } from './PlayerInfo';
+import { PlayerInfoAsync } from './PlayerInfoAsync';
 import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
 
@@ -118,6 +119,8 @@ export class Game extends React.Component {
                 <PlayerInfo
                     availableBalance={availableBalance}
                     totalBetAmount={this.calculateTotalBetAmount()}
+                />
+                <PlayerInfoAsync
                 />
                 <CurrentBetsInfo
                     betsOnBoard={this.state.betsOnBoard}

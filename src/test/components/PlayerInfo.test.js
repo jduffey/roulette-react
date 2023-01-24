@@ -8,10 +8,10 @@ describe('PlayerInfo', () => {
         [123456, 56789], // TODO this test will fail if run in an environment with a different locale (e.g. using a period for thousands separator)
     ])('renders when availableBalance is %s and totalBetAmount is %s', (availableBalance, totalBetAmount) => {
         const sut =
-            PlayerInfo({
-                availableBalance,
-                totalBetAmount,
-            });
+            <PlayerInfo
+                availableBalance={availableBalance}
+                totalBetAmount={totalBetAmount}
+            />;
 
         const actual = renderer.create(sut);
 
