@@ -2142,9 +2142,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2184,9 +2181,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2226,9 +2220,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2268,9 +2259,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2310,9 +2298,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2352,9 +2337,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2394,9 +2376,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2436,9 +2415,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2478,9 +2454,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2520,9 +2493,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2562,9 +2532,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2604,9 +2571,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2646,9 +2610,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2688,9 +2649,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2730,9 +2688,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2772,9 +2727,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2814,9 +2766,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2856,9 +2805,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2898,9 +2844,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2940,9 +2883,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -2982,9 +2922,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3024,9 +2961,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3066,9 +3000,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3108,9 +3039,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3150,9 +3078,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3192,9 +3117,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3234,9 +3156,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3276,9 +3195,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3318,9 +3234,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3360,9 +3273,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3402,9 +3312,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3444,9 +3351,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3486,9 +3390,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3528,9 +3429,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3570,9 +3468,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3612,9 +3507,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3654,9 +3546,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3696,9 +3585,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3738,9 +3624,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3780,9 +3663,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3822,9 +3702,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3864,9 +3741,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3906,9 +3780,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3948,9 +3819,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -3990,9 +3858,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -4032,9 +3897,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -4074,9 +3936,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -4116,9 +3975,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -4158,9 +4014,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
@@ -4200,9 +4053,6 @@ exports[`Board renders with no bets placed 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "backgroundColor": "#F4F488",
-            "borderColor": "#000000",
-            "color": "#000000",
             "display": "none",
           }
         }
