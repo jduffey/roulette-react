@@ -1,5 +1,6 @@
 import { Chip } from "./Chip";
-import { BETTING_SQUARE_OUTLINE_SIZE } from "../common/project-globals";
+
+const BETTING_SQUARE_OUTLINE_SIZE = 1;
 
 export function BetOption(props) {
     return (
