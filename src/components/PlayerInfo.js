@@ -3,12 +3,12 @@ export function PlayerInfo(props) {
         <div className="player-info">
             {"Avail. Balance"}
             <br />
-            {"$ " + props.availableBalance.toLocaleString()}
+            {`$ ${props.availableBalance.toLocaleString()}`}
             <br />
             <br />
             {"Total Bet"}
             <br />
-            {"$ " + props.totalBetAmount.toLocaleString()}
+            {`$ ${props.totalBetAmount.toLocaleString()}`}
         </div>
     );
 }

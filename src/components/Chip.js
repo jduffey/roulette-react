@@ -58,7 +58,7 @@ export function Chip(props) {
             onClick={() => props.onClick(props.chipAmount)}
             style={styles}
         >
-            {"$" + props.chipAmount}
+            {`$${props.chipAmount}`}
         </div>
     );
 }

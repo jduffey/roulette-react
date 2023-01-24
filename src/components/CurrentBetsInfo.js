@@ -18,8 +18,12 @@ export function CurrentBetsInfo(props) {
                     {Object.keys(props.betsOnBoard).map((betOption) => {
                         return (
                             <tr key={betOption}>
-                                <td>{betOption}</td>
-                                <td className="current-bets-info-table-bet-amount">{"$ " + props.betsOnBoard[betOption].toString()}</td>
+                                <td>
+                                    {betOption}
+                                </td>
+                                <td className="current-bets-info-table-bet-amount">
+                                    {`$ ${props.betsOnBoard[betOption].toString()}`}
+                                </td>
                             </tr>
                         );
                     })}
