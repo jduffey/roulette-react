@@ -2233,7 +2233,7 @@ exports[`Game renders 1`] = `
       className="spin-result-label"
       style={
         Object {
-          "backgroundColor": undefined,
+          "backgroundColor": "inherit",
         }
       }
     />
