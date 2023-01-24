@@ -1,22 +1,20 @@
 import { Chip } from "./Chip";
 
 export function ChipSelection(props) {
-    const isSelectedChip = (chipAmount) => {
-        return props.currentChipAmountSelected === chipAmount;
-    };
-
     return (
         <div
             className="chip-selection-bar"
         >
             {[1, 5, 25, 100, 500, 1000].map((chipAmount) => {
+                const isSelected = props.currentChipAmountSelected === chipAmount;
+
                 return Chip({
                     id: `chip-${chipAmount}`,
                     key: chipAmount,
                     className: "chip-selection-chip",
-                    chipAmount: chipAmount,
+                    chipAmount,
                     onClick: props.onClick,
-                    isSelected: isSelectedChip(chipAmount)
+                    isSelected,
                 });
             })}
         </div>

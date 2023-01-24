@@ -20,7 +20,7 @@ describe('BetOption', () => {
             },
             classNamePrefix: "CLASSNAME_PREFIX",
             displayText: "DISPLAY_TEXT",
-            betAmount: betAmount,
+            betAmount,
         };
 
         const sut = BetOption(props);

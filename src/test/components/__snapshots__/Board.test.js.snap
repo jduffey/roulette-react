@@ -38,7 +38,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -80,7 +79,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -122,7 +120,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -164,7 +161,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -206,7 +202,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -248,7 +243,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -290,7 +284,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -332,7 +325,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -374,7 +366,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -416,7 +407,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -458,7 +448,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -500,7 +489,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -542,7 +530,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -584,7 +571,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -626,7 +612,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -668,7 +653,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -710,7 +694,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -752,7 +735,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -794,7 +776,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -836,7 +817,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -878,7 +858,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -920,7 +899,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -962,7 +940,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1004,7 +981,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1046,7 +1022,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1088,7 +1063,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1130,7 +1104,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1172,7 +1145,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1214,7 +1186,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1256,7 +1227,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1298,7 +1268,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1340,7 +1309,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1382,7 +1350,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1424,7 +1391,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1466,7 +1432,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1508,7 +1473,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1550,7 +1514,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1592,7 +1555,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1634,7 +1596,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1676,7 +1637,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1718,7 +1678,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1760,7 +1719,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1802,7 +1760,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1844,7 +1801,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1886,7 +1842,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1928,7 +1883,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -1970,7 +1924,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -2012,7 +1965,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -2054,7 +2006,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >
@@ -2096,7 +2047,6 @@ exports[`Board renders with bets placed on all bet names 1`] = `
             "backgroundColor": "#DFDFDF",
             "borderColor": "#000000",
             "color": "#000000",
-            "display": "",
           }
         }
       >

@@ -9,7 +9,7 @@ describe('SpinButton', () => {
     ])('renders when isSpinAllowed is %s', (isSpinAllowed) => {
         const sut =
             SpinButton({
-                isSpinAllowed: isSpinAllowed,
+                isSpinAllowed,
                 onClick: () => { },
             });
 

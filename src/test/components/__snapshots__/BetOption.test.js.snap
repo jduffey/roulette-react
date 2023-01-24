@@ -77,7 +77,6 @@ exports[`BetOption renders when chip is visible 1`] = `
           "backgroundColor": "#DFDFDF",
           "borderColor": "#000000",
           "color": "#000000",
-          "display": "",
         }
       }
     >

@@ -8,7 +8,7 @@ export function SpinButton(props) {
         >
             <span
                 style={{
-                    color: color,
+                    color,
                 }}
             >
                 SPIN
@@ -16,7 +16,7 @@ export function SpinButton(props) {
             <span
                 className="place-a-bet-message"
                 style={{
-                    zIndex: zIndex,
+                    zIndex,
                 }}
             >
                 Place a bet!

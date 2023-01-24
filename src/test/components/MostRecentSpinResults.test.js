@@ -9,7 +9,7 @@ describe('MostRecentSpinResults', () => {
     ])('renders when there are %s', (_description, spinResults) => {
         const sut =
             MostRecentSpinResults({
-                spinResults: spinResults,
+                spinResults,
             });
 
         const actual = renderer.create(sut);

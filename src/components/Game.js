@@ -78,7 +78,7 @@ export class Game extends React.Component {
             availableBalance: newBalance,
             previousRoundBets: this.state.betsOnBoard,
             betsOnBoard: {},
-            mostRecentSpinResults: mostRecentSpinResults,
+            mostRecentSpinResults,
         });
     }
 

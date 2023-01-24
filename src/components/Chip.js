@@ -2,42 +2,36 @@ const getChipStyles = (betAmount) => {
     switch (true) {
         case (1<= betAmount && betAmount < 5):
             return {
-                display: betAmount > 0 ? "" : "none",
                 backgroundColor: "#DFDFDF",
                 color: "#000000",
                 borderColor: "#000000",
             };
         case (5 <= betAmount && betAmount < 25):
             return {
-                display: betAmount > 0 ? "" : "none",
                 backgroundColor: "#D94848",
                 color: "#FFFFFF",
                 borderColor: "#000000",
             };
         case (25 <= betAmount && betAmount < 100):
             return {
-                display: betAmount > 0 ? "" : "none",
                 backgroundColor: "#00B341",
                 color: "#FFFFFF",
                 borderColor: "#000000",
             };
         case (100 <= betAmount && betAmount < 500):
             return {
-                display: betAmount > 0 ? "" : "none",
                 backgroundColor: "#222222",
                 color: "#FFFFFF",
                 borderColor: "#2A8A8A",
             };
         case (500 <= betAmount && betAmount < 1000):
             return {
-                display: betAmount > 0 ? "" : "none",
                 backgroundColor: "#663399",
                 color: "#FFFFFF",
                 borderColor: "#2A8A8A",
             };
         case (1000 <= betAmount):
             return {
-                display: betAmount > 0 ? "" : "none",
                 backgroundColor: "#F4F488",
                 color: "#000000",
                 borderColor: "#000000",
