@@ -2,55 +2,52 @@ import { STANDARD_COLORS } from "./standardColors";
 import { WHEEL_NUMBERS } from "./wheelNumbers";
 
 export const getWheelNumberColor = (wheelNumber) => {
-    const redNumbers = new Set([
-        WHEEL_NUMBERS.WN_1,
-        WHEEL_NUMBERS.WN_3,
-        WHEEL_NUMBERS.WN_5,
-        WHEEL_NUMBERS.WN_7,
-        WHEEL_NUMBERS.WN_9,
-        WHEEL_NUMBERS.WN_12,
-        WHEEL_NUMBERS.WN_14,
-        WHEEL_NUMBERS.WN_16,
-        WHEEL_NUMBERS.WN_18,
-        WHEEL_NUMBERS.WN_19,
-        WHEEL_NUMBERS.WN_21,
-        WHEEL_NUMBERS.WN_23,
-        WHEEL_NUMBERS.WN_25,
-        WHEEL_NUMBERS.WN_27,
-        WHEEL_NUMBERS.WN_30,
-        WHEEL_NUMBERS.WN_32,
-        WHEEL_NUMBERS.WN_34,
-        WHEEL_NUMBERS.WN_36
-    ]);
-    const blackNumbers = new Set([
-        WHEEL_NUMBERS.WN_2,
-        WHEEL_NUMBERS.WN_4,
-        WHEEL_NUMBERS.WN_6,
-        WHEEL_NUMBERS.WN_8,
-        WHEEL_NUMBERS.WN_10,
-        WHEEL_NUMBERS.WN_11,
-        WHEEL_NUMBERS.WN_13,
-        WHEEL_NUMBERS.WN_15,
-        WHEEL_NUMBERS.WN_17,
-        WHEEL_NUMBERS.WN_20,
-        WHEEL_NUMBERS.WN_22,
-        WHEEL_NUMBERS.WN_24,
-        WHEEL_NUMBERS.WN_26,
-        WHEEL_NUMBERS.WN_28,
-        WHEEL_NUMBERS.WN_29,
-        WHEEL_NUMBERS.WN_31,
-        WHEEL_NUMBERS.WN_33,
-        WHEEL_NUMBERS.WN_35
-    ]);
-    const greenNumbers = new Set([
-        WHEEL_NUMBERS.WN_0,
-        WHEEL_NUMBERS.WN_00
-    ]);
-    if (redNumbers.has(wheelNumber)) {
-        return STANDARD_COLORS.FELT_RED;
-    } else if (blackNumbers.has(wheelNumber)) {
-        return STANDARD_COLORS.FELT_BLACK;
-    } else if (greenNumbers.has(wheelNumber)) {
-        return STANDARD_COLORS.FELT_GREEN;
+    switch (wheelNumber) {
+        case WHEEL_NUMBERS.WN_1:
+        case WHEEL_NUMBERS.WN_3:
+        case WHEEL_NUMBERS.WN_5:
+        case WHEEL_NUMBERS.WN_7:
+        case WHEEL_NUMBERS.WN_9:
+        case WHEEL_NUMBERS.WN_12:
+        case WHEEL_NUMBERS.WN_14:
+        case WHEEL_NUMBERS.WN_16:
+        case WHEEL_NUMBERS.WN_18:
+        case WHEEL_NUMBERS.WN_19:
+        case WHEEL_NUMBERS.WN_21:
+        case WHEEL_NUMBERS.WN_23:
+        case WHEEL_NUMBERS.WN_25:
+        case WHEEL_NUMBERS.WN_27:
+        case WHEEL_NUMBERS.WN_30:
+        case WHEEL_NUMBERS.WN_32:
+        case WHEEL_NUMBERS.WN_34:
+        case WHEEL_NUMBERS.WN_36:
+            return STANDARD_COLORS.FELT_RED;
+
+        case WHEEL_NUMBERS.WN_2:
+        case WHEEL_NUMBERS.WN_4:
+        case WHEEL_NUMBERS.WN_6:
+        case WHEEL_NUMBERS.WN_8:
+        case WHEEL_NUMBERS.WN_10:
+        case WHEEL_NUMBERS.WN_11:
+        case WHEEL_NUMBERS.WN_13:
+        case WHEEL_NUMBERS.WN_15:
+        case WHEEL_NUMBERS.WN_17:
+        case WHEEL_NUMBERS.WN_20:
+        case WHEEL_NUMBERS.WN_22:
+        case WHEEL_NUMBERS.WN_24:
+        case WHEEL_NUMBERS.WN_26:
+        case WHEEL_NUMBERS.WN_28:
+        case WHEEL_NUMBERS.WN_29:
+        case WHEEL_NUMBERS.WN_31:
+        case WHEEL_NUMBERS.WN_33:
+        case WHEEL_NUMBERS.WN_35:
+            return STANDARD_COLORS.FELT_BLACK;
+
+        case WHEEL_NUMBERS.WN_0:
+        case WHEEL_NUMBERS.WN_00:
+            return STANDARD_COLORS.FELT_GREEN;
+
+        default:
+            throw new Error(`Unknown wheel number: ${wheelNumber}`);
     }
 }
