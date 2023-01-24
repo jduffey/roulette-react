@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BetOption renders when chip is not visible 1`] = `
+<div
+  className="betting-square-visible betting-square-BET_NAME"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "BACKGROUND_COLOR",
+      "height": 39,
+      "left": 10,
+      "top": 20,
+      "width": 29,
+    }
+  }
+>
+  <div
+    className="betting-square-contents"
+  >
+    <div
+      className="betting-square-label CLASSNAME_PREFIX-square-label"
+      style={
+        Object {
+          "backgroundColor": "LABEL_BACKGROUND_COLOR",
+        }
+      }
+    >
+      DISPLAY_TEXT
+    </div>
+    <div
+      className="betting-square-chip"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#DFDFDF",
+          "borderColor": "#000000",
+          "color": "#000000",
+          "display": "none",
+        }
+      }
+    >
+      $0
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BetOption renders when chip is visible 1`] = `
+<div
+  className="betting-square-visible betting-square-BET_NAME"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "BACKGROUND_COLOR",
+      "height": 39,
+      "left": 10,
+      "top": 20,
+      "width": 29,
+    }
+  }
+>
+  <div
+    className="betting-square-contents"
+  >
+    <div
+      className="betting-square-label CLASSNAME_PREFIX-square-label"
+      style={
+        Object {
+          "backgroundColor": "LABEL_BACKGROUND_COLOR",
+        }
+      }
+    >
+      DISPLAY_TEXT
+    </div>
+    <div
+      className="betting-square-chip"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#DFDFDF",
+          "borderColor": "#000000",
+          "color": "#000000",
+          "display": "",
+        }
+      }
+    >
+      $1
+    </div>
+  </div>
+</div>
+`;
