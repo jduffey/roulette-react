@@ -1,4 +1,18 @@
 const className = "current-bets-info";
+
+const betRow = (betOption, betAmount) => {
+    return (
+        <tr key={betOption}>
+            <td>
+                {betOption}
+            </td>
+            <td className="current-bets-info-table-bet-amount">
+                {`$ ${betAmount}`}
+            </td>
+        </tr>
+    );
+}
+
 export function CurrentBetsInfo(props) {
     return (
         <div className={className}>
@@ -15,14 +29,7 @@ export function CurrentBetsInfo(props) {
                         <th>Bet Name</th>
                         <th>Bet Amount</th>
                     </tr>
-                    {Object.keys(props.betsOnBoard).map((betOption) => {
-                        return (
-                            <tr key={betOption}>
-                                <td>{betOption}</td>
-                                <td className="current-bets-info-table-bet-amount">{"$ " + props.betsOnBoard[betOption].toString()}</td>
-                            </tr>
-                        );
-                    })}
+                    {Object.keys(props.betsOnBoard).map((betOption) => betRow(betOption, props.betsOnBoard[betOption]))}
                 </tbody>
             </table>
         </div>

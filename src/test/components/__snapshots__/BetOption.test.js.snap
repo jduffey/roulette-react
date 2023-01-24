@@ -32,9 +32,6 @@ exports[`BetOption renders when chip is not visible 1`] = `
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "#DFDFDF",
-          "borderColor": "#000000",
-          "color": "#000000",
           "display": "none",
         }
       }
@@ -80,7 +77,6 @@ exports[`BetOption renders when chip is visible 1`] = `
           "backgroundColor": "#DFDFDF",
           "borderColor": "#000000",
           "color": "#000000",
-          "display": "",
         }
       }
     >

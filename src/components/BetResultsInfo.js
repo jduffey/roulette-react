@@ -1,6 +1,22 @@
 import { getBetNameMultiplier } from "../common/getBetNameMultiplier";
 import { getWinningCriteria } from "../common/getWinningCriteria";
 
+function calculateWinningsOnBet(props, betOption) {
+    const multiplier = getBetNameMultiplier(betOption);
+
+    const betAmount = props.bets[betOption];
+
+    return getWinningCriteria(props.winningWheelNumber).has(betOption) ?
+        betAmount * multiplier :
+        0;
+}
+
+function calculateBetReturnedAmount(props, betOption) {
+    return getWinningCriteria(props.winningWheelNumber).has(betOption) ?
+        props.bets[betOption] :
+        0;
+}
+
 const className = "bet-results-info";
 export function BetResultsInfo(props) {
     const sumBetAmounts = Object.keys(props.bets).reduce((acc, betOption) => {
@@ -19,17 +35,17 @@ export function BetResultsInfo(props) {
     }, 0);
 
     const startingBalanceText = props.startingBalance ?
-        "$ " + props.startingBalance.toString() :
+        `$ ${props.startingBalance.toString()}` :
         "";
 
     const netChangeInBalance = sumWinnings + sumBetsReturned - sumBetAmounts;
     const netChangeInBalanceText = props.startingBalance ?
-        "$ " + netChangeInBalance.toString() :
+        `$ ${netChangeInBalance.toString()}` :
         "";
 
     const finalBalance = props.startingBalance + netChangeInBalance;
     const finalBalanceText = props.startingBalance ?
-        "$ " + finalBalance.toString() :
+        `$ ${finalBalance.toString()}` :
         "";
 
     return (
@@ -52,29 +68,29 @@ export function BetResultsInfo(props) {
                     {Object.keys(props.bets).map((betOption) => {
                         const betAmountOnBet = props.bets[betOption];
 
-                        let winningsOnBet = calculateWinningsOnBet(props, betOption);
-                        const winningsOnBetText = winningsOnBet ? "$ " + winningsOnBet.toString() : "";
+                        const winningsOnBet = calculateWinningsOnBet(props, betOption);
+                        const winningsOnBetText = winningsOnBet ? `$ ${winningsOnBet.toString()}` : "";
 
-                        let betReturnedAmount = calculateBetReturnedAmount(props, betOption);
-                        const betReturnedAmountText = betReturnedAmount ? "$ " + betReturnedAmount.toString() : "";
+                        const betReturnedAmount = calculateBetReturnedAmount(props, betOption);
+                        const betReturnedAmountText = betReturnedAmount ? `$ ${betReturnedAmount.toString()}` : "";
 
                         return (
                             <tr key={betOption}>
                                 <td>{betOption}</td>
-                                <td className="bet-results-info-table-bet-amount">{"$ " + betAmountOnBet.toString()}</td>
+                                <td className="bet-results-info-table-bet-amount">{`$ ${betAmountOnBet.toString()}`}</td>
                                 <td>{winningsOnBetText}</td>
                                 <td>{betReturnedAmountText}</td>
                             </tr>
                         );
                     })}
-                    <tr style={{ height: "10px" }}></tr>
+                    <tr style={{ height: "10px" }} />
                     <tr>
                         <td>TOTALS</td>
-                        <td>{"$ " + sumBetAmounts}</td>
-                        <td>{"$ " + sumWinnings}</td>
-                        <td>{"$ " + sumBetsReturned}</td>
+                        <td>{`$ ${sumBetAmounts}`}</td>
+                        <td>{`$ ${sumWinnings}`}</td>
+                        <td>{`$ ${sumBetsReturned}`}</td>
                     </tr>
-                    <tr style={{ height: "10px" }}></tr>
+                    <tr style={{ height: "10px" }} />
                     <tr className="balance-change-value">
                         <td>
                             Starting
@@ -103,20 +119,4 @@ export function BetResultsInfo(props) {
             </table>
         </div>
     );
-}
-
-function calculateWinningsOnBet(props, betOption) {
-    const multiplier = getBetNameMultiplier(betOption);
-
-    const betAmount = props.bets[betOption];
-
-    return getWinningCriteria(props.winningWheelNumber).has(betOption) ?
-        betAmount * multiplier :
-        0;
-}
-
-function calculateBetReturnedAmount(props, betOption) {
-    return getWinningCriteria(props.winningWheelNumber).has(betOption) ?
-        props.bets[betOption] :
-        0;
 }

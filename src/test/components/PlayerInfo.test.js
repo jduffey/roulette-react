@@ -9,8 +9,8 @@ describe('PlayerInfo', () => {
     ])('renders when availableBalance is %s and totalBetAmount is %s', (availableBalance, totalBetAmount) => {
         const sut =
             PlayerInfo({
-                availableBalance: availableBalance,
-                totalBetAmount: totalBetAmount,
+                availableBalance,
+                totalBetAmount,
             });
 
         const actual = renderer.create(sut);

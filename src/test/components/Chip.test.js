@@ -21,7 +21,7 @@ describe('Chip', () => {
         const id = "ID";
         const key = "KEY";
         const className = "CLASSNAME";
-        const onClickFunction = () => { };
+        const onClickFunction = () => "ON_CLICK";
 
         describe('when isSelected is false', () => {
             it.each(boundaryValues)('chip amount %s', (chipAmount) => {
@@ -29,12 +29,12 @@ describe('Chip', () => {
 
                 const sut =
                     Chip({
-                        id: id,
-                        key: key,
-                        className: className,
-                        chipAmount: chipAmount,
+                        id,
+                        key,
+                        className,
+                        chipAmount,
                         onClick: onClickFunction,
-                        isSelected: isSelected,
+                        isSelected,
                     });
 
                 const actual = renderer.create(sut);
@@ -49,12 +49,12 @@ describe('Chip', () => {
 
                 const sut =
                     Chip({
-                        id: id,
-                        key: key,
-                        className: className,
-                        chipAmount: chipAmount,
+                        id,
+                        key,
+                        className,
+                        chipAmount,
                         onClick: onClickFunction,
-                        isSelected: isSelected,
+                        isSelected,
                     });
 
                 const actual = renderer.create(sut);

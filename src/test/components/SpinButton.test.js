@@ -9,8 +9,8 @@ describe('SpinButton', () => {
     ])('renders when isSpinAllowed is %s', (isSpinAllowed) => {
         const sut =
             SpinButton({
-                isSpinAllowed: isSpinAllowed,
-                onClick: () => { },
+                isSpinAllowed,
+                onClick: () => "ON_CLICK",
             });
 
         const actual = renderer.create(sut)

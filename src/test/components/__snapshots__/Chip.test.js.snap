@@ -7,9 +7,6 @@ exports[`Chip boundary tests for chip colors when isSelected is false chip amoun
   onClick={[Function]}
   style={
     Object {
-      "backgroundColor": "#DFDFDF",
-      "borderColor": "#000000",
-      "color": "#000000",
       "display": "none",
     }
   }
@@ -28,7 +25,6 @@ exports[`Chip boundary tests for chip colors when isSelected is false chip amoun
       "backgroundColor": "#DFDFDF",
       "borderColor": "#000000",
       "color": "#000000",
-      "display": "",
     }
   }
 >
@@ -46,7 +42,6 @@ exports[`Chip boundary tests for chip colors when isSelected is false chip amoun
       "backgroundColor": "#DFDFDF",
       "borderColor": "#000000",
       "color": "#000000",
-      "display": "",
     }
   }
 >
@@ -64,7 +59,6 @@ exports[`Chip boundary tests for chip colors when isSelected is false chip amoun
       "backgroundColor": "#D94848",
       "borderColor": "#000000",
       "color": "#FFFFFF",
-      "display": "",
     }
   }
 >
@@ -82,7 +76,6 @@ exports[`Chip boundary tests for chip colors when isSelected is false chip amoun
       "backgroundColor": "#D94848",
       "borderColor": "#000000",
       "color": "#FFFFFF",
-      "display": "",
     }
   }
 >
@@ -100,7 +93,6 @@ exports[`Chip boundary tests for chip colors when isSelected is false chip amoun
       "backgroundColor": "#00B341",
       "borderColor": "#000000",
       "color": "#FFFFFF",
-      "display": "",
     }
   }
 >
@@ -118,7 +110,6 @@ exports[`Chip boundary tests for chip colors when isSelected is false chip amoun
       "backgroundColor": "#00B341",
       "borderColor": "#000000",
       "color": "#FFFFFF",
-      "display": "",
     }
   }
 >
@@ -136,7 +127,6 @@ exports[`Chip boundary tests for chip colors when isSelected is false chip amoun
       "backgroundColor": "#222222",
       "borderColor": "#2A8A8A",
       "color": "#FFFFFF",
-      "display": "",
     }
   }
 >
@@ -154,7 +144,6 @@ exports[`Chip boundary tests for chip colors when isSelected is false chip amoun
       "backgroundColor": "#222222",
       "borderColor": "#2A8A8A",
       "color": "#FFFFFF",
-      "display": "",
     }
   }
 >
@@ -172,7 +161,6 @@ exports[`Chip boundary tests for chip colors when isSelected is false chip amoun
       "backgroundColor": "#663399",
       "borderColor": "#2A8A8A",
       "color": "#FFFFFF",
-      "display": "",
     }
   }
 >
@@ -190,7 +178,6 @@ exports[`Chip boundary tests for chip colors when isSelected is false chip amoun
       "backgroundColor": "#663399",
       "borderColor": "#2A8A8A",
       "color": "#FFFFFF",
-      "display": "",
     }
   }
 >
@@ -208,7 +195,6 @@ exports[`Chip boundary tests for chip colors when isSelected is false chip amoun
       "backgroundColor": "#F4F488",
       "borderColor": "#000000",
       "color": "#000000",
-      "display": "",
     }
   }
 >
@@ -223,10 +209,7 @@ exports[`Chip boundary tests for chip colors when isSelected is true chip amount
   onClick={[Function]}
   style={
     Object {
-      "backgroundColor": "#DFDFDF",
-      "borderColor": "#000000",
       "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
-      "color": "#000000",
       "display": "none",
       "marginTop": "12px",
     }
@@ -247,7 +230,6 @@ exports[`Chip boundary tests for chip colors when isSelected is true chip amount
       "borderColor": "#000000",
       "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
       "color": "#000000",
-      "display": "",
       "marginTop": "12px",
     }
   }
@@ -267,7 +249,6 @@ exports[`Chip boundary tests for chip colors when isSelected is true chip amount
       "borderColor": "#000000",
       "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
       "color": "#000000",
-      "display": "",
       "marginTop": "12px",
     }
   }
@@ -287,7 +268,6 @@ exports[`Chip boundary tests for chip colors when isSelected is true chip amount
       "borderColor": "#000000",
       "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
       "color": "#FFFFFF",
-      "display": "",
       "marginTop": "12px",
     }
   }
@@ -307,7 +287,6 @@ exports[`Chip boundary tests for chip colors when isSelected is true chip amount
       "borderColor": "#000000",
       "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
       "color": "#FFFFFF",
-      "display": "",
       "marginTop": "12px",
     }
   }
@@ -327,7 +306,6 @@ exports[`Chip boundary tests for chip colors when isSelected is true chip amount
       "borderColor": "#000000",
       "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
       "color": "#FFFFFF",
-      "display": "",
       "marginTop": "12px",
     }
   }
@@ -347,7 +325,6 @@ exports[`Chip boundary tests for chip colors when isSelected is true chip amount
       "borderColor": "#000000",
       "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
       "color": "#FFFFFF",
-      "display": "",
       "marginTop": "12px",
     }
   }
@@ -367,7 +344,6 @@ exports[`Chip boundary tests for chip colors when isSelected is true chip amount
       "borderColor": "#2A8A8A",
       "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
       "color": "#FFFFFF",
-      "display": "",
       "marginTop": "12px",
     }
   }
@@ -387,7 +363,6 @@ exports[`Chip boundary tests for chip colors when isSelected is true chip amount
       "borderColor": "#2A8A8A",
       "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
       "color": "#FFFFFF",
-      "display": "",
       "marginTop": "12px",
     }
   }
@@ -407,7 +382,6 @@ exports[`Chip boundary tests for chip colors when isSelected is true chip amount
       "borderColor": "#2A8A8A",
       "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
       "color": "#FFFFFF",
-      "display": "",
       "marginTop": "12px",
     }
   }
@@ -427,7 +401,6 @@ exports[`Chip boundary tests for chip colors when isSelected is true chip amount
       "borderColor": "#2A8A8A",
       "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
       "color": "#FFFFFF",
-      "display": "",
       "marginTop": "12px",
     }
   }
@@ -447,7 +420,6 @@ exports[`Chip boundary tests for chip colors when isSelected is true chip amount
       "borderColor": "#000000",
       "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
       "color": "#000000",
-      "display": "",
       "marginTop": "12px",
     }
   }

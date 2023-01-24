@@ -13,8 +13,8 @@ describe('ChipSelection', () => {
     ])('renders when currentChipAmountSelected is %s', (currentChipAmountSelected) => {
         const sut =
             ChipSelection({
-                currentChipAmountSelected: currentChipAmountSelected,
-                onClick: () => { },
+                currentChipAmountSelected,
+                onClick: () => "ON_CLICK",
             });
 
         const actual = renderer.create(sut);

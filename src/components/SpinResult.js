@@ -16,6 +16,7 @@ export function SpinResult(props) {
                         </div>
                     );
                 }
+                return null;
             })()}
         </div>
     );
