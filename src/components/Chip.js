@@ -1,23 +1,3 @@
-export function Chip(props) {
-    const styles = getChipStyles(props.chipAmount);
-    if (props.isSelected) {
-        styles.boxShadow = "0px 8px 6px 4px rgba(0,0,0,.6)";
-        styles.marginTop = "12px";
-    }
-
-    return (
-        <div
-            id={props.id}
-            key={props.chipAmount}
-            className={props.className}
-            onClick={() => props.onClick(props.chipAmount)}
-            style={styles}
-        >
-            {"$" + props.chipAmount}
-        </div>
-    )
-}
-
 function getChipStyles(betAmount) {
     let bgColor;
     let borderColor;
@@ -54,4 +34,24 @@ function getChipStyles(betAmount) {
         borderColor: borderColor,
         color: color,
     };
+}
+
+export function Chip(props) {
+    const styles = getChipStyles(props.chipAmount);
+    if (props.isSelected) {
+        styles.boxShadow = "0px 8px 6px 4px rgba(0,0,0,.6)";
+        styles.marginTop = "12px";
+    }
+
+    return (
+        <div
+            id={props.id}
+            key={props.chipAmount}
+            className={props.className}
+            onClick={() => props.onClick(props.chipAmount)}
+            style={styles}
+        >
+            {"$" + props.chipAmount}
+        </div>
+    );
 }

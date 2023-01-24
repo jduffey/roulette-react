@@ -1,6 +1,22 @@
 import { getBetNameMultiplier } from "../common/getBetNameMultiplier";
 import { getWinningCriteria } from "../common/getWinningCriteria";
 
+function calculateWinningsOnBet(props, betOption) {
+    const multiplier = getBetNameMultiplier(betOption);
+
+    const betAmount = props.bets[betOption];
+
+    return getWinningCriteria(props.winningWheelNumber).has(betOption) ?
+        betAmount * multiplier :
+        0;
+}
+
+function calculateBetReturnedAmount(props, betOption) {
+    return getWinningCriteria(props.winningWheelNumber).has(betOption) ?
+        props.bets[betOption] :
+        0;
+}
+
 const className = "bet-results-info";
 export function BetResultsInfo(props) {
     const sumBetAmounts = Object.keys(props.bets).reduce((acc, betOption) => {
@@ -103,20 +119,4 @@ export function BetResultsInfo(props) {
             </table>
         </div>
     );
-}
-
-function calculateWinningsOnBet(props, betOption) {
-    const multiplier = getBetNameMultiplier(betOption);
-
-    const betAmount = props.bets[betOption];
-
-    return getWinningCriteria(props.winningWheelNumber).has(betOption) ?
-        betAmount * multiplier :
-        0;
-}
-
-function calculateBetReturnedAmount(props, betOption) {
-    return getWinningCriteria(props.winningWheelNumber).has(betOption) ?
-        props.bets[betOption] :
-        0;
 }
