@@ -83,14 +83,14 @@ export function BetResultsInfo(props) {
                             </tr>
                         );
                     })}
-                    <tr style={{ height: "10px" }}></tr>
+                    <tr style={{ height: "10px" }} />
                     <tr>
                         <td>TOTALS</td>
                         <td>{`$ ${sumBetAmounts}`}</td>
                         <td>{`$ ${sumWinnings}`}</td>
                         <td>{`$ ${sumBetsReturned}`}</td>
                     </tr>
-                    <tr style={{ height: "10px" }}></tr>
+                    <tr style={{ height: "10px" }} />
                     <tr className="balance-change-value">
                         <td>
                             Starting
