@@ -10,6 +10,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 80,
           "top": 240,
@@ -51,6 +52,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 160,
           "top": 240,
@@ -92,6 +94,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 240,
           "top": 240,
@@ -133,6 +136,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 320,
           "top": 240,
@@ -174,6 +178,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 400,
           "top": 240,
@@ -215,6 +220,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 480,
           "top": 240,
@@ -256,6 +262,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 560,
           "top": 240,
@@ -297,6 +304,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 640,
           "top": 240,
@@ -338,6 +346,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 720,
           "top": 240,
@@ -379,6 +388,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 800,
           "top": 240,
@@ -420,6 +430,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 880,
           "top": 240,
@@ -461,6 +472,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 960,
           "top": 240,
@@ -502,6 +514,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 80,
           "top": 120,
@@ -543,6 +556,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 160,
           "top": 120,
@@ -584,6 +598,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 240,
           "top": 120,
@@ -625,6 +640,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 320,
           "top": 120,
@@ -666,6 +682,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 400,
           "top": 120,
@@ -707,6 +724,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 480,
           "top": 120,
@@ -748,6 +766,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 560,
           "top": 120,
@@ -789,6 +808,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 640,
           "top": 120,
@@ -830,6 +850,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 720,
           "top": 120,
@@ -871,6 +892,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 800,
           "top": 120,
@@ -912,6 +934,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 880,
           "top": 120,
@@ -953,6 +976,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 960,
           "top": 120,
@@ -994,6 +1018,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 80,
           "top": 0,
@@ -1035,6 +1060,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 160,
           "top": 0,
@@ -1076,6 +1102,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 240,
           "top": 0,
@@ -1117,6 +1144,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 320,
           "top": 0,
@@ -1158,6 +1186,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 400,
           "top": 0,
@@ -1199,6 +1228,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 480,
           "top": 0,
@@ -1240,6 +1270,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 560,
           "top": 0,
@@ -1281,6 +1312,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 640,
           "top": 0,
@@ -1322,6 +1354,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 720,
           "top": 0,
@@ -1363,6 +1396,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 800,
           "top": 0,
@@ -1404,6 +1438,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 880,
           "top": 0,
@@ -1445,6 +1480,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 960,
           "top": 0,
@@ -1486,7 +1522,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "#016D29",
+          "backgroundColor": "inherit",
           "height": 179,
           "left": 0,
           "top": 180,
@@ -1499,6 +1535,11 @@ exports[`Game renders 1`] = `
       >
         <div
           className="betting-square-label zero-square-label"
+          style={
+            Object {
+              "backgroundColor": "#016D29",
+            }
+          }
         >
           0
         </div>
@@ -1523,7 +1564,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "#016D29",
+          "backgroundColor": "inherit",
           "height": 179,
           "left": 0,
           "top": 0,
@@ -1536,6 +1577,11 @@ exports[`Game renders 1`] = `
       >
         <div
           className="betting-square-label zero-square-label"
+          style={
+            Object {
+              "backgroundColor": "#016D29",
+            }
+          }
         >
           00
         </div>
@@ -1560,7 +1606,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "#016D29",
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 1040,
           "top": 240,
@@ -1573,6 +1619,11 @@ exports[`Game renders 1`] = `
       >
         <div
           className="betting-square-label column-square-label"
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
         >
           2 to 1
         </div>
@@ -1597,7 +1648,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "#016D29",
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 1040,
           "top": 120,
@@ -1610,6 +1661,11 @@ exports[`Game renders 1`] = `
       >
         <div
           className="betting-square-label column-square-label"
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
         >
           2 to 1
         </div>
@@ -1634,7 +1690,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "#016D29",
+          "backgroundColor": "inherit",
           "height": 119,
           "left": 1040,
           "top": 0,
@@ -1647,6 +1703,11 @@ exports[`Game renders 1`] = `
       >
         <div
           className="betting-square-label column-square-label"
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
         >
           2 to 1
         </div>
@@ -1671,7 +1732,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "#016D29",
+          "backgroundColor": "inherit",
           "height": 79,
           "left": 80,
           "top": 360,
@@ -1684,6 +1745,11 @@ exports[`Game renders 1`] = `
       >
         <div
           className="betting-square-label dozens-square-label"
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
         >
           1st 12
         </div>
@@ -1708,7 +1774,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "#016D29",
+          "backgroundColor": "inherit",
           "height": 79,
           "left": 400,
           "top": 360,
@@ -1721,6 +1787,11 @@ exports[`Game renders 1`] = `
       >
         <div
           className="betting-square-label dozens-square-label"
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
         >
           2nd 12
         </div>
@@ -1745,7 +1816,7 @@ exports[`Game renders 1`] = `
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "#016D29",
+          "backgroundColor": "inherit",
           "height": 79,
           "left": 720,
           "top": 360,
@@ -1758,6 +1829,11 @@ exports[`Game renders 1`] = `
       >
         <div
           className="betting-square-label dozens-square-label"
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
         >
           3rd 12
         </div>
@@ -1779,11 +1855,10 @@ exports[`Game renders 1`] = `
     </div>
     <div
       className="betting-square-visible"
-      id="betting-square-1 to 18"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "#016D29",
+          "backgroundColor": "inherit",
           "height": 79,
           "left": 80,
           "top": 440,
@@ -1796,6 +1871,11 @@ exports[`Game renders 1`] = `
       >
         <div
           className="betting-square-label halves-square-label"
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
         >
           1 to 18
         </div>
@@ -1817,11 +1897,10 @@ exports[`Game renders 1`] = `
     </div>
     <div
       className="betting-square-visible"
-      id="betting-square-Even"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "#016D29",
+          "backgroundColor": "inherit",
           "height": 79,
           "left": 240,
           "top": 440,
@@ -1834,6 +1913,11 @@ exports[`Game renders 1`] = `
       >
         <div
           className="betting-square-label halves-square-label"
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
         >
           Even
         </div>
@@ -1855,7 +1939,6 @@ exports[`Game renders 1`] = `
     </div>
     <div
       className="betting-square-visible"
-      id="betting-square-Red"
       onClick={[Function]}
       style={
         Object {
@@ -1872,6 +1955,11 @@ exports[`Game renders 1`] = `
       >
         <div
           className="betting-square-label halves-square-label"
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
         >
           Red
         </div>
@@ -1893,7 +1981,6 @@ exports[`Game renders 1`] = `
     </div>
     <div
       className="betting-square-visible"
-      id="betting-square-Black"
       onClick={[Function]}
       style={
         Object {
@@ -1910,6 +1997,11 @@ exports[`Game renders 1`] = `
       >
         <div
           className="betting-square-label halves-square-label"
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
         >
           Black
         </div>
@@ -1931,11 +2023,10 @@ exports[`Game renders 1`] = `
     </div>
     <div
       className="betting-square-visible"
-      id="betting-square-Odd"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "#016D29",
+          "backgroundColor": "inherit",
           "height": 79,
           "left": 720,
           "top": 440,
@@ -1948,6 +2039,11 @@ exports[`Game renders 1`] = `
       >
         <div
           className="betting-square-label halves-square-label"
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
         >
           Odd
         </div>
@@ -1969,11 +2065,10 @@ exports[`Game renders 1`] = `
     </div>
     <div
       className="betting-square-visible"
-      id="betting-square-19 to 36"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "#016D29",
+          "backgroundColor": "inherit",
           "height": 79,
           "left": 880,
           "top": 440,
@@ -1986,6 +2081,11 @@ exports[`Game renders 1`] = `
       >
         <div
           className="betting-square-label halves-square-label"
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
         >
           19 to 36
         </div>

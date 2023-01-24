@@ -22,6 +22,9 @@ export function StraightUpZeroes(props) {
             <div className="betting-square-contents">
                 <div
                     className="betting-square-label zero-square-label"
+                    style={{
+                        backgroundColor: props.styleData.labelBackgroundColor,
+                    }}
                 >
                     {props.displayLabel}
                 </div>

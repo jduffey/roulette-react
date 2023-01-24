@@ -22,6 +22,9 @@ export function Column(props) {
             <div className="betting-square-contents">
                 <div
                     className="betting-square-label column-square-label"
+                    style={{
+                        backgroundColor: props.styleData.labelBackgroundColor,
+                    }}
                 >
                     {props.displayLabel}
                 </div>
@@ -35,5 +38,3 @@ export function Column(props) {
         </div>
     );
 }
-
-

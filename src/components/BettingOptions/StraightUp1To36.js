@@ -16,13 +16,14 @@ export function StraightUp1To36(props) {
                 top: props.styleData.top,
                 height: sizeData.height,
                 width: sizeData.width,
+                backgroundColor: props.styleData.backgroundColor,
             }}
         >
             <div className="betting-square-contents">
                 <div
                     className="betting-square-label straightUp1to36-square-label"
                     style={{
-                        backgroundColor: props.styleData.backgroundColor,
+                        backgroundColor: props.styleData.labelBackgroundColor,
                     }}
                 >
                     {props.displayLabel}

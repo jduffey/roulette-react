@@ -9,7 +9,6 @@ const sizeData = {
 export function Halves(props) {
     return (
         <div
-            id={`betting-square-${props.id}`}
             className={`betting-square-visible`}
             onClick={props.onClick}
             style={{
@@ -23,6 +22,9 @@ export function Halves(props) {
             <div className="betting-square-contents">
                 <div
                     className="betting-square-label halves-square-label"
+                    style={{
+                        backgroundColor: props.styleData.labelBackgroundColor,
+                    }}
                 >
                     {props.displayLabel}
                 </div>
