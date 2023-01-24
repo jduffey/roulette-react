@@ -9,7 +9,6 @@ import { PlayerInfo } from './PlayerInfo';
 import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
 
-import { getBetNameMultiplier } from '../common/getBetNameMultiplier';
 import { getNewBalance } from '../common/getNewBalance';
 import { getRandomWheelNumber } from '../common/getRandomWheelNumber';
 
@@ -130,25 +129,5 @@ export class Game extends React.Component {
                 />
             </div >
         );
-    }
-
-    calculateWinningsPlusReturnedBets(betsOnBoard, winningBetOptions) {
-        const winnings = Object.keys(betsOnBoard).reduce((acc, betName) => {
-            const multiplier = getBetNameMultiplier(betName);
-
-            return acc +
-                (winningBetOptions.includes(betName) ?
-                    betsOnBoard[betName] * multiplier :
-                    0);
-        }, 0);
-
-        const betsReturned = Object.keys(betsOnBoard).reduce((acc, betName) => {
-            return acc +
-                (winningBetOptions.includes(betName) ?
-                    betsOnBoard[betName] :
-                    0);
-        }, 0);
-
-        return winnings + betsReturned;
     }
 }
