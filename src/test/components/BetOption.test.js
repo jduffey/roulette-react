@@ -9,7 +9,7 @@ describe('BetOption', () => {
     ])('renders when %s', (_description, betAmount) => {
         const props = {
             betName: "BET_NAME",
-            onClick: () => { },
+            onClick: () => "ON_CLICK",
             styleData: {
                 left: 10,
                 top: 20,

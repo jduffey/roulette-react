@@ -21,7 +21,7 @@ describe('Chip', () => {
         const id = "ID";
         const key = "KEY";
         const className = "CLASSNAME";
-        const onClickFunction = () => { };
+        const onClickFunction = () => "ON_CLICK";
 
         describe('when isSelected is false', () => {
             it.each(boundaryValues)('chip amount %s', (chipAmount) => {

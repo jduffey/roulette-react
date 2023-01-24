@@ -14,7 +14,7 @@ describe('ChipSelection', () => {
         const sut =
             ChipSelection({
                 currentChipAmountSelected,
-                onClick: () => { },
+                onClick: () => "ON_CLICK",
             });
 
         const actual = renderer.create(sut);
