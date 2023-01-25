@@ -1,28 +1,5 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-
-
-async function fetchCoinbaseBtcPrice() {
-    const res = await fetch('https://api.coinbase.com/v2/prices/spot?currency=USD');
-    if (!res.ok) {
-        console.log("Not OK response from Coinbase server: ", res);
-        return `Error: ${res.status} ${res.statusText}`;
-    }
-    console.log("OK response from Coinbase: ", res);
-    const json = await res.json();
-    return json.data.amount;
-}
-
-async function fetchPlayerBalance() {
-    const res = await fetch('http://localhost:3001/player/');
-    if (!res.ok) {
-        console.log("Not OK response from json-server: ", res);
-        return `Error: ${res.status} ${res.statusText}`;
-    }
-    console.log("OK response from json-server: ", res);
-    const json = await res.json();
-    return json.balance;
-}
+import { useEffect, useState } from 'react';
+import { fetchCoinbaseBtcPrice, fetchPlayerBalance } from '../common/databaseWrapper';
 
 export const PlayerInfoAsync = () => {
     const [btcPrice, setBtcPrice] = useState("Loading...");
@@ -33,7 +10,7 @@ export const PlayerInfoAsync = () => {
 
         fetchCoinbaseBtcPrice()
             .then(json => {
-                console.log(`${fetchCoinbaseBtcPrice.name} -> ${json}`);
+                // console.log(`${fetchCoinbaseBtcPrice.name} -> ${json}`);
                 if (mounted) {
                     setBtcPrice(json);
                 }
@@ -41,7 +18,7 @@ export const PlayerInfoAsync = () => {
 
         fetchPlayerBalance()
             .then(json => {
-                console.log(`${fetchPlayerBalance.name} -> ${json}`);
+                // console.log(`${fetchPlayerBalance.name} -> ${json}`);
                 if (mounted) {
                     setPlayerBalance(json);
                 }
