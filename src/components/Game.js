@@ -21,7 +21,7 @@ function isSpinAllowed(bets) {
     return Object.keys(bets).length > 0;
 }
 
-export const Game = () => {
+export function Game() {
     const [availableBalance, setAvailableBalance] = useState("Loading...");
     const [betsOnBoard, setBetsOnBoard] = useState({});
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
@@ -37,13 +37,12 @@ export const Game = () => {
             .then(json => {
                 // TODO need to handle error case
                 if (mounted) {
-                    console.log("json: ", json);
                     setAvailableBalance(json);
                     balanceFromDatabase.current = json;
                 }
             });
 
-        return () => mounted = false;
+        return () => { mounted = false };
     }, []);
 
     function handleBettingSquareClick(bettingSquareName) {

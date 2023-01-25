@@ -16,7 +16,7 @@ async function updatePlayerBalance(balance) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ balance: balance }),
+        body: JSON.stringify({ balance }),
     });
     if (!res.ok) {
         console.log("Not OK response from json-server: ", res);

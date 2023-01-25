@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const PlayerInfo = (props) => {
+export function PlayerInfo(props) {
     return (
         <div className="player-info" >
             {"Avail. Balance"}
