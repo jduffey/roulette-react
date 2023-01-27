@@ -1,6 +1,6 @@
 import { Chip, CHIP_AMOUNTS } from "./Chip";
 
-const CLASS_NAME = "ChipSelectionBar-component";
+const CLASS_NAME = "ChipSelection-component";
 export function ChipSelection(props) {
     return (
         <div
@@ -19,7 +19,7 @@ export function ChipSelection(props) {
                 return Chip({
                     id: `chip-${chipAmount}`,
                     key: chipAmount,
-                    className: "chip-selection-chip",
+                    auxiliaryClassName: "chip-selection-chip",
                     chipAmount,
                     onClick: props.onClick,
                     isSelected,

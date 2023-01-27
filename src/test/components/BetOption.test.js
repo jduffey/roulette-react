@@ -18,7 +18,7 @@ describe('BetOption', () => {
                 backgroundColor: "BACKGROUND_COLOR",
                 labelBackgroundColor: "LABEL_BACKGROUND_COLOR",
             },
-            classNamePrefix: "CLASSNAME_PREFIX",
+            textLabelClassNamePrefix: "TEXT_LABEL_CLASSNAME_PREFIX",
             displayText: "DISPLAY_TEXT",
             betAmount,
         };

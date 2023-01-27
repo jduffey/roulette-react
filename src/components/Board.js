@@ -13,12 +13,12 @@ export function Board(props) {
             {Object.entries(BET_OPTION_PARAMS).map(([betOptionName, params]) => {
                 return (
                     <BetOption
+                        textLabelClassNamePrefix={params.textLabelClassNamePrefix}
                         key={betOptionName}
                         onClick={() => props.onClick(betOptionName)}
                         displayText={params.displayText}
                         betAmount={props.betsOnBoard[betOptionName]}
                         styleData={params.styleData}
-                        classNamePrefix={params.classNamePrefix}
                     />
                 );
             })}

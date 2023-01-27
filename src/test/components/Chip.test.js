@@ -20,7 +20,7 @@ describe('Chip', () => {
         ];
         const id = "ID";
         const key = "KEY";
-        const className = "CLASSNAME";
+        const auxiliaryClassName = "AUXILIARY_CLASSNAME";
         const onClickFunction = () => "ON_CLICK";
 
         describe('when isSelected is false', () => {
@@ -31,7 +31,7 @@ describe('Chip', () => {
                     Chip({
                         id,
                         key,
-                        className,
+                        auxiliaryClassName,
                         chipAmount,
                         onClick: onClickFunction,
                         isSelected,
@@ -51,7 +51,7 @@ describe('Chip', () => {
                     Chip({
                         id,
                         key,
-                        className,
+                        auxiliaryClassName,
                         chipAmount,
                         onClick: onClickFunction,
                         isSelected,

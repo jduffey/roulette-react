@@ -2,10 +2,11 @@ import { Chip } from "./Chip";
 
 const BETTING_SQUARE_OUTLINE_SIZE = 1;
 
+const CLASS_NAME = "BetOption-component";
 export function BetOption(props) {
     return (
         <div
-            className={`betting-square-visible betting-square-${props.betName}`}
+            className={CLASS_NAME}
             onClick={props.onClick}
             style={{
                 left: props.styleData.left,
@@ -17,7 +18,7 @@ export function BetOption(props) {
         >
             <div className="betting-square-contents">
                 <div
-                    className={`betting-square-label ${props.classNamePrefix}-square-label`}
+                    className={`betting-square-label ${props.textLabelClassNamePrefix}-square-label`}
                     style={{
                         backgroundColor: props.styleData.labelBackgroundColor,
                     }}
@@ -25,9 +26,9 @@ export function BetOption(props) {
                     {props.displayText}
                 </div>
                 <Chip
+                    auxiliaryClassName="betting-square-chip"
                     key={props.chipAmount}
                     onClick={props.onClick}
-                    className="betting-square-chip"
                     chipAmount={props.betAmount}
                 />
             </div>

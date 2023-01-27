@@ -76,7 +76,7 @@ export const BET_OPTION_PARAMS = Object.entries({
             labelBackgroundColor: params[5],
         },
         displayText: params[6],
-        classNamePrefix: params[7],
+        textLabelClassNamePrefix: params[7],
     };
     return acc;
 }, {});

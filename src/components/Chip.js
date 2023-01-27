@@ -28,6 +28,7 @@ const getChipColorStyles = (chipAmt) => {
     }
 }
 
+const CLASS_NAME = "Chip-component";
 function Chip(props) {
     const styles = getChipColorStyles(props.chipAmount);
     if (props.isSelected) {
@@ -37,9 +38,9 @@ function Chip(props) {
 
     return (
         <div
+            className={`${CLASS_NAME} ${props.auxiliaryClassName}`}
             id={props.id}
             key={props.chipAmount}
-            className={props.className}
             onClick={() => props.onClick(props.chipAmount)}
             style={styles}
         >

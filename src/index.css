@@ -12,12 +12,6 @@ ul {
     list-style-type: none;
 }
 
-.Board-component {
-    width: 1000px;
-    height: 520px;
-    position: relative;
-}
-
 .Game-component {
     background: repeating-linear-gradient(45deg,
             #222266,
@@ -30,16 +24,21 @@ ul {
     padding: 16px;
 }
 
-/* Note: naming this "visible" because we'll have "invisible" betting options later
-(e.g. split, basket) */
-.betting-square-visible {
-    position: absolute;
+.Board-component {
+    width: 1000px;
+    height: 520px;
+    position: relative;
+}
 
+/*
+Reminder: this used to be called betting-square-visible,
+because we'll have "invisible" betting options later
+(e.g. split, basket)
+*/
+.BetOption-component {
+    position: absolute;
     font-weight: bold;
     outline: 1px solid white;
-
-    color: white;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -47,6 +46,7 @@ ul {
 }
 
 .betting-square-contents {
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,17 +57,29 @@ ul {
     position: absolute;
 }
 
+.Chip-component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
 .betting-square-chip {
     font-size: 16px;
     height: 60px;
     width: 60px;
     border: 4px dashed black;
-    border-radius: 50%;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    z-index: 0;
     box-shadow: 0px 1px 6px 1px #FFFFFF77;
+}
+
+.chip-selection-chip {
+    border: 6px dashed black;
+    height: 70px;
+    width: 70px;
+    margin: auto auto 15px auto;
+    font-weight: bold;
+    box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.4);
 }
 
 .zero-square-label {
@@ -110,7 +122,7 @@ ul {
     font-size: 28px;
 }
 
-.ChipSelectionBar-component {
+.ChipSelection-component {
     position: relative;
     left: 242px;
     top: 20px;
@@ -120,20 +132,6 @@ ul {
     border-radius: 16px;
     display: flex;
     background-color: #34a45d;
-}
-
-.chip-selection-chip {
-    border: 6px dashed black;
-    height: 70px;
-    width: 70px;
-    border-radius: 50%;
-    text-align: center;
-    margin: auto auto 15px auto;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.4);
 }
 
 .SpinButton-component {

@@ -2,7 +2,7 @@
 
 exports[`BetOption renders when chip is not visible 1`] = `
 <div
-  className="betting-square-visible betting-square-BET_NAME"
+  className="BetOption-component"
   onClick={[Function]}
   style={
     Object {
@@ -18,7 +18,7 @@ exports[`BetOption renders when chip is not visible 1`] = `
     className="betting-square-contents"
   >
     <div
-      className="betting-square-label CLASSNAME_PREFIX-square-label"
+      className="betting-square-label TEXT_LABEL_CLASSNAME_PREFIX-square-label"
       style={
         Object {
           "backgroundColor": "LABEL_BACKGROUND_COLOR",
@@ -28,7 +28,7 @@ exports[`BetOption renders when chip is not visible 1`] = `
       DISPLAY_TEXT
     </div>
     <div
-      className="betting-square-chip"
+      className="Chip-component betting-square-chip"
       onClick={[Function]}
       style={
         Object {
@@ -44,7 +44,7 @@ exports[`BetOption renders when chip is not visible 1`] = `
 
 exports[`BetOption renders when chip is visible 1`] = `
 <div
-  className="betting-square-visible betting-square-BET_NAME"
+  className="BetOption-component"
   onClick={[Function]}
   style={
     Object {
@@ -60,7 +60,7 @@ exports[`BetOption renders when chip is visible 1`] = `
     className="betting-square-contents"
   >
     <div
-      className="betting-square-label CLASSNAME_PREFIX-square-label"
+      className="betting-square-label TEXT_LABEL_CLASSNAME_PREFIX-square-label"
       style={
         Object {
           "backgroundColor": "LABEL_BACKGROUND_COLOR",
@@ -70,7 +70,7 @@ exports[`BetOption renders when chip is visible 1`] = `
       DISPLAY_TEXT
     </div>
     <div
-      className="betting-square-chip"
+      className="Chip-component betting-square-chip"
       onClick={[Function]}
       style={
         Object {
