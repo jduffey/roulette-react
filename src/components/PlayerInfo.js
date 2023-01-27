@@ -1,14 +1,16 @@
+import React from 'react';
+
 export function PlayerInfo(props) {
     return (
-        <div className="player-info">
+        <div className="player-info" >
             {"Avail. Balance"}
-            <br />
+            < br />
             {`$ ${props.availableBalance.toLocaleString()}`}
             <br />
             <br />
             {"Total Bet"}
             <br />
             {`$ ${props.totalBetAmount.toLocaleString()}`}
-        </div>
-    );
+        </div >
+    )
 }
