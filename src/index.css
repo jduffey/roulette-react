@@ -2,6 +2,7 @@ body {
     font-family: "Century Gothic", Futura, sans-serif;
     background-color: #555555;
     user-select: none;
+    margin: 0;
 }
 
 ol,
