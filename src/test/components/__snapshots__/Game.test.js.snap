@@ -1969,7 +1969,7 @@ exports[`Game renders without props 1`] = `
         Object {
           "backgroundColor": "#DFDFDF",
           "borderColor": "#000000",
-          "boxShadow": "0px 8px 6px 4px rgba(0,0,0,.6)",
+          "boxShadow": "0px 16px 10px 1px rgba(0, 0, 0, 0.6)",
           "color": "#000000",
           "marginTop": "12px",
         }

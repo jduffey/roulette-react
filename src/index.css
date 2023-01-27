@@ -133,6 +133,7 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.4);
 }
 
 .spin-button {

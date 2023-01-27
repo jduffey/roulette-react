@@ -24,16 +24,14 @@ const getChipColorStyles = (chipAmt) => {
         case (chipAmt >= CHIP_AMOUNTS.CHIP_1000):
             return Object.assign({}, CHIP_COLORS.CHIP_1000);
         default:
-            return {
-                display: "none",
-            };
+            return { display: "none" };
     }
 }
 
 function Chip(props) {
     const styles = getChipColorStyles(props.chipAmount);
     if (props.isSelected) {
-        styles.boxShadow = "0px 8px 6px 4px rgba(0,0,0,.6)";
+        styles.boxShadow = "0px 16px 10px 1px rgba(0, 0, 0, 0.6)";
         styles.marginTop = "12px";
     }
 
