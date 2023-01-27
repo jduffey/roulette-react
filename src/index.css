@@ -27,6 +27,7 @@ ul {
     padding: 1px;
     width: 1360px;
     height: 1050px;
+    padding: 16px;
 }
 
 /* Note: naming this "visible" because we'll have "invisible" betting options later
@@ -178,7 +179,7 @@ ul {
 .player-info {
     position: relative;
     left: 900px;
-    top: -436px;
+    top: -1094px;
     height: 200px;
     width: 200px;
     border: 1px solid white;
@@ -193,9 +194,9 @@ ul {
 }
 
 .most-recent-spin-results {
-    position: absolute;
-    top: 16px;
-    left: 1184px;
+    position: relative;
+    top: -970px;
+    left: 1174px;
     width: 100px;
     height: 660px;
     text-align: center;
@@ -205,9 +206,11 @@ ul {
 }
 
 .bet-results-info {
-    position: absolute;
-    top: 700px;
+    position: relative;
+    top: -1536px;
     left: 370px;
+    height: 350px;
+    width: 480px;
     border: 1px solid white;
     border-radius: 16px;
     background-color: #34a45d;
@@ -226,9 +229,11 @@ ul {
 }
 
 .current-bets-info {
-    position: absolute;
-    top: 700px;
+    position: relative;
+    top: -1160px;
     left: 80px;
+    height: 350px;
+    width: 240px;
     border: 1px solid white;
     border-radius: 16px;
     background-color: #34a45d;
