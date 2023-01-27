@@ -106,7 +106,7 @@ export function Game() {
     const mostRecentSpinResult = spinResults.slice(-1)[0];
 
     return (
-        <div>
+        <div className='main-game'>
             <Board
                 onClick={(bettingSquareName) => handleBettingSquareClick(bettingSquareName)}
                 betsOnBoard={betsOnBoard}
