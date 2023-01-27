@@ -1,10 +1,12 @@
 import { getWheelNumberColor } from "../common/getWheelNumberColor";
 
 export function MostRecentSpinResults(props) {
+    const numberOfResultsToDisplay = 20;
+    const truncatedSpinResults = props.spinResults.slice(-numberOfResultsToDisplay);
     return (
         <div className="most-recent-spin-results">
             <ul>
-                {props.spinResults.map((_, i, arr) => {
+                {truncatedSpinResults.map((_, i, arr) => {
                     const wheelNumber = arr[arr.length - 1 - i];
                     return (
                         <div

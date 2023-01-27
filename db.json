@@ -1,5 +1,9 @@
 {
-    "player": {
-        "balance": 10000
-    }
+  "player": {
+    "balance": 10000
+  },
+  "spinResults": {
+    "results": [
+    ]
+  }
 }

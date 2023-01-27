@@ -1,5 +1,10 @@
 import { useEffect, useState, useRef } from 'react';
-import { fetchPlayerBalance, updatePlayerBalance } from '../common/databaseWrapper';
+import {
+    fetchPlayerBalance,
+    updatePlayerBalance,
+    fetchSpinResults,
+    updateSpinResults,
+} from '../common/databaseWrapper';
 
 import { BetResultsInfo } from './BetResultsInfo';
 import { Board } from "./Board";
@@ -22,14 +27,19 @@ function isSpinAllowed(bets) {
 }
 
 export function Game() {
+    // tied to db wrapper calls
     const [availableBalance, setAvailableBalance] = useState("Loading...");
+    const [spinResults, setSpinResults] = useState([]);
+
+    // not tied to db wrapper calls
     const [betsOnBoard, setBetsOnBoard] = useState({});
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
-    const [mostRecentSpinResults, setMostRecentSpinResults] = useState([]);
     const [previousRoundBets, setPreviousRoundBets] = useState({});
     const [previousRoundStartingBalance, setPreviousRoundStartingBalance] = useState(null);
 
     const balanceFromDatabase = useRef(0);
+    const spinResultsFromDatabase = useRef([]);
+
     useEffect(() => {
         let mounted = true;
 
@@ -38,6 +48,14 @@ export function Game() {
                 if (mounted) {
                     setAvailableBalance(json);
                     balanceFromDatabase.current = json;
+                }
+            });
+
+        fetchSpinResults()
+            .then(json => {
+                if (mounted) {
+                    setSpinResults(json);
+                    spinResultsFromDatabase.current = json;
                 }
             });
 
@@ -77,23 +95,20 @@ export function Game() {
         const newBalance =
             getNewBalance(startingBalance, betsOnBoard, randomWheelNumber);
 
+        const copySpinResults = spinResults;
+        copySpinResults.push(randomWheelNumber);
+
         updatePlayerBalance(newBalance);
-
-        // TODO not terribly worried about this atm but setting this to 1 returns the entire slice/array; find a more robust solution
-        // maybe keep track of all previous bets and just slice the last 20?
-        // this will likely eventually just use a call to a db to get the last 20 results
-        const numberOfResultsToDisplay = 20;
-        const copyMostRecentSpinResults = mostRecentSpinResults.slice(-(numberOfResultsToDisplay - 1));
-        copyMostRecentSpinResults.push(randomWheelNumber);
-
-        setMostRecentSpinResults(copyMostRecentSpinResults);
-        setPreviousRoundStartingBalance(availableBalance + calculateTotalBetAmount(betsOnBoard));
         setAvailableBalance(newBalance);
+
+        updateSpinResults(copySpinResults);
+
+        setPreviousRoundStartingBalance(availableBalance + calculateTotalBetAmount(betsOnBoard));
         setPreviousRoundBets(betsOnBoard);
         setBetsOnBoard({});
     }
 
-    const mostRecentSpinResult = mostRecentSpinResults.slice(-1)[0];
+    const mostRecentSpinResult = spinResults.slice(-1)[0];
 
     return (
         <div>
@@ -113,7 +128,7 @@ export function Game() {
                 spinResult={mostRecentSpinResult}
             />
             <MostRecentSpinResults
-                spinResults={mostRecentSpinResults}
+                spinResults={spinResults}
             />
             <PlayerInfo
                 availableBalance={availableBalance}
