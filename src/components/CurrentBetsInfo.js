@@ -18,7 +18,7 @@ export function CurrentBetsInfo(props) {
             className={CLASS_NAME}
         >
             <div
-                className="bet-info-table-title"
+                className="current-bets-info-table-title-text"
             >
                 CURRENT BETS
             </div>

@@ -2096,7 +2096,7 @@ exports[`Game renders without props 1`] = `
     className="CurrentBetsInfo-component"
   >
     <div
-      className="bet-info-table-title"
+      className="current-bets-info-table-title-text"
     >
       CURRENT BETS
     </div>
@@ -2125,9 +2125,23 @@ exports[`Game renders without props 1`] = `
     className="BetResultsInfo-component"
   >
     <div
-      className="bet-info-table-title"
+      className="bet-info-table-title-container"
     >
-      PREVIOUS ROUND RESULTS
+      <div
+        className="bet-info-table-title-text"
+      >
+        PREVIOUS ROUND RESULTS
+      </div>
+      <div
+        className="bet-info-table-title-spin-result"
+        style={
+          Object {
+            "backgroundColor": "#dfdfdf",
+          }
+        }
+      >
+        ?
+      </div>
     </div>
     <table
       className="bet-results-info-table"

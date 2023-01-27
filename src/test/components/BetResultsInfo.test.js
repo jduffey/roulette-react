@@ -33,4 +33,22 @@ describe('BetResultsInfo', () => {
 
         expect(actual).toMatchSnapshot();
     });
+
+    it.each([
+        [WHEEL_NUMBERS.WN_0, 'green'],
+        [WHEEL_NUMBERS.WN_1, 'red'],
+        [WHEEL_NUMBERS.WN_2, 'black'],
+        [undefined, 'generic grey'],
+    ])('renders winning wheel numbers with different color backgrounds (%s -> %s)', (winningWheelNumber, _bgColor) => {
+        const sut =
+            BetResultsInfo({
+                bets: {},
+                winningWheelNumber,
+                startingBalance: 1000,
+            });
+
+        const actual = renderer.create(sut);
+
+        expect(actual).toMatchSnapshot();
+    });
 });

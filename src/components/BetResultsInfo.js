@@ -1,4 +1,5 @@
 import { getBetNameMultiplier } from "../common/getBetNameMultiplier";
+import { getWheelNumberColor } from "../common/getWheelNumberColor";
 import { getWinningCriteria } from "../common/getWinningCriteria";
 
 function calculateWinningsOnBet(props, betOption) {
@@ -53,9 +54,22 @@ export function BetResultsInfo(props) {
             className={CLASS_NAME}
         >
             <div
-                className="bet-info-table-title"
+                className="bet-info-table-title-container"
             >
-                PREVIOUS ROUND RESULTS
+                <div
+                    className="bet-info-table-title-text"
+                >
+                    PREVIOUS ROUND RESULTS
+                </div>
+                <div
+                    className="bet-info-table-title-spin-result"
+                    style={{
+                        backgroundColor: props.winningWheelNumber ? getWheelNumberColor(props.winningWheelNumber) : "#dfdfdf",
+                    }}
+                >
+                    {props.winningWheelNumber ?? "?"}
+                </div>
+
             </div>
             <table className="bet-results-info-table">
                 <tbody>
@@ -119,6 +133,6 @@ export function BetResultsInfo(props) {
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div >
     );
 }
