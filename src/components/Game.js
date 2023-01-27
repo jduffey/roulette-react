@@ -35,7 +35,6 @@ export function Game() {
 
         fetchPlayerBalance()
             .then(json => {
-                // TODO need to handle error case
                 if (mounted) {
                     setAvailableBalance(json);
                     balanceFromDatabase.current = json;

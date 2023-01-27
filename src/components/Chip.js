@@ -1,41 +1,28 @@
+import { CHIP_COLORS } from "../common/standardColors";
+
+const CHIP_AMOUNTS = {
+    CHIP_1: 1,
+    CHIP_5: 5,
+    CHIP_25: 25,
+    CHIP_100: 100,
+    CHIP_500: 500,
+    CHIP_1000: 1000,
+};
+
 const getChipColorStyles = (chipAmt) => {
     switch (true) {
-        case (chipAmt >= 1 && chipAmt < 5):
-            return {
-                backgroundColor: "#DFDFDF",
-                color: "#000000",
-                borderColor: "#000000",
-            };
-        case (chipAmt >= 5 && chipAmt < 25):
-            return {
-                backgroundColor: "#D94848",
-                color: "#FFFFFF",
-                borderColor: "#000000",
-            };
-        case (chipAmt >= 25 && chipAmt < 100):
-            return {
-                backgroundColor: "#00B341",
-                color: "#FFFFFF",
-                borderColor: "#000000",
-            };
-        case (chipAmt >= 100 && chipAmt < 500):
-            return {
-                backgroundColor: "#222222",
-                color: "#FFFFFF",
-                borderColor: "#2A8A8A",
-            };
-        case (chipAmt >= 500 && chipAmt < 1000):
-            return {
-                backgroundColor: "#663399",
-                color: "#FFFFFF",
-                borderColor: "#2A8A8A",
-            };
-        case (chipAmt >= 1000):
-            return {
-                backgroundColor: "#F4F488",
-                color: "#000000",
-                borderColor: "#000000",
-            };
+        case (chipAmt >= CHIP_AMOUNTS.CHIP_1 && chipAmt < CHIP_AMOUNTS.CHIP_5):
+            return Object.assign({}, CHIP_COLORS.CHIP_1);
+        case (chipAmt >= CHIP_AMOUNTS.CHIP_5 && chipAmt < CHIP_AMOUNTS.CHIP_25):
+            return Object.assign({}, CHIP_COLORS.CHIP_5);
+        case (chipAmt >= CHIP_AMOUNTS.CHIP_25 && chipAmt < CHIP_AMOUNTS.CHIP_100):
+            return Object.assign({}, CHIP_COLORS.CHIP_25);
+        case (chipAmt >= CHIP_AMOUNTS.CHIP_100 && chipAmt < CHIP_AMOUNTS.CHIP_500):
+            return Object.assign({}, CHIP_COLORS.CHIP_100);
+        case (chipAmt >= CHIP_AMOUNTS.CHIP_500 && chipAmt < CHIP_AMOUNTS.CHIP_1000):
+            return Object.assign({}, CHIP_COLORS.CHIP_500);
+        case (chipAmt >= CHIP_AMOUNTS.CHIP_1000):
+            return Object.assign({}, CHIP_COLORS.CHIP_1000);
         default:
             return {
                 display: "none",
@@ -43,7 +30,7 @@ const getChipColorStyles = (chipAmt) => {
     }
 }
 
-export function Chip(props) {
+function Chip(props) {
     const styles = getChipColorStyles(props.chipAmount);
     if (props.isSelected) {
         styles.boxShadow = "0px 8px 6px 4px rgba(0,0,0,.6)";
@@ -62,3 +49,5 @@ export function Chip(props) {
         </div>
     );
 }
+
+export { Chip, CHIP_AMOUNTS }
