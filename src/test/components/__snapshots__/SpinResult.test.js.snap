@@ -2,7 +2,7 @@
 
 exports[`SpinResult renders when spin result is 0 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -19,7 +19,7 @@ exports[`SpinResult renders when spin result is 0 1`] = `
 
 exports[`SpinResult renders when spin result is 00 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -36,7 +36,7 @@ exports[`SpinResult renders when spin result is 00 1`] = `
 
 exports[`SpinResult renders when spin result is 1 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -53,7 +53,7 @@ exports[`SpinResult renders when spin result is 1 1`] = `
 
 exports[`SpinResult renders when spin result is 2 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -70,7 +70,7 @@ exports[`SpinResult renders when spin result is 2 1`] = `
 
 exports[`SpinResult renders when spin result is 3 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -87,7 +87,7 @@ exports[`SpinResult renders when spin result is 3 1`] = `
 
 exports[`SpinResult renders when spin result is 4 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -104,7 +104,7 @@ exports[`SpinResult renders when spin result is 4 1`] = `
 
 exports[`SpinResult renders when spin result is 5 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -121,7 +121,7 @@ exports[`SpinResult renders when spin result is 5 1`] = `
 
 exports[`SpinResult renders when spin result is 6 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -138,7 +138,7 @@ exports[`SpinResult renders when spin result is 6 1`] = `
 
 exports[`SpinResult renders when spin result is 7 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -155,7 +155,7 @@ exports[`SpinResult renders when spin result is 7 1`] = `
 
 exports[`SpinResult renders when spin result is 8 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -172,7 +172,7 @@ exports[`SpinResult renders when spin result is 8 1`] = `
 
 exports[`SpinResult renders when spin result is 9 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -189,7 +189,7 @@ exports[`SpinResult renders when spin result is 9 1`] = `
 
 exports[`SpinResult renders when spin result is 10 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -206,7 +206,7 @@ exports[`SpinResult renders when spin result is 10 1`] = `
 
 exports[`SpinResult renders when spin result is 11 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -223,7 +223,7 @@ exports[`SpinResult renders when spin result is 11 1`] = `
 
 exports[`SpinResult renders when spin result is 12 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -240,7 +240,7 @@ exports[`SpinResult renders when spin result is 12 1`] = `
 
 exports[`SpinResult renders when spin result is 13 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -257,7 +257,7 @@ exports[`SpinResult renders when spin result is 13 1`] = `
 
 exports[`SpinResult renders when spin result is 14 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -274,7 +274,7 @@ exports[`SpinResult renders when spin result is 14 1`] = `
 
 exports[`SpinResult renders when spin result is 15 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -291,7 +291,7 @@ exports[`SpinResult renders when spin result is 15 1`] = `
 
 exports[`SpinResult renders when spin result is 16 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -308,7 +308,7 @@ exports[`SpinResult renders when spin result is 16 1`] = `
 
 exports[`SpinResult renders when spin result is 17 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -325,7 +325,7 @@ exports[`SpinResult renders when spin result is 17 1`] = `
 
 exports[`SpinResult renders when spin result is 18 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -342,7 +342,7 @@ exports[`SpinResult renders when spin result is 18 1`] = `
 
 exports[`SpinResult renders when spin result is 19 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -359,7 +359,7 @@ exports[`SpinResult renders when spin result is 19 1`] = `
 
 exports[`SpinResult renders when spin result is 20 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -376,7 +376,7 @@ exports[`SpinResult renders when spin result is 20 1`] = `
 
 exports[`SpinResult renders when spin result is 21 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -393,7 +393,7 @@ exports[`SpinResult renders when spin result is 21 1`] = `
 
 exports[`SpinResult renders when spin result is 22 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -410,7 +410,7 @@ exports[`SpinResult renders when spin result is 22 1`] = `
 
 exports[`SpinResult renders when spin result is 23 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -427,7 +427,7 @@ exports[`SpinResult renders when spin result is 23 1`] = `
 
 exports[`SpinResult renders when spin result is 24 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -444,7 +444,7 @@ exports[`SpinResult renders when spin result is 24 1`] = `
 
 exports[`SpinResult renders when spin result is 25 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -461,7 +461,7 @@ exports[`SpinResult renders when spin result is 25 1`] = `
 
 exports[`SpinResult renders when spin result is 26 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -478,7 +478,7 @@ exports[`SpinResult renders when spin result is 26 1`] = `
 
 exports[`SpinResult renders when spin result is 27 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -495,7 +495,7 @@ exports[`SpinResult renders when spin result is 27 1`] = `
 
 exports[`SpinResult renders when spin result is 28 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -512,7 +512,7 @@ exports[`SpinResult renders when spin result is 28 1`] = `
 
 exports[`SpinResult renders when spin result is 29 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -529,7 +529,7 @@ exports[`SpinResult renders when spin result is 29 1`] = `
 
 exports[`SpinResult renders when spin result is 30 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -546,7 +546,7 @@ exports[`SpinResult renders when spin result is 30 1`] = `
 
 exports[`SpinResult renders when spin result is 31 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -563,7 +563,7 @@ exports[`SpinResult renders when spin result is 31 1`] = `
 
 exports[`SpinResult renders when spin result is 32 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -580,7 +580,7 @@ exports[`SpinResult renders when spin result is 32 1`] = `
 
 exports[`SpinResult renders when spin result is 33 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -597,7 +597,7 @@ exports[`SpinResult renders when spin result is 33 1`] = `
 
 exports[`SpinResult renders when spin result is 34 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -614,7 +614,7 @@ exports[`SpinResult renders when spin result is 34 1`] = `
 
 exports[`SpinResult renders when spin result is 35 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -631,7 +631,7 @@ exports[`SpinResult renders when spin result is 35 1`] = `
 
 exports[`SpinResult renders when spin result is 36 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 >
   <div
     className="spin-result-label"
@@ -648,12 +648,12 @@ exports[`SpinResult renders when spin result is 36 1`] = `
 
 exports[`SpinResult renders when spin result is not defined (null) 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 />
 `;
 
 exports[`SpinResult renders when spin result is not defined (undefined) 1`] = `
 <div
-  className="spin-result-container"
+  className="SpinResult-component"
 />
 `;

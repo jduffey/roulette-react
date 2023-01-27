@@ -2,7 +2,7 @@
 
 exports[`Board renders with bets placed on all bet names 1`] = `
 <div
-  className="game-board"
+  className="Board-component"
 >
   <div
     className="betting-square-visible betting-square-undefined"
@@ -2059,7 +2059,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
 
 exports[`Board renders with no bets placed 1`] = `
 <div
-  className="game-board"
+  className="Board-component"
 >
   <div
     className="betting-square-visible betting-square-undefined"

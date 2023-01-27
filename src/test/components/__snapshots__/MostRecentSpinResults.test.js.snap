@@ -2,7 +2,7 @@
 
 exports[`MostRecentSpinResults renders when there are multiple spin results 1`] = `
 <div
-  className="most-recent-spin-results"
+  className="MostRecentSpinResults-component"
 >
   <ul>
     <div
@@ -47,7 +47,7 @@ exports[`MostRecentSpinResults renders when there are multiple spin results 1`] 
 
 exports[`MostRecentSpinResults renders when there are no spin results 1`] = `
 <div
-  className="most-recent-spin-results"
+  className="MostRecentSpinResults-component"
 >
   <ul />
 </div>

@@ -2,7 +2,7 @@
 
 exports[`PlayerInfo renders when availableBalance is 123456 and totalBetAmount is 56789 1`] = `
 <div
-  className="player-info"
+  className="PlayerInfo-component"
 >
   Avail. Balance
   <br />
@@ -17,7 +17,7 @@ exports[`PlayerInfo renders when availableBalance is 123456 and totalBetAmount i
 
 exports[`PlayerInfo renders when availableBalance is foo and totalBetAmount is bar 1`] = `
 <div
-  className="player-info"
+  className="PlayerInfo-component"
 >
   Avail. Balance
   <br />

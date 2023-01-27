@@ -2,7 +2,7 @@
 
 exports[`ChipSelection renders when currentChipAmountSelected is 1 1`] = `
 <div
-  className="chip-selection-bar"
+  className="ChipSelectionBar-component"
 >
   <div
     className="chip-selection-chip"
@@ -95,7 +95,7 @@ exports[`ChipSelection renders when currentChipAmountSelected is 1 1`] = `
 
 exports[`ChipSelection renders when currentChipAmountSelected is 5 1`] = `
 <div
-  className="chip-selection-bar"
+  className="ChipSelectionBar-component"
 >
   <div
     className="chip-selection-chip"
@@ -188,7 +188,7 @@ exports[`ChipSelection renders when currentChipAmountSelected is 5 1`] = `
 
 exports[`ChipSelection renders when currentChipAmountSelected is 25 1`] = `
 <div
-  className="chip-selection-bar"
+  className="ChipSelectionBar-component"
 >
   <div
     className="chip-selection-chip"
@@ -281,7 +281,7 @@ exports[`ChipSelection renders when currentChipAmountSelected is 25 1`] = `
 
 exports[`ChipSelection renders when currentChipAmountSelected is 100 1`] = `
 <div
-  className="chip-selection-bar"
+  className="ChipSelectionBar-component"
 >
   <div
     className="chip-selection-chip"
@@ -374,7 +374,7 @@ exports[`ChipSelection renders when currentChipAmountSelected is 100 1`] = `
 
 exports[`ChipSelection renders when currentChipAmountSelected is 500 1`] = `
 <div
-  className="chip-selection-bar"
+  className="ChipSelectionBar-component"
 >
   <div
     className="chip-selection-chip"
@@ -467,7 +467,7 @@ exports[`ChipSelection renders when currentChipAmountSelected is 500 1`] = `
 
 exports[`ChipSelection renders when currentChipAmountSelected is 1000 1`] = `
 <div
-  className="chip-selection-bar"
+  className="ChipSelectionBar-component"
 >
   <div
     className="chip-selection-chip"

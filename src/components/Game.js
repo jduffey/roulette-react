@@ -26,6 +26,7 @@ function isSpinAllowed(bets) {
     return Object.keys(bets).length > 0;
 }
 
+const CLASS_NAME = "Game-component";
 export function Game() {
     // tied to db wrapper calls
     const [availableBalance, setAvailableBalance] = useState("Loading...");
@@ -106,7 +107,9 @@ export function Game() {
     const mostRecentSpinResult = spinResults.slice(-1)[0];
 
     return (
-        <div className='main-game'>
+        <div
+            className={CLASS_NAME}
+        >
             <Board
                 onClick={(bettingSquareName) => handleBettingSquareClick(bettingSquareName)}
                 betsOnBoard={betsOnBoard}

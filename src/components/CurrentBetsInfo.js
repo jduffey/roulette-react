@@ -1,5 +1,3 @@
-const className = "current-bets-info";
-
 const betRow = (betOption, betAmount) => {
     return (
         <tr key={betOption}>
@@ -13,9 +11,12 @@ const betRow = (betOption, betAmount) => {
     );
 }
 
+const CLASS_NAME = "CurrentBetsInfo-component";
 export function CurrentBetsInfo(props) {
     return (
-        <div className={className}>
+        <div
+            className={CLASS_NAME}
+        >
             <div
                 className="bet-info-table-title"
             >

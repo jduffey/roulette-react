@@ -1,9 +1,10 @@
+const CLASS_NAME = 'SpinButton-component';
 export function SpinButton(props) {
     const zIndex = props.isSpinAllowed ? -1 : 1;
     const color = props.isSpinAllowed ? 'inherit' : '#999999';
     return (
         <div
-            className="spin-button"
+            className={CLASS_NAME}
             onClick={props.onClick}
         >
             <span

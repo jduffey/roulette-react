@@ -1,8 +1,11 @@
 import { getWheelNumberColor } from "../common/getWheelNumberColor";
 
+const CLASS_NAME = "SpinResult-component";
 export function SpinResult(props) {
     return (
-        <div className="spin-result-container">
+        <div
+            className={CLASS_NAME}
+        >
             {(() => {
                 if (props.spinResult) {
                     return (

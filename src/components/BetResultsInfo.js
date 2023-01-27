@@ -17,7 +17,7 @@ function calculateBetReturnedAmount(props, betOption) {
         0;
 }
 
-const className = "bet-results-info";
+const CLASS_NAME = "BetResultsInfo-component";
 export function BetResultsInfo(props) {
     const sumBetAmounts = Object.keys(props.bets).reduce((acc, betOption) => {
         const betAmountOnBet = props.bets[betOption];
@@ -49,7 +49,9 @@ export function BetResultsInfo(props) {
         "";
 
     return (
-        <div className={className}>
+        <div
+            className={CLASS_NAME}
+        >
             <div
                 className="bet-info-table-title"
             >

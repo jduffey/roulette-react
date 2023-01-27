@@ -2,7 +2,7 @@
 
 exports[`CurrentBetsInfo renders with bets 1`] = `
 <div
-  className="current-bets-info"
+  className="CurrentBetsInfo-component"
 >
   <div
     className="bet-info-table-title"
@@ -64,7 +64,7 @@ exports[`CurrentBetsInfo renders with bets 1`] = `
 
 exports[`CurrentBetsInfo renders with no bets 1`] = `
 <div
-  className="current-bets-info"
+  className="CurrentBetsInfo-component"
 >
   <div
     className="bet-info-table-title"

@@ -4,9 +4,12 @@ import { BetOption } from './BetOption';
 
 import { BET_OPTION_PARAMS } from './betOptionParameters';
 
+const CLASS_NAME = "Board-component";
 export function Board(props) {
     return (
-        <div className="game-board">
+        <div
+            className={CLASS_NAME}
+        >
             {Object.entries(BET_OPTION_PARAMS).map(([betOptionName, params]) => {
                 return (
                     <BetOption

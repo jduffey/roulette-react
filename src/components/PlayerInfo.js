@@ -1,8 +1,11 @@
 import React from 'react';
 
+const CLASS_NAME = "PlayerInfo-component";
 export function PlayerInfo(props) {
     return (
-        <div className="player-info" >
+        <div
+            className={CLASS_NAME}
+        >
             {"Avail. Balance"}
             < br />
             {`$ ${props.availableBalance.toLocaleString()}`}

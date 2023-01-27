@@ -1,9 +1,10 @@
 import { Chip, CHIP_AMOUNTS } from "./Chip";
 
+const CLASS_NAME = "ChipSelectionBar-component";
 export function ChipSelection(props) {
     return (
         <div
-            className="chip-selection-bar"
+            className={CLASS_NAME}
         >
             {[
                 CHIP_AMOUNTS.CHIP_1,

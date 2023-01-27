@@ -2,10 +2,10 @@
 
 exports[`Game renders without props 1`] = `
 <div
-  className="main-game"
+  className="Game-component"
 >
   <div
-    className="game-board"
+    className="Board-component"
   >
     <div
       className="betting-square-visible betting-square-undefined"
@@ -1959,7 +1959,7 @@ exports[`Game renders without props 1`] = `
     </div>
   </div>
   <div
-    className="chip-selection-bar"
+    className="ChipSelectionBar-component"
   >
     <div
       className="chip-selection-chip"
@@ -2049,7 +2049,7 @@ exports[`Game renders without props 1`] = `
     </div>
   </div>
   <div
-    className="spin-button"
+    className="SpinButton-component"
     onClick={[Function]}
   >
     <span
@@ -2073,15 +2073,15 @@ exports[`Game renders without props 1`] = `
     </span>
   </div>
   <div
-    className="spin-result-container"
+    className="SpinResult-component"
   />
   <div
-    className="most-recent-spin-results"
+    className="MostRecentSpinResults-component"
   >
     <ul />
   </div>
   <div
-    className="player-info"
+    className="PlayerInfo-component"
   >
     Avail. Balance
     <br />
@@ -2093,7 +2093,7 @@ exports[`Game renders without props 1`] = `
     $ 0
   </div>
   <div
-    className="current-bets-info"
+    className="CurrentBetsInfo-component"
   >
     <div
       className="bet-info-table-title"
@@ -2122,7 +2122,7 @@ exports[`Game renders without props 1`] = `
     </table>
   </div>
   <div
-    className="bet-results-info"
+    className="BetResultsInfo-component"
   >
     <div
       className="bet-info-table-title"

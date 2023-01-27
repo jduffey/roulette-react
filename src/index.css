@@ -12,13 +12,13 @@ ul {
     list-style-type: none;
 }
 
-.game-board {
+.Board-component {
     width: 1000px;
     height: 520px;
     position: relative;
 }
 
-.main-game {
+.Game-component {
     background: repeating-linear-gradient(45deg,
             #222266,
             #222266 10px,
@@ -110,7 +110,7 @@ ul {
     font-size: 28px;
 }
 
-.chip-selection-bar {
+.ChipSelectionBar-component {
     position: relative;
     left: 242px;
     top: 20px;
@@ -136,7 +136,7 @@ ul {
     box-shadow: 0px 2px 6px 4px rgba(0, 0, 0, 0.4);
 }
 
-.spin-button {
+.SpinButton-component {
     position: relative;
     left: 1120px;
     top: 36px;
@@ -152,7 +152,7 @@ ul {
     align-items: center;
 }
 
-.spin-result-container {
+.SpinResult-component {
     position: relative;
     left: 1140px;
     top: 38px;
@@ -177,7 +177,7 @@ ul {
     color: white;
 }
 
-.player-info {
+.PlayerInfo-component {
     position: relative;
     left: 900px;
     top: -1094px;
@@ -194,7 +194,7 @@ ul {
     background-color: #34a45d;
 }
 
-.most-recent-spin-results {
+.MostRecentSpinResults-component {
     position: relative;
     top: -970px;
     left: 1174px;
@@ -206,7 +206,7 @@ ul {
     font-size: 24px;
 }
 
-.bet-results-info {
+.BetResultsInfo-component {
     position: relative;
     top: -1536px;
     left: 370px;
@@ -229,7 +229,7 @@ ul {
     border: 1px dashed black;
 }
 
-.current-bets-info {
+.CurrentBetsInfo-component {
     position: relative;
     top: -1160px;
     left: 80px;
