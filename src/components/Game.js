@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import {
     fetchPlayerBalance,
     updatePlayerBalance,
@@ -37,9 +37,6 @@ export function Game() {
     const [previousRoundBets, setPreviousRoundBets] = useState({});
     const [previousRoundStartingBalance, setPreviousRoundStartingBalance] = useState(null);
 
-    const balanceFromDatabase = useRef(0);
-    const spinResultsFromDatabase = useRef([]);
-
     useEffect(() => {
         let mounted = true;
 
@@ -47,7 +44,6 @@ export function Game() {
             .then(json => {
                 if (mounted) {
                     setAvailableBalance(json);
-                    balanceFromDatabase.current = json;
                 }
             });
 
@@ -55,7 +51,6 @@ export function Game() {
             .then(json => {
                 if (mounted) {
                     setSpinResults(json);
-                    spinResultsFromDatabase.current = json;
                 }
             });
 
