@@ -1,7 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import {
     fetchPlayerBalance,
     updatePlayerBalance,
+
+    updateBetsPlaced,
+    fetchBetsPlaced,
+
+    fetchPreviousRoundStartingBalance,
+    updatePreviousRoundStartingBalance,
+
     fetchSpinResults,
     updateSpinResults,
 } from '../common/databaseWrapper';
@@ -26,17 +33,26 @@ function isSpinAllowed(bets) {
     return Object.keys(bets).length > 0;
 }
 
+// function fetchAndSet(mounted, fetcher, setter) {
+//     fetcher()
+//         .then(json => {
+//             if (mounted) {
+//                 setter(json);
+//             }
+//         });
+// }
+
 const CLASS_NAME = "Game-component";
 export function Game() {
     // tied to db wrapper calls
     const [availableBalance, setAvailableBalance] = useState("Loading...");
     const [spinResults, setSpinResults] = useState([]);
+    const [previousRoundBets, setPreviousRoundBets] = useState({});
+    const [previousRoundStartingBalance, setPreviousRoundStartingBalance] = useState(null);
 
     // not tied to db wrapper calls
     const [betsOnBoard, setBetsOnBoard] = useState({});
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
-    const [previousRoundBets, setPreviousRoundBets] = useState({});
-    const [previousRoundStartingBalance, setPreviousRoundStartingBalance] = useState(null);
 
     useEffect(() => {
         let mounted = true;
@@ -54,6 +70,25 @@ export function Game() {
                     setSpinResults(json);
                 }
             });
+
+        fetchBetsPlaced()
+            .then(json => {
+                if (mounted) {
+                    setPreviousRoundBets(json);
+                }
+            });
+
+        fetchPreviousRoundStartingBalance()
+            .then(json => {
+                if (mounted) {
+                    setPreviousRoundStartingBalance(json);
+                }
+            });
+
+        // fetchAndSet(mounted, fetchPlayerBalance, setAvailableBalance);
+        // fetchAndSet(mounted, fetchSpinResults, setSpinResults);
+        // fetchAndSet(mounted, fetchBetsPlaced, setPreviousRoundBets);
+        // fetchAndSet(mounted, fetchPreviousRoundStartingBalance, setPreviousRoundStartingBalance);
 
         return () => { mounted = false };
     }, []);
@@ -83,6 +118,14 @@ export function Game() {
             return;
         }
 
+        updateBetsPlaced(betsOnBoard)
+            .then(() =>
+                fetchBetsPlaced()
+                    .then(json => {
+                        setPreviousRoundBets(json);
+                    })
+            );
+
         const randomWheelNumber = getRandomWheelNumber();
 
         const betAmountOnBoard = calculateTotalBetAmount(betsOnBoard);
@@ -99,12 +142,18 @@ export function Game() {
 
         updateSpinResults(copySpinResults);
 
-        setPreviousRoundStartingBalance(availableBalance + calculateTotalBetAmount(betsOnBoard));
-        setPreviousRoundBets(betsOnBoard);
+        updatePreviousRoundStartingBalance(availableBalance + calculateTotalBetAmount(betsOnBoard))
+            .then(() =>
+                fetchPreviousRoundStartingBalance()
+                    .then(json => {
+                        setPreviousRoundStartingBalance(json);
+                    })
+            );
+
         setBetsOnBoard({});
     }
 
-    const mostRecentSpinResult = spinResults.slice(-1)[0];
+    const mostRecentSpinResult = spinResults[spinResults.length - 1];
 
     return (
         <div

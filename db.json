@@ -1,9 +1,14 @@
 {
   "player": {
-    "balance": 10000
+    "balance": 9999,
+    "betsPlaced": {
+      "19 to 36": 1
+    },
+    "previousRoundStartingBalance": 10000
   },
   "spinResults": {
     "results": [
+      "18"
     ]
   }
 }
