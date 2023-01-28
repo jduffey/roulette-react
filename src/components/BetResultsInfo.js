@@ -2,12 +2,12 @@ import { getBetNameMultiplier } from "../common/getBetNameMultiplier";
 import { getWheelNumberColor } from "../common/getWheelNumberColor";
 import { getWinningCriteria } from "../common/getWinningCriteria";
 
-function calculateWinningsOnBet(bets, betOption, winningWheelNumber) {
+function calculateWinningsOnBet(props, betOption) {
     const multiplier = getBetNameMultiplier(betOption);
 
-    const betAmount = bets[betOption];
+    const betAmount = props.bets[betOption];
 
-    return getWinningCriteria(winningWheelNumber).has(betOption) ?
+    return getWinningCriteria(props.winningWheelNumber).has(betOption) ?
         betAmount * multiplier :
         0;
 }
@@ -26,7 +26,7 @@ export function BetResultsInfo(props) {
     }, 0);
 
     const sumWinnings = Object.keys(props.bets).reduce((acc, betOption) => {
-        const winningsOnBet = calculateWinningsOnBet(props.bets, betOption, props.winningWheelNumber);
+        const winningsOnBet = calculateWinningsOnBet(props, betOption);
         return acc + winningsOnBet;
     }, 0);
 
@@ -84,7 +84,7 @@ export function BetResultsInfo(props) {
                     {Object.keys(props.bets).map((betOption) => {
                         const betAmountOnBet = props.bets[betOption];
 
-                        const winningsOnBet = calculateWinningsOnBet(props.bets, betOption, props.winningWheelNumber);
+                        const winningsOnBet = calculateWinningsOnBet(props, betOption);
                         const winningsOnBetText = winningsOnBet ? `$ ${winningsOnBet.toString()}` : "";
 
                         const betReturnedAmount = calculateBetReturnedAmount(props, betOption);
