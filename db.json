@@ -1,9 +1,7 @@
 {
   "player": {
-    "balance": 10000
-  },
-  "spinResults": {
-    "results": [
+    "initialBalance": 10000,
+    "history": [
     ]
   }
 }
