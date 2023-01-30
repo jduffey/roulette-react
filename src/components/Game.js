@@ -13,8 +13,8 @@ import { PlayerInfo } from './PlayerInfo';
 import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
 
+import { getCompleteResultsOfRound } from '../common/getCompleteResultsOfRound';
 import { getRandomWheelNumber } from '../common/getRandomWheelNumber';
-import { getResultsOfBets } from '../common/getResultsOfBets';
 
 function calculateTotalBetAmount(bets) {
     return Object.values(bets).reduce((acc, betAmount) => acc + betAmount, 0);
@@ -33,7 +33,7 @@ export function Game() {
     const [betsOnBoard, setBetsOnBoard] = useState({});
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
 
-    const [previousRoundResults, setPreviousRoundResults] = useState(null);
+    const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
 
     useEffect(() => {
         let mounted = true;
@@ -45,28 +45,20 @@ export function Game() {
 
                     const mostRecentTransaction = json.history[json.history.length - 1];
 
-                    if (mostRecentTransaction) {
-                        const mostRecentRoundResults = {
-                            startingBalance: mostRecentTransaction.startingBalance,
-                            finalBalance: mostRecentTransaction.finalBalance,
-                            betsPlaced: getResultsOfBets(
-                                mostRecentTransaction.betsPlaced,
-                                mostRecentTransaction.spinResult
-                            ),
-                            winningWheelNumber: mostRecentTransaction.spinResult,
-                        };
-                        setPreviousRoundResults(mostRecentRoundResults);
+                    if (typeof mostRecentTransaction === "undefined") {
+                        setAvailableBalance(json.initialBalance);
+                        return;
                     }
 
-                    const availableBalance = json.history.length ?
-                        json.history[json.history.length - 1].finalBalance :
-                        json.initialBalance;
+                    const previousRoundResults = getCompleteResultsOfRound(
+                        mostRecentTransaction.startingBalance,
+                        mostRecentTransaction.betsPlaced,
+                        mostRecentTransaction.spinResult,
+                    );
+                    setPreviousRoundResultsForBetResultsInfo(previousRoundResults);
+                    setAvailableBalance(previousRoundResults.finalBalance);
 
-                    const spinResults = json.history.length ?
-                        json.history.map(historyItem => historyItem.spinResult) :
-                        [];
-
-                    setAvailableBalance(availableBalance);
+                    const spinResults = json.history.map(historyItem => historyItem.spinResult);
                     setSpinResults(spinResults);
                 }
             });
@@ -102,48 +94,39 @@ export function Game() {
         const randomWheelNumber = getRandomWheelNumber();
 
         const copySpinResults = spinResults.slice();
-        copySpinResults.push(randomWheelNumber);
-        setSpinResults(copySpinResults);
-
-        const indiviualResultsOfBets = getResultsOfBets(betsOnBoard, randomWheelNumber);
 
         const betAmountOnBoard = calculateTotalBetAmount(betsOnBoard);
 
         const startingBalance = availableBalance + betAmountOnBoard;
 
-        const totalFromWinnings = Object.keys(indiviualResultsOfBets).reduce((acc, bettingSquareName) => {
-            const winnings = indiviualResultsOfBets[bettingSquareName].winningsOnBet;
-            return acc + winnings;
-        }, 0);
+        const mostRecentRoundResults = getCompleteResultsOfRound(startingBalance, betsOnBoard, randomWheelNumber);
 
-        const totalFromBetsReturned = Object.keys(indiviualResultsOfBets).reduce((acc, bettingSquareName) => {
-            const betAmount = indiviualResultsOfBets[bettingSquareName].betReturned;
-            return acc + betAmount;
-        }, 0);
+        copySpinResults.push(mostRecentRoundResults.winningWheelNumber);
+        setSpinResults(copySpinResults);
 
-        const newBalance = startingBalance - betAmountOnBoard + totalFromWinnings + totalFromBetsReturned;
-
-        const newTransaction = {
-            "startingBalance": startingBalance,
-            "betsPlaced": betsOnBoard,
-            "spinResult": randomWheelNumber,
-            "finalBalance": newBalance,
+        // TODO extract helper function
+        const newTransactionForDatabase = {
+            "startingBalance": mostRecentRoundResults.startingBalance,
+            "betsPlaced": Object.entries(mostRecentRoundResults.betsPlaced).reduce((acc, [betName, individualBetResult]) => {
+                acc[betName] = individualBetResult.betAmount;
+                return acc;
+            }, {}),
+            "spinResult": mostRecentRoundResults.winningWheelNumber,
+            "finalBalance": mostRecentRoundResults.finalBalance,
         };
 
         const copyTransactionHistory = transactionHistory.slice();
-        copyTransactionHistory.push(newTransaction);
+        copyTransactionHistory.push(newTransactionForDatabase);
 
-        const mostRecentRoundResults = {
-            startingBalance: startingBalance,
-            finalBalance: newBalance,
-            betsPlaced: indiviualResultsOfBets,
-            winningWheelNumber: randomWheelNumber,
-        };
-
-        setPreviousRoundResults(mostRecentRoundResults);
-
-        setAvailableBalance(newBalance);
+        setPreviousRoundResultsForBetResultsInfo(mostRecentRoundResults);
+        setAvailableBalance(mostRecentRoundResults.finalBalance);
         setTransactionHistory(copyTransactionHistory);
+        // TODO bug here? if we don't reset betsOnBoard then we can continue to click spin, which is not a problem itself,
+        // but on continuing to click does not charge the player for the bet placed, but it DOES award them winnings if they win.
+        // So we maybe need to refactor this component to ensure that the player's balance is in fact deducted for the bet placed.
+        // This may involve the reworking/splitting the concepts of:
+        // 1. what the player is actually able to bet at any given time (i.e. the funds they "own" minus whatever bets they've already placed)
+        // 2. what the player "owns" (i.e. if they had an option to clear all bets on the board, what would their balance be)
         setBetsOnBoard({});
 
         updateTransactionHistory(copyTransactionHistory);
@@ -181,7 +164,7 @@ export function Game() {
                 betsOnBoard={betsOnBoard}
             />
             <BetResultsInfo
-                previousRoundResults={previousRoundResults}
+                previousRoundResults={previousRoundResultsForBetResultsInfo}
             />
         </div >
     );
