@@ -2,19 +2,27 @@ import { getWheelNumberColor } from "../common/getWheelNumberColor";
 
 const CLASS_NAME = "BetResultsInfo-component";
 export function BetResultsInfo(props) {
-    const previousRoundHasBetResults = Object.keys(props.previousRoundResults.betsPlaced).length > 0;
+    const previousRoundHasBetResults = props.previousRoundResults !== null;
 
     let startingBalanceText = "-";
     let finalBalanceText = "-";
     let netChangeInBalanceText = "-";
+    let totalBetAmountText = "-";
+    let totalWinningsText = "-";
+    let totalBetsReturnedText = "-";
     if (previousRoundHasBetResults) {
         startingBalanceText = `$ ${props.previousRoundResults.startingBalance}`;
         finalBalanceText = `$ ${props.previousRoundResults.finalBalance}`;
         netChangeInBalanceText = `$ ${props.previousRoundResults.finalBalance - props.previousRoundResults.startingBalance}`;
+
+        const sumBetAmounts = Object.values(props.previousRoundResults.betsPlaced).reduce((acc, bet) => acc + bet.betAmount, 0);
+        const sumWinnings = Object.values(props.previousRoundResults.betsPlaced).reduce((acc, bet) => acc + bet.winningsOnBet, 0);
+        const sumBetsReturned = Object.values(props.previousRoundResults.betsPlaced).reduce((acc, bet) => acc + bet.betReturned, 0);
+
+        totalBetAmountText = `$ ${sumBetAmounts}`;
+        totalWinningsText = `$ ${sumWinnings}`;
+        totalBetsReturnedText = `$ ${sumBetsReturned}`;
     }
-    const sumBetAmounts = Object.values(props.previousRoundResults.betsPlaced).reduce((acc, bet) => acc + bet.betAmount, 0);
-    const sumWinnings = Object.values(props.previousRoundResults.betsPlaced).reduce((acc, bet) => acc + bet.winningsOnBet, 0);
-    const sumBetsReturned = Object.values(props.previousRoundResults.betsPlaced).reduce((acc, bet) => acc + bet.betReturned, 0);
 
     const previousWheelNumberDiv = () => {
         const backgroundColor = previousRoundHasBetResults ?
@@ -78,14 +86,14 @@ export function BetResultsInfo(props) {
                         <th>Bet Returned</th>
                     </tr>
 
-                    {betResultsRows()}
+                    {previousRoundHasBetResults ? betResultsRows() : null}
 
                     <tr style={{ height: "10px" }} />
                     <tr>
                         <td>TOTALS</td>
-                        <td>{`$ ${sumBetAmounts}`}</td>
-                        <td>{`$ ${sumWinnings}`}</td>
-                        <td>{`$ ${sumBetsReturned}`}</td>
+                        <td>{totalBetAmountText}</td>
+                        <td>{totalWinningsText}</td>
+                        <td>{totalBetsReturnedText}</td>
                     </tr>
                     <tr style={{ height: "10px" }} />
                     <tr className="balance-change-value">

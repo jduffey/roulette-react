@@ -13,7 +13,6 @@ import { PlayerInfo } from './PlayerInfo';
 import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
 
-// import { getNewBalance } from '../common/getNewBalance';
 import { getRandomWheelNumber } from '../common/getRandomWheelNumber';
 import { getResultsOfBets } from '../common/getResultsOfBets';
 
@@ -27,14 +26,14 @@ function isSpinAllowed(bets) {
 
 const CLASS_NAME = "Game-component";
 export function Game() {
-    const [transactionHistory, setTransactionHistory] = useState([]);
+    const [transactionHistory, setTransactionHistory] = useState(null);
 
     const [availableBalance, setAvailableBalance] = useState("Loading...");
     const [spinResults, setSpinResults] = useState([]);
     const [betsOnBoard, setBetsOnBoard] = useState({});
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
 
-    const [previousRoundResults, setPreviousRoundResults] = useState({ betsPlaced: {} });
+    const [previousRoundResults, setPreviousRoundResults] = useState(null);
 
     useEffect(() => {
         let mounted = true;
@@ -46,11 +45,8 @@ export function Game() {
 
                     const mostRecentTransaction = json.history[json.history.length - 1];
 
-                    let mostRecentRoundResults = {
-                        betsPlaced: {},
-                    };
                     if (mostRecentTransaction) {
-                        mostRecentRoundResults = {
+                        const mostRecentRoundResults = {
                             startingBalance: mostRecentTransaction.startingBalance,
                             finalBalance: mostRecentTransaction.finalBalance,
                             betsPlaced: getResultsOfBets(
@@ -59,9 +55,8 @@ export function Game() {
                             ),
                             winningWheelNumber: mostRecentTransaction.spinResult,
                         };
+                        setPreviousRoundResults(mostRecentRoundResults);
                     }
-
-                    setPreviousRoundResults(mostRecentRoundResults);
 
                     const availableBalance = json.history.length ?
                         json.history[json.history.length - 1].finalBalance :

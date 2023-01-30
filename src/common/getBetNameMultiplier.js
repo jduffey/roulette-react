@@ -1,7 +1,6 @@
 import { BET_NAMES } from "./betNames";
 
 export const getBetNameMultiplier = (betName) => {
-    console.log("getBetNameMultiplier should be called once per bet placed", betName);
     switch (betName) {
         case BET_NAMES.STRAIGHT_UP_0:
         case BET_NAMES.STRAIGHT_UP_00:
