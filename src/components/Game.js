@@ -46,7 +46,7 @@ export function Game() {
         winningWheelNumber: "24",
     });
 
-    // const [previousRoundResults, setPreviousRoundResults] = useState({});
+    const [previousRoundExists, setPreviousRoundExists] = useState(false);
 
     useEffect(() => {
         let mounted = true;
@@ -59,16 +59,32 @@ export function Game() {
                     const mostRecentTransaction = json.history[json.history.length - 1];
                     console.log("mostRecentTransaction", mostRecentTransaction);
 
-                    const mostRecentBetResults = getResultsOfBets(mostRecentTransaction.betsPlaced, mostRecentTransaction.spinResult);
-                    console.log("mostRecentBetResults", mostRecentBetResults);
+                    let mostRecentBetResults;
+                    let mostRecentRoundResults;
+                    if (mostRecentTransaction) {
+                        setPreviousRoundExists(true);
+                        mostRecentBetResults = getResultsOfBets(mostRecentTransaction.betsPlaced, mostRecentTransaction.spinResult);
+                        mostRecentRoundResults = {
+                            startingBalance: mostRecentTransaction.startingBalance,
+                            finalBalance: mostRecentTransaction.resultBalance,
+                            betsPlaced: mostRecentBetResults,
+                            winningWheelNumber: mostRecentTransaction.spinResult,
+                        };
+                    } else {
+                        setPreviousRoundExists(false);
+                        mostRecentBetResults = {};
+                        mostRecentRoundResults = {
+                            previousRoundExists: false,
+                            // startingBalance: "foo",
+                            // finalBalance: "bar",
+                            betsPlaced: {},
+                            // winningWheelNumber: "33",
+                        };
+                    }
 
-                    const mostRecentRoundResults = {
-                        startingBalance: mostRecentTransaction.startingBalance,
-                        finalBalance: mostRecentTransaction.resultBalance,
-                        betsPlaced: mostRecentBetResults,
-                        winningWheelNumber: mostRecentTransaction.spinResult,
-                    };
-                    console.log("mostRecentRoundResults", mostRecentRoundResults);
+                    // console.log("mostRecentBetResults", mostRecentBetResults);
+
+                    // console.log("mostRecentRoundResults", mostRecentRoundResults);
 
                     setPreviousRoundResults(mostRecentRoundResults);
 
@@ -174,6 +190,7 @@ export function Game() {
                 betsOnBoard={betsOnBoard}
             />
             <BetResultsInfo
+                previousRoundExists={previousRoundExists}
                 previousRoundResults={previousRoundResults}
             />
         </div >

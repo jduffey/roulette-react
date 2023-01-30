@@ -5,17 +5,18 @@
       {
         "startingBalance": 10000,
         "betsPlaced": {
-          "StraightUp_0": 1,
-          "StraightUp_00": 1,
-          "StraightUp_1": 1,
-          "StraightUp_2": 1,
-          "Even": 1,
-          "Red": 1,
-          "Black": 1,
-          "Odd": 1
+          "19 to 36": 1
         },
-        "spinResult": "30",
-        "resultBalance": 9996
+        "spinResult": "23",
+        "resultBalance": 10001
+      },
+      {
+        "startingBalance": 10001,
+        "betsPlaced": {
+          "19 to 36": 1
+        },
+        "spinResult": "21",
+        "resultBalance": 10002
       }
     ]
   }

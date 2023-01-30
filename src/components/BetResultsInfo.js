@@ -2,18 +2,60 @@ import { getWheelNumberColor } from "../common/getWheelNumberColor";
 
 const CLASS_NAME = "BetResultsInfo-component";
 export function BetResultsInfo(props) {
-    if (!props.previousRoundResults) return;
-    // console.log("BetResultsInfo props", props);
+    console.log("BetResultsInfo props", props);
 
-    const startingBalanceText = props.previousRoundResults.startingBalance;
-
-    const finalBalanceText = props.previousRoundResults.finalBalance;
-
-    // Leaving simple calculations here for now (calculations that don't rely on imports)
-    const netChangeInBalanceText = props.previousRoundResults.finalBalance - props.previousRoundResults.startingBalance;
+    let startingBalanceText = "-";
+    let finalBalanceText = "-";
+    let netChangeInBalanceText = "-";
+    if (props.previousRoundExists) {
+        startingBalanceText = props.previousRoundResults.startingBalance;
+        finalBalanceText = props.previousRoundResults.finalBalance;
+        netChangeInBalanceText = props.previousRoundResults.finalBalance - props.previousRoundResults.startingBalance;
+    }
+    // const startingBalanceText = props.previousRoundResults.startingBalance;
     const sumBetAmounts = Object.values(props.previousRoundResults.betsPlaced).reduce((acc, bet) => acc + bet.betAmount, 0);
     const sumWinnings = Object.values(props.previousRoundResults.betsPlaced).reduce((acc, bet) => acc + bet.winningsOnBet, 0);
     const sumBetsReturned = Object.values(props.previousRoundResults.betsPlaced).reduce((acc, bet) => acc + bet.betReturned, 0);
+
+    // const finalBalanceText = props.previousRoundResults.finalBalance;
+
+    // Leaving simple calculations here for now (calculations that don't rely on imports)
+    // const netChangeInBalanceText = props.previousRoundResults.finalBalance - props.previousRoundResults.startingBalance;
+
+    const previousWheelNumberDiv = () => {
+        const backgroundColor = props.previousRoundExists ?
+            getWheelNumberColor(props.previousRoundResults.winningWheelNumber)
+            : "#dfdfdf";
+
+        const wheelNumberText = props.previousRoundExists ?
+            props.previousRoundResults.winningWheelNumber :
+            "??";
+
+        return (
+            <div
+                className="bet-info-table-title-spin-result"
+                style={{
+                    backgroundColor: backgroundColor,
+                }}
+            >
+                {wheelNumberText}
+            </div>
+        )
+    }
+
+    const betResultsRows = () => Object.keys(props.previousRoundResults.betsPlaced).map((betOption) => {
+        const betAmountOnBet = props.previousRoundResults.betsPlaced[betOption].betAmount;
+        const winningsOnBet = props.previousRoundResults.betsPlaced[betOption].winningsOnBet;
+        const betReturnedAmount = props.previousRoundResults.betsPlaced[betOption].betReturned;
+        return (
+            <tr key={betOption}>
+                <td>{betOption}</td>
+                <td className="bet-results-info-table-bet-amount">{`$ ${betAmountOnBet}`}</td>
+                <td>{winningsOnBet}</td>
+                <td>{betReturnedAmount}</td>
+            </tr>
+        );
+    });
 
     return (
         <div
@@ -27,14 +69,8 @@ export function BetResultsInfo(props) {
                 >
                     PREVIOUS ROUND RESULTS
                 </div>
-                <div
-                    className="bet-info-table-title-spin-result"
-                    style={{
-                        backgroundColor: props.previousRoundResults.winningWheelNumber ? getWheelNumberColor(props.previousRoundResults.winningWheelNumber) : "#dfdfdf",
-                    }}
-                >
-                    {props.previousRoundResults.winningWheelNumber ?? "?"}
-                </div>
+
+                {previousWheelNumberDiv()}
 
             </div>
             <table className="bet-results-info-table">
@@ -47,20 +83,9 @@ export function BetResultsInfo(props) {
                         <th>Winnings</th>
                         <th>Bet Returned</th>
                     </tr>
-                    {Object.keys(props.previousRoundResults.betsPlaced).map((betOption) => {
-                        const betAmountOnBet = props.previousRoundResults.betsPlaced[betOption].betAmount;
-                        const winningsOnBet = props.previousRoundResults.betsPlaced[betOption].winningsOnBet;
-                        const betReturnedAmount = props.previousRoundResults.betsPlaced[betOption].betReturned;
 
-                        return (
-                            <tr key={betOption}>
-                                <td>{betOption}</td>
-                                <td className="bet-results-info-table-bet-amount">{`$ ${betAmountOnBet}`}</td>
-                                <td>{winningsOnBet}</td>
-                                <td>{betReturnedAmount}</td>
-                            </tr>
-                        );
-                    })}
+                    {betResultsRows()}
+
                     <tr style={{ height: "10px" }} />
                     <tr>
                         <td>TOTALS</td>
