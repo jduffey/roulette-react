@@ -1,83 +1,40 @@
 import { getCompleteResultsOfRound } from "../common/getCompleteResultsOfRound";
 import { BET_NAMES } from "../common/betNames";
+import { WHEEL_NUMBERS } from "../common/wheelNumbers";
 
 describe(`${getCompleteResultsOfRound.name}`, () => {
-    it("first test with all bet options placed", () => {
+    it.each([
+        [WHEEL_NUMBERS.WN_0, [BET_NAMES.STRAIGHT_UP_0]],
+        [WHEEL_NUMBERS.WN_00, [BET_NAMES.STRAIGHT_UP_00]],
+    ])("same bet on each option, spin result %s", (spinResult, expectedWinningBets) => {
         const startingBalance = 1000;
+        const betAmount = 1;
         const bets = Object.values(BET_NAMES).reduce((accumulator, betName) => {
-            accumulator[betName] = 0;
+            accumulator[betName] = betAmount;
             return accumulator;
         }, {});
-        bets["StraightUp_24"] = 1;
-        const winningWheelNumber = "24";
+        const winningWheelNumber = spinResult;
 
         const actual = getCompleteResultsOfRound(startingBalance, bets, winningWheelNumber);
 
+        const totalAmountBet = Object.keys(BET_NAMES).length * betAmount;
         const expected = {
-            "startingBalance": 1000,
-            "finalBalance": 1035,
+            "startingBalance": startingBalance,
+            "finalBalance": startingBalance - totalAmountBet + 35 + betAmount,
             "betsPlaced": Object.values(BET_NAMES).reduce((acc, betName) => {
-                acc[betName] = { "betAmount": 0, "winningsOnBet": 0, "betReturned": 0 };
+                acc[betName] = { "betAmount": betAmount, "winningsOnBet": 0, "betReturned": 0 };
                 return acc;
             }, {}),
-            "winningWheelNumber": "24",
+            "winningWheelNumber": spinResult,
         };
-        expected.betsPlaced["StraightUp_24"] = { "betAmount": 1, "winningsOnBet": 35, "betReturned": 1 };
+        expectedWinningBets.forEach((betName) => {
+            expected.betsPlaced[betName] = {
+                "betAmount": betAmount,
+                "winningsOnBet": 35,
+                "betReturned": betAmount,
+            };
+        });
 
         expect(actual).toStrictEqual(expected);
     });
-
-
-
-    // it("first test", () => {
-    //     const startingBalance = 1000;
-    //     const bets = {
-    //         "Even": 1,
-    //         "Odd": 1,
-    //         "StraightUp_00": 1,
-    //         "StraightUp_24": 1,
-    //     };
-    //     const winningWheelNumber = "24";
-
-    //     const actual = getCompleteResultsOfRound(startingBalance, bets, winningWheelNumber);
-
-    //     const expected = {
-    //         "startingBalance": 1000,
-    //         "finalBalance": 1036,
-    //         "betsPlaced": {
-    //             "Even": { "betAmount": 1, "winningsOnBet": 1, "betReturned": 1 },
-    //             "Odd": { "betAmount": 1, "winningsOnBet": 0, "betReturned": 0 },
-    //             "StraightUp_00": { "betAmount": 1, "winningsOnBet": 0, "betReturned": 0 },
-    //             "StraightUp_24": { "betAmount": 1, "winningsOnBet": 35, "betReturned": 1 },
-    //         },
-    //         "winningWheelNumber": "24",
-    //     }
-    //     expect(actual).toStrictEqual(expected);
-    // });
-
-    // it("second test", () => {
-    //     const startingBalance = 1000;
-    //     const bets = {
-    //         "Even": 1,
-    //         "Odd": 1,
-    //         "StraightUp_00": 1,
-    //         "StraightUp_24": 1,
-    //     };
-    //     const winningWheelNumber = "24";
-
-    //     const actual = getCompleteResultsOfRound(startingBalance, bets, winningWheelNumber);
-
-    //     const expected = {
-    //         "startingBalance": 1000,
-    //         "finalBalance": 1036,
-    //         "betsPlaced": {
-    //             "Even": { "betAmount": 1, "winningsOnBet": 1, "betReturned": 1 },
-    //             "Odd": { "betAmount": 1, "winningsOnBet": 0, "betReturned": 0 },
-    //             "StraightUp_00": { "betAmount": 1, "winningsOnBet": 0, "betReturned": 0 },
-    //             "StraightUp_24": { "betAmount": 1, "winningsOnBet": 35, "betReturned": 1 },
-    //         },
-    //         "winningWheelNumber": "24",
-    //     }
-    //     expect(actual).toStrictEqual(expected);
-    // });
 });
