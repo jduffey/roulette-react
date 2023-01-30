@@ -1,53 +1,14 @@
-import { getBetNameMultiplier } from "../common/getBetNameMultiplier";
 import { getWheelNumberColor } from "../common/getWheelNumberColor";
-import { getWinningCriteria } from "../common/getWinningCriteria";
-
-function calculateWinningsOnBet(props, betOption) {
-    const multiplier = getBetNameMultiplier(betOption);
-
-    const betAmount = props.bets[betOption];
-
-    return getWinningCriteria(props.winningWheelNumber).has(betOption) ?
-        betAmount * multiplier :
-        0;
-}
-
-function calculateBetReturnedAmount(props, betOption) {
-    return getWinningCriteria(props.winningWheelNumber).has(betOption) ?
-        props.bets[betOption] :
-        0;
-}
 
 const CLASS_NAME = "BetResultsInfo-component";
 export function BetResultsInfo(props) {
-    const sumBetAmounts = Object.keys(props.bets).reduce((acc, betOption) => {
-        const betAmountOnBet = props.bets[betOption];
-        return acc + betAmountOnBet;
-    }, 0);
+    console.log("BetResultsInfo props", props);
 
-    const sumWinnings = Object.keys(props.bets).reduce((acc, betOption) => {
-        const winningsOnBet = calculateWinningsOnBet(props, betOption);
-        return acc + winningsOnBet;
-    }, 0);
+    const startingBalanceText = props.startingBalance;
 
-    const sumBetsReturned = Object.keys(props.bets).reduce((acc, betOption) => {
-        const betReturnedAmount = calculateBetReturnedAmount(props, betOption);
-        return acc + betReturnedAmount;
-    }, 0);
+    const finalBalanceText = props.finalBalance;
 
-    const startingBalanceText = props.startingBalance ?
-        `$ ${props.startingBalance.toString()}` :
-        "";
-
-    const netChangeInBalance = sumWinnings + sumBetsReturned - sumBetAmounts;
-    const netChangeInBalanceText = props.startingBalance ?
-        `$ ${netChangeInBalance.toString()}` :
-        "";
-
-    const finalBalance = props.startingBalance + netChangeInBalance;
-    const finalBalanceText = props.startingBalance ?
-        `$ ${finalBalance.toString()}` :
-        "";
+    const netChangeInBalanceText = props.finalBalance - props.startingBalance;
 
     return (
         <div
@@ -82,29 +43,26 @@ export function BetResultsInfo(props) {
                         <th>Bet Returned</th>
                     </tr>
                     {Object.keys(props.bets).map((betOption) => {
-                        const betAmountOnBet = props.bets[betOption];
-
-                        const winningsOnBet = calculateWinningsOnBet(props, betOption);
-                        const winningsOnBetText = winningsOnBet ? `$ ${winningsOnBet.toString()}` : "";
-
-                        const betReturnedAmount = calculateBetReturnedAmount(props, betOption);
-                        const betReturnedAmountText = betReturnedAmount ? `$ ${betReturnedAmount.toString()}` : "";
+                        console.log("betOption", betOption);
+                        const betAmountOnBet = props.bets[betOption].betAmount;
+                        const winningsOnBet = props.bets[betOption].winningsOnBet;
+                        const betReturnedAmount = props.bets[betOption].betReturned;
 
                         return (
                             <tr key={betOption}>
                                 <td>{betOption}</td>
-                                <td className="bet-results-info-table-bet-amount">{`$ ${betAmountOnBet.toString()}`}</td>
-                                <td>{winningsOnBetText}</td>
-                                <td>{betReturnedAmountText}</td>
+                                <td className="bet-results-info-table-bet-amount">{`$ ${betAmountOnBet}`}</td>
+                                <td>{winningsOnBet}</td>
+                                <td>{betReturnedAmount}</td>
                             </tr>
                         );
                     })}
                     <tr style={{ height: "10px" }} />
                     <tr>
                         <td>TOTALS</td>
-                        <td>{`$ ${sumBetAmounts}`}</td>
+                        {/* <td>{`$ ${sumBetAmounts}`}</td>
                         <td>{`$ ${sumWinnings}`}</td>
-                        <td>{`$ ${sumBetsReturned}`}</td>
+                        <td>{`$ ${sumBetsReturned}`}</td> */}
                     </tr>
                     <tr style={{ height: "10px" }} />
                     <tr className="balance-change-value">

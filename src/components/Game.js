@@ -4,7 +4,7 @@ import {
     updateTransactionHistory,
 } from '../common/databaseWrapper';
 
-// import { BetResultsInfo } from './BetResultsInfo';
+import { BetResultsInfo } from './BetResultsInfo';
 import { Board } from "./Board";
 import { ChipSelection } from './ChipSelection';
 import { CurrentBetsInfo } from './CurrentBetsInfo';
@@ -141,11 +141,16 @@ export function Game() {
             <CurrentBetsInfo
                 betsOnBoard={betsOnBoard}
             />
-            {/* <BetResultsInfo
-                startingBalance={previousRoundResults?.startingBalance}
-                bets={previousRoundResults?.betsPlaced}
-                winningWheelNumber={previousRoundResults?.spinResult}
-            /> */}
+            <BetResultsInfo
+                startingBalance={1234}
+                finalBalance={4321}
+                bets={{
+                    "1": {"betAmount": 100, "winningsOnBet": 333, "betReturned": 222},
+                    "2": {"betAmount": 200, "winningsOnBet": 333, "betReturned": 222},
+                    "3": {"betAmount": 300, "winningsOnBet": 333, "betReturned": 222},
+                }}
+                winningWheelNumber={"23"}
+            />
         </div >
     );
 }
