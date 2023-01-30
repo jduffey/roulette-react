@@ -33,6 +33,20 @@ export function Game() {
     const [betsOnBoard, setBetsOnBoard] = useState({});
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
 
+    const [previousRoundResults, setPreviousRoundResults] = useState({
+        startingBalance: 1235,
+        finalBalance: 5321,
+        betsPlaced: {
+            "Even": {betAmount: 5, winningsOnBet: 2, betReturned: 3},
+            "Odd": {betAmount: 7, winningsOnBet: 4, betReturned: 6},
+            "StraightUp_00": {betAmount: 9, winningsOnBet: 6, betReturned: 9},
+            "StraightUp_24": {betAmount: 11, winningsOnBet: 8, betReturned: 12},
+        },
+        winningWheelNumber: "24",
+    });
+
+    // const [previousRoundResults, setPreviousRoundResults] = useState({});
+
     useEffect(() => {
         let mounted = true;
 
@@ -40,6 +54,9 @@ export function Game() {
             .then(json => {
                 if (mounted) {
                     setTransactionHistory(json.history);
+
+                    // setPreviousRoundResults(json.history[json.history.length - 1]);
+
                     const availableBalance = json.history.length ?
                         json.history[json.history.length - 1].resultBalance :
                         json.initialBalance;
@@ -142,14 +159,7 @@ export function Game() {
                 betsOnBoard={betsOnBoard}
             />
             <BetResultsInfo
-                startingBalance={1234}
-                finalBalance={4321}
-                bets={{
-                    "1": {"betAmount": 100, "winningsOnBet": 333, "betReturned": 222},
-                    "2": {"betAmount": 200, "winningsOnBet": 333, "betReturned": 222},
-                    "3": {"betAmount": 300, "winningsOnBet": 333, "betReturned": 222},
-                }}
-                winningWheelNumber={"23"}
+                previousRoundResults={previousRoundResults}
             />
         </div >
     );

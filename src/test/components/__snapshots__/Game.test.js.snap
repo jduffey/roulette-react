@@ -2121,5 +2121,176 @@ exports[`Game renders without props 1`] = `
       </tbody>
     </table>
   </div>
+  <div
+    className="BetResultsInfo-component"
+  >
+    <div
+      className="bet-info-table-title-container"
+    >
+      <div
+        className="bet-info-table-title-text"
+      >
+        PREVIOUS ROUND RESULTS
+      </div>
+      <div
+        className="bet-info-table-title-spin-result"
+        style={
+          Object {
+            "backgroundColor": "#222222",
+          }
+        }
+      >
+        24
+      </div>
+    </div>
+    <table
+      className="bet-results-info-table"
+    >
+      <tbody>
+        <tr
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
+        >
+          <th>
+            Bet Name
+          </th>
+          <th>
+            Bet Amount
+          </th>
+          <th>
+            Winnings
+          </th>
+          <th>
+            Bet Returned
+          </th>
+        </tr>
+        <tr>
+          <td>
+            Even
+          </td>
+          <td
+            className="bet-results-info-table-bet-amount"
+          >
+            $ 5
+          </td>
+          <td>
+            2
+          </td>
+          <td>
+            3
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Odd
+          </td>
+          <td
+            className="bet-results-info-table-bet-amount"
+          >
+            $ 7
+          </td>
+          <td>
+            4
+          </td>
+          <td>
+            6
+          </td>
+        </tr>
+        <tr>
+          <td>
+            StraightUp_00
+          </td>
+          <td
+            className="bet-results-info-table-bet-amount"
+          >
+            $ 9
+          </td>
+          <td>
+            6
+          </td>
+          <td>
+            9
+          </td>
+        </tr>
+        <tr>
+          <td>
+            StraightUp_24
+          </td>
+          <td
+            className="bet-results-info-table-bet-amount"
+          >
+            $ 11
+          </td>
+          <td>
+            8
+          </td>
+          <td>
+            12
+          </td>
+        </tr>
+        <tr
+          style={
+            Object {
+              "height": "10px",
+            }
+          }
+        />
+        <tr>
+          <td>
+            TOTALS
+          </td>
+          <td>
+            $ 32
+          </td>
+        </tr>
+        <tr
+          style={
+            Object {
+              "height": "10px",
+            }
+          }
+        />
+        <tr
+          className="balance-change-value"
+        >
+          <td>
+            Starting
+          </td>
+          <td
+            colSpan={3}
+          >
+            1235
+          </td>
+        </tr>
+        <tr
+          className="balance-change-value"
+        >
+          <td>
+            Net
+          </td>
+          <td
+            colSpan={3}
+          >
+            4086
+          </td>
+        </tr>
+        <tr
+          className="balance-change-value"
+        >
+          <td>
+            Final
+          </td>
+          <td
+            colSpan={3}
+          >
+            5321
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 `;

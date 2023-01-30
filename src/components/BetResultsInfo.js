@@ -2,13 +2,18 @@ import { getWheelNumberColor } from "../common/getWheelNumberColor";
 
 const CLASS_NAME = "BetResultsInfo-component";
 export function BetResultsInfo(props) {
-    console.log("BetResultsInfo props", props);
+    if (!props.previousRoundResults) return;
+    // console.log("BetResultsInfo props", props);
 
-    const startingBalanceText = props.startingBalance;
+    const startingBalanceText = props.previousRoundResults.startingBalance;
 
-    const finalBalanceText = props.finalBalance;
+    const finalBalanceText = props.previousRoundResults.finalBalance;
 
-    const netChangeInBalanceText = props.finalBalance - props.startingBalance;
+    // Leaving simple calculations here for now (calculations that don't rely on imports)
+    const netChangeInBalanceText = props.previousRoundResults.finalBalance - props.previousRoundResults.startingBalance;
+    const sumBetAmounts = Object.values(props.previousRoundResults.betsPlaced).reduce((acc, bet) => acc + bet.betAmount, 0);
+    const sumWinnings = Object.values(props.previousRoundResults.betsPlaced).reduce((acc, bet) => acc + bet.winningsOnBet, 0);
+    const sumBetsReturned = Object.values(props.previousRoundResults.betsPlaced).reduce((acc, bet) => acc + bet.betReturned, 0);
 
     return (
         <div
@@ -25,10 +30,10 @@ export function BetResultsInfo(props) {
                 <div
                     className="bet-info-table-title-spin-result"
                     style={{
-                        backgroundColor: props.winningWheelNumber ? getWheelNumberColor(props.winningWheelNumber) : "#dfdfdf",
+                        backgroundColor: props.previousRoundResults.winningWheelNumber ? getWheelNumberColor(props.previousRoundResults.winningWheelNumber) : "#dfdfdf",
                     }}
                 >
-                    {props.winningWheelNumber ?? "?"}
+                    {props.previousRoundResults.winningWheelNumber ?? "?"}
                 </div>
 
             </div>
@@ -42,11 +47,10 @@ export function BetResultsInfo(props) {
                         <th>Winnings</th>
                         <th>Bet Returned</th>
                     </tr>
-                    {Object.keys(props.bets).map((betOption) => {
-                        console.log("betOption", betOption);
-                        const betAmountOnBet = props.bets[betOption].betAmount;
-                        const winningsOnBet = props.bets[betOption].winningsOnBet;
-                        const betReturnedAmount = props.bets[betOption].betReturned;
+                    {Object.keys(props.previousRoundResults.betsPlaced).map((betOption) => {
+                        const betAmountOnBet = props.previousRoundResults.betsPlaced[betOption].betAmount;
+                        const winningsOnBet = props.previousRoundResults.betsPlaced[betOption].winningsOnBet;
+                        const betReturnedAmount = props.previousRoundResults.betsPlaced[betOption].betReturned;
 
                         return (
                             <tr key={betOption}>
@@ -60,9 +64,9 @@ export function BetResultsInfo(props) {
                     <tr style={{ height: "10px" }} />
                     <tr>
                         <td>TOTALS</td>
-                        {/* <td>{`$ ${sumBetAmounts}`}</td>
+                        <td>{`$ ${sumBetAmounts}`}</td>
                         <td>{`$ ${sumWinnings}`}</td>
-                        <td>{`$ ${sumBetsReturned}`}</td> */}
+                        <td>{`$ ${sumBetsReturned}`}</td>
                     </tr>
                     <tr style={{ height: "10px" }} />
                     <tr className="balance-change-value">
