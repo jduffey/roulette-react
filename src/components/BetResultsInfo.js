@@ -2,32 +2,26 @@ import { getWheelNumberColor } from "../common/getWheelNumberColor";
 
 const CLASS_NAME = "BetResultsInfo-component";
 export function BetResultsInfo(props) {
-    console.log("BetResultsInfo props", props);
+    const previousRoundHasBetResults = Object.keys(props.previousRoundResults.betsPlaced).length > 0;
 
     let startingBalanceText = "-";
     let finalBalanceText = "-";
     let netChangeInBalanceText = "-";
-    if (props.previousRoundExists) {
-        startingBalanceText = props.previousRoundResults.startingBalance;
-        finalBalanceText = props.previousRoundResults.finalBalance;
-        netChangeInBalanceText = props.previousRoundResults.finalBalance - props.previousRoundResults.startingBalance;
+    if (previousRoundHasBetResults) {
+        startingBalanceText = `$ ${props.previousRoundResults.startingBalance}`;
+        finalBalanceText = `$ ${props.previousRoundResults.finalBalance}`;
+        netChangeInBalanceText = `$ ${props.previousRoundResults.finalBalance - props.previousRoundResults.startingBalance}`;
     }
-    // const startingBalanceText = props.previousRoundResults.startingBalance;
     const sumBetAmounts = Object.values(props.previousRoundResults.betsPlaced).reduce((acc, bet) => acc + bet.betAmount, 0);
     const sumWinnings = Object.values(props.previousRoundResults.betsPlaced).reduce((acc, bet) => acc + bet.winningsOnBet, 0);
     const sumBetsReturned = Object.values(props.previousRoundResults.betsPlaced).reduce((acc, bet) => acc + bet.betReturned, 0);
 
-    // const finalBalanceText = props.previousRoundResults.finalBalance;
-
-    // Leaving simple calculations here for now (calculations that don't rely on imports)
-    // const netChangeInBalanceText = props.previousRoundResults.finalBalance - props.previousRoundResults.startingBalance;
-
     const previousWheelNumberDiv = () => {
-        const backgroundColor = props.previousRoundExists ?
+        const backgroundColor = previousRoundHasBetResults ?
             getWheelNumberColor(props.previousRoundResults.winningWheelNumber)
             : "#dfdfdf";
 
-        const wheelNumberText = props.previousRoundExists ?
+        const wheelNumberText = previousRoundHasBetResults ?
             props.previousRoundResults.winningWheelNumber :
             "??";
 

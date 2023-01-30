@@ -34,19 +34,7 @@ export function Game() {
     const [betsOnBoard, setBetsOnBoard] = useState({});
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
 
-    const [previousRoundResults, setPreviousRoundResults] = useState({
-        startingBalance: 1235,
-        finalBalance: 5321,
-        betsPlaced: {
-            "Even": {betAmount: 5, winningsOnBet: 2, betReturned: 3},
-            "Odd": {betAmount: 7, winningsOnBet: 4, betReturned: 6},
-            "StraightUp_00": {betAmount: 9, winningsOnBet: 6, betReturned: 9},
-            "StraightUp_24": {betAmount: 11, winningsOnBet: 8, betReturned: 12},
-        },
-        winningWheelNumber: "24",
-    });
-
-    const [previousRoundExists, setPreviousRoundExists] = useState(false);
+    const [previousRoundResults, setPreviousRoundResults] = useState({ betsPlaced: {} });
 
     useEffect(() => {
         let mounted = true;
@@ -57,34 +45,21 @@ export function Game() {
                     setTransactionHistory(json.history);
 
                     const mostRecentTransaction = json.history[json.history.length - 1];
-                    console.log("mostRecentTransaction", mostRecentTransaction);
 
-                    let mostRecentBetResults;
-                    let mostRecentRoundResults;
+                    let mostRecentRoundResults = {
+                        betsPlaced: {},
+                    };
                     if (mostRecentTransaction) {
-                        setPreviousRoundExists(true);
-                        mostRecentBetResults = getResultsOfBets(mostRecentTransaction.betsPlaced, mostRecentTransaction.spinResult);
                         mostRecentRoundResults = {
                             startingBalance: mostRecentTransaction.startingBalance,
                             finalBalance: mostRecentTransaction.resultBalance,
-                            betsPlaced: mostRecentBetResults,
+                            betsPlaced: getResultsOfBets(
+                                mostRecentTransaction.betsPlaced,
+                                mostRecentTransaction.spinResult
+                            ),
                             winningWheelNumber: mostRecentTransaction.spinResult,
                         };
-                    } else {
-                        setPreviousRoundExists(false);
-                        mostRecentBetResults = {};
-                        mostRecentRoundResults = {
-                            previousRoundExists: false,
-                            // startingBalance: "foo",
-                            // finalBalance: "bar",
-                            betsPlaced: {},
-                            // winningWheelNumber: "33",
-                        };
                     }
-
-                    // console.log("mostRecentBetResults", mostRecentBetResults);
-
-                    // console.log("mostRecentRoundResults", mostRecentRoundResults);
 
                     setPreviousRoundResults(mostRecentRoundResults);
 
@@ -150,13 +125,13 @@ export function Game() {
         const copyTransactionHistory = transactionHistory.slice();
         copyTransactionHistory.push(newTransaction);
 
-
         const mostRecentRoundResults = {
             startingBalance: startingBalance,
             finalBalance: newBalance,
             betsPlaced: getResultsOfBets(betsOnBoard, randomWheelNumber),
             winningWheelNumber: randomWheelNumber,
         };
+
         setPreviousRoundResults(mostRecentRoundResults);
 
         setAvailableBalance(newBalance);
@@ -199,7 +174,6 @@ export function Game() {
                 betsOnBoard={betsOnBoard}
             />
             <BetResultsInfo
-                previousRoundExists={previousRoundExists}
                 previousRoundResults={previousRoundResults}
             />
         </div >

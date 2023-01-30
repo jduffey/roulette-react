@@ -5,22 +5,12 @@
       {
         "startingBalance": 10000,
         "betsPlaced": {
-          "Red": 1,
-          "Black": 1,
-          "2nd 12": 1
+          "Red": 25,
+          "3rd 12": 25,
+          "19 to 36": 25
         },
-        "spinResult": "00",
-        "resultBalance": 9997
-      },
-      {
-        "startingBalance": 9997,
-        "betsPlaced": {
-          "Red": 1,
-          "Black": 1,
-          "2nd 12": 1
-        },
-        "spinResult": "2",
-        "resultBalance": 9996
+        "spinResult": "31",
+        "resultBalance": 10050
       }
     ]
   }
