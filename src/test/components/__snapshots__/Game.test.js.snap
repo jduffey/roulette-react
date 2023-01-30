@@ -2136,11 +2136,11 @@ exports[`Game renders without props 1`] = `
         className="bet-info-table-title-spin-result"
         style={
           Object {
-            "backgroundColor": "#222222",
+            "backgroundColor": "#dfdfdf",
           }
         }
       >
-        24
+        ??
       </div>
     </div>
     <table
@@ -2167,70 +2167,6 @@ exports[`Game renders without props 1`] = `
             Bet Returned
           </th>
         </tr>
-        <tr>
-          <td>
-            Even
-          </td>
-          <td
-            className="bet-results-info-table-bet-amount"
-          >
-            $ 5
-          </td>
-          <td>
-            2
-          </td>
-          <td>
-            3
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Odd
-          </td>
-          <td
-            className="bet-results-info-table-bet-amount"
-          >
-            $ 7
-          </td>
-          <td>
-            4
-          </td>
-          <td>
-            6
-          </td>
-        </tr>
-        <tr>
-          <td>
-            StraightUp_00
-          </td>
-          <td
-            className="bet-results-info-table-bet-amount"
-          >
-            $ 9
-          </td>
-          <td>
-            6
-          </td>
-          <td>
-            9
-          </td>
-        </tr>
-        <tr>
-          <td>
-            StraightUp_24
-          </td>
-          <td
-            className="bet-results-info-table-bet-amount"
-          >
-            $ 11
-          </td>
-          <td>
-            8
-          </td>
-          <td>
-            12
-          </td>
-        </tr>
         <tr
           style={
             Object {
@@ -2243,7 +2179,13 @@ exports[`Game renders without props 1`] = `
             TOTALS
           </td>
           <td>
-            $ 32
+            $ 0
+          </td>
+          <td>
+            $ 0
+          </td>
+          <td>
+            $ 0
           </td>
         </tr>
         <tr
@@ -2262,7 +2204,7 @@ exports[`Game renders without props 1`] = `
           <td
             colSpan={3}
           >
-            1235
+            -
           </td>
         </tr>
         <tr
@@ -2274,7 +2216,7 @@ exports[`Game renders without props 1`] = `
           <td
             colSpan={3}
           >
-            4086
+            -
           </td>
         </tr>
         <tr
@@ -2286,7 +2228,7 @@ exports[`Game renders without props 1`] = `
           <td
             colSpan={3}
           >
-            5321
+            -
           </td>
         </tr>
       </tbody>

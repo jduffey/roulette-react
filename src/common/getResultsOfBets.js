@@ -2,8 +2,6 @@ import { getWinningCriteria } from "./getWinningCriteria";
 import { getBetNameMultiplier } from "./getBetNameMultiplier";
 
 export function getResultsOfBets(bets, winningWheelNumber) {
-    // console.log("bets", bets);
-    // console.log("winningWheelNumber", winningWheelNumber);
     const winningCriteria = getWinningCriteria(winningWheelNumber);
 
     const resultsOfBets = {};
@@ -22,6 +20,5 @@ export function getResultsOfBets(bets, winningWheelNumber) {
         };
     }
 
-    // console.log("winningsOnBets", resultsOfBets);
     return resultsOfBets;
 }

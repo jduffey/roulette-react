@@ -2,6 +2,7 @@ import { BET_NAMES } from "./betNames";
 import { WHEEL_NUMBERS } from "./wheelNumbers";
 
 export const getWinningCriteria = (wheelNumber) => {
+    console.log("getWinningCriteria should be called only once per spin", wheelNumber);
     switch (wheelNumber) {
         case WHEEL_NUMBERS.WN_0:
             return new Set([BET_NAMES.STRAIGHT_UP_0]);

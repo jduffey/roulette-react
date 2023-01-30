@@ -45,8 +45,8 @@ export function BetResultsInfo(props) {
             <tr key={betOption}>
                 <td>{betOption}</td>
                 <td className="bet-results-info-table-bet-amount">{`$ ${betAmountOnBet}`}</td>
-                <td>{winningsOnBet}</td>
-                <td>{betReturnedAmount}</td>
+                <td>{`$ ${winningsOnBet}`}</td>
+                <td>{`$ ${betReturnedAmount}`}</td>
             </tr>
         );
     });

@@ -6,11 +6,21 @@
         "startingBalance": 10000,
         "betsPlaced": {
           "Red": 25,
-          "3rd 12": 25,
-          "19 to 36": 25
+          "Black": 25,
+          "3rd 12": 25
         },
-        "spinResult": "31",
-        "resultBalance": 10050
+        "spinResult": "00",
+        "finalBalance": 9925
+      },
+      {
+        "startingBalance": 9925,
+        "betsPlaced": {
+          "StraightUp_25": 1000,
+          "StraightUp_28": 1000,
+          "StraightUp_31": 1000
+        },
+        "spinResult": "1",
+        "finalBalance": 6925
       }
     ]
   }

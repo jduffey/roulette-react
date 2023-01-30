@@ -1,6 +1,7 @@
 import { getWinningCriteria } from "./getWinningCriteria";
 import { getBetNameMultiplier } from "./getBetNameMultiplier";
 
+// TODO deprecated
 export const getNewBalance = (startingBalance, betAmounts, wheelNumber) => {
 
     const placedBetAmounts = Object.values(betAmounts).reduce((acc, betAmount) => acc + betAmount, 0);

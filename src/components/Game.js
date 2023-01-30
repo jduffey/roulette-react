@@ -13,7 +13,7 @@ import { PlayerInfo } from './PlayerInfo';
 import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
 
-import { getNewBalance } from '../common/getNewBalance';
+// import { getNewBalance } from '../common/getNewBalance';
 import { getRandomWheelNumber } from '../common/getRandomWheelNumber';
 import { getResultsOfBets } from '../common/getResultsOfBets';
 
@@ -52,7 +52,7 @@ export function Game() {
                     if (mostRecentTransaction) {
                         mostRecentRoundResults = {
                             startingBalance: mostRecentTransaction.startingBalance,
-                            finalBalance: mostRecentTransaction.resultBalance,
+                            finalBalance: mostRecentTransaction.finalBalance,
                             betsPlaced: getResultsOfBets(
                                 mostRecentTransaction.betsPlaced,
                                 mostRecentTransaction.spinResult
@@ -64,7 +64,7 @@ export function Game() {
                     setPreviousRoundResults(mostRecentRoundResults);
 
                     const availableBalance = json.history.length ?
-                        json.history[json.history.length - 1].resultBalance :
+                        json.history[json.history.length - 1].finalBalance :
                         json.initialBalance;
 
                     const spinResults = json.history.length ?
@@ -108,18 +108,31 @@ export function Game() {
 
         const copySpinResults = spinResults.slice();
         copySpinResults.push(randomWheelNumber);
+        setSpinResults(copySpinResults);
+
+        const indiviualResultsOfBets = getResultsOfBets(betsOnBoard, randomWheelNumber);
 
         const betAmountOnBoard = calculateTotalBetAmount(betsOnBoard);
 
         const startingBalance = availableBalance + betAmountOnBoard;
-        const newBalance =
-            getNewBalance(startingBalance, betsOnBoard, randomWheelNumber);
+
+        const totalFromWinnings = Object.keys(indiviualResultsOfBets).reduce((acc, bettingSquareName) => {
+            const winnings = indiviualResultsOfBets[bettingSquareName].winningsOnBet;
+            return acc + winnings;
+        }, 0);
+
+        const totalFromBetsReturned = Object.keys(indiviualResultsOfBets).reduce((acc, bettingSquareName) => {
+            const betAmount = indiviualResultsOfBets[bettingSquareName].betReturned;
+            return acc + betAmount;
+        }, 0);
+
+        const newBalance = startingBalance - betAmountOnBoard + totalFromWinnings + totalFromBetsReturned;
 
         const newTransaction = {
             "startingBalance": startingBalance,
             "betsPlaced": betsOnBoard,
             "spinResult": randomWheelNumber,
-            "resultBalance": newBalance,
+            "finalBalance": newBalance,
         };
 
         const copyTransactionHistory = transactionHistory.slice();
@@ -128,14 +141,13 @@ export function Game() {
         const mostRecentRoundResults = {
             startingBalance: startingBalance,
             finalBalance: newBalance,
-            betsPlaced: getResultsOfBets(betsOnBoard, randomWheelNumber),
+            betsPlaced: indiviualResultsOfBets,
             winningWheelNumber: randomWheelNumber,
         };
 
         setPreviousRoundResults(mostRecentRoundResults);
 
         setAvailableBalance(newBalance);
-        setSpinResults(copySpinResults);
         setTransactionHistory(copyTransactionHistory);
         setBetsOnBoard({});
 
