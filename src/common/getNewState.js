@@ -26,8 +26,10 @@ export function getNewState(startingBalance, bets, winningWheelNumber) {
         }, 0);
 
     const result = {
+        startingBalance: startingBalance,
+        betResults: betResults,
+        winningWheelNumber: winningWheelNumber,
         resultingBalance: startingBalance - totalBetAmount + winningsPlusBetsReturned,
-        betResults: betResults
     };
 
     return result;

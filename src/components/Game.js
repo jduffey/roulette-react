@@ -14,6 +14,7 @@ import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
 
 import { getNewBalance } from '../common/getNewBalance';
+import { getNewState } from '../common/getNewState';
 import { getRandomWheelNumber } from '../common/getRandomWheelNumber';
 
 function calculateTotalBetAmount(bets) {
@@ -32,6 +33,8 @@ export function Game() {
     const [spinResults, setSpinResults] = useState([]);
     const [betsOnBoard, setBetsOnBoard] = useState({});
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
+
+    const [mostRecentSpinResult, setMostRecentSpinResult] = useState(null);
 
     useEffect(() => {
         let mounted = true;
@@ -92,16 +95,20 @@ export function Game() {
         const newBalance =
             getNewBalance(startingBalance, betsOnBoard, randomWheelNumber);
 
-        const newTransaction = {
-            "startingBalance": startingBalance,
-            "betsPlaced": betsOnBoard,
-            "spinResult": randomWheelNumber,
-            "resultBalance": newBalance,
-        };
+        const newState = getNewState(startingBalance, betsOnBoard, randomWheelNumber);
+        console.log(newState);
+
+        // const newTransaction = {
+        //     "startingBalance": startingBalance,
+        //     "betsPlaced": betsOnBoard,
+        //     "spinResult": randomWheelNumber,
+        //     "resultBalance": newBalance,
+        // };
 
         const copyTransactionHistory = transactionHistory.slice();
-        copyTransactionHistory.push(newTransaction);
+        copyTransactionHistory.push(newState);
 
+        setMostRecentSpinResult(randomWheelNumber);
         setAvailableBalance(newBalance);
         setSpinResults(copySpinResults);
         setTransactionHistory(copyTransactionHistory);
@@ -109,8 +116,6 @@ export function Game() {
 
         updateTransactionHistory(copyTransactionHistory);
     }
-
-    const mostRecentSpinResult = spinResults.slice(-1)[0];
 
     return (
         <div

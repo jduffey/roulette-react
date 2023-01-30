@@ -2,6 +2,17 @@
   "player": {
     "initialBalance": 10000,
     "history": [
+      {
+        "startingBalance": 10000,
+        "betResults": {
+          "19 to 36": {
+            "winnings": 0,
+            "betReturned": 0
+          }
+        },
+        "winningWheelNumber": "2",
+        "resultingBalance": 9999
+      }
     ]
   }
 }
