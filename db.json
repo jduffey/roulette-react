@@ -1,16 +1,6 @@
 {
-  "player": {
-    "initialBalance": 10000,
-    "history": [
-      {
-        "startingBalance": 10000,
-        "betsPlaced": {
-          "Black": 25,
-          "Red": 25
-        },
-        "spinResult": "19",
-        "finalBalance": 10000
-      }
-    ]
-  }
+    "player": {
+        "initialBalance": 10000,
+        "history": []
+    }
 }

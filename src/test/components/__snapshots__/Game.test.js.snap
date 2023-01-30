@@ -2179,13 +2179,13 @@ exports[`Game renders without props 1`] = `
             TOTALS
           </td>
           <td>
-            $ 0
+            -
           </td>
           <td>
-            $ 0
+            -
           </td>
           <td>
-            $ 0
+            -
           </td>
         </tr>
         <tr
