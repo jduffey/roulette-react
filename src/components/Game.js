@@ -15,6 +15,7 @@ import { SpinResult } from './SpinResult';
 
 import { getNewBalance } from '../common/getNewBalance';
 import { getRandomWheelNumber } from '../common/getRandomWheelNumber';
+import { getResultsOfBets } from '../common/getResultsOfBets';
 
 function calculateTotalBetAmount(bets) {
     return Object.values(bets).reduce((acc, betAmount) => acc + betAmount, 0);
@@ -55,7 +56,21 @@ export function Game() {
                 if (mounted) {
                     setTransactionHistory(json.history);
 
-                    // setPreviousRoundResults(json.history[json.history.length - 1]);
+                    const mostRecentTransaction = json.history[json.history.length - 1];
+                    console.log("mostRecentTransaction", mostRecentTransaction);
+
+                    const mostRecentBetResults = getResultsOfBets(mostRecentTransaction.betsPlaced, mostRecentTransaction.spinResult);
+                    console.log("mostRecentBetResults", mostRecentBetResults);
+
+                    const mostRecentRoundResults = {
+                        startingBalance: mostRecentTransaction.startingBalance,
+                        finalBalance: mostRecentTransaction.resultBalance,
+                        betsPlaced: mostRecentBetResults,
+                        winningWheelNumber: mostRecentTransaction.spinResult,
+                    };
+                    console.log("mostRecentRoundResults", mostRecentRoundResults);
+
+                    setPreviousRoundResults(mostRecentRoundResults);
 
                     const availableBalance = json.history.length ?
                         json.history[json.history.length - 1].resultBalance :
