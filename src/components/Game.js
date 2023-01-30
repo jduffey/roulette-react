@@ -150,6 +150,15 @@ export function Game() {
         const copyTransactionHistory = transactionHistory.slice();
         copyTransactionHistory.push(newTransaction);
 
+
+        const mostRecentRoundResults = {
+            startingBalance: startingBalance,
+            finalBalance: newBalance,
+            betsPlaced: getResultsOfBets(betsOnBoard, randomWheelNumber),
+            winningWheelNumber: randomWheelNumber,
+        };
+        setPreviousRoundResults(mostRecentRoundResults);
+
         setAvailableBalance(newBalance);
         setSpinResults(copySpinResults);
         setTransactionHistory(copyTransactionHistory);
