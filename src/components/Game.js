@@ -24,6 +24,18 @@ function isSpinAllowed(bets) {
     return Object.keys(bets).length > 0;
 }
 
+function getNewTransactionForDatabase(mostRecentRoundResults) {
+    return {
+        "startingBalance": mostRecentRoundResults.startingBalance,
+        "betsPlaced": Object.entries(mostRecentRoundResults.betsPlaced).reduce((acc, [betName, individualBetResult]) => {
+            acc[betName] = individualBetResult.betAmount;
+            return acc;
+        }, {}),
+        "spinResult": mostRecentRoundResults.winningWheelNumber,
+        "finalBalance": mostRecentRoundResults.finalBalance,
+    };
+}
+
 const CLASS_NAME = "Game-component";
 export function Game() {
     const [transactionHistory, setTransactionHistory] = useState(null);
@@ -100,27 +112,17 @@ export function Game() {
         const startingBalance = availableBalance + betAmountOnBoard;
 
         const mostRecentRoundResults = getCompleteResultsOfRound(startingBalance, betsOnBoard, randomWheelNumber);
+        setPreviousRoundResultsForBetResultsInfo(mostRecentRoundResults);
+        setAvailableBalance(mostRecentRoundResults.finalBalance);
 
         copySpinResults.push(mostRecentRoundResults.winningWheelNumber);
         setSpinResults(copySpinResults);
 
-        // TODO extract helper function
-        const newTransactionForDatabase = {
-            "startingBalance": mostRecentRoundResults.startingBalance,
-            "betsPlaced": Object.entries(mostRecentRoundResults.betsPlaced).reduce((acc, [betName, individualBetResult]) => {
-                acc[betName] = individualBetResult.betAmount;
-                return acc;
-            }, {}),
-            "spinResult": mostRecentRoundResults.winningWheelNumber,
-            "finalBalance": mostRecentRoundResults.finalBalance,
-        };
-
+        const newTransactionForDatabase = getNewTransactionForDatabase(mostRecentRoundResults);
         const copyTransactionHistory = transactionHistory.slice();
         copyTransactionHistory.push(newTransactionForDatabase);
-
-        setPreviousRoundResultsForBetResultsInfo(mostRecentRoundResults);
-        setAvailableBalance(mostRecentRoundResults.finalBalance);
         setTransactionHistory(copyTransactionHistory);
+
         // TODO bug here? if we don't reset betsOnBoard then we can continue to click spin, which is not a problem itself,
         // but on continuing to click does not charge the player for the bet placed, but it DOES award them winnings if they win.
         // So we maybe need to refactor this component to ensure that the player's balance is in fact deducted for the bet placed.
@@ -129,6 +131,7 @@ export function Game() {
         // 2. what the player "owns" (i.e. if they had an option to clear all bets on the board, what would their balance be)
         setBetsOnBoard({});
 
+        // DB call
         updateTransactionHistory(copyTransactionHistory);
     }
 
