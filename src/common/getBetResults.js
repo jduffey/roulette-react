@@ -1,7 +1,7 @@
 import { getBetNameMultiplier } from "../common/getBetNameMultiplier";
 import { getWinningCriteria } from "../common/getWinningCriteria";
 
-export function getNewState(startingBalance, bets, winningWheelNumber) {
+export function getBetResults(startingBalance, bets, winningWheelNumber) {
 
     const betResults = Object.keys(bets).reduce((acc, betOption) => {
         const multiplier = getBetNameMultiplier(betOption);
@@ -27,7 +27,7 @@ export function getNewState(startingBalance, bets, winningWheelNumber) {
 
     const result = {
         startingBalance: startingBalance,
-        betsPlaced: bets,
+        betResults: betResults,
         winningWheelNumber: winningWheelNumber,
         resultingBalance: startingBalance - totalBetAmount + winningsPlusBetsReturned,
     };

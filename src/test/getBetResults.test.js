@@ -1,4 +1,4 @@
-import { getNewState } from "../common/getNewState";
+import { getBetResults } from "../common/getBetResults";
 
 import { BET_NAMES } from "../common/betNames";
 
@@ -13,13 +13,20 @@ describe("getNewState Individual Bets", () => {
             return acc;
         }, {});
 
-        const actual = getNewState(startingBalance, bets, winningWheelNumber);
+        const actual = getBetResults(startingBalance, bets, winningWheelNumber);
 
         const expected = {
             startingBalance: startingBalance,
-            betsPlaced: bets,
+            betResults: Object.keys(bets).reduce((acc, betOption) => {
+                acc[betOption] = {
+                    "winnings": (betOption === "StraightUp_0") ? 350 : 0,
+                    "betReturned": (betOption === "StraightUp_0") ? betAmount : 0,
+                };
+                return acc;
+            }, {}),
             winningWheelNumber: winningWheelNumber,
             resultingBalance: startingBalance - (Object.keys(bets).length * betAmount) + (350 + betAmount),
+
         };
 
         expect(actual).toEqual(expected);
@@ -30,8 +37,8 @@ describe("getNewState Individual Bets", () => {
             "INVALID_BET_NAME": betAmount,
         };
 
-        const action = () => getNewState(startingBalance, bets, winningWheelNumber);
-
+        const action = () => getBetResults(startingBalance, bets, winningWheelNumber);
+        
         expect(action).toThrow("Invalid bet name");
     });
 });

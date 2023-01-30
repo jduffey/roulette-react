@@ -2,7 +2,6 @@ import { getWheelNumberColor } from "../common/getWheelNumberColor";
 
 const CLASS_NAME = "MostRecentSpinResults-component";
 export function MostRecentSpinResults(props) {
-    console.log("MostRecentSpinResults props", props);
     const numberOfResultsToDisplay = 20;
     const truncatedSpinResults = props.spinResults.slice(-numberOfResultsToDisplay);
     return (
