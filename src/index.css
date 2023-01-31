@@ -20,7 +20,7 @@ ul {
             #222277 10px,
             #222277 20px);
     padding: 1px;
-    width: 1360px;
+    width: 1460px;
     height: 1050px;
     padding: 16px;
 }
@@ -194,7 +194,7 @@ because we'll have "invisible" betting options later
     background-color: #34a45d;
 }
 
-.PlayerInfo-component > div {
+.PlayerInfo-component>div {
     margin: 8px;
 }
 
@@ -202,6 +202,32 @@ because we'll have "invisible" betting options later
     background-color: #FF9999;
     border: 2px solid white;
     border-radius: 24px;
+}
+
+.RewardsInfo-component {
+    position: relative;
+    left: 900px;
+    top: -1836px;
+    height: 200px;
+    width: 200px;
+    border: 1px solid white;
+    border-radius: 24px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #34a45d;
+}
+
+.RewardsInfo-component>div {
+    margin: 12px;
+}
+
+.rewards-info-value {
+    font-size: 24px;
 }
 
 .MostRecentSpinResults-component {

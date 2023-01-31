@@ -11,6 +11,7 @@ import { ChipSelection } from './ChipSelection';
 import { CurrentBetsInfo } from './CurrentBetsInfo';
 import { MostRecentSpinResults } from './MostRecentSpinResults';
 import { PlayerInfo } from './PlayerInfo';
+import { RewardsInfo } from './RewardsInfo';
 import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
 
@@ -184,6 +185,9 @@ export function Game() {
             />
             <BetResultsInfo
                 previousRoundResults={previousRoundResultsForBetResultsInfo}
+            />
+            <RewardsInfo
+                transactionHistory={transactionHistory}
             />
         </div >
     );

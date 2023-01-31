@@ -2253,5 +2253,27 @@ exports[`Game renders without props 1`] = `
       </tbody>
     </table>
   </div>
+  <div
+    className="RewardsInfo-component"
+  >
+    <div>
+      Games Played
+      <br />
+      <span
+        className="rewards-info-value"
+      >
+        0
+      </span>
+    </div>
+    <div>
+      Rewards
+      <br />
+      <span
+        className="rewards-info-value"
+      >
+        $ 0
+      </span>
+    </div>
+  </div>
 </div>
 `;
