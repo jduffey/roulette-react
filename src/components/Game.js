@@ -103,35 +103,36 @@ export function Game() {
             return;
         }
 
-        const randomWheelNumber = getRandomWheelNumber();
+        getRandomWheelNumber(Date.now())
+            .then(randomWheelNumber => {
+                const copySpinResults = spinResults.slice();
 
-        const copySpinResults = spinResults.slice();
+                const betAmountOnBoard = calculateTotalBetAmount(betsOnBoard);
 
-        const betAmountOnBoard = calculateTotalBetAmount(betsOnBoard);
+                const startingBalance = availableBalance + betAmountOnBoard;
 
-        const startingBalance = availableBalance + betAmountOnBoard;
+                const mostRecentRoundResults = getCompleteResultsOfRound(startingBalance, betsOnBoard, randomWheelNumber);
+                setPreviousRoundResultsForBetResultsInfo(mostRecentRoundResults);
+                setAvailableBalance(mostRecentRoundResults.finalBalance);
 
-        const mostRecentRoundResults = getCompleteResultsOfRound(startingBalance, betsOnBoard, randomWheelNumber);
-        setPreviousRoundResultsForBetResultsInfo(mostRecentRoundResults);
-        setAvailableBalance(mostRecentRoundResults.finalBalance);
+                copySpinResults.push(mostRecentRoundResults.winningWheelNumber);
+                setSpinResults(copySpinResults);
 
-        copySpinResults.push(mostRecentRoundResults.winningWheelNumber);
-        setSpinResults(copySpinResults);
+                const newTransactionForDatabase = getNewTransactionForDatabase(mostRecentRoundResults);
+                const copyTransactionHistory = transactionHistory.slice();
+                copyTransactionHistory.push(newTransactionForDatabase);
+                setTransactionHistory(copyTransactionHistory);
 
-        const newTransactionForDatabase = getNewTransactionForDatabase(mostRecentRoundResults);
-        const copyTransactionHistory = transactionHistory.slice();
-        copyTransactionHistory.push(newTransactionForDatabase);
-        setTransactionHistory(copyTransactionHistory);
+                // TODO bug here? if we don't reset betsOnBoard then we can continue to click spin, which is not a problem itself,
+                // but on continuing to click does not charge the player for the bet placed, but it DOES award them winnings if they win.
+                // So we maybe need to refactor this component to ensure that the player's balance is in fact deducted for the bet placed.
+                // This may involve the reworking/splitting the concepts of:
+                // 1. what the player is actually able to bet at any given time (i.e. the funds they "own" minus whatever bets they've already placed)
+                // 2. what the player "owns" (i.e. if they had an option to clear all bets on the board, what would their balance be)
+                setBetsOnBoard({});
 
-        // TODO bug here? if we don't reset betsOnBoard then we can continue to click spin, which is not a problem itself,
-        // but on continuing to click does not charge the player for the bet placed, but it DOES award them winnings if they win.
-        // So we maybe need to refactor this component to ensure that the player's balance is in fact deducted for the bet placed.
-        // This may involve the reworking/splitting the concepts of:
-        // 1. what the player is actually able to bet at any given time (i.e. the funds they "own" minus whatever bets they've already placed)
-        // 2. what the player "owns" (i.e. if they had an option to clear all bets on the board, what would their balance be)
-        setBetsOnBoard({});
-
-        updateTransactionHistory(copyTransactionHistory);
+                updateTransactionHistory(copyTransactionHistory);
+            });
     }
 
     function handleResetHistoryClick() {
