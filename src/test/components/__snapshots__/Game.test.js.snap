@@ -2074,7 +2074,18 @@ exports[`Game renders without props 1`] = `
   </div>
   <div
     className="SpinResult-component"
-  />
+  >
+    <div
+      className="spin-result-label"
+      style={
+        Object {
+          "backgroundColor": "inherit",
+        }
+      }
+    >
+      ?
+    </div>
+  </div>
   <div
     className="MostRecentSpinResults-component"
   >
