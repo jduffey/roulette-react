@@ -1,6 +1,7 @@
 import { getBetNameMultiplier } from "./getBetNameMultiplier";
 import { getWinningCriteria } from "./getWinningCriteria";
 
+// TODO I'm sure there's some performance improvements to be made here re: unnecessary looping...
 export const getCompleteResultsOfRound = (startingBalance, bets, winningWheelNumber) => {
     const winningCriteria = getWinningCriteria(winningWheelNumber);
 
@@ -10,7 +11,7 @@ export const getCompleteResultsOfRound = (startingBalance, bets, winningWheelNum
     const resultsOfBets =
         Object.entries(bets).reduce((acc, [betName, betAmount]) => {
             acc[betName] = {
-                betAmount: betAmount,
+                betAmount,
                 winningsOnBet: winningCriteria.has(betName) ? betAmount * getBetNameMultiplier(betName) : 0,
                 betReturned: winningCriteria.has(betName) ? betAmount : 0,
             };
@@ -27,9 +28,9 @@ export const getCompleteResultsOfRound = (startingBalance, bets, winningWheelNum
         startingBalance - totalBetAmount + totalWinningsFromBets + totalBetAmountReturned;
 
     return {
-        startingBalance: startingBalance,
-        betsPlaced: resultsOfBets,
-        winningWheelNumber: winningWheelNumber,
-        finalBalance: finalBalance,
+        startingBalance,
+        resultsOfBets,
+        winningWheelNumber,
+        finalBalance,
     };
 }

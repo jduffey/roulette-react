@@ -27,7 +27,7 @@ function isSpinAllowed(bets) {
 function getNewTransactionForDatabase(mostRecentRoundResults) {
     return {
         startingBalance: mostRecentRoundResults.startingBalance,
-        betsPlaced: Object.entries(mostRecentRoundResults.betsPlaced).reduce((acc, [betName, individualBetResult]) => {
+        betsPlaced: Object.entries(mostRecentRoundResults.resultsOfBets).reduce((acc, [betName, individualBetResult]) => {
             acc[betName] = individualBetResult.betAmount;
             return acc;
         }, {}),

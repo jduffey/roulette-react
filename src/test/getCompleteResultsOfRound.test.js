@@ -57,7 +57,7 @@ describe(`${getCompleteResultsOfRound.name}`, () => {
         const expected = {
             startingBalance: startingBalance,
             finalBalance: startingBalance + expectedNetDifferenceInBalance,
-            betsPlaced: Object.values(BET_NAMES).reduce((acc, betName) => {
+            resultsOfBets: Object.values(BET_NAMES).reduce((acc, betName) => {
                 acc[betName] = {
                     betAmount: betAmount,
                     winningsOnBet: 0,
@@ -68,8 +68,8 @@ describe(`${getCompleteResultsOfRound.name}`, () => {
             winningWheelNumber: spinResult,
         };
         expectedWinningBets.forEach((betName) => {
-            expected.betsPlaced[betName].winningsOnBet = getBetNameMultiplier(betName) * betAmount;
-            expected.betsPlaced[betName].betReturned = betAmount;
+            expected.resultsOfBets[betName].winningsOnBet = getBetNameMultiplier(betName) * betAmount;
+            expected.resultsOfBets[betName].betReturned = betAmount;
         });
 
         expect(actual).toStrictEqual(expected);

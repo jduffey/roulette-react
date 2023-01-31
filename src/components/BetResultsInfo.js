@@ -15,9 +15,9 @@ export function BetResultsInfo(props) {
         finalBalanceText = `$ ${props.previousRoundResults.finalBalance}`;
         netChangeInBalanceText = `$ ${props.previousRoundResults.finalBalance - props.previousRoundResults.startingBalance}`;
 
-        const sumBetAmounts = Object.values(props.previousRoundResults.betsPlaced).reduce((acc, bet) => acc + bet.betAmount, 0);
-        const sumWinnings = Object.values(props.previousRoundResults.betsPlaced).reduce((acc, bet) => acc + bet.winningsOnBet, 0);
-        const sumBetsReturned = Object.values(props.previousRoundResults.betsPlaced).reduce((acc, bet) => acc + bet.betReturned, 0);
+        const sumBetAmounts = Object.values(props.previousRoundResults.resultsOfBets).reduce((acc, bet) => acc + bet.betAmount, 0);
+        const sumWinnings = Object.values(props.previousRoundResults.resultsOfBets).reduce((acc, bet) => acc + bet.winningsOnBet, 0);
+        const sumBetsReturned = Object.values(props.previousRoundResults.resultsOfBets).reduce((acc, bet) => acc + bet.betReturned, 0);
 
         totalBetAmountText = `$ ${sumBetAmounts}`;
         totalWinningsText = `$ ${sumWinnings}`;
@@ -36,19 +36,17 @@ export function BetResultsInfo(props) {
         return (
             <div
                 className="bet-info-table-title-spin-result"
-                style={{
-                    backgroundColor: backgroundColor,
-                }}
+                style={{ backgroundColor }}
             >
                 {wheelNumberText}
             </div>
         )
     }
 
-    const betResultsRows = () => Object.keys(props.previousRoundResults.betsPlaced).map((betOption) => {
-        const betAmountOnBet = props.previousRoundResults.betsPlaced[betOption].betAmount;
-        const winningsOnBet = props.previousRoundResults.betsPlaced[betOption].winningsOnBet;
-        const betReturnedAmount = props.previousRoundResults.betsPlaced[betOption].betReturned;
+    const betResultsRows = () => Object.keys(props.previousRoundResults.resultsOfBets).map((betOption) => {
+        const betAmountOnBet = props.previousRoundResults.resultsOfBets[betOption].betAmount;
+        const winningsOnBet = props.previousRoundResults.resultsOfBets[betOption].winningsOnBet;
+        const betReturnedAmount = props.previousRoundResults.resultsOfBets[betOption].betReturned;
         return (
             <tr key={betOption}>
                 <td>{betOption}</td>
