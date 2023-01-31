@@ -131,7 +131,6 @@ export function Game() {
         // 2. what the player "owns" (i.e. if they had an option to clear all bets on the board, what would their balance be)
         setBetsOnBoard({});
 
-        // DB call
         updateTransactionHistory(copyTransactionHistory);
     }
 
