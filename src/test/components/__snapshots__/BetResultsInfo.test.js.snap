@@ -1,0 +1,1429 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BetResultsInfo renders when previousRoundResults is null 1`] = `
+<div
+  className="BetResultsInfo-component"
+>
+  <div
+    className="bet-info-table-title-container"
+  >
+    <div
+      className="bet-info-table-title-text"
+    >
+      PREVIOUS ROUND RESULTS
+    </div>
+    <div
+      className="bet-info-table-title-spin-result"
+      style={
+        Object {
+          "backgroundColor": "#dfdfdf",
+        }
+      }
+    >
+      ??
+    </div>
+  </div>
+  <table
+    className="bet-results-info-table"
+  >
+    <tbody>
+      <tr
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
+      >
+        <th>
+          Bet Name
+        </th>
+        <th>
+          Bet Amount
+        </th>
+        <th>
+          Winnings
+        </th>
+        <th>
+          Bet Returned
+        </th>
+      </tr>
+      <tr
+        style={
+          Object {
+            "height": "10px",
+          }
+        }
+      />
+      <tr>
+        <td>
+          TOTALS
+        </td>
+        <td>
+          -
+        </td>
+        <td>
+          -
+        </td>
+        <td>
+          -
+        </td>
+      </tr>
+      <tr
+        style={
+          Object {
+            "height": "10px",
+          }
+        }
+      />
+      <tr
+        className="balance-change-value"
+      >
+        <td>
+          Starting
+        </td>
+        <td
+          colSpan={3}
+        >
+          -
+        </td>
+      </tr>
+      <tr
+        className="balance-change-value"
+      >
+        <td>
+          Net
+        </td>
+        <td
+          colSpan={3}
+        >
+          -
+        </td>
+      </tr>
+      <tr
+        className="balance-change-value"
+      >
+        <td>
+          Final
+        </td>
+        <td
+          colSpan={3}
+        >
+          -
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`BetResultsInfo renders winning wheel numbers with different color backgrounds (0 -> green) 1`] = `
+<div
+  className="BetResultsInfo-component"
+>
+  <div
+    className="bet-info-table-title-container"
+  >
+    <div
+      className="bet-info-table-title-text"
+    >
+      PREVIOUS ROUND RESULTS
+    </div>
+    <div
+      className="bet-info-table-title-spin-result"
+      style={
+        Object {
+          "backgroundColor": "#016D29",
+        }
+      }
+    >
+      0
+    </div>
+  </div>
+  <table
+    className="bet-results-info-table"
+  >
+    <tbody>
+      <tr
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
+      >
+        <th>
+          Bet Name
+        </th>
+        <th>
+          Bet Amount
+        </th>
+        <th>
+          Winnings
+        </th>
+        <th>
+          Bet Returned
+        </th>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_0
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr
+        style={
+          Object {
+            "height": "10px",
+          }
+        }
+      />
+      <tr>
+        <td>
+          TOTALS
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr
+        style={
+          Object {
+            "height": "10px",
+          }
+        }
+      />
+      <tr
+        className="balance-change-value"
+      >
+        <td>
+          Starting
+        </td>
+        <td
+          colSpan={3}
+        >
+          $ -999
+        </td>
+      </tr>
+      <tr
+        className="balance-change-value"
+      >
+        <td>
+          Net
+        </td>
+        <td
+          colSpan={3}
+        >
+          $ 0
+        </td>
+      </tr>
+      <tr
+        className="balance-change-value"
+      >
+        <td>
+          Final
+        </td>
+        <td
+          colSpan={3}
+        >
+          $ -999
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`BetResultsInfo renders winning wheel numbers with different color backgrounds (1 -> red) 1`] = `
+<div
+  className="BetResultsInfo-component"
+>
+  <div
+    className="bet-info-table-title-container"
+  >
+    <div
+      className="bet-info-table-title-text"
+    >
+      PREVIOUS ROUND RESULTS
+    </div>
+    <div
+      className="bet-info-table-title-spin-result"
+      style={
+        Object {
+          "backgroundColor": "#d94848",
+        }
+      }
+    >
+      1
+    </div>
+  </div>
+  <table
+    className="bet-results-info-table"
+  >
+    <tbody>
+      <tr
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
+      >
+        <th>
+          Bet Name
+        </th>
+        <th>
+          Bet Amount
+        </th>
+        <th>
+          Winnings
+        </th>
+        <th>
+          Bet Returned
+        </th>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_0
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr
+        style={
+          Object {
+            "height": "10px",
+          }
+        }
+      />
+      <tr>
+        <td>
+          TOTALS
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr
+        style={
+          Object {
+            "height": "10px",
+          }
+        }
+      />
+      <tr
+        className="balance-change-value"
+      >
+        <td>
+          Starting
+        </td>
+        <td
+          colSpan={3}
+        >
+          $ -999
+        </td>
+      </tr>
+      <tr
+        className="balance-change-value"
+      >
+        <td>
+          Net
+        </td>
+        <td
+          colSpan={3}
+        >
+          $ 0
+        </td>
+      </tr>
+      <tr
+        className="balance-change-value"
+      >
+        <td>
+          Final
+        </td>
+        <td
+          colSpan={3}
+        >
+          $ -999
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`BetResultsInfo renders winning wheel numbers with different color backgrounds (2 -> black) 1`] = `
+<div
+  className="BetResultsInfo-component"
+>
+  <div
+    className="bet-info-table-title-container"
+  >
+    <div
+      className="bet-info-table-title-text"
+    >
+      PREVIOUS ROUND RESULTS
+    </div>
+    <div
+      className="bet-info-table-title-spin-result"
+      style={
+        Object {
+          "backgroundColor": "#222222",
+        }
+      }
+    >
+      2
+    </div>
+  </div>
+  <table
+    className="bet-results-info-table"
+  >
+    <tbody>
+      <tr
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
+      >
+        <th>
+          Bet Name
+        </th>
+        <th>
+          Bet Amount
+        </th>
+        <th>
+          Winnings
+        </th>
+        <th>
+          Bet Returned
+        </th>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_0
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr
+        style={
+          Object {
+            "height": "10px",
+          }
+        }
+      />
+      <tr>
+        <td>
+          TOTALS
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr
+        style={
+          Object {
+            "height": "10px",
+          }
+        }
+      />
+      <tr
+        className="balance-change-value"
+      >
+        <td>
+          Starting
+        </td>
+        <td
+          colSpan={3}
+        >
+          $ -999
+        </td>
+      </tr>
+      <tr
+        className="balance-change-value"
+      >
+        <td>
+          Net
+        </td>
+        <td
+          colSpan={3}
+        >
+          $ 0
+        </td>
+      </tr>
+      <tr
+        className="balance-change-value"
+      >
+        <td>
+          Final
+        </td>
+        <td
+          colSpan={3}
+        >
+          $ -999
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`BetResultsInfo renders with bets 1`] = `
+<div
+  className="BetResultsInfo-component"
+>
+  <div
+    className="bet-info-table-title-container"
+  >
+    <div
+      className="bet-info-table-title-text"
+    >
+      PREVIOUS ROUND RESULTS
+    </div>
+    <div
+      className="bet-info-table-title-spin-result"
+      style={
+        Object {
+          "backgroundColor": "#016D29",
+        }
+      }
+    >
+      0
+    </div>
+  </div>
+  <table
+    className="bet-results-info-table"
+  >
+    <tbody>
+      <tr
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
+      >
+        <th>
+          Bet Name
+        </th>
+        <th>
+          Bet Amount
+        </th>
+        <th>
+          Winnings
+        </th>
+        <th>
+          Bet Returned
+        </th>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_0
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_00
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_1
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_2
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_3
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_4
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_5
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_6
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_7
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_8
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_9
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_10
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_11
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_12
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_13
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_14
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_15
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_16
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_17
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_18
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_19
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_20
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_21
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_22
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_23
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_24
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_25
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_26
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_27
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_28
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_29
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_30
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_31
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_32
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_33
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_34
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_35
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          StraightUp_36
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          1st 12
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          2nd 12
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          3rd 12
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          1 to 18
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          19 to 36
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Even
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Odd
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          1st Column
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          2nd Column
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          3rd Column
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Red
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Black
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr
+        style={
+          Object {
+            "height": "10px",
+          }
+        }
+      />
+      <tr>
+        <td>
+          TOTALS
+        </td>
+        <td>
+          $ -49950
+        </td>
+        <td>
+          $ -49950
+        </td>
+        <td>
+          $ -49950
+        </td>
+      </tr>
+      <tr
+        style={
+          Object {
+            "height": "10px",
+          }
+        }
+      />
+      <tr
+        className="balance-change-value"
+      >
+        <td>
+          Starting
+        </td>
+        <td
+          colSpan={3}
+        >
+          $ 1000
+        </td>
+      </tr>
+      <tr
+        className="balance-change-value"
+      >
+        <td>
+          Net
+        </td>
+        <td
+          colSpan={3}
+        >
+          $ -14
+        </td>
+      </tr>
+      <tr
+        className="balance-change-value"
+      >
+        <td>
+          Final
+        </td>
+        <td
+          colSpan={3}
+        >
+          $ 986
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

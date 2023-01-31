@@ -1,59 +1,67 @@
-// import renderer from 'react-test-renderer';
+import renderer from 'react-test-renderer';
 
-// import { BetResultsInfo } from '../../components/BetResultsInfo';
+import { BetResultsInfo } from '../../components/BetResultsInfo';
 
-// import { BET_NAMES } from '../../common/betNames';
-// import { WHEEL_NUMBERS } from '../../common/wheelNumbers';
+import { BET_NAMES } from '../../common/betNames';
+import { WHEEL_NUMBERS } from '../../common/wheelNumbers';
 
-// describe('BetResultsInfo', () => {
-//     it('renders with no bets', () => {
-//         const sut =
-//             BetResultsInfo({
-//                 bets: {},
-//             });
+const DUMMY_VALUE = -999;
 
-//         const actual = renderer.create(sut);
+describe('BetResultsInfo', () => {
+    it('renders when previousRoundResults is null', () => {
+        const sut =
+            BetResultsInfo({
+                previousRoundResults: null,
+            });
 
-//         expect(actual).toMatchSnapshot();
-//     });
+        const actual = renderer.create(sut);
 
-//     it('renders with bets', () => {
-//         const sut =
-//             BetResultsInfo({
-//                 bets: {
-//                     [BET_NAMES.EVEN]: 10,
-//                     [BET_NAMES.BLACK]: 20,
-//                     [BET_NAMES.FIRST_DOZEN]: 30,
-//                 },
-//                 winningWheelNumber: WHEEL_NUMBERS.WN_7,
-//                 startingBalance: 1000,
-//             });
+        expect(actual).toMatchSnapshot();
+    });
 
-//         const actual = renderer.create(sut);
+    it('renders with bets', () => {
+        const previousRoundResults = {
+            startingBalance: 1000,
+            resultsOfBets: Object.values(BET_NAMES).reduce((acc, betName) => {
+                acc[betName] = {
+                    betAmount: DUMMY_VALUE,
+                    winningsOnBet: DUMMY_VALUE,
+                    betReturned: DUMMY_VALUE,
+                };
+                return acc;
+            }, {}),
+            winningWheelNumber: WHEEL_NUMBERS.WN_0,
+            finalBalance: 986
+        }
 
-//         expect(actual).toMatchSnapshot();
-//     });
+        const sut =
+            BetResultsInfo({
+                previousRoundResults,
+            });
 
-//     it.each([
-//         [WHEEL_NUMBERS.WN_0, 'green'],
-//         [WHEEL_NUMBERS.WN_1, 'red'],
-//         [WHEEL_NUMBERS.WN_2, 'black'],
-//         [undefined, 'generic grey'],
-//     ])('renders winning wheel numbers with different color backgrounds (%s -> %s)', (winningWheelNumber, _bgColor) => {
-//         const sut =
-//             BetResultsInfo({
-//                 bets: {},
-//                 winningWheelNumber,
-//                 startingBalance: 1000,
-//             });
+        const actual = renderer.create(sut);
 
-//         const actual = renderer.create(sut);
+        expect(actual).toMatchSnapshot();
+    });
 
-//         expect(actual).toMatchSnapshot();
-//     });
-// });
+    it.each([
+        [WHEEL_NUMBERS.WN_0, 'green'],
+        [WHEEL_NUMBERS.WN_1, 'red'],
+        [WHEEL_NUMBERS.WN_2, 'black'],
+    ])('renders winning wheel numbers with different color backgrounds (%s -> %s)', (winningWheelNumber, _bgColor) => {
+        const sut =
+            BetResultsInfo({
+                previousRoundResults: {
+                    startingBalance: DUMMY_VALUE,
+                    resultsOfBets: { StraightUp_0: { betAmount: DUMMY_VALUE, winningsOnBet: DUMMY_VALUE, betReturned: DUMMY_VALUE } },
+                    winningWheelNumber,
+                    finalBalance: DUMMY_VALUE,
 
-it("passes", () => {
-    expect(true).toBe(true);
+                },
+            });
+
+        const actual = renderer.create(sut);
+
+        expect(actual).toMatchSnapshot();
+    });
 });
-
