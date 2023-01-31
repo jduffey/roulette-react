@@ -70,8 +70,7 @@ export function Game() {
                     setPreviousRoundResultsForBetResultsInfo(previousRoundResults);
                     setAvailableBalance(previousRoundResults.finalBalance);
 
-                    const spinResults = json.history.map(historyItem => historyItem.spinResult);
-                    setSpinResults(spinResults);
+                    setSpinResults(json.history.map(historyItem => historyItem.spinResult));
                 }
             });
 

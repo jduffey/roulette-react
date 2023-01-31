@@ -55,11 +55,11 @@ describe(`${getCompleteResultsOfRound.name}`, () => {
         const actual = getCompleteResultsOfRound(startingBalance, bets, spinResult);
 
         const expected = {
-            startingBalance: startingBalance,
+            startingBalance,
             finalBalance: startingBalance + expectedNetDifferenceInBalance,
             resultsOfBets: Object.values(BET_NAMES).reduce((acc, betName) => {
                 acc[betName] = {
-                    betAmount: betAmount,
+                    betAmount,
                     winningsOnBet: 0,
                     betReturned: 0,
                 };
