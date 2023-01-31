@@ -47,13 +47,12 @@ describe(`${getCompleteResultsOfRound.name}`, () => {
     ])("same bet on each option, spin result %s", (spinResult, expectedWinningBets, expectedNetDifferenceInBalance) => {
         const startingBalance = 1000;
         const betAmount = 1;
-        const bets = Object.values(BET_NAMES).reduce((accumulator, betName) => {
-            accumulator[betName] = betAmount;
-            return accumulator;
+        const bets = Object.values(BET_NAMES).reduce((acc, betName) => {
+            acc[betName] = betAmount;
+            return acc;
         }, {});
-        const winningWheelNumber = spinResult;
 
-        const actual = getCompleteResultsOfRound(startingBalance, bets, winningWheelNumber);
+        const actual = getCompleteResultsOfRound(startingBalance, bets, spinResult);
 
         const expected = {
             startingBalance: startingBalance,
