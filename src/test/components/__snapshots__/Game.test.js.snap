@@ -2094,14 +2094,22 @@ exports[`Game renders without props 1`] = `
   <div
     className="PlayerInfo-component"
   >
-    Avail. Balance
-    <br />
-    $ Loading...
-    <br />
-    <br />
-    Total Bet
-    <br />
-    $ 0
+    <div>
+      Avail. Balance
+      <br />
+      $ Loading...
+    </div>
+    <div>
+      Total Bet
+      <br />
+      $ 0
+    </div>
+    <div
+      id="reset-history"
+      onClick={[Function]}
+    >
+      RESET HISTORY
+    </div>
   </div>
   <div
     className="CurrentBetsInfo-component"

@@ -6,14 +6,22 @@ export function PlayerInfo(props) {
         <div
             className={CLASS_NAME}
         >
-            {"Avail. Balance"}
-            < br />
-            {`$ ${props.availableBalance.toLocaleString()}`}
-            <br />
-            <br />
-            {"Total Bet"}
-            <br />
-            {`$ ${props.totalBetAmount.toLocaleString()}`}
+            <div>
+                {"Avail. Balance"}
+                < br />
+                {`$ ${props.availableBalance.toLocaleString()}`}
+            </div>
+            <div>
+                {"Total Bet"}
+                < br />
+                {`$ ${props.totalBetAmount.toLocaleString()}`}
+            </div>
+            <div
+                id="reset-history"
+                onClick={() => props.onClick()}
+            >
+                RESET HISTORY
+            </div>
         </div >
     )
 }

@@ -180,17 +180,28 @@ because we'll have "invisible" betting options later
     position: relative;
     left: 900px;
     top: -1094px;
-    height: 200px;
+    height: 300px;
     width: 200px;
     border: 1px solid white;
     border-radius: 24px;
     font-size: 24px;
     font-weight: bold;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     background-color: #34a45d;
+}
+
+.PlayerInfo-component > div {
+    margin: 8px;
+}
+
+#reset-history {
+    background-color: #FF9999;
+    border: 2px solid white;
+    border-radius: 24px;
 }
 
 .MostRecentSpinResults-component {
@@ -207,7 +218,7 @@ because we'll have "invisible" betting options later
 
 .BetResultsInfo-component {
     position: relative;
-    top: -1536px;
+    top: -1636px;
     left: 370px;
     height: 350px;
     width: 480px;
@@ -230,7 +241,7 @@ because we'll have "invisible" betting options later
 
 .CurrentBetsInfo-component {
     position: relative;
-    top: -1160px;
+    top: -1260px;
     left: 80px;
     height: 350px;
     width: 240px;

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import {
     fetchTransactionHistory,
     updateTransactionHistory,
+    resetTransactionHistory,
 } from '../common/databaseWrapper';
 
 import { BetResultsInfo } from './BetResultsInfo';
@@ -38,13 +39,13 @@ function getNewTransactionForDatabase(mostRecentRoundResults) {
 
 const CLASS_NAME = "Game-component";
 export function Game() {
-    const [transactionHistory, setTransactionHistory] = useState(null);
+    const [transactionHistory, setTransactionHistory] = useState([]);
+
+    const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
 
     const [availableBalance, setAvailableBalance] = useState("Loading...");
     const [spinResults, setSpinResults] = useState([]);
     const [betsOnBoard, setBetsOnBoard] = useState({});
-    const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
-
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
 
     useEffect(() => {
@@ -133,6 +134,21 @@ export function Game() {
         updateTransactionHistory(copyTransactionHistory);
     }
 
+    function handleResetHistoryClick() {
+        fetchTransactionHistory()
+            .then(json => {
+                setAvailableBalance(json.initialBalance);
+            }).then(() => {
+                resetTransactionHistory()
+                    .then(() => {
+                        setTransactionHistory([]);
+                        setSpinResults([]);
+                        setBetsOnBoard({});
+                        setPreviousRoundResultsForBetResultsInfo(null);
+                    });
+            });
+    }
+
     const mostRecentSpinResult = spinResults.slice(-1)[0];
 
     return (
@@ -158,6 +174,7 @@ export function Game() {
                 spinResults={spinResults}
             />
             <PlayerInfo
+                onClick={() => handleResetHistoryClick()}
                 availableBalance={availableBalance}
                 totalBetAmount={calculateTotalBetAmount(betsOnBoard)}
             />
