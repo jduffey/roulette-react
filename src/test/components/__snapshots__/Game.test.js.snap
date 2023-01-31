@@ -2074,7 +2074,18 @@ exports[`Game renders without props 1`] = `
   </div>
   <div
     className="SpinResult-component"
-  />
+  >
+    <div
+      className="spin-result-label"
+      style={
+        Object {
+          "backgroundColor": "inherit",
+        }
+      }
+    >
+      ?
+    </div>
+  </div>
   <div
     className="MostRecentSpinResults-component"
   >
@@ -2140,7 +2151,7 @@ exports[`Game renders without props 1`] = `
           }
         }
       >
-        ?
+        ??
       </div>
     </div>
     <table
@@ -2179,13 +2190,13 @@ exports[`Game renders without props 1`] = `
             TOTALS
           </td>
           <td>
-            $ 0
+            -
           </td>
           <td>
-            $ 0
+            -
           </td>
           <td>
-            $ 0
+            -
           </td>
         </tr>
         <tr
@@ -2203,7 +2214,9 @@ exports[`Game renders without props 1`] = `
           </td>
           <td
             colSpan={3}
-          />
+          >
+            -
+          </td>
         </tr>
         <tr
           className="balance-change-value"
@@ -2213,7 +2226,9 @@ exports[`Game renders without props 1`] = `
           </td>
           <td
             colSpan={3}
-          />
+          >
+            -
+          </td>
         </tr>
         <tr
           className="balance-change-value"
@@ -2223,7 +2238,9 @@ exports[`Game renders without props 1`] = `
           </td>
           <td
             colSpan={3}
-          />
+          >
+            -
+          </td>
         </tr>
       </tbody>
     </table>

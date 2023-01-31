@@ -1,16 +1,7 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import {
-    fetchPlayerBalance,
-    updatePlayerBalance,
-
-    updateBetsPlaced,
-    fetchBetsPlaced,
-
-    fetchPreviousRoundStartingBalance,
-    updatePreviousRoundStartingBalance,
-
-    fetchSpinResults,
-    updateSpinResults,
+    fetchTransactionHistory,
+    updateTransactionHistory,
 } from '../common/databaseWrapper';
 
 import { BetResultsInfo } from './BetResultsInfo';
@@ -22,7 +13,7 @@ import { PlayerInfo } from './PlayerInfo';
 import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
 
-import { getNewBalance } from '../common/getNewBalance';
+import { getCompleteResultsOfRound } from '../common/getCompleteResultsOfRound';
 import { getRandomWheelNumber } from '../common/getRandomWheelNumber';
 
 function calculateTotalBetAmount(bets) {
@@ -33,62 +24,55 @@ function isSpinAllowed(bets) {
     return Object.keys(bets).length > 0;
 }
 
-// function fetchAndSet(mounted, fetcher, setter) {
-//     fetcher()
-//         .then(json => {
-//             if (mounted) {
-//                 setter(json);
-//             }
-//         });
-// }
+function getNewTransactionForDatabase(mostRecentRoundResults) {
+    return {
+        startingBalance: mostRecentRoundResults.startingBalance,
+        betsPlaced: Object.entries(mostRecentRoundResults.resultsOfBets).reduce((acc, [betName, individualBetResult]) => {
+            acc[betName] = individualBetResult.betAmount;
+            return acc;
+        }, {}),
+        spinResult: mostRecentRoundResults.winningWheelNumber,
+        finalBalance: mostRecentRoundResults.finalBalance,
+    };
+}
 
 const CLASS_NAME = "Game-component";
 export function Game() {
-    // tied to db wrapper calls
+    const [transactionHistory, setTransactionHistory] = useState(null);
+
     const [availableBalance, setAvailableBalance] = useState("Loading...");
     const [spinResults, setSpinResults] = useState([]);
-    const [previousRoundBets, setPreviousRoundBets] = useState({});
-    const [previousRoundStartingBalance, setPreviousRoundStartingBalance] = useState(null);
-
-    // not tied to db wrapper calls
     const [betsOnBoard, setBetsOnBoard] = useState({});
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
+
+    const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
 
     useEffect(() => {
         let mounted = true;
 
-        fetchPlayerBalance()
+        fetchTransactionHistory()
             .then(json => {
                 if (mounted) {
-                    setAvailableBalance(json);
+                    setTransactionHistory(json.history);
+
+                    const mostRecentTransaction = json.history[json.history.length - 1];
+
+                    if (typeof mostRecentTransaction === "undefined") {
+                        setAvailableBalance(json.initialBalance);
+                        return;
+                    }
+
+                    const previousRoundResults = getCompleteResultsOfRound(
+                        mostRecentTransaction.startingBalance,
+                        mostRecentTransaction.betsPlaced,
+                        mostRecentTransaction.spinResult,
+                    );
+                    setPreviousRoundResultsForBetResultsInfo(previousRoundResults);
+                    setAvailableBalance(previousRoundResults.finalBalance);
+
+                    setSpinResults(json.history.map(historyItem => historyItem.spinResult));
                 }
             });
-
-        fetchSpinResults()
-            .then(json => {
-                if (mounted) {
-                    setSpinResults(json);
-                }
-            });
-
-        fetchBetsPlaced()
-            .then(json => {
-                if (mounted) {
-                    setPreviousRoundBets(json);
-                }
-            });
-
-        fetchPreviousRoundStartingBalance()
-            .then(json => {
-                if (mounted) {
-                    setPreviousRoundStartingBalance(json);
-                }
-            });
-
-        // fetchAndSet(mounted, fetchPlayerBalance, setAvailableBalance);
-        // fetchAndSet(mounted, fetchSpinResults, setSpinResults);
-        // fetchAndSet(mounted, fetchBetsPlaced, setPreviousRoundBets);
-        // fetchAndSet(mounted, fetchPreviousRoundStartingBalance, setPreviousRoundStartingBalance);
 
         return () => { mounted = false };
     }, []);
@@ -118,42 +102,38 @@ export function Game() {
             return;
         }
 
-        updateBetsPlaced(betsOnBoard)
-            .then(() =>
-                fetchBetsPlaced()
-                    .then(json => {
-                        setPreviousRoundBets(json);
-                    })
-            );
-
         const randomWheelNumber = getRandomWheelNumber();
+
+        const copySpinResults = spinResults.slice();
 
         const betAmountOnBoard = calculateTotalBetAmount(betsOnBoard);
 
         const startingBalance = availableBalance + betAmountOnBoard;
-        const newBalance =
-            getNewBalance(startingBalance, betsOnBoard, randomWheelNumber);
 
-        const copySpinResults = spinResults;
-        copySpinResults.push(randomWheelNumber);
+        const mostRecentRoundResults = getCompleteResultsOfRound(startingBalance, betsOnBoard, randomWheelNumber);
+        setPreviousRoundResultsForBetResultsInfo(mostRecentRoundResults);
+        setAvailableBalance(mostRecentRoundResults.finalBalance);
 
-        updatePlayerBalance(newBalance);
-        setAvailableBalance(newBalance);
+        copySpinResults.push(mostRecentRoundResults.winningWheelNumber);
+        setSpinResults(copySpinResults);
 
-        updateSpinResults(copySpinResults);
+        const newTransactionForDatabase = getNewTransactionForDatabase(mostRecentRoundResults);
+        const copyTransactionHistory = transactionHistory.slice();
+        copyTransactionHistory.push(newTransactionForDatabase);
+        setTransactionHistory(copyTransactionHistory);
 
-        updatePreviousRoundStartingBalance(availableBalance + calculateTotalBetAmount(betsOnBoard))
-            .then(() =>
-                fetchPreviousRoundStartingBalance()
-                    .then(json => {
-                        setPreviousRoundStartingBalance(json);
-                    })
-            );
-
+        // TODO bug here? if we don't reset betsOnBoard then we can continue to click spin, which is not a problem itself,
+        // but on continuing to click does not charge the player for the bet placed, but it DOES award them winnings if they win.
+        // So we maybe need to refactor this component to ensure that the player's balance is in fact deducted for the bet placed.
+        // This may involve the reworking/splitting the concepts of:
+        // 1. what the player is actually able to bet at any given time (i.e. the funds they "own" minus whatever bets they've already placed)
+        // 2. what the player "owns" (i.e. if they had an option to clear all bets on the board, what would their balance be)
         setBetsOnBoard({});
+
+        updateTransactionHistory(copyTransactionHistory);
     }
 
-    const mostRecentSpinResult = spinResults[spinResults.length - 1];
+    const mostRecentSpinResult = spinResults.slice(-1)[0];
 
     return (
         <div
@@ -185,9 +165,7 @@ export function Game() {
                 betsOnBoard={betsOnBoard}
             />
             <BetResultsInfo
-                startingBalance={previousRoundStartingBalance}
-                bets={previousRoundBets}
-                winningWheelNumber={mostRecentSpinResult}
+                previousRoundResults={previousRoundResultsForBetResultsInfo}
             />
         </div >
     );

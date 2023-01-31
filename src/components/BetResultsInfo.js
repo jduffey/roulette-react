@@ -1,53 +1,61 @@
-import { getBetNameMultiplier } from "../common/getBetNameMultiplier";
 import { getWheelNumberColor } from "../common/getWheelNumberColor";
-import { getWinningCriteria } from "../common/getWinningCriteria";
-
-function calculateWinningsOnBet(bets, betOption, winningWheelNumber) {
-    const multiplier = getBetNameMultiplier(betOption);
-
-    const betAmount = bets[betOption];
-
-    return getWinningCriteria(winningWheelNumber).has(betOption) ?
-        betAmount * multiplier :
-        0;
-}
-
-function calculateBetReturnedAmount(props, betOption) {
-    return getWinningCriteria(props.winningWheelNumber).has(betOption) ?
-        props.bets[betOption] :
-        0;
-}
 
 const CLASS_NAME = "BetResultsInfo-component";
 export function BetResultsInfo(props) {
-    const sumBetAmounts = Object.keys(props.bets).reduce((acc, betOption) => {
-        const betAmountOnBet = props.bets[betOption];
-        return acc + betAmountOnBet;
-    }, 0);
+    const previousRoundHasBetResults = props.previousRoundResults !== null;
 
-    const sumWinnings = Object.keys(props.bets).reduce((acc, betOption) => {
-        const winningsOnBet = calculateWinningsOnBet(props.bets, betOption, props.winningWheelNumber);
-        return acc + winningsOnBet;
-    }, 0);
+    let startingBalanceText = "-";
+    let finalBalanceText = "-";
+    let netChangeInBalanceText = "-";
+    let totalBetAmountText = "-";
+    let totalWinningsText = "-";
+    let totalBetsReturnedText = "-";
+    if (previousRoundHasBetResults) {
+        startingBalanceText = `$ ${props.previousRoundResults.startingBalance}`;
+        finalBalanceText = `$ ${props.previousRoundResults.finalBalance}`;
+        netChangeInBalanceText = `$ ${props.previousRoundResults.finalBalance - props.previousRoundResults.startingBalance}`;
 
-    const sumBetsReturned = Object.keys(props.bets).reduce((acc, betOption) => {
-        const betReturnedAmount = calculateBetReturnedAmount(props, betOption);
-        return acc + betReturnedAmount;
-    }, 0);
+        const sumBetAmounts = Object.values(props.previousRoundResults.resultsOfBets).reduce((acc, bet) => acc + bet.betAmount, 0);
+        const sumWinnings = Object.values(props.previousRoundResults.resultsOfBets).reduce((acc, bet) => acc + bet.winningsOnBet, 0);
+        const sumBetsReturned = Object.values(props.previousRoundResults.resultsOfBets).reduce((acc, bet) => acc + bet.betReturned, 0);
 
-    const startingBalanceText = props.startingBalance ?
-        `$ ${props.startingBalance.toString()}` :
-        "";
+        totalBetAmountText = `$ ${sumBetAmounts}`;
+        totalWinningsText = `$ ${sumWinnings}`;
+        totalBetsReturnedText = `$ ${sumBetsReturned}`;
+    }
 
-    const netChangeInBalance = sumWinnings + sumBetsReturned - sumBetAmounts;
-    const netChangeInBalanceText = props.startingBalance ?
-        `$ ${netChangeInBalance.toString()}` :
-        "";
+    const previousWheelNumberDiv = () => {
+        const backgroundColor = previousRoundHasBetResults ?
+            getWheelNumberColor(props.previousRoundResults.winningWheelNumber)
+            : "#dfdfdf";
 
-    const finalBalance = props.startingBalance + netChangeInBalance;
-    const finalBalanceText = props.startingBalance ?
-        `$ ${finalBalance.toString()}` :
-        "";
+        const wheelNumberText = previousRoundHasBetResults ?
+            props.previousRoundResults.winningWheelNumber :
+            "??";
+
+        return (
+            <div
+                className="bet-info-table-title-spin-result"
+                style={{ backgroundColor }}
+            >
+                {wheelNumberText}
+            </div>
+        )
+    }
+
+    const betResultsRows = () => Object.keys(props.previousRoundResults.resultsOfBets).map((betOption) => {
+        const betAmountOnBet = props.previousRoundResults.resultsOfBets[betOption].betAmount;
+        const winningsOnBet = props.previousRoundResults.resultsOfBets[betOption].winningsOnBet;
+        const betReturnedAmount = props.previousRoundResults.resultsOfBets[betOption].betReturned;
+        return (
+            <tr key={betOption}>
+                <td>{betOption}</td>
+                <td className="bet-results-info-table-bet-amount">{`$ ${betAmountOnBet}`}</td>
+                <td>{`$ ${winningsOnBet}`}</td>
+                <td>{`$ ${betReturnedAmount}`}</td>
+            </tr>
+        );
+    });
 
     return (
         <div
@@ -61,14 +69,8 @@ export function BetResultsInfo(props) {
                 >
                     PREVIOUS ROUND RESULTS
                 </div>
-                <div
-                    className="bet-info-table-title-spin-result"
-                    style={{
-                        backgroundColor: props.winningWheelNumber ? getWheelNumberColor(props.winningWheelNumber) : "#dfdfdf",
-                    }}
-                >
-                    {props.winningWheelNumber ?? "?"}
-                </div>
+
+                {previousWheelNumberDiv()}
 
             </div>
             <table className="bet-results-info-table">
@@ -81,30 +83,15 @@ export function BetResultsInfo(props) {
                         <th>Winnings</th>
                         <th>Bet Returned</th>
                     </tr>
-                    {Object.keys(props.bets).map((betOption) => {
-                        const betAmountOnBet = props.bets[betOption];
 
-                        const winningsOnBet = calculateWinningsOnBet(props.bets, betOption, props.winningWheelNumber);
-                        const winningsOnBetText = winningsOnBet ? `$ ${winningsOnBet.toString()}` : "";
+                    {previousRoundHasBetResults ? betResultsRows() : null}
 
-                        const betReturnedAmount = calculateBetReturnedAmount(props, betOption);
-                        const betReturnedAmountText = betReturnedAmount ? `$ ${betReturnedAmount.toString()}` : "";
-
-                        return (
-                            <tr key={betOption}>
-                                <td>{betOption}</td>
-                                <td className="bet-results-info-table-bet-amount">{`$ ${betAmountOnBet.toString()}`}</td>
-                                <td>{winningsOnBetText}</td>
-                                <td>{betReturnedAmountText}</td>
-                            </tr>
-                        );
-                    })}
                     <tr style={{ height: "10px" }} />
                     <tr>
                         <td>TOTALS</td>
-                        <td>{`$ ${sumBetAmounts}`}</td>
-                        <td>{`$ ${sumWinnings}`}</td>
-                        <td>{`$ ${sumBetsReturned}`}</td>
+                        <td>{totalBetAmountText}</td>
+                        <td>{totalWinningsText}</td>
+                        <td>{totalBetsReturnedText}</td>
                     </tr>
                     <tr style={{ height: "10px" }} />
                     <tr className="balance-change-value">
