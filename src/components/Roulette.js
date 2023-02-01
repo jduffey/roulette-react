@@ -39,8 +39,8 @@ function getNewTransactionForDatabase(mostRecentRoundResults) {
     };
 }
 
-const CLASS_NAME = "Game-component";
-export function Game() {
+const CLASS_NAME = "Roulette-component";
+export function Roulette() {
     const [transactionHistory, setTransactionHistory] = useState([]);
 
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);

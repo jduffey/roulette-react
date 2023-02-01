@@ -1,10 +1,10 @@
 import renderer from 'react-test-renderer';
 
-import { Game } from '../../components/Game';
+import { Roulette } from '../../components/Roulette';
 
-describe('Game', () => {
+describe('Roulette', () => {
     it('renders without props', () => {
-        const sut = <Game />;
+        const sut = <Roulette />;
 
         const actual = renderer.create(sut);
 
