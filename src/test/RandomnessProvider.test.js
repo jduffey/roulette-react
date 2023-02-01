@@ -1,0 +1,101 @@
+import { RandomnessProvider } from "../common/RandomnessProvider";
+
+describe("RandomnessProvider", () => {
+    const collection = [
+        "0", "00", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+        "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+        "21", "22", "23", "24", "25", "26", "27", "28", "29", "30",
+        "31", "32", "33", "34", "35", "36"
+    ];
+
+    it.each([
+        ["0000000000000000000000000000000000000000000000000000000000000000", "0"],
+        ["06bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af27", "0"],
+        ["06bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af28", "00"],
+        ["0d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e4f", "00"],
+        ["0d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50", "1"],
+        ["1435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d77", "1"],
+        ["1435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d78", "2"],
+        ["1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bc9f", "2"],
+        ["1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca0", "3"],
+        ["21af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bc7", "3"],
+        ["21af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bc8", "4"],
+        ["286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1aef", "4"],
+        ["286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af0", "5"],
+        ["2f286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca17", "5"],
+        ["2f286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca18", "6"],
+        ["35e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d793f", "6"],
+        ["35e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d7940", "7"],
+        ["3ca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af2867", "7"],
+        ["3ca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af2868", "8"],
+        ["435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d78f", "8"],
+        ["435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d790", "9"],
+        ["4a1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286b7", "9"],
+        ["4a1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286b8", "10"],
+        ["50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435df", "10"],
+        ["50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e0", "11"],
+        ["579435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e507", "11"],
+        ["579435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e508", "12"],
+        ["5e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d7942f", "12"],
+        ["5e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79430", "13"],
+        ["650d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d794357", "13"],
+        ["650d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d794358", "14"],
+        ["6bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af27f", "14"],
+        ["6bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af280", "15"],
+        ["7286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1a7", "15"],
+        ["7286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1a8", "16"],
+        ["79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50cf", "16"],
+        ["79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d0", "17"],
+        ["7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7", "17"],
+        ["7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8", "18"],
+        ["86bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af1f", "18"],
+        ["86bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af20", "19"],
+        ["8d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e47", "19"],
+        ["8d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e48", "20"],
+        ["9435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d6f", "20"],
+        ["9435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d70", "21"],
+        ["9af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bc97", "21"],
+        ["9af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bc98", "22"],
+        ["a1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bbf", "22"],
+        ["a1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bc0", "23"],
+        ["a86bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1ae7", "23"],
+        ["a86bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1ae8", "24"],
+        ["af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca0f", "24"],
+        ["af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca10", "25"],
+        ["b5e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d7937", "25"],
+        ["b5e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d7938", "26"],
+        ["bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af285f", "26"],
+        ["bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af2860", "27"],
+        ["c35e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d787", "27"],
+        ["c35e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d788", "28"],
+        ["ca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286af", "28"],
+        ["ca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286b0", "29"],
+        ["d0d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435d7", "29"],
+        ["d0d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435d8", "30"],
+        ["d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e4ff", "30"],
+        ["d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e500", "31"],
+        ["de50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79427", "31"],
+        ["de50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79428", "32"],
+        ["e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79434f", "32"],
+        ["e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50d794350", "33"],
+        ["ebca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af277", "33"],
+        ["ebca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af278", "34"],
+        ["f286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca19f", "34"],
+        ["f286bca1af286bca1af286bca1af286bca1af286bca1af286bca1af286bca1a0", "35"],
+        ["f9435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50c7", "35"],
+        ["f9435e50d79435e50d79435e50d79435e50d79435e50d79435e50d79435e50c8", "36"],
+        ["ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffef", "36"],
+        ["fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0", "36"],
+        ["ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", "36"],
+    ])("%s -> %s", (digest, expected) => {
+
+        const sut = new RandomnessProvider(
+            collection,
+            digest
+        );
+
+        const actual = sut.getRandomElement();
+
+        expect(actual).toBe(expected);
+    });
+});
