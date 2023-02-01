@@ -1,5 +1,254 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`MostRecentSpinResults renders when there are more spin results than will be displayed 1`] = `
+<div
+  className="MostRecentSpinResults-component"
+>
+  <ul>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#222222",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      20
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#d94848",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      19
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#d94848",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      18
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#222222",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      17
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#d94848",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      16
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#222222",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      15
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#d94848",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      14
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#222222",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      13
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#d94848",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      12
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#222222",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      11
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#222222",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      10
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#d94848",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      9
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#222222",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      8
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#d94848",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      7
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#222222",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      6
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#d94848",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      5
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#222222",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      4
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#d94848",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      3
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#222222",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      2
+    </div>
+    <div
+      style={
+        Object {
+          "backgroundColor": "#d94848",
+          "borderRadius": "10%",
+          "color": "white",
+          "margin": "1px",
+        }
+      }
+    >
+      1
+    </div>
+  </ul>
+</div>
+`;
+
 exports[`MostRecentSpinResults renders when there are multiple spin results 1`] = `
 <div
   className="MostRecentSpinResults-component"
