@@ -2271,7 +2271,7 @@ exports[`Game renders without props 1`] = `
       <span
         className="rewards-info-value"
       >
-        $ 0
+        $ 0.00
       </span>
     </div>
   </div>

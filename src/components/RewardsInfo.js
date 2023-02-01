@@ -26,7 +26,7 @@ export function RewardsInfo(props) {
                 {"Rewards"}
                 < br />
                 <span className="rewards-info-value">
-                    {`$ ${accumulatedRewards.toLocaleString()}`}
+                    {`$ ${accumulatedRewards.toFixed(2)}`}
                 </span>
             </div>
         </div >
