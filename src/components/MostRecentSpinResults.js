@@ -12,13 +12,10 @@ export function MostRecentSpinResults(props) {
                 {truncatedSpinResults.map((_, i, arr) => {
                     const wheelNumber = arr[arr.length - 1 - i];
                     return (
-                        <div
+                        <div className="recent-spin-result"
                             key={i}
                             style={{
                                 backgroundColor: getWheelNumberColor(wheelNumber),
-                                color: "white",
-                                borderRadius: "10%",
-                                margin: "1px",
                             }}
                         >
                             {wheelNumber}

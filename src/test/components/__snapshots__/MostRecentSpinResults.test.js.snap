@@ -6,240 +6,200 @@ exports[`MostRecentSpinResults renders when there are more spin results than wil
 >
   <ul>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#222222",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       20
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#d94848",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       19
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#d94848",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       18
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#222222",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       17
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#d94848",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       16
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#222222",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       15
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#d94848",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       14
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#222222",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       13
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#d94848",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       12
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#222222",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       11
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#222222",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       10
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#d94848",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       9
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#222222",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       8
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#d94848",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       7
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#222222",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       6
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#d94848",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       5
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#222222",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       4
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#d94848",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       3
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#222222",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       2
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#d94848",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
@@ -255,36 +215,30 @@ exports[`MostRecentSpinResults renders when there are multiple spin results 1`] 
 >
   <ul>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#222222",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       2
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#d94848",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >
       1
     </div>
     <div
+      className="recent-spin-result"
       style={
         Object {
           "backgroundColor": "#016D29",
-          "borderRadius": "10%",
-          "color": "white",
-          "margin": "1px",
         }
       }
     >

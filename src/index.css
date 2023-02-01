@@ -242,6 +242,12 @@ because we'll have "invisible" betting options later
     font-size: 24px;
 }
 
+.recent-spin-result {
+    color: white;
+    border-radius: 16px;
+    margin: 1px;
+}
+
 .NumbersHitTracker-component {
     position: relative;
     top: -2880px;
