@@ -21,7 +21,7 @@ ul {
             #222277 20px);
     padding: 1px;
     width: 1460px;
-    height: 1050px;
+    height: 1080px;
     padding: 16px;
 }
 
@@ -137,12 +137,13 @@ because we'll have "invisible" betting options later
 
 .SpinButton-component {
     position: relative;
-    left: 1120px;
-    top: 36px;
+    left: 900px;
+    top: -110px;
     width: 200px;
     height: 200px;
-    border: 8px solid black;
+    border: 8px dotted black;
     background-color: #dfdfdf;
+    box-shadow: 0px 0px 4px 4px #FFFFFF77;
     border-radius: 50%;
     font-size: 48px;
     font-weight: bold;
@@ -153,8 +154,8 @@ because we'll have "invisible" betting options later
 
 .SpinResult-component {
     position: relative;
-    left: 1140px;
-    top: 38px;
+    left: 1120px;
+    bottom: 180px;
     width: 160px;
     height: 100px;
     border: 8px solid black;
@@ -179,7 +180,7 @@ because we'll have "invisible" betting options later
 .PlayerInfo-component {
     position: relative;
     left: 900px;
-    top: -1094px;
+    bottom: 860px;
     height: 300px;
     width: 200px;
     border: 1px solid white;
@@ -206,8 +207,8 @@ because we'll have "invisible" betting options later
 
 .RewardsInfo-component {
     position: relative;
-    left: 900px;
-    top: -1836px;
+    left: 1120px;
+    bottom: 1816px;
     height: 200px;
     width: 200px;
     border: 1px solid white;
@@ -232,8 +233,8 @@ because we'll have "invisible" betting options later
 
 .MostRecentSpinResults-component {
     position: relative;
-    top: -970px;
-    left: 1174px;
+    left: 1158px;
+    bottom: 956px;
     width: 100px;
     height: 660px;
     text-align: center;
@@ -250,8 +251,8 @@ because we'll have "invisible" betting options later
 
 .NumbersHitTracker-component {
     position: relative;
-    top: -2880px;
     left: 1300px;
+    bottom: 2890px;
     width: 140px;
     height: 660px;
     text-align: center;
@@ -272,8 +273,8 @@ because we'll have "invisible" betting options later
 
 .BetResultsInfo-component {
     position: relative;
-    top: -1636px;
     left: 370px;
+    bottom: 1610px;
     height: 350px;
     width: 480px;
     border: 1px solid white;
@@ -295,7 +296,7 @@ because we'll have "invisible" betting options later
 
 .CurrentBetsInfo-component {
     position: relative;
-    top: -1260px;
+    bottom: 1236px;
     left: 80px;
     height: 350px;
     width: 240px;
