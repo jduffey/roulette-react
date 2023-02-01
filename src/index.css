@@ -242,6 +242,28 @@ because we'll have "invisible" betting options later
     font-size: 24px;
 }
 
+.NumbersHitTracker-component {
+    position: relative;
+    top: -2880px;
+    left: 1300px;
+    width: 140px;
+    height: 660px;
+    text-align: center;
+    justify-content: center;
+    outline: 8px solid black;
+    font-size: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: darkgray;
+}
+
+.hit-number {
+    border-radius: 16px;
+    width: 70px;
+    height: 34px;
+    line-height: 34px;
+}
+
 .BetResultsInfo-component {
     position: relative;
     top: -1636px;

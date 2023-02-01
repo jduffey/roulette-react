@@ -10,6 +10,7 @@ import { Board } from "./Board";
 import { ChipSelection } from './ChipSelection';
 import { CurrentBetsInfo } from './CurrentBetsInfo';
 import { MostRecentSpinResults } from './MostRecentSpinResults';
+import { NumbersHitTracker } from './NumbersHitTracker';
 import { PlayerInfo } from './PlayerInfo';
 import { RewardsInfo } from './RewardsInfo';
 import { SpinButton } from './SpinButton';
@@ -187,6 +188,9 @@ export function Game() {
                 previousRoundResults={previousRoundResultsForBetResultsInfo}
             />
             <RewardsInfo
+                transactionHistory={transactionHistory}
+            />
+            <NumbersHitTracker
                 transactionHistory={transactionHistory}
             />
         </div >
