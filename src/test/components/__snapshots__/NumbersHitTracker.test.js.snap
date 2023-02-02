@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NumbersHitTracker renders when there all numbers have been hit 1`] = `
+exports[`NumbersHitTracker renders when all numbers have been hit 1`] = `
 <div
   className="NumbersHitTracker-component"
 >

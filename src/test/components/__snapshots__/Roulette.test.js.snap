@@ -2697,5 +2697,10 @@ exports[`Roulette renders without props 1`] = `
       36
     </div>
   </div>
+  <div
+    className="CompletionsCounter-component"
+  >
+    0
+  </div>
 </div>
 `;

@@ -18,6 +18,7 @@ import { SpinResult } from './SpinResult';
 
 import { getCompleteResultsOfRound } from '../common/getCompleteResultsOfRound';
 import { getRandomWheelNumber } from '../common/getRandomWheelNumber';
+import { CompletionsCounter } from './CompletionsCounter';
 
 function calculateTotalBetAmount(bets) {
     return Object.values(bets).reduce((acc, betAmount) => acc + betAmount, 0);
@@ -191,6 +192,9 @@ export function Roulette() {
                 transactionHistory={transactionHistory}
             />
             <NumbersHitTracker
+                transactionHistory={transactionHistory}
+            />
+            <CompletionsCounter
                 transactionHistory={transactionHistory}
             />
         </div >
