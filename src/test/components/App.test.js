@@ -1,13 +1,17 @@
 import renderer from "react-test-renderer";
+import { MemoryRouter } from "react-router-dom";
 
 import { App } from "../../components/App";
 
-import { MemoryRouter } from "react-router-dom";
 
 describe("App", () => {
-    it("renders", () => {
+    it.each([
+        ["/"],
+        ["/roulette"],
+        ["/next-game"],
+    ])("renders route \"%s\"", (path) => {
         const actual = renderer.create(
-            <MemoryRouter >
+            <MemoryRouter initialEntries={[path]} >
                 <App />
             </MemoryRouter>,
         );
