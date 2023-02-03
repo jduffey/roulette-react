@@ -59,7 +59,7 @@ export const getRandomWheelNumber = async (entropy) => {
     const randomnessData = await getRandomIntBetweenZeroInclusiveAndMaxExclusive(Object.keys(WHEEL_NUMBERS).length, entropy);
 
     // TODO leaving here as reminder to extract and test
-    console.log(randomnessData);
+    // console.log(randomnessData);
 
     const randomIndex = randomnessData.index.effective;
 
