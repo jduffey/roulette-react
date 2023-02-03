@@ -2,7 +2,6 @@ import { Layout } from "./Layout";
 
 export function Home() {
     return (
-        <Layout>
             <div
                 style={{
                     color: "white",
@@ -11,6 +10,5 @@ export function Home() {
             >
                 PLACEHOLDER PAGE FOR NEXT GAME
             </div>
-        </Layout>
     )
 }

@@ -19,7 +19,6 @@ import { SpinResult } from './SpinResult';
 import { getCompleteResultsOfRound } from '../common/getCompleteResultsOfRound';
 import { getRandomWheelNumber } from '../common/getRandomWheelNumber';
 import { CompletionsCounter } from './CompletionsCounter';
-import { Layout } from './Layout';
 
 function calculateTotalBetAmount(bets) {
     return Object.values(bets).reduce((acc, betAmount) => acc + betAmount, 0);
@@ -157,49 +156,47 @@ export function Roulette() {
     const mostRecentSpinResult = spinResults.slice(-1)[0];
 
     return (
-        <Layout>
-            <div
-                className={CLASS_NAME}
-            >
-                <Board
-                    onClick={(bettingSquareName) => handleBettingSquareClick(bettingSquareName)}
-                    betsOnBoard={betsOnBoard}
-                />
-                <ChipSelection
-                    onClick={(chipAmount) => setCurrentChipAmountSelected(chipAmount)}
-                    currentChipAmountSelected={currentChipAmountSelected}
-                />
-                <SpinButton
-                    onClick={() => handleSpinButtonClick()}
-                    isSpinAllowed={isSpinAllowed(betsOnBoard)}
-                />
-                <SpinResult
-                    spinResult={mostRecentSpinResult}
-                />
-                <MostRecentSpinResults
-                    spinResults={spinResults}
-                />
-                <PlayerInfo
-                    onClick={() => handleResetHistoryClick()}
-                    availableBalance={availableBalance}
-                    totalBetAmount={calculateTotalBetAmount(betsOnBoard)}
-                />
-                <CurrentBetsInfo
-                    betsOnBoard={betsOnBoard}
-                />
-                <BetResultsInfo
-                    previousRoundResults={previousRoundResultsForBetResultsInfo}
-                />
-                <RewardsInfo
-                    transactionHistory={transactionHistory}
-                />
-                <NumbersHitTracker
-                    transactionHistory={transactionHistory}
-                />
-                <CompletionsCounter
-                    transactionHistory={transactionHistory}
-                />
-            </div >
-        </Layout>
+        <div
+            className={CLASS_NAME}
+        >
+            <Board
+                onClick={(bettingSquareName) => handleBettingSquareClick(bettingSquareName)}
+                betsOnBoard={betsOnBoard}
+            />
+            <ChipSelection
+                onClick={(chipAmount) => setCurrentChipAmountSelected(chipAmount)}
+                currentChipAmountSelected={currentChipAmountSelected}
+            />
+            <SpinButton
+                onClick={() => handleSpinButtonClick()}
+                isSpinAllowed={isSpinAllowed(betsOnBoard)}
+            />
+            <SpinResult
+                spinResult={mostRecentSpinResult}
+            />
+            <MostRecentSpinResults
+                spinResults={spinResults}
+            />
+            <PlayerInfo
+                onClick={() => handleResetHistoryClick()}
+                availableBalance={availableBalance}
+                totalBetAmount={calculateTotalBetAmount(betsOnBoard)}
+            />
+            <CurrentBetsInfo
+                betsOnBoard={betsOnBoard}
+            />
+            <BetResultsInfo
+                previousRoundResults={previousRoundResultsForBetResultsInfo}
+            />
+            <RewardsInfo
+                transactionHistory={transactionHistory}
+            />
+            <NumbersHitTracker
+                transactionHistory={transactionHistory}
+            />
+            <CompletionsCounter
+                transactionHistory={transactionHistory}
+            />
+        </div >
     );
 }

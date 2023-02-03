@@ -3,7 +3,6 @@ import { MemoryRouter } from "react-router-dom";
 
 import { App } from "../../components/App";
 
-
 describe("App", () => {
     it.each([
         ["/"],
