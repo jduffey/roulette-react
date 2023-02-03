@@ -2,9 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
+import { BrowserRouter } from 'react-router-dom';
+
 import { Roulette } from "./components/Roulette";
 
 // ========================================
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Roulette />);
+root.render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <Roulette />
+        </BrowserRouter>
+    </React.StrictMode>
+);
