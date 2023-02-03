@@ -13,6 +13,26 @@ ul {
     list-style-type: none;
 }
 
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.NavigationBar-component {
+    width: 100rem;
+    height: 3rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.NavigationBar-component-title>* {
+    margin: 1rem;
+    font-size: 1.5rem;
+}
+
 .Roulette-component {
     background: repeating-linear-gradient(45deg,
             #222266,

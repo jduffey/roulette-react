@@ -7,9 +7,9 @@ async function getRandomIntBetweenZeroInclusiveAndMaxExclusive(max, entropy) {
     const digest = await digestMessage(entropy);
     if (digest.length !== 64) throw new Error("Digest must be 64 characters long");
 
-    const inputDigestAsNumber = BigInt("0x" + digest);
+    const inputDigestAsNumber = BigInt(`0x${digest}`);
 
-    const chunkSize = (BigInt("0x" + "f".repeat(64)) + 1n) / BigInt(BigInt(max));
+    const chunkSize = (BigInt(`0x${"f".repeat(64)}`) + 1n) / BigInt(BigInt(max));
 
     // Uncomment to see the chunks
     // for (let i = 0; i < max; i++) {
@@ -59,7 +59,7 @@ export const getRandomWheelNumber = async (entropy) => {
     const randomnessData = await getRandomIntBetweenZeroInclusiveAndMaxExclusive(Object.keys(WHEEL_NUMBERS).length, entropy);
 
     // TODO leaving here as reminder to extract and test
-    console.log(randomnessData);
+    // console.log(randomnessData);
 
     const randomIndex = randomnessData.index.effective;
 
