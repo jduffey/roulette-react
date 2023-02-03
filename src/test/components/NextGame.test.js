@@ -1,14 +1,14 @@
 import renderer from "react-test-renderer";
 
-import { NavigationBar } from "../../components/NavigationBar";
+import { NextGame } from "../../components/NextGame";
 
 import { MemoryRouter } from "react-router-dom";
 
-describe("NavigationBar", () => {
+describe("NextGame", () => {
     it("renders", () => {
         const actual = renderer.create(
             <MemoryRouter >
-                <NavigationBar />
+                <NextGame />
             </MemoryRouter>,
         );
 

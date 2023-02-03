@@ -7,7 +7,24 @@ exports[`NavigationBar renders 1`] = `
   <div
     className="NavigationBar-component-title"
   >
-    This is the navigation bar.
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      Home
+    </a>
+    <a
+      href="/roulette"
+      onClick={[Function]}
+    >
+      Roulette
+    </a>
+    <a
+      href="/next-game"
+      onClick={[Function]}
+    >
+      Next Game
+    </a>
   </div>
 </div>
 `;

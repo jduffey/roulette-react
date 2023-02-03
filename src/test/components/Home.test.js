@@ -1,14 +1,14 @@
 import renderer from "react-test-renderer";
 
-import { NavigationBar } from "../../components/NavigationBar";
+import { Home } from "../../components/Home";
 
 import { MemoryRouter } from "react-router-dom";
 
-describe("NavigationBar", () => {
+describe("Home", () => {
     it("renders", () => {
         const actual = renderer.create(
             <MemoryRouter >
-                <NavigationBar />
+                <Home />
             </MemoryRouter>,
         );
 

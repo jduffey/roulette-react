@@ -20,12 +20,17 @@ ul {
 }
 
 .NavigationBar-component {
-    width: 100%;
+    width: 100rem;
     height: 3rem;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.NavigationBar-component-title>* {
+    margin: 1rem;
+    font-size: 1.5rem;
 }
 
 .Roulette-component {

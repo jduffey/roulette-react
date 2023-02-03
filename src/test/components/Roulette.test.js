@@ -1,12 +1,15 @@
+import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 
 import { Roulette } from '../../components/Roulette';
 
 describe('Roulette', () => {
-    it('renders without props', () => {
-        const sut = <Roulette />;
-
-        const actual = renderer.create(sut);
+    it('renders', () => {
+        const actual = renderer.create(
+            <MemoryRouter>
+                <Roulette />
+            </MemoryRouter>
+        );
 
         expect(actual).toMatchSnapshot();
     });
