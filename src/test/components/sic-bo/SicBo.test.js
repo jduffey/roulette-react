@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 
-import { SicBo } from '../../components/SicBo';
+import { SicBo } from '../../../components/sic-bo/SicBo';
 
 describe('SicBo', () => {
     it('renders', () => {
