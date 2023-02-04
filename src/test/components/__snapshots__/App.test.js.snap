@@ -6,7 +6,7 @@ Array [
     className="NavigationBar-component"
   >
     <div
-      className="NavigationBar-component-title"
+      className="NavigationBar-links"
     >
       <a
         href="/"
@@ -36,7 +36,7 @@ Array [
       }
     }
   >
-    PLACEHOLDER PAGE FOR NEXT GAME
+    PLACEHOLDER PAGE FOR HOME
   </div>,
 ]
 `;
@@ -47,7 +47,7 @@ Array [
     className="NavigationBar-component"
   >
     <div
-      className="NavigationBar-component-title"
+      className="NavigationBar-links"
     >
       <a
         href="/"
@@ -88,7 +88,7 @@ Array [
     className="NavigationBar-component"
   >
     <div
-      className="NavigationBar-component-title"
+      className="NavigationBar-links"
     >
       <a
         href="/"

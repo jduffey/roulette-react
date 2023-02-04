@@ -9,6 +9,6 @@ exports[`Home renders 1`] = `
     }
   }
 >
-  PLACEHOLDER PAGE FOR NEXT GAME
+  PLACEHOLDER PAGE FOR HOME
 </div>
 `;
