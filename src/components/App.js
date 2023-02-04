@@ -4,7 +4,7 @@ import { Layout } from "./Layout";
 
 import { Home } from "./Home";
 import { NextGame } from "./NextGame";
-import { Roulette } from "./Roulette";
+import { Roulette } from "./roulette/Roulette";
 import { SicBo } from "./SicBo";
 
 const elementInLayout = (element) => <Layout>{element}</Layout>

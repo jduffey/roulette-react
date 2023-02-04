@@ -3,7 +3,7 @@ import {
     fetchTransactionHistory,
     updateTransactionHistory,
     resetTransactionHistory,
-} from '../common/databaseWrapper';
+} from '../../common/databaseWrapper';
 
 import { BetResultsInfo } from './BetResultsInfo';
 import { Board } from "./Board";
@@ -16,8 +16,8 @@ import { RewardsInfo } from './RewardsInfo';
 import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
 
-import { getCompleteResultsOfRound } from '../common/getCompleteResultsOfRound';
-import { getRandomWheelNumber } from '../common/getRandomWheelNumber';
+import { getCompleteResultsOfRound } from '../../common/getCompleteResultsOfRound';
+import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
 import { CompletionsCounter } from './CompletionsCounter';
 
 function calculateTotalBetAmount(bets) {

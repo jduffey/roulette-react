@@ -1,4 +1,4 @@
-import { CHIP_COLORS } from "../common/standardColors";
+import { CHIP_COLORS } from "../../common/standardColors";
 
 const CHIP_AMOUNTS = {
     CHIP_1: 1,

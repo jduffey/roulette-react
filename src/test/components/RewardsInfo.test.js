@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 
-import { RewardsInfo } from '../../components/RewardsInfo';
+import { RewardsInfo } from '../../components/roulette/RewardsInfo';
 
 describe('RewardsInfo', () => {
     it("renders when transaction history is empty", () => {

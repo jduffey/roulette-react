@@ -1,4 +1,4 @@
-import { getWheelNumberColor } from "../common/getWheelNumberColor";
+import { getWheelNumberColor } from "../../common/getWheelNumberColor";
 
 const CLASS_NAME = "SpinResult-component";
 export function SpinResult(props) {

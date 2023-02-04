@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 
-import { BetResultsInfo } from '../../components/BetResultsInfo';
+import { BetResultsInfo } from '../../components/roulette/BetResultsInfo';
 
 import { BET_NAMES } from '../../common/betNames';
 import { WHEEL_NUMBERS } from '../../common/wheelNumbers';

@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 
-import { Chip } from '../../components/Chip';
+import { Chip } from '../../components/roulette/Chip';
 
 describe('Chip', () => {
     describe('boundary tests for chip colors', () => {

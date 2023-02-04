@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 
-import { BetOption } from '../../components/BetOption';
+import { BetOption } from '../../components/roulette/BetOption';
 
 describe('BetOption', () => {
     it.each([

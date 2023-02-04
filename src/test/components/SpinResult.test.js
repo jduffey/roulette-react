@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 
-import { SpinResult } from '../../components/SpinResult';
+import { SpinResult } from '../../components/roulette/SpinResult';
 
 import { WHEEL_NUMBERS } from '../../common/wheelNumbers';
 

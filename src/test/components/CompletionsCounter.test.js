@@ -2,7 +2,7 @@ import renderer from 'react-test-renderer';
 
 import { WHEEL_NUMBERS } from '../../common/wheelNumbers';
 
-import { CompletionsCounter } from '../../components/CompletionsCounter';
+import { CompletionsCounter } from '../../components/roulette/CompletionsCounter';
 
 describe('CompletionsCounter', () => {
     it('renders when there are no completions', () => {

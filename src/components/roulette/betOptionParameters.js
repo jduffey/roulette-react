@@ -1,5 +1,5 @@
-import { BET_NAMES } from "../common/betNames";
-import { STANDARD_COLORS } from "../common/standardColors";
+import { BET_NAMES } from "../../common/betNames";
+import { STANDARD_COLORS } from "../../common/standardColors";
 
 export const BET_OPTION_PARAMS = Object.entries({
     // StraightUp 1st Column

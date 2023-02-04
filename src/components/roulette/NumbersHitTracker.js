@@ -1,4 +1,4 @@
-import { WHEEL_NUMBERS } from "../common/wheelNumbers";
+import { WHEEL_NUMBERS } from "../../common/wheelNumbers";
 
 const CLASS_NAME = "NumbersHitTracker-component";
 export function NumbersHitTracker(props) {

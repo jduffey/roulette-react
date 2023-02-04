@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 
-import { Board } from '../../components/Board';
+import { Board } from '../../components/roulette/Board';
 
 import { BET_NAMES } from '../../common/betNames';
 

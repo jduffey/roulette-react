@@ -1,4 +1,4 @@
-import { getWheelNumberColor } from "../common/getWheelNumberColor";
+import { getWheelNumberColor } from "../../common/getWheelNumberColor";
 
 const CLASS_NAME = "MostRecentSpinResults-component";
 export function MostRecentSpinResults(props) {

@@ -1,4 +1,4 @@
-import { getWheelNumberColor } from "../common/getWheelNumberColor";
+import { getWheelNumberColor } from "../../common/getWheelNumberColor";
 
 const CLASS_NAME = "BetResultsInfo-component";
 export function BetResultsInfo(props) {
