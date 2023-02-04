@@ -1,8 +1,8 @@
 import renderer from 'react-test-renderer';
 
-import { Board } from '../../components/roulette/Board';
+import { Board } from '../../../components/roulette/Board';
 
-import { BET_NAMES } from '../../common/betNames';
+import { BET_NAMES } from '../../../common/betNames';
 
 describe('Board', () => {
     it('renders with no bets placed', () => {

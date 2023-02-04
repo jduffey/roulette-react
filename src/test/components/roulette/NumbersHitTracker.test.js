@@ -1,12 +1,12 @@
 import renderer from 'react-test-renderer';
 
-import { WHEEL_NUMBERS } from '../../common/wheelNumbers';
+import { WHEEL_NUMBERS } from '../../../common/wheelNumbers';
 
-import { CompletionsCounter } from '../../components/roulette/CompletionsCounter';
+import { NumbersHitTracker } from '../../../components/roulette/NumbersHitTracker';
 
-describe('CompletionsCounter', () => {
-    it('renders when there are no completions', () => {
-        const sut = CompletionsCounter({
+describe('NumbersHitTracker', () => {
+    it('renders when there are no hit numbers', () => {
+        const sut = NumbersHitTracker({
             transactionHistory: [],
         });
 
@@ -15,8 +15,8 @@ describe('CompletionsCounter', () => {
         expect(actual).toMatchSnapshot();
     });
 
-    it('renders when all numbers have been hit once', () => {
-        const sut = CompletionsCounter({
+    it('renders when all numbers have been hit', () => {
+        const sut = NumbersHitTracker({
             transactionHistory: Object.values(WHEEL_NUMBERS).map((wheelNumber) => {
                 return {
                     "spinResult": wheelNumber,

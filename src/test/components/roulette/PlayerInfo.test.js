@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 
-import { PlayerInfo } from '../../components/roulette/PlayerInfo';
+import { PlayerInfo } from '../../../components/roulette/PlayerInfo';
 
 describe('PlayerInfo', () => {
     it.each([

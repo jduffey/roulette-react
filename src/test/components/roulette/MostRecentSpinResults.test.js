@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 
-import { MostRecentSpinResults } from '../../components/roulette/MostRecentSpinResults';
+import { MostRecentSpinResults } from '../../../components/roulette/MostRecentSpinResults';
 
 describe('MostRecentSpinResults', () => {
     it.each([

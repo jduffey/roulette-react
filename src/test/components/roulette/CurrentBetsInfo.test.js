@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 
-import { CurrentBetsInfo } from '../../components/roulette/CurrentBetsInfo';
+import { CurrentBetsInfo } from '../../../components/roulette/CurrentBetsInfo';
 
 describe('CurrentBetsInfo', () => {
     it('renders with no bets', () => {

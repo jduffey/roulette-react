@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 
-import { ChipSelection } from '../../components/roulette/ChipSelection';
+import { ChipSelection } from '../../../components/roulette/ChipSelection';
 
 describe('ChipSelection', () => {
     it.each([
