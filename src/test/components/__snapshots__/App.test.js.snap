@@ -26,6 +26,12 @@ Array [
       >
         Next Game
       </a>
+      <a
+        href="/sic-bo"
+        onClick={[Function]}
+      >
+        Sic Bo
+      </a>
     </div>
   </div>,
   <div
@@ -67,6 +73,12 @@ Array [
       >
         Next Game
       </a>
+      <a
+        href="/sic-bo"
+        onClick={[Function]}
+      >
+        Sic Bo
+      </a>
     </div>
   </div>,
   <div
@@ -107,6 +119,12 @@ Array [
         onClick={[Function]}
       >
         Next Game
+      </a>
+      <a
+        href="/sic-bo"
+        onClick={[Function]}
+      >
+        Sic Bo
       </a>
     </div>
   </div>,
@@ -2811,6 +2829,53 @@ Array [
     >
       0
     </div>
+  </div>,
+]
+`;
+
+exports[`App renders route "/sic-bo" 1`] = `
+Array [
+  <div
+    className="NavigationBar-component"
+  >
+    <div
+      className="NavigationBar-links"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+      <a
+        href="/roulette"
+        onClick={[Function]}
+      >
+        Roulette
+      </a>
+      <a
+        href="/next-game"
+        onClick={[Function]}
+      >
+        Next Game
+      </a>
+      <a
+        href="/sic-bo"
+        onClick={[Function]}
+      >
+        Sic Bo
+      </a>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "color": "white",
+        "fontSize": "4rem",
+      }
+    }
+  >
+    PLACEHOLDER PAGE FOR SIC BO
   </div>,
 ]
 `;

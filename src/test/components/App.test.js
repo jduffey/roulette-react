@@ -8,6 +8,7 @@ describe("App", () => {
         ["/"],
         ["/roulette"],
         ["/next-game"],
+        ["/sic-bo"],
     ])("renders route \"%s\"", (path) => {
         const actual = renderer.create(
             <MemoryRouter initialEntries={[path]} >

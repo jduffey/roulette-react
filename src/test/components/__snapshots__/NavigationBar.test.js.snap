@@ -25,6 +25,12 @@ exports[`NavigationBar renders 1`] = `
     >
       Next Game
     </a>
+    <a
+      href="/sic-bo"
+      onClick={[Function]}
+    >
+      Sic Bo
+    </a>
   </div>
 </div>
 `;
