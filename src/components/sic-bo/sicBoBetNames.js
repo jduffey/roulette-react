@@ -1,0 +1,17 @@
+export const BET_NAMES = {
+    SMALL: "small",
+    BIG: "big",
+    DOUBLE_ONE: "doubleOne",
+    DOUBLE_TWO: "doubleTwo",
+    DOUBLE_THREE: "doubleThree",
+    DOUBLE_FOUR: "doubleFour",
+    DOUBLE_FIVE: "doubleFive",
+    DOUBLE_SIX: "doubleSix",
+    TRIPLE_ONE: "tripleOne",
+    TRIPLE_TWO: "tripleTwo",
+    TRIPLE_THREE: "tripleThree",
+    TRIPLE_FOUR: "tripleFour",
+    TRIPLE_FIVE: "tripleFive",
+    TRIPLE_SIX: "tripleSix",
+    ANY_TRIPLE: "anyTriple",
+};
