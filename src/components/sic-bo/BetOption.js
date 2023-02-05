@@ -1,5 +1,3 @@
-// import { Chip } from "./Chip";
-
 const BETTING_SQUARE_OUTLINE_SIZE = 1;
 
 const CLASS_NAME = "BetOption-component";
