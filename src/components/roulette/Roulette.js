@@ -5,6 +5,8 @@ import {
     resetTransactionHistory,
 } from '../../common/databaseWrapper';
 
+import { PendingBet } from '../../common/PendingBet';
+
 import { BetResultsInfo } from './BetResultsInfo';
 import { Board } from "./Board";
 import { ChipSelection } from './ChipSelection';
@@ -21,11 +23,11 @@ import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
 import { CompletionsCounter } from './CompletionsCounter';
 
 function calculateTotalBetAmount(bets) {
-    return Object.values(bets).reduce((acc, betAmount) => acc + betAmount, 0);
+    return bets.reduce((acc, pendingBet) => acc + pendingBet.betAmount, 0);
 }
 
 function isSpinAllowed(bets) {
-    return Object.keys(bets).length > 0;
+    return bets.length > 0;
 }
 
 function getNewTransactionForDatabase(mostRecentRoundResults) {
@@ -50,6 +52,8 @@ export function Roulette() {
     const [spinResults, setSpinResults] = useState([]);
     const [betsOnBoard, setBetsOnBoard] = useState({});
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
+
+    const [pendingBets, setPendingBets] = useState([]);
 
     useEffect(() => {
         let mounted = true;
@@ -89,6 +93,11 @@ export function Roulette() {
             return;
         }
 
+        const pendingBet = new PendingBet(bettingSquareName, currentChipAmountSelected);
+        const copyPendingBets = pendingBets.slice();
+        copyPendingBets.push(pendingBet);
+        setPendingBets(copyPendingBets);
+
         if (copyBetsOnBoard[bettingSquareName]) {
             copyBetsOnBoard[bettingSquareName] += currentChipAmountSelected;
         } else {
@@ -102,7 +111,7 @@ export function Roulette() {
     }
 
     function handleSpinButtonClick() {
-        if (!isSpinAllowed(betsOnBoard)) {
+        if (!isSpinAllowed(pendingBets)) {
             return;
         }
 
@@ -110,7 +119,7 @@ export function Roulette() {
             .then(randomWheelNumber => {
                 const copySpinResults = spinResults.slice();
 
-                const betAmountOnBoard = calculateTotalBetAmount(betsOnBoard);
+                const betAmountOnBoard = calculateTotalBetAmount(pendingBets);
 
                 const startingBalance = availableBalance + betAmountOnBoard;
 
@@ -133,6 +142,7 @@ export function Roulette() {
                 // 1. what the player is actually able to bet at any given time (i.e. the funds they "own" minus whatever bets they've already placed)
                 // 2. what the player "owns" (i.e. if they had an option to clear all bets on the board, what would their balance be)
                 setBetsOnBoard({});
+                setPendingBets([]);
 
                 updateTransactionHistory(copyTransactionHistory);
             });
@@ -169,7 +179,7 @@ export function Roulette() {
             />
             <SpinButton
                 onClick={() => handleSpinButtonClick()}
-                isSpinAllowed={isSpinAllowed(betsOnBoard)}
+                isSpinAllowed={isSpinAllowed(pendingBets)}
             />
             <SpinResult
                 spinResult={mostRecentSpinResult}
@@ -180,7 +190,7 @@ export function Roulette() {
             <PlayerInfo
                 onClick={() => handleResetHistoryClick()}
                 availableBalance={availableBalance}
-                totalBetAmount={calculateTotalBetAmount(betsOnBoard)}
+                totalBetAmount={calculateTotalBetAmount(pendingBets)}
             />
             <CurrentBetsInfo
                 betsOnBoard={betsOnBoard}
