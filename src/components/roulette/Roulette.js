@@ -72,7 +72,10 @@ export function Roulette() {
 
                     const previousRoundResults = getCompleteResultsOfRound(
                         mostRecentTransaction.startingBalance,
-                        mostRecentTransaction.betsPlaced,
+                        Object.entries(mostRecentTransaction.betsPlaced).reduce((acc, [betName, betAmount]) => {
+                            acc.push(new PendingBet(betName, betAmount));
+                            return acc;
+                        }, []),
                         mostRecentTransaction.spinResult,
                     );
                     setPreviousRoundResultsForBetResultsInfo(previousRoundResults);
@@ -123,17 +126,15 @@ export function Roulette() {
 
                 const startingBalance = availableBalance + betAmountOnBoard;
 
-                // const mostRecentRoundResults = getCompleteResultsOfRound(startingBalance, betsOnBoard, randomWheelNumber);
-                const mostRecentRoundResults = getCompleteResultsOfRound(startingBalance, betsOnBoard, randomWheelNumber);
+                const resultsOfRound = getCompleteResultsOfRound(startingBalance, pendingBets, randomWheelNumber);
 
+                setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
+                setAvailableBalance(resultsOfRound.finalBalance);
 
-                setPreviousRoundResultsForBetResultsInfo(mostRecentRoundResults);
-                setAvailableBalance(mostRecentRoundResults.finalBalance);
-
-                copySpinResults.push(mostRecentRoundResults.winningWheelNumber);
+                copySpinResults.push(resultsOfRound.winningWheelNumber);
                 setSpinResults(copySpinResults);
 
-                const newTransactionForDatabase = getNewTransactionForDatabase(mostRecentRoundResults);
+                const newTransactionForDatabase = getNewTransactionForDatabase(resultsOfRound);
                 const copyTransactionHistory = transactionHistory.slice();
                 copyTransactionHistory.push(newTransactionForDatabase);
                 setTransactionHistory(copyTransactionHistory);
@@ -174,7 +175,7 @@ export function Roulette() {
         >
             <Board
                 onClick={(bettingSquareName) => handleBettingSquareClick(bettingSquareName)}
-                betsOnBoard={betsOnBoard}
+                pendingBets={pendingBets}
             />
             <ChipSelection
                 onClick={(chipAmount) => setCurrentChipAmountSelected(chipAmount)}
