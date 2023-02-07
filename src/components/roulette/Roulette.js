@@ -123,7 +123,10 @@ export function Roulette() {
 
                 const startingBalance = availableBalance + betAmountOnBoard;
 
+                // const mostRecentRoundResults = getCompleteResultsOfRound(startingBalance, betsOnBoard, randomWheelNumber);
                 const mostRecentRoundResults = getCompleteResultsOfRound(startingBalance, betsOnBoard, randomWheelNumber);
+
+
                 setPreviousRoundResultsForBetResultsInfo(mostRecentRoundResults);
                 setAvailableBalance(mostRecentRoundResults.finalBalance);
 

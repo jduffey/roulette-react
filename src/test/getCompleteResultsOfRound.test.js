@@ -1,6 +1,8 @@
 import { BET_NAMES } from "../common/betNames";
 import { WHEEL_NUMBERS } from "../common/wheelNumbers";
 
+import { PendingBet } from "../common/PendingBet";
+
 import { getCompleteResultsOfRound } from "../common/getCompleteResultsOfRound";
 import { getBetNameMultiplier } from "../common/getBetNameMultiplier";
 
@@ -47,19 +49,21 @@ describe(`${getCompleteResultsOfRound.name}`, () => {
     ])("same bet on each option, spin result %s", (spinResult, expectedWinningBets, expectedNetDifferenceInBalance) => {
         const startingBalance = 1000;
         const betAmount = 1;
-        const bets = Object.values(BET_NAMES).reduce((acc, betName) => {
-            acc[betName] = betAmount;
+        // place same bet on each bet name
+        const pendingBets = Object.values(BET_NAMES).reduce((acc, betName) => {
+            const pendingBet = new PendingBet(betName, betAmount);
+            acc.push(pendingBet);
             return acc;
-        }, {});
+        }, []);
 
-        const actual = getCompleteResultsOfRound(startingBalance, bets, spinResult);
+        const actual = getCompleteResultsOfRound(startingBalance, pendingBets, spinResult);
 
         const expected = {
             startingBalance,
             finalBalance: startingBalance + expectedNetDifferenceInBalance,
-            resultsOfBets: Object.values(BET_NAMES).reduce((acc, betName) => {
-                acc[betName] = {
-                    betAmount,
+            resultsOfBets: pendingBets.reduce((acc, pendingBet) => {
+                acc[pendingBet.betName] = {
+                    betAmount: pendingBet.betAmount,
                     winningsOnBet: 0,
                     betReturned: 0,
                 };
@@ -67,6 +71,7 @@ describe(`${getCompleteResultsOfRound.name}`, () => {
             }, {}),
             winningWheelNumber: spinResult,
         };
+        // populate expected resultsOfBets with information about the bets that won
         expectedWinningBets.forEach((betName) => {
             expected.resultsOfBets[betName].winningsOnBet = getBetNameMultiplier(betName) * betAmount;
             expected.resultsOfBets[betName].betReturned = betAmount;
