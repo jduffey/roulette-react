@@ -1,3 +1,5 @@
+![GH Actions Build & Test](https://github.com/jduffey/roulette-react/.github/workflows/node.js.yml/badge.svg)
+
 # Instructions
 
 1. `npm install`
