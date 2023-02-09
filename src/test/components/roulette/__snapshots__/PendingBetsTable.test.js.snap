@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CurrentBetsInfo renders with bets 1`] = `
+exports[`PendingBetsTable renders with bets 1`] = `
 <div
-  className="CurrentBetsInfo-component"
+  className="PendingBetsTable-component"
 >
   <div
-    className="current-bets-info-table-title-text"
+    className="pending-bets-info-table-title-text"
   >
-    CURRENT BETS
+    Pending Bets
   </div>
   <table
-    className="current-bets-info-table"
+    className="pending-bets-info-table"
   >
     <tbody>
       <tr
@@ -32,7 +32,7 @@ exports[`CurrentBetsInfo renders with bets 1`] = `
           foo
         </td>
         <td
-          className="current-bets-info-table-bet-amount"
+          className="pending-bets-info-table-bet-amount"
         >
           $ 10
         </td>
@@ -42,7 +42,7 @@ exports[`CurrentBetsInfo renders with bets 1`] = `
           bar
         </td>
         <td
-          className="current-bets-info-table-bet-amount"
+          className="pending-bets-info-table-bet-amount"
         >
           $ 20
         </td>
@@ -52,7 +52,7 @@ exports[`CurrentBetsInfo renders with bets 1`] = `
           baz
         </td>
         <td
-          className="current-bets-info-table-bet-amount"
+          className="pending-bets-info-table-bet-amount"
         >
           $ 30
         </td>
@@ -62,17 +62,17 @@ exports[`CurrentBetsInfo renders with bets 1`] = `
 </div>
 `;
 
-exports[`CurrentBetsInfo renders with no bets 1`] = `
+exports[`PendingBetsTable renders with no bets 1`] = `
 <div
-  className="CurrentBetsInfo-component"
+  className="PendingBetsTable-component"
 >
   <div
-    className="current-bets-info-table-title-text"
+    className="pending-bets-info-table-title-text"
   >
-    CURRENT BETS
+    Pending Bets
   </div>
   <table
-    className="current-bets-info-table"
+    className="pending-bets-info-table"
   >
     <tbody>
       <tr

@@ -10,7 +10,7 @@ import { PendingBet } from '../../common/PendingBet';
 import { BetResultsInfo } from './BetResultsInfo';
 import { Board } from "./Board";
 import { ChipSelection } from './ChipSelection';
-import { CurrentBetsInfo } from './CurrentBetsInfo';
+import { PendingBetsTable } from './PendingBetsTable';
 import { MostRecentSpinResults } from './MostRecentSpinResults';
 import { NumbersHitTracker } from './NumbersHitTracker';
 import { PlayerInfo } from './PlayerInfo';
@@ -188,7 +188,7 @@ export function Roulette() {
                 availableBalance={availableBalance}
                 totalBetAmount={calculateTotalBetAmount(pendingBets)}
             />
-            <CurrentBetsInfo
+            <PendingBetsTable
                 pendingBets={pendingBets}
             />
             <BetResultsInfo
