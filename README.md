@@ -1,3 +1,5 @@
+[![Node.js CI](https://github.com/jduffey/roulette-react/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/jduffey/roulette-react/actions/workflows/node.js.yml)
+
 # Instructions
 
 1. `npm install`
