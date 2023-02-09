@@ -1,4 +1,4 @@
-Test: pushing directly to `main` to observe GH actions.
+Test: pushing directly to `main` after removing "push" config param in `node.js.yml`.
 
 # Instructions
 
