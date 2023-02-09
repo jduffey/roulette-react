@@ -12,11 +12,19 @@ export const getCompleteResultsOfRound = (startingBalance, pendingBets, winningW
         pendingBets.reduce((acc, pendingBet) => {
             const betName = pendingBet.betName;
             const betAmount = pendingBet.betAmount;
-            acc[betName] = {
-                betAmount,
-                winningsOnBet: winningCriteria.has(betName) ? betAmount * getBetNameMultiplier(betName) : 0,
-                betReturned: winningCriteria.has(betName) ? betAmount : 0,
-            };
+            const didBetWin = winningCriteria.has(betName);
+
+            if (typeof acc[betName] === "undefined") {
+                acc[betName] = {
+                    betAmount: 0,
+                    winningsOnBet: 0,
+                    betReturned: 0,
+                };
+            }
+
+            acc[betName].betAmount += betAmount;
+            acc[betName].winningsOnBet += didBetWin ? betAmount * getBetNameMultiplier(betName) : 0;
+            acc[betName].betReturned += didBetWin ? betAmount : 0;
             return acc;
         }, {});
 

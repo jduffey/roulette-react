@@ -78,4 +78,58 @@ describe(`${getCompleteResultsOfRound.name}`, () => {
 
         expect(actual).toStrictEqual(expected);
     });
+
+    it("multiple bets on same bet, winning", () => {
+        const startingBalance = 1000;
+        const betAmount = 1;
+        const pendingBets = [
+            new PendingBet(BET_NAMES.STRAIGHT_UP_1, betAmount),
+            new PendingBet(BET_NAMES.STRAIGHT_UP_1, betAmount),
+            new PendingBet(BET_NAMES.STRAIGHT_UP_1, betAmount),
+        ];
+
+        const actual = getCompleteResultsOfRound(startingBalance, pendingBets, WHEEL_NUMBERS.WN_1);
+
+        const expected = {
+            startingBalance,
+            finalBalance: startingBalance + pendingBets.length * 35 * betAmount,
+            resultsOfBets: {
+                [BET_NAMES.STRAIGHT_UP_1]: {
+                    betAmount: pendingBets.length * betAmount,
+                    winningsOnBet: pendingBets.length * 35 * betAmount,
+                    betReturned: pendingBets.length * betAmount,
+                },
+            },
+            winningWheelNumber: WHEEL_NUMBERS.WN_1,
+        };
+
+        expect(actual).toStrictEqual(expected);
+    });
+
+    it("multiple bets on same bet, losing", () => {
+        const startingBalance = 1000;
+        const betAmount = 1;
+        const pendingBets = [
+            new PendingBet(BET_NAMES.STRAIGHT_UP_1, betAmount),
+            new PendingBet(BET_NAMES.STRAIGHT_UP_1, betAmount),
+            new PendingBet(BET_NAMES.STRAIGHT_UP_1, betAmount),
+        ];
+
+        const actual = getCompleteResultsOfRound(startingBalance, pendingBets, WHEEL_NUMBERS.WN_2);
+
+        const expected = {
+            startingBalance,
+            finalBalance: startingBalance - pendingBets.length * betAmount,
+            resultsOfBets: {
+                [BET_NAMES.STRAIGHT_UP_1]: {
+                    betAmount: pendingBets.length * betAmount,
+                    winningsOnBet: 0,
+                    betReturned: 0,
+                },
+            },
+            winningWheelNumber: WHEEL_NUMBERS.WN_2,
+        };
+
+        expect(actual).toStrictEqual(expected);
+    });
 });
