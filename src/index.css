@@ -338,7 +338,7 @@ because we'll have "invisible" betting options later
     border: 1px dashed black;
 }
 
-.CurrentBetsInfo-component {
+.PendingBetsTable-component {
     position: relative;
     bottom: 1236px;
     left: 80px;
@@ -351,11 +351,11 @@ because we'll have "invisible" betting options later
     text-align: center;
 }
 
-.current-bets-info-table {
+.pending-bets-info-table {
     border-collapse: collapse;
 }
 
-.current-bets-info-table * {
+.pending-bets-info-table * {
     font-size: 16px;
     width: 120px;
     border: 1px dashed black;
@@ -394,7 +394,7 @@ because we'll have "invisible" betting options later
     padding: 4px;
 }
 
-.current-bets-info-table-title-text {
+.pending-bets-info-table-title-text {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 8px;

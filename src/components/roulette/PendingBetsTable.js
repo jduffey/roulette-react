@@ -4,25 +4,25 @@ const betRow = (betOption, betAmount) => {
             <td>
                 {betOption}
             </td>
-            <td className="current-bets-info-table-bet-amount">
+            <td className="pending-bets-info-table-bet-amount">
                 {`$ ${betAmount}`}
             </td>
         </tr>
     );
 }
 
-const CLASS_NAME = "CurrentBetsInfo-component";
-export function CurrentBetsInfo(props) {
+const CLASS_NAME = "PendingBetsTable-component";
+export function PendingBetsTable(props) {
     return (
         <div
             className={CLASS_NAME}
         >
             <div
-                className="current-bets-info-table-title-text"
+                className="pending-bets-info-table-title-text"
             >
-                CURRENT BETS
+                Pending Bets
             </div>
-            <table className="current-bets-info-table">
+            <table className="pending-bets-info-table">
                 <tbody>
                     <tr style={{
                         textAlign: "center",
