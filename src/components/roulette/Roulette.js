@@ -50,7 +50,6 @@ export function Roulette() {
 
     const [availableBalance, setAvailableBalance] = useState("Loading...");
     const [spinResults, setSpinResults] = useState([]);
-    const [betsOnBoard, setBetsOnBoard] = useState({});
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
 
     const [pendingBets, setPendingBets] = useState([]);
@@ -89,8 +88,6 @@ export function Roulette() {
     }, []);
 
     function handleBettingSquareClick(bettingSquareName) {
-        const copyBetsOnBoard = Object.assign({}, betsOnBoard);
-
         if (currentChipAmountSelected > availableBalance) {
             alert("You don't have enough money to place that bet!");
             return;
@@ -101,15 +98,8 @@ export function Roulette() {
         copyPendingBets.push(pendingBet);
         setPendingBets(copyPendingBets);
 
-        if (copyBetsOnBoard[bettingSquareName]) {
-            copyBetsOnBoard[bettingSquareName] += currentChipAmountSelected;
-        } else {
-            copyBetsOnBoard[bettingSquareName] = currentChipAmountSelected;
-        }
-
         const newBalance = availableBalance - currentChipAmountSelected;
 
-        setBetsOnBoard(copyBetsOnBoard);
         setAvailableBalance(newBalance);
     }
 
@@ -139,13 +129,13 @@ export function Roulette() {
                 copyTransactionHistory.push(newTransactionForDatabase);
                 setTransactionHistory(copyTransactionHistory);
 
-                // TODO bug here? if we don't reset betsOnBoard then we can continue to click spin, which is not a problem itself,
+                // TODO update/revisit this note after replacing betsOnBoard (object) with pendingBets (array of PendingBet objects)
+                // TODO bug here? if we don't reset pendingBets then we can continue to click spin, which is not a problem itself,
                 // but on continuing to click does not charge the player for the bet placed, but it DOES award them winnings if they win.
                 // So we maybe need to refactor this component to ensure that the player's balance is in fact deducted for the bet placed.
                 // This may involve the reworking/splitting the concepts of:
                 // 1. what the player is actually able to bet at any given time (i.e. the funds they "own" minus whatever bets they've already placed)
                 // 2. what the player "owns" (i.e. if they had an option to clear all bets on the board, what would their balance be)
-                setBetsOnBoard({});
                 setPendingBets([]);
 
                 updateTransactionHistory(copyTransactionHistory);
@@ -161,7 +151,6 @@ export function Roulette() {
                     .then(() => {
                         setTransactionHistory([]);
                         setSpinResults([]);
-                        setBetsOnBoard({});
                         setPreviousRoundResultsForBetResultsInfo(null);
                     });
             });
