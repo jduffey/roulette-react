@@ -49,9 +49,8 @@ describe(`${getCompleteResultsOfRound.name}`, () => {
     ])("same bet on each option, spin result %s", (spinResult, expectedWinningBets, expectedNetDifferenceInBalance) => {
         const startingBalance = 1000;
         const betAmount = 1;
-        // place same bet on each bet name
         const pendingBets = Object.values(BET_NAMES).reduce((acc, betName) => {
-            const pendingBet = new PendingBet(betName, betAmount);
+            const pendingBet = new PendingBet(betName, betAmount); // place same bet on each bet name
             acc.push(pendingBet);
             return acc;
         }, []);

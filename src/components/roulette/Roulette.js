@@ -69,12 +69,15 @@ export function Roulette() {
                         return;
                     }
 
-                    const previousRoundResults = getCompleteResultsOfRound(
-                        mostRecentTransaction.startingBalance,
+                    const transactionBetsPlacedAsPendingBets =
                         Object.entries(mostRecentTransaction.betsPlaced).reduce((acc, [betName, betAmount]) => {
                             acc.push(new PendingBet(betName, betAmount));
                             return acc;
-                        }, []),
+                        }, []);
+
+                    const previousRoundResults = getCompleteResultsOfRound(
+                        mostRecentTransaction.startingBalance,
+                        transactionBetsPlacedAsPendingBets,
                         mostRecentTransaction.spinResult,
                     );
                     setPreviousRoundResultsForBetResultsInfo(previousRoundResults);
