@@ -1,5 +1,3 @@
-Test: pushing directly to `main` after removing "push" config param in `node.js.yml`.
-
 # Instructions
 
 1. `npm install`
@@ -12,3 +10,5 @@ Test: pushing directly to `main` after removing "push" config param in `node.js.
 ## Notes
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses [json-server](https://github.com/typicode/json-server).
+
+🤖 [Build results via GitHub Actions](https://github.com/jduffey/roulette-react/actions)
