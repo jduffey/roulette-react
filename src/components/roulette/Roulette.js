@@ -34,7 +34,7 @@ function getNewTransactionForDatabase(mostRecentRoundResults) {
     return {
         startingBalance: mostRecentRoundResults.startingBalance,
         betsPlaced: Object.entries(mostRecentRoundResults.resultsOfBets).reduce((acc, [betName, individualBetResult]) => {
-            acc[betName] = individualBetResult.betAmount;
+            acc[betName] = (acc[betName] || 0) + individualBetResult.betAmount;
             return acc;
         }, {}),
         spinResult: mostRecentRoundResults.winningWheelNumber,
