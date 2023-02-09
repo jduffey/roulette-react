@@ -1,4 +1,4 @@
-![GH Actions Build & Test](https://github.com/jduffey/roulette-react/.github/workflows/node.js.yml/badge.svg)
+[![Node.js CI](https://github.com/jduffey/roulette-react/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/jduffey/roulette-react/actions/workflows/node.js.yml)
 
 # Instructions
 
