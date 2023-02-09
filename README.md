@@ -1,4 +1,4 @@
-Test diff for CI/CD branch.
+Test: pushing directly to `main` to observe GH actions.
 
 # Instructions
 
