@@ -30,7 +30,10 @@ export function CurrentBetsInfo(props) {
                         <th>Bet Name</th>
                         <th>Bet Amount</th>
                     </tr>
-                    {Object.keys(props.betsOnBoard).map((betOption) => betRow(betOption, props.betsOnBoard[betOption]))}
+                    {Object.entries(props.pendingBets.reduce((acc, pendingBet) => {
+                        acc[pendingBet.betName] = (acc[pendingBet.betName] || 0) + pendingBet.betAmount;
+                        return acc;
+                    }, {})).map(([betOption, betAmount]) => betRow(betOption, betAmount))}
                 </tbody>
             </table>
         </div>
