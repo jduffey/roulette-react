@@ -13,14 +13,16 @@ const betRow = (betOption, betAmount) => {
 
 const CLASS_NAME = "PendingBetsTable-component";
 export function PendingBetsTable(props) {
+    const tableHeaders = (
+        <tr style={{ textAlign: "center" }}>
+            <th>Bet Name</th>
+            <th>Bet Amount</th>
+        </tr>
+    );
+
     const tableBody = (
         <tbody>
-            <tr style={{
-                textAlign: "center",
-            }}>
-                <th>Bet Name</th>
-                <th>Bet Amount</th>
-            </tr>
+            {tableHeaders}
             {Object.entries(props.pendingBets.reduce((acc, pendingBet) => {
                 acc[pendingBet.betName] = (acc[pendingBet.betName] || 0) + pendingBet.betAmount;
                 return acc;
