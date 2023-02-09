@@ -197,7 +197,7 @@ export function Roulette() {
                 totalBetAmount={calculateTotalBetAmount(pendingBets)}
             />
             <CurrentBetsInfo
-                betsOnBoard={betsOnBoard}
+                pendingBets={pendingBets}
             />
             <BetResultsInfo
                 previousRoundResults={previousRoundResultsForBetResultsInfo}

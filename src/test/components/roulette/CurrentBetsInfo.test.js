@@ -1,12 +1,13 @@
 import renderer from 'react-test-renderer';
 
 import { CurrentBetsInfo } from '../../../components/roulette/CurrentBetsInfo';
+import { PendingBet } from '../../../common/PendingBet';
 
 describe('CurrentBetsInfo', () => {
     it('renders with no bets', () => {
         const sut =
             CurrentBetsInfo({
-                betsOnBoard: {},
+                pendingBets: [],
             });
 
         const actual = renderer.create(sut);
@@ -17,11 +18,11 @@ describe('CurrentBetsInfo', () => {
     it('renders with bets', () => {
         const sut =
             CurrentBetsInfo({
-                betsOnBoard: {
-                    "foo": 10,
-                    "bar": 20,
-                    "baz": 30,
-                },
+                pendingBets: [
+                    new PendingBet("foo", 10),
+                    new PendingBet("bar", 20),
+                    new PendingBet("baz", 30),
+                ],
             });
 
         const actual = renderer.create(sut);
