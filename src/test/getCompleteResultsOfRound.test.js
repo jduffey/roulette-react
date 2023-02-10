@@ -7,6 +7,9 @@ import { getCompleteResultsOfRound } from "../common/getCompleteResultsOfRound";
 import { getBetNameMultiplier } from "../common/getBetNameMultiplier";
 
 describe(`${getCompleteResultsOfRound.name}`, () => {
+    const STARTING_BALANCE = 1000;
+    const BET_AMOUNT = 1;
+
     it.each([
         [WHEEL_NUMBERS.WN_0, [BET_NAMES.STRAIGHT_UP_0], -14],
         [WHEEL_NUMBERS.WN_00, [BET_NAMES.STRAIGHT_UP_00], -14],
@@ -47,19 +50,17 @@ describe(`${getCompleteResultsOfRound.name}`, () => {
         [WHEEL_NUMBERS.WN_35, [BET_NAMES.STRAIGHT_UP_35, BET_NAMES.SECOND_18, BET_NAMES.THIRD_DOZEN, BET_NAMES.ODD, BET_NAMES.BLACK, BET_NAMES.SECOND_COLUMN], -2],
         [WHEEL_NUMBERS.WN_36, [BET_NAMES.STRAIGHT_UP_36, BET_NAMES.SECOND_18, BET_NAMES.THIRD_DOZEN, BET_NAMES.EVEN, BET_NAMES.RED, BET_NAMES.THIRD_COLUMN], -2],
     ])("same bet on each option, spin result %s", (spinResult, expectedWinningBets, expectedNetDifferenceInBalance) => {
-        const startingBalance = 1000;
-        const betAmount = 1;
         const pendingBets = Object.values(BET_NAMES).reduce((acc, betName) => {
-            const pendingBet = new PendingBet(betName, betAmount); // place same bet on each bet name
+            const pendingBet = new PendingBet(betName, BET_AMOUNT);
             acc.push(pendingBet);
             return acc;
         }, []);
 
-        const actual = getCompleteResultsOfRound(startingBalance, pendingBets, spinResult);
+        const actual = getCompleteResultsOfRound(STARTING_BALANCE, pendingBets, spinResult);
 
         const expected = {
-            startingBalance,
-            finalBalance: startingBalance + expectedNetDifferenceInBalance,
+            startingBalance: STARTING_BALANCE,
+            finalBalance: STARTING_BALANCE + expectedNetDifferenceInBalance,
             resultsOfBets: pendingBets.reduce((acc, pendingBet) => {
                 acc[pendingBet.betName] = {
                     betAmount: pendingBet.betAmount,
@@ -72,32 +73,30 @@ describe(`${getCompleteResultsOfRound.name}`, () => {
         };
         // populate expected resultsOfBets with information about the bets that won
         expectedWinningBets.forEach((betName) => {
-            expected.resultsOfBets[betName].winningsOnBet = getBetNameMultiplier(betName) * betAmount;
-            expected.resultsOfBets[betName].betReturned = betAmount;
+            expected.resultsOfBets[betName].winningsOnBet = getBetNameMultiplier(betName) * BET_AMOUNT;
+            expected.resultsOfBets[betName].betReturned = BET_AMOUNT;
         });
 
         expect(actual).toStrictEqual(expected);
     });
 
     it("multiple bets on same bet, winning", () => {
-        const startingBalance = 1000;
-        const betAmount = 1;
         const pendingBets = [
-            new PendingBet(BET_NAMES.STRAIGHT_UP_1, betAmount),
-            new PendingBet(BET_NAMES.STRAIGHT_UP_1, betAmount),
-            new PendingBet(BET_NAMES.STRAIGHT_UP_1, betAmount),
+            new PendingBet(BET_NAMES.STRAIGHT_UP_1, BET_AMOUNT),
+            new PendingBet(BET_NAMES.STRAIGHT_UP_1, BET_AMOUNT),
+            new PendingBet(BET_NAMES.STRAIGHT_UP_1, BET_AMOUNT),
         ];
 
-        const actual = getCompleteResultsOfRound(startingBalance, pendingBets, WHEEL_NUMBERS.WN_1);
+        const actual = getCompleteResultsOfRound(STARTING_BALANCE, pendingBets, WHEEL_NUMBERS.WN_1);
 
         const expected = {
-            startingBalance,
-            finalBalance: startingBalance + pendingBets.length * 35 * betAmount,
+            startingBalance: STARTING_BALANCE,
+            finalBalance: STARTING_BALANCE + pendingBets.length * 35 * BET_AMOUNT,
             resultsOfBets: {
                 [BET_NAMES.STRAIGHT_UP_1]: {
-                    betAmount: pendingBets.length * betAmount,
-                    winningsOnBet: pendingBets.length * 35 * betAmount,
-                    betReturned: pendingBets.length * betAmount,
+                    betAmount: pendingBets.length * BET_AMOUNT,
+                    winningsOnBet: pendingBets.length * 35 * BET_AMOUNT,
+                    betReturned: pendingBets.length * BET_AMOUNT,
                 },
             },
             winningWheelNumber: WHEEL_NUMBERS.WN_1,
@@ -107,22 +106,20 @@ describe(`${getCompleteResultsOfRound.name}`, () => {
     });
 
     it("multiple bets on same bet, losing", () => {
-        const startingBalance = 1000;
-        const betAmount = 1;
         const pendingBets = [
-            new PendingBet(BET_NAMES.STRAIGHT_UP_1, betAmount),
-            new PendingBet(BET_NAMES.STRAIGHT_UP_1, betAmount),
-            new PendingBet(BET_NAMES.STRAIGHT_UP_1, betAmount),
+            new PendingBet(BET_NAMES.STRAIGHT_UP_1, BET_AMOUNT),
+            new PendingBet(BET_NAMES.STRAIGHT_UP_1, BET_AMOUNT),
+            new PendingBet(BET_NAMES.STRAIGHT_UP_1, BET_AMOUNT),
         ];
 
-        const actual = getCompleteResultsOfRound(startingBalance, pendingBets, WHEEL_NUMBERS.WN_2);
+        const actual = getCompleteResultsOfRound(STARTING_BALANCE, pendingBets, WHEEL_NUMBERS.WN_2);
 
         const expected = {
-            startingBalance,
-            finalBalance: startingBalance - pendingBets.length * betAmount,
+            startingBalance: STARTING_BALANCE,
+            finalBalance: STARTING_BALANCE - pendingBets.length * BET_AMOUNT,
             resultsOfBets: {
                 [BET_NAMES.STRAIGHT_UP_1]: {
-                    betAmount: pendingBets.length * betAmount,
+                    betAmount: pendingBets.length * BET_AMOUNT,
                     winningsOnBet: 0,
                     betReturned: 0,
                 },
