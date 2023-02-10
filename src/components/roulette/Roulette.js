@@ -3,6 +3,7 @@ import {
     fetchTransactionHistory,
     updateTransactionHistory,
     resetTransactionHistory,
+    PATH_ROULETTE,
 } from '../../common/databaseWrapper';
 
 import { PendingBet } from '../../common/PendingBet';
@@ -57,7 +58,7 @@ export function Roulette() {
     useEffect(() => {
         let mounted = true;
 
-        fetchTransactionHistory()
+        fetchTransactionHistory(PATH_ROULETTE)
             .then(json => {
                 if (mounted) {
                     setTransactionHistory(json.history);
@@ -141,16 +142,16 @@ export function Roulette() {
                 // 2. what the player "owns" (i.e. if they had an option to clear all bets on the board, what would their balance be)
                 setPendingBets([]);
 
-                updateTransactionHistory(copyTransactionHistory);
+                updateTransactionHistory(PATH_ROULETTE, copyTransactionHistory);
             });
     }
 
     function handleResetHistoryClick() {
-        fetchTransactionHistory()
+        fetchTransactionHistory(PATH_ROULETTE)
             .then(json => {
                 setAvailableBalance(json.initialBalance);
             }).then(() => {
-                resetTransactionHistory()
+                resetTransactionHistory(PATH_ROULETTE)
                     .then(() => {
                         setTransactionHistory([]);
                         setSpinResults([]);

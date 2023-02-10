@@ -4219,5 +4219,24 @@ Array [
       </div>
     </div>
   </div>,
+  <div
+    className="SicBo-PlayerInfo-component"
+  >
+    <div>
+      Owned Bal.
+      <br />
+      10000
+    </div>
+    <div>
+      Chips in Hand
+      <br />
+      10000
+    </div>
+    <div>
+      Total Bet
+      <br />
+      0
+    </div>
+  </div>,
 ]
 `;

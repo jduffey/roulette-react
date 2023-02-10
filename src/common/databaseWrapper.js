@@ -1,9 +1,10 @@
 const BASE_URL = 'http://localhost:3001';
-const ROULETTE = '/roulette';
-const DB_URL = new URL(ROULETTE, BASE_URL);
+const PATH_ROULETTE = '/roulette';
+// const PATH_SIC_BO = '/sic-bo';
+const dbUrl = (path) => new URL(path, BASE_URL);
 
-async function fetchTransactionHistory() {
-    const res = await fetch(DB_URL);
+async function fetchTransactionHistory(path) {
+    const res = await fetch(dbUrl(path));
     if (!res.ok) {
         console.log("Not OK response from json-server: ", res);
         return `Error: ${res.status} ${res.statusText}`;
@@ -12,8 +13,8 @@ async function fetchTransactionHistory() {
     return json;
 }
 
-async function updateTransactionHistory(history) {
-    const res = await fetch(DB_URL, {
+async function updateTransactionHistory(path, history) {
+    const res = await fetch(dbUrl(path), {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -25,8 +26,8 @@ async function updateTransactionHistory(history) {
     }
 }
 
-async function resetTransactionHistory() {
-    const res = await fetch(DB_URL, {
+async function resetTransactionHistory(path) {
+    const res = await fetch(dbUrl(path), {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -42,4 +43,5 @@ export {
     fetchTransactionHistory,
     updateTransactionHistory,
     resetTransactionHistory,
+    PATH_ROULETTE,
 };

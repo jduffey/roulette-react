@@ -2,7 +2,6 @@ import React from 'react';
 
 const CLASS_NAME = "SicBo-PlayerInfo-component";
 export function PlayerInfo() {
-
     const ownedBalance = 10000;
     const chipsInHand = ownedBalance;
     const totalBetsOnBoard = 0;
