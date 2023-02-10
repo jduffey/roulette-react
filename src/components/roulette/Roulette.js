@@ -5,10 +5,12 @@ import {
     resetTransactionHistory,
 } from '../../common/databaseWrapper';
 
+import { PendingBet } from '../../common/PendingBet';
+
 import { BetResultsInfo } from './BetResultsInfo';
 import { Board } from "./Board";
 import { ChipSelection } from './ChipSelection';
-import { CurrentBetsInfo } from './CurrentBetsInfo';
+import { PendingBetsTable } from './PendingBetsTable';
 import { MostRecentSpinResults } from './MostRecentSpinResults';
 import { NumbersHitTracker } from './NumbersHitTracker';
 import { PlayerInfo } from './PlayerInfo';
@@ -21,18 +23,18 @@ import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
 import { CompletionsCounter } from './CompletionsCounter';
 
 function calculateTotalBetAmount(bets) {
-    return Object.values(bets).reduce((acc, betAmount) => acc + betAmount, 0);
+    return bets.reduce((acc, pendingBet) => acc + pendingBet.betAmount, 0);
 }
 
 function isSpinAllowed(bets) {
-    return Object.keys(bets).length > 0;
+    return bets.length > 0;
 }
 
 function getNewTransactionForDatabase(mostRecentRoundResults) {
     return {
         startingBalance: mostRecentRoundResults.startingBalance,
         betsPlaced: Object.entries(mostRecentRoundResults.resultsOfBets).reduce((acc, [betName, individualBetResult]) => {
-            acc[betName] = individualBetResult.betAmount;
+            acc[betName] = (acc[betName] || 0) + individualBetResult.betAmount;
             return acc;
         }, {}),
         spinResult: mostRecentRoundResults.winningWheelNumber,
@@ -48,8 +50,9 @@ export function Roulette() {
 
     const [availableBalance, setAvailableBalance] = useState("Loading...");
     const [spinResults, setSpinResults] = useState([]);
-    const [betsOnBoard, setBetsOnBoard] = useState({});
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
+
+    const [pendingBets, setPendingBets] = useState([]);
 
     useEffect(() => {
         let mounted = true;
@@ -66,9 +69,15 @@ export function Roulette() {
                         return;
                     }
 
+                    const transactionBetsPlacedAsPendingBets =
+                        Object.entries(mostRecentTransaction.betsPlaced).reduce((acc, [betName, betAmount]) => {
+                            acc.push(new PendingBet(betName, betAmount));
+                            return acc;
+                        }, []);
+
                     const previousRoundResults = getCompleteResultsOfRound(
                         mostRecentTransaction.startingBalance,
-                        mostRecentTransaction.betsPlaced,
+                        transactionBetsPlacedAsPendingBets,
                         mostRecentTransaction.spinResult,
                     );
                     setPreviousRoundResultsForBetResultsInfo(previousRoundResults);
@@ -82,27 +91,23 @@ export function Roulette() {
     }, []);
 
     function handleBettingSquareClick(bettingSquareName) {
-        const copyBetsOnBoard = Object.assign({}, betsOnBoard);
-
         if (currentChipAmountSelected > availableBalance) {
             alert("You don't have enough money to place that bet!");
             return;
         }
 
-        if (copyBetsOnBoard[bettingSquareName]) {
-            copyBetsOnBoard[bettingSquareName] += currentChipAmountSelected;
-        } else {
-            copyBetsOnBoard[bettingSquareName] = currentChipAmountSelected;
-        }
+        const pendingBet = new PendingBet(bettingSquareName, currentChipAmountSelected);
+        const copyPendingBets = pendingBets.slice();
+        copyPendingBets.push(pendingBet);
+        setPendingBets(copyPendingBets);
 
         const newBalance = availableBalance - currentChipAmountSelected;
 
-        setBetsOnBoard(copyBetsOnBoard);
         setAvailableBalance(newBalance);
     }
 
     function handleSpinButtonClick() {
-        if (!isSpinAllowed(betsOnBoard)) {
+        if (!isSpinAllowed(pendingBets)) {
             return;
         }
 
@@ -110,29 +115,31 @@ export function Roulette() {
             .then(randomWheelNumber => {
                 const copySpinResults = spinResults.slice();
 
-                const betAmountOnBoard = calculateTotalBetAmount(betsOnBoard);
+                const betAmountOnBoard = calculateTotalBetAmount(pendingBets);
 
                 const startingBalance = availableBalance + betAmountOnBoard;
 
-                const mostRecentRoundResults = getCompleteResultsOfRound(startingBalance, betsOnBoard, randomWheelNumber);
-                setPreviousRoundResultsForBetResultsInfo(mostRecentRoundResults);
-                setAvailableBalance(mostRecentRoundResults.finalBalance);
+                const resultsOfRound = getCompleteResultsOfRound(startingBalance, pendingBets, randomWheelNumber);
 
-                copySpinResults.push(mostRecentRoundResults.winningWheelNumber);
+                setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
+                setAvailableBalance(resultsOfRound.finalBalance);
+
+                copySpinResults.push(resultsOfRound.winningWheelNumber);
                 setSpinResults(copySpinResults);
 
-                const newTransactionForDatabase = getNewTransactionForDatabase(mostRecentRoundResults);
+                const newTransactionForDatabase = getNewTransactionForDatabase(resultsOfRound);
                 const copyTransactionHistory = transactionHistory.slice();
                 copyTransactionHistory.push(newTransactionForDatabase);
                 setTransactionHistory(copyTransactionHistory);
 
-                // TODO bug here? if we don't reset betsOnBoard then we can continue to click spin, which is not a problem itself,
+                // TODO update/revisit this note after replacing betsOnBoard (object) with pendingBets (array of PendingBet objects)
+                // TODO bug here? if we don't reset pendingBets then we can continue to click spin, which is not a problem itself,
                 // but on continuing to click does not charge the player for the bet placed, but it DOES award them winnings if they win.
                 // So we maybe need to refactor this component to ensure that the player's balance is in fact deducted for the bet placed.
                 // This may involve the reworking/splitting the concepts of:
                 // 1. what the player is actually able to bet at any given time (i.e. the funds they "own" minus whatever bets they've already placed)
                 // 2. what the player "owns" (i.e. if they had an option to clear all bets on the board, what would their balance be)
-                setBetsOnBoard({});
+                setPendingBets([]);
 
                 updateTransactionHistory(copyTransactionHistory);
             });
@@ -147,7 +154,6 @@ export function Roulette() {
                     .then(() => {
                         setTransactionHistory([]);
                         setSpinResults([]);
-                        setBetsOnBoard({});
                         setPreviousRoundResultsForBetResultsInfo(null);
                     });
             });
@@ -161,7 +167,7 @@ export function Roulette() {
         >
             <Board
                 onClick={(bettingSquareName) => handleBettingSquareClick(bettingSquareName)}
-                betsOnBoard={betsOnBoard}
+                pendingBets={pendingBets}
             />
             <ChipSelection
                 onClick={(chipAmount) => setCurrentChipAmountSelected(chipAmount)}
@@ -169,7 +175,7 @@ export function Roulette() {
             />
             <SpinButton
                 onClick={() => handleSpinButtonClick()}
-                isSpinAllowed={isSpinAllowed(betsOnBoard)}
+                isSpinAllowed={isSpinAllowed(pendingBets)}
             />
             <SpinResult
                 spinResult={mostRecentSpinResult}
@@ -180,10 +186,10 @@ export function Roulette() {
             <PlayerInfo
                 onClick={() => handleResetHistoryClick()}
                 availableBalance={availableBalance}
-                totalBetAmount={calculateTotalBetAmount(betsOnBoard)}
+                totalBetAmount={calculateTotalBetAmount(pendingBets)}
             />
-            <CurrentBetsInfo
-                betsOnBoard={betsOnBoard}
+            <PendingBetsTable
+                pendingBets={pendingBets}
             />
             <BetResultsInfo
                 previousRoundResults={previousRoundResultsForBetResultsInfo}

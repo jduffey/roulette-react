@@ -1,6 +1,8 @@
 import { BET_NAMES } from "../common/betNames";
 import { WHEEL_NUMBERS } from "../common/wheelNumbers";
 
+import { PendingBet } from "../common/PendingBet";
+
 import { getCompleteResultsOfRound } from "../common/getCompleteResultsOfRound";
 import { getBetNameMultiplier } from "../common/getBetNameMultiplier";
 
@@ -47,19 +49,20 @@ describe(`${getCompleteResultsOfRound.name}`, () => {
     ])("same bet on each option, spin result %s", (spinResult, expectedWinningBets, expectedNetDifferenceInBalance) => {
         const startingBalance = 1000;
         const betAmount = 1;
-        const bets = Object.values(BET_NAMES).reduce((acc, betName) => {
-            acc[betName] = betAmount;
+        const pendingBets = Object.values(BET_NAMES).reduce((acc, betName) => {
+            const pendingBet = new PendingBet(betName, betAmount); // place same bet on each bet name
+            acc.push(pendingBet);
             return acc;
-        }, {});
+        }, []);
 
-        const actual = getCompleteResultsOfRound(startingBalance, bets, spinResult);
+        const actual = getCompleteResultsOfRound(startingBalance, pendingBets, spinResult);
 
         const expected = {
             startingBalance,
             finalBalance: startingBalance + expectedNetDifferenceInBalance,
-            resultsOfBets: Object.values(BET_NAMES).reduce((acc, betName) => {
-                acc[betName] = {
-                    betAmount,
+            resultsOfBets: pendingBets.reduce((acc, pendingBet) => {
+                acc[pendingBet.betName] = {
+                    betAmount: pendingBet.betAmount,
                     winningsOnBet: 0,
                     betReturned: 0,
                 };
@@ -67,10 +70,65 @@ describe(`${getCompleteResultsOfRound.name}`, () => {
             }, {}),
             winningWheelNumber: spinResult,
         };
+        // populate expected resultsOfBets with information about the bets that won
         expectedWinningBets.forEach((betName) => {
             expected.resultsOfBets[betName].winningsOnBet = getBetNameMultiplier(betName) * betAmount;
             expected.resultsOfBets[betName].betReturned = betAmount;
         });
+
+        expect(actual).toStrictEqual(expected);
+    });
+
+    it("multiple bets on same bet, winning", () => {
+        const startingBalance = 1000;
+        const betAmount = 1;
+        const pendingBets = [
+            new PendingBet(BET_NAMES.STRAIGHT_UP_1, betAmount),
+            new PendingBet(BET_NAMES.STRAIGHT_UP_1, betAmount),
+            new PendingBet(BET_NAMES.STRAIGHT_UP_1, betAmount),
+        ];
+
+        const actual = getCompleteResultsOfRound(startingBalance, pendingBets, WHEEL_NUMBERS.WN_1);
+
+        const expected = {
+            startingBalance,
+            finalBalance: startingBalance + pendingBets.length * 35 * betAmount,
+            resultsOfBets: {
+                [BET_NAMES.STRAIGHT_UP_1]: {
+                    betAmount: pendingBets.length * betAmount,
+                    winningsOnBet: pendingBets.length * 35 * betAmount,
+                    betReturned: pendingBets.length * betAmount,
+                },
+            },
+            winningWheelNumber: WHEEL_NUMBERS.WN_1,
+        };
+
+        expect(actual).toStrictEqual(expected);
+    });
+
+    it("multiple bets on same bet, losing", () => {
+        const startingBalance = 1000;
+        const betAmount = 1;
+        const pendingBets = [
+            new PendingBet(BET_NAMES.STRAIGHT_UP_1, betAmount),
+            new PendingBet(BET_NAMES.STRAIGHT_UP_1, betAmount),
+            new PendingBet(BET_NAMES.STRAIGHT_UP_1, betAmount),
+        ];
+
+        const actual = getCompleteResultsOfRound(startingBalance, pendingBets, WHEEL_NUMBERS.WN_2);
+
+        const expected = {
+            startingBalance,
+            finalBalance: startingBalance - pendingBets.length * betAmount,
+            resultsOfBets: {
+                [BET_NAMES.STRAIGHT_UP_1]: {
+                    betAmount: pendingBets.length * betAmount,
+                    winningsOnBet: 0,
+                    betReturned: 0,
+                },
+            },
+            winningWheelNumber: WHEEL_NUMBERS.WN_2,
+        };
 
         expect(actual).toStrictEqual(expected);
     });
