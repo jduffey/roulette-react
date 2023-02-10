@@ -1,23 +1,25 @@
 import React from 'react';
 
 const CLASS_NAME = "SicBo-PlayerInfo-component";
-export function PlayerInfo(props) {
-    const totalBetsOnBoard = 1234;
+export function PlayerInfo() {
 
-    const localSetFooVar = (newFooVar) => {
-        props.setFooVar(newFooVar);
-    };
-
-    localSetFooVar("New foo var value");
+    const ownedBalance = 10000;
+    const chipsInHand = ownedBalance;
+    const totalBetsOnBoard = 0;
 
     return (
         <div
             className={CLASS_NAME}
         >
             <div>
-                {"Avail. Balance"}
+                {"Owned Bal."}
                 < br />
-                {props.fooVar}
+                {ownedBalance}
+            </div>
+            <div>
+                {"Chips in Hand"}
+                < br />
+                {chipsInHand}
             </div>
             <div>
                 {"Total Bet"}

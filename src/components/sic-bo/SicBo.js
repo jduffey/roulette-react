@@ -1,14 +1,11 @@
 import { Board } from "./Board";
 import { PlayerInfo } from "./PlayerInfo";
 
-export function SicBo(props) {
+export function SicBo() {
     return (
         <>
             <Board />
-            <PlayerInfo
-                fooVar={props.fooVar}
-                setFooVar={props.setFooVar}
-            />
+            <PlayerInfo />
         </>
     );
 }

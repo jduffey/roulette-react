@@ -1,6 +1,6 @@
 const BASE_URL = 'http://localhost:3001';
-const ENDPOINT = '/player';
-const DB_URL = new URL(ENDPOINT, BASE_URL);
+const ROULETTE = '/roulette';
+const DB_URL = new URL(ROULETTE, BASE_URL);
 
 async function fetchTransactionHistory() {
     const res = await fetch(DB_URL);
