@@ -3,6 +3,8 @@ import {
     fetchTransactionHistory,
     updateTransactionHistory,
     resetTransactionHistory,
+    fetchNewTransactionHistory,
+    updateNewTransactionHistory,
 } from '../../common/databaseWrapper';
 
 import { PendingBet } from '../../common/PendingBet';
@@ -120,6 +122,16 @@ export function Roulette() {
                 const startingBalance = availableBalance + betAmountOnBoard;
 
                 const resultsOfRound = getCompleteResultsOfRound(startingBalance, pendingBets, randomWheelNumber);
+
+                // TODO testing new version of tx to store in db
+                // this may cause a ERR_INCOMPLETE_CHUNKED_ENCODING I think b/c it's conflicting with the fetchTransactionHistory() call
+                // fetchNewTransactionHistory()
+                //     .then(json => {
+                //         const transactions = json.transactions;
+                //         const copyTransactionHistory = transactions.slice();
+                //         copyTransactionHistory.push(resultsOfRound);
+                //         updateNewTransactionHistory(copyTransactionHistory);
+                //     });
 
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
                 setAvailableBalance(resultsOfRound.finalBalance);
