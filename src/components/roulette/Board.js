@@ -2,7 +2,7 @@ import React from 'react';
 
 import { BetOption } from './BetOption';
 
-import { BET_OPTION_PARAMS } from './betOptionParameters';
+import { BET_OPTION_DISPLAY_PARAMS } from './betOptionDisplayParameters';
 
 const CLASS_NAME = "Board-component";
 export function Board(props) {
@@ -10,7 +10,7 @@ export function Board(props) {
         <div
             className={CLASS_NAME}
         >
-            {Object.entries(BET_OPTION_PARAMS).map(([betOptionName, params]) => {
+            {Object.entries(BET_OPTION_DISPLAY_PARAMS).map(([betOptionName, params]) => {
                 return (
                     <BetOption
                         textLabelClassNamePrefix={params.textLabelClassNamePrefix}

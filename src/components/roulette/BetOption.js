@@ -13,7 +13,6 @@ export function BetOption(props) {
                 top: props.styleData.top,
                 width: props.styleData.width - BETTING_SQUARE_OUTLINE_SIZE,
                 height: props.styleData.height - BETTING_SQUARE_OUTLINE_SIZE,
-                backgroundColor: props.styleData.backgroundColor,
             }}
         >
             <div className="betting-square-contents">
