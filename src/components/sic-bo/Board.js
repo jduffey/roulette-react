@@ -2,12 +2,12 @@ import React from 'react';
 
 import { BetOption } from './BetOption';
 
-import { BET_OPTION_PARAMS } from './betOptionParameters';
+import { BET_OPTION_DISPLAY_PARAMS } from './betOptionDisplayParameters';
 
 export function Board(props) {
     return (
         <div>
-            {Object.entries(BET_OPTION_PARAMS).map(([betOptionName, params]) => {
+            {Object.entries(BET_OPTION_DISPLAY_PARAMS).map(([betOptionName, params]) => {
                 return (
                     <BetOption
                         key={betOptionName}

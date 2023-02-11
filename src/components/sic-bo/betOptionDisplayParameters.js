@@ -1,7 +1,7 @@
 import { BET_NAMES } from "./sicBoBetNames";
 import { STANDARD_COLORS } from "../../common/standardColors";
 
-export const BET_OPTION_PARAMS = Object.entries({
+export const BET_OPTION_DISPLAY_PARAMS = Object.entries({
     [BET_NAMES.SMALL]: [0, 60, 200, 160, STANDARD_COLORS.INHERIT, "Small!"],
     [BET_NAMES.BIG]: [1200, 60, 200, 160, STANDARD_COLORS.INHERIT, "Big!"],
     [BET_NAMES.DOUBLE_ONE]: [210, 100, 60, 120, STANDARD_COLORS.INHERIT, "1 1"],
@@ -60,7 +60,6 @@ export const BET_OPTION_PARAMS = Object.entries({
             width: params[2],
             height: params[3],
             backgroundColor: params[4],
-            // labelBackgroundColor: params[5],
         },
         displayText: params[5],
     };
