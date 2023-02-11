@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BetOption } from './BetOption';
+import { ClickableBet } from './ClickableBet';
 
 import { BET_OPTION_DISPLAY_PARAMS } from './betOptionDisplayParameters';
 
@@ -12,7 +12,7 @@ export function Board(props) {
         >
             {Object.entries(BET_OPTION_DISPLAY_PARAMS).map(([betOptionName, params]) => {
                 return (
-                    <BetOption
+                    <ClickableBet
                         textLabelClassNamePrefix={params.textLabelClassNamePrefix}
                         key={betOptionName}
                         onClick={() => props.onClick(betOptionName)}

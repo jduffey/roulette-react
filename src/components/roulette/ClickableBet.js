@@ -3,7 +3,7 @@ import { Chip } from "./Chip";
 const BETTING_SQUARE_OUTLINE_SIZE = 1;
 
 const CLASS_NAME = "BetOption-component";
-export function BetOption(props) {
+export function ClickableBet(props) {
     return (
         <div
             className={CLASS_NAME}
