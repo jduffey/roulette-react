@@ -120,7 +120,6 @@ because we'll have "invisible" betting options later
     width: 110px;
     height: 70px;
     display: flex;
-    text-align: center;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
@@ -139,7 +138,6 @@ because we'll have "invisible" betting options later
     width: 110px;
     height: 70px;
     display: flex;
-    text-align: center;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
@@ -151,6 +149,17 @@ because we'll have "invisible" betting options later
 
 .halves-square-label {
     font-size: 28px;
+}
+
+.halves-colors-square-label {
+    font-size: 28px;
+    outline: 1px solid white;
+    width: 140px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 32px;
 }
 
 .ChipSelection-component {
