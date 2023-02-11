@@ -1,7 +1,44 @@
 import { BET_NAMES } from "../../common/betNames";
 import { STANDARD_COLORS } from "../../common/standardColors";
 
-export const BET_OPTION_DISPLAY_PARAMS = Object.entries({
+import { Chip } from "./Chip";
+
+const BETTING_SQUARE_OUTLINE_SIZE = 1;
+
+const CLASS_NAME = "ClickableBet-component";
+function ClickableBet(props) {
+    return (
+        <div
+            className={CLASS_NAME}
+            onClick={props.onClick}
+            style={{
+                left: props.styleData.left,
+                top: props.styleData.top,
+                width: props.styleData.width - BETTING_SQUARE_OUTLINE_SIZE,
+                height: props.styleData.height - BETTING_SQUARE_OUTLINE_SIZE,
+            }}
+        >
+            <div className="betting-square-contents">
+                <div
+                    className={`betting-square-label ${props.textLabelClassNamePrefix}-square-label`}
+                    style={{
+                        backgroundColor: props.styleData.labelBackgroundColor,
+                    }}
+                >
+                    {props.displayText}
+                </div>
+                <Chip
+                    auxiliaryClassName="betting-square-chip"
+                    key={props.chipAmount}
+                    onClick={props.onClick}
+                    chipAmount={props.betAmount}
+                />
+            </div>
+        </div>
+    );
+}
+
+const DISPLAY_PARAMS = Object.entries({
     // StraightUp 1st Column
     [BET_NAMES.STRAIGHT_UP_1]: [80, 240, 80, 120, STANDARD_COLORS.FELT_RED, "1", "straightUp1to36"],
     [BET_NAMES.STRAIGHT_UP_4]: [160, 240, 80, 120, STANDARD_COLORS.FELT_BLACK, "4", "straightUp1to36"],
@@ -79,3 +116,8 @@ export const BET_OPTION_DISPLAY_PARAMS = Object.entries({
     };
     return acc;
 }, {});
+
+export {
+    ClickableBet,
+    DISPLAY_PARAMS,
+};

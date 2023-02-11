@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 
-import { BetOption } from '../../../components/roulette/BetOption';
+import { ClickableBet } from '../../../components/roulette/ClickableBet';
 
 describe('BetOption', () => {
     it.each([
@@ -23,7 +23,7 @@ describe('BetOption', () => {
             betAmount,
         };
 
-        const sut = BetOption(props);
+        const sut = ClickableBet(props);
 
         const actual = renderer.create(sut);
 

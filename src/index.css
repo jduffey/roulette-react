@@ -61,6 +61,16 @@ ul {
     position: relative;
 }
 
+.ClickableBet-component {
+    position: absolute;
+    font-weight: bold;
+    outline: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 /*
 Reminder: this used to be called betting-square-visible,
 because we'll have "invisible" betting options later
