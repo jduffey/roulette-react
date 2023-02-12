@@ -13,8 +13,8 @@ describe('SpinButton', () => {
                 onClick: () => "ON_CLICK",
             });
 
-        const actual = renderer.create(sut)
+        const view = renderer.create(sut)
 
-        expect(actual).toMatchSnapshot();
+        expect(view).toMatchSnapshot();
     });
 });

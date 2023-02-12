@@ -6,12 +6,12 @@ import { MemoryRouter } from "react-router-dom";
 
 describe("NavigationBar", () => {
     it("renders", () => {
-        const actual = renderer.create(
+        const view = renderer.create(
             <MemoryRouter >
                 <NavigationBar />
             </MemoryRouter>,
         );
 
-        expect(actual).toMatchSnapshot();
+        expect(view).toMatchSnapshot();
     });
 });

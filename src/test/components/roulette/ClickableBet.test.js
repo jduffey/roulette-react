@@ -26,9 +26,9 @@ describe('ClickableBet', () => {
 
             const sut = ClickableBet(props);
 
-            const actual = renderer.create(sut);
+            const view = renderer.create(sut);
 
-            expect(actual).toMatchSnapshot();
+            expect(view).toMatchSnapshot();
         });
     });
 });

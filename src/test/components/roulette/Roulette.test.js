@@ -4,8 +4,8 @@ import { Roulette } from '../../../components/roulette/Roulette';
 
 describe('Roulette', () => {
     it('renders', () => {
-        const actual = renderer.create(<Roulette />);
+        const view = renderer.create(<Roulette />);
 
-        expect(actual).toMatchSnapshot();
+        expect(view).toMatchSnapshot();
     });
 });

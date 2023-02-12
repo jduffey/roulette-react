@@ -10,9 +10,9 @@ describe('CompletionsCounter', () => {
             transactionHistory: [],
         });
 
-        const actual = renderer.create(sut);
+        const view = renderer.create(sut);
 
-        expect(actual).toMatchSnapshot();
+        expect(view).toMatchSnapshot();
     });
 
     it('renders when all numbers have been hit once', () => {
@@ -24,8 +24,8 @@ describe('CompletionsCounter', () => {
             }),
         });
 
-        const actual = renderer.create(sut);
+        const view = renderer.create(sut);
 
-        expect(actual).toMatchSnapshot();
+        expect(view).toMatchSnapshot();
     });
 });
