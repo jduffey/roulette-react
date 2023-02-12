@@ -12,3 +12,11 @@
 ## Notes
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses [json-server](https://github.com/typicode/json-server).
+
+## Hardhat Spike
+
+`npx hardhat node`
+- starts the Hardhat node
+
+`npx hardhat run scripts/start.js`
+- runs the test/spike script
