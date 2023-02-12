@@ -5,10 +5,11 @@ import { ClickableSicBoBet, BET_OPTION_DISPLAY_PARAMS } from './ClickableSicBoBe
 export function Board(props) {
     return (
         <div>
-            {Object.entries(BET_OPTION_DISPLAY_PARAMS).map(([betOptionName, params]) => {
+            {Object.entries(BET_OPTION_DISPLAY_PARAMS).map(([betName, params]) => {
                 return (
                     <ClickableSicBoBet
-                        key={betOptionName}
+                        key={betName}
+                        onClick={() => props.onClick(betName)}
                         displayText={params.displayText}
                         styleData={params.styleData}
                     />
