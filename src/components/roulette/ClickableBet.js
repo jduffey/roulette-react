@@ -102,8 +102,8 @@ const DISPLAY_PARAMS = Object.entries({
     [BET_NAMES.BLACK]: [560, 440, 160, 80, STANDARD_COLORS.FELT_BLACK, "Black", "halves-colors"],
     [BET_NAMES.ODD]: [720, 440, 160, 80, STANDARD_COLORS.INHERIT, "Odd", "halves"],
     [BET_NAMES.SECOND_18]: [880, 440, 160, 80, STANDARD_COLORS.INHERIT, "19 to 36", "halves"],
-}).reduce((acc, [betOptionName, params]) => {
-    acc[betOptionName] = {
+}).reduce((acc, [betName, params]) => {
+    acc[betName] = {
         styleData: {
             left: params[0],
             top: params[1],

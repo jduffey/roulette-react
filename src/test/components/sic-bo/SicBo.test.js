@@ -4,7 +4,7 @@ import { SicBo } from '../../../components/sic-bo/SicBo';
 
 describe('SicBo', () => {
     it('renders', () => {
-        const actual = renderer.create(<SicBo />);
-        expect(actual).toMatchSnapshot();
+        const view = renderer.create(<SicBo />);
+        expect(view).toMatchSnapshot();
     });
 });

@@ -10,9 +10,9 @@ describe('PendingBetsTable', () => {
                 pendingBets: [],
             });
 
-        const actual = renderer.create(sut);
+        const view = renderer.create(sut);
 
-        expect(actual).toMatchSnapshot();
+        expect(view).toMatchSnapshot();
     });
 
     it('renders with bets', () => {
@@ -25,8 +25,8 @@ describe('PendingBetsTable', () => {
                 ],
             });
 
-        const actual = renderer.create(sut);
+        const view = renderer.create(sut);
 
-        expect(actual).toMatchSnapshot();
+        expect(view).toMatchSnapshot();
     });
 });

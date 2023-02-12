@@ -9,9 +9,9 @@ describe('RewardsInfo', () => {
                 transactionHistory={[]}
             />;
 
-        const actual = renderer.create(sut);
+        const view = renderer.create(sut);
 
-        expect(actual).toMatchSnapshot();
+        expect(view).toMatchSnapshot();
     });
 
     it("renders when there are multiple transactions", () => {
@@ -35,8 +35,8 @@ describe('RewardsInfo', () => {
                 ]}
             />;
 
-        const actual = renderer.create(sut);
+        const view = renderer.create(sut);
 
-        expect(actual).toMatchSnapshot();
+        expect(view).toMatchSnapshot();
     });
 });

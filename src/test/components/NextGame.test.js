@@ -4,8 +4,8 @@ import { NextGame } from "../../components/NextGame";
 
 describe("NextGame", () => {
     it("renders", () => {
-        const actual = renderer.create(<NextGame />);
+        const view = renderer.create(<NextGame />);
 
-        expect(actual).toMatchSnapshot();
+        expect(view).toMatchSnapshot();
     });
 });

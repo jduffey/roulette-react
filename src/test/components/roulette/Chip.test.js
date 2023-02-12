@@ -37,9 +37,9 @@ describe('Chip', () => {
                         isSelected,
                     });
 
-                const actual = renderer.create(sut);
+                const view = renderer.create(sut);
 
-                expect(actual).toMatchSnapshot();
+                expect(view).toMatchSnapshot();
             });
         });
 
@@ -57,9 +57,9 @@ describe('Chip', () => {
                         isSelected,
                     });
 
-                const actual = renderer.create(sut);
+                const view = renderer.create(sut);
 
-                expect(actual).toMatchSnapshot();
+                expect(view).toMatchSnapshot();
             });
         });
     });
