@@ -3,8 +3,8 @@ import { STANDARD_COLORS } from "../../common/standardColors";
 
 const BETTING_SQUARE_OUTLINE_SIZE = 1;
 
-const CLASS_NAME = "BetOption-component";
-function BetOption(props) {
+const CLASS_NAME = "ClickableSicBoBet-component";
+function ClickableSicBoBet(props) {
     return (
         <div
             className={CLASS_NAME}
@@ -96,4 +96,4 @@ const BET_OPTION_DISPLAY_PARAMS = Object.entries({
     return acc;
 }, {});
 
-export { BetOption, BET_OPTION_DISPLAY_PARAMS };
+export { ClickableSicBoBet, BET_OPTION_DISPLAY_PARAMS };

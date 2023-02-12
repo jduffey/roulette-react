@@ -71,12 +71,7 @@ ul {
     align-items: center;
 }
 
-/*
-Reminder: this used to be called betting-square-visible,
-because we'll have "invisible" betting options later
-(e.g. split, basket)
-*/
-.BetOption-component {
+.ClickableSicBoBet-component {
     position: absolute;
     font-weight: bold;
     outline: 1px solid white;
