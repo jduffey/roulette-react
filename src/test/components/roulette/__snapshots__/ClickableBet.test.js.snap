@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BetOption renders when chip is not visible 1`] = `
+exports[`ClickableBet renders when renders when chip is not visible 1`] = `
 <div
   className="ClickableBet-component"
   onClick={[Function]}
@@ -41,7 +41,7 @@ exports[`BetOption renders when chip is not visible 1`] = `
 </div>
 `;
 
-exports[`BetOption renders when chip is visible 1`] = `
+exports[`ClickableBet renders when renders when chip is visible 1`] = `
 <div
   className="ClickableBet-component"
   onClick={[Function]}
