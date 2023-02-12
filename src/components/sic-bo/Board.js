@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { BetOption } from './BetOption';
-
-import { BET_OPTION_DISPLAY_PARAMS } from './betOptionDisplayParameters';
+import { BetOption, BET_OPTION_DISPLAY_PARAMS } from './BetOption';
 
 export function Board(props) {
     return (
