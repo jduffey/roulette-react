@@ -5,7 +5,7 @@ import { Layout } from "./Layout";
 import { Home } from "./Home";
 import { Roulette } from "./roulette/Roulette";
 import { SicBo } from "./SicBo";
-import { Balances } from "./Balances";
+import { Balances } from "./balances/Balances";
 
 const elementInLayout = (element) => <Layout>{element}</Layout>
 
