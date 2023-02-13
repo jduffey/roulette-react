@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-contract WETH100Kv2 {
-    string public name = "Wrapped Ether 100k v2";
-    string public symbol = "FooToken";
+contract MyGameToken {
+    string public name = "My Game Token";
+    string public symbol = "GAME";
     uint8 public decimals = 18;
-    uint256 private _weth100kPerEth = 100_000;
+    uint256 private _tokensPerEth = 100_000;
 
     event Approval(address indexed src, address indexed guy, uint256 wad);
     event Transfer(address indexed src, address indexed dst, uint256 wad);
@@ -20,7 +20,7 @@ contract WETH100Kv2 {
     }
 
     function deposit() public payable {
-        uint256 tokensToCredit = msg.value * _weth100kPerEth;
+        uint256 tokensToCredit = msg.value * _tokensPerEth;
         balanceOf[msg.sender] += tokensToCredit;
         emit Deposit(msg.sender, msg.value);
     }
@@ -28,13 +28,13 @@ contract WETH100Kv2 {
     function withdraw(uint256 wad) public {
         require(balanceOf[msg.sender] >= wad);
         balanceOf[msg.sender] -= wad;
-        uint256 etherOwed = wad / _weth100kPerEth;
+        uint256 etherOwed = wad / _tokensPerEth;
         payable(msg.sender).transfer(etherOwed);
         emit Withdrawal(msg.sender, wad);
     }
 
     function totalSupply() public view returns (uint256) {
-        return address(this).balance * _weth100kPerEth;
+        return address(this).balance * _tokensPerEth;
     }
 
     function approve(address guy, uint256 wad) public returns (bool) {

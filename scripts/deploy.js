@@ -16,7 +16,7 @@ async function main() {
 
     const WrappedEthTokenContract =
         await ethers.getContractFactory(
-            "WETH100Kv2",
+            "MyGameToken",
             deployer
         );
     const token = await WrappedEthTokenContract.deploy();
