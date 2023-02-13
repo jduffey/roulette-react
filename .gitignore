@@ -26,3 +26,4 @@ yarn-error.log*
 
 # hardhat stuff
 cache/
+artifacts/
