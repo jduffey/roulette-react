@@ -34,11 +34,14 @@ async function getTokenBalance(provider, address, tokenAddress) {
 }
 
 export function NextGame() {
-    const [balances, setBalances] = useState([]);
-    const [rerender, setRerender] = useState(false);
+    const [ethBalances, setEthBalances] = useState([]);
+    const [tokenBalances, setTokenBalances] = useState([]);
+
     const [block, setBlock] = useState({});
 
-    const [tokenBalances, setTokenBalances] = useState([]);
+    const [rerender, setRerender] = useState(false);
+
+    const [tokenSymbol, setTokenSymbol] = useState("");
 
     useEffect(() => {
         // Default values, including seed phrase: https://hardhat.org/hardhat-network/docs/reference
@@ -75,11 +78,22 @@ export function NextGame() {
                 acc[cur.address] = cur.balance;
                 return acc;
             }, {});
-            setBalances(newBalances);
+            setEthBalances(newBalances);
+        });
+
+        const tokenContractAddress = "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f";
+
+        // TODO figure out how to get the token symbol just once.. no need to do this every time we render obviously
+        const token = new ethers.Contract(
+            tokenContractAddress,
+            ["function symbol() view returns (string)"],
+            provider);
+        token.symbol().then((symbol) => {
+            setTokenSymbol(symbol);
         });
 
         const addressesWithTokenBalancePromises = addresses.map(async (address) => {
-            const balance = await getTokenBalance(provider, address, "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f");
+            const balance = await getTokenBalance(provider, address, tokenContractAddress);
             return { address, balance };
         });
 
@@ -97,6 +111,14 @@ export function NextGame() {
             });
 
     }, [rerender]);
+
+    const combinedBalances = Object.keys(ethBalances).reduce((acc, address) => {
+        acc[address] = {
+            ethBalance: ethBalances[address],
+            tokenBalance: tokenBalances[address]
+        };
+        return acc;
+    }, {});
 
     return (
         <div
@@ -132,20 +154,10 @@ export function NextGame() {
                 </button>
             </div>
             {
-                Object.entries(balances).map(([addr, bal]) => {
+                Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance }]) => {
                     return (
                         <div key={addr}>
-                            {`${addr.slice(0, 6)}..${addr.slice(-4)}: ${Number(bal).toFixed(18).padStart(18 + 6, String.fromCharCode(160))} ETH`}
-                        </div>
-                    );
-                })
-            }
-            <br />
-            {
-                Object.entries(tokenBalances).map(([addr, bal]) => {
-                    return (
-                        <div key={addr}>
-                            {`${addr.slice(0, 6)}..${addr.slice(-4)}: ${Number(bal).toFixed(18).padStart(18 + 6, String.fromCharCode(160))} MyToken`}
+                            {`${addr.slice(0, 6)}..${addr.slice(-4)}: ETH: ${Number(ethBalance).toFixed(18).padStart(18 + 6, String.fromCharCode(160))} ${tokenSymbol} ${Number(tokenBalance).toFixed(18).padStart(18 + 6, String.fromCharCode(160))}`}
                         </div>
                     );
                 })
