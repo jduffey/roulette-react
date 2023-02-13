@@ -168,10 +168,16 @@ export function Balances() {
                                             {`${addr.slice(0, 6)}..${addr.slice(-4)}`}
                                         </td>
                                         <td>
-                                            {Number(ethBalance).toFixed(8).padStart(8 + 6, String.fromCharCode(160))}
+                                            {Number(ethBalance).toLocaleString(undefined, {
+                                                minimumFractionDigits: 8,
+                                                maximumFractionDigits: 8
+                                            })}
                                         </td>
                                         <td>
-                                            {Number(tokenBalance).toFixed(18).padStart(18 + 10, String.fromCharCode(160))}
+                                            {Number(tokenBalance).toLocaleString(undefined, {
+                                                minimumFractionDigits: 18,
+                                                maximumFractionDigits: 18
+                                            })}
                                         </td>
                                         <td>
                                             <button

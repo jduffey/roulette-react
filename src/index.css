@@ -433,7 +433,9 @@ because we'll have "invisible" betting options later
 }
 
 .balances-table {
+    table-layout: fixed;
     border-collapse: collapse;
+    width: 1000px;
 }
 
 .balances-table>th,
@@ -444,9 +446,9 @@ td {
 }
 
 .Balances-eth-balance {
-    width: 200px;
+    width: 220px;
 }
 
 .Balances-token-balance {
-    width: 360px;
+    width: 380px;
 }
