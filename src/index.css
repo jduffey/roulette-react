@@ -435,7 +435,7 @@ because we'll have "invisible" betting options later
 .balances-table {
     table-layout: fixed;
     border-collapse: collapse;
-    width: 1000px;
+    width: 1200px;
 }
 
 .balances-table>th,
@@ -451,4 +451,8 @@ td {
 
 .Balances-token-balance {
     width: 380px;
+}
+
+.Balances-contract-interact-button {
+    text-align: center;
 }

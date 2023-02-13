@@ -26,7 +26,10 @@ contract MyGameToken {
     }
 
     function withdraw(uint256 wad) public {
-        require(balanceOf[msg.sender] >= wad);
+        require(balanceOf[msg.sender] >= wad, "Insufficient token balance");
+        // TODO look into https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Strings.sol
+        // if we want to provide more info in the error message using string concatenation with uint256->string casting
+        // "Insufficient token balance: attempted to withdraw " + wad + " but only " + balanceOf[msg.sender] + " available.");
         balanceOf[msg.sender] -= wad;
         uint256 etherOwed = wad / _tokensPerEth;
         payable(msg.sender).transfer(etherOwed);

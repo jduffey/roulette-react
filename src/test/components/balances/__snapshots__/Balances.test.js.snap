@@ -37,6 +37,9 @@ exports[`Balances renders 1`] = `
           <th>
             Get Tokens
           </th>
+          <th>
+            Redeem Tokens
+          </th>
         </tr>
       </thead>
       <tbody />

@@ -42,7 +42,7 @@ async function getTokenBalance(provider, address, tokenAddress) {
     return formattedBalance;
 }
 
-async function depositEther(provider, from, tokenAddress, amount) {
+async function depositEthForTokens(provider, from, tokenAddress, amount) {
     const signer = provider.getSigner(from);
     const token = new ethers.Contract(tokenAddress, [
         "function deposit() payable",
@@ -50,6 +50,15 @@ async function depositEther(provider, from, tokenAddress, amount) {
     const tx = await token.deposit({
         value: ethers.utils.parseEther(amount)
     });
+    return tx;
+}
+
+async function redeemTokensForEth(provider, from, tokenAddress, amount) {
+    const signer = provider.getSigner(from);
+    const token = new ethers.Contract(tokenAddress, [
+        "function withdraw(uint)",
+    ], signer);
+    const tx = await token.withdraw(ethers.utils.parseEther(amount));
     return tx;
 }
 
@@ -163,6 +172,7 @@ export function Balances() {
                             <th className="Balances-eth-balance">ETH Balance</th>
                             <th className="Balances-token-balance">{tokenSymbol} Balance</th>
                             <th>Get Tokens</th>
+                            <th>Redeem Tokens</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -185,10 +195,11 @@ export function Balances() {
                                                 maximumFractionDigits: 18
                                             })}
                                         </td>
-                                        <td>
+                                        <td
+                                            className="Balances-contract-interact-button">
                                             <button
                                                 onClick={() => {
-                                                    depositEther(
+                                                    depositEthForTokens(
                                                         provider,
                                                         addr,
                                                         TOKEN_CONTRACT_ADDRESS,
@@ -199,6 +210,23 @@ export function Balances() {
                                                 }}
                                             >
                                                 Deposit 1 ETH
+                                            </button>
+                                        </td>
+                                        <td
+                                            className="Balances-contract-interact-button">
+                                            <button
+                                                onClick={() => {
+                                                    redeemTokensForEth(
+                                                        provider,
+                                                        addr,
+                                                        TOKEN_CONTRACT_ADDRESS,
+                                                        "100000"
+                                                    ).then(() => {
+                                                        setRerender(!rerender);
+                                                    });
+                                                }}
+                                            >
+                                                Redeem 100,000 {tokenSymbol}
                                             </button>
                                         </td>
                                     </tr>
