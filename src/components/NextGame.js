@@ -2,9 +2,7 @@ import { ethers } from "ethers";
 import { useState } from "react";
 import { useEffect } from "react";
 
-console.log(ethers);
-
-async function balanceGetter(address) {
+async function getBalance(address) {
     const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
     const signer = provider.getSigner(address);
     const balance = await signer.getBalance();
@@ -13,11 +11,6 @@ async function balanceGetter(address) {
 
 export function NextGame() {
     const [balances, setBalances] = useState([]);
-    const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
-    provider.getBlockNumber()
-        .then((blockNumber) => {
-            console.log(blockNumber);
-        });
 
     useEffect(() => {
         // Default values, including seed phrase: https://hardhat.org/hardhat-network/docs/reference
@@ -44,12 +37,12 @@ export function NextGame() {
             "0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199",
         ];
 
-        const promises = addresses.map(async (address) => {
-            const balance = await balanceGetter(address);
+        const addressWithBalancePromises = addresses.map(async (address) => {
+            const balance = await getBalance(address);
             return { address, balance };
         });
 
-        Promise.all(promises).then((res) => {
+        Promise.all(addressWithBalancePromises).then((res) => {
             const newBalances = res.reduce((acc, cur) => {
                 acc[cur.address] = cur.balance;
                 return acc;

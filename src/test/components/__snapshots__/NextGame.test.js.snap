@@ -5,10 +5,8 @@ exports[`NextGame renders 1`] = `
   style={
     Object {
       "color": "white",
-      "fontSize": "4rem",
+      "fontSize": "1.5rem",
     }
   }
->
-  PLACEHOLDER PAGE FOR NEXT GAME
-</div>
+/>
 `;
