@@ -7,8 +7,8 @@ describe("App", () => {
     it.each([
         ["/"],
         ["/roulette"],
-        ["/next-game"],
         ["/sic-bo"],
+        ["/balances"],
     ])("renders route \"%s\"", (path) => {
         const view = renderer.create(
             <MemoryRouter initialEntries={[path]} >

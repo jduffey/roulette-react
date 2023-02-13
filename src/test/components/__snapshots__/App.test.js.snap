@@ -21,16 +21,16 @@ Array [
         Roulette
       </a>
       <a
-        href="/next-game"
-        onClick={[Function]}
-      >
-        Next Game
-      </a>
-      <a
         href="/sic-bo"
         onClick={[Function]}
       >
         Sic Bo
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
       </a>
     </div>
   </div>,
@@ -47,7 +47,7 @@ Array [
 ]
 `;
 
-exports[`App renders route "/next-game" 1`] = `
+exports[`App renders route "/balances" 1`] = `
 Array [
   <div
     className="NavigationBar-component"
@@ -68,16 +68,16 @@ Array [
         Roulette
       </a>
       <a
-        href="/next-game"
-        onClick={[Function]}
-      >
-        Next Game
-      </a>
-      <a
         href="/sic-bo"
         onClick={[Function]}
       >
         Sic Bo
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
       </a>
     </div>
   </div>,
@@ -85,10 +85,27 @@ Array [
     style={
       Object {
         "color": "white",
-        "fontSize": "1.5rem",
+        "fontFamily": "monospace",
+        "fontSize": "1.25rem",
       }
     }
-  />,
+  >
+    <div />
+    <div>
+      <button
+        onClick={[Function]}
+      >
+        Deposit 1 ETH to 0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f
+      </button>
+    </div>
+    <div>
+      <button
+        onClick={[Function]}
+      >
+        Send 1 ETH from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 to 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+      </button>
+    </div>
+  </div>,
 ]
 `;
 
@@ -113,16 +130,16 @@ Array [
         Roulette
       </a>
       <a
-        href="/next-game"
-        onClick={[Function]}
-      >
-        Next Game
-      </a>
-      <a
         href="/sic-bo"
         onClick={[Function]}
       >
         Sic Bo
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
       </a>
     </div>
   </div>,
@@ -2802,16 +2819,16 @@ Array [
         Roulette
       </a>
       <a
-        href="/next-game"
-        onClick={[Function]}
-      >
-        Next Game
-      </a>
-      <a
         href="/sic-bo"
         onClick={[Function]}
       >
         Sic Bo
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
       </a>
     </div>
   </div>,

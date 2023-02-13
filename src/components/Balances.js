@@ -45,7 +45,7 @@ async function depositEther(provider, from, tokenAddress, amount) {
     return tx;
 }
 
-export function NextGame() {
+export function Balances() {
     const [ethBalances, setEthBalances] = useState([]);
     const [tokenBalances, setTokenBalances] = useState([]);
 
