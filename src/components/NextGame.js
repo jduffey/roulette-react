@@ -9,8 +9,19 @@ async function getBalance(address) {
     return ethers.utils.formatEther(balance);
 }
 
+async function sendEther(from, to, amount) {
+    const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
+    const signer = provider.getSigner(from);
+    const tx = await signer.sendTransaction({
+        to: to,
+        value: ethers.utils.parseEther(amount)
+    });
+    return tx;
+}
+
 export function NextGame() {
     const [balances, setBalances] = useState([]);
+    const [rerender, setRerender] = useState(false);
 
     useEffect(() => {
         // Default values, including seed phrase: https://hardhat.org/hardhat-network/docs/reference
@@ -50,20 +61,36 @@ export function NextGame() {
             setBalances(newBalances);
         });
 
-    }, []);
+    }, [rerender]);
 
     return (
         <div
             style={{
                 color: "white",
+                fontFamily: "monospace",
                 fontSize: "1.5rem",
             }}
         >
+            <div>
+                <button
+                    onClick={() => {
+                        sendEther(
+                            "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+                            "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+                            "1"
+                        ).then(() => {
+                            setRerender(!rerender);
+                        });
+                    }}
+                >
+                    Send 1 ETH from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 to 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+                </button>
+            </div>
             {
                 Object.entries(balances).map(([addr, bal]) => {
                     return (
                         <div key={addr}>
-                            {`${addr}: ${bal}`}
+                            {`${addr}: ${Number(bal).toFixed(18).padStart(18 + 6, String.fromCharCode(160))} ETH`}
                         </div>
                     );
                 })
