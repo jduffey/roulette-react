@@ -2,15 +2,15 @@ import { ethers } from "ethers";
 import { useState } from "react";
 import { useEffect } from "react";
 
-async function getBalance(address) {
-    const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
+const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
+
+async function getBalance(provider, address) {
     const signer = provider.getSigner(address);
     const balance = await signer.getBalance();
     return ethers.utils.formatEther(balance);
 }
 
-async function sendEther(from, to, amount) {
-    const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
+async function sendEther(provider, from, to, amount) {
     const signer = provider.getSigner(from);
     const tx = await signer.sendTransaction({
         to: to,
@@ -19,8 +19,7 @@ async function sendEther(from, to, amount) {
     return tx;
 }
 
-async function getBlock() {
-    const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
+async function getBlock(provider) {
     const block = await provider.getBlock();
     return block;
 }
@@ -56,7 +55,7 @@ export function NextGame() {
         ];
 
         const addressWithBalancePromises = addresses.map(async (address) => {
-            const balance = await getBalance(address);
+            const balance = await getBalance(provider, address);
             return { address, balance };
         });
 
@@ -68,7 +67,7 @@ export function NextGame() {
             setBalances(newBalances);
         });
 
-        getBlock()
+        getBlock(provider)
             .then((block) => {
                 setBlock(block);
             });
@@ -96,6 +95,7 @@ export function NextGame() {
                 <button
                     onClick={() => {
                         sendEther(
+                            provider,
                             "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
                             "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
                             "1"
