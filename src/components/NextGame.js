@@ -24,10 +24,21 @@ async function getBlock(provider) {
     return block;
 }
 
+async function getTokenBalance(provider, address, tokenAddress) {
+    const signer = provider.getSigner(address);
+    const token = new ethers.Contract(tokenAddress, [
+        "function balanceOf(address) view returns (uint)",
+    ], signer);
+    const balance = await token.balanceOf(address);
+    return balance;
+}
+
 export function NextGame() {
     const [balances, setBalances] = useState([]);
     const [rerender, setRerender] = useState(false);
     const [block, setBlock] = useState({});
+
+    const [tokenBalances, setTokenBalances] = useState([]);
 
     useEffect(() => {
         // Default values, including seed phrase: https://hardhat.org/hardhat-network/docs/reference
@@ -65,6 +76,19 @@ export function NextGame() {
                 return acc;
             }, {});
             setBalances(newBalances);
+        });
+
+        const addressesWithTokenBalancePromises = addresses.map(async (address) => {
+            const balance = await getTokenBalance(provider, address, "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f");
+            return { address, balance };
+        });
+
+        Promise.all(addressesWithTokenBalancePromises).then((res) => {
+            const newBalances = res.reduce((acc, cur) => {
+                acc[cur.address] = cur.balance;
+                return acc;
+            }, {});
+            setTokenBalances(newBalances);
         });
 
         getBlock(provider)
@@ -112,6 +136,16 @@ export function NextGame() {
                     return (
                         <div key={addr}>
                             {`${addr.slice(0, 6)}..${addr.slice(-4)}: ${Number(bal).toFixed(18).padStart(18 + 6, String.fromCharCode(160))} ETH`}
+                        </div>
+                    );
+                })
+            }
+            <br />
+            {
+                Object.entries(tokenBalances).map(([addr, bal]) => {
+                    return (
+                        <div key={addr}>
+                            {`${addr.slice(0, 6)}..${addr.slice(-4)}: ${Number(bal).toFixed(18).padStart(18 + 6, String.fromCharCode(160))} MyToken`}
                         </div>
                     );
                 })
