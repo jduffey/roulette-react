@@ -3,7 +3,7 @@ pragma solidity ^0.8.9;
 
 contract WETH100Kv2 {
     string public name = "Wrapped Ether 100k v2";
-    string public symbol = "WETH100Kv2";
+    string public symbol = "FooToken";
     uint8 public decimals = 18;
     uint256 private _weth100kPerEth = 100_000;
 
