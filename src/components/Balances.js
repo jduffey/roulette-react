@@ -135,11 +135,7 @@ export function Balances() {
 
     return (
         <div
-            style={{
-                color: "white",
-                fontFamily: "monospace",
-                fontSize: "1.25rem",
-            }}
+            className="Balances-component"
         >
             <div>
                 {
@@ -153,13 +149,14 @@ export function Balances() {
                 }
             </div>
             <div>
-                <table>
+                <table
+                    className="balances-table">
                     <thead>
                         <tr>
                             <th>Address</th>
-                            <th>ETH Balance</th>
-                            <th>{tokenSymbol} Balance</th>
-                            <th>Deposit 1 ETH</th>
+                            <th className="Balances-eth-balance">ETH Balance</th>
+                            <th className="Balances-token-balance">{tokenSymbol} Balance</th>
+                            <th>Get Tokens</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -167,9 +164,15 @@ export function Balances() {
                             Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance }]) => {
                                 return (
                                     <tr key={addr}>
-                                        <td>{`${addr.slice(0, 6)}..${addr.slice(-4)}`}</td>
-                                        <td>{Number(ethBalance).toFixed(18).padStart(18 + 6, String.fromCharCode(160))}</td>
-                                        <td>{Number(tokenBalance).toFixed(18).padStart(18 + 10, String.fromCharCode(160))}</td>
+                                        <td>
+                                            {`${addr.slice(0, 6)}..${addr.slice(-4)}`}
+                                        </td>
+                                        <td>
+                                            {Number(ethBalance).toFixed(8).padStart(8 + 6, String.fromCharCode(160))}
+                                        </td>
+                                        <td>
+                                            {Number(tokenBalance).toFixed(18).padStart(18 + 10, String.fromCharCode(160))}
+                                        </td>
                                         <td>
                                             <button
                                                 onClick={() => {

@@ -82,13 +82,7 @@ Array [
     </div>
   </div>,
   <div
-    style={
-      Object {
-        "color": "white",
-        "fontFamily": "monospace",
-        "fontSize": "1.25rem",
-      }
-    }
+    className="Balances-component"
   >
     <div>
       <div>
@@ -102,20 +96,26 @@ Array [
       </div>
     </div>
     <div>
-      <table>
+      <table
+        className="balances-table"
+      >
         <thead>
           <tr>
             <th>
               Address
             </th>
-            <th>
+            <th
+              className="Balances-eth-balance"
+            >
               ETH Balance
             </th>
-            <th>
+            <th
+              className="Balances-token-balance"
+            >
                Balance
             </th>
             <th>
-              Deposit 1 ETH
+              Get Tokens
             </th>
           </tr>
         </thead>
