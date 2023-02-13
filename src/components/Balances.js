@@ -166,8 +166,6 @@ export function Balances() {
                     Deposit 1 ETH to 0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f
                 </button>
             </div>
-
-
             <div>
                 <button
                     onClick={() => {
@@ -184,15 +182,31 @@ export function Balances() {
                     Send 1 ETH from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 to 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
                 </button>
             </div>
-            {
-                Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance }]) => {
-                    return (
-                        <div key={addr}>
-                            {`${addr.slice(0, 6)}..${addr.slice(-4)}: ETH: ${Number(ethBalance).toFixed(18).padStart(18 + 6, String.fromCharCode(160))} ${tokenSymbol} ${Number(tokenBalance).toFixed(18).padStart(18 + 10, String.fromCharCode(160))}`}
-                        </div>
-                    );
-                })
-            }
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Address</th>
+                            <th>ETH Balance</th>
+                            <th>{tokenSymbol} Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance }]) => {
+                                return (
+                                    <tr key={addr}>
+                                        <td>{`${addr.slice(0, 6)}..${addr.slice(-4)}`}</td>
+                                        <td>{Number(ethBalance).toFixed(18).padStart(18 + 6, String.fromCharCode(160))}</td>
+                                        <td>{Number(tokenBalance).toFixed(18).padStart(18 + 10, String.fromCharCode(160))}</td>
+                                    </tr>
+                                );
+                            })
+                        }
+                    </tbody>
+                </table>
+
+            </div>
         </div>
     )
 }
