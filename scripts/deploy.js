@@ -31,6 +31,7 @@ async function main() {
     //   saveFrontendFiles(token);
 }
 
+// TODO this is saved from the hardhat-boilerplate tutorial for reference
 // function saveFrontendFiles(token) {
 //     const fs = require("fs");
 //     const contractsDir = path.join(__dirname, "..", "frontend", "src", "contracts");
