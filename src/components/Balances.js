@@ -149,23 +149,6 @@ export function Balances() {
                     );
                 })}
             </div>
-
-            <div>
-                <button
-                    onClick={() => {
-                        depositEther(
-                            provider,
-                            "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-                            "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f",
-                            "1"
-                        ).then(() => {
-                            setRerender(!rerender);
-                        });
-                    }}
-                >
-                    Deposit 1 ETH to 0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f
-                </button>
-            </div>
             <div>
                 <button
                     onClick={() => {
@@ -189,6 +172,7 @@ export function Balances() {
                             <th>Address</th>
                             <th>ETH Balance</th>
                             <th>{tokenSymbol} Balance</th>
+                            <th>Deposit 1 ETH</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -199,6 +183,22 @@ export function Balances() {
                                         <td>{`${addr.slice(0, 6)}..${addr.slice(-4)}`}</td>
                                         <td>{Number(ethBalance).toFixed(18).padStart(18 + 6, String.fromCharCode(160))}</td>
                                         <td>{Number(tokenBalance).toFixed(18).padStart(18 + 10, String.fromCharCode(160))}</td>
+                                        <td>
+                                            <button
+                                                onClick={() => {
+                                                    depositEther(
+                                                        provider,
+                                                        addr,
+                                                        "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f",
+                                                        "1"
+                                                    ).then(() => {
+                                                        setRerender(!rerender);
+                                                    });
+                                                }}
+                                            >
+                                                Dep 1 ETH
+                                            </button>
+                                        </td>
                                     </tr>
                                 );
                             })
