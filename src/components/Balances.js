@@ -4,6 +4,8 @@ import { useEffect } from "react";
 
 const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
 
+const TOKEN_CONTRACT_ADDRESS = "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f";
+
 async function getEthBalance(provider, address) {
     const signer = provider.getSigner(address);
     const balance = await signer.getBalance();
@@ -93,11 +95,9 @@ export function Balances() {
             setEthBalances(newBalances);
         });
 
-        const tokenContractAddress = "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f";
-
         // TODO figure out how to get the token symbol just once.. no need to do this every time we render obviously
         const token = new ethers.Contract(
-            tokenContractAddress,
+            TOKEN_CONTRACT_ADDRESS,
             ["function symbol() view returns (string)"],
             provider);
         token.symbol().then((symbol) => {
@@ -105,7 +105,7 @@ export function Balances() {
         });
 
         const addressesWithTokenBalancePromises = addresses.map(async (address) => {
-            const balance = await getTokenBalance(provider, address, tokenContractAddress);
+            const balance = await getTokenBalance(provider, address, TOKEN_CONTRACT_ADDRESS);
             return { address, balance };
         });
 
@@ -189,7 +189,7 @@ export function Balances() {
                                                     depositEther(
                                                         provider,
                                                         addr,
-                                                        "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f",
+                                                        TOKEN_CONTRACT_ADDRESS,
                                                         "1"
                                                     ).then(() => {
                                                         setRerender(!rerender);
