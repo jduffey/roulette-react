@@ -30,7 +30,19 @@ async function getTokenBalance(provider, address, tokenAddress) {
         "function balanceOf(address) view returns (uint)",
     ], signer);
     const balance = await token.balanceOf(address);
-    return balance;
+    const formattedBalance = ethers.utils.formatEther(balance);
+    return formattedBalance;
+}
+
+async function depositEther(provider, from, tokenAddress, amount) {
+    const signer = provider.getSigner(from);
+    const token = new ethers.Contract(tokenAddress, [
+        "function deposit() payable",
+    ], signer);
+    const tx = await token.deposit({
+        value: ethers.utils.parseEther(amount)
+    });
+    return tx;
 }
 
 export function NextGame() {
@@ -137,6 +149,25 @@ export function NextGame() {
                     );
                 })}
             </div>
+
+            <div>
+                <button
+                    onClick={() => {
+                        depositEther(
+                            provider,
+                            "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+                            "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f",
+                            "1"
+                        ).then(() => {
+                            setRerender(!rerender);
+                        });
+                    }}
+                >
+                    Deposit 1 ETH to 0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f
+                </button>
+            </div>
+
+
             <div>
                 <button
                     onClick={() => {
@@ -157,7 +188,7 @@ export function NextGame() {
                 Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance }]) => {
                     return (
                         <div key={addr}>
-                            {`${addr.slice(0, 6)}..${addr.slice(-4)}: ETH: ${Number(ethBalance).toFixed(18).padStart(18 + 6, String.fromCharCode(160))} ${tokenSymbol} ${Number(tokenBalance).toFixed(18).padStart(18 + 6, String.fromCharCode(160))}`}
+                            {`${addr.slice(0, 6)}..${addr.slice(-4)}: ETH: ${Number(ethBalance).toFixed(18).padStart(18 + 6, String.fromCharCode(160))} ${tokenSymbol} ${Number(tokenBalance).toFixed(18).padStart(18 + 10, String.fromCharCode(160))}`}
                         </div>
                     );
                 })
