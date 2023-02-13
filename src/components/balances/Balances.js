@@ -59,7 +59,7 @@ export function Balances() {
         });
 
         const addressesWithTokenBalancePromises = addresses.map(async (address) => {
-            const balance = await getTokenBalance(address, TOKEN_CONTRACT_ADDRESS);
+            const balance = await getTokenBalance(address);
             return { address, balance };
         });
 
@@ -139,7 +139,6 @@ export function Balances() {
                                                 onClick={() => {
                                                     depositEthForTokens(
                                                         addr,
-                                                        TOKEN_CONTRACT_ADDRESS,
                                                         "1"
                                                     ).then(() => {
                                                         setRerender(!rerender);
@@ -155,7 +154,6 @@ export function Balances() {
                                                 onClick={() => {
                                                     redeemTokensForEth(
                                                         addr,
-                                                        TOKEN_CONTRACT_ADDRESS,
                                                         "100000"
                                                     ).then(() => {
                                                         setRerender(!rerender);

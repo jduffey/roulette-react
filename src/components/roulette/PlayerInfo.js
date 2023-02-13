@@ -1,11 +1,30 @@
-import React from 'react';
+import { useEffect, useState } from "react";
+
+import {
+    getTokenBalance,
+} from '../../common/blockchainWrapper';
 
 const CLASS_NAME = "PlayerInfo-component";
 export function PlayerInfo(props) {
+    const [tokenBalance, setTokenBalance] = useState(0);
+
+    useEffect(() => {
+        (async (addr) => {
+            const balance = await getTokenBalance(addr);
+            const balanceAsNumber = Number(balance);
+            setTokenBalance(balanceAsNumber);
+        })("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266");
+    }, []);
+
     return (
         <div
             className={CLASS_NAME}
         >
+            <div>
+                {"Tok. Balance"}
+                < br />
+                {tokenBalance.toLocaleString()}
+            </div>
             <div>
                 {"Avail. Balance"}
                 < br />
