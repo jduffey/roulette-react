@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
 
-async function getBalance(provider, address) {
+async function getEthBalance(provider, address) {
     const signer = provider.getSigner(address);
     const balance = await signer.getBalance();
     return ethers.utils.formatEther(balance);
@@ -55,7 +55,7 @@ export function NextGame() {
         ];
 
         const addressWithBalancePromises = addresses.map(async (address) => {
-            const balance = await getBalance(provider, address);
+            const balance = await getEthBalance(provider, address);
             return { address, balance };
         });
 
@@ -79,7 +79,7 @@ export function NextGame() {
             style={{
                 color: "white",
                 fontFamily: "monospace",
-                fontSize: "1.5rem",
+                fontSize: "1.25rem",
             }}
         >
             <div>
@@ -111,7 +111,7 @@ export function NextGame() {
                 Object.entries(balances).map(([addr, bal]) => {
                     return (
                         <div key={addr}>
-                            {`${addr}: ${Number(bal).toFixed(18).padStart(18 + 6, String.fromCharCode(160))} ETH`}
+                            {`${addr.slice(0, 6)}..${addr.slice(-4)}: ${Number(bal).toFixed(18).padStart(18 + 6, String.fromCharCode(160))} ETH`}
                         </div>
                     );
                 })

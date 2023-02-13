@@ -18,8 +18,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 `npx hardhat node`
 - starts the Hardhat node
 
-`npx hardhat compile`
-- compiles the contract(s)
+~~`npx hardhat compile`~~ (not necessary because the deploy script compiles for us)
+- ~~compiles the contract(s)~~
 
 `npx hardhat run scripts/deploy.js --network localhost`
 - runs the deploy script which deploys the contracts to the Hardhat chain running locally
