@@ -12,14 +12,15 @@ async function getEthBalance(provider, address) {
     return ethers.utils.formatEther(balance);
 }
 
-async function sendEther(provider, from, to, amount) {
-    const signer = provider.getSigner(from);
-    const tx = await signer.sendTransaction({
-        to: to,
-        value: ethers.utils.parseEther(amount)
-    });
-    return tx;
-}
+// TODO leaving this for reference
+// async function sendEther(provider, from, to, amount) {
+//     const signer = provider.getSigner(from);
+//     const tx = await signer.sendTransaction({
+//         to: to,
+//         value: ethers.utils.parseEther(amount)
+//     });
+//     return tx;
+// }
 
 async function getBlock(provider) {
     const block = await provider.getBlock();
@@ -141,29 +142,15 @@ export function Balances() {
             }}
         >
             <div>
-                {Object.entries(block).map(([key, value]) => {
-                    return (
-                        <div key={key}>
-                            {`${key}: ${value}`}
-                        </div>
-                    );
-                })}
-            </div>
-            <div>
-                <button
-                    onClick={() => {
-                        sendEther(
-                            provider,
-                            "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-                            "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
-                            "1"
-                        ).then(() => {
-                            setRerender(!rerender);
-                        });
-                    }}
-                >
-                    Send 1 ETH from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 to 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
-                </button>
+                {
+                    ["hash", "number", "timestamp"].map((key) => {
+                        return (
+                            <div key={key}>
+                                {`${key}: ${block[key]}`}
+                            </div>
+                        );
+                    })
+                }
             </div>
             <div>
                 <table>
