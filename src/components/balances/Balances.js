@@ -1,16 +1,14 @@
-import { ethers } from "ethers";
-
 import { useState } from "react";
 import { useEffect } from "react";
 
 import {
+    getEthBalance,
     getBlock,
     getTokenBalance,
     depositEthForTokens,
     redeemTokensForEth,
-    getEthBalance,
     TOKEN_CONTRACT_ADDRESS,
-    provider
+    tokenSymbol,
 } from "../../common/blockchainWrapper";
 
 export function Balances() {
@@ -20,8 +18,6 @@ export function Balances() {
     const [block, setBlock] = useState({});
 
     const [rerender, setRerender] = useState(false);
-
-    const [tokenSymbol, setTokenSymbol] = useState("");
 
     useEffect(() => {
         // Default values, including seed phrase: https://hardhat.org/hardhat-network/docs/reference
@@ -60,15 +56,6 @@ export function Balances() {
                 return acc;
             }, {});
             setEthBalances(newBalances);
-        });
-
-        // TODO figure out how to get the token symbol just once.. no need to do this every time we render obviously
-        const token = new ethers.Contract(
-            TOKEN_CONTRACT_ADDRESS,
-            ["function symbol() view returns (string)"],
-            provider);
-        token.symbol().then((symbol) => {
-            setTokenSymbol(symbol);
         });
 
         const addressesWithTokenBalancePromises = addresses.map(async (address) => {
@@ -184,7 +171,6 @@ export function Balances() {
                         }
                     </tbody>
                 </table>
-
             </div>
         </div>
     )

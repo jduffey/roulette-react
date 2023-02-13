@@ -9,7 +9,6 @@ const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
 // result in a different contract address.
 const TOKEN_CONTRACT_ADDRESS = "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f";
 
-
 async function getEthBalance(address) {
     const signer = provider.getSigner(address);
     const balance = await signer.getBalance();
@@ -61,12 +60,21 @@ async function redeemTokensForEth(from, tokenAddress, amount) {
     return tx;
 }
 
-export {
-    provider,
+let tokenSymbol;
+(new ethers.Contract(
     TOKEN_CONTRACT_ADDRESS,
+    ["function symbol() view returns (string)"],
+    provider)
+).symbol().then((symbol) => {
+    tokenSymbol = symbol;
+});
+
+export {
     getEthBalance,
     getBlock,
     getTokenBalance,
     depositEthForTokens,
     redeemTokensForEth,
+    TOKEN_CONTRACT_ADDRESS,
+    tokenSymbol,
 };
