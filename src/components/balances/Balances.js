@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import {
     getEthBalance,
@@ -72,8 +71,8 @@ export function Balances() {
         });
 
         getBlock()
-            .then((block) => {
-                setBlock(block);
+            .then((blockData) => {
+                setBlock(blockData);
             });
 
     }, [rerender]);
@@ -136,6 +135,7 @@ export function Balances() {
                                         <td
                                             className="Balances-contract-interact-button">
                                             <button
+                                                type="button"
                                                 onClick={() => {
                                                     depositEthForTokens(
                                                         addr,
@@ -151,6 +151,7 @@ export function Balances() {
                                         <td
                                             className="Balances-contract-interact-button">
                                             <button
+                                                type="button"
                                                 onClick={() => {
                                                     redeemTokensForEth(
                                                         addr,
