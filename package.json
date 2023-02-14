@@ -15,7 +15,8 @@
         "start": "json-server --watch -p 3001 db.json & react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test --coverage",
-        "chain": "npx hardhat node && npx hardhat run scripts/deploy.js --network localhost",
+        "start-chain": "npx hardhat node",
+        "deploy-script": "npx hardhat run scripts/deploy.js --network localhost",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
