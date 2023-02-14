@@ -430,6 +430,7 @@ because we'll have "invisible" betting options later
     color: black;
     font-family: monospace;
     font-size: 1.25rem;
+    width: 1460px;
 }
 
 .balances-table {
@@ -438,11 +439,14 @@ because we'll have "invisible" betting options later
     width: 1200px;
 }
 
-.balances-table>th,
-td {
+.balances-table * {
     text-align: right;
-    padding: 8px;
+    padding: 4px;
     border: 1px dashed white;
+}
+
+.balances-table-headers th {
+    text-align: center;
 }
 
 .Balances-eth-balance {

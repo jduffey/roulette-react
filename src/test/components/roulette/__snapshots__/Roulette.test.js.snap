@@ -2045,6 +2045,11 @@ exports[`Roulette renders 1`] = `
     className="PlayerInfo-component"
   >
     <div>
+      Tok. Balance
+      <br />
+      0
+    </div>
+    <div>
       Avail. Balance
       <br />
       $ Loading...

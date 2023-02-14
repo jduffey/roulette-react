@@ -20,7 +20,9 @@ exports[`Balances renders 1`] = `
       className="balances-table"
     >
       <thead>
-        <tr>
+        <tr
+          className="balances-table-headers"
+        >
           <th>
             Address
           </th>

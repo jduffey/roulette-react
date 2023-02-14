@@ -100,7 +100,9 @@ Array [
         className="balances-table"
       >
         <thead>
-          <tr>
+          <tr
+            className="balances-table-headers"
+          >
             <th>
               Address
             </th>
@@ -2206,6 +2208,11 @@ Array [
     <div
       className="PlayerInfo-component"
     >
+      <div>
+        Tok. Balance
+        <br />
+        0
+      </div>
       <div>
         Avail. Balance
         <br />

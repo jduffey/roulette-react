@@ -105,7 +105,7 @@ export function Balances() {
                 <table
                     className="balances-table">
                     <thead>
-                        <tr>
+                        <tr className="balances-table-headers">
                             <th>Address</th>
                             <th className="Balances-eth-balance">ETH Balance</th>
                             <th className="Balances-token-balance">{tokenSymbol} Balance</th>
