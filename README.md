@@ -12,3 +12,14 @@
 ## Notes
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses [json-server](https://github.com/typicode/json-server).
+
+## Hardhat Spike
+
+`npx hardhat node`
+- starts the Hardhat node
+
+~~`npx hardhat compile`~~ (not necessary because the deploy script compiles for us)
+- ~~compiles the contract(s)~~
+
+`npx hardhat run scripts/deploy.js --network localhost`
+- runs the deploy script which deploys the contracts to the Hardhat chain running locally

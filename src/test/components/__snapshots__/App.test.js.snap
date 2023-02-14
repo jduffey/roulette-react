@@ -21,16 +21,16 @@ Array [
         Roulette
       </a>
       <a
-        href="/next-game"
-        onClick={[Function]}
-      >
-        Next Game
-      </a>
-      <a
         href="/sic-bo"
         onClick={[Function]}
       >
         Sic Bo
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
       </a>
     </div>
   </div>,
@@ -47,7 +47,7 @@ Array [
 ]
 `;
 
-exports[`App renders route "/next-game" 1`] = `
+exports[`App renders route "/balances" 1`] = `
 Array [
   <div
     className="NavigationBar-component"
@@ -68,28 +68,65 @@ Array [
         Roulette
       </a>
       <a
-        href="/next-game"
-        onClick={[Function]}
-      >
-        Next Game
-      </a>
-      <a
         href="/sic-bo"
         onClick={[Function]}
       >
         Sic Bo
       </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
+      </a>
     </div>
   </div>,
   <div
-    style={
-      Object {
-        "color": "white",
-        "fontSize": "4rem",
-      }
-    }
+    className="Balances-component"
   >
-    PLACEHOLDER PAGE FOR NEXT GAME
+    <div>
+      <div>
+        hash: undefined
+      </div>
+      <div>
+        number: undefined
+      </div>
+      <div>
+        timestamp: undefined
+      </div>
+    </div>
+    <div>
+      <table
+        className="balances-table"
+      >
+        <thead>
+          <tr
+            className="balances-table-headers"
+          >
+            <th>
+              Address
+            </th>
+            <th
+              className="Balances-eth-balance"
+            >
+              ETH Balance
+            </th>
+            <th
+              className="Balances-token-balance"
+            >
+               Balance
+            </th>
+            <th>
+              Get Tokens
+            </th>
+            <th>
+              Redeem Tokens
+            </th>
+          </tr>
+        </thead>
+        <tbody />
+      </table>
+    </div>
   </div>,
 ]
 `;
@@ -115,16 +152,16 @@ Array [
         Roulette
       </a>
       <a
-        href="/next-game"
-        onClick={[Function]}
-      >
-        Next Game
-      </a>
-      <a
         href="/sic-bo"
         onClick={[Function]}
       >
         Sic Bo
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
       </a>
     </div>
   </div>,
@@ -2172,6 +2209,11 @@ Array [
       className="PlayerInfo-component"
     >
       <div>
+        Tok. Balance
+        <br />
+        0
+      </div>
+      <div>
         Avail. Balance
         <br />
         $ Loading...
@@ -2804,16 +2846,16 @@ Array [
         Roulette
       </a>
       <a
-        href="/next-game"
-        onClick={[Function]}
-      >
-        Next Game
-      </a>
-      <a
         href="/sic-bo"
         onClick={[Function]}
       >
         Sic Bo
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
       </a>
     </div>
   </div>,

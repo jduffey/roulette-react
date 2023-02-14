@@ -5,6 +5,11 @@ exports[`PlayerInfo renders when availableBalance is 123456 and totalBetAmount i
   className="PlayerInfo-component"
 >
   <div>
+    Tok. Balance
+    <br />
+    0
+  </div>
+  <div>
     Avail. Balance
     <br />
     $ 123,456
@@ -27,6 +32,11 @@ exports[`PlayerInfo renders when availableBalance is foo and totalBetAmount is b
 <div
   className="PlayerInfo-component"
 >
+  <div>
+    Tok. Balance
+    <br />
+    0
+  </div>
   <div>
     Avail. Balance
     <br />

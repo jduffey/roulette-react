@@ -424,3 +424,39 @@ because we'll have "invisible" betting options later
     height: 20px;
     margin-bottom: 12px;
 }
+
+.Balances-component {
+    background: gainsboro;
+    color: black;
+    font-family: monospace;
+    font-size: 1.25rem;
+    width: 1460px;
+}
+
+.balances-table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 1200px;
+}
+
+.balances-table * {
+    text-align: right;
+    padding: 4px;
+    border: 1px dashed white;
+}
+
+.balances-table-headers th {
+    text-align: center;
+}
+
+.Balances-eth-balance {
+    width: 220px;
+}
+
+.Balances-token-balance {
+    width: 380px;
+}
+
+.Balances-contract-interact-button {
+    text-align: center;
+}
