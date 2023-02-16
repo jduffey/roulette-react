@@ -1,6 +1,6 @@
 // const path = require("path");
 
-async function main() {
+async function deployContract() {
     if (network.name !== "localhost") {
         console.warn(
             `*** You are deploying to network: [ ${network.name} ]\n` +
@@ -53,7 +53,7 @@ async function main() {
 //     );
 // }
 
-main()
+deployContract()
     .then(() => process.exit(0))
     .catch((error) => {
         console.error(error);
