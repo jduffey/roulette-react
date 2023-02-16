@@ -23,4 +23,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - ~~compiles the contract(s)~~
 
 `npx hardhat run scripts/deploy.js --network localhost`
-- runs the deploy script which deploys the contracts to the Hardhat chain running locally
+- deploys the contract to the Hardhat chain running locally
+
+`npx hardhat run scripts/depositForFirstTenAccounts.js --network localhost`
+- deposits 1.0 ETH in exchange for 100,000 GAME tokens on behalf of the first ten accounts
