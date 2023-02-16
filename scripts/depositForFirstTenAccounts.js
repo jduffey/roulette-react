@@ -1,3 +1,6 @@
+/* global ethers:readonly */
+/* global network:readonly */
+
 async function depositEthForTokens() {
     if (network.name !== "localhost") {
         throw new Error(

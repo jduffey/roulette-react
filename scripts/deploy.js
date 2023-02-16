@@ -1,3 +1,6 @@
+/* global ethers:readonly */
+/* global network:readonly */
+
 // const path = require("path");
 
 async function deployContract() {
