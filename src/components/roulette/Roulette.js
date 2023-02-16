@@ -22,6 +22,8 @@ import { getCompleteResultsOfRound } from '../../common/getCompleteResultsOfRoun
 import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
 import { CompletionsCounter } from './CompletionsCounter';
 
+import { transferFrom } from '../../common/blockchainWrapper';
+
 function calculateTotalBetAmount(bets) {
     return bets.reduce((acc, pendingBet) => acc + pendingBet.betAmount, 0);
 }
@@ -120,6 +122,34 @@ export function Roulette() {
                 const startingBalance = availableBalance + betAmountOnBoard;
 
                 const resultsOfRound = getCompleteResultsOfRound(startingBalance, pendingBets, randomWheelNumber);
+
+                console.log("resultsOfRound", resultsOfRound);
+                const balanceDiff = resultsOfRound.finalBalance - resultsOfRound.startingBalance;
+
+                const playerWinStatus = ((x) => {
+                    console.log("x", x);
+                    switch (Math.sign(x)) {
+                        case 1:
+                            console.log("balanceDiff", balanceDiff.toString());
+                            transferFrom(
+                                "0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199",
+                                "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+                                Math.abs(balanceDiff).toString()
+                            )
+                            return "You won!";
+                        case -1:
+                            console.log("balanceDiff", balanceDiff.toString());
+                            transferFrom(
+                                "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+                                "0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199",
+                                Math.abs(balanceDiff).toString()
+                            )
+                            return "You lost!";
+                        default:
+                            return "No change";
+                    }
+                })(balanceDiff);
+                console.log("Outcome:", playerWinStatus, balanceDiff);
 
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
                 setAvailableBalance(resultsOfRound.finalBalance);

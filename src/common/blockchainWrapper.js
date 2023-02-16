@@ -60,6 +60,15 @@ async function redeemTokensForEth(from, amount) {
     return tx;
 }
 
+async function transferFrom(from, to, amount) {
+    const signer = provider.getSigner(from);
+    const token = new ethers.Contract(TOKEN_CONTRACT_ADDRESS, [
+        "function transferFrom(address, address, uint) returns (bool)",
+    ], signer);
+    const tx = await token.transferFrom(from, to, ethers.utils.parseEther(amount));
+    return tx;
+}
+
 let tokenSymbol;
 (new ethers.Contract(
     TOKEN_CONTRACT_ADDRESS,
@@ -75,6 +84,7 @@ export {
     getTokenBalance,
     depositEthForTokens,
     redeemTokensForEth,
+    transferFrom,
     TOKEN_CONTRACT_ADDRESS,
     tokenSymbol,
 };

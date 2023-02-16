@@ -28,7 +28,23 @@ async function depositEthForTokens() {
         return tx;
     });
 
-    return Promise.all(firstTenTxs);
+    const houseSigner = signers[19];
+
+    const houseTx = (async (signer) => {
+        const token = new ethers.Contract(TOKEN_CONTRACT_ADDRESS, [
+            "function deposit() payable",
+        ], signer);
+
+        const tx = await token.deposit({
+            value: ethers.utils.parseEther("10")
+        });
+
+        return tx;
+    })(houseSigner);
+
+    const allTxns = [...firstTenTxs, houseTx];
+
+    return Promise.all(allTxns);
 }
 
 depositEthForTokens()

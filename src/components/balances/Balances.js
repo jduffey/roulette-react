@@ -6,6 +6,7 @@ import {
     getTokenBalance,
     depositEthForTokens,
     redeemTokensForEth,
+    transferFrom,
     TOKEN_CONTRACT_ADDRESS,
     tokenSymbol,
 } from "../../common/blockchainWrapper";
@@ -110,6 +111,7 @@ export function Balances() {
                             <th className="Balances-token-balance">{tokenSymbol} Balance</th>
                             <th>Get Tokens</th>
                             <th>Redeem Tokens</th>
+                            <th>Txfr Tokens</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -162,6 +164,23 @@ export function Balances() {
                                                 }}
                                             >
                                                 Redeem 100,000 {tokenSymbol}
+                                            </button>
+                                        </td>
+                                        <td
+                                            className="Balances-contract-interact-button">
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    transferFrom(
+                                                        addr,
+                                                        "0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199",
+                                                        "10000"
+                                                    ).then(() => {
+                                                        setRerender(!rerender);
+                                                    });
+                                                }}
+                                            >
+                                                Txfr 10,000 {tokenSymbol}
                                             </button>
                                         </td>
                                     </tr>
