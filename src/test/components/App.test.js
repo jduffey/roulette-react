@@ -7,15 +7,15 @@ describe("App", () => {
     it.each([
         ["/"],
         ["/roulette"],
-        ["/next-game"],
         ["/sic-bo"],
+        ["/balances"],
     ])("renders route \"%s\"", (path) => {
-        const actual = renderer.create(
+        const view = renderer.create(
             <MemoryRouter initialEntries={[path]} >
                 <App />
             </MemoryRouter>,
         );
 
-        expect(actual).toMatchSnapshot();
+        expect(view).toMatchSnapshot();
     });
 });

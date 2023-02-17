@@ -61,6 +61,16 @@ ul {
     position: relative;
 }
 
+.ClickableBet-component {
+    position: absolute;
+    font-weight: bold;
+    outline: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 /*
 Reminder: this used to be called betting-square-visible,
 because we'll have "invisible" betting options later
@@ -120,7 +130,6 @@ because we'll have "invisible" betting options later
     width: 110px;
     height: 70px;
     display: flex;
-    text-align: center;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
@@ -139,7 +148,6 @@ because we'll have "invisible" betting options later
     width: 110px;
     height: 70px;
     display: flex;
-    text-align: center;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
@@ -151,6 +159,17 @@ because we'll have "invisible" betting options later
 
 .halves-square-label {
     font-size: 28px;
+}
+
+.halves-colors-square-label {
+    font-size: 28px;
+    outline: 1px solid white;
+    width: 140px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 32px;
 }
 
 .ChipSelection-component {
@@ -405,4 +424,40 @@ because we'll have "invisible" betting options later
     font-weight: bold;
     height: 20px;
     margin-bottom: 12px;
+}
+
+.Balances-component {
+    background: gainsboro;
+    color: black;
+    font-family: monospace;
+    font-size: 1.25rem;
+    width: 1460px;
+}
+
+.balances-table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 1200px;
+}
+
+.balances-table * {
+    text-align: right;
+    padding: 4px;
+    border: 1px dashed white;
+}
+
+.balances-table-headers th {
+    text-align: center;
+}
+
+.Balances-eth-balance {
+    width: 220px;
+}
+
+.Balances-token-balance {
+    width: 380px;
+}
+
+.Balances-contract-interact-button {
+    text-align: center;
 }

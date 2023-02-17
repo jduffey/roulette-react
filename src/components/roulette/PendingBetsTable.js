@@ -1,8 +1,8 @@
-const betRow = (betOption, betAmount) => {
+const betRow = (betName, betAmount) => {
     return (
-        <tr key={betOption}>
+        <tr key={betName}>
             <td>
-                {betOption}
+                {betName}
             </td>
             <td className="pending-bets-info-table-bet-amount">
                 {`$ ${betAmount}`}
@@ -26,7 +26,7 @@ export function PendingBetsTable(props) {
             {Object.entries(props.pendingBets.reduce((acc, pendingBet) => {
                 acc[pendingBet.betName] = (acc[pendingBet.betName] || 0) + pendingBet.betAmount;
                 return acc;
-            }, {})).map(([betOption, betAmount]) => betRow(betOption, betAmount))}
+            }, {})).map(([betName, betAmount]) => betRow(betName, betAmount))}
         </tbody>
     )
 

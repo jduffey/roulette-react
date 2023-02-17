@@ -14,9 +14,9 @@ describe('Board', () => {
                 pendingBets={pendingBets}
             />;
 
-        const actual = renderer.create(sut);
+        const view = renderer.create(sut);
 
-        expect(actual).toMatchSnapshot();
+        expect(view).toMatchSnapshot();
     });
 
     it('renders with bets placed on all bet names', () => {
@@ -27,8 +27,8 @@ describe('Board', () => {
                 pendingBets={pendingBets}
             />;
 
-        const actual = renderer.create(sut);
+        const view = renderer.create(sut);
 
-        expect(actual).toMatchSnapshot();
+        expect(view).toMatchSnapshot();
     });
 });

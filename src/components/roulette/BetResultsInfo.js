@@ -43,13 +43,13 @@ export function BetResultsInfo(props) {
         )
     }
 
-    const betResultsRows = () => Object.keys(props.previousRoundResults.resultsOfBets).map((betOption) => {
-        const betAmountOnBet = props.previousRoundResults.resultsOfBets[betOption].betAmount;
-        const winningsOnBet = props.previousRoundResults.resultsOfBets[betOption].winningsOnBet;
-        const betReturnedAmount = props.previousRoundResults.resultsOfBets[betOption].betReturned;
+    const betResultsRows = () => Object.keys(props.previousRoundResults.resultsOfBets).map((betName) => {
+        const betAmountOnBet = props.previousRoundResults.resultsOfBets[betName].betAmount;
+        const winningsOnBet = props.previousRoundResults.resultsOfBets[betName].winningsOnBet;
+        const betReturnedAmount = props.previousRoundResults.resultsOfBets[betName].betReturned;
         return (
-            <tr key={betOption}>
-                <td>{betOption}</td>
+            <tr key={betName}>
+                <td>{betName}</td>
                 <td className="bet-results-info-table-bet-amount">{`$ ${betAmountOnBet}`}</td>
                 <td>{`$ ${winningsOnBet}`}</td>
                 <td>{`$ ${betReturnedAmount}`}</td>

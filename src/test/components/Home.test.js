@@ -4,8 +4,8 @@ import { Home } from "../../components/Home";
 
 describe("Home", () => {
     it("renders", () => {
-        const actual = renderer.create(<Home />);
+        const view = renderer.create(<Home />);
 
-        expect(actual).toMatchSnapshot();
+        expect(view).toMatchSnapshot();
     });
 });

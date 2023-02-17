@@ -8,11 +8,10 @@ exports[`Roulette renders 1`] = `
     className="Board-component"
   >
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 80,
           "top": 240,
@@ -47,11 +46,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 160,
           "top": 240,
@@ -86,11 +84,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 240,
           "top": 240,
@@ -125,11 +122,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 320,
           "top": 240,
@@ -164,11 +160,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 400,
           "top": 240,
@@ -203,11 +198,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 480,
           "top": 240,
@@ -242,11 +236,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 560,
           "top": 240,
@@ -281,11 +274,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 640,
           "top": 240,
@@ -320,11 +312,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 720,
           "top": 240,
@@ -359,11 +350,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 800,
           "top": 240,
@@ -398,11 +388,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 880,
           "top": 240,
@@ -437,11 +426,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 960,
           "top": 240,
@@ -476,11 +464,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 80,
           "top": 120,
@@ -515,11 +502,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 160,
           "top": 120,
@@ -554,11 +540,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 240,
           "top": 120,
@@ -593,11 +578,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 320,
           "top": 120,
@@ -632,11 +616,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 400,
           "top": 120,
@@ -671,11 +654,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 480,
           "top": 120,
@@ -710,11 +692,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 560,
           "top": 120,
@@ -749,11 +730,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 640,
           "top": 120,
@@ -788,11 +768,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 720,
           "top": 120,
@@ -827,11 +806,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 800,
           "top": 120,
@@ -866,11 +844,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 880,
           "top": 120,
@@ -905,11 +882,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 960,
           "top": 120,
@@ -944,11 +920,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 80,
           "top": 0,
@@ -983,11 +958,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 160,
           "top": 0,
@@ -1022,11 +996,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 240,
           "top": 0,
@@ -1061,11 +1034,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 320,
           "top": 0,
@@ -1100,11 +1072,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 400,
           "top": 0,
@@ -1139,11 +1110,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 480,
           "top": 0,
@@ -1178,11 +1148,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 560,
           "top": 0,
@@ -1217,11 +1186,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 640,
           "top": 0,
@@ -1256,11 +1224,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 720,
           "top": 0,
@@ -1295,11 +1262,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 800,
           "top": 0,
@@ -1334,11 +1300,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 880,
           "top": 0,
@@ -1373,11 +1338,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 960,
           "top": 0,
@@ -1412,11 +1376,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 179,
           "left": 0,
           "top": 180,
@@ -1451,11 +1414,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 179,
           "left": 0,
           "top": 0,
@@ -1490,11 +1452,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 79,
           "left": 80,
           "top": 360,
@@ -1529,11 +1490,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 79,
           "left": 400,
           "top": 360,
@@ -1568,11 +1528,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 79,
           "left": 720,
           "top": 360,
@@ -1607,11 +1566,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 1040,
           "top": 240,
@@ -1646,11 +1604,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 1040,
           "top": 120,
@@ -1685,11 +1642,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 119,
           "left": 1040,
           "top": 0,
@@ -1724,11 +1680,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 79,
           "left": 80,
           "top": 440,
@@ -1763,11 +1718,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 79,
           "left": 240,
           "top": 440,
@@ -1802,11 +1756,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "#d94848",
           "height": 79,
           "left": 400,
           "top": 440,
@@ -1818,10 +1771,10 @@ exports[`Roulette renders 1`] = `
         className="betting-square-contents"
       >
         <div
-          className="betting-square-label halves-square-label"
+          className="betting-square-label halves-colors-square-label"
           style={
             Object {
-              "backgroundColor": "inherit",
+              "backgroundColor": "#d94848",
             }
           }
         >
@@ -1841,11 +1794,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "#222222",
           "height": 79,
           "left": 560,
           "top": 440,
@@ -1857,10 +1809,10 @@ exports[`Roulette renders 1`] = `
         className="betting-square-contents"
       >
         <div
-          className="betting-square-label halves-square-label"
+          className="betting-square-label halves-colors-square-label"
           style={
             Object {
-              "backgroundColor": "inherit",
+              "backgroundColor": "#222222",
             }
           }
         >
@@ -1880,11 +1832,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 79,
           "left": 720,
           "top": 440,
@@ -1919,11 +1870,10 @@ exports[`Roulette renders 1`] = `
       </div>
     </div>
     <div
-      className="BetOption-component"
+      className="ClickableBet-component"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "inherit",
           "height": 79,
           "left": 880,
           "top": 440,
@@ -2094,6 +2044,11 @@ exports[`Roulette renders 1`] = `
   <div
     className="PlayerInfo-component"
   >
+    <div>
+      Tok. Balance
+      <br />
+      0
+    </div>
     <div>
       Avail. Balance
       <br />

@@ -14,9 +14,9 @@ describe('BetResultsInfo', () => {
                 previousRoundResults: null,
             });
 
-        const actual = renderer.create(sut);
+        const view = renderer.create(sut);
 
-        expect(actual).toMatchSnapshot();
+        expect(view).toMatchSnapshot();
     });
 
     it('renders with bets', () => {
@@ -39,9 +39,9 @@ describe('BetResultsInfo', () => {
                 previousRoundResults,
             });
 
-        const actual = renderer.create(sut);
+        const view = renderer.create(sut);
 
-        expect(actual).toMatchSnapshot();
+        expect(view).toMatchSnapshot();
     });
 
     it.each([
@@ -60,8 +60,8 @@ describe('BetResultsInfo', () => {
                 },
             });
 
-        const actual = renderer.create(sut);
+        const view = renderer.create(sut);
 
-        expect(actual).toMatchSnapshot();
+        expect(view).toMatchSnapshot();
     });
 });

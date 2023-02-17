@@ -1,4 +1,5 @@
 [![Node.js CI](https://github.com/jduffey/roulette-react/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/jduffey/roulette-react/actions/workflows/node.js.yml)
+[![DeepSource](https://deepsource.io/gh/jduffey/roulette-react.svg/?label=active+issues&show_trend=true&token=oBR3ln1gv1ugsjCE4f7yBgvH)](https://deepsource.io/gh/jduffey/roulette-react/)
 
 # Instructions
 
@@ -12,3 +13,14 @@
 ## Notes
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses [json-server](https://github.com/typicode/json-server).
+
+## Hardhat Spike
+
+`npx hardhat node`
+- starts the Hardhat node
+
+~~`npx hardhat compile`~~ (not necessary because the deploy script compiles for us)
+- ~~compiles the contract(s)~~
+
+`npx hardhat run scripts/deploy.js --network localhost`
+- runs the deploy script which deploys the contracts to the Hardhat chain running locally
