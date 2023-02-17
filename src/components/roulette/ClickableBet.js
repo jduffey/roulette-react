@@ -11,7 +11,8 @@ function ClickableBet(props) {
         <div
             id={props.id}
             className={CLASS_NAME}
-            onClick={props.onClick}
+            onClick={() => props.onClick()}
+            role="button"
             style={{
                 left: props.styleData.left,
                 top: props.styleData.top,
