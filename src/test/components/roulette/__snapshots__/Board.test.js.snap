@@ -6,6 +6,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
 >
   <div
     className="ClickableBet-component"
+    id="StraightUp_1"
     onClick={[Function]}
     style={
       Object {
@@ -46,6 +47,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_4"
     onClick={[Function]}
     style={
       Object {
@@ -86,6 +88,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_7"
     onClick={[Function]}
     style={
       Object {
@@ -126,6 +129,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_10"
     onClick={[Function]}
     style={
       Object {
@@ -166,6 +170,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_13"
     onClick={[Function]}
     style={
       Object {
@@ -206,6 +211,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_16"
     onClick={[Function]}
     style={
       Object {
@@ -246,6 +252,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_19"
     onClick={[Function]}
     style={
       Object {
@@ -286,6 +293,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_22"
     onClick={[Function]}
     style={
       Object {
@@ -326,6 +334,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_25"
     onClick={[Function]}
     style={
       Object {
@@ -366,6 +375,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_28"
     onClick={[Function]}
     style={
       Object {
@@ -406,6 +416,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_31"
     onClick={[Function]}
     style={
       Object {
@@ -446,6 +457,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_34"
     onClick={[Function]}
     style={
       Object {
@@ -486,6 +498,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_2"
     onClick={[Function]}
     style={
       Object {
@@ -526,6 +539,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_5"
     onClick={[Function]}
     style={
       Object {
@@ -566,6 +580,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_8"
     onClick={[Function]}
     style={
       Object {
@@ -606,6 +621,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_11"
     onClick={[Function]}
     style={
       Object {
@@ -646,6 +662,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_14"
     onClick={[Function]}
     style={
       Object {
@@ -686,6 +703,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_17"
     onClick={[Function]}
     style={
       Object {
@@ -726,6 +744,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_20"
     onClick={[Function]}
     style={
       Object {
@@ -766,6 +785,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_23"
     onClick={[Function]}
     style={
       Object {
@@ -806,6 +826,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_26"
     onClick={[Function]}
     style={
       Object {
@@ -846,6 +867,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_29"
     onClick={[Function]}
     style={
       Object {
@@ -886,6 +908,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_32"
     onClick={[Function]}
     style={
       Object {
@@ -926,6 +949,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_35"
     onClick={[Function]}
     style={
       Object {
@@ -966,6 +990,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_3"
     onClick={[Function]}
     style={
       Object {
@@ -1006,6 +1031,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_6"
     onClick={[Function]}
     style={
       Object {
@@ -1046,6 +1072,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_9"
     onClick={[Function]}
     style={
       Object {
@@ -1086,6 +1113,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_12"
     onClick={[Function]}
     style={
       Object {
@@ -1126,6 +1154,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_15"
     onClick={[Function]}
     style={
       Object {
@@ -1166,6 +1195,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_18"
     onClick={[Function]}
     style={
       Object {
@@ -1206,6 +1236,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_21"
     onClick={[Function]}
     style={
       Object {
@@ -1246,6 +1277,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_24"
     onClick={[Function]}
     style={
       Object {
@@ -1286,6 +1318,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_27"
     onClick={[Function]}
     style={
       Object {
@@ -1326,6 +1359,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_30"
     onClick={[Function]}
     style={
       Object {
@@ -1366,6 +1400,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_33"
     onClick={[Function]}
     style={
       Object {
@@ -1406,6 +1441,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_36"
     onClick={[Function]}
     style={
       Object {
@@ -1446,6 +1482,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_0"
     onClick={[Function]}
     style={
       Object {
@@ -1486,6 +1523,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_00"
     onClick={[Function]}
     style={
       Object {
@@ -1526,6 +1564,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="1st 12"
     onClick={[Function]}
     style={
       Object {
@@ -1566,6 +1605,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="2nd 12"
     onClick={[Function]}
     style={
       Object {
@@ -1606,6 +1646,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="3rd 12"
     onClick={[Function]}
     style={
       Object {
@@ -1646,6 +1687,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="1st Column"
     onClick={[Function]}
     style={
       Object {
@@ -1686,6 +1728,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="2nd Column"
     onClick={[Function]}
     style={
       Object {
@@ -1726,6 +1769,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="3rd Column"
     onClick={[Function]}
     style={
       Object {
@@ -1766,6 +1810,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="1 to 18"
     onClick={[Function]}
     style={
       Object {
@@ -1806,6 +1851,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="Even"
     onClick={[Function]}
     style={
       Object {
@@ -1846,6 +1892,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="Red"
     onClick={[Function]}
     style={
       Object {
@@ -1886,6 +1933,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="Black"
     onClick={[Function]}
     style={
       Object {
@@ -1926,6 +1974,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="Odd"
     onClick={[Function]}
     style={
       Object {
@@ -1966,6 +2015,7 @@ exports[`Board renders with bets placed on all bet names 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="19 to 36"
     onClick={[Function]}
     style={
       Object {
@@ -2013,6 +2063,7 @@ exports[`Board renders with no bets placed 1`] = `
 >
   <div
     className="ClickableBet-component"
+    id="StraightUp_1"
     onClick={[Function]}
     style={
       Object {
@@ -2051,6 +2102,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_4"
     onClick={[Function]}
     style={
       Object {
@@ -2089,6 +2141,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_7"
     onClick={[Function]}
     style={
       Object {
@@ -2127,6 +2180,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_10"
     onClick={[Function]}
     style={
       Object {
@@ -2165,6 +2219,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_13"
     onClick={[Function]}
     style={
       Object {
@@ -2203,6 +2258,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_16"
     onClick={[Function]}
     style={
       Object {
@@ -2241,6 +2297,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_19"
     onClick={[Function]}
     style={
       Object {
@@ -2279,6 +2336,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_22"
     onClick={[Function]}
     style={
       Object {
@@ -2317,6 +2375,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_25"
     onClick={[Function]}
     style={
       Object {
@@ -2355,6 +2414,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_28"
     onClick={[Function]}
     style={
       Object {
@@ -2393,6 +2453,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_31"
     onClick={[Function]}
     style={
       Object {
@@ -2431,6 +2492,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_34"
     onClick={[Function]}
     style={
       Object {
@@ -2469,6 +2531,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_2"
     onClick={[Function]}
     style={
       Object {
@@ -2507,6 +2570,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_5"
     onClick={[Function]}
     style={
       Object {
@@ -2545,6 +2609,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_8"
     onClick={[Function]}
     style={
       Object {
@@ -2583,6 +2648,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_11"
     onClick={[Function]}
     style={
       Object {
@@ -2621,6 +2687,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_14"
     onClick={[Function]}
     style={
       Object {
@@ -2659,6 +2726,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_17"
     onClick={[Function]}
     style={
       Object {
@@ -2697,6 +2765,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_20"
     onClick={[Function]}
     style={
       Object {
@@ -2735,6 +2804,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_23"
     onClick={[Function]}
     style={
       Object {
@@ -2773,6 +2843,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_26"
     onClick={[Function]}
     style={
       Object {
@@ -2811,6 +2882,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_29"
     onClick={[Function]}
     style={
       Object {
@@ -2849,6 +2921,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_32"
     onClick={[Function]}
     style={
       Object {
@@ -2887,6 +2960,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_35"
     onClick={[Function]}
     style={
       Object {
@@ -2925,6 +2999,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_3"
     onClick={[Function]}
     style={
       Object {
@@ -2963,6 +3038,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_6"
     onClick={[Function]}
     style={
       Object {
@@ -3001,6 +3077,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_9"
     onClick={[Function]}
     style={
       Object {
@@ -3039,6 +3116,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_12"
     onClick={[Function]}
     style={
       Object {
@@ -3077,6 +3155,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_15"
     onClick={[Function]}
     style={
       Object {
@@ -3115,6 +3194,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_18"
     onClick={[Function]}
     style={
       Object {
@@ -3153,6 +3233,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_21"
     onClick={[Function]}
     style={
       Object {
@@ -3191,6 +3272,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_24"
     onClick={[Function]}
     style={
       Object {
@@ -3229,6 +3311,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_27"
     onClick={[Function]}
     style={
       Object {
@@ -3267,6 +3350,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_30"
     onClick={[Function]}
     style={
       Object {
@@ -3305,6 +3389,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_33"
     onClick={[Function]}
     style={
       Object {
@@ -3343,6 +3428,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_36"
     onClick={[Function]}
     style={
       Object {
@@ -3381,6 +3467,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_0"
     onClick={[Function]}
     style={
       Object {
@@ -3419,6 +3506,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="StraightUp_00"
     onClick={[Function]}
     style={
       Object {
@@ -3457,6 +3545,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="1st 12"
     onClick={[Function]}
     style={
       Object {
@@ -3495,6 +3584,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="2nd 12"
     onClick={[Function]}
     style={
       Object {
@@ -3533,6 +3623,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="3rd 12"
     onClick={[Function]}
     style={
       Object {
@@ -3571,6 +3662,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="1st Column"
     onClick={[Function]}
     style={
       Object {
@@ -3609,6 +3701,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="2nd Column"
     onClick={[Function]}
     style={
       Object {
@@ -3647,6 +3740,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="3rd Column"
     onClick={[Function]}
     style={
       Object {
@@ -3685,6 +3779,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="1 to 18"
     onClick={[Function]}
     style={
       Object {
@@ -3723,6 +3818,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="Even"
     onClick={[Function]}
     style={
       Object {
@@ -3761,6 +3857,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="Red"
     onClick={[Function]}
     style={
       Object {
@@ -3799,6 +3896,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="Black"
     onClick={[Function]}
     style={
       Object {
@@ -3837,6 +3935,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="Odd"
     onClick={[Function]}
     style={
       Object {
@@ -3875,6 +3974,7 @@ exports[`Board renders with no bets placed 1`] = `
   </div>
   <div
     className="ClickableBet-component"
+    id="19 to 36"
     onClick={[Function]}
     style={
       Object {

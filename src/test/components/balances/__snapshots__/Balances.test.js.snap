@@ -36,11 +36,20 @@ exports[`Balances renders 1`] = `
           >
              Balance
           </th>
-          <th>
+          <th
+            className="Balances-button-header"
+          >
             Get Tokens
           </th>
-          <th>
+          <th
+            className="Balances-button-header"
+          >
             Redeem Tokens
+          </th>
+          <th
+            className="Balances-button-header"
+          >
+            Txfr Tokens
           </th>
         </tr>
       </thead>
