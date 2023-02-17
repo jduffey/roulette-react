@@ -5,6 +5,8 @@ const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
 // Contract addresses are calculated from a hash of the deployer's address and nonce.
 // TODO: retrieve this dynamically
 const TOKEN_CONTRACT_ADDRESS = "0xbdEd0D2bf404bdcBa897a74E6657f1f12e5C6fb6";
+const FIRST_PLAYER_ADDRESS = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
+const HOUSE_ADDRESS = "0x15d34aaf54267db7d7c367839aaf71a00a2c6a65";
 
 async function getEthBalance(address) {
     const signer = provider.getSigner(address);
@@ -83,5 +85,7 @@ export {
     redeemTokensForEth,
     transferFrom,
     TOKEN_CONTRACT_ADDRESS,
+    FIRST_PLAYER_ADDRESS,
+    HOUSE_ADDRESS,
     tokenSymbol,
 };
