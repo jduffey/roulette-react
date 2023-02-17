@@ -2,8 +2,5 @@
     "player": {
         "initialBalance": 10000,
         "history": []
-    },
-    "newTransactions": {
-        "transactions": []
     }
 }

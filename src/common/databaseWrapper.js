@@ -38,37 +38,8 @@ async function resetTransactionHistory() {
     }
 }
 
-async function fetchNewTransactionHistory() {
-    const BASE_URL = 'http://localhost:3001';
-    const ENDPOINT = '/newTransactions';
-    const res = await fetch(new URL(ENDPOINT, BASE_URL));
-    if (!res.ok) {
-        console.log("Not OK response from json-server: ", res);
-        return `Error: ${res.status} ${res.statusText}`;
-    }
-    const json = await res.json();
-    return json;
-}
-
-async function updateNewTransactionHistory(transactions) {
-    const BASE_URL = 'http://localhost:3001';
-    const ENDPOINT = '/newTransactions';
-    const res = await fetch(new URL(ENDPOINT, BASE_URL), {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ transactions }),
-    });
-    if (!res.ok) {
-        console.log("Not OK response from json-server: ", res);
-    }
-}
-
 export {
     fetchTransactionHistory,
     updateTransactionHistory,
     resetTransactionHistory,
-    fetchNewTransactionHistory,
-    updateNewTransactionHistory,
 };
