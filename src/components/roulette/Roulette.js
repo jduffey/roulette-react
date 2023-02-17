@@ -3,8 +3,6 @@ import {
     fetchTransactionHistory,
     updateTransactionHistory,
     resetTransactionHistory,
-    fetchNewTransactionHistory,
-    updateNewTransactionHistory,
 } from '../../common/databaseWrapper';
 
 import { PendingBet } from '../../common/PendingBet';
