@@ -123,33 +123,30 @@ export function Roulette() {
 
                 const resultsOfRound = getCompleteResultsOfRound(startingBalance, pendingBets, randomWheelNumber);
 
-                console.log("resultsOfRound", resultsOfRound);
+                // console.log("resultsOfRound", resultsOfRound);
                 const balanceDiff = resultsOfRound.finalBalance - resultsOfRound.startingBalance;
 
-                const playerWinStatus = ((x) => {
-                    console.log("x", x);
+                ((x) => {
                     switch (Math.sign(x)) {
                         case 1:
-                            console.log("balanceDiff", balanceDiff.toString());
                             transferFrom(
                                 "0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199",
                                 "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-                                Math.abs(balanceDiff).toString()
+                                x.toString()
                             )
-                            return "You won!";
+                            return;
                         case -1:
-                            console.log("balanceDiff", balanceDiff.toString());
                             transferFrom(
                                 "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
                                 "0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199",
-                                Math.abs(balanceDiff).toString()
+                                x.toString()
                             )
-                            return "You lost!";
+                            return;
                         default:
-                            return "No change";
+                            // no diff in balance so no need to call chain
+                            return;
                     }
-                })(balanceDiff);
-                console.log("Outcome:", playerWinStatus, balanceDiff);
+                })(Math.abs(balanceDiff));
 
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
                 setAvailableBalance(resultsOfRound.finalBalance);

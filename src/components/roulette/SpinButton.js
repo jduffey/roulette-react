@@ -4,6 +4,7 @@ export function SpinButton(props) {
     const color = props.isSpinAllowed ? 'inherit' : '#999999';
     return (
         <div
+            id="spin-button"
             className={CLASS_NAME}
             onClick={props.onClick}
         >
