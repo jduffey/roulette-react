@@ -19,6 +19,11 @@ export function Balances() {
 
     const [rerender, setRerender] = useState(false);
 
+    const HOUSE_ADDRESS = "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65";
+    const ETH_TO_DEPOSIT = "1";
+    const TOKENS_TO_REDEEM = "100000";
+    const TOKENS_TO_TRANSFER = "10000";
+
     useEffect(() => {
         // Default values, including seed phrase: https://hardhat.org/hardhat-network/docs/reference
         const addresses = [
@@ -26,7 +31,7 @@ export function Balances() {
             "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
             "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
             "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
-            "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+            HOUSE_ADDRESS,
             TOKEN_CONTRACT_ADDRESS
         ];
 
@@ -94,9 +99,9 @@ export function Balances() {
                             <th>Address</th>
                             <th className="Balances-eth-balance">ETH Balance</th>
                             <th className="Balances-token-balance">{tokenSymbol} Balance</th>
-                            <th>Get Tokens</th>
-                            <th>Redeem Tokens</th>
-                            <th>Txfr Tokens</th>
+                            <th className="Balances-button-header">Get Tokens</th>
+                            <th className="Balances-button-header">Redeem Tokens</th>
+                            <th className="Balances-button-header">Txfr Tokens</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -105,7 +110,7 @@ export function Balances() {
                                 return (
                                     <tr key={addr}>
                                         <td>
-                                            {`${addr.slice(0, 6)}..${addr.slice(-4)}`}
+                                            {`${addr.slice(0, 8)}..${addr.slice(-6)}`}
                                         </td>
                                         <td>
                                             {Number(ethBalance).toLocaleString(undefined, {
@@ -115,57 +120,60 @@ export function Balances() {
                                         </td>
                                         <td>
                                             {Number(tokenBalance).toLocaleString(undefined, {
-                                                minimumFractionDigits: 18,
-                                                maximumFractionDigits: 18
+                                                minimumFractionDigits: 8,
+                                                maximumFractionDigits: 8
                                             })}
                                         </td>
                                         <td
-                                            className="Balances-contract-interact-button">
+                                            className="Balances-contract-interact-button-column">
                                             <button
+                                                className="Balances-contract-interact-button"
                                                 type="button"
                                                 onClick={() => {
                                                     depositEthForTokens(
                                                         addr,
-                                                        "1"
+                                                        ETH_TO_DEPOSIT
                                                     ).then(() => {
                                                         setRerender(!rerender);
                                                     });
                                                 }}
                                             >
-                                                Deposit 1 ETH
+                                                {`Deposit ${ETH_TO_DEPOSIT} ETH`}
                                             </button>
                                         </td>
                                         <td
-                                            className="Balances-contract-interact-button">
+                                            className="Balances-contract-interact-button-column">
                                             <button
+                                                className="Balances-contract-interact-button"
                                                 type="button"
                                                 onClick={() => {
                                                     redeemTokensForEth(
                                                         addr,
-                                                        "100000"
+                                                        TOKENS_TO_REDEEM
                                                     ).then(() => {
                                                         setRerender(!rerender);
                                                     });
                                                 }}
                                             >
-                                                Redeem 100,000 {tokenSymbol}
+                                                {`Redeem ${Number(TOKENS_TO_REDEEM).toLocaleString()} ${tokenSymbol}`}
                                             </button>
                                         </td>
                                         <td
-                                            className="Balances-contract-interact-button">
+                                            className="Balances-contract-interact-button-column">
                                             <button
+                                                className="Balances-contract-interact-button"
                                                 type="button"
                                                 onClick={() => {
                                                     transferFrom(
                                                         addr,
-                                                        "0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199",
-                                                        "10000"
+                                                        HOUSE_ADDRESS,
+                                                        TOKENS_TO_TRANSFER
                                                     ).then(() => {
                                                         setRerender(!rerender);
                                                     });
                                                 }}
                                             >
-                                                Txfr 10,000 {tokenSymbol}
+                                                {`Txfr ${Number(TOKENS_TO_TRANSFER).toLocaleString()} ${tokenSymbol}`}
                                             </button>
                                         </td>
                                     </tr>

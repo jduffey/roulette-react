@@ -12,7 +12,7 @@
 
 ## Notes
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses [json-server](https://github.com/typicode/json-server).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses [json-server](https://github.com/typicode/json-server). Development is underway to replace json-server with a local Ethereum node run by [Hardhat](https://hardhat.org/).
 
 ## Hardhat Spike
 
