@@ -9,7 +9,7 @@ module.exports = {
             accounts: {
                 count: 5, // default: 20
                 initialIndex: 0, // default: 0
-                accountsBalance: "10000000000000000000000", // default: 10000000000000000000000 (wei, or 10,000 ETH)
+                accountsBalance: "10000000000000000000000", // default: 10000000000000000000000 (wei === 10,000 ETH)
             },
         },
     },

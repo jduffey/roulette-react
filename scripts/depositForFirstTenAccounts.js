@@ -12,11 +12,13 @@ async function depositEthForTokens() {
     }
 
     const signers = await ethers.getSigners();
-    const firstTenSigners = signers.slice(0, 10);
 
-    const TOKEN_CONTRACT_ADDRESS = "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f";
+    const players = signers.slice(0, -1);
+    const [houseSigner] = signers.slice(-1);
 
-    const firstTenTxs = firstTenSigners.map(async (signer) => {
+    const TOKEN_CONTRACT_ADDRESS = ethers.utils.getContractAddress({ from: houseSigner.address, nonce: 0 });
+
+    const playerTxs = players.map(async (signer) => {
         const token = new ethers.Contract(TOKEN_CONTRACT_ADDRESS, [
             "function deposit() payable",
         ], signer);
@@ -27,8 +29,6 @@ async function depositEthForTokens() {
 
         return tx;
     });
-
-    const houseSigner = signers[19];
 
     const houseTx = (async (signer) => {
         const token = new ethers.Contract(TOKEN_CONTRACT_ADDRESS, [
@@ -42,7 +42,7 @@ async function depositEthForTokens() {
         return tx;
     })(houseSigner);
 
-    const allTxns = [...firstTenTxs, houseTx];
+    const allTxns = [...playerTxs, houseTx];
 
     return Promise.all(allTxns);
 }
