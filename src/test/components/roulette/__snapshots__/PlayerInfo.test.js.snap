@@ -7,7 +7,7 @@ exports[`PlayerInfo renders when availableBalance is 123456 and totalBetAmount i
   <div>
     Tok. Balance
     <br />
-    0
+    Not loaded...
   </div>
   <div>
     Avail. Balance
@@ -35,7 +35,7 @@ exports[`PlayerInfo renders when availableBalance is foo and totalBetAmount is b
   <div>
     Tok. Balance
     <br />
-    0
+    Not loaded...
   </div>
   <div>
     Avail. Balance

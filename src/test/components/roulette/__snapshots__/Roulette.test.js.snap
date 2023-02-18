@@ -2149,7 +2149,7 @@ exports[`Roulette renders 1`] = `
     <div>
       Tok. Balance
       <br />
-      0
+      Not loaded...
     </div>
     <div>
       Avail. Balance
