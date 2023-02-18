@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import {
     getTokenBalance,
@@ -9,8 +9,6 @@ import { ethers } from "ethers";
 
 const wsProvider = new ethers.providers.WebSocketProvider("ws://localhost:8545");
 
-console.log("wsProvider:", wsProvider);
-
 const CLASS_NAME = "PlayerInfo-component";
 export function PlayerInfo(props) {
     const [tokenBalance, setTokenBalance] = useState("Not loaded...");
@@ -19,18 +17,7 @@ export function PlayerInfo(props) {
     const EXPECTED_PONG_BACK = 1000
     const KEEP_ALIVE_CHECK_INTERVAL = 455
 
-    let startCounter = 1;
     const startConnection = () => {
-        if (typeof wsProvider._websocket === "undefined") {
-            // console.log("Websocket connection is undefined. Is the blockchain node running?");
-            return;
-        }
-
-        // TODO why does this counter always make it to 2 (twice)?
-        // Look in Chrome dev tools Network tab and see that the websocket-provider always takes
-        // EXPECTED_PONG_BACK + KEEP_ALIVE_CHECK_INTERVAL to respond.
-        // console.log(`Websocket connection started ${startCounter++} time(s).`);
-
         wsProvider._websocket.onmessage = (event) => {
             console.log("An event was received:", event);
         }
@@ -38,24 +25,19 @@ export function PlayerInfo(props) {
         let pingTimeout = null
         let keepAliveInterval = null
         wsProvider._websocket.onopen = () => {
-            // console.log("onopen");
             keepAliveInterval = setInterval(() => {
-                // console.log("Running the interval", Date.now());
                 (async (addr) => {
-                    // console.log("Getting token balance", Date.now());
                     const balance = await getTokenBalance(addr);
                     const balanceAsNumber = Number(balance);
                     setTokenBalance(balanceAsNumber);
                 })(FIRST_PLAYER_ADDRESS);
                 pingTimeout = setTimeout(() => {
-                    // console.log("setting what happens if the ping times out", Date.now());
                     wsProvider._websocket.close();
                 }, EXPECTED_PONG_BACK)
             }, KEEP_ALIVE_CHECK_INTERVAL)
         }
 
         wsProvider._websocket.onclose = () => {
-            // console.log("onclose");
             clearInterval(keepAliveInterval);
             clearTimeout(pingTimeout);
             startConnection();

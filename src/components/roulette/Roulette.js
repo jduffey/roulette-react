@@ -24,7 +24,7 @@ import { CompletionsCounter } from './CompletionsCounter';
 
 import { transferFrom, FIRST_PLAYER_ADDRESS, HOUSE_ADDRESS } from '../../common/blockchainWrapper';
 
-import { simulatePlayingGame } from '../../common/simulatePlayingGame';
+// import { simulatePlayingGame } from '../../common/simulatePlayingGame';
 
 function calculateTotalBetAmount(bets) {
     return bets.reduce((acc, pendingBet) => acc + pendingBet.betAmount, 0);
