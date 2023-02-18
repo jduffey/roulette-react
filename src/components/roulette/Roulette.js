@@ -123,7 +123,6 @@ export function Roulette() {
 
                 const resultsOfRound = getCompleteResultsOfRound(startingBalance, pendingBets, randomWheelNumber);
 
-                // console.log("resultsOfRound", resultsOfRound);
                 const balanceDiff = resultsOfRound.finalBalance - resultsOfRound.startingBalance;
 
                 ((x) => {
