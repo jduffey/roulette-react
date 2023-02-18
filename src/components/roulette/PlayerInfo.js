@@ -13,45 +13,38 @@ console.log("wsProvider:", wsProvider);
 
 const CLASS_NAME = "PlayerInfo-component";
 export function PlayerInfo(props) {
-    const [tokenBalance, setTokenBalance] = useState("Not set..");
-
-    // useEffect(() => {
-    // wsProvider.
-    //     const myInterval = setInterval(() => {
-    //         (async (addr) => {
-    //             console.log("Time:", new Date().toLocaleTimeString());
-    //             const balance = await getTokenBalance(addr);
-    //             const balanceAsNumber = Number(balance);
-    //             setTokenBalance(balanceAsNumber);
-    //         })(FIRST_PLAYER_ADDRESS);
-    //     }, 2000);
-
-    //     return () => {
-    //         clearInterval(myInterval);
-    //     };
-    // }
-
-    // , []);
+    const [tokenBalance, setTokenBalance] = useState("Not loaded...");
 
     // Adapted from https://github.com/ethers-io/ethers.js/issues/1053#issuecomment-808736570
-    const EXPECTED_PONG_BACK = 6000
-    const KEEP_ALIVE_CHECK_INTERVAL = 3000
+    const EXPECTED_PONG_BACK = 2000
+    const KEEP_ALIVE_CHECK_INTERVAL = 1000
 
     let startCounter = 1;
     const startConnection = () => {
-        console.log(`Websocket connection started ${startCounter++} time(s).`);
+        if (typeof wsProvider._websocket === "undefined") {
+            console.log("Websocket connection is undefined. Is the blockchain node running?");
+            return;
+        }
 
-        let pingTimeout = null
-        let keepAliveInterval = null
+        // TODO why does this counter always make it to 2 (twice)?
+        console.log(`Websocket connection started ${startCounter++} time(s).`);
 
         wsProvider._websocket.onmessage = (event) => {
             console.log("An event was received:", event);
         }
 
+        let pingTimeout = null
+        let keepAliveInterval = null
         wsProvider._websocket.onopen = () => {
             console.log("onopen");
             keepAliveInterval = setInterval(() => {
-                console.log("keepAliveInterval", Date.now());
+                console.log("Running the interval", Date.now());
+                (async (addr) => {
+                    console.log("Getting token balance", Date.now());
+                    const balance = await getTokenBalance(addr);
+                    const balanceAsNumber = Number(balance);
+                    setTokenBalance(balanceAsNumber);
+                })(FIRST_PLAYER_ADDRESS);
                 pingTimeout = setTimeout(() => {
                     console.log("setting what happens if the ping times out", Date.now());
                     wsProvider._websocket.close();
@@ -65,11 +58,6 @@ export function PlayerInfo(props) {
             clearTimeout(pingTimeout);
             startConnection();
         }
-
-        // wsProvider._websocket.on('pong', () => {
-        //     // logger.debug('Received pong, so connection is alive, clearing the timeout')
-        //     clearInterval(pingTimeout)
-        // })
     }
 
     startConnection();
