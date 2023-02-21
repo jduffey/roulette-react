@@ -43,7 +43,7 @@ function NumbersHitGameCounterOverlay(props) {
     return (
         <div
             className="NumbersHitGameCounterOverlay-component">
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 1), height: "88px", lineHeight: "88px" }}>1</div>
+            <div id="NumbersHitGameCounterOverlap-top-box" className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 1) }}>1</div>
             <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 2), }}>2</div>
             <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 3), }}>3</div>
             <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 4), }}>4</div>

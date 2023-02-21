@@ -355,6 +355,11 @@ because we'll have "invisible" betting options later
     line-height: 22px;
 }
 
+#NumbersHitGameCounterOverlap-top-box {
+    height: 88px;
+    line-height: 88px;
+}
+
 .game-counter-bar-element {
     overflow: hidden;
 }
