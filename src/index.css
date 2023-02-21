@@ -327,12 +327,32 @@ because we'll have "invisible" betting options later
     width: 32px;
     height: 660px;
     text-align: center;
-    outline: 8px solid black;
+    /* outline: 8px solid black; */
     font-size: 24px;
     display: flex;
     flex-direction: column;
     background-color: darkgray;
-    /* overflow: hidden; */
+}
+
+.NumbersHitGameCounterOverlay-component {
+    position: relative;
+    left: 1448px;
+    bottom: 4260px;
+    width: 32px;
+    height: 660px;
+    text-align: center;
+    /* outline: 8px solid black; */
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+}
+
+.NumbersHitGameCounterOverlap-box {
+    font-size: 12px;
+    height: 22px;
+    outline: 1px solid black;
+    line-height: 22px;
 }
 
 .game-counter-bar-element {

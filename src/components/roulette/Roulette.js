@@ -21,7 +21,7 @@ import { SpinResult } from './SpinResult';
 import { getCompleteResultsOfRound } from '../../common/getCompleteResultsOfRound';
 import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
 import { CompletionsCounter } from './CompletionsCounter';
-import { NumbersHitGameCounter } from './NumberHitGameCounter';
+import { NumbersHitGameCounter, NumbersHitGameCounterOverlay } from './NumberHitGameCounter';
 
 function calculateTotalBetAmount(bets) {
     return bets.reduce((acc, pendingBet) => acc + pendingBet.betAmount, 0);
@@ -205,6 +205,9 @@ export function Roulette() {
                 transactionHistory={transactionHistory}
             />
             <NumbersHitGameCounter
+                transactionHistory={transactionHistory}
+            />
+            <NumbersHitGameCounterOverlay
                 transactionHistory={transactionHistory}
             />
         </div >
