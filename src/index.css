@@ -50,7 +50,7 @@ ul {
             #222277 10px,
             #222277 20px);
     padding: 1px;
-    width: 1460px;
+    width: 1480px;
     height: 1080px;
     padding: 16px;
 }
@@ -318,6 +318,20 @@ because we'll have "invisible" betting options later
     width: 70px;
     height: 34px;
     line-height: 34px;
+}
+
+.NumbersHitGameCounter-component {
+    position: relative;
+    left: 1448px;
+    bottom: 3600px;
+    width: 32px;
+    height: 660px;
+    text-align: center;
+    outline: 8px solid black;
+    font-size: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: darkgray;
 }
 
 .CompletionsCounter-component {
