@@ -31,45 +31,51 @@ function NumbersHitGameCounter(props) {
 function NumbersHitGameCounterOverlay(props) {
     const gameCounter = props.transactionHistory.length;
 
-    const textColor = (counter, bin) => {
-        const foo = Math.max(1, (counter - 20) / 10);
-        console.log("foo", foo);
-        if (foo >= bin) {
-            return "black";
+    const styles = (counter, bin) => {
+        if (Math.max(1, (counter - 20) / 10) >= bin) {
+            return {
+                color: "black",
+                backgroundColor: "#F0F4",
+                fontSize: "16px",
+                fontWeight: "bold",
+            };
         }
-        return "gray";
+        return {
+            color: "gray",
+            backgroundColor: "inherit",
+        };
     }
 
     return (
         <div
             className="NumbersHitGameCounterOverlay-component">
-            <div id="NumbersHitGameCounterOverlap-top-box" className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 1) }}>1</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 2), }}>2</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 3), }}>3</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 4), }}>4</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 5), }}>5</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 6), }}>6</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 7), }}>7</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 8), }}>8</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 9), }}>9</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 10), }}>10</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 11), }}>11</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 12), }}>12</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 13), }}>13</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 14), }}>14</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 15), }}>15</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 16), }}>16</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 17), }}>17</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 18), }}>18</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 19), }}>19</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 20), }}>20</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 21), }}>21</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 22), }}>22</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 23), }}>23</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 24), }}>24</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 25), }}>25</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 26), }}>26</div>
-            <div className="NumbersHitGameCounterOverlap-box" style={{ color: textColor(gameCounter, 27), }}>27</div>
+            <div id="NumbersHitGameCounterOverlap-top-box" className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 1)}>1</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 2)}>2</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 3)}>3</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 4)}>4</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 5)}>5</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 6)}>6</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 7)}>7</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 8)}>8</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 9)}>9</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 10)}>10</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 11)}>11</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 12)}>12</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 13)}>13</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 14)}>14</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 15)}>15</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 16)}>16</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 17)}>17</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 18)}>18</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 19)}>19</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 20)}>20</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 21)}>21</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 22)}>22</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 23)}>23</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 24)}>24</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 25)}>25</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 26)}>26</div>
+            <div className="NumbersHitGameCounterOverlap-box" style={styles(gameCounter, 27)}>27</div>
         </div>
     );
 }
