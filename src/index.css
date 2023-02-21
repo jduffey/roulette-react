@@ -330,8 +330,13 @@ because we'll have "invisible" betting options later
     outline: 8px solid black;
     font-size: 24px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     background-color: darkgray;
+    /* overflow: hidden; */
+}
+
+.game-counter-bar-element {
+    overflow: hidden;
 }
 
 .CompletionsCounter-component {
