@@ -11,6 +11,7 @@ export function Board(props) {
             {Object.entries(DISPLAY_PARAMS).map(([betName, params]) => {
                 return (
                     <ClickableBet
+                        id={betName}
                         textLabelClassNamePrefix={params.textLabelClassNamePrefix}
                         key={betName}
                         onClick={() => props.onClick(betName)}

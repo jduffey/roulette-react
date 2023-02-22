@@ -9,6 +9,7 @@ const CLASS_NAME = "ClickableBet-component";
 function ClickableBet(props) {
     return (
         <div
+            id={props.id}
             className={CLASS_NAME}
             onClick={props.onClick}
             style={{
