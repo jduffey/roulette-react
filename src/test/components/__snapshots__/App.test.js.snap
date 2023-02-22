@@ -2821,6 +2821,3912 @@ Array [
     >
       0
     </div>
+    <div
+      className="NumbersHitGameCounter-component"
+    >
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "1px solid black",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+      <div
+        className="game-counter-bar-element"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "black",
+            "outline": "none",
+          }
+        }
+      >
+         
+      </div>
+    </div>
+    <div
+      className="NumbersHitGameCounterOverlay-component"
+    >
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        id="NumbersHitGameCounterOverlap-top-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        1
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        2
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        3
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        4
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        5
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        6
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        7
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        8
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        9
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        10
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        11
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        12
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        13
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        14
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        15
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        16
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        17
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        18
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        19
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        20
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        21
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        22
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        23
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        24
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        25
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        26
+      </div>
+      <div
+        className="NumbersHitGameCounterOverlap-box"
+        style={
+          Object {
+            "backgroundColor": "inherit",
+            "color": "gray",
+          }
+        }
+      >
+        27
+      </div>
+    </div>
   </div>,
 ]
 `;
