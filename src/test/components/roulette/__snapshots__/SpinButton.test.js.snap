@@ -3,6 +3,7 @@
 exports[`SpinButton renders when isSpinAllowed is false 1`] = `
 <div
   className="SpinButton-component"
+  id="spin-button"
   onClick={[Function]}
 >
   <span
@@ -30,6 +31,7 @@ exports[`SpinButton renders when isSpinAllowed is false 1`] = `
 exports[`SpinButton renders when isSpinAllowed is true 1`] = `
 <div
   className="SpinButton-component"
+  id="spin-button"
   onClick={[Function]}
 >
   <span
