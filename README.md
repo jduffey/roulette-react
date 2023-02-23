@@ -1,6 +1,9 @@
 [![Node.js CI](https://github.com/jduffey/roulette-react/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/jduffey/roulette-react/actions/workflows/node.js.yml)
 [![DeepSource](https://deepsource.io/gh/jduffey/roulette-react.svg/?label=active+issues&show_trend=true&token=oBR3ln1gv1ugsjCE4f7yBgvH)](https://deepsource.io/gh/jduffey/roulette-react/)
 
+# NOTICE 👷‍♀️
+Some tests are disabled as a workaround to prevent failures in the CI/CD pipeline caused by the websocket provider being unable to make a connection when tests are run.
+
 # Instructions
 
 1. `npm install`
@@ -14,7 +17,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses [json-server](https://github.com/typicode/json-server). Development is underway to replace json-server with a local Ethereum node run by [Hardhat](https://hardhat.org/).
 
-## Hardhat Spike
+## Setting up Player Token Balances
 
 `npx hardhat node`
 - starts the Hardhat node
