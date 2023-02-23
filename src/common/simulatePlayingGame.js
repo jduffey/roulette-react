@@ -3,9 +3,9 @@ import { BET_NAMES } from "./betNames";
 const NUMBER_OF_BETS_TO_PLACE = 5;
 const SECONDS_BETWEEN_BET_PLACEMENTS = 1;
 
-setInterval(function () {
+setInterval(() => {
     let betsPlaced = 0;
-    setInterval(function () {
+    setInterval(() => {
         if (betsPlaced++ >= NUMBER_OF_BETS_TO_PLACE) return;
         const selectedChipAmt = ((choices) => {
             const index = Math.floor(Math.random() * choices.length);
