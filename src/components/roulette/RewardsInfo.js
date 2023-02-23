@@ -7,7 +7,7 @@ export function RewardsInfo(props) {
     const rewardsRatio = 0.01;
     const accumulatedRewards = props.transactionHistory.reduce((acc, tx) => {
         let txRewards = 0;
-        if (tx.finalBalance <= tx.startingBalance) {
+        if (tx.finalBalance < tx.startingBalance) {
             const txBetAmount = Object.values(tx.betsPlaced).reduce((acc, betAmount) => acc + betAmount, 0);
             txRewards = txBetAmount * rewardsRatio;
         }
