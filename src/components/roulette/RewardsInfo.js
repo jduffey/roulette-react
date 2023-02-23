@@ -6,10 +6,16 @@ export function RewardsInfo(props) {
 
     const rewardsRatio = 0.01;
     const accumulatedRewards = props.transactionHistory.reduce((acc, tx) => {
-        const txBetAmount = Object.values(tx.betsPlaced).reduce((acc, betAmount) => acc + betAmount, 0);
-        const txRewards = txBetAmount * rewardsRatio;
+        let txRewards = 0;
+        if (tx.finalBalance <= tx.startingBalance) {
+            const txBetAmount = Object.values(tx.betsPlaced).reduce((acc, betAmount) => acc + betAmount, 0);
+            txRewards = txBetAmount * rewardsRatio;
+        }
         return acc + txRewards;
     }, 0);
+
+    const gamesWon = props.transactionHistory.filter(tx => tx.finalBalance > tx.startingBalance).length;
+    const gamesLost = props.transactionHistory.filter(tx => tx.finalBalance < tx.startingBalance).length;
 
     return (
         <div
@@ -28,6 +34,16 @@ export function RewardsInfo(props) {
                 <span className="rewards-info-value">
                     {`$ ${accumulatedRewards.toFixed(2)}`}
                 </span>
+            </div>
+            <div>
+                Games Won
+                <br />
+                {gamesWon}
+            </div>
+            <div>
+                Games Lost
+                <br />
+                {gamesLost}
             </div>
         </div >
     )

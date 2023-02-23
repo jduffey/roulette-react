@@ -18,8 +18,6 @@ import { RewardsInfo } from './RewardsInfo';
 import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
 
-// import { simulatePlayingGame } from '../../common/simulatePlayingGame';
-
 import { getCompleteResultsOfRound } from '../../common/getCompleteResultsOfRound';
 import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
 import { CompletionsCounter } from './CompletionsCounter';
@@ -27,7 +25,8 @@ import { NumbersHitGameCounter, NumbersHitGameCounterOverlay } from './NumberHit
 
 import { transferFrom, FIRST_PLAYER_ADDRESS, HOUSE_ADDRESS } from '../../common/blockchainWrapper';
 
-// import { simulatePlayingGame } from '../../common/simulatePlayingGame';
+// Uncomment this line to simulate playing the game
+import { simulatePlayingGame } from '../../common/simulatePlayingGame';
 
 function calculateTotalBetAmount(bets) {
     return bets.reduce((acc, pendingBet) => acc + pendingBet.betAmount, 0);

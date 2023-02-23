@@ -260,8 +260,8 @@ because we'll have "invisible" betting options later
 .RewardsInfo-component {
     position: relative;
     left: 1120px;
-    bottom: 1816px;
-    height: 200px;
+    bottom: 1880px;
+    height: 280px;
     width: 200px;
     border-radius: 24px;
     font-size: 20px;
@@ -276,7 +276,7 @@ because we'll have "invisible" betting options later
 }
 
 .RewardsInfo-component>div {
-    margin: 12px;
+    /* margin: 12px; */
 }
 
 .rewards-info-value {
@@ -304,7 +304,7 @@ because we'll have "invisible" betting options later
 .NumbersHitTracker-component {
     position: relative;
     left: 1300px;
-    bottom: 2880px;
+    bottom: 2960px;
     width: 140px;
     height: 660px;
     text-align: center;
@@ -325,7 +325,7 @@ because we'll have "invisible" betting options later
 .NumbersHitGameCounter-component {
     position: relative;
     left: 1448px;
-    bottom: 3600px;
+    bottom: 3680px;
     width: 32px;
     height: 660px;
     display: flex;
@@ -336,7 +336,7 @@ because we'll have "invisible" betting options later
 .NumbersHitGameCounterOverlay-component {
     position: relative;
     left: 1448px;
-    bottom: 4260px;
+    bottom: 4340px;
     width: 32px;
     height: 660px;
     text-align: center;
@@ -366,7 +366,7 @@ because we'll have "invisible" betting options later
 .CompletionsCounter-component {
     position: relative;
     left: 1320px;
-    bottom: 2872px;
+    bottom: 2952px;
     width: 100px;
     height: 60px;
     text-align: center;
