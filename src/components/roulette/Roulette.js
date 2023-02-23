@@ -141,6 +141,12 @@ export function Roulette() {
                         case -1: // player loses
                             const rewardsRatio = 0.01;
                             const houseCut = Math.abs(x) * (1 - rewardsRatio);
+                            // TODO is this a bug or just up to the dev to decide how rewards should work?
+                            // mathematically each bet should be treated separately
+                            // and rewards should be pulled off of each individaul bet and not the net player loss(?)
+                            // e.g. player loses ten bets at 1 chip each (10 chips lost total), so should send 0.1 to rewards
+                            // but if player also wins a simultaneous bet at 100 chips, then they are up overall and no fund will be sent to rewards
+                            // ...if the player had bet 11 games in a row instead of 11 bets at once, with the same results, then this reasoning may be more clear
                             const rewardsCut = Math.abs(x) * rewardsRatio;
                             transferFrom(
                                 FIRST_PLAYER_ADDRESS,
