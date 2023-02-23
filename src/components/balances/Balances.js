@@ -96,6 +96,7 @@ export function Balances() {
                     className="balances-table">
                     <thead>
                         <tr className="balances-table-headers">
+                            <th>Nickname</th>
                             <th>Address</th>
                             <th className="Balances-eth-balance">ETH Balance</th>
                             <th className="Balances-token-balance">{tokenSymbol} Balance</th>
@@ -109,8 +110,9 @@ export function Balances() {
                             Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance }]) => {
                                 return (
                                     <tr key={addr}>
+                                        <td>Name</td>
                                         <td>
-                                            {`${addr.slice(0, 8)}..${addr.slice(-6)}`}
+                                            {`${addr.slice(0, 5)}..${addr.slice(-3)}`}
                                         </td>
                                         <td>
                                             {Number(ethBalance).toLocaleString(undefined, {

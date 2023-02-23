@@ -480,7 +480,7 @@ because we'll have "invisible" betting options later
 .balances-table {
     table-layout: fixed;
     border-collapse: collapse;
-    width: 1380px;
+    width: 1460px;
 }
 
 .balances-table * {

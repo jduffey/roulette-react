@@ -24,6 +24,9 @@ exports[`Balances renders 1`] = `
           className="balances-table-headers"
         >
           <th>
+            Nickname
+          </th>
+          <th>
             Address
           </th>
           <th

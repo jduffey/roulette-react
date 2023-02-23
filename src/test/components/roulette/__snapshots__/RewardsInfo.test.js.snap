@@ -19,8 +19,18 @@ exports[`RewardsInfo renders when there are multiple transactions 1`] = `
     <span
       className="rewards-info-value"
     >
-      $ 21.00
+      $ 0.00
     </span>
+  </div>
+  <div>
+    Games Won
+    <br />
+    0
+  </div>
+  <div>
+    Games Lost
+    <br />
+    0
   </div>
 </div>
 `;
@@ -46,6 +56,16 @@ exports[`RewardsInfo renders when transaction history is empty 1`] = `
     >
       $ 0.00
     </span>
+  </div>
+  <div>
+    Games Won
+    <br />
+    0
+  </div>
+  <div>
+    Games Lost
+    <br />
+    0
   </div>
 </div>
 `;
