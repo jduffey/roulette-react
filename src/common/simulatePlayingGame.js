@@ -1,16 +1,17 @@
 import { BET_NAMES } from "./betNames";
 
 const NUMBER_OF_BETS_TO_PLACE = 1;
-const SECONDS_BETWEEN_BET_PLACEMENTS = .5;
 
-setInterval(function () {
+const SECONDS_BETWEEN_BET_PLACEMENTS = 1;
+
+setInterval(() => {
     let betsPlaced = 0;
-    setInterval(function () {
+    setInterval(() => {
         if (betsPlaced++ >= NUMBER_OF_BETS_TO_PLACE) return;
         const selectedChipAmt = ((choices) => {
             const index = Math.floor(Math.random() * choices.length);
             return choices[index];
-        })([1, 5]);
+        })([1, 5, 25]);
 
         const selectedBet = ((choices) => {
             const index = Math.floor(Math.random() * choices.length);

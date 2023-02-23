@@ -5,6 +5,7 @@ exports[`SpinButton renders when isSpinAllowed is false 1`] = `
   className="SpinButton-component"
   id="spin-button"
   onClick={[Function]}
+  role="button"
 >
   <span
     style={
@@ -33,6 +34,7 @@ exports[`SpinButton renders when isSpinAllowed is true 1`] = `
   className="SpinButton-component"
   id="spin-button"
   onClick={[Function]}
+  role="button"
 >
   <span
     style={

@@ -25,6 +25,10 @@ import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
 import { CompletionsCounter } from './CompletionsCounter';
 import { NumbersHitGameCounter, NumbersHitGameCounterOverlay } from './NumberHitGameCounter';
 
+import { transferFrom, FIRST_PLAYER_ADDRESS, HOUSE_ADDRESS } from '../../common/blockchainWrapper';
+
+// import { simulatePlayingGame } from '../../common/simulatePlayingGame';
+
 function calculateTotalBetAmount(bets) {
     return bets.reduce((acc, pendingBet) => acc + pendingBet.betAmount, 0);
 }
@@ -123,6 +127,30 @@ export function Roulette() {
                 const startingBalance = availableBalance + betAmountOnBoard;
 
                 const resultsOfRound = getCompleteResultsOfRound(startingBalance, pendingBets, randomWheelNumber);
+
+                const balanceDiff = resultsOfRound.finalBalance - resultsOfRound.startingBalance;
+
+                ((x) => {
+                    switch (Math.sign(x)) {
+                        case 1:
+                            transferFrom(
+                                HOUSE_ADDRESS,
+                                FIRST_PLAYER_ADDRESS,
+                                Math.abs(x).toString()
+                            )
+                            return;
+                        case -1:
+                            transferFrom(
+                                FIRST_PLAYER_ADDRESS,
+                                HOUSE_ADDRESS,
+                                Math.abs(x).toString()
+                            )
+                            return;
+                        default:
+                            // no diff in balance so no need to call chain
+                            return;
+                    }
+                })(balanceDiff);
 
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
                 setAvailableBalance(resultsOfRound.finalBalance);
