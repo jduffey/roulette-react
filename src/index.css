@@ -233,7 +233,7 @@ because we'll have "invisible" betting options later
     height: 300px;
     width: 200px;
     border-radius: 24px;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
     display: flex;
     flex-direction: column;
@@ -253,6 +253,8 @@ because we'll have "invisible" betting options later
     border: 2px solid white;
     border-radius: 24px;
     box-shadow: 2px 2px 0px 2px black;
+    margin-bottom: 16px;
+    padding: 2px;
 }
 
 .RewardsInfo-component {
@@ -437,7 +439,7 @@ because we'll have "invisible" betting options later
 .balances-table {
     table-layout: fixed;
     border-collapse: collapse;
-    width: 1200px;
+    width: 1380px;
 }
 
 .balances-table * {
@@ -451,13 +453,25 @@ because we'll have "invisible" betting options later
 }
 
 .Balances-eth-balance {
-    width: 220px;
+    width: 260px;
 }
 
 .Balances-token-balance {
-    width: 380px;
+    width: 260px;
+}
+
+.Balances-button-header {
+    width: 200px;
+}
+
+.Balances-contract-interact-button-column {
+    text-align: center;
 }
 
 .Balances-contract-interact-button {
     text-align: center;
+    font-weight: bold;
+    border-radius: 16px;
+    box-shadow: 0 0 0 2px #000000;
+    padding: 6px;
 }

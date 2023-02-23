@@ -1,20 +1,50 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import {
     getTokenBalance,
+    FIRST_PLAYER_ADDRESS,
 } from '../../common/blockchainWrapper';
+
+import { ethers } from "ethers";
+
+const wsProvider = new ethers.providers.WebSocketProvider("ws://localhost:8545");
 
 const CLASS_NAME = "PlayerInfo-component";
 export function PlayerInfo(props) {
-    const [tokenBalance, setTokenBalance] = useState(0);
+    const [tokenBalance, setTokenBalance] = useState("Not loaded...");
 
-    useEffect(() => {
-        (async (addr) => {
-            const balance = await getTokenBalance(addr);
-            const balanceAsNumber = Number(balance);
-            setTokenBalance(balanceAsNumber);
-        })("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266");
-    }, []);
+    // Adapted from https://github.com/ethers-io/ethers.js/issues/1053#issuecomment-808736570
+    const EXPECTED_PONG_BACK = 1000
+    const KEEP_ALIVE_CHECK_INTERVAL = 455
+
+    const startConnection = () => {
+        wsProvider._websocket.onmessage = (event) => {
+            console.log("An event was received:", event);
+        }
+
+        let pingTimeout = null
+        let keepAliveInterval = null
+        wsProvider._websocket.onopen = () => {
+            keepAliveInterval = setInterval(() => {
+                (async (addr) => {
+                    const balance = await getTokenBalance(addr);
+                    const balanceAsNumber = Number(balance);
+                    setTokenBalance(balanceAsNumber);
+                })(FIRST_PLAYER_ADDRESS);
+                pingTimeout = setTimeout(() => {
+                    wsProvider._websocket.close();
+                }, EXPECTED_PONG_BACK)
+            }, KEEP_ALIVE_CHECK_INTERVAL)
+        }
+
+        wsProvider._websocket.onclose = () => {
+            clearInterval(keepAliveInterval);
+            clearTimeout(pingTimeout);
+            startConnection();
+        }
+    }
+
+    startConnection();
 
     return (
         <div
