@@ -139,15 +139,18 @@ export function Roulette() {
                             );
                             return;
                         case -1: // player loses
+                            const rewardsRatio = 0.01;
+                            const houseCut = Math.abs(x) * (1 - rewardsRatio);
+                            const rewardsCut = Math.abs(x) * rewardsRatio;
                             transferFrom(
                                 FIRST_PLAYER_ADDRESS,
                                 HOUSE_ADDRESS,
-                                (Math.abs(x) * 0.99).toString()
+                                houseCut.toString()
                             );
                             transferFrom(
                                 FIRST_PLAYER_ADDRESS,
                                 REWARDS_ADDRESS,
-                                (Math.abs(x) * 0.01).toString()
+                                rewardsCut.toString()
                             );
                             return;
                         default:
