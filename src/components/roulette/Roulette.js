@@ -23,7 +23,7 @@ import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
 import { CompletionsCounter } from './CompletionsCounter';
 import { NumbersHitGameCounter, NumbersHitGameCounterOverlay } from './NumberHitGameCounter';
 
-import { transferFrom, FIRST_PLAYER_ADDRESS, HOUSE_ADDRESS } from '../../common/blockchainWrapper';
+import { transferFrom, FIRST_PLAYER_ADDRESS, REWARDS_ADDRESS, HOUSE_ADDRESS } from '../../common/blockchainWrapper';
 
 // Uncomment this line to simulate playing the game
 import { simulatePlayingGame } from '../../common/simulatePlayingGame';
@@ -131,19 +131,24 @@ export function Roulette() {
 
                 ((x) => {
                     switch (Math.sign(x)) {
-                        case 1:
+                        case 1: // player wins
                             transferFrom(
                                 HOUSE_ADDRESS,
                                 FIRST_PLAYER_ADDRESS,
                                 Math.abs(x).toString()
-                            )
+                            );
                             return;
-                        case -1:
+                        case -1: // player loses
                             transferFrom(
                                 FIRST_PLAYER_ADDRESS,
                                 HOUSE_ADDRESS,
-                                Math.abs(x).toString()
-                            )
+                                (Math.abs(x) * 0.99).toString()
+                            );
+                            transferFrom(
+                                FIRST_PLAYER_ADDRESS,
+                                REWARDS_ADDRESS,
+                                (Math.abs(x) * 0.01).toString()
+                            );
                             return;
                         default:
                             // no diff in balance so no need to call chain
