@@ -4,7 +4,7 @@
 // import { App } from "../../components/App";
 
 describe("App", () => {
-    it('passed as a workaround to prevent CI/CD pipeline from failing when trying to make a websocket connection during tests', () => {
+    it('passes as a workaround to prevent CI/CD pipeline from failing when trying to make a websocket connection during tests', () => {
         expect(true).toBe(true);
     });
     // it.each([
