@@ -65,6 +65,7 @@ describe(`${getCompleteResultsOfRound.name}`, () => {
                 acc[pendingBet.betName] = {
                     betAmount: pendingBet.betAmount,
                     winningsOnBet: 0,
+                    didBetWin: false,
                     betReturned: 0,
                 };
                 return acc;
@@ -74,6 +75,7 @@ describe(`${getCompleteResultsOfRound.name}`, () => {
         // populate expected resultsOfBets with information about the bets that won
         expectedWinningBets.forEach((betName) => {
             expected.resultsOfBets[betName].winningsOnBet = getBetNameMultiplier(betName) * BET_AMOUNT;
+            expected.resultsOfBets[betName].didBetWin = true;
             expected.resultsOfBets[betName].betReturned = BET_AMOUNT;
         });
 
@@ -96,6 +98,7 @@ describe(`${getCompleteResultsOfRound.name}`, () => {
                 [BET_NAMES.STRAIGHT_UP_1]: {
                     betAmount: pendingBets.length * BET_AMOUNT,
                     winningsOnBet: pendingBets.length * 35 * BET_AMOUNT,
+                    didBetWin: true,
                     betReturned: pendingBets.length * BET_AMOUNT,
                 },
             },
@@ -121,6 +124,7 @@ describe(`${getCompleteResultsOfRound.name}`, () => {
                 [BET_NAMES.STRAIGHT_UP_1]: {
                     betAmount: pendingBets.length * BET_AMOUNT,
                     winningsOnBet: 0,
+                    didBetWin: false,
                     betReturned: 0,
                 },
             },
