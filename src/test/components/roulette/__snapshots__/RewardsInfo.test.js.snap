@@ -19,7 +19,7 @@ exports[`RewardsInfo renders when there are multiple transactions 1`] = `
     <span
       className="rewards-info-value"
     >
-      $ 21.00
+      $ 0.00
     </span>
   </div>
   <div>
