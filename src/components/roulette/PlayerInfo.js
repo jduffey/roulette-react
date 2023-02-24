@@ -15,7 +15,7 @@ export function PlayerInfo(props) {
 
     // Adapted from https://github.com/ethers-io/ethers.js/issues/1053#issuecomment-808736570
     const EXPECTED_PONG_BACK = 1000
-    const KEEP_ALIVE_CHECK_INTERVAL = 455
+    const KEEP_ALIVE_CHECK_INTERVAL = 500
 
     const startConnection = () => {
         wsProvider._websocket.onmessage = (event) => {

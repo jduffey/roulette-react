@@ -23,6 +23,14 @@ export function Balances() {
     const ETH_TO_DEPOSIT = "1";
     const TOKENS_TO_REDEEM = "100000";
     const TOKENS_TO_TRANSFER = "10000";
+    const NICKNAMES = {
+        "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266": "P1",
+        "0x70997970C51812dc3A010C7d01b50e0d17dc79C8": "P2",
+        "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC": "P3",
+        "0x90F79bf6EB2c4f870365E785982E1f101E93b906": "Rewards",
+        [HOUSE_ADDRESS]: "House",
+        [TOKEN_CONTRACT_ADDRESS]: "Token",
+    }
 
     useEffect(() => {
         // Default values, including seed phrase: https://hardhat.org/hardhat-network/docs/reference
@@ -96,6 +104,7 @@ export function Balances() {
                     className="balances-table">
                     <thead>
                         <tr className="balances-table-headers">
+                            <th>Nickname</th>
                             <th>Address</th>
                             <th className="Balances-eth-balance">ETH Balance</th>
                             <th className="Balances-token-balance">{tokenSymbol} Balance</th>
@@ -109,8 +118,9 @@ export function Balances() {
                             Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance }]) => {
                                 return (
                                     <tr key={addr}>
+                                        <td>{NICKNAMES[addr]}</td>
                                         <td>
-                                            {`${addr.slice(0, 8)}..${addr.slice(-6)}`}
+                                            {`${addr.slice(0, 5)}..${addr.slice(-3)}`}
                                         </td>
                                         <td>
                                             {Number(ethBalance).toLocaleString(undefined, {

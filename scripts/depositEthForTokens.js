@@ -13,7 +13,7 @@ async function depositEthForTokens() {
 
     const signers = await ethers.getSigners();
 
-    const players = signers.slice(0, -1);
+    const players = signers.slice(0, -2);
     const [houseSigner] = signers.slice(-1);
 
     const TOKEN_CONTRACT_ADDRESS = ethers.utils.getContractAddress({ from: houseSigner.address, nonce: 0 });

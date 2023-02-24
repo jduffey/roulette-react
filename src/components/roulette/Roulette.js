@@ -21,9 +21,19 @@ import { SpinResult } from './SpinResult';
 import { getCompleteResultsOfRound } from '../../common/getCompleteResultsOfRound';
 import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
 import { CompletionsCounter } from './CompletionsCounter';
+import {
+    NumbersHitGameCounter,
+    NumbersHitGameCounterOverlay,
+} from './NumberHitGameCounter';
 
-import { transferFrom, FIRST_PLAYER_ADDRESS, HOUSE_ADDRESS } from '../../common/blockchainWrapper';
+import {
+    transferFrom,
+    FIRST_PLAYER_ADDRESS,
+    REWARDS_ADDRESS,
+    HOUSE_ADDRESS
+} from '../../common/blockchainWrapper';
 
+// Uncomment this line to simulate playing the game
 // import { simulatePlayingGame } from '../../common/simulatePlayingGame';
 
 function calculateTotalBetAmount(bets) {
@@ -95,7 +105,7 @@ export function Roulette() {
     }, []);
 
     function handleBettingSquareClick(bettingSquareName) {
-        if (currentChipAmountSelected > availableBalance) {
+        if (currentChipAmountSelected > availableBalance) { // TODO replace with token balance
             alert("You don't have enough money to place that bet!");
             return;
         }
@@ -105,7 +115,7 @@ export function Roulette() {
         copyPendingBets.push(pendingBet);
         setPendingBets(copyPendingBets);
 
-        const newBalance = availableBalance - currentChipAmountSelected;
+        const newBalance = availableBalance - currentChipAmountSelected; // TODO replaced with token balance, remove setter
 
         setAvailableBalance(newBalance);
     }
@@ -124,30 +134,52 @@ export function Roulette() {
                 const startingBalance = availableBalance + betAmountOnBoard;
 
                 const resultsOfRound = getCompleteResultsOfRound(startingBalance, pendingBets, randomWheelNumber);
+                console.log("resultsOfRound", resultsOfRound);
 
-                const balanceDiff = resultsOfRound.finalBalance - resultsOfRound.startingBalance;
-
-                ((x) => {
-                    switch (Math.sign(x)) {
-                        case 1:
-                            transferFrom(
-                                HOUSE_ADDRESS,
-                                FIRST_PLAYER_ADDRESS,
-                                Math.abs(x).toString()
-                            )
-                            return;
-                        case -1:
-                            transferFrom(
-                                FIRST_PLAYER_ADDRESS,
-                                HOUSE_ADDRESS,
-                                Math.abs(x).toString()
-                            )
-                            return;
-                        default:
-                            // no diff in balance so no need to call chain
-                            return;
+                // Go through each bet and sum the total owed back to the player
+                const owedByHouseToPlayer = Object.entries(resultsOfRound.resultsOfBets).reduce((acc, [_betName, individualBetResult]) => {
+                    if (individualBetResult.didBetWin) {
+                        acc += individualBetResult.winningsOnBet;
                     }
-                })(balanceDiff);
+                    return acc;
+                }, 0);
+
+                const owedByPlayerToHouse = Object.entries(resultsOfRound.resultsOfBets).reduce((acc, [_betName, individualBetResult]) => {
+                    if (!individualBetResult.didBetWin) {
+                        acc += individualBetResult.betAmount;
+                    }
+                    return acc;
+                }, 0);
+
+                // We can say that "1% of house take goes to rewards"
+                const owedByHouseToRewards = owedByPlayerToHouse * 0.01;
+
+                if (owedByHouseToPlayer > 0) {
+                    console.log("House --> Player", owedByHouseToPlayer);
+                    transferFrom(
+                        HOUSE_ADDRESS,
+                        FIRST_PLAYER_ADDRESS,
+                        owedByHouseToPlayer.toString()
+                    );
+                }
+
+                if (owedByPlayerToHouse > 0) {
+                    console.log("Player --> House", owedByPlayerToHouse);
+                    transferFrom(
+                        FIRST_PLAYER_ADDRESS,
+                        HOUSE_ADDRESS,
+                        owedByPlayerToHouse.toString()
+                    );
+                }
+
+                if (owedByHouseToRewards > 0) {
+                    console.log("House --> Rewards", owedByHouseToRewards);
+                    transferFrom(
+                        HOUSE_ADDRESS,
+                        REWARDS_ADDRESS,
+                        owedByHouseToRewards.toString()
+                    );
+                }
 
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
                 setAvailableBalance(resultsOfRound.finalBalance);
@@ -229,6 +261,12 @@ export function Roulette() {
                 transactionHistory={transactionHistory}
             />
             <CompletionsCounter
+                transactionHistory={transactionHistory}
+            />
+            <NumbersHitGameCounter
+                transactionHistory={transactionHistory}
+            />
+            <NumbersHitGameCounterOverlay
                 transactionHistory={transactionHistory}
             />
         </div >
