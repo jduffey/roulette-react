@@ -33,48 +33,50 @@ export function Balances() {
     }
 
     useEffect(() => {
-        // Default values, including seed phrase: https://hardhat.org/hardhat-network/docs/reference
-        const addresses = [
-            "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-            "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
-            "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
-            "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
-            HOUSE_ADDRESS,
-            TOKEN_CONTRACT_ADDRESS
-        ];
+        const interval = setInterval(() => {
+            // Default values, including seed phrase: https://hardhat.org/hardhat-network/docs/reference
+            const addresses = [
+                "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+                "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+                "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+                "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+                HOUSE_ADDRESS,
+                TOKEN_CONTRACT_ADDRESS
+            ];
 
-        const addressWithBalancePromises = addresses.map(async (address) => {
-            const balance = await getEthBalance(address);
-            return { address, balance };
-        });
-
-        Promise.all(addressWithBalancePromises).then((res) => {
-            const newBalances = res.reduce((acc, cur) => {
-                acc[cur.address] = cur.balance;
-                return acc;
-            }, {});
-            setEthBalances(newBalances);
-        });
-
-        const addressesWithTokenBalancePromises = addresses.map(async (address) => {
-            const balance = await getTokenBalance(address);
-            return { address, balance };
-        });
-
-        Promise.all(addressesWithTokenBalancePromises).then((res) => {
-            const newBalances = res.reduce((acc, cur) => {
-                acc[cur.address] = cur.balance;
-                return acc;
-            }, {});
-            setTokenBalances(newBalances);
-        });
-
-        getBlock()
-            .then((blockData) => {
-                setBlock(blockData);
-                setRerender(!rerender);
+            const addressWithBalancePromises = addresses.map(async (address) => {
+                const balance = await getEthBalance(address);
+                return { address, balance };
             });
 
+            Promise.all(addressWithBalancePromises).then((res) => {
+                const newBalances = res.reduce((acc, cur) => {
+                    acc[cur.address] = cur.balance;
+                    return acc;
+                }, {});
+                setEthBalances(newBalances);
+            });
+
+            const addressesWithTokenBalancePromises = addresses.map(async (address) => {
+                const balance = await getTokenBalance(address);
+                return { address, balance };
+            });
+
+            Promise.all(addressesWithTokenBalancePromises).then((res) => {
+                const newBalances = res.reduce((acc, cur) => {
+                    acc[cur.address] = cur.balance;
+                    return acc;
+                }, {});
+                setTokenBalances(newBalances);
+            });
+
+            getBlock()
+                .then((blockData) => {
+                    setBlock(blockData);
+                });
+        }, 1000);
+
+        return () => clearInterval(interval);
     }, [rerender]);
 
     const combinedBalances = Object.keys(ethBalances).reduce((acc, address) => {

@@ -1,18 +1,25 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
+
+import {
+    getTokenBalance,
+    REWARDS_ADDRESS
+} from "../../common/blockchainWrapper";
 
 const CLASS_NAME = "RewardsInfo-component";
 export function RewardsInfo(props) {
+    const [rewardsBalance, setRewardsBalance] = useState(0);
+
     const gamesPlayed = props.transactionHistory.length;
 
-    const rewardsRatio = 0.01;
+    useEffect(() => {
+        setTimeout(async () => {
+            const balance = await getTokenBalance(REWARDS_ADDRESS);
+            setRewardsBalance(balance);
+        }, 100);
 
-    // BUG: doesn't filter for only losing bets because that isn't stored in the transaction history
-    const accumulatedRewards = props.transactionHistory.reduce((acc, tx) => {
-        const losingBetAmount = Object.values(tx.betsPlaced).reduce((acc, betAmount) => acc + betAmount, 0);
-        const txRewards = losingBetAmount * rewardsRatio;
-        return acc + txRewards;
-    }, 0);
+    }, [props.transactionHistory]);
 
+    const accumulatedRewardsText = `$ ${Number(rewardsBalance).toFixed(2)}`;
     const gamesWon = props.transactionHistory.filter(tx => tx.finalBalance > tx.startingBalance).length;
     const gamesLost = props.transactionHistory.filter(tx => tx.finalBalance < tx.startingBalance).length;
 
@@ -31,7 +38,7 @@ export function RewardsInfo(props) {
                 {"Rewards"}
                 < br />
                 <span className="rewards-info-value">
-                    {`$ ${accumulatedRewards.toFixed(2)}`}
+                    {accumulatedRewardsText}
                 </span>
             </div>
             <div>
