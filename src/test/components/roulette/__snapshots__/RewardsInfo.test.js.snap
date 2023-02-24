@@ -32,6 +32,11 @@ exports[`RewardsInfo renders when there are multiple transactions 1`] = `
     <br />
     0
   </div>
+  <div>
+    Games Tied
+    <br />
+    2
+  </div>
 </div>
 `;
 
@@ -67,6 +72,11 @@ exports[`RewardsInfo renders when there are won and lost games 1`] = `
     <br />
     2
   </div>
+  <div>
+    Games Tied
+    <br />
+    1
+  </div>
 </div>
 `;
 
@@ -99,6 +109,11 @@ exports[`RewardsInfo renders when transaction history is empty 1`] = `
   </div>
   <div>
     Games Lost
+    <br />
+    0
+  </div>
+  <div>
+    Games Tied
     <br />
     0
   </div>
