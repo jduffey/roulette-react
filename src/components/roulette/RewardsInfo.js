@@ -5,14 +5,11 @@ export function RewardsInfo(props) {
     const gamesPlayed = props.transactionHistory.length;
 
     const rewardsRatio = 0.01;
+
+    // BUG: doesn't filter for only losing bets because that isn't stored in the transaction history
     const accumulatedRewards = props.transactionHistory.reduce((acc, tx) => {
-        let txRewards = 0;
-        if (tx.finalBalance < tx.startingBalance) {
-            // TODO this is a bug because it uses the entire bet amount, not the amount that was lost
-            // TODO update this to query the chain instead
-            const txBetAmount = Object.values(tx.betsPlaced).reduce((acc, betAmount) => acc + betAmount, 0);
-            txRewards = txBetAmount * rewardsRatio;
-        }
+        const losingBetAmount = Object.values(tx.betsPlaced).reduce((acc, betAmount) => acc + betAmount, 0);
+        const txRewards = losingBetAmount * rewardsRatio;
         return acc + txRewards;
     }, 0);
 

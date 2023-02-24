@@ -143,13 +143,20 @@ export function Roulette() {
                     return acc;
                 }, 0);
 
+                // We can say that "1% of house take goes to rewards"
                 const owedByHouseToRewards = owedByPlayerToHouse * 0.01;
 
-                console.log("owedByHouseToPlayer", owedByHouseToPlayer);
-                console.log("owedByPlayerToHouse", owedByPlayerToHouse);
-                console.log("owedByHouseToRewards", owedByHouseToRewards);
-
                 if (owedByHouseToPlayer > 0) {
+                    console.log("House --> Player", owedByHouseToPlayer);
+                    transferFrom(
+                        HOUSE_ADDRESS,
+                        FIRST_PLAYER_ADDRESS,
+                        owedByHouseToPlayer.toString()
+                    );
+                }
+
+                if (owedByPlayerToHouse > 0) {
+                    console.log("Player --> House", owedByPlayerToHouse);
                     transferFrom(
                         FIRST_PLAYER_ADDRESS,
                         HOUSE_ADDRESS,
@@ -158,75 +165,13 @@ export function Roulette() {
                 }
 
                 if (owedByHouseToRewards > 0) {
-                    transferFrom(
-                        HOUSE_ADDRESS,
-                        FIRST_PLAYER_ADDRESS,
-                        owedByHouseToPlayer.toString()
-                    );
-                }
-
-                if (owedByHouseToRewards > 0) {
+                    console.log("House --> Rewards", owedByHouseToRewards);
                     transferFrom(
                         HOUSE_ADDRESS,
                         REWARDS_ADDRESS,
                         owedByHouseToRewards.toString()
                     );
                 }
-
-
-                // TODO HERE: sum the bet amounts for each bet that lost
-                // const totalBetAmountLost = Object.entries(resultsOfRound.resultsOfBets).reduce((acc, [betName, individualBetResult]) => {
-                //     if (!individualBetResult.didBetWin) {
-                //         acc += individualBetResult.betAmount;
-                //     }
-                //     return acc;
-                // }, 0);
-
-                // const totalToSendToHouse = totalBetAmountLost * 0.99;
-                // const totalToSendToRewards = totalBetAmountLost * 0.01;
-
-                // console.log("totalBetAmountLost", totalBetAmountLost);
-
-                // const balanceDiff = resultsOfRound.finalBalance - resultsOfRound.startingBalance;
-
-                // Do the payouts based on the net balance diff only
-                // Replace this with a scheme that distributes funds based on the individual bets
-                // i.e. every individual losing bet should distribute to rewards, not just the net player loss
-                // ((diff) => {
-                //     switch (Math.sign(diff)) {
-                //         case 1: // player wins
-                //             transferFrom(
-                //                 HOUSE_ADDRESS,
-                //                 FIRST_PLAYER_ADDRESS,
-                //                 Math.abs(diff).toString()
-                //             );
-                //             return;
-                //         case -1: // player loses
-                //             // const rewardsRatio = 0.01;
-                //             // const houseCut = Math.abs(diff) * (1 - rewardsRatio);
-                //             // TODO is this a bug or just up to the dev to decide how rewards should work?
-                //             // mathematically each bet should be treated separately
-                //             // and rewards should be pulled off of each individaul bet and not the net player loss(?)
-                //             // e.g. player loses ten bets at 1 chip each (10 chips lost total), so should send 0.1 to rewards
-                //             // but if player also wins a simultaneous bet at 100 chips, then they are up overall and no fund will be sent to rewards
-                //             // ...if the player had bet 11 games in a row instead of 11 bets at once, with the same results, then this reasoning may be more clear
-                //             // const rewardsCut = Math.abs(diff) * rewardsRatio;
-                //             transferFrom(
-                //                 FIRST_PLAYER_ADDRESS,
-                //                 HOUSE_ADDRESS,
-                //                 totalToSendToHouse.toString()
-                //             );
-                //             transferFrom(
-                //                 FIRST_PLAYER_ADDRESS,
-                //                 REWARDS_ADDRESS,
-                //                 totalToSendToRewards.toString()
-                //             );
-                //             return;
-                //         default:
-                //             // no diff in balance so no need to call chain
-                //             return;
-                //     }
-                // })(balanceDiff);
 
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
                 setAvailableBalance(resultsOfRound.finalBalance);
