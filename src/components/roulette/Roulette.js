@@ -21,9 +21,17 @@ import { SpinResult } from './SpinResult';
 import { getCompleteResultsOfRound } from '../../common/getCompleteResultsOfRound';
 import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
 import { CompletionsCounter } from './CompletionsCounter';
-import { NumbersHitGameCounter, NumbersHitGameCounterOverlay } from './NumberHitGameCounter';
+import {
+    NumbersHitGameCounter,
+    NumbersHitGameCounterOverlay,
+} from './NumberHitGameCounter';
 
-import { transferFrom, FIRST_PLAYER_ADDRESS, REWARDS_ADDRESS, HOUSE_ADDRESS } from '../../common/blockchainWrapper';
+import {
+    transferFrom,
+    FIRST_PLAYER_ADDRESS,
+    REWARDS_ADDRESS,
+    HOUSE_ADDRESS
+} from '../../common/blockchainWrapper';
 
 // Uncomment this line to simulate playing the game
 // import { simulatePlayingGame } from '../../common/simulatePlayingGame';
@@ -129,14 +137,14 @@ export function Roulette() {
                 console.log("resultsOfRound", resultsOfRound);
 
                 // Go through each bet and sum the total owed back to the player
-                const owedByHouseToPlayer = Object.entries(resultsOfRound.resultsOfBets).reduce((acc, [betName, individualBetResult]) => {
+                const owedByHouseToPlayer = Object.entries(resultsOfRound.resultsOfBets).reduce((acc, [_betName, individualBetResult]) => {
                     if (individualBetResult.didBetWin) {
                         acc += individualBetResult.winningsOnBet;
                     }
                     return acc;
                 }, 0);
 
-                const owedByPlayerToHouse = Object.entries(resultsOfRound.resultsOfBets).reduce((acc, [betName, individualBetResult]) => {
+                const owedByPlayerToHouse = Object.entries(resultsOfRound.resultsOfBets).reduce((acc, [_betName, individualBetResult]) => {
                     if (!individualBetResult.didBetWin) {
                         acc += individualBetResult.betAmount;
                     }

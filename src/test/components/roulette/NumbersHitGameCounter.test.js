@@ -1,7 +1,9 @@
 import renderer from 'react-test-renderer';
 
-import { NumbersHitGameCounter } from "../../../components/roulette/NumberHitGameCounter";
-import { NumbersHitGameCounterOverlay } from "../../../components/roulette/NumberHitGameCounter";
+import {
+    NumbersHitGameCounter,
+    NumbersHitGameCounterOverlay,
+} from "../../../components/roulette/NumberHitGameCounter";
 
 describe("NumbersHitGameCounter", () => {
     it('all boxes inactive when there are no spins', () => {
