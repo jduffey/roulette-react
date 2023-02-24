@@ -97,7 +97,7 @@ export function Roulette() {
     }, []);
 
     function handleBettingSquareClick(bettingSquareName) {
-        if (currentChipAmountSelected > availableBalance) {
+        if (currentChipAmountSelected > availableBalance) { // TODO replace with token balance
             alert("You don't have enough money to place that bet!");
             return;
         }
@@ -107,7 +107,7 @@ export function Roulette() {
         copyPendingBets.push(pendingBet);
         setPendingBets(copyPendingBets);
 
-        const newBalance = availableBalance - currentChipAmountSelected;
+        const newBalance = availableBalance - currentChipAmountSelected; // TODO replaced with token balance, remove setter
 
         setAvailableBalance(newBalance);
     }
