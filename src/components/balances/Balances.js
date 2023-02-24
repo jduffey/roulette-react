@@ -72,6 +72,7 @@ export function Balances() {
         getBlock()
             .then((blockData) => {
                 setBlock(blockData);
+                setRerender(!rerender);
             });
 
     }, [rerender]);
