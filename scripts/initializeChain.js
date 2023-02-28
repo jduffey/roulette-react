@@ -38,6 +38,15 @@ async function _depositEthForTokens(houseSigner, players) {
             value: ethers.utils.parseEther("1")
         });
 
+        const receipt = await tx.wait();
+        // console.log("\n***** RECEIPT *****");
+        // console.log(receipt);
+
+        // for (const event of receipt.events) {
+        //     console.log("\n***** EVENT *****");
+        //     console.log(JSON.stringify(event, null, 2));
+        // }
+
         return tx;
     });
 
@@ -74,6 +83,7 @@ async function initializeChain() {
     const [houseSigner] = signers.slice(-1);
 
     await _deployTokenContract(deployer);
+
     await _depositEthForTokens(houseSigner, players);
 }
 
