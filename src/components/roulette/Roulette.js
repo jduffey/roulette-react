@@ -34,6 +34,7 @@ import {
     HOUSE_ADDRESS,
     incrementGamesPlayedCounter,
     getGamesPlayedCounter,
+    getTokenBalance,
 } from '../../common/blockchainWrapper';
 
 // Uncomment this line to simulate playing the game
@@ -68,6 +69,7 @@ export function Roulette() {
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
 
     const [playerBalance, setPlayerBalance] = useState("Loading...");
+    const [houseBalance, setHouseBalance] = useState(undefined);
 
     const [spinResults, setSpinResults] = useState([]);
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
@@ -106,20 +108,24 @@ export function Roulette() {
                     setPlayerBalance(previousRoundResults.finalBalance);
 
                     setSpinResults(json.history.map(historyItem => historyItem.spinResult));
-                }
-            });
 
-        getGamesPlayedCounter()
-            .then(count => {
-                if (mounted) {
-                    const parsedCount = parseInt(count._hex, 16);
-                    console.log("gamesPlayed", parsedCount);
-                    setGamesPlayed(parsedCount);
+                    getTokenBalance(HOUSE_ADDRESS)
+                        .then(bal => {
+                            console.log("houseBalance", bal);
+                            setHouseBalance(bal);
+                        });
+
+                    getGamesPlayedCounter()
+                        .then(count => {
+                            const parsedCount = parseInt(count._hex, 16);
+                            console.log("gamesPlayed", parsedCount);
+                            setGamesPlayed(parsedCount);
+                        });
                 }
             });
 
         return () => { mounted = false };
-    }, []);
+    }, [houseBalance, gamesPlayed]);
 
     function handleBettingSquareClick(bettingSquareName) {
         if (currentChipAmountSelected > playerBalance) {
@@ -198,14 +204,6 @@ export function Roulette() {
                     );
                 }
 
-                incrementGamesPlayedCounter()
-                    .then(() => getGamesPlayedCounter()
-                        .then(count => {
-                            const parsedCount = parseInt(count._hex, 16);
-                            console.log("gamesPlayed", parsedCount);
-                            setGamesPlayed(parsedCount);
-                        }));
-
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
                 setPlayerBalance(resultsOfRound.finalBalance);
 
@@ -227,6 +225,20 @@ export function Roulette() {
                 setPendingBets([]);
 
                 updateTransactionHistory(copyTransactionHistory);
+
+                getTokenBalance(HOUSE_ADDRESS)
+                    .then(bal => {
+                        console.log("houseBalance", bal);
+                        setHouseBalance(bal);
+                    });
+
+                incrementGamesPlayedCounter()
+                    .then(() => getGamesPlayedCounter()
+                        .then(count => {
+                            const parsedCount = parseInt(count._hex, 16);
+                            console.log("gamesPlayed", parsedCount);
+                            setGamesPlayed(parsedCount);
+                        }));
             });
     }
 
@@ -295,7 +307,9 @@ export function Roulette() {
             <NumbersHitGameCounterOverlay
                 transactionHistory={stateTransactionHistory}
             />
-            <HouseInfo />
+            <HouseInfo
+                houseBalance={houseBalance}
+            />
         </div >
     );
 }
