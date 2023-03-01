@@ -61,7 +61,7 @@ function getNewTransactionForDatabase(mostRecentRoundResults) {
 
 const CLASS_NAME = "Roulette-component";
 export function Roulette(props) {
-    const playersAddress = props.playerAddress;
+    const playerAddress = props.playerAddress;
     const playerDbEndpoint = props.playerDbEndpoint;
 
     const [stateTransactionHistory, setStateTransactionHistory] = useState([]);
@@ -80,7 +80,7 @@ export function Roulette(props) {
     useEffect(() => {
         let mounted = true;
 
-        getTokenBalance(playersAddress)
+        getTokenBalance(playerAddress)
             .then(balance => {
                 if (mounted) {
                     setPlayerBalance(balance);
@@ -129,7 +129,7 @@ export function Roulette(props) {
             });
 
         return () => { mounted = false };
-    }, [playerDbEndpoint, playersAddress, houseBalance, gamesPlayed]);
+    }, [playerDbEndpoint, playerAddress, houseBalance, gamesPlayed]);
 
     function handleBettingSquareClick(bettingSquareName) {
         if (currentChipAmountSelected > playerBalance) {
@@ -176,7 +176,7 @@ export function Roulette(props) {
                     console.log("House --> Player", owedByHouseToPlayer);
                     transferFrom(
                         HOUSE_ADDRESS,
-                        playersAddress,
+                        playerAddress,
                         owedByHouseToPlayer.toString()
                     );
                 }
@@ -184,7 +184,7 @@ export function Roulette(props) {
                 if (owedByPlayerToHouse > 0) {
                     console.log("Player --> House", owedByPlayerToHouse);
                     transferFrom(
-                        playersAddress,
+                        playerAddress,
                         HOUSE_ADDRESS,
                         owedByPlayerToHouse.toString()
                     );
@@ -220,7 +220,7 @@ export function Roulette(props) {
 
                 updateTransactionHistory(copyTransactionHistory, playerDbEndpoint);
 
-                getTokenBalance(playersAddress)
+                getTokenBalance(playerAddress)
                     .then(bal => {
                         setPlayerBalance(bal);
                     });
