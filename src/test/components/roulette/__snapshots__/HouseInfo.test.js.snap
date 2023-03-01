@@ -13,6 +13,26 @@ exports[`HouseInfo renders when houseBalance is 0 1`] = `
       Loading...
     </span>
   </div>
+  <br />
+  <div>
+    Rewards
+    <br />
+    <span
+      className="rewards-info-value"
+    >
+      Loading...
+    </span>
+  </div>
+  <br />
+  <div>
+    Games Played
+    <br />
+    <span
+      className="rewards-info-value"
+    >
+      Loading...
+    </span>
+  </div>
 </div>
 `;
 
@@ -29,6 +49,26 @@ exports[`HouseInfo renders when houseBalance is 123456.9876 1`] = `
       ⛓ 123,456.99
     </span>
   </div>
+  <br />
+  <div>
+    Rewards
+    <br />
+    <span
+      className="rewards-info-value"
+    >
+      Loading...
+    </span>
+  </div>
+  <br />
+  <div>
+    Games Played
+    <br />
+    <span
+      className="rewards-info-value"
+    >
+      Loading...
+    </span>
+  </div>
 </div>
 `;
 
@@ -38,6 +78,26 @@ exports[`HouseInfo renders when houseBalance is undefined 1`] = `
 >
   <div>
     House Balance
+    <br />
+    <span
+      className="rewards-info-value"
+    >
+      Loading...
+    </span>
+  </div>
+  <br />
+  <div>
+    Rewards
+    <br />
+    <span
+      className="rewards-info-value"
+    >
+      Loading...
+    </span>
+  </div>
+  <br />
+  <div>
+    Games Played
     <br />
     <span
       className="rewards-info-value"

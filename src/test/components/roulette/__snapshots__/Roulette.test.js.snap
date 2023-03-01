@@ -2306,43 +2306,6 @@ exports[`Roulette renders 1`] = `
     </table>
   </div>
   <div
-    className="RewardsInfo-component"
-  >
-    <div>
-      Games Played
-      <br />
-      <span
-        className="rewards-info-value"
-      >
-        Loading...
-      </span>
-    </div>
-    <div>
-      Rewards
-      <br />
-      <span
-        className="rewards-info-value"
-      >
-        Loading...
-      </span>
-    </div>
-    <div>
-      Games Won
-      <br />
-      0
-    </div>
-    <div>
-      Games Lost
-      <br />
-      0
-    </div>
-    <div>
-      Games Tied
-      <br />
-      0
-    </div>
-  </div>
-  <div
     className="NumbersHitTracker-component"
   >
     <div
@@ -6680,6 +6643,26 @@ exports[`Roulette renders 1`] = `
   >
     <div>
       House Balance
+      <br />
+      <span
+        className="rewards-info-value"
+      >
+        Loading...
+      </span>
+    </div>
+    <br />
+    <div>
+      Rewards
+      <br />
+      <span
+        className="rewards-info-value"
+      >
+        Loading...
+      </span>
+    </div>
+    <br />
+    <div>
+      Games Played
       <br />
       <span
         className="rewards-info-value"

@@ -14,7 +14,6 @@ import { PendingBetsTable } from './PendingBetsTable';
 import { MostRecentSpinResults } from './MostRecentSpinResults';
 import { NumbersHitTracker } from './NumbersHitTracker';
 import { PlayerInfo } from './PlayerInfo';
-import { RewardsInfo } from './RewardsInfo';
 import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
 import { HouseInfo } from './HouseInfo';
@@ -282,13 +281,6 @@ export function Roulette(props) {
             />
             <BetResultsInfo
                 previousRoundResults={previousRoundResultsForBetResultsInfo}
-            />
-            <RewardsInfo
-                // TODO disable won/lost/tie counter
-                // leave only the games played counter (and the rewards balance which already works)
-                // create contract that incremenets every time a game is played
-                // then create a call to that contract to get the number of games played
-                transactionHistory={stateTransactionHistory}
             />
             <NumbersHitTracker
                 transactionHistory={stateTransactionHistory}
