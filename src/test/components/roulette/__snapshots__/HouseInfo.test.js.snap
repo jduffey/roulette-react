@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HouseInfo renders when houseBalance is 0 1`] = `
+<div
+  className="HouseInfo-component"
+>
+  <div>
+    House Balance
+    <br />
+    <span
+      className="rewards-info-value"
+    >
+      Loading...
+    </span>
+  </div>
+</div>
+`;
+
+exports[`HouseInfo renders when houseBalance is 123456.9876 1`] = `
+<div
+  className="HouseInfo-component"
+>
+  <div>
+    House Balance
+    <br />
+    <span
+      className="rewards-info-value"
+    >
+      $ 123,456.99
+    </span>
+  </div>
+</div>
+`;
+
+exports[`HouseInfo renders when houseBalance is undefined 1`] = `
+<div
+  className="HouseInfo-component"
+>
+  <div>
+    House Balance
+    <br />
+    <span
+      className="rewards-info-value"
+    >
+      Loading...
+    </span>
+  </div>
+</div>
+`;
