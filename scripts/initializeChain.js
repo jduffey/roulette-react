@@ -12,32 +12,17 @@ function _validateNetwork() {
     }
 }
 
-async function _deployTokenContract(deployer) {
-    const contractName = "MyGameToken";
-    const myGameTokenContractFactory = await ethers.getContractFactory(
+async function _deployContract(deployer, contractName) {
+    const contractFactory = await ethers.getContractFactory(
         contractName,
         deployer
     );
-    const myGameTokenContract = await myGameTokenContractFactory.deploy();
-    await myGameTokenContract.deployed();
+    const contract = await contractFactory.deploy();
+    await contract.deployed();
 
     console.log(`\n***** CONTRACT DEPLOYED SUCCESSFULLY - ${contractName} *****`);
-    console.log(`${myGameTokenContract.address} <- Deployment address`);
-    console.log(`${myGameTokenContract.signer.address} <- Deployer address`);
-}
-
-async function _deployGamesPlayedCounterContract(deployer) {
-    const contractName = "GamesPlayedCounter";
-    const gamesPlayedCounterContractFactory = await ethers.getContractFactory(
-        contractName,
-        deployer
-    );
-    const gamesPlayedCounterContract = await gamesPlayedCounterContractFactory.deploy();
-    await gamesPlayedCounterContract.deployed();
-
-    console.log(`\n***** CONTRACT DEPLOYED SUCCESSFULLY - ${contractName} *****`);
-    console.log(`${gamesPlayedCounterContract.address} <- Deployment address`);
-    console.log(`${gamesPlayedCounterContract.signer.address} <- Deployer address`);
+    console.log(`${contract.address} <- Deployment address`);
+    console.log(`${contract.signer.address} <- Deployer address`);
 }
 
 async function _depositEthForTokens(tokenContractAddress, ethDepositAmounts) {
@@ -84,10 +69,8 @@ async function initializeChain() {
     ethToDeposit[rewards.address] = 0;
     ethToDeposit[house.address] = 10;
 
-    await _deployTokenContract(house);
-
-    await _deployGamesPlayedCounterContract(house);
-
+    await _deployContract(house, "MyGameToken");
+    await _deployContract(house, "GamesPlayedCounter");
     await _depositEthForTokens(tokenContractAddress, ethToDeposit);
 }
 
