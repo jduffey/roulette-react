@@ -32,6 +32,8 @@ export function Balances() {
         [TOKEN_CONTRACT_ADDRESS]: "Token",
     }
 
+    const MS_REFRESH_INTERVAL = 1000;
+
     useEffect(() => {
         const interval = setInterval(() => {
             // Default values, including seed phrase: https://hardhat.org/hardhat-network/docs/reference
@@ -74,7 +76,7 @@ export function Balances() {
                 .then((blockData) => {
                     setBlock(blockData);
                 });
-        }, 1000);
+        }, MS_REFRESH_INTERVAL);
 
         return () => clearInterval(interval);
     }, [rerender]);
