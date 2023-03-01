@@ -14,7 +14,7 @@ setInterval(() => {
     setInterval(() => {
         if (betsPlaced++ >= NUMBER_OF_BETS_TO_PLACE) return;
 
-        const selectedChipAmt = getRandomElement([1, 5, 25]);
+        const selectedChipAmt = getRandomElement([1, 5, 25, 100]);
         const selectedBet = getRandomElement(Object.values(BET_NAMES));
 
         const selectedChipElement = document.getElementById(`chip-${selectedChipAmt}`);

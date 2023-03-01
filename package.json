@@ -16,7 +16,7 @@
         "build": "react-scripts build",
         "test": "react-scripts test --coverage",
         "start-chain": "npx hardhat node",
-        "run-scripts": "npx hardhat run scripts/deployTokenContract.js --network localhost && npx hardhat run scripts/depositEthForTokens.js --network localhost",
+        "initialize-chain": "npx hardhat run scripts/initializeChain.js --network localhost",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {

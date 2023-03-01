@@ -39,4 +39,40 @@ describe('RewardsInfo', () => {
 
         expect(view).toMatchSnapshot();
     });
+
+    it('renders when there are won and lost games', () => {
+        const sut =
+            <RewardsInfo
+                transactionHistory={[
+                    { // win
+                        startingBalance: 1,
+                        finalBalance: 2,
+                    },
+                    { // win
+                        startingBalance: 1,
+                        finalBalance: 2,
+                    },
+                    { // win
+                        startingBalance: 1,
+                        finalBalance: 2,
+                    },
+                    { // lose
+                        startingBalance: 2,
+                        finalBalance: 1,
+                    },
+                    { // lose
+                        startingBalance: 2,
+                        finalBalance: 1,
+                    },
+                    { // "tie"
+                        startingBalance: 2,
+                        finalBalance: 2,
+                    },
+                ]}
+            />;
+
+        const view = renderer.create(sut);
+
+        expect(view).toMatchSnapshot();
+    });
 });

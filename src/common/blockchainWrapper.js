@@ -33,9 +33,11 @@ async function getBlock() {
 
 async function getTokenBalance(address) {
     const signer = provider.getSigner(address);
-    const token = new ethers.Contract(TOKEN_CONTRACT_ADDRESS, [
-        "function balanceOf(address) view returns (uint)",
-    ], signer);
+    const token = new ethers.Contract(
+        TOKEN_CONTRACT_ADDRESS,
+        ["function balanceOf(address) view returns (uint)"],
+        signer
+    );
     const balance = await token.balanceOf(address);
     const formattedBalance = ethers.utils.formatEther(balance);
     return formattedBalance;
@@ -43,9 +45,11 @@ async function getTokenBalance(address) {
 
 async function depositEthForTokens(from, amount) {
     const signer = provider.getSigner(from);
-    const token = new ethers.Contract(TOKEN_CONTRACT_ADDRESS, [
-        "function deposit() payable",
-    ], signer);
+    const token = new ethers.Contract(
+        TOKEN_CONTRACT_ADDRESS,
+        ["function deposit() payable"],
+        signer
+    );
     const tx = await token.deposit({
         value: ethers.utils.parseEther(amount)
     });
@@ -54,18 +58,22 @@ async function depositEthForTokens(from, amount) {
 
 async function redeemTokensForEth(from, amount) {
     const signer = provider.getSigner(from);
-    const token = new ethers.Contract(TOKEN_CONTRACT_ADDRESS, [
-        "function withdraw(uint)",
-    ], signer);
+    const token = new ethers.Contract(
+        TOKEN_CONTRACT_ADDRESS,
+        ["function withdraw(uint)"],
+        signer
+    );
     const tx = await token.withdraw(ethers.utils.parseEther(amount));
     return tx;
 }
 
 async function transferFrom(from, to, amount) {
     const signer = provider.getSigner(from);
-    const token = new ethers.Contract(TOKEN_CONTRACT_ADDRESS, [
-        "function transferFrom(address, address, uint) returns (bool)",
-    ], signer);
+    const token = new ethers.Contract(
+        TOKEN_CONTRACT_ADDRESS,
+        ["function transferFrom(address, address, uint) returns (bool)"],
+        signer
+    );
     const tx = await token.transferFrom(from, to, ethers.utils.parseEther(amount));
     return tx;
 }
@@ -74,8 +82,8 @@ let tokenSymbol;
 (new ethers.Contract(
     TOKEN_CONTRACT_ADDRESS,
     ["function symbol() view returns (string)"],
-    provider)
-).symbol().then((symbol) => {
+    provider
+)).symbol().then((symbol) => {
     tokenSymbol = symbol;
 });
 
