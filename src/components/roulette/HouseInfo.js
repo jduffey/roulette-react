@@ -1,7 +1,7 @@
 const CLASS_NAME = "HouseInfo-component";
 export function HouseInfo(props) {
     const houseBalanceText = props.houseBalance
-        ? `$ ${parseFloat(props.houseBalance).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+        ? `⛓ ${parseFloat(props.houseBalance).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
         : "Loading...";
 
     return (

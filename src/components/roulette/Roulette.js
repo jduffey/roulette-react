@@ -115,14 +115,12 @@ export function Roulette() {
 
         getTokenBalance(HOUSE_ADDRESS)
             .then(bal => {
-                console.log("houseBalance", bal);
                 setHouseBalance(bal);
             });
 
         getGamesPlayedCounter()
             .then(count => {
                 const parsedCount = parseInt(count._hex, 16);
-                console.log("gamesPlayed", parsedCount);
                 setGamesPlayed(parsedCount);
             });
 
@@ -159,7 +157,6 @@ export function Roulette() {
                 const startingBalance = playerBalance + betAmountOnBoard;
 
                 const resultsOfRound = getCompleteResultsOfRound(startingBalance, pendingBets, randomWheelNumber);
-                console.log("resultsOfRound", resultsOfRound);
 
                 // Go through each bet and sum the total owed back to the player
                 const owedByHouseToPlayer = Object.entries(resultsOfRound.resultsOfBets).reduce((acc, [_betName, individualBetResult]) => {
@@ -230,7 +227,6 @@ export function Roulette() {
 
                 getTokenBalance(HOUSE_ADDRESS)
                     .then(bal => {
-                        console.log("houseBalance", bal);
                         setHouseBalance(bal);
                     });
 
@@ -238,7 +234,6 @@ export function Roulette() {
                     .then(() => getGamesPlayedCounter()
                         .then(count => {
                             const parsedCount = parseInt(count._hex, 16);
-                            console.log("gamesPlayed", parsedCount);
                             setGamesPlayed(parsedCount);
                         }));
             });

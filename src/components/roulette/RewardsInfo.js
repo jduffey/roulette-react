@@ -17,16 +17,17 @@ export function RewardsInfo(props) {
 
     }, [props]);
 
-    const accumulatedRewardsText = rewardsBalance ? `$ ${Number(rewardsBalance).toFixed(2)}` : "Loading...";
+    const accumulatedRewardsText = rewardsBalance
+        ? `⛓ ${Number(rewardsBalance).toFixed(2)}`
+        : "Loading...";
+
+    const gamesPlayedText = typeof props.gamesPlayed === "number"
+        ? `⛓ ${props.gamesPlayed}`
+        : "Loading...";
+
     const gamesWon = props.transactionHistory.filter(tx => tx.finalBalance > tx.startingBalance).length;
     const gamesLost = props.transactionHistory.filter(tx => tx.finalBalance < tx.startingBalance).length;
     const gamesTied = props.transactionHistory.filter(tx => tx.finalBalance === tx.startingBalance).length;
-
-
-    console.log("props.gamesPlayed", props.gamesPlayed);
-    const gamesPlayedText = typeof props.gamesPlayed === "number"
-        ? props.gamesPlayed
-        : "Loading...";
 
     return (
         <div

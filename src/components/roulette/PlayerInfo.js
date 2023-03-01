@@ -53,7 +53,7 @@ export function PlayerInfo(props) {
             <div>
                 {"Tok. Balance"}
                 < br />
-                {tokenBalance.toLocaleString()}
+                {`⛓ ${tokenBalance.toLocaleString()}`}
             </div>
             <div>
                 {"Avail. Balance"}
