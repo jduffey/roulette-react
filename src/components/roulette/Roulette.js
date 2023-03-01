@@ -58,7 +58,7 @@ function getNewTransactionForDatabase(mostRecentRoundResults) {
 
 const CLASS_NAME = "Roulette-component";
 export function Roulette() {
-    const [transactionHistory, setTransactionHistory] = useState([]);
+    const [stateTransactionHistory, setStateTransactionHistory] = useState([]);
 
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
 
@@ -75,7 +75,7 @@ export function Roulette() {
         fetchTransactionHistory()
             .then(json => {
                 if (mounted) {
-                    setTransactionHistory(json.history);
+                    setStateTransactionHistory(json.history);
 
                     const mostRecentTransaction = json.history[json.history.length - 1];
 
@@ -182,6 +182,8 @@ export function Roulette() {
                     );
                 }
 
+                // TODO call to new contract that increments the number of games played
+
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
                 setPlayerBalance(resultsOfRound.finalBalance);
 
@@ -189,9 +191,9 @@ export function Roulette() {
                 setSpinResults(copySpinResults);
 
                 const newTransactionForDatabase = getNewTransactionForDatabase(resultsOfRound);
-                const copyTransactionHistory = transactionHistory.slice();
+                const copyTransactionHistory = stateTransactionHistory.slice();
                 copyTransactionHistory.push(newTransactionForDatabase);
-                setTransactionHistory(copyTransactionHistory);
+                setStateTransactionHistory(copyTransactionHistory);
 
                 // TODO update/revisit this note after replacing betsOnBoard (object) with pendingBets (array of PendingBet objects)
                 // TODO bug here? if we don't reset pendingBets then we can continue to click spin, which is not a problem itself,
@@ -213,7 +215,7 @@ export function Roulette() {
             }).then(() => {
                 resetTransactionHistory()
                     .then(() => {
-                        setTransactionHistory([]);
+                        setStateTransactionHistory([]);
                         setSpinResults([]);
                         setPreviousRoundResultsForBetResultsInfo(null);
                     });
@@ -256,19 +258,23 @@ export function Roulette() {
                 previousRoundResults={previousRoundResultsForBetResultsInfo}
             />
             <RewardsInfo
-                transactionHistory={transactionHistory}
+                // TODO disable won/lost/tie counter
+                // leave only the games played counter (and the rewards balance which already works)
+                // create contract that incremenets every time a game is played
+                // then create a call to that contract to get the number of games played
+                transactionHistory={stateTransactionHistory}
             />
             <NumbersHitTracker
-                transactionHistory={transactionHistory}
+                transactionHistory={stateTransactionHistory}
             />
             <CompletionsCounter
-                transactionHistory={transactionHistory}
+                transactionHistory={stateTransactionHistory}
             />
             <NumbersHitGameCounter
-                transactionHistory={transactionHistory}
+                transactionHistory={stateTransactionHistory}
             />
             <NumbersHitGameCounterOverlay
-                transactionHistory={transactionHistory}
+                transactionHistory={stateTransactionHistory}
             />
         </div >
     );

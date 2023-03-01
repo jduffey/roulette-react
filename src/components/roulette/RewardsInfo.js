@@ -9,6 +9,7 @@ const CLASS_NAME = "RewardsInfo-component";
 export function RewardsInfo(props) {
     const [rewardsBalance, setRewardsBalance] = useState(0);
 
+    // TODO replace with call to contract
     const gamesPlayed = props.transactionHistory.length;
 
     useEffect(() => {
@@ -20,9 +21,9 @@ export function RewardsInfo(props) {
     }, [props.transactionHistory]);
 
     const accumulatedRewardsText = `$ ${Number(rewardsBalance).toFixed(2)}`;
-    const gamesWon = props.transactionHistory.filter(tx => tx.finalBalance > tx.startingBalance).length;
-    const gamesLost = props.transactionHistory.filter(tx => tx.finalBalance < tx.startingBalance).length;
-    const gamesTied = props.transactionHistory.filter(tx => tx.finalBalance === tx.startingBalance).length;
+    // const gamesWon = props.transactionHistory.filter(tx => tx.finalBalance > tx.startingBalance).length;
+    // const gamesLost = props.transactionHistory.filter(tx => tx.finalBalance < tx.startingBalance).length;
+    // const gamesTied = props.transactionHistory.filter(tx => tx.finalBalance === tx.startingBalance).length;
 
     return (
         <div
@@ -42,7 +43,7 @@ export function RewardsInfo(props) {
                     {accumulatedRewardsText}
                 </span>
             </div>
-            <div>
+            {/* <div>
                 Games Won
                 <br />
                 {gamesWon}
@@ -56,7 +57,7 @@ export function RewardsInfo(props) {
                 Games Tied
                 <br />
                 {gamesTied}
-            </div>
+            </div> */}
         </div >
     )
 }
