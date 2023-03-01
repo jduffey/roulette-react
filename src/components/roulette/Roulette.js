@@ -289,7 +289,6 @@ export function Roulette(props) {
                 // create contract that incremenets every time a game is played
                 // then create a call to that contract to get the number of games played
                 transactionHistory={stateTransactionHistory}
-                gamesPlayed={gamesPlayed}
             />
             <NumbersHitTracker
                 transactionHistory={stateTransactionHistory}
@@ -305,6 +304,7 @@ export function Roulette(props) {
             />
             <HouseInfo
                 houseBalance={houseBalance}
+                gamesPlayed={gamesPlayed}
             />
         </div >
     );
