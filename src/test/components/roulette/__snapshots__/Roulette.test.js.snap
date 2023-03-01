@@ -6644,31 +6644,19 @@ exports[`Roulette renders 1`] = `
     <div>
       House Balance
       <br />
-      <span
-        className="rewards-info-value"
-      >
-        Loading...
-      </span>
+      Loading...
     </div>
     <br />
     <div>
-      Rewards
+      Jackpot Balance
       <br />
-      <span
-        className="rewards-info-value"
-      >
-        Loading...
-      </span>
+      Loading...
     </div>
     <br />
     <div>
       Games Played
       <br />
-      <span
-        className="rewards-info-value"
-      >
-        Loading...
-      </span>
+      Loading...
     </div>
   </div>
 </div>

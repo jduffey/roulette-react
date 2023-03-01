@@ -28,7 +28,7 @@ import {
 
 import {
     transferFrom,
-    REWARDS_ADDRESS,
+    JACKPOT_ADDRESS,
     HOUSE_ADDRESS,
     incrementGamesPlayedCounter,
     getGamesPlayedCounter,
@@ -168,8 +168,8 @@ export function Roulette(props) {
                     return acc;
                 }, 0);
 
-                // We can say that "1% of house take goes to rewards"
-                const owedByHouseToRewards = owedByPlayerToHouse * 0.01;
+                // We can say that "1% of house take goes to Jackpot"
+                const owedByHouseToJackpot = owedByPlayerToHouse * 0.01;
 
                 if (owedByHouseToPlayer > 0) {
                     console.log("House --> Player", owedByHouseToPlayer);
@@ -189,12 +189,12 @@ export function Roulette(props) {
                     );
                 }
 
-                if (owedByHouseToRewards > 0) {
-                    console.log("House --> Rewards", owedByHouseToRewards);
+                if (owedByHouseToJackpot > 0) {
+                    console.log("House --> Jackpot", owedByHouseToJackpot);
                     transferFrom(
                         HOUSE_ADDRESS,
-                        REWARDS_ADDRESS,
-                        owedByHouseToRewards.toString()
+                        JACKPOT_ADDRESS,
+                        owedByHouseToJackpot.toString()
                     );
                 }
 

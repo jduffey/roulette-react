@@ -2,17 +2,17 @@ import { useEffect, useState } from 'react';
 
 import {
     getTokenBalance,
-    REWARDS_ADDRESS
+    JACKPOT_ADDRESS,
 } from "../../common/blockchainWrapper";
 
 const CLASS_NAME = "HouseInfo-component";
 export function HouseInfo(props) {
-    const [rewardsBalance, setRewardsBalance] = useState(undefined);
+    const [jackpotBalance, setJackpotBalance] = useState(undefined);
 
     useEffect(() => {
         setTimeout(async () => {
-            const balance = await getTokenBalance(REWARDS_ADDRESS);
-            setRewardsBalance(balance);
+            const balance = await getTokenBalance(JACKPOT_ADDRESS);
+            setJackpotBalance(balance);
         }, 100);
 
     }, [props]);
@@ -21,8 +21,8 @@ export function HouseInfo(props) {
         ? `⛓ ${parseFloat(props.houseBalance).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
         : "Loading...";
 
-    const accumulatedRewardsText = rewardsBalance
-        ? `⛓ ${Number(rewardsBalance).toFixed(2)}`
+    const jackpotBalanceText = jackpotBalance
+        ? `⛓ ${Number(jackpotBalance).toFixed(2)}`
         : "Loading...";
 
     const gamesPlayedText = typeof props.gamesPlayed === "number"
@@ -36,25 +36,19 @@ export function HouseInfo(props) {
             <div>
                 {"House Balance"}
                 < br />
-                <span className="rewards-info-value">
                     {houseBalanceText}
-                </span>
             </div>
             <br />
             <div>
-                {"Rewards"}
+                {"Jackpot Balance"}
                 < br />
-                <span className="rewards-info-value">
-                    {accumulatedRewardsText}
-                </span>
+                    {jackpotBalanceText}
             </div>
             <br />
             <div>
                 {"Games Played"}
                 < br />
-                <span className="rewards-info-value">
                     {gamesPlayedText}
-                </span>
             </div>
         </div >
     )
