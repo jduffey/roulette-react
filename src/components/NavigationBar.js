@@ -5,7 +5,9 @@ export function NavigationBar() {
         <div className="NavigationBar-component">
             <div className="NavigationBar-links">
                 <Link to="/">Home</Link>
-                <Link to="/roulette">Roulette</Link>
+                <Link to="/roulette-p1">Roulette P1</Link>
+                <Link to="/roulette-p2">Roulette P2</Link>
+                <Link to="/roulette-p3">Roulette P3</Link>
                 <Link to="/sic-bo">Sic Bo</Link>
                 <Link to="/balances">Balances</Link>
             </div>

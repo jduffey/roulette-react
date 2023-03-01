@@ -1,6 +1,6 @@
 import { BET_NAMES } from "./betNames";
 
-const NUMBER_OF_BETS_TO_PLACE = 3;
+const NUMBER_OF_BETS_TO_PLACE = 5;
 
 const SECONDS_BETWEEN_BET_PLACEMENTS = 1;
 

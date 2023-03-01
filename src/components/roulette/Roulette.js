@@ -29,7 +29,6 @@ import {
 
 import {
     transferFrom,
-    FIRST_PLAYER_ADDRESS,
     REWARDS_ADDRESS,
     HOUSE_ADDRESS,
     incrementGamesPlayedCounter,
@@ -61,7 +60,10 @@ function getNewTransactionForDatabase(mostRecentRoundResults) {
 }
 
 const CLASS_NAME = "Roulette-component";
-export function Roulette() {
+export function Roulette(props) {
+    const playerAddress = props.playerAddress;
+    const playerDbEndpoint = props.playerDbEndpoint;
+
     const [stateTransactionHistory, setStateTransactionHistory] = useState([]);
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
 
@@ -78,7 +80,7 @@ export function Roulette() {
     useEffect(() => {
         let mounted = true;
 
-        getTokenBalance(FIRST_PLAYER_ADDRESS)
+        getTokenBalance(playerAddress)
             .then(balance => {
                 if (mounted) {
                     setPlayerBalance(balance);
@@ -100,7 +102,7 @@ export function Roulette() {
                 }
             });
 
-        fetchTransactionHistory()
+        fetchTransactionHistory(playerDbEndpoint)
             .then(json => {
                 if (mounted) {
                     setStateTransactionHistory(json.history);
@@ -127,7 +129,7 @@ export function Roulette() {
             });
 
         return () => { mounted = false };
-    }, [houseBalance, gamesPlayed]);
+    }, [playerDbEndpoint, playerAddress, houseBalance, gamesPlayed]);
 
     function handleBettingSquareClick(bettingSquareName) {
         if (currentChipAmountSelected > playerBalance) {
@@ -174,7 +176,7 @@ export function Roulette() {
                     console.log("House --> Player", owedByHouseToPlayer);
                     transferFrom(
                         HOUSE_ADDRESS,
-                        FIRST_PLAYER_ADDRESS,
+                        playerAddress,
                         owedByHouseToPlayer.toString()
                     );
                 }
@@ -182,7 +184,7 @@ export function Roulette() {
                 if (owedByPlayerToHouse > 0) {
                     console.log("Player --> House", owedByPlayerToHouse);
                     transferFrom(
-                        FIRST_PLAYER_ADDRESS,
+                        playerAddress,
                         HOUSE_ADDRESS,
                         owedByPlayerToHouse.toString()
                     );
@@ -216,9 +218,9 @@ export function Roulette() {
                 // 2. what the player "owns" (i.e. if they had an option to clear all bets on the board, what would their balance be)
                 setPendingBets([]);
 
-                updateTransactionHistory(copyTransactionHistory);
+                updateTransactionHistory(copyTransactionHistory, playerDbEndpoint);
 
-                getTokenBalance(FIRST_PLAYER_ADDRESS)
+                getTokenBalance(playerAddress)
                     .then(bal => {
                         setPlayerBalance(bal);
                     });
@@ -238,7 +240,7 @@ export function Roulette() {
     }
 
     function handleResetHistoryClick() {
-        resetTransactionHistory()
+        resetTransactionHistory(playerDbEndpoint)
             .then(() => {
                 setStateTransactionHistory([]);
                 setSpinResults([]);
