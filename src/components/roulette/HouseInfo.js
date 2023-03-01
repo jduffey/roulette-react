@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import {
     getTokenBalance,
-    REWARDS_ADDRESS
+    HOUSE_ADDRESS
 } from "../../common/blockchainWrapper";
 
 const CLASS_NAME = "HouseInfo-component";
@@ -11,11 +11,15 @@ export function HouseInfo(props) {
 
     useEffect(() => {
         setTimeout(async () => {
-            // const balance = await getTokenBalance(REWARDS_ADDRESS);
-            setHouseBalance("FOO");
+            const houseTokenBalance = await getTokenBalance(HOUSE_ADDRESS);
+            setHouseBalance(houseTokenBalance);
         }, 100);
 
     }, [props.transactionHistory]);
+
+    const houseBalanceText = houseBalance
+        ? `$ ${parseFloat(houseBalance).toFixed(2).toLocaleString()}`
+        : "Loading...";
 
     return (
         <div
@@ -25,7 +29,7 @@ export function HouseInfo(props) {
                 {"House Balance"}
                 < br />
                 <span className="rewards-info-value">
-                    {houseBalance}
+                    {houseBalanceText}
                 </span>
             </div>
         </div >
