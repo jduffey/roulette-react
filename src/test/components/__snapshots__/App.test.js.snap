@@ -2368,12 +2368,6 @@ Array [
         <br />
         $ 0
       </div>
-      <div
-        id="reset-history"
-        onClick={[Function]}
-      >
-        RESET HISTORY
-      </div>
     </div>
     <div
       className="PendingBetsTable-component"
@@ -6866,7 +6860,7 @@ Array [
       </div>
       <br />
       <div>
-        Total Spins
+        All-Time Total Spins
         <br />
         Loading...
       </div>
@@ -9076,12 +9070,6 @@ Array [
         <br />
         $ 0
       </div>
-      <div
-        id="reset-history"
-        onClick={[Function]}
-      >
-        RESET HISTORY
-      </div>
     </div>
     <div
       className="PendingBetsTable-component"
@@ -13574,7 +13562,7 @@ Array [
       </div>
       <br />
       <div>
-        Total Spins
+        All-Time Total Spins
         <br />
         Loading...
       </div>
@@ -15784,12 +15772,6 @@ Array [
         <br />
         $ 0
       </div>
-      <div
-        id="reset-history"
-        onClick={[Function]}
-      >
-        RESET HISTORY
-      </div>
     </div>
     <div
       className="PendingBetsTable-component"
@@ -20282,7 +20264,7 @@ Array [
       </div>
       <br />
       <div>
-        Total Spins
+        All-Time Total Spins
         <br />
         Loading...
       </div>

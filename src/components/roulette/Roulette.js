@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import {
     fetchTransactionHistory,
     updateTransactionHistory,
-    resetTransactionHistory,
 } from '../../common/databaseWrapper';
 
 import { PendingBet } from '../../common/PendingBet';
@@ -238,15 +237,6 @@ export function Roulette(props) {
             });
     }
 
-    function handleResetHistoryClick() {
-        resetTransactionHistory(playerDbEndpoint)
-            .then(() => {
-                setStateTransactionHistory([]);
-                setSpinResults([]);
-                setPreviousRoundResultsForBetResultsInfo(null);
-            });
-    }
-
     const mostRecentSpinResult = spinResults.slice(-1)[0];
 
     return (
@@ -272,7 +262,6 @@ export function Roulette(props) {
                 spinResults={spinResults}
             />
             <PlayerInfo
-                onClick={() => handleResetHistoryClick()}
                 playerBalance={playerBalance}
                 totalBetAmount={calculateTotalBetAmount(pendingBets)}
             />

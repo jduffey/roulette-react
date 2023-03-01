@@ -2156,12 +2156,6 @@ exports[`Roulette renders 1`] = `
       <br />
       $ 0
     </div>
-    <div
-      id="reset-history"
-      onClick={[Function]}
-    >
-      RESET HISTORY
-    </div>
   </div>
   <div
     className="PendingBetsTable-component"
@@ -6654,7 +6648,7 @@ exports[`Roulette renders 1`] = `
     </div>
     <br />
     <div>
-      Total Spins
+      All-Time Total Spins
       <br />
       Loading...
     </div>

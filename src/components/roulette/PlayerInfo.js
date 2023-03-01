@@ -18,12 +18,6 @@ export function PlayerInfo(props) {
                 < br />
                 {`$ ${props.totalBetAmount.toLocaleString()}`}
             </div>
-            <div
-                id="reset-history"
-                onClick={() => props.onClick()}
-            >
-                RESET HISTORY
-            </div>
         </div >
     )
 }

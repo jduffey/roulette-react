@@ -14,12 +14,6 @@ exports[`PlayerInfo renders when playerBalance is 123456.354215 and totalBetAmou
     <br />
     $ 56,789
   </div>
-  <div
-    id="reset-history"
-    onClick={[Function]}
-  >
-    RESET HISTORY
-  </div>
 </div>
 `;
 
@@ -36,12 +30,6 @@ exports[`PlayerInfo renders when playerBalance is undefined and totalBetAmount i
     Total Bet
     <br />
     $ 0
-  </div>
-  <div
-    id="reset-history"
-    onClick={[Function]}
-  >
-    RESET HISTORY
   </div>
 </div>
 `;
