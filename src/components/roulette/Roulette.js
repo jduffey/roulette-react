@@ -106,6 +106,15 @@ export function Roulette() {
                 }
             });
 
+        getGamesPlayedCounter()
+            .then(count => {
+                if (mounted) {
+                    const parsedCount = parseInt(count._hex, 16);
+                    console.log("gamesPlayed", parsedCount);
+                    setGamesPlayed(parsedCount);
+                }
+            });
+
         return () => { mounted = false };
     }, []);
 
