@@ -245,7 +245,7 @@ export function Roulette() {
             />
             <PlayerInfo
                 onClick={() => handleResetHistoryClick()}
-                availableBalance={availableBalance}
+                playerBalance={availableBalance}
                 totalBetAmount={calculateTotalBetAmount(pendingBets)}
             />
             <PendingBetsTable

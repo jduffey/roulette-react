@@ -58,7 +58,7 @@ export function PlayerInfo(props) {
             <div>
                 {"Avail. Balance"}
                 < br />
-                {`$ ${props.availableBalance.toLocaleString()}`}
+                {`$ ${props.playerBalance.toLocaleString()}`}
             </div>
             <div>
                 {"Total Bet"}
