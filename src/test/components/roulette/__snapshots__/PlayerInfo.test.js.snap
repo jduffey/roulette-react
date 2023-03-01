@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlayerInfo renders when playerBalance is 123456.354215 and totalBetAmount is 56789 1`] = `
+<div
+  className="PlayerInfo-component"
+>
+  <div>
+    Player Balance
+    <br />
+    ⛓ 123,456.35
+  </div>
+  <div>
+    Total Bet
+    <br />
+    $ 56,789
+  </div>
+  <div
+    id="reset-history"
+    onClick={[Function]}
+  >
+    RESET HISTORY
+  </div>
+</div>
+`;
+
+exports[`PlayerInfo renders when playerBalance is undefined and totalBetAmount is 0 1`] = `
+<div
+  className="PlayerInfo-component"
+>
+  <div>
+    Player Balance
+    <br />
+    Loading...
+  </div>
+  <div>
+    Total Bet
+    <br />
+    $ 0
+  </div>
+  <div
+    id="reset-history"
+    onClick={[Function]}
+  >
+    RESET HISTORY
+  </div>
+</div>
+`;

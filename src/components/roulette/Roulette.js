@@ -40,8 +40,6 @@ import {
 // Uncomment this line to simulate playing the game
 // import { simulatePlayingGame } from '../../common/simulatePlayingGame';
 
-const INITIAL_BALANCE = 100_000;
-
 function calculateTotalBetAmount(bets) {
     return bets.reduce((acc, pendingBet) => acc + pendingBet.betAmount, 0);
 }
@@ -72,27 +70,44 @@ export function Roulette() {
     const [spinResults, setSpinResults] = useState([]);
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
 
-    // TODO retrieve from chain
-    const [playerBalance, setPlayerBalance] = useState("Loading...");
-
     // Retrieved from chain
+    const [playerBalance, setPlayerBalance] = useState(undefined);
     const [houseBalance, setHouseBalance] = useState(undefined);
     const [gamesPlayed, setGamesPlayed] = useState(undefined);
 
     useEffect(() => {
         let mounted = true;
 
+        getTokenBalance(FIRST_PLAYER_ADDRESS)
+            .then(balance => {
+                if (mounted) {
+                    setPlayerBalance(balance);
+                }
+            });
+
+        getTokenBalance(HOUSE_ADDRESS)
+            .then(balance => {
+                if (mounted) {
+                    setHouseBalance(balance);
+                }
+            });
+
+        getGamesPlayedCounter()
+            .then(count => {
+                if (mounted) {
+                    const parsedCount = parseInt(count._hex, 16);
+                    setGamesPlayed(parsedCount);
+                }
+            });
+
         fetchTransactionHistory()
             .then(json => {
                 if (mounted) {
                     setStateTransactionHistory(json.history);
 
-                    const mostRecentTransaction = json.history[json.history.length - 1];
+                    if (json.history.length === 0) return;
 
-                    if (typeof mostRecentTransaction === "undefined") {
-                        setPlayerBalance(INITIAL_BALANCE);
-                        return;
-                    }
+                    const mostRecentTransaction = json.history[json.history.length - 1];
 
                     const transactionBetsPlacedAsPendingBets =
                         Object.entries(mostRecentTransaction.betsPlaced).reduce((acc, [betName, betAmount]) => {
@@ -106,22 +121,9 @@ export function Roulette() {
                         mostRecentTransaction.spinResult,
                     );
                     setPreviousRoundResultsForBetResultsInfo(previousRoundResults);
-                    setPlayerBalance(previousRoundResults.finalBalance);
 
                     setSpinResults(json.history.map(historyItem => historyItem.spinResult));
-
                 }
-            });
-
-        getTokenBalance(HOUSE_ADDRESS)
-            .then(bal => {
-                setHouseBalance(bal);
-            });
-
-        getGamesPlayedCounter()
-            .then(count => {
-                const parsedCount = parseInt(count._hex, 16);
-                setGamesPlayed(parsedCount);
             });
 
         return () => { mounted = false };
@@ -137,10 +139,6 @@ export function Roulette() {
         const copyPendingBets = pendingBets.slice();
         copyPendingBets.push(pendingBet);
         setPendingBets(copyPendingBets);
-
-        const newBalance = playerBalance - currentChipAmountSelected;
-
-        setPlayerBalance(newBalance);
     }
 
     function handleSpinButtonClick() {
@@ -152,11 +150,7 @@ export function Roulette() {
             .then(randomWheelNumber => {
                 const copySpinResults = spinResults.slice();
 
-                const betAmountOnBoard = calculateTotalBetAmount(pendingBets);
-
-                const startingBalance = playerBalance + betAmountOnBoard;
-
-                const resultsOfRound = getCompleteResultsOfRound(startingBalance, pendingBets, randomWheelNumber);
+                const resultsOfRound = getCompleteResultsOfRound(playerBalance, pendingBets, randomWheelNumber);
 
                 // Go through each bet and sum the total owed back to the player
                 const owedByHouseToPlayer = Object.entries(resultsOfRound.resultsOfBets).reduce((acc, [_betName, individualBetResult]) => {
@@ -204,7 +198,6 @@ export function Roulette() {
                 }
 
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
-                setPlayerBalance(resultsOfRound.finalBalance);
 
                 copySpinResults.push(resultsOfRound.winningWheelNumber);
                 setSpinResults(copySpinResults);
@@ -225,6 +218,11 @@ export function Roulette() {
 
                 updateTransactionHistory(copyTransactionHistory);
 
+                getTokenBalance(FIRST_PLAYER_ADDRESS)
+                    .then(bal => {
+                        setPlayerBalance(bal);
+                    });
+
                 getTokenBalance(HOUSE_ADDRESS)
                     .then(bal => {
                         setHouseBalance(bal);
@@ -242,7 +240,6 @@ export function Roulette() {
     function handleResetHistoryClick() {
         resetTransactionHistory()
             .then(() => {
-                setPlayerBalance(INITIAL_BALANCE);
                 setStateTransactionHistory([]);
                 setSpinResults([]);
                 setPreviousRoundResultsForBetResultsInfo(null);
