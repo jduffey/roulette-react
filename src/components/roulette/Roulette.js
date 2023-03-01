@@ -65,18 +65,19 @@ function getNewTransactionForDatabase(mostRecentRoundResults) {
 const CLASS_NAME = "Roulette-component";
 export function Roulette() {
     const [stateTransactionHistory, setStateTransactionHistory] = useState([]);
-
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
 
-    const [playerBalance, setPlayerBalance] = useState("Loading...");
-    const [houseBalance, setHouseBalance] = useState(undefined);
+    const [pendingBets, setPendingBets] = useState([]);
 
     const [spinResults, setSpinResults] = useState([]);
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
 
-    const [pendingBets, setPendingBets] = useState([]);
+    // TODO retrieve from chain
+    const [playerBalance, setPlayerBalance] = useState("Loading...");
 
-    const [gamesPlayed, setGamesPlayed] = useState("Loading...");
+    // Retrieved from chain
+    const [houseBalance, setHouseBalance] = useState(undefined);
+    const [gamesPlayed, setGamesPlayed] = useState(undefined);
 
     useEffect(() => {
         let mounted = true;
