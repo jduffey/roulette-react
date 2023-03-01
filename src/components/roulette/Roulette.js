@@ -209,7 +209,7 @@ export function Roulette() {
     function handleResetHistoryClick() {
         fetchTransactionHistory()
             .then(json => {
-                setPlayerBalance(json.initialBalance);
+                setPlayerBalance(100000);
             }).then(() => {
                 resetTransactionHistory()
                     .then(() => {

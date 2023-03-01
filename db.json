@@ -1,6 +1,5 @@
 {
   "player": {
-    "initialBalance": 100000,
     "history": []
   }
 }
