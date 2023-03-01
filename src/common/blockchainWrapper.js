@@ -10,6 +10,30 @@ const FIRST_PLAYER_ADDRESS = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
 const REWARDS_ADDRESS = "0x90F79bf6EB2c4f870365E785982E1f101E93b906";
 const HOUSE_ADDRESS = "0x15d34aaf54267db7d7c367839aaf71a00a2c6a65";
 
+const GAMES_PLAYED_COUNTER_CONTRACT_ADDRESS = "0x2910E325cf29dd912E3476B61ef12F49cb931096";
+
+async function incrementGamesPlayedCounter() {
+    const signer = provider.getSigner(HOUSE_ADDRESS);
+    const gamesPlayedCounterContract = new ethers.Contract(
+        GAMES_PLAYED_COUNTER_CONTRACT_ADDRESS,
+        ["function increment()"],
+        signer
+    );
+    const tx = await gamesPlayedCounterContract.increment();
+    return tx;
+}
+
+async function getGamesPlayedCounter() {
+    const signer = provider.getSigner(HOUSE_ADDRESS);
+    const gamesPlayedCounterContract = new ethers.Contract(
+        GAMES_PLAYED_COUNTER_CONTRACT_ADDRESS,
+        ["function getCount() public view returns (uint256)"],
+        signer
+    );
+    const count = await gamesPlayedCounterContract.getCount();
+    return count;
+}
+
 async function getEthBalance(address) {
     const signer = provider.getSigner(address);
     const balance = await signer.getBalance();
@@ -99,4 +123,6 @@ export {
     REWARDS_ADDRESS,
     HOUSE_ADDRESS,
     tokenSymbol,
+    incrementGamesPlayedCounter,
+    getGamesPlayedCounter,
 };

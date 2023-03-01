@@ -9,9 +9,6 @@ const CLASS_NAME = "RewardsInfo-component";
 export function RewardsInfo(props) {
     const [rewardsBalance, setRewardsBalance] = useState(0);
 
-    // TODO replace with call to contract
-    const gamesPlayed = props.transactionHistory.length;
-
     useEffect(() => {
         setTimeout(async () => {
             const balance = await getTokenBalance(REWARDS_ADDRESS);
@@ -33,7 +30,7 @@ export function RewardsInfo(props) {
                 {"Games Played"}
                 < br />
                 <span className="rewards-info-value">
-                    {gamesPlayed}
+                    {props.gamesPlayed}
                 </span>
             </div>
             <div>

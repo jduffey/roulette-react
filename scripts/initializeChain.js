@@ -13,17 +13,31 @@ function _validateNetwork() {
 }
 
 async function _deployTokenContract(deployer) {
+    const contractName = "MyGameToken";
     const myGameTokenContractFactory = await ethers.getContractFactory(
-        "MyGameToken",
+        contractName,
         deployer
     );
     const myGameTokenContract = await myGameTokenContractFactory.deploy();
     await myGameTokenContract.deployed();
 
-    console.log("\n***** CONTRACT DEPLOYED SUCCESSFULLY *****");
-    console.log(`${await myGameTokenContract.name()}                              <- Contract name`);
+    console.log(`\n***** CONTRACT DEPLOYED SUCCESSFULLY - ${contractName} *****`);
     console.log(`${myGameTokenContract.address} <- Deployment address`);
     console.log(`${myGameTokenContract.signer.address} <- Deployer address`);
+}
+
+async function _deployGamesPlayedCounterContract(deployer) {
+    const contractName = "GamesPlayedCounter";
+    const gamesPlayedCounterContractFactory = await ethers.getContractFactory(
+        contractName,
+        deployer
+    );
+    const gamesPlayedCounterContract = await gamesPlayedCounterContractFactory.deploy();
+    await gamesPlayedCounterContract.deployed();
+
+    console.log(`\n***** CONTRACT DEPLOYED SUCCESSFULLY - ${contractName} *****`);
+    console.log(`${gamesPlayedCounterContract.address} <- Deployment address`);
+    console.log(`${gamesPlayedCounterContract.signer.address} <- Deployer address`);
 }
 
 async function _depositEthForTokens(tokenContractAddress, ethDepositAmounts) {
@@ -71,6 +85,8 @@ async function initializeChain() {
     ethToDeposit[house.address] = 10;
 
     await _deployTokenContract(house);
+
+    await _deployGamesPlayedCounterContract(house);
 
     await _depositEthForTokens(tokenContractAddress, ethToDeposit);
 }

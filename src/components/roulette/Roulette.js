@@ -30,7 +30,9 @@ import {
     transferFrom,
     FIRST_PLAYER_ADDRESS,
     REWARDS_ADDRESS,
-    HOUSE_ADDRESS
+    HOUSE_ADDRESS,
+    incrementGamesPlayedCounter,
+    getGamesPlayedCounter,
 } from '../../common/blockchainWrapper';
 
 // Uncomment this line to simulate playing the game
@@ -68,6 +70,8 @@ export function Roulette() {
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
 
     const [pendingBets, setPendingBets] = useState([]);
+
+    const [gamesPlayed, setGamesPlayed] = useState("Loading...");
 
     useEffect(() => {
         let mounted = true;
@@ -182,7 +186,13 @@ export function Roulette() {
                     );
                 }
 
-                // TODO call to new contract that increments the number of games played
+                incrementGamesPlayedCounter()
+                    .then(() => getGamesPlayedCounter()
+                        .then(count => {
+                            const parsedCount = parseInt(count._hex, 16);
+                            console.log("gamesPlayed", parsedCount);
+                            setGamesPlayed(parsedCount);
+                        }));
 
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
                 setPlayerBalance(resultsOfRound.finalBalance);
@@ -263,6 +273,7 @@ export function Roulette() {
                 // create contract that incremenets every time a game is played
                 // then create a call to that contract to get the number of games played
                 transactionHistory={stateTransactionHistory}
+                gamesPlayed={gamesPlayed}
             />
             <NumbersHitTracker
                 transactionHistory={stateTransactionHistory}
