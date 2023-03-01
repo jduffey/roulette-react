@@ -228,7 +228,7 @@ because we'll have "invisible" betting options later
 
 .PlayerInfo-component {
     position: relative;
-    left: 900px;
+    left: 820px;
     bottom: 860px;
     height: 300px;
     width: 200px;
@@ -259,7 +259,7 @@ because we'll have "invisible" betting options later
 
 .RewardsInfo-component {
     position: relative;
-    left: 1120px;
+    left: 1040px;
     bottom: 1880px;
     height: 280px;
     width: 200px;
@@ -380,7 +380,7 @@ because we'll have "invisible" betting options later
 
 .BetResultsInfo-component {
     position: relative;
-    left: 370px;
+    left: 290px;
     bottom: 1610px;
     height: 350px;
     width: 480px;
@@ -404,7 +404,7 @@ because we'll have "invisible" betting options later
 .PendingBetsTable-component {
     position: relative;
     bottom: 1236px;
-    left: 80px;
+    left: 0px;
     height: 350px;
     width: 240px;
     border-radius: 16px;
