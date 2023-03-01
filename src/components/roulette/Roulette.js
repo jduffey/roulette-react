@@ -105,6 +105,8 @@ export function Roulette() {
                 if (mounted) {
                     setStateTransactionHistory(json.history);
 
+                    if (json.history.length === 0) return;
+
                     const mostRecentTransaction = json.history[json.history.length - 1];
 
                     const transactionBetsPlacedAsPendingBets =
