@@ -38,7 +38,7 @@ import {
 } from '../../common/blockchainWrapper';
 
 // Uncomment this line to simulate playing the game
-import { simulatePlayingGame } from '../../common/simulatePlayingGame';
+// import { simulatePlayingGame } from '../../common/simulatePlayingGame';
 
 const INITIAL_BALANCE = 100_000;
 
