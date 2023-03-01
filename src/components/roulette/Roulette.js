@@ -79,7 +79,7 @@ export function Roulette() {
                     const mostRecentTransaction = json.history[json.history.length - 1];
 
                     if (typeof mostRecentTransaction === "undefined") {
-                        setAvailableBalance(json.initialBalance);
+                        setAvailableBalance(100000);
                         return;
                     }
 
