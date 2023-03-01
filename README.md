@@ -7,26 +7,21 @@ Some tests are disabled as a workaround to prevent failures in the CI/CD pipelin
 # Instructions
 
 1. `npm install`
-   - installs dependencies, including json-server
+   - installs dependencies
 1. `npm test`
    - runs tests using the Jest testing framework included with `create-react-app`
+1. `npm run start-chain`
+    - starts the Hardhat node
+    - runs `npx hardhat node`
+1. `npm run init-chain`
+    - deploys the token contract
+    - deploys the games played contract
+    - mints tokens for the generated accounts
+    - runs `npx hardhat run scripts/initializeChain.js --network localhost`
 1. `npm start`
-   - starts json-server then runs `react-scripts start` 
+    - starts json-server then the React app
+    - runs `json-server --watch -p 3001 db.json & react-scripts start`
 
 ## Notes
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses [json-server](https://github.com/typicode/json-server). Development is underway to replace json-server with a local Ethereum node run by [Hardhat](https://hardhat.org/).
-
-## Setting up Player Token Balances
-
-`npx hardhat node`
-- starts the Hardhat node
-
-~~`npx hardhat compile`~~ (not necessary because the deploy script compiles for us)
-- ~~compiles the contract(s)~~
-
-`npx hardhat run scripts/deployTokenContract.js --network localhost`
-- deploys the token contract to the Hardhat chain running locally
-
-`npx hardhat run scripts/depositEthForTokens.js --network localhost`
-- deposits 1.0 ETH in exchange for 100,000 GAME tokens on behalf of the generated accounts (10.0 ETH for the last "house" account)

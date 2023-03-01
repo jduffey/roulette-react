@@ -16,7 +16,7 @@
         "build": "react-scripts build",
         "test": "react-scripts test --coverage",
         "start-chain": "npx hardhat node",
-        "initialize-chain": "npx hardhat run scripts/initializeChain.js --network localhost",
+        "init-chain": "npx hardhat run scripts/initializeChain.js --network localhost",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
