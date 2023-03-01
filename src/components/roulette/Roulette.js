@@ -17,6 +17,7 @@ import { PlayerInfo } from './PlayerInfo';
 import { RewardsInfo } from './RewardsInfo';
 import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
+import { HouseInfo } from './HouseInfo';
 
 import { getCompleteResultsOfRound } from '../../common/getCompleteResultsOfRound';
 import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
@@ -33,10 +34,13 @@ import {
     HOUSE_ADDRESS,
     incrementGamesPlayedCounter,
     getGamesPlayedCounter,
+    getTokenBalance,
 } from '../../common/blockchainWrapper';
 
 // Uncomment this line to simulate playing the game
 // import { simulatePlayingGame } from '../../common/simulatePlayingGame';
+
+const INITIAL_BALANCE = 100_000;
 
 function calculateTotalBetAmount(bets) {
     return bets.reduce((acc, pendingBet) => acc + pendingBet.betAmount, 0);
@@ -61,17 +65,19 @@ function getNewTransactionForDatabase(mostRecentRoundResults) {
 const CLASS_NAME = "Roulette-component";
 export function Roulette() {
     const [stateTransactionHistory, setStateTransactionHistory] = useState([]);
-
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
 
-    const [playerBalance, setPlayerBalance] = useState("Loading...");
+    const [pendingBets, setPendingBets] = useState([]);
 
     const [spinResults, setSpinResults] = useState([]);
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
 
-    const [pendingBets, setPendingBets] = useState([]);
+    // TODO retrieve from chain
+    const [playerBalance, setPlayerBalance] = useState("Loading...");
 
-    const [gamesPlayed, setGamesPlayed] = useState("Loading...");
+    // Retrieved from chain
+    const [houseBalance, setHouseBalance] = useState(undefined);
+    const [gamesPlayed, setGamesPlayed] = useState(undefined);
 
     useEffect(() => {
         let mounted = true;
@@ -84,7 +90,7 @@ export function Roulette() {
                     const mostRecentTransaction = json.history[json.history.length - 1];
 
                     if (typeof mostRecentTransaction === "undefined") {
-                        setPlayerBalance(100000);
+                        setPlayerBalance(INITIAL_BALANCE);
                         return;
                     }
 
@@ -103,20 +109,23 @@ export function Roulette() {
                     setPlayerBalance(previousRoundResults.finalBalance);
 
                     setSpinResults(json.history.map(historyItem => historyItem.spinResult));
+
                 }
+            });
+
+        getTokenBalance(HOUSE_ADDRESS)
+            .then(bal => {
+                setHouseBalance(bal);
             });
 
         getGamesPlayedCounter()
             .then(count => {
-                if (mounted) {
-                    const parsedCount = parseInt(count._hex, 16);
-                    console.log("gamesPlayed", parsedCount);
-                    setGamesPlayed(parsedCount);
-                }
+                const parsedCount = parseInt(count._hex, 16);
+                setGamesPlayed(parsedCount);
             });
 
         return () => { mounted = false };
-    }, []);
+    }, [houseBalance, gamesPlayed]);
 
     function handleBettingSquareClick(bettingSquareName) {
         if (currentChipAmountSelected > playerBalance) {
@@ -148,7 +157,6 @@ export function Roulette() {
                 const startingBalance = playerBalance + betAmountOnBoard;
 
                 const resultsOfRound = getCompleteResultsOfRound(startingBalance, pendingBets, randomWheelNumber);
-                console.log("resultsOfRound", resultsOfRound);
 
                 // Go through each bet and sum the total owed back to the player
                 const owedByHouseToPlayer = Object.entries(resultsOfRound.resultsOfBets).reduce((acc, [_betName, individualBetResult]) => {
@@ -195,14 +203,6 @@ export function Roulette() {
                     );
                 }
 
-                incrementGamesPlayedCounter()
-                    .then(() => getGamesPlayedCounter()
-                        .then(count => {
-                            const parsedCount = parseInt(count._hex, 16);
-                            console.log("gamesPlayed", parsedCount);
-                            setGamesPlayed(parsedCount);
-                        }));
-
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
                 setPlayerBalance(resultsOfRound.finalBalance);
 
@@ -224,13 +224,25 @@ export function Roulette() {
                 setPendingBets([]);
 
                 updateTransactionHistory(copyTransactionHistory);
+
+                getTokenBalance(HOUSE_ADDRESS)
+                    .then(bal => {
+                        setHouseBalance(bal);
+                    });
+
+                incrementGamesPlayedCounter()
+                    .then(() => getGamesPlayedCounter()
+                        .then(count => {
+                            const parsedCount = parseInt(count._hex, 16);
+                            setGamesPlayed(parsedCount);
+                        }));
             });
     }
 
     function handleResetHistoryClick() {
         resetTransactionHistory()
             .then(() => {
-                setPlayerBalance(100000);
+                setPlayerBalance(INITIAL_BALANCE);
                 setStateTransactionHistory([]);
                 setSpinResults([]);
                 setPreviousRoundResultsForBetResultsInfo(null);
@@ -291,6 +303,9 @@ export function Roulette() {
             />
             <NumbersHitGameCounterOverlay
                 transactionHistory={stateTransactionHistory}
+            />
+            <HouseInfo
+                houseBalance={houseBalance}
             />
         </div >
     );
