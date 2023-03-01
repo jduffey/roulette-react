@@ -110,19 +110,20 @@ export function Roulette() {
 
                     setSpinResults(json.history.map(historyItem => historyItem.spinResult));
 
-                    getTokenBalance(HOUSE_ADDRESS)
-                        .then(bal => {
-                            console.log("houseBalance", bal);
-                            setHouseBalance(bal);
-                        });
-
-                    getGamesPlayedCounter()
-                        .then(count => {
-                            const parsedCount = parseInt(count._hex, 16);
-                            console.log("gamesPlayed", parsedCount);
-                            setGamesPlayed(parsedCount);
-                        });
                 }
+            });
+
+        getTokenBalance(HOUSE_ADDRESS)
+            .then(bal => {
+                console.log("houseBalance", bal);
+                setHouseBalance(bal);
+            });
+
+        getGamesPlayedCounter()
+            .then(count => {
+                const parsedCount = parseInt(count._hex, 16);
+                console.log("gamesPlayed", parsedCount);
+                setGamesPlayed(parsedCount);
             });
 
         return () => { mounted = false };

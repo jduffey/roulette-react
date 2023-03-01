@@ -15,12 +15,18 @@ export function RewardsInfo(props) {
             setRewardsBalance(balance);
         }, 100);
 
-    }, [props.transactionHistory]);
+    }, [props]);
 
     const accumulatedRewardsText = rewardsBalance ? `$ ${Number(rewardsBalance).toFixed(2)}` : "Loading...";
     const gamesWon = props.transactionHistory.filter(tx => tx.finalBalance > tx.startingBalance).length;
     const gamesLost = props.transactionHistory.filter(tx => tx.finalBalance < tx.startingBalance).length;
     const gamesTied = props.transactionHistory.filter(tx => tx.finalBalance === tx.startingBalance).length;
+
+
+    console.log("props.gamesPlayed", props.gamesPlayed);
+    const gamesPlayedText = typeof props.gamesPlayed === "number"
+        ? props.gamesPlayed
+        : "Loading...";
 
     return (
         <div
@@ -30,7 +36,7 @@ export function RewardsInfo(props) {
                 {"Games Played"}
                 < br />
                 <span className="rewards-info-value">
-                    {props.gamesPlayed}
+                    {gamesPlayedText}
                 </span>
             </div>
             <div>
