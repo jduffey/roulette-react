@@ -7,7 +7,7 @@ import {
 
 const CLASS_NAME = "RewardsInfo-component";
 export function RewardsInfo(props) {
-    const [rewardsBalance, setRewardsBalance] = useState(0);
+    const [rewardsBalance, setRewardsBalance] = useState(undefined);
 
     useEffect(() => {
         setTimeout(async () => {
@@ -17,7 +17,7 @@ export function RewardsInfo(props) {
 
     }, [props.transactionHistory]);
 
-    const accumulatedRewardsText = `$ ${Number(rewardsBalance).toFixed(2)}`;
+    const accumulatedRewardsText = rewardsBalance ? `$ ${Number(rewardsBalance).toFixed(2)}` : "Loading...";
     const gamesWon = props.transactionHistory.filter(tx => tx.finalBalance > tx.startingBalance).length;
     const gamesLost = props.transactionHistory.filter(tx => tx.finalBalance < tx.startingBalance).length;
     const gamesTied = props.transactionHistory.filter(tx => tx.finalBalance === tx.startingBalance).length;
