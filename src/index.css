@@ -283,6 +283,24 @@ because we'll have "invisible" betting options later
     font-size: 24px;
 }
 
+.HouseInfo-component {
+    position: relative;
+    left: 1260px;
+    bottom: 4200px;
+    height: 280px;
+    width: 200px;
+    border-radius: 24px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #34a45d;
+    box-shadow: 4px 4px 0px 4px black;
+}
+
 .MostRecentSpinResults-component {
     position: relative;
     left: 1158px;

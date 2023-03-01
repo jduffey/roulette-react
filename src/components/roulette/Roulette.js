@@ -17,6 +17,7 @@ import { PlayerInfo } from './PlayerInfo';
 import { RewardsInfo } from './RewardsInfo';
 import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
+import { HouseInfo } from './HouseInfo';
 
 import { getCompleteResultsOfRound } from '../../common/getCompleteResultsOfRound';
 import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
@@ -292,6 +293,7 @@ export function Roulette() {
             <NumbersHitGameCounterOverlay
                 transactionHistory={stateTransactionHistory}
             />
+            <HouseInfo />
         </div >
     );
 }
