@@ -46,7 +46,7 @@ export function HouseInfo(props) {
             </div>
             <br />
             <div>
-                {"Games Played"}
+                {"All-Time Total Spins"}
                 < br />
                     {gamesPlayedText}
             </div>

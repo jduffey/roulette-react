@@ -7,8 +7,13 @@ import {
     depositEthForTokens,
     redeemTokensForEth,
     transferFrom,
-    TOKEN_CONTRACT_ADDRESS,
     tokenSymbol,
+    FIRST_PLAYER_ADDRESS,
+    SECOND_PLAYER_ADDRESS,
+    THIRD_PLAYER_ADDRESS,
+    HOUSE_ADDRESS,
+    JACKPOT_ADDRESS,
+    TOKEN_CONTRACT_ADDRESS,
 } from "../../common/blockchainWrapper";
 
 export function Balances() {
@@ -19,34 +24,32 @@ export function Balances() {
 
     const [rerender, setRerender] = useState(false);
 
-    const HOUSE_ADDRESS = "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65";
     const ETH_TO_DEPOSIT = "1";
     const TOKENS_TO_REDEEM = "100000";
     const TOKENS_TO_TRANSFER = "10000";
     const NICKNAMES = {
-        "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266": "P1",
-        "0x70997970C51812dc3A010C7d01b50e0d17dc79C8": "P2",
-        "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC": "P3",
-        "0x90F79bf6EB2c4f870365E785982E1f101E93b906": "Jackpot",
-        [HOUSE_ADDRESS]: "House",
-        [TOKEN_CONTRACT_ADDRESS]: "Token",
+        [FIRST_PLAYER_ADDRESS]: "Player 1 👤",
+        [SECOND_PLAYER_ADDRESS]: "Player 2 👤",
+        [THIRD_PLAYER_ADDRESS]: "Player 3 👤",
+        [HOUSE_ADDRESS]: "House 🏠",
+        [JACKPOT_ADDRESS]: "Jackpot 💰",
+        [TOKEN_CONTRACT_ADDRESS]: "Token 📜",
     }
 
     const MS_REFRESH_INTERVAL = 1000;
 
     useEffect(() => {
         const interval = setInterval(() => {
-            // Default values, including seed phrase: https://hardhat.org/hardhat-network/docs/reference
-            const addresses = [
-                "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-                "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
-                "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
-                "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+            const addressesInDisplayOrder = [
+                FIRST_PLAYER_ADDRESS,
+                SECOND_PLAYER_ADDRESS,
+                THIRD_PLAYER_ADDRESS,
                 HOUSE_ADDRESS,
+                JACKPOT_ADDRESS,
                 TOKEN_CONTRACT_ADDRESS
             ];
 
-            const addressWithBalancePromises = addresses.map(async (address) => {
+            const addressWithBalancePromises = addressesInDisplayOrder.map(async (address) => {
                 const balance = await getEthBalance(address);
                 return { address, balance };
             });
@@ -59,7 +62,7 @@ export function Balances() {
                 setEthBalances(newBalances);
             });
 
-            const addressesWithTokenBalancePromises = addresses.map(async (address) => {
+            const addressesWithTokenBalancePromises = addressesInDisplayOrder.map(async (address) => {
                 const balance = await getTokenBalance(address);
                 return { address, balance };
             });

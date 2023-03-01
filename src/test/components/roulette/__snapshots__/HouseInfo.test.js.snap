@@ -17,7 +17,7 @@ exports[`HouseInfo renders when houseBalance is 0 1`] = `
   </div>
   <br />
   <div>
-    Games Played
+    Total Spins
     <br />
     Loading...
   </div>
@@ -41,7 +41,7 @@ exports[`HouseInfo renders when houseBalance is 123456.9876 1`] = `
   </div>
   <br />
   <div>
-    Games Played
+    Total Spins
     <br />
     Loading...
   </div>
@@ -65,7 +65,7 @@ exports[`HouseInfo renders when houseBalance is undefined 1`] = `
   </div>
   <br />
   <div>
-    Games Played
+    Total Spins
     <br />
     Loading...
   </div>

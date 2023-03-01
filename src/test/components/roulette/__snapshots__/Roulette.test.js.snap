@@ -6654,7 +6654,7 @@ exports[`Roulette renders 1`] = `
     </div>
     <br />
     <div>
-      Games Played
+      Total Spins
       <br />
       Loading...
     </div>
