@@ -30,7 +30,9 @@ import {
     transferFrom,
     FIRST_PLAYER_ADDRESS,
     REWARDS_ADDRESS,
-    HOUSE_ADDRESS
+    HOUSE_ADDRESS,
+    incrementGamesPlayedCounter,
+    getGamesPlayedCounter,
 } from '../../common/blockchainWrapper';
 
 // Uncomment this line to simulate playing the game
@@ -58,15 +60,18 @@ function getNewTransactionForDatabase(mostRecentRoundResults) {
 
 const CLASS_NAME = "Roulette-component";
 export function Roulette() {
-    const [transactionHistory, setTransactionHistory] = useState([]);
+    const [stateTransactionHistory, setStateTransactionHistory] = useState([]);
 
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
 
-    const [availableBalance, setAvailableBalance] = useState("Loading...");
+    const [playerBalance, setPlayerBalance] = useState("Loading...");
+
     const [spinResults, setSpinResults] = useState([]);
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
 
     const [pendingBets, setPendingBets] = useState([]);
+
+    const [gamesPlayed, setGamesPlayed] = useState("Loading...");
 
     useEffect(() => {
         let mounted = true;
@@ -74,12 +79,12 @@ export function Roulette() {
         fetchTransactionHistory()
             .then(json => {
                 if (mounted) {
-                    setTransactionHistory(json.history);
+                    setStateTransactionHistory(json.history);
 
                     const mostRecentTransaction = json.history[json.history.length - 1];
 
                     if (typeof mostRecentTransaction === "undefined") {
-                        setAvailableBalance(json.initialBalance);
+                        setPlayerBalance(100000);
                         return;
                     }
 
@@ -95,9 +100,18 @@ export function Roulette() {
                         mostRecentTransaction.spinResult,
                     );
                     setPreviousRoundResultsForBetResultsInfo(previousRoundResults);
-                    setAvailableBalance(previousRoundResults.finalBalance);
+                    setPlayerBalance(previousRoundResults.finalBalance);
 
                     setSpinResults(json.history.map(historyItem => historyItem.spinResult));
+                }
+            });
+
+        getGamesPlayedCounter()
+            .then(count => {
+                if (mounted) {
+                    const parsedCount = parseInt(count._hex, 16);
+                    console.log("gamesPlayed", parsedCount);
+                    setGamesPlayed(parsedCount);
                 }
             });
 
@@ -105,7 +119,7 @@ export function Roulette() {
     }, []);
 
     function handleBettingSquareClick(bettingSquareName) {
-        if (currentChipAmountSelected > availableBalance) { // TODO replace with token balance
+        if (currentChipAmountSelected > playerBalance) {
             alert("You don't have enough money to place that bet!");
             return;
         }
@@ -115,9 +129,9 @@ export function Roulette() {
         copyPendingBets.push(pendingBet);
         setPendingBets(copyPendingBets);
 
-        const newBalance = availableBalance - currentChipAmountSelected; // TODO replaced with token balance, remove setter
+        const newBalance = playerBalance - currentChipAmountSelected;
 
-        setAvailableBalance(newBalance);
+        setPlayerBalance(newBalance);
     }
 
     function handleSpinButtonClick() {
@@ -131,7 +145,7 @@ export function Roulette() {
 
                 const betAmountOnBoard = calculateTotalBetAmount(pendingBets);
 
-                const startingBalance = availableBalance + betAmountOnBoard;
+                const startingBalance = playerBalance + betAmountOnBoard;
 
                 const resultsOfRound = getCompleteResultsOfRound(startingBalance, pendingBets, randomWheelNumber);
                 console.log("resultsOfRound", resultsOfRound);
@@ -181,16 +195,24 @@ export function Roulette() {
                     );
                 }
 
+                incrementGamesPlayedCounter()
+                    .then(() => getGamesPlayedCounter()
+                        .then(count => {
+                            const parsedCount = parseInt(count._hex, 16);
+                            console.log("gamesPlayed", parsedCount);
+                            setGamesPlayed(parsedCount);
+                        }));
+
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
-                setAvailableBalance(resultsOfRound.finalBalance);
+                setPlayerBalance(resultsOfRound.finalBalance);
 
                 copySpinResults.push(resultsOfRound.winningWheelNumber);
                 setSpinResults(copySpinResults);
 
                 const newTransactionForDatabase = getNewTransactionForDatabase(resultsOfRound);
-                const copyTransactionHistory = transactionHistory.slice();
+                const copyTransactionHistory = stateTransactionHistory.slice();
                 copyTransactionHistory.push(newTransactionForDatabase);
-                setTransactionHistory(copyTransactionHistory);
+                setStateTransactionHistory(copyTransactionHistory);
 
                 // TODO update/revisit this note after replacing betsOnBoard (object) with pendingBets (array of PendingBet objects)
                 // TODO bug here? if we don't reset pendingBets then we can continue to click spin, which is not a problem itself,
@@ -206,16 +228,12 @@ export function Roulette() {
     }
 
     function handleResetHistoryClick() {
-        fetchTransactionHistory()
-            .then(json => {
-                setAvailableBalance(json.initialBalance);
-            }).then(() => {
-                resetTransactionHistory()
-                    .then(() => {
-                        setTransactionHistory([]);
-                        setSpinResults([]);
-                        setPreviousRoundResultsForBetResultsInfo(null);
-                    });
+        resetTransactionHistory()
+            .then(() => {
+                setPlayerBalance(100000);
+                setStateTransactionHistory([]);
+                setSpinResults([]);
+                setPreviousRoundResultsForBetResultsInfo(null);
             });
     }
 
@@ -245,7 +263,7 @@ export function Roulette() {
             />
             <PlayerInfo
                 onClick={() => handleResetHistoryClick()}
-                availableBalance={availableBalance}
+                playerBalance={playerBalance}
                 totalBetAmount={calculateTotalBetAmount(pendingBets)}
             />
             <PendingBetsTable
@@ -255,19 +273,24 @@ export function Roulette() {
                 previousRoundResults={previousRoundResultsForBetResultsInfo}
             />
             <RewardsInfo
-                transactionHistory={transactionHistory}
+                // TODO disable won/lost/tie counter
+                // leave only the games played counter (and the rewards balance which already works)
+                // create contract that incremenets every time a game is played
+                // then create a call to that contract to get the number of games played
+                transactionHistory={stateTransactionHistory}
+                gamesPlayed={gamesPlayed}
             />
             <NumbersHitTracker
-                transactionHistory={transactionHistory}
+                transactionHistory={stateTransactionHistory}
             />
             <CompletionsCounter
-                transactionHistory={transactionHistory}
+                transactionHistory={stateTransactionHistory}
             />
             <NumbersHitGameCounter
-                transactionHistory={transactionHistory}
+                transactionHistory={stateTransactionHistory}
             />
             <NumbersHitGameCounterOverlay
-                transactionHistory={transactionHistory}
+                transactionHistory={stateTransactionHistory}
             />
         </div >
     );
