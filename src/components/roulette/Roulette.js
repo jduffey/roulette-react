@@ -128,7 +128,7 @@ export function Roulette(props) {
             });
 
         return () => { mounted = false };
-    }, [playersAddress, houseBalance, gamesPlayed]);
+    }, [props.playerDbEndpoint, playersAddress, houseBalance, gamesPlayed]);
 
     function handleBettingSquareClick(bettingSquareName) {
         if (currentChipAmountSelected > playerBalance) {

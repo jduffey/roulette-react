@@ -1,9 +1,6 @@
 const BASE_URL = 'http://localhost:3001';
-// const ENDPOINT = '/player';
-// const DB_URL = new URL(ENDPOINT, BASE_URL);
 
 async function fetchTransactionHistory(playerId) {
-    // console.log("Fetching transaction history from: ", DB_URL);
     const dbUrl = new URL(playerId, BASE_URL);
     const res = await fetch(dbUrl);
     if (!res.ok) {
@@ -15,7 +12,6 @@ async function fetchTransactionHistory(playerId) {
 }
 
 async function updateTransactionHistory(history, playerId) {
-    // console.log("Updating transaction history to: ", DB_URL);
     const dbUrl = new URL(playerId, BASE_URL);
     const res = await fetch(dbUrl, {
         method: 'PATCH',
@@ -30,7 +26,6 @@ async function updateTransactionHistory(history, playerId) {
 }
 
 async function resetTransactionHistory(playerId) {
-    // console.log("Resetting transaction history to: ", DB_URL);
     const dbUrl = new URL(playerId, BASE_URL);
     const res = await fetch(dbUrl, {
         method: 'PATCH',
