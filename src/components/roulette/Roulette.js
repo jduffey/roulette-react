@@ -228,16 +228,12 @@ export function Roulette() {
     }
 
     function handleResetHistoryClick() {
-        fetchTransactionHistory()
-            .then(json => {
+        resetTransactionHistory()
+            .then(() => {
                 setPlayerBalance(100000);
-            }).then(() => {
-                resetTransactionHistory()
-                    .then(() => {
-                        setStateTransactionHistory([]);
-                        setSpinResults([]);
-                        setPreviousRoundResultsForBetResultsInfo(null);
-                    });
+                setStateTransactionHistory([]);
+                setSpinResults([]);
+                setPreviousRoundResultsForBetResultsInfo(null);
             });
     }
 
