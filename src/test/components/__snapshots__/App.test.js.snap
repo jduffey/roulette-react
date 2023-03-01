@@ -6868,6 +6868,8 @@ Array [
 ]
 `;
 
+exports[`App renders route "/roulette-p1" 1`] = `null`;
+
 exports[`App renders route "/sic-bo" 1`] = `
 Array [
   <div

@@ -1,5 +1,11 @@
 {
-  "player": {
-    "history": []
-  }
+    "player-1": {
+        "history": []
+    },
+    "player-2": {
+        "history": []
+    },
+    "player-3": {
+        "history": []
+    }
 }

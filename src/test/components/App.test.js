@@ -6,7 +6,7 @@ import { App } from "../../components/App";
 describe("App", () => {
     it.each([
         ["/"],
-        ["/roulette"],
+        ["/roulette-p1"],
         ["/sic-bo"],
         ["/balances"],
     ])("renders route \"%s\"", (path) => {
