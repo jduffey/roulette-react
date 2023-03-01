@@ -37,7 +37,9 @@ import {
 } from '../../common/blockchainWrapper';
 
 // Uncomment this line to simulate playing the game
-// import { simulatePlayingGame } from '../../common/simulatePlayingGame';
+import { simulatePlayingGame } from '../../common/simulatePlayingGame';
+
+const INITIAL_BALANCE = 100_000;
 
 function calculateTotalBetAmount(bets) {
     return bets.reduce((acc, pendingBet) => acc + pendingBet.betAmount, 0);
@@ -85,7 +87,7 @@ export function Roulette() {
                     const mostRecentTransaction = json.history[json.history.length - 1];
 
                     if (typeof mostRecentTransaction === "undefined") {
-                        setPlayerBalance(100000);
+                        setPlayerBalance(INITIAL_BALANCE);
                         return;
                     }
 
@@ -231,7 +233,7 @@ export function Roulette() {
     function handleResetHistoryClick() {
         resetTransactionHistory()
             .then(() => {
-                setPlayerBalance(100000);
+                setPlayerBalance(INITIAL_BALANCE);
                 setStateTransactionHistory([]);
                 setSpinResults([]);
                 setPreviousRoundResultsForBetResultsInfo(null);

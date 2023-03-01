@@ -18,7 +18,7 @@ export function HouseInfo(props) {
     }, [props.transactionHistory]);
 
     const houseBalanceText = houseBalance
-        ? `$ ${parseFloat(houseBalance).toFixed(2).toLocaleString()}`
+        ? `$ ${parseFloat(houseBalance).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
         : "Loading...";
 
     return (
