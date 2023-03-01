@@ -62,6 +62,7 @@ function getNewTransactionForDatabase(mostRecentRoundResults) {
 const CLASS_NAME = "Roulette-component";
 export function Roulette(props) {
     const playersAddress = props.playerAddress;
+    const playerDbEndpoint = props.playerDbEndpoint;
 
     const [stateTransactionHistory, setStateTransactionHistory] = useState([]);
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
@@ -101,7 +102,7 @@ export function Roulette(props) {
                 }
             });
 
-        fetchTransactionHistory(props.playerDbEndpoint)
+        fetchTransactionHistory(playerDbEndpoint)
             .then(json => {
                 if (mounted) {
                     setStateTransactionHistory(json.history);
@@ -128,7 +129,7 @@ export function Roulette(props) {
             });
 
         return () => { mounted = false };
-    }, [props.playerDbEndpoint, playersAddress, houseBalance, gamesPlayed]);
+    }, [playerDbEndpoint, playersAddress, houseBalance, gamesPlayed]);
 
     function handleBettingSquareClick(bettingSquareName) {
         if (currentChipAmountSelected > playerBalance) {
@@ -217,7 +218,7 @@ export function Roulette(props) {
                 // 2. what the player "owns" (i.e. if they had an option to clear all bets on the board, what would their balance be)
                 setPendingBets([]);
 
-                updateTransactionHistory(copyTransactionHistory, props.playerDbEndpoint);
+                updateTransactionHistory(copyTransactionHistory, playerDbEndpoint);
 
                 getTokenBalance(playersAddress)
                     .then(bal => {
@@ -239,7 +240,7 @@ export function Roulette(props) {
     }
 
     function handleResetHistoryClick() {
-        resetTransactionHistory(props.playerDbEndpoint)
+        resetTransactionHistory(playerDbEndpoint)
             .then(() => {
                 setStateTransactionHistory([]);
                 setSpinResults([]);
