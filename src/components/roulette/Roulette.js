@@ -205,7 +205,9 @@ export function Roulette(props) {
                         setPlayerBalance(bal);
                     });
 
-                incrementTotalSpins().then(() => { });
+                incrementTotalSpins().then(() => {
+                    // resolve
+                });
             });
     }
 
