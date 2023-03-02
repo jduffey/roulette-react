@@ -40,6 +40,11 @@ exports[`Balances renders 1`] = `
              Balance
           </th>
           <th
+            className="Balances-token-balance"
+          >
+            Rewards
+          </th>
+          <th
             className="Balances-button-header"
           >
             Get Tokens

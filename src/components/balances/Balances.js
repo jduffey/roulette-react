@@ -80,7 +80,6 @@ export function Balances() {
 
             const addressesWithRewardsPromises = addressesInDisplayOrder.map(async (address) => {
                 const balance = await getPlayerRewards(address);
-                console.log(balance);
                 return { address, balance };
             });
 
