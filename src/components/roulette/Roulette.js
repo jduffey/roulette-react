@@ -27,11 +27,10 @@ import {
 
 import {
     transferFrom,
+    getTokenBalance,
+    incrementTotalSpins,
     JACKPOT_ADDRESS,
     HOUSE_ADDRESS,
-    incrementTotalSpins,
-    getTotalSpins,
-    getTokenBalance,
 } from '../../common/blockchainWrapper';
 
 // Uncomment this line to simulate playing the game
