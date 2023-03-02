@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import {
     getTokenBalance,
     getTotalSpins,
-    JACKPOT_ADDRESS,
     HOUSE_ADDRESS,
     getJackpotBalance,
 } from "../../common/blockchainWrapper";
@@ -17,7 +16,6 @@ const formattedChainNumber = (chainNumber) => {
 const CLASS_NAME = "HouseInfo-component";
 export function HouseInfo() {
     const [houseBalance, setHouseBalance] = useState(undefined);
-    const [jackpotBalance, setJackpotBalance] = useState(undefined);
     const [totalSpins, setTotalSpins] = useState(undefined);
 
     const [newJackpotBalance, setNewJackpotBalance] = useState(undefined);
@@ -26,9 +24,6 @@ export function HouseInfo() {
         setTimeout(async () => {
             const houseBal = await getTokenBalance(HOUSE_ADDRESS);
             setHouseBalance(houseBal);
-
-            const jackpotBal = await getTokenBalance(JACKPOT_ADDRESS);
-            setJackpotBalance(jackpotBal);
 
             const spins = await getTotalSpins();
             setTotalSpins(spins);
@@ -48,19 +43,13 @@ export function HouseInfo() {
                 < br />
                 {formattedChainNumber(houseBalance)}
             </div>
-            {/* <br /> */}
-            <div>
-                Jackpot Balance
-                < br />
-                {formattedChainNumber(jackpotBalance)}
-            </div>
-            {/* <br /> */}
+            <br />
             <div>
                 New Jackpot Balance
                 < br />
                 {formattedChainNumber(newJackpotBalance)}
             </div>
-            {/* <br /> */}
+            <br />
             <div>
                 All-Time Total Spins
                 < br />

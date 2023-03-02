@@ -12,7 +12,6 @@ import {
     SECOND_PLAYER_ADDRESS,
     THIRD_PLAYER_ADDRESS,
     HOUSE_ADDRESS,
-    JACKPOT_ADDRESS,
     TOKEN_CONTRACT_ADDRESS,
     getJackpotBalance,
 } from "../../common/blockchainWrapper";
@@ -34,7 +33,6 @@ export function Balances() {
         [SECOND_PLAYER_ADDRESS]: "Player 2 👤",
         [THIRD_PLAYER_ADDRESS]: "Player 3 👤",
         [HOUSE_ADDRESS]: "House 🏠",
-        [JACKPOT_ADDRESS]: "Jackpot 💰",
         [TOKEN_CONTRACT_ADDRESS]: "Token 📜",
     }
 
@@ -47,7 +45,6 @@ export function Balances() {
                 SECOND_PLAYER_ADDRESS,
                 THIRD_PLAYER_ADDRESS,
                 HOUSE_ADDRESS,
-                JACKPOT_ADDRESS,
                 TOKEN_CONTRACT_ADDRESS
             ];
 
