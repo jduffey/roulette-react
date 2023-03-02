@@ -72,8 +72,6 @@ export function Roulette(props) {
 
     // Retrieved from chain
     const [playerBalance, setPlayerBalance] = useState(undefined);
-    const [houseBalance, setHouseBalance] = useState(undefined);
-    const [totalSpins, setTotalSpins] = useState(undefined);
 
     useEffect(() => {
         let mounted = true;
@@ -82,21 +80,6 @@ export function Roulette(props) {
             .then(balance => {
                 if (mounted) {
                     setPlayerBalance(balance);
-                }
-            });
-
-        getTokenBalance(HOUSE_ADDRESS)
-            .then(balance => {
-                if (mounted) {
-                    setHouseBalance(balance);
-                }
-            });
-
-        getTotalSpins()
-            .then(count => {
-                if (mounted) {
-                    const parsedCount = parseInt(count._hex, 16);
-                    setTotalSpins(parsedCount);
                 }
             });
 
@@ -127,7 +110,7 @@ export function Roulette(props) {
             });
 
         return () => { mounted = false };
-    }, [playerDbEndpoint, playerAddress, houseBalance, totalSpins]);
+    }, [playerDbEndpoint, playerAddress]);
 
     function handleBettingSquareClick(bettingSquareName) {
         if (currentChipAmountSelected > playerBalance) {
@@ -223,17 +206,7 @@ export function Roulette(props) {
                         setPlayerBalance(bal);
                     });
 
-                getTokenBalance(HOUSE_ADDRESS)
-                    .then(bal => {
-                        setHouseBalance(bal);
-                    });
-
-                incrementTotalSpins()
-                    .then(() => getTotalSpins()
-                        .then(count => {
-                            const parsedCount = parseInt(count._hex, 16);
-                            setTotalSpins(parsedCount);
-                        }));
+                incrementTotalSpins().then(() => { });
             });
     }
 
@@ -284,8 +257,6 @@ export function Roulette(props) {
                 transactionHistory={stateTransactionHistory}
             />
             <HouseInfo
-                houseBalance={houseBalance}
-                totalSpins={totalSpins}
             />
         </div >
     );

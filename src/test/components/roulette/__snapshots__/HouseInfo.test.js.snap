@@ -31,7 +31,7 @@ exports[`HouseInfo renders when houseBalance is 123456.9876 1`] = `
   <div>
     House Balance
     <br />
-    123,456.99
+    Loading...
   </div>
   <br />
   <div>
