@@ -476,18 +476,6 @@ because we'll have "invisible" betting options later
     text-align: center;
 }
 
-.Balances-eth-balance {
-    width: 260px;
-}
-
-.Balances-token-balance {
-    width: 260px;
-}
-
-.Balances-button-header {
-    width: 200px;
-}
-
 .Balances-contract-interact-button-column {
     text-align: center;
 }
