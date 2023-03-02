@@ -22,7 +22,7 @@ export function HouseInfo(props) {
         : "Loading...";
 
     const jackpotBalanceText = jackpotBalance
-        ? Number(jackpotBalance).toFixed(2)
+        ? parseFloat(jackpotBalance).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
         : "Loading...";
 
     const totalSpinsText = typeof props.totalSpins === "number"
