@@ -31,10 +31,11 @@ import {
     incrementTotalSpins,
     JACKPOT_ADDRESS,
     HOUSE_ADDRESS,
+    incrementJackpotBalance,
 } from '../../common/blockchainWrapper';
 
 // Uncomment this line to simulate playing the game
-// import { simulatePlayingGame } from '../../common/simulatePlayingGame';
+import { simulatePlayingGame } from '../../common/simulatePlayingGame';
 
 function calculateTotalBetAmount(bets) {
     return bets.reduce((acc, pendingBet) => acc + pendingBet.betAmount, 0);
@@ -177,6 +178,7 @@ export function Roulette(props) {
                         JACKPOT_ADDRESS,
                         owedByHouseToJackpot.toString()
                     );
+                    incrementJackpotBalance(owedByHouseToJackpot.toString());
                 }
 
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);

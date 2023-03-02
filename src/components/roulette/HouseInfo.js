@@ -5,6 +5,7 @@ import {
     getTotalSpins,
     JACKPOT_ADDRESS,
     HOUSE_ADDRESS,
+    getJackpotBalance,
 } from "../../common/blockchainWrapper";
 
 const formattedChainNumber = (chainNumber) => {
@@ -19,6 +20,8 @@ export function HouseInfo() {
     const [jackpotBalance, setJackpotBalance] = useState(undefined);
     const [totalSpins, setTotalSpins] = useState(undefined);
 
+    const [newJackpotBalance, setNewJackpotBalance] = useState(undefined);
+
     useEffect(() => {
         setTimeout(async () => {
             const houseBal = await getTokenBalance(HOUSE_ADDRESS);
@@ -29,6 +32,9 @@ export function HouseInfo() {
 
             const spins = await getTotalSpins();
             setTotalSpins(spins);
+
+            const newJackpotBal = await getJackpotBalance();
+            setNewJackpotBalance(newJackpotBal);
         }, 1000);
 
     }, [totalSpins]);
@@ -42,13 +48,19 @@ export function HouseInfo() {
                 < br />
                 {formattedChainNumber(houseBalance)}
             </div>
-            <br />
+            {/* <br /> */}
             <div>
                 Jackpot Balance
                 < br />
                 {formattedChainNumber(jackpotBalance)}
             </div>
-            <br />
+            {/* <br /> */}
+            <div>
+                New Jackpot Balance
+                < br />
+                {formattedChainNumber(newJackpotBalance)}
+            </div>
+            {/* <br /> */}
             <div>
                 All-Time Total Spins
                 < br />

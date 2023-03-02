@@ -14,11 +14,13 @@ import {
     HOUSE_ADDRESS,
     JACKPOT_ADDRESS,
     TOKEN_CONTRACT_ADDRESS,
+    getJackpotBalance,
 } from "../../common/blockchainWrapper";
 
 export function Balances() {
     const [ethBalances, setEthBalances] = useState([]);
     const [tokenBalances, setTokenBalances] = useState([]);
+    const [newJackpotBalance, setNewJackpotBalance] = useState(undefined);
 
     const [block, setBlock] = useState({});
 
@@ -79,6 +81,11 @@ export function Balances() {
                 .then((blockData) => {
                     setBlock(blockData);
                 });
+
+            getJackpotBalance()
+                .then((newJackpotBal) => {
+                    setNewJackpotBalance(newJackpotBal);
+                });
         }, MS_REFRESH_INTERVAL);
 
         return () => clearInterval(interval);
@@ -122,6 +129,15 @@ export function Balances() {
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>New Jack 💰</td>
+                            <td>--</td>
+                            <td>--</td>
+                            <td>{newJackpotBalance}</td>
+                            <td>--</td>
+                            <td>--</td>
+                            <td>--</td>
+                        </tr>
                         {
                             Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance }]) => {
                                 return (
