@@ -5,7 +5,7 @@ import {
     getBlock,
     getTokenBalance,
     tokenSymbol,
-    // getPlayerSpins, // TODO display this as well
+    getPlayerSpins,
     getPlayerRewards,
     FIRST_PLAYER_ADDRESS,
     SECOND_PLAYER_ADDRESS,
@@ -19,6 +19,7 @@ export function Balances() {
     const [ethBalances, setEthBalances] = useState([]);
     const [tokenBalances, setTokenBalances] = useState([]);
     const [playerRewards, setPlayerRewards] = useState([]);
+    const [playerSpins, setPlayerSpins] = useState([]);
 
     const [block, setBlock] = useState({});
 
@@ -83,6 +84,19 @@ export function Balances() {
                 setPlayerRewards(newBalances);
             });
 
+            const addressesWithSpinsPromises = addressesInDisplayOrder.map(async (address) => {
+                const balance = await getPlayerSpins(address);
+                return { address, balance };
+            });
+
+            Promise.all(addressesWithSpinsPromises).then((res) => {
+                const newBalances = res.reduce((acc, cur) => {
+                    acc[cur.address] = cur.balance;
+                    return acc;
+                }, {});
+                setPlayerSpins(newBalances);
+            });
+
             getBlock()
                 .then((blockData) => {
                     setBlock(blockData);
@@ -97,16 +111,18 @@ export function Balances() {
             ethBalance: ethBalances[address],
             tokenBalance: tokenBalances[address],
             rewards: playerRewards[address],
+            spins: playerSpins[address],
         };
         return acc;
     }, {});
 
     const columnNamesAndWidths = {
-        "Nickname": "15%",
-        "Address": "15%",
-        "ETH Balance": "20%",
-        "GAME Balance": "15%",
-        "Rewards": "10%",
+        "Nickname": "16%",
+        "Address": "16%",
+        "ETH Balance": "16%",
+        "GAME Balance": "16%",
+        "Rewards": "16%",
+        "Spins": "16%",
     }
 
     return (
@@ -134,11 +150,12 @@ export function Balances() {
                             <th style={{ width: columnNamesAndWidths["ETH Balance"] }}>ETH Balance</th>
                             <th style={{ width: columnNamesAndWidths["GAME Balance"] }}>{tokenSymbol} Balance</th>
                             <th style={{ width: columnNamesAndWidths["Rewards"] }}>Rewards</th>
+                            <th style={{ width: columnNamesAndWidths["Spins"] }}>Spins</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance, rewards }]) => {
+                            Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance, rewards, spins }]) => {
                                 return (
                                     <tr key={addr}>
                                         <td>{NICKNAMES[addr]}</td>
@@ -161,6 +178,12 @@ export function Balances() {
                                             {Number(rewards).toLocaleString(undefined, {
                                                 minimumFractionDigits: 2,
                                                 maximumFractionDigits: 2
+                                            })}
+                                        </td>
+                                        <td>
+                                            {Number(spins).toLocaleString(undefined, {
+                                                minimumFractionDigits: 0,
+                                                maximumFractionDigits: 0
                                             })}
                                         </td>
                                     </tr>

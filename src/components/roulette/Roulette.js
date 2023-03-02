@@ -181,6 +181,9 @@ export function Roulette(props) {
 
                 // "1% of house take goes to Player Rewards"
                 const owedByHouseToPlayerRewards = owedByPlayerToHouse * 0.01;
+                if (owedByHouseToPlayerRewards > 0) {
+                    console.log("House --> Rewards", owedByHouseToPlayerRewards);
+                }
 
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
 
