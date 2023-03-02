@@ -18,15 +18,15 @@ export function HouseInfo(props) {
     }, [props]);
 
     const houseBalanceText = props.houseBalance
-        ? `⛓ ${parseFloat(props.houseBalance).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+        ? parseFloat(props.houseBalance).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
         : "Loading...";
 
     const jackpotBalanceText = jackpotBalance
-        ? `⛓ ${Number(jackpotBalance).toFixed(2)}`
+        ? Number(jackpotBalance).toFixed(2)
         : "Loading...";
 
     const totalSpinsText = typeof props.totalSpins === "number"
-        ? `⛓ ${props.totalSpins}`
+        ? props.totalSpins
         : "Loading...";
 
     return (
@@ -34,21 +34,21 @@ export function HouseInfo(props) {
             className={CLASS_NAME}
         >
             <div>
-                {"House Balance"}
+                House Balance
                 < br />
-                    {houseBalanceText}
+                {houseBalanceText}
             </div>
             <br />
             <div>
-                {"Jackpot Balance"}
+                Jackpot Balance
                 < br />
-                    {jackpotBalanceText}
+                {jackpotBalanceText}
             </div>
             <br />
             <div>
-                {"All-Time Total Spins"}
+                All-Time Total Spins
                 < br />
-                    {totalSpinsText}
+                {totalSpinsText}
             </div>
         </div >
     )
