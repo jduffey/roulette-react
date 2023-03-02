@@ -30,8 +30,8 @@ export function HouseInfo() {
             const spins = await getTotalSpins();
             setTotalSpins(spins);
 
-            const totalAmountWagered = await getTotalAmountWagered();
-            setTotalAmountWagered(totalAmountWagered);
+            const taw = await getTotalAmountWagered();
+            setTotalAmountWagered(taw);
 
             const jackpotBal = await getJackpotBalance();
             setJackpotBalance(jackpotBal);

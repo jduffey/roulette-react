@@ -117,12 +117,12 @@ export function Balances() {
     }, {});
 
     const columnNamesAndWidths = {
-        "Nickname": "16%",
-        "Address": "16%",
-        "ETH Balance": "16%",
-        "GAME Balance": "16%",
-        "Rewards": "16%",
-        "Spins": "16%",
+        nickname: "16%",
+        address: "16%",
+        ethBalance: "16%",
+        tokenBalance: "16%",
+        rewards: "16%",
+        spins: "16%",
     }
 
     return (
@@ -145,12 +145,12 @@ export function Balances() {
                     className="balances-table">
                     <thead>
                         <tr className="balances-table-headers">
-                            <th style={{ width: columnNamesAndWidths["Nickname"] }}>Nickname</th>
-                            <th style={{ width: columnNamesAndWidths["Address"] }}>Address</th>
-                            <th style={{ width: columnNamesAndWidths["ETH Balance"] }}>ETH Balance</th>
-                            <th style={{ width: columnNamesAndWidths["GAME Balance"] }}>{tokenSymbol} Balance</th>
-                            <th style={{ width: columnNamesAndWidths["Rewards"] }}>Rewards</th>
-                            <th style={{ width: columnNamesAndWidths["Spins"] }}>Spins</th>
+                            <th style={{ width: columnNamesAndWidths.nickname }}>Nickname</th>
+                            <th style={{ width: columnNamesAndWidths.address }}>Address</th>
+                            <th style={{ width: columnNamesAndWidths.ethBalance }}>ETH Balance</th>
+                            <th style={{ width: columnNamesAndWidths.tokenBalance }}>{tokenSymbol} Balance</th>
+                            <th style={{ width: columnNamesAndWidths.rewards }}>Rewards</th>
+                            <th style={{ width: columnNamesAndWidths.spins }}>Spins</th>
                         </tr>
                     </thead>
                     <tbody>
