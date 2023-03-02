@@ -130,7 +130,7 @@ Array [
             <th
               style={
                 Object {
-                  "width": "15%",
+                  "width": "16%",
                 }
               }
             >
@@ -139,7 +139,7 @@ Array [
             <th
               style={
                 Object {
-                  "width": "15%",
+                  "width": "16%",
                 }
               }
             >
@@ -148,7 +148,7 @@ Array [
             <th
               style={
                 Object {
-                  "width": "20%",
+                  "width": "16%",
                 }
               }
             >
@@ -157,7 +157,7 @@ Array [
             <th
               style={
                 Object {
-                  "width": "15%",
+                  "width": "16%",
                 }
               }
             >
@@ -166,7 +166,7 @@ Array [
             <th
               style={
                 Object {
-                  "width": "10%",
+                  "width": "16%",
                 }
               }
             >
@@ -175,29 +175,11 @@ Array [
             <th
               style={
                 Object {
-                  "width": "20%",
+                  "width": "16%",
                 }
               }
             >
-              Get Tokens
-            </th>
-            <th
-              style={
-                Object {
-                  "width": "20%",
-                }
-              }
-            >
-              Redeem Tokens
-            </th>
-            <th
-              style={
-                Object {
-                  "width": "20%",
-                }
-              }
-            >
-              Txfr Tokens
+              Spins
             </th>
           </tr>
         </thead>
