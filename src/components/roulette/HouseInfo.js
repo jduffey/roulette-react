@@ -2,32 +2,36 @@ import { useEffect, useState } from 'react';
 
 import {
     getTokenBalance,
+    getTotalSpins,
     JACKPOT_ADDRESS,
+    HOUSE_ADDRESS,
 } from "../../common/blockchainWrapper";
 
+const formattedChainNumber = (chainNumber) => {
+    return chainNumber
+        ? parseFloat(chainNumber).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+        : "Loading...";
+}
+
 const CLASS_NAME = "HouseInfo-component";
-export function HouseInfo(props) {
+export function HouseInfo() {
+    const [houseBalance, setHouseBalance] = useState(undefined);
     const [jackpotBalance, setJackpotBalance] = useState(undefined);
+    const [totalSpins, setTotalSpins] = useState(undefined);
 
     useEffect(() => {
         setTimeout(async () => {
-            const balance = await getTokenBalance(JACKPOT_ADDRESS);
-            setJackpotBalance(balance);
-        }, 100);
+            const houseBal = await getTokenBalance(HOUSE_ADDRESS);
+            setHouseBalance(houseBal);
 
-    }, [props]);
+            const jackpotBal = await getTokenBalance(JACKPOT_ADDRESS);
+            setJackpotBalance(jackpotBal);
 
-    const houseBalanceText = props.houseBalance
-        ? parseFloat(props.houseBalance).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-        : "Loading...";
+            const spins = await getTotalSpins();
+            setTotalSpins(spins);
+        }, 1000);
 
-    const jackpotBalanceText = jackpotBalance
-        ? Number(jackpotBalance).toFixed(2)
-        : "Loading...";
-
-    const totalSpinsText = typeof props.totalSpins === "number"
-        ? props.totalSpins
-        : "Loading...";
+    }, [totalSpins]);
 
     return (
         <div
@@ -36,19 +40,19 @@ export function HouseInfo(props) {
             <div>
                 House Balance
                 < br />
-                {houseBalanceText}
+                {formattedChainNumber(houseBalance)}
             </div>
             <br />
             <div>
                 Jackpot Balance
                 < br />
-                {jackpotBalanceText}
+                {formattedChainNumber(jackpotBalance)}
             </div>
             <br />
             <div>
                 All-Time Total Spins
                 < br />
-                {totalSpinsText}
+                {formattedChainNumber(totalSpins)}
             </div>
         </div >
     )
