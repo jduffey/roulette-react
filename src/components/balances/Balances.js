@@ -13,13 +13,12 @@ import {
     THIRD_PLAYER_ADDRESS,
     HOUSE_ADDRESS,
     TOKEN_CONTRACT_ADDRESS,
-    getJackpotBalance,
+    ROULETTE_CONTRACT_ADDRESS,
 } from "../../common/blockchainWrapper";
 
 export function Balances() {
     const [ethBalances, setEthBalances] = useState([]);
     const [tokenBalances, setTokenBalances] = useState([]);
-    const [jackpotBalance, setJackpotBalance] = useState(undefined);
 
     const [block, setBlock] = useState({});
 
@@ -34,6 +33,7 @@ export function Balances() {
         [THIRD_PLAYER_ADDRESS]: "Player 3 👤",
         [HOUSE_ADDRESS]: "House 🏠",
         [TOKEN_CONTRACT_ADDRESS]: "Token 📜",
+        [ROULETTE_CONTRACT_ADDRESS]: "Roulette 🎰",
     }
 
     const MS_REFRESH_INTERVAL = 1000;
@@ -45,7 +45,8 @@ export function Balances() {
                 SECOND_PLAYER_ADDRESS,
                 THIRD_PLAYER_ADDRESS,
                 HOUSE_ADDRESS,
-                TOKEN_CONTRACT_ADDRESS
+                TOKEN_CONTRACT_ADDRESS,
+                ROULETTE_CONTRACT_ADDRESS,
             ];
 
             const addressWithBalancePromises = addressesInDisplayOrder.map(async (address) => {
@@ -77,11 +78,6 @@ export function Balances() {
             getBlock()
                 .then((blockData) => {
                     setBlock(blockData);
-                });
-
-            getJackpotBalance()
-                .then((jackpotBal) => {
-                    setJackpotBalance(jackpotBal);
                 });
         }, MS_REFRESH_INTERVAL);
 
@@ -126,15 +122,6 @@ export function Balances() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Jackpot 💰</td>
-                            <td>--</td>
-                            <td>--</td>
-                            <td>{jackpotBalance}</td>
-                            <td>--</td>
-                            <td>--</td>
-                            <td>--</td>
-                        </tr>
                         {
                             Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance }]) => {
                                 return (

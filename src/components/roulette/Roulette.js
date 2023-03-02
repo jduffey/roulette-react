@@ -30,6 +30,7 @@ import {
     getTokenBalance,
     incrementTotalSpins,
     HOUSE_ADDRESS,
+    ROULETTE_CONTRACT_ADDRESS,
     incrementJackpotBalance,
 } from '../../common/blockchainWrapper';
 
@@ -172,7 +173,11 @@ export function Roulette(props) {
 
                 if (owedByHouseToJackpot > 0) {
                     console.log("House --> Jackpot", owedByHouseToJackpot);
-                    incrementJackpotBalance(owedByHouseToJackpot.toString());
+                    transferFrom(
+                        HOUSE_ADDRESS,
+                        ROULETTE_CONTRACT_ADDRESS,
+                        owedByHouseToJackpot.toString()
+                    );
                 }
 
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);

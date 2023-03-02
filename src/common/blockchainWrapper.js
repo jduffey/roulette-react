@@ -12,22 +12,20 @@ const TOKEN_CONTRACT_ADDRESS = "0x057ef64E23666F000b34aE31332854aCBd1c8544";
 const ROULETTE_CONTRACT_ADDRESS = "0x261D8c5e9742e6f7f1076Fa1F560894524e19cad";
 
 async function incrementTotalSpins() {
-    const signer = provider.getSigner(HOUSE_ADDRESS);
     const incrementTotalSpinsAbi = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
         ["function incrementTotalSpins()"],
-        signer
+        provider.getSigner(HOUSE_ADDRESS)
     );
     const tx = await incrementTotalSpinsAbi.incrementTotalSpins();
     return tx;
 }
 
 async function getTotalSpins() {
-    const signer = provider.getSigner(HOUSE_ADDRESS);
     const getTotalSpinsAbi = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
         ["function getTotalSpins() public view returns (uint256)"],
-        signer
+        provider.getSigner(HOUSE_ADDRESS)
     );
     const count = await getTotalSpinsAbi.getTotalSpins();
     return count;
@@ -55,11 +53,10 @@ async function getBlock() {
 }
 
 async function getTokenBalance(address) {
-    const signer = provider.getSigner(address);
     const token = new ethers.Contract(
         TOKEN_CONTRACT_ADDRESS,
         ["function balanceOf(address) view returns (uint)"],
-        signer
+        provider.getSigner(HOUSE_ADDRESS)
     );
     const balance = await token.balanceOf(address);
     const formattedBalance = ethers.utils.formatEther(balance);
@@ -101,27 +98,8 @@ async function transferFrom(from, to, amount) {
     return tx;
 }
 
-async function incrementJackpotBalance(amount) {
-    const signer = provider.getSigner(HOUSE_ADDRESS);
-    const contract = new ethers.Contract(
-        ROULETTE_CONTRACT_ADDRESS,
-        ["function incrementJackpotBalance(uint256)"],
-        signer
-    );
-    const tx = await contract.incrementJackpotBalance(ethers.utils.parseEther(amount));
-    return tx;
-}
-
 async function getJackpotBalance() {
-    const signer = provider.getSigner(HOUSE_ADDRESS);
-    const contract = new ethers.Contract(
-        ROULETTE_CONTRACT_ADDRESS,
-        ["function getJackpotBalance() public view returns (uint256)"],
-        signer
-    );
-    const balance = await contract.getJackpotBalance();
-    const formattedBalance = ethers.utils.formatEther(balance);
-    return formattedBalance;
+    return await getTokenBalance(ROULETTE_CONTRACT_ADDRESS);
 }
 
 let tokenSymbol;
@@ -142,12 +120,12 @@ export {
     transferFrom,
     incrementTotalSpins,
     getTotalSpins,
-    incrementJackpotBalance,
     getJackpotBalance,
     FIRST_PLAYER_ADDRESS,
     SECOND_PLAYER_ADDRESS,
     THIRD_PLAYER_ADDRESS,
     HOUSE_ADDRESS,
     TOKEN_CONTRACT_ADDRESS,
+    ROULETTE_CONTRACT_ADDRESS,
     tokenSymbol,
 };
