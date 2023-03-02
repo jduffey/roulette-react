@@ -11,13 +11,13 @@ const HOUSE_ADDRESS = "0x90F79bf6EB2c4f870365E785982E1f101E93b906";
 const TOKEN_CONTRACT_ADDRESS = "0x057ef64E23666F000b34aE31332854aCBd1c8544";
 const ROULETTE_CONTRACT_ADDRESS = "0x261D8c5e9742e6f7f1076Fa1F560894524e19cad";
 
-async function executeWager(amount) {
+async function executeWager(address, amount) {
     const contract = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
-        ["function executeWager(uint256)"],
+        ["function executeWager(address, uint256)"],
         provider.getSigner(HOUSE_ADDRESS)
     );
-    const tx = await contract.executeWager(amount);
+    const tx = await contract.executeWager(address, amount);
     return tx;
 }
 
@@ -114,6 +114,16 @@ async function getJackpotBalance() {
     return await getTokenBalance(ROULETTE_CONTRACT_ADDRESS);
 }
 
+async function getPlayerSpins(address) {
+    const contract = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function getPlayerSpins(address) public view returns (uint256)"],
+        provider.getSigner(address)
+    );
+    const count = await contract.getPlayerSpins(address);
+    return count;
+}
+
 let tokenSymbol;
 (new ethers.Contract(
     TOKEN_CONTRACT_ADDRESS,
@@ -134,6 +144,7 @@ export {
     getTotalSpins,
     getTotalAmountWagered,
     getJackpotBalance,
+    getPlayerSpins,
     FIRST_PLAYER_ADDRESS,
     SECOND_PLAYER_ADDRESS,
     THIRD_PLAYER_ADDRESS,

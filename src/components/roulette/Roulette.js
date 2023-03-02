@@ -205,7 +205,10 @@ export function Roulette(props) {
                         setPlayerBalance(bal);
                     });
 
-                executeWager(calculateTotalBetAmount(pendingBets)).then(() => {
+                executeWager(
+                    playerAddress,
+                    calculateTotalBetAmount(pendingBets)
+                ).then(() => {
                     // resolve
                 });
             });
@@ -236,6 +239,7 @@ export function Roulette(props) {
                 spinResults={spinResults}
             />
             <PlayerInfo
+                playerAddress={playerAddress}
                 playerBalance={playerBalance}
                 totalBetAmount={calculateTotalBetAmount(pendingBets)}
             />
