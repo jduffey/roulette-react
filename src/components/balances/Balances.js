@@ -4,9 +4,6 @@ import {
     getEthBalance,
     getBlock,
     getTokenBalance,
-    depositEthForTokens,
-    redeemTokensForEth,
-    transferFrom,
     tokenSymbol,
     // getPlayerSpins, // TODO display this as well
     getPlayerRewards,
@@ -25,11 +22,6 @@ export function Balances() {
 
     const [block, setBlock] = useState({});
 
-    const [rerender, setRerender] = useState(false);
-
-    const ETH_TO_DEPOSIT = "1";
-    const TOKENS_TO_REDEEM = "100000";
-    const TOKENS_TO_TRANSFER = "10000";
     const NICKNAMES = {
         [FIRST_PLAYER_ADDRESS]: "Player 1 👤",
         [SECOND_PLAYER_ADDRESS]: "Player 2 👤",
@@ -98,7 +90,7 @@ export function Balances() {
         }, MS_REFRESH_INTERVAL);
 
         return () => clearInterval(interval);
-    }, [rerender]);
+    }, []);
 
     const combinedBalances = Object.keys(ethBalances).reduce((acc, address) => {
         acc[address] = {
@@ -115,9 +107,6 @@ export function Balances() {
         "ETH Balance": "20%",
         "GAME Balance": "15%",
         "Rewards": "10%",
-        "Get Tokens": "20%",
-        "Redeem Tokens": "20%",
-        "Txfr Tokens": "20%",
     }
 
     return (
@@ -145,9 +134,6 @@ export function Balances() {
                             <th style={{ width: columnNamesAndWidths["ETH Balance"] }}>ETH Balance</th>
                             <th style={{ width: columnNamesAndWidths["GAME Balance"] }}>{tokenSymbol} Balance</th>
                             <th style={{ width: columnNamesAndWidths["Rewards"] }}>Rewards</th>
-                            <th style={{ width: columnNamesAndWidths["Get Tokens"] }}>Get Tokens</th>
-                            <th style={{ width: columnNamesAndWidths["Redeem Tokens"] }}>Redeem Tokens</th>
-                            <th style={{ width: columnNamesAndWidths["Txfr Tokens"] }}>Txfr Tokens</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -176,58 +162,6 @@ export function Balances() {
                                                 minimumFractionDigits: 2,
                                                 maximumFractionDigits: 2
                                             })}
-                                        </td>
-                                        <td
-                                            className="Balances-contract-interact-button-column">
-                                            <button
-                                                className="Balances-contract-interact-button"
-                                                type="button"
-                                                onClick={() => {
-                                                    depositEthForTokens(
-                                                        addr,
-                                                        ETH_TO_DEPOSIT
-                                                    ).then(() => {
-                                                        setRerender(!rerender);
-                                                    });
-                                                }}
-                                            >
-                                                {`Deposit ${ETH_TO_DEPOSIT} ETH`}
-                                            </button>
-                                        </td>
-                                        <td
-                                            className="Balances-contract-interact-button-column">
-                                            <button
-                                                className="Balances-contract-interact-button"
-                                                type="button"
-                                                onClick={() => {
-                                                    redeemTokensForEth(
-                                                        addr,
-                                                        TOKENS_TO_REDEEM
-                                                    ).then(() => {
-                                                        setRerender(!rerender);
-                                                    });
-                                                }}
-                                            >
-                                                {`Redeem ${Number(TOKENS_TO_REDEEM).toLocaleString()} ${tokenSymbol}`}
-                                            </button>
-                                        </td>
-                                        <td
-                                            className="Balances-contract-interact-button-column">
-                                            <button
-                                                className="Balances-contract-interact-button"
-                                                type="button"
-                                                onClick={() => {
-                                                    transferFrom(
-                                                        addr,
-                                                        HOUSE_ADDRESS,
-                                                        TOKENS_TO_TRANSFER
-                                                    ).then(() => {
-                                                        setRerender(!rerender);
-                                                    });
-                                                }}
-                                            >
-                                                {`Txfr ${Number(TOKENS_TO_TRANSFER).toLocaleString()} ${tokenSymbol}`}
-                                            </button>
                                         </td>
                                     </tr>
                                 );
