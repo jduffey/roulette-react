@@ -115,7 +115,8 @@ async function transferFrom(from, to, amount) {
 async function getJackpotBalance() {
     // For now this is just the token balance of the contract
     // Later the Roulette contract will also handle all payouts and receipts of bets
-    return getTokenBalance(ROULETTE_CONTRACT_ADDRESS);
+    const tokenBalance = await getTokenBalance(ROULETTE_CONTRACT_ADDRESS);
+    return tokenBalance;
 }
 
 async function getPlayerSpins(address) {
