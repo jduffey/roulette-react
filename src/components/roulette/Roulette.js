@@ -31,7 +31,6 @@ import {
     incrementTotalSpins,
     HOUSE_ADDRESS,
     ROULETTE_CONTRACT_ADDRESS,
-    incrementJackpotBalance,
 } from '../../common/blockchainWrapper';
 
 // Uncomment this line to simulate playing the game
@@ -70,7 +69,6 @@ export function Roulette(props) {
     const [spinResults, setSpinResults] = useState([]);
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
 
-    // Retrieved from chain
     const [playerBalance, setPlayerBalance] = useState(undefined);
 
     useEffect(() => {
@@ -150,8 +148,6 @@ export function Roulette(props) {
                     return acc;
                 }, 0);
 
-                // We can say that "1% of house take goes to Jackpot"
-                const owedByHouseToJackpot = owedByPlayerToHouse * 0.01;
 
                 if (owedByHouseToPlayer > 0) {
                     console.log("House --> Player", owedByHouseToPlayer);
@@ -170,6 +166,9 @@ export function Roulette(props) {
                         owedByPlayerToHouse.toString()
                     );
                 }
+
+                // We can say that "1% of house take goes to Jackpot"
+                const owedByHouseToJackpot = owedByPlayerToHouse * 0.01;
 
                 if (owedByHouseToJackpot > 0) {
                     console.log("House --> Jackpot", owedByHouseToJackpot);
