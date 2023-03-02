@@ -4,17 +4,19 @@
     "private": true,
     "dependencies": {
         "ci": "^2.2.0",
-        "json-server": "^0.17.1",
+        "json-server": "^0.17.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "react-router-dom": "^6.8.0",
+        "react-router-dom": "^6.8.2",
         "react-scripts": "5.0.1",
-        "web-vitals": "^2.1.4"
+        "web-vitals": "^3.1.1"
     },
     "scripts": {
-        "start": "json-server --watch -p 3001 db.json & react-scripts start",
+        "start": "git checkout db.json && json-server --watch -p 3001 db.json & react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test --coverage",
+        "start-chain": "npx hardhat node",
+        "init-chain": "npx hardhat run scripts/initializeChain.js --network localhost",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
@@ -36,9 +38,12 @@
         ]
     },
     "devDependencies": {
+        "@nomicfoundation/hardhat-toolbox": "^2.0.1",
+        "@nomiclabs/hardhat-ethers": "^2.2.2",
         "@testing-library/jest-dom": "^5.16.5",
-        "@testing-library/react": "^13.4.0",
-        "@testing-library/user-event": "^13.5.0",
+        "@testing-library/react": "^14.0.0",
+        "@testing-library/user-event": "^14.4.3",
+        "hardhat": "^2.12.7",
         "react-test-renderer": "^18.2.0"
     }
 }

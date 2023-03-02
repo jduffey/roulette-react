@@ -1,10 +1,11 @@
 {
-    "roulette": {
-        "initialBalance": 10000,
+    "player-1": {
         "history": []
     },
-    "sic-bo": {
-        "initialBalance": 20000,
+    "player-2": {
+        "history": []
+    },
+    "player-3": {
         "history": []
     }
 }

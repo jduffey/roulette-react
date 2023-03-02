@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Balances renders 1`] = `
+<div
+  className="Balances-component"
+>
+  <div>
+    <div>
+      hash: undefined
+    </div>
+    <div>
+      number: undefined
+    </div>
+    <div>
+      timestamp: undefined
+    </div>
+  </div>
+  <div>
+    <table
+      className="balances-table"
+    >
+      <thead>
+        <tr
+          className="balances-table-headers"
+        >
+          <th>
+            Nickname
+          </th>
+          <th>
+            Address
+          </th>
+          <th
+            className="Balances-eth-balance"
+          >
+            ETH Balance
+          </th>
+          <th
+            className="Balances-token-balance"
+          >
+             Balance
+          </th>
+          <th
+            className="Balances-button-header"
+          >
+            Get Tokens
+          </th>
+          <th
+            className="Balances-button-header"
+          >
+            Redeem Tokens
+          </th>
+          <th
+            className="Balances-button-header"
+          >
+            Txfr Tokens
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </div>
+</div>
+`;

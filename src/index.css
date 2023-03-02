@@ -50,7 +50,7 @@ ul {
             #222277 10px,
             #222277 20px);
     padding: 1px;
-    width: 1460px;
+    width: 1480px;
     height: 1080px;
     padding: 16px;
 }
@@ -173,7 +173,7 @@ ul {
     top: 20px;
     width: 640px;
     height: 120px;
-    border: 1px solid white;
+    outline: 2px solid white;
     border-radius: 16px;
     display: flex;
     background-color: #34a45d;
@@ -223,13 +223,12 @@ ul {
 
 .PlayerInfo-component {
     position: relative;
-    left: 900px;
+    left: 820px;
     bottom: 860px;
     height: 300px;
     width: 200px;
-    border: 1px solid white;
     border-radius: 24px;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
     display: flex;
     flex-direction: column;
@@ -237,25 +236,19 @@ ul {
     align-items: center;
     text-align: center;
     background-color: #34a45d;
+    box-shadow: 4px 4px 0px 4px black;
 }
 
 .PlayerInfo-component>div {
     margin: 8px;
 }
 
-#reset-history {
-    background-color: #FF9999;
-    border: 2px solid white;
-    border-radius: 24px;
-}
-
-.RewardsInfo-component {
+.HouseInfo-component {
     position: relative;
-    left: 1120px;
-    bottom: 1816px;
-    height: 200px;
-    width: 200px;
-    border: 1px solid white;
+    left: 1040px;
+    bottom: 3920px;
+    height: 280px;
+    width: 240px;
     border-radius: 24px;
     font-size: 20px;
     font-weight: bold;
@@ -265,14 +258,7 @@ ul {
     align-items: center;
     text-align: center;
     background-color: #34a45d;
-}
-
-.RewardsInfo-component>div {
-    margin: 12px;
-}
-
-.rewards-info-value {
-    font-size: 24px;
+    box-shadow: 4px 4px 0px 4px black;
 }
 
 .MostRecentSpinResults-component {
@@ -296,7 +282,7 @@ ul {
 .NumbersHitTracker-component {
     position: relative;
     left: 1300px;
-    bottom: 2890px;
+    bottom: 2660px;
     width: 140px;
     height: 660px;
     text-align: center;
@@ -314,10 +300,51 @@ ul {
     line-height: 34px;
 }
 
+.NumbersHitGameCounter-component {
+    position: relative;
+    left: 1448px;
+    bottom: 3380px;
+    width: 32px;
+    height: 660px;
+    display: flex;
+    flex-direction: column;
+    background-color: darkgray;
+}
+
+.NumbersHitGameCounterOverlay-component {
+    position: relative;
+    left: 1448px;
+    bottom: 4040px;
+    width: 32px;
+    height: 660px;
+    text-align: center;
+    outline: 8px solid black;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+}
+
+.NumbersHitGameCounterOverlap-box {
+    font-size: 12px;
+    height: 22px;
+    outline: 1px solid black;
+    line-height: 22px;
+}
+
+#NumbersHitGameCounterOverlap-top-box {
+    height: 88px;
+    line-height: 88px;
+}
+
+.game-counter-bar-element {
+    overflow: hidden;
+}
+
 .CompletionsCounter-component {
     position: relative;
     left: 1320px;
-    bottom: 2882px;
+    bottom: 2652px;
     width: 100px;
     height: 60px;
     text-align: center;
@@ -331,15 +358,15 @@ ul {
 
 .BetResultsInfo-component {
     position: relative;
-    left: 370px;
+    left: 290px;
     bottom: 1610px;
     height: 350px;
     width: 480px;
-    border: 1px solid white;
     border-radius: 16px;
     background-color: #77c192;
     padding: 12px;
     text-align: center;
+    box-shadow: 4px 4px 0px 4px black;
 }
 
 .bet-results-info-table {
@@ -355,14 +382,14 @@ ul {
 .PendingBetsTable-component {
     position: relative;
     bottom: 1236px;
-    left: 80px;
+    left: 0px;
     height: 350px;
     width: 240px;
-    border: 1px solid white;
     border-radius: 16px;
     background-color: #77c192;
     padding: 12px;
     text-align: center;
+    box-shadow: 4px 4px 0px 4px black;
 }
 
 .pending-bets-info-table {
@@ -420,24 +447,50 @@ ul {
     margin-bottom: 12px;
 }
 
-.SicBo-PlayerInfo-component {
-    position: relative;
-    /* left: 900px; */
-    top: 600px;
-    height: 300px;
-    width: 400px;
-    border: 1px solid white;
-    border-radius: 24px;
-    font-size: 24px;
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #34a45d;
+.Balances-component {
+    background: gainsboro;
+    color: black;
+    font-family: monospace;
+    font-size: 1.25rem;
+    width: 1460px;
 }
 
-.SicBo-PlayerInfo-component>div {
-    margin: 8px;
+.balances-table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 1460px;
+}
+
+.balances-table * {
+    text-align: right;
+    padding: 4px;
+    border: 1px dashed white;
+}
+
+.balances-table-headers th {
+    text-align: center;
+}
+
+.Balances-eth-balance {
+    width: 260px;
+}
+
+.Balances-token-balance {
+    width: 260px;
+}
+
+.Balances-button-header {
+    width: 200px;
+}
+
+.Balances-contract-interact-button-column {
+    text-align: center;
+}
+
+.Balances-contract-interact-button {
+    text-align: center;
+    font-weight: bold;
+    border-radius: 16px;
+    box-shadow: 0 0 0 2px #000000;
+    padding: 6px;
 }

@@ -24,6 +24,7 @@ export const getCompleteResultsOfRound = (startingBalance, pendingBets, winningW
 
             acc[betName].betAmount += betAmount;
             acc[betName].winningsOnBet += didBetWin ? betAmount * getBetNameMultiplier(betName) : 0;
+            acc[betName].didBetWin = didBetWin;
             acc[betName].betReturned += didBetWin ? betAmount : 0;
             return acc;
         }, {});

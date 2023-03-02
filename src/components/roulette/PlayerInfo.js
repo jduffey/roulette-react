@@ -1,26 +1,22 @@
-import React from 'react';
-
 const CLASS_NAME = "PlayerInfo-component";
 export function PlayerInfo(props) {
+    const playerBalanceText = props.playerBalance
+        ? parseFloat(props.playerBalance).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+        : "Loading...";
+
     return (
         <div
             className={CLASS_NAME}
         >
             <div>
-                {"Avail. Balance"}
+                Player Balance
                 < br />
-                {`$ ${props.availableBalance.toLocaleString()}`}
+                {playerBalanceText}
             </div>
             <div>
-                {"Total Bet"}
+                Total Bet
                 < br />
-                {`$ ${props.totalBetAmount.toLocaleString()}`}
-            </div>
-            <div
-                id="reset-history"
-                onClick={() => props.onClick()}
-            >
-                RESET HISTORY
+                {props.totalBetAmount.toLocaleString()}
             </div>
         </div >
     )

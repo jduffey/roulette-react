@@ -4,6 +4,7 @@ exports[`ClickableBet renders when renders when chip is not visible 1`] = `
 <div
   className="ClickableBet-component"
   onClick={[Function]}
+  role="button"
   style={
     Object {
       "height": 39,
@@ -45,6 +46,7 @@ exports[`ClickableBet renders when renders when chip is visible 1`] = `
 <div
   className="ClickableBet-component"
   onClick={[Function]}
+  role="button"
   style={
     Object {
       "height": 39,
