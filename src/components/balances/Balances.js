@@ -8,6 +8,8 @@ import {
     redeemTokensForEth,
     transferFrom,
     tokenSymbol,
+    // getPlayerSpins, // TODO display this as well
+    getPlayerRewards,
     FIRST_PLAYER_ADDRESS,
     SECOND_PLAYER_ADDRESS,
     THIRD_PLAYER_ADDRESS,
@@ -19,6 +21,7 @@ import {
 export function Balances() {
     const [ethBalances, setEthBalances] = useState([]);
     const [tokenBalances, setTokenBalances] = useState([]);
+    const [playerRewards, setPlayerRewards] = useState([]);
 
     const [block, setBlock] = useState({});
 
@@ -75,6 +78,20 @@ export function Balances() {
                 setTokenBalances(newBalances);
             });
 
+            const addressesWithRewardsPromises = addressesInDisplayOrder.map(async (address) => {
+                const balance = await getPlayerRewards(address);
+                console.log(balance);
+                return { address, balance };
+            });
+
+            Promise.all(addressesWithRewardsPromises).then((res) => {
+                const newBalances = res.reduce((acc, cur) => {
+                    acc[cur.address] = cur.balance;
+                    return acc;
+                }, {});
+                setPlayerRewards(newBalances);
+            });
+
             getBlock()
                 .then((blockData) => {
                     setBlock(blockData);
@@ -87,7 +104,8 @@ export function Balances() {
     const combinedBalances = Object.keys(ethBalances).reduce((acc, address) => {
         acc[address] = {
             ethBalance: ethBalances[address],
-            tokenBalance: tokenBalances[address]
+            tokenBalance: tokenBalances[address],
+            rewards: playerRewards[address],
         };
         return acc;
     }, {});
@@ -116,6 +134,7 @@ export function Balances() {
                             <th>Address</th>
                             <th className="Balances-eth-balance">ETH Balance</th>
                             <th className="Balances-token-balance">{tokenSymbol} Balance</th>
+                            <th className="Balances-token-balance">Rewards</th>
                             <th className="Balances-button-header">Get Tokens</th>
                             <th className="Balances-button-header">Redeem Tokens</th>
                             <th className="Balances-button-header">Txfr Tokens</th>
@@ -123,7 +142,7 @@ export function Balances() {
                     </thead>
                     <tbody>
                         {
-                            Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance }]) => {
+                            Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance, rewards }]) => {
                                 return (
                                     <tr key={addr}>
                                         <td>{NICKNAMES[addr]}</td>
@@ -138,8 +157,14 @@ export function Balances() {
                                         </td>
                                         <td>
                                             {Number(tokenBalance).toLocaleString(undefined, {
-                                                minimumFractionDigits: 8,
-                                                maximumFractionDigits: 8
+                                                minimumFractionDigits: 2,
+                                                maximumFractionDigits: 2
+                                            })}
+                                        </td>
+                                        <td>
+                                            {Number(rewards).toLocaleString(undefined, {
+                                                minimumFractionDigits: 2,
+                                                maximumFractionDigits: 2
                                             })}
                                         </td>
                                         <td

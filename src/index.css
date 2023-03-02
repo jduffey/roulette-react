@@ -457,13 +457,13 @@ because we'll have "invisible" betting options later
     color: black;
     font-family: monospace;
     font-size: 1.25rem;
-    width: 1460px;
+    width: 1560px;
 }
 
 .balances-table {
     table-layout: fixed;
     border-collapse: collapse;
-    width: 1460px;
+    width: 1560px;
 }
 
 .balances-table * {
