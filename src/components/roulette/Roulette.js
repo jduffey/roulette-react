@@ -29,8 +29,8 @@ import {
     transferFrom,
     JACKPOT_ADDRESS,
     HOUSE_ADDRESS,
-    incrementGamesPlayedCounter,
-    getGamesPlayedCounter,
+    incrementTotalSpins,
+    getTotalSpins,
     getTokenBalance,
 } from '../../common/blockchainWrapper';
 
@@ -73,7 +73,7 @@ export function Roulette(props) {
     // Retrieved from chain
     const [playerBalance, setPlayerBalance] = useState(undefined);
     const [houseBalance, setHouseBalance] = useState(undefined);
-    const [gamesPlayed, setGamesPlayed] = useState(undefined);
+    const [totalSpins, setTotalSpins] = useState(undefined);
 
     useEffect(() => {
         let mounted = true;
@@ -92,11 +92,11 @@ export function Roulette(props) {
                 }
             });
 
-        getGamesPlayedCounter()
+        getTotalSpins()
             .then(count => {
                 if (mounted) {
                     const parsedCount = parseInt(count._hex, 16);
-                    setGamesPlayed(parsedCount);
+                    setTotalSpins(parsedCount);
                 }
             });
 
@@ -127,7 +127,7 @@ export function Roulette(props) {
             });
 
         return () => { mounted = false };
-    }, [playerDbEndpoint, playerAddress, houseBalance, gamesPlayed]);
+    }, [playerDbEndpoint, playerAddress, houseBalance, totalSpins]);
 
     function handleBettingSquareClick(bettingSquareName) {
         if (currentChipAmountSelected > playerBalance) {
@@ -228,11 +228,11 @@ export function Roulette(props) {
                         setHouseBalance(bal);
                     });
 
-                incrementGamesPlayedCounter()
-                    .then(() => getGamesPlayedCounter()
+                incrementTotalSpins()
+                    .then(() => getTotalSpins()
                         .then(count => {
                             const parsedCount = parseInt(count._hex, 16);
-                            setGamesPlayed(parsedCount);
+                            setTotalSpins(parsedCount);
                         }));
             });
     }
@@ -285,7 +285,7 @@ export function Roulette(props) {
             />
             <HouseInfo
                 houseBalance={houseBalance}
-                gamesPlayed={gamesPlayed}
+                totalSpins={totalSpins}
             />
         </div >
     );

@@ -12,7 +12,7 @@
     - runs `npx hardhat node`
 1. `npm run init-chain`
     - deploys the token contract
-    - deploys the games played contract
+    - deploys the roulette contract
     - mints tokens for the generated accounts
     - runs `npx hardhat run scripts/initializeChain.js --network localhost`
 1. `npm start`

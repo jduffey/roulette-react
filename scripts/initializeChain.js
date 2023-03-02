@@ -70,7 +70,7 @@ async function initializeChain() {
     ethToDeposit[house.address] = 10;
 
     await _deployContract(house, "MyGameToken");
-    await _deployContract(house, "GamesPlayedCounter");
+    await _deployContract(house, "Roulette");
     await _depositEthForTokens(tokenContractAddress, ethToDeposit);
 }
 

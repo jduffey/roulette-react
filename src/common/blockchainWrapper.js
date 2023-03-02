@@ -10,27 +10,27 @@ const JACKPOT_ADDRESS = "0x90F79bf6EB2c4f870365E785982E1f101E93b906";
 const HOUSE_ADDRESS = "0x15d34aaf54267db7d7c367839aaf71a00a2c6a65";
 // Contract addresses are calculated from a hash of the deployer's address and nonce.
 const TOKEN_CONTRACT_ADDRESS = "0xbdEd0D2bf404bdcBa897a74E6657f1f12e5C6fb6";
-const GAMES_PLAYED_COUNTER_CONTRACT_ADDRESS = "0x2910E325cf29dd912E3476B61ef12F49cb931096";
+const ROULETTE_CONTRACT_ADDRESS = "0x2910E325cf29dd912E3476B61ef12F49cb931096";
 
-async function incrementGamesPlayedCounter() {
+async function incrementTotalSpins() {
     const signer = provider.getSigner(HOUSE_ADDRESS);
-    const gamesPlayedCounterContract = new ethers.Contract(
-        GAMES_PLAYED_COUNTER_CONTRACT_ADDRESS,
-        ["function increment()"],
+    const incrementTotalSpinsAbi = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function incrementTotalSpins()"],
         signer
     );
-    const tx = await gamesPlayedCounterContract.increment();
+    const tx = await incrementTotalSpinsAbi.incrementTotalSpins();
     return tx;
 }
 
-async function getGamesPlayedCounter() {
+async function getTotalSpins() {
     const signer = provider.getSigner(HOUSE_ADDRESS);
-    const gamesPlayedCounterContract = new ethers.Contract(
-        GAMES_PLAYED_COUNTER_CONTRACT_ADDRESS,
-        ["function getCount() public view returns (uint256)"],
+    const getTotalSpinsAbi = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function getTotalSpins() public view returns (uint256)"],
         signer
     );
-    const count = await gamesPlayedCounterContract.getCount();
+    const count = await getTotalSpinsAbi.getTotalSpins();
     return count;
 }
 
@@ -118,8 +118,8 @@ export {
     depositEthForTokens,
     redeemTokensForEth,
     transferFrom,
-    incrementGamesPlayedCounter,
-    getGamesPlayedCounter,
+    incrementTotalSpins,
+    getTotalSpins,
     FIRST_PLAYER_ADDRESS,
     SECOND_PLAYER_ADDRESS,
     THIRD_PLAYER_ADDRESS,

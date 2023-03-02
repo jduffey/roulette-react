@@ -25,8 +25,8 @@ export function HouseInfo(props) {
         ? `⛓ ${Number(jackpotBalance).toFixed(2)}`
         : "Loading...";
 
-    const gamesPlayedText = typeof props.gamesPlayed === "number"
-        ? `⛓ ${props.gamesPlayed}`
+    const totalSpinsText = typeof props.totalSpins === "number"
+        ? `⛓ ${props.totalSpins}`
         : "Loading...";
 
     return (
@@ -48,7 +48,7 @@ export function HouseInfo(props) {
             <div>
                 {"All-Time Total Spins"}
                 < br />
-                    {gamesPlayedText}
+                    {totalSpinsText}
             </div>
         </div >
     )
