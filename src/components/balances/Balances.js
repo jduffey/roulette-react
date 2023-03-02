@@ -109,6 +109,17 @@ export function Balances() {
         return acc;
     }, {});
 
+    const columnNamesAndWidths = {
+        "Nickname": "15%",
+        "Address": "15%",
+        "ETH Balance": "20%",
+        "GAME Balance": "15%",
+        "Rewards": "10%",
+        "Get Tokens": "20%",
+        "Redeem Tokens": "20%",
+        "Txfr Tokens": "20%",
+    }
+
     return (
         <div
             className="Balances-component"
@@ -129,14 +140,14 @@ export function Balances() {
                     className="balances-table">
                     <thead>
                         <tr className="balances-table-headers">
-                            <th>Nickname</th>
-                            <th>Address</th>
-                            <th className="Balances-eth-balance">ETH Balance</th>
-                            <th className="Balances-token-balance">{tokenSymbol} Balance</th>
-                            <th className="Balances-token-balance">Rewards</th>
-                            <th className="Balances-button-header">Get Tokens</th>
-                            <th className="Balances-button-header">Redeem Tokens</th>
-                            <th className="Balances-button-header">Txfr Tokens</th>
+                            <th style={{ width: columnNamesAndWidths["Nickname"] }}>Nickname</th>
+                            <th style={{ width: columnNamesAndWidths["Address"] }}>Address</th>
+                            <th style={{ width: columnNamesAndWidths["ETH Balance"] }}>ETH Balance</th>
+                            <th style={{ width: columnNamesAndWidths["GAME Balance"] }}>{tokenSymbol} Balance</th>
+                            <th style={{ width: columnNamesAndWidths["Rewards"] }}>Rewards</th>
+                            <th style={{ width: columnNamesAndWidths["Get Tokens"] }}>Get Tokens</th>
+                            <th style={{ width: columnNamesAndWidths["Redeem Tokens"] }}>Redeem Tokens</th>
+                            <th style={{ width: columnNamesAndWidths["Txfr Tokens"] }}>Txfr Tokens</th>
                         </tr>
                     </thead>
                     <tbody>
