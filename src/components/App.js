@@ -4,7 +4,7 @@ import { Layout } from "./Layout";
 
 import { Home } from "./Home";
 import { Roulette } from "./roulette/Roulette";
-import { SicBo } from "./SicBo";
+import { SicBo } from "./sic-bo/SicBo";
 import { Balances } from "./balances/Balances";
 
 import {
