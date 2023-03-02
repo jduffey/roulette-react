@@ -29,9 +29,9 @@ export function HouseInfo() {
 
             const spins = await getTotalSpins();
             setTotalSpins(spins);
-        }, 200);
+        }, 1000);
 
-    }, [houseBalance, jackpotBalance, totalSpins]);
+    }, [totalSpins]);
 
     return (
         <div
