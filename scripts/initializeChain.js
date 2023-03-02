@@ -57,7 +57,7 @@ async function initializeChain() {
     const signers = await ethers.getSigners();
 
     const players = signers.slice(0, -2); // All but the last two signers are Players
-    const [rewards] = signers.slice(-2);  // The second-to-last signer is the Rewards address
+    const [jackpot] = signers.slice(-2);  // The second-to-last signer is the Jackpot address
     const [house] = signers.slice(-1);    // The last signer is the House
 
     const tokenContractAddress = ethers.utils.getContractAddress({ from: house.address, nonce: 0 });
@@ -66,11 +66,11 @@ async function initializeChain() {
         acc[player.address] = 1;
         return acc;
     }, {});
-    ethToDeposit[rewards.address] = 0;
+    ethToDeposit[jackpot.address] = 0;
     ethToDeposit[house.address] = 10;
 
     await _deployContract(house, "MyGameToken");
-    await _deployContract(house, "GamesPlayedCounter");
+    await _deployContract(house, "Roulette");
     await _depositEthForTokens(tokenContractAddress, ethToDeposit);
 }
 

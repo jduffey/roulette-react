@@ -25,22 +25,7 @@ async function updateTransactionHistory(history, playerId) {
     }
 }
 
-async function resetTransactionHistory(playerId) {
-    const dbUrl = new URL(playerId, BASE_URL);
-    const res = await fetch(dbUrl, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ history: [] }),
-    });
-    if (!res.ok) {
-        console.log("Not OK response from json-server: ", res);
-    }
-}
-
 export {
     fetchTransactionHistory,
     updateTransactionHistory,
-    resetTransactionHistory,
 };

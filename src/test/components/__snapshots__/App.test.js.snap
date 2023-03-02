@@ -2366,13 +2366,7 @@ Array [
       <div>
         Total Bet
         <br />
-        $ 0
-      </div>
-      <div
-        id="reset-history"
-        onClick={[Function]}
-      >
-        RESET HISTORY
+        0
       </div>
     </div>
     <div
@@ -2516,43 +2510,6 @@ Array [
           </tr>
         </tbody>
       </table>
-    </div>
-    <div
-      className="RewardsInfo-component"
-    >
-      <div>
-        Games Played
-        <br />
-        <span
-          className="rewards-info-value"
-        >
-          Loading...
-        </span>
-      </div>
-      <div>
-        Rewards
-        <br />
-        <span
-          className="rewards-info-value"
-        >
-          Loading...
-        </span>
-      </div>
-      <div>
-        Games Won
-        <br />
-        0
-      </div>
-      <div>
-        Games Lost
-        <br />
-        0
-      </div>
-      <div>
-        Games Tied
-        <br />
-        0
-      </div>
     </div>
     <div
       className="NumbersHitTracker-component"
@@ -6893,11 +6850,19 @@ Array [
       <div>
         House Balance
         <br />
-        <span
-          className="rewards-info-value"
-        >
-          Loading...
-        </span>
+        Loading...
+      </div>
+      <br />
+      <div>
+        Jackpot Balance
+        <br />
+        Loading...
+      </div>
+      <br />
+      <div>
+        All-Time Total Spins
+        <br />
+        Loading...
       </div>
     </div>
   </div>,
@@ -9103,13 +9068,7 @@ Array [
       <div>
         Total Bet
         <br />
-        $ 0
-      </div>
-      <div
-        id="reset-history"
-        onClick={[Function]}
-      >
-        RESET HISTORY
+        0
       </div>
     </div>
     <div
@@ -9253,43 +9212,6 @@ Array [
           </tr>
         </tbody>
       </table>
-    </div>
-    <div
-      className="RewardsInfo-component"
-    >
-      <div>
-        Games Played
-        <br />
-        <span
-          className="rewards-info-value"
-        >
-          Loading...
-        </span>
-      </div>
-      <div>
-        Rewards
-        <br />
-        <span
-          className="rewards-info-value"
-        >
-          Loading...
-        </span>
-      </div>
-      <div>
-        Games Won
-        <br />
-        0
-      </div>
-      <div>
-        Games Lost
-        <br />
-        0
-      </div>
-      <div>
-        Games Tied
-        <br />
-        0
-      </div>
     </div>
     <div
       className="NumbersHitTracker-component"
@@ -13630,11 +13552,19 @@ Array [
       <div>
         House Balance
         <br />
-        <span
-          className="rewards-info-value"
-        >
-          Loading...
-        </span>
+        Loading...
+      </div>
+      <br />
+      <div>
+        Jackpot Balance
+        <br />
+        Loading...
+      </div>
+      <br />
+      <div>
+        All-Time Total Spins
+        <br />
+        Loading...
       </div>
     </div>
   </div>,
@@ -15840,13 +15770,7 @@ Array [
       <div>
         Total Bet
         <br />
-        $ 0
-      </div>
-      <div
-        id="reset-history"
-        onClick={[Function]}
-      >
-        RESET HISTORY
+        0
       </div>
     </div>
     <div
@@ -15990,43 +15914,6 @@ Array [
           </tr>
         </tbody>
       </table>
-    </div>
-    <div
-      className="RewardsInfo-component"
-    >
-      <div>
-        Games Played
-        <br />
-        <span
-          className="rewards-info-value"
-        >
-          Loading...
-        </span>
-      </div>
-      <div>
-        Rewards
-        <br />
-        <span
-          className="rewards-info-value"
-        >
-          Loading...
-        </span>
-      </div>
-      <div>
-        Games Won
-        <br />
-        0
-      </div>
-      <div>
-        Games Lost
-        <br />
-        0
-      </div>
-      <div>
-        Games Tied
-        <br />
-        0
-      </div>
     </div>
     <div
       className="NumbersHitTracker-component"
@@ -20367,11 +20254,19 @@ Array [
       <div>
         House Balance
         <br />
-        <span
-          className="rewards-info-value"
-        >
-          Loading...
-        </span>
+        Loading...
+      </div>
+      <br />
+      <div>
+        Jackpot Balance
+        <br />
+        Loading...
+      </div>
+      <br />
+      <div>
+        All-Time Total Spins
+        <br />
+        Loading...
       </div>
     </div>
   </div>,

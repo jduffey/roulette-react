@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import {
     fetchTransactionHistory,
     updateTransactionHistory,
-    resetTransactionHistory,
 } from '../../common/databaseWrapper';
 
 import { PendingBet } from '../../common/PendingBet';
@@ -14,7 +13,6 @@ import { PendingBetsTable } from './PendingBetsTable';
 import { MostRecentSpinResults } from './MostRecentSpinResults';
 import { NumbersHitTracker } from './NumbersHitTracker';
 import { PlayerInfo } from './PlayerInfo';
-import { RewardsInfo } from './RewardsInfo';
 import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
 import { HouseInfo } from './HouseInfo';
@@ -29,10 +27,10 @@ import {
 
 import {
     transferFrom,
-    REWARDS_ADDRESS,
+    JACKPOT_ADDRESS,
     HOUSE_ADDRESS,
-    incrementGamesPlayedCounter,
-    getGamesPlayedCounter,
+    incrementTotalSpins,
+    getTotalSpins,
     getTokenBalance,
 } from '../../common/blockchainWrapper';
 
@@ -75,7 +73,7 @@ export function Roulette(props) {
     // Retrieved from chain
     const [playerBalance, setPlayerBalance] = useState(undefined);
     const [houseBalance, setHouseBalance] = useState(undefined);
-    const [gamesPlayed, setGamesPlayed] = useState(undefined);
+    const [totalSpins, setTotalSpins] = useState(undefined);
 
     useEffect(() => {
         let mounted = true;
@@ -94,11 +92,11 @@ export function Roulette(props) {
                 }
             });
 
-        getGamesPlayedCounter()
+        getTotalSpins()
             .then(count => {
                 if (mounted) {
                     const parsedCount = parseInt(count._hex, 16);
-                    setGamesPlayed(parsedCount);
+                    setTotalSpins(parsedCount);
                 }
             });
 
@@ -129,7 +127,7 @@ export function Roulette(props) {
             });
 
         return () => { mounted = false };
-    }, [playerDbEndpoint, playerAddress, houseBalance, gamesPlayed]);
+    }, [playerDbEndpoint, playerAddress, houseBalance, totalSpins]);
 
     function handleBettingSquareClick(bettingSquareName) {
         if (currentChipAmountSelected > playerBalance) {
@@ -169,8 +167,8 @@ export function Roulette(props) {
                     return acc;
                 }, 0);
 
-                // We can say that "1% of house take goes to rewards"
-                const owedByHouseToRewards = owedByPlayerToHouse * 0.01;
+                // We can say that "1% of house take goes to Jackpot"
+                const owedByHouseToJackpot = owedByPlayerToHouse * 0.01;
 
                 if (owedByHouseToPlayer > 0) {
                     console.log("House --> Player", owedByHouseToPlayer);
@@ -190,12 +188,12 @@ export function Roulette(props) {
                     );
                 }
 
-                if (owedByHouseToRewards > 0) {
-                    console.log("House --> Rewards", owedByHouseToRewards);
+                if (owedByHouseToJackpot > 0) {
+                    console.log("House --> Jackpot", owedByHouseToJackpot);
                     transferFrom(
                         HOUSE_ADDRESS,
-                        REWARDS_ADDRESS,
-                        owedByHouseToRewards.toString()
+                        JACKPOT_ADDRESS,
+                        owedByHouseToJackpot.toString()
                     );
                 }
 
@@ -230,21 +228,12 @@ export function Roulette(props) {
                         setHouseBalance(bal);
                     });
 
-                incrementGamesPlayedCounter()
-                    .then(() => getGamesPlayedCounter()
+                incrementTotalSpins()
+                    .then(() => getTotalSpins()
                         .then(count => {
                             const parsedCount = parseInt(count._hex, 16);
-                            setGamesPlayed(parsedCount);
+                            setTotalSpins(parsedCount);
                         }));
-            });
-    }
-
-    function handleResetHistoryClick() {
-        resetTransactionHistory(playerDbEndpoint)
-            .then(() => {
-                setStateTransactionHistory([]);
-                setSpinResults([]);
-                setPreviousRoundResultsForBetResultsInfo(null);
             });
     }
 
@@ -273,7 +262,6 @@ export function Roulette(props) {
                 spinResults={spinResults}
             />
             <PlayerInfo
-                onClick={() => handleResetHistoryClick()}
                 playerBalance={playerBalance}
                 totalBetAmount={calculateTotalBetAmount(pendingBets)}
             />
@@ -282,14 +270,6 @@ export function Roulette(props) {
             />
             <BetResultsInfo
                 previousRoundResults={previousRoundResultsForBetResultsInfo}
-            />
-            <RewardsInfo
-                // TODO disable won/lost/tie counter
-                // leave only the games played counter (and the rewards balance which already works)
-                // create contract that incremenets every time a game is played
-                // then create a call to that contract to get the number of games played
-                transactionHistory={stateTransactionHistory}
-                gamesPlayed={gamesPlayed}
             />
             <NumbersHitTracker
                 transactionHistory={stateTransactionHistory}
@@ -305,6 +285,7 @@ export function Roulette(props) {
             />
             <HouseInfo
                 houseBalance={houseBalance}
+                totalSpins={totalSpins}
             />
         </div >
     );

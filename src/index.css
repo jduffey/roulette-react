@@ -248,47 +248,12 @@ because we'll have "invisible" betting options later
     margin: 8px;
 }
 
-#reset-history {
-    background-color: #FF9999;
-    border: 2px solid white;
-    border-radius: 24px;
-    box-shadow: 2px 2px 0px 2px black;
-    margin-bottom: 16px;
-    padding: 2px;
-}
-
-.RewardsInfo-component {
-    position: relative;
-    left: 1040px;
-    bottom: 1880px;
-    height: 280px;
-    width: 200px;
-    border-radius: 24px;
-    font-size: 20px;
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #34a45d;
-    box-shadow: 4px 4px 0px 4px black;
-}
-
-.RewardsInfo-component>div {
-    /* margin: 12px; */
-}
-
-.rewards-info-value {
-    font-size: 24px;
-}
-
 .HouseInfo-component {
     position: relative;
-    left: 1260px;
-    bottom: 4200px;
+    left: 1040px;
+    bottom: 3920px;
     height: 280px;
-    width: 220px;
+    width: 240px;
     border-radius: 24px;
     font-size: 20px;
     font-weight: bold;
@@ -322,7 +287,7 @@ because we'll have "invisible" betting options later
 .NumbersHitTracker-component {
     position: relative;
     left: 1300px;
-    bottom: 2960px;
+    bottom: 2660px;
     width: 140px;
     height: 660px;
     text-align: center;
@@ -343,7 +308,7 @@ because we'll have "invisible" betting options later
 .NumbersHitGameCounter-component {
     position: relative;
     left: 1448px;
-    bottom: 3680px;
+    bottom: 3380px;
     width: 32px;
     height: 660px;
     display: flex;
@@ -354,7 +319,7 @@ because we'll have "invisible" betting options later
 .NumbersHitGameCounterOverlay-component {
     position: relative;
     left: 1448px;
-    bottom: 4340px;
+    bottom: 4040px;
     width: 32px;
     height: 660px;
     text-align: center;
@@ -384,7 +349,7 @@ because we'll have "invisible" betting options later
 .CompletionsCounter-component {
     position: relative;
     left: 1320px;
-    bottom: 2952px;
+    bottom: 2652px;
     width: 100px;
     height: 60px;
     text-align: center;
