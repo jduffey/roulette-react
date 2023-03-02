@@ -18,7 +18,7 @@ export function HouseInfo() {
     const [houseBalance, setHouseBalance] = useState(undefined);
     const [totalSpins, setTotalSpins] = useState(undefined);
 
-    const [newJackpotBalance, setNewJackpotBalance] = useState(undefined);
+    const [jackpotBalance, setJackpotBalance] = useState(undefined);
 
     useEffect(() => {
         setTimeout(async () => {
@@ -28,8 +28,8 @@ export function HouseInfo() {
             const spins = await getTotalSpins();
             setTotalSpins(spins);
 
-            const newJackpotBal = await getJackpotBalance();
-            setNewJackpotBalance(newJackpotBal);
+            const jackpotBal = await getJackpotBalance();
+            setJackpotBalance(jackpotBal);
         }, 1000);
 
     }, [totalSpins]);
@@ -45,9 +45,9 @@ export function HouseInfo() {
             </div>
             <br />
             <div>
-                New Jackpot Balance
+                Jackpot Balance
                 < br />
-                {formattedChainNumber(newJackpotBalance)}
+                {formattedChainNumber(jackpotBalance)}
             </div>
             <br />
             <div>

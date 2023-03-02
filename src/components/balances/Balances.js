@@ -19,7 +19,7 @@ import {
 export function Balances() {
     const [ethBalances, setEthBalances] = useState([]);
     const [tokenBalances, setTokenBalances] = useState([]);
-    const [newJackpotBalance, setNewJackpotBalance] = useState(undefined);
+    const [jackpotBalance, setJackpotBalance] = useState(undefined);
 
     const [block, setBlock] = useState({});
 
@@ -80,8 +80,8 @@ export function Balances() {
                 });
 
             getJackpotBalance()
-                .then((newJackpotBal) => {
-                    setNewJackpotBalance(newJackpotBal);
+                .then((jackpotBal) => {
+                    setJackpotBalance(jackpotBal);
                 });
         }, MS_REFRESH_INTERVAL);
 
@@ -127,10 +127,10 @@ export function Balances() {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>New Jack 💰</td>
+                            <td>Jackpot 💰</td>
                             <td>--</td>
                             <td>--</td>
-                            <td>{newJackpotBalance}</td>
+                            <td>{jackpotBalance}</td>
                             <td>--</td>
                             <td>--</td>
                             <td>--</td>
