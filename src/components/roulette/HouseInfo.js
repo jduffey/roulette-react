@@ -54,12 +54,12 @@ export function HouseInfo() {
                 {formattedChainNumber(jackpotBalance, 2)}
             </div>
             <div>
-                All-Time Total Spins
+                Total Spins
                 < br />
                 {formattedChainNumber(totalSpins, 0)}
             </div>
             <div>
-                All-Time Total Amount Wagered
+                Total Amount Wagered
                 < br />
                 {formattedChainNumber(totalAmountWagered, 2)}
             </div>

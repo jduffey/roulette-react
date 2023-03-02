@@ -6,6 +6,7 @@ contract Roulette {
     uint256 private _totalAmountWagered;
 
     mapping(address => uint256) private _playerSpins;
+    mapping(address => uint256) private _playerRewards;
 
     function _incrementTotalSpins() private {
         _totalSpins++;
@@ -17,6 +18,10 @@ contract Roulette {
 
     function _incrementPlayerSpins(address player) private {
         _playerSpins[player]++;
+    }
+
+    function _incrementPlayerRewards(address player, uint256 amount) private {
+        _playerRewards[player] += amount;
     }
 
     function getTotalSpins() public view returns (uint256) {
@@ -31,9 +36,14 @@ contract Roulette {
         return _playerSpins[player];
     }
 
-    function executeWager(address player, uint256 amount) public {
+    function getPlayerRewards(address player) public view returns (uint256) {
+        return _playerRewards[player];
+    }
+
+    function executeWager(address player, uint256 wagerAmount, uint256 playerRewards) public {
         _incrementTotalSpins();
-        _incrementTotalAmountWagered(amount);
+        _incrementTotalAmountWagered(wagerAmount);
         _incrementPlayerSpins(player);
+        _incrementPlayerRewards(player, playerRewards);
     }
 }

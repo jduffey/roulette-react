@@ -233,7 +233,7 @@ because we'll have "invisible" betting options later
     height: 300px;
     width: 200px;
     border-radius: 24px;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     display: flex;
     flex-direction: column;
@@ -244,9 +244,9 @@ because we'll have "invisible" betting options later
     box-shadow: 4px 4px 0px 4px black;
 }
 
-.PlayerInfo-component>div {
+/* .PlayerInfo-component>div {
     margin: 8px;
-}
+} */
 
 .HouseInfo-component {
     position: relative;

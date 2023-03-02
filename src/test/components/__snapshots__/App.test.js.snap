@@ -2364,9 +2364,19 @@ Array [
         Loading...
       </div>
       <div>
-        Total Bet
+        Current Bet
         <br />
         0
+      </div>
+      <div>
+        Player Spins
+        <br />
+        Loading...
+      </div>
+      <div>
+        Player Rewards
+        <br />
+        Loading...
       </div>
     </div>
     <div
@@ -6852,15 +6862,18 @@ Array [
         <br />
         Loading...
       </div>
-      <br />
       <div>
         Jackpot Balance
         <br />
         Loading...
       </div>
-      <br />
       <div>
-        All-Time Total Spins
+        Total Spins
+        <br />
+        Loading...
+      </div>
+      <div>
+        Total Amount Wagered
         <br />
         Loading...
       </div>
@@ -9066,9 +9079,19 @@ Array [
         Loading...
       </div>
       <div>
-        Total Bet
+        Current Bet
         <br />
         0
+      </div>
+      <div>
+        Player Spins
+        <br />
+        Loading...
+      </div>
+      <div>
+        Player Rewards
+        <br />
+        Loading...
       </div>
     </div>
     <div
@@ -13554,15 +13577,18 @@ Array [
         <br />
         Loading...
       </div>
-      <br />
       <div>
         Jackpot Balance
         <br />
         Loading...
       </div>
-      <br />
       <div>
-        All-Time Total Spins
+        Total Spins
+        <br />
+        Loading...
+      </div>
+      <div>
+        Total Amount Wagered
         <br />
         Loading...
       </div>
@@ -15768,9 +15794,19 @@ Array [
         Loading...
       </div>
       <div>
-        Total Bet
+        Current Bet
         <br />
         0
+      </div>
+      <div>
+        Player Spins
+        <br />
+        Loading...
+      </div>
+      <div>
+        Player Rewards
+        <br />
+        Loading...
       </div>
     </div>
     <div
@@ -20256,15 +20292,18 @@ Array [
         <br />
         Loading...
       </div>
-      <br />
       <div>
         Jackpot Balance
         <br />
         Loading...
       </div>
-      <br />
       <div>
-        All-Time Total Spins
+        Total Spins
+        <br />
+        Loading...
+      </div>
+      <div>
+        Total Amount Wagered
         <br />
         Loading...
       </div>

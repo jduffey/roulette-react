@@ -167,7 +167,7 @@ export function Roulette(props) {
                     );
                 }
 
-                // We can say that "1% of house take goes to Jackpot"
+                // "1% of house take goes to Jackpot"
                 const owedByHouseToJackpot = owedByPlayerToHouse * 0.01;
 
                 if (owedByHouseToJackpot > 0) {
@@ -178,6 +178,9 @@ export function Roulette(props) {
                         owedByHouseToJackpot.toString()
                     );
                 }
+
+                // "1% of house take goes to Player Rewards"
+                const owedByHouseToPlayerRewards = owedByPlayerToHouse * 0.01;
 
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
 
@@ -207,7 +210,8 @@ export function Roulette(props) {
 
                 executeWager(
                     playerAddress,
-                    calculateTotalBetAmount(pendingBets)
+                    calculateTotalBetAmount(pendingBets),
+                    owedByHouseToPlayerRewards.toString()
                 ).then(() => {
                     // resolve
                 });
