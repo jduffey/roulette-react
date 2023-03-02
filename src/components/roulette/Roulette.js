@@ -28,7 +28,7 @@ import {
 import {
     transferFrom,
     getTokenBalance,
-    incrementTotalSpins,
+    executeWager,
     HOUSE_ADDRESS,
     ROULETTE_CONTRACT_ADDRESS,
 } from '../../common/blockchainWrapper';
@@ -205,7 +205,7 @@ export function Roulette(props) {
                         setPlayerBalance(bal);
                     });
 
-                incrementTotalSpins().then(() => {
+                executeWager().then(() => {
                     // resolve
                 });
             });

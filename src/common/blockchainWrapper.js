@@ -11,23 +11,23 @@ const HOUSE_ADDRESS = "0x90F79bf6EB2c4f870365E785982E1f101E93b906";
 const TOKEN_CONTRACT_ADDRESS = "0x057ef64E23666F000b34aE31332854aCBd1c8544";
 const ROULETTE_CONTRACT_ADDRESS = "0x261D8c5e9742e6f7f1076Fa1F560894524e19cad";
 
-async function incrementTotalSpins() {
-    const incrementTotalSpinsAbi = new ethers.Contract(
+async function executeWager() {
+    const contract = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
-        ["function incrementTotalSpins()"],
+        ["function executeWager()"],
         provider.getSigner(HOUSE_ADDRESS)
     );
-    const tx = await incrementTotalSpinsAbi.incrementTotalSpins();
+    const tx = await contract.executeWager();
     return tx;
 }
 
 async function getTotalSpins() {
-    const getTotalSpinsAbi = new ethers.Contract(
+    const contract = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
         ["function getTotalSpins() public view returns (uint256)"],
         provider.getSigner(HOUSE_ADDRESS)
     );
-    const count = await getTotalSpinsAbi.getTotalSpins();
+    const count = await contract.getTotalSpins();
     return count;
 }
 
@@ -120,7 +120,7 @@ export {
     depositEthForTokens,
     redeemTokensForEth,
     transferFrom,
-    incrementTotalSpins,
+    executeWager,
     getTotalSpins,
     getJackpotBalance,
     FIRST_PLAYER_ADDRESS,
