@@ -15,7 +15,7 @@ export function NumbersHitTracker(props) {
             const currentNumbers = await getPlayerNumberCompletionSetCurrent(props.playerAddress);
             setCurrentSet(new Set(currentNumbers));
         }, 1000);
-    }, [currentSet]);
+    }, [props.playerAddress, currentSet]);
 
     return (
         <div

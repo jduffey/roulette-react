@@ -13,7 +13,7 @@ export function CompletionsCounter(props) {
             const count = await getPlayerNumberCompletionSetsCounter(props.playerAddress);
             setCompletionsCount(count);
         }, 1000);
-    }, [completionsCount]);
+    }, [props.playerAddress, completionsCount]);
 
     return (
         <div
