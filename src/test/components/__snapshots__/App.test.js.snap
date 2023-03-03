@@ -2986,7 +2986,9 @@ Array [
     </div>
     <div
       className="CompletionsCounter-component"
-    />
+    >
+      Loading...
+    </div>
     <div
       className="NumbersHitGameCounter-component"
     >
@@ -9699,7 +9701,9 @@ Array [
     </div>
     <div
       className="CompletionsCounter-component"
-    />
+    >
+      Loading...
+    </div>
     <div
       className="NumbersHitGameCounter-component"
     >
@@ -16412,7 +16416,9 @@ Array [
     </div>
     <div
       className="CompletionsCounter-component"
-    />
+    >
+      Loading...
+    </div>
     <div
       className="NumbersHitGameCounter-component"
     >

@@ -3,5 +3,7 @@
 exports[`CompletionsCounter renders 1`] = `
 <div
   className="CompletionsCounter-component"
-/>
+>
+  Loading...
+</div>
 `;

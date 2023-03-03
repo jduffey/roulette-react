@@ -2733,7 +2733,9 @@ exports[`Roulette renders 1`] = `
   </div>
   <div
     className="CompletionsCounter-component"
-  />
+  >
+    Loading...
+  </div>
   <div
     className="NumbersHitGameCounter-component"
   >
