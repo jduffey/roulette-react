@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import {
-    fetchTransactionHistory,
-    updateTransactionHistory,
-} from '../../common/databaseWrapper';
 
 import { PendingBet } from '../../common/PendingBet';
+import { getCompleteResultsOfRound } from '../../common/getCompleteResultsOfRound';
+import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
+import { CompletionsCounter } from './CompletionsCounter';
 
 import { BetResultsInfo } from './BetResultsInfo';
 import { Board } from "./Board";
@@ -17,14 +16,6 @@ import { SpinButton } from './SpinButton';
 import { SpinResult } from './SpinResult';
 import { HouseInfo } from './HouseInfo';
 
-import { getCompleteResultsOfRound } from '../../common/getCompleteResultsOfRound';
-import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
-import { CompletionsCounter } from './CompletionsCounter';
-import {
-    NumbersHitGameCounter,
-    NumbersHitGameCounterOverlay,
-} from './NumberHitGameCounter';
-
 import {
     transferFrom,
     getTokenBalance,
@@ -34,7 +25,7 @@ import {
 } from '../../common/blockchainWrapper';
 
 // Uncomment this line to simulate playing the game
-// import { simulatePlayingGame } from '../../common/simulatePlayingGame';
+import { simulatePlayingGame } from '../../common/simulatePlayingGame';
 
 function calculateTotalBetAmount(bets) {
     return bets.reduce((acc, pendingBet) => acc + pendingBet.betAmount, 0);
@@ -44,24 +35,11 @@ function isSpinAllowed(bets) {
     return bets.length > 0;
 }
 
-function getNewTransactionForDatabase(mostRecentRoundResults) {
-    return {
-        startingBalance: mostRecentRoundResults.startingBalance,
-        betsPlaced: Object.entries(mostRecentRoundResults.resultsOfBets).reduce((acc, [betName, individualBetResult]) => {
-            acc[betName] = (acc[betName] || 0) + individualBetResult.betAmount;
-            return acc;
-        }, {}),
-        spinResult: mostRecentRoundResults.winningWheelNumber,
-        finalBalance: mostRecentRoundResults.finalBalance,
-    };
-}
-
 const CLASS_NAME = "Roulette-component";
 export function Roulette(props) {
     const playerAddress = props.playerAddress;
     const playerDbEndpoint = props.playerDbEndpoint;
 
-    const [stateTransactionHistory, setStateTransactionHistory] = useState([]);
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
 
     const [pendingBets, setPendingBets] = useState([]);
@@ -81,37 +59,12 @@ export function Roulette(props) {
                 }
             });
 
-        fetchTransactionHistory(playerDbEndpoint)
-            .then(json => {
-                if (mounted) {
-                    setStateTransactionHistory(json.history);
-
-                    if (json.history.length === 0) return;
-
-                    const mostRecentTransaction = json.history[json.history.length - 1];
-
-                    const transactionBetsPlacedAsPendingBets =
-                        Object.entries(mostRecentTransaction.betsPlaced).reduce((acc, [betName, betAmount]) => {
-                            acc.push(new PendingBet(betName, betAmount));
-                            return acc;
-                        }, []);
-
-                    const previousRoundResults = getCompleteResultsOfRound(
-                        mostRecentTransaction.startingBalance,
-                        transactionBetsPlacedAsPendingBets,
-                        mostRecentTransaction.spinResult,
-                    );
-                    setPreviousRoundResultsForBetResultsInfo(previousRoundResults);
-
-                    setSpinResults(json.history.map(historyItem => historyItem.spinResult));
-                }
-            });
-
         return () => { mounted = false };
     }, [playerDbEndpoint, playerAddress]);
 
     function handleBettingSquareClick(bettingSquareName) {
         if (currentChipAmountSelected > playerBalance) {
+            // TODO: replace player balance with playerBalance - sum(pendingBets)
             alert("You don't have enough money to place that bet!");
             return;
         }
@@ -147,7 +100,6 @@ export function Roulette(props) {
                     }
                     return acc;
                 }, 0);
-
 
                 if (owedByHouseToPlayer > 0) {
                     // console.log("House --> Player", owedByHouseToPlayer);
@@ -189,11 +141,6 @@ export function Roulette(props) {
                 copySpinResults.push(resultsOfRound.winningWheelNumber);
                 setSpinResults(copySpinResults);
 
-                const newTransactionForDatabase = getNewTransactionForDatabase(resultsOfRound);
-                const copyTransactionHistory = stateTransactionHistory.slice();
-                copyTransactionHistory.push(newTransactionForDatabase);
-                setStateTransactionHistory(copyTransactionHistory);
-
                 // TODO update/revisit this note after replacing betsOnBoard (object) with pendingBets (array of PendingBet objects)
                 // TODO bug here? if we don't reset pendingBets then we can continue to click spin, which is not a problem itself,
                 // but on continuing to click does not charge the player for the bet placed, but it DOES award them winnings if they win.
@@ -202,8 +149,6 @@ export function Roulette(props) {
                 // 1. what the player is actually able to bet at any given time (i.e. the funds they "own" minus whatever bets they've already placed)
                 // 2. what the player "owns" (i.e. if they had an option to clear all bets on the board, what would their balance be)
                 setPendingBets([]);
-
-                updateTransactionHistory(copyTransactionHistory, playerDbEndpoint);
 
                 getTokenBalance(playerAddress)
                     .then(bal => {
@@ -264,12 +209,6 @@ export function Roulette(props) {
             />
             <HouseInfo
             />
-            {/* <NumbersHitGameCounter
-                transactionHistory={stateTransactionHistory}
-            />
-            <NumbersHitGameCounterOverlay
-                transactionHistory={stateTransactionHistory}
-            /> */}
         </div >
     );
 }
