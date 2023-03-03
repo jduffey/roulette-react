@@ -16,10 +16,9 @@
     - mints tokens for the generated accounts
     - runs `npx hardhat run scripts/initializeChain.js --network localhost`
 1. `npm start`
-    - starts json-server then the React app
-    - runs `json-server --watch -p 3001 db.json & react-scripts start`
+    - starts the React app
+    - runs `react-scripts start`
 
 ## Notes
 
-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses [json-server](https://github.com/typicode/json-server).
-- Development is underway to replace json-server with a local Ethereum node run by [Hardhat](https://hardhat.org/).
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses a local Hardhat Ethereum node [Hardhat](https://hardhat.org/).
