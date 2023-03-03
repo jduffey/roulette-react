@@ -1,17 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CompletionsCounter renders when all numbers have been hit once 1`] = `
+exports[`CompletionsCounter renders 1`] = `
 <div
   className="CompletionsCounter-component"
 >
-  1
-</div>
-`;
-
-exports[`CompletionsCounter renders when there are no completions 1`] = `
-<div
-  className="CompletionsCounter-component"
->
-  0
+  Loading...
 </div>
 `;

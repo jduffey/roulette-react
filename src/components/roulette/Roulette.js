@@ -150,7 +150,7 @@ export function Roulette(props) {
 
 
                 if (owedByHouseToPlayer > 0) {
-                    console.log("House --> Player", owedByHouseToPlayer);
+                    // console.log("House --> Player", owedByHouseToPlayer);
                     transferFrom(
                         HOUSE_ADDRESS,
                         playerAddress,
@@ -159,7 +159,7 @@ export function Roulette(props) {
                 }
 
                 if (owedByPlayerToHouse > 0) {
-                    console.log("Player --> House", owedByPlayerToHouse);
+                    // console.log("Player --> House", owedByPlayerToHouse);
                     transferFrom(
                         playerAddress,
                         HOUSE_ADDRESS,
@@ -169,9 +169,8 @@ export function Roulette(props) {
 
                 // "1% of house take goes to Jackpot"
                 const owedByHouseToJackpot = owedByPlayerToHouse * 0.01;
-
                 if (owedByHouseToJackpot > 0) {
-                    console.log("House --> Jackpot", owedByHouseToJackpot);
+                    // console.log("House --> Jackpot", owedByHouseToJackpot);
                     transferFrom(
                         HOUSE_ADDRESS,
                         ROULETTE_CONTRACT_ADDRESS,
@@ -182,7 +181,7 @@ export function Roulette(props) {
                 // "1% of house take goes to Player Rewards"
                 const owedByHouseToPlayerRewards = owedByPlayerToHouse * 0.01;
                 if (owedByHouseToPlayerRewards > 0) {
-                    console.log("House --> Rewards", owedByHouseToPlayerRewards);
+                    // console.log("House --> Rewards", owedByHouseToPlayerRewards);
                 }
 
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
@@ -214,7 +213,8 @@ export function Roulette(props) {
                 executeWager(
                     playerAddress,
                     calculateTotalBetAmount(pendingBets),
-                    owedByHouseToPlayerRewards.toString()
+                    owedByHouseToPlayerRewards.toString(),
+                    randomWheelNumber
                 ).then(() => {
                     // resolve
                 });
@@ -257,10 +257,10 @@ export function Roulette(props) {
                 previousRoundResults={previousRoundResultsForBetResultsInfo}
             />
             <NumbersHitTracker
-                transactionHistory={stateTransactionHistory}
+                playerAddress={playerAddress}
             />
             <CompletionsCounter
-                transactionHistory={stateTransactionHistory}
+                playerAddress={playerAddress}
             />
             <NumbersHitGameCounter
                 transactionHistory={stateTransactionHistory}
