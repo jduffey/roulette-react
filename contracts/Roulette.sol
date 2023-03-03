@@ -7,6 +7,73 @@ contract Roulette {
 
     mapping(address => uint256) private _playerSpins;
     mapping(address => uint256) private _playerRewards;
+    mapping(address => NumberCompletionSet) private _playerNumberCompletionSets;
+
+    struct NumberCompletionSet {
+        string[] hitNumbers;
+        mapping(string => bool) numberIsHit;
+        uint256 completionCounter;
+    }
+
+    function _addToSet(address addr, string memory wheelNumber) public {
+        if (!_playerNumberCompletionSets[addr].numberIsHit[wheelNumber]) {
+            _playerNumberCompletionSets[addr].hitNumbers.push(wheelNumber);
+            _playerNumberCompletionSets[addr].numberIsHit[wheelNumber] = true;
+        }
+
+        string[38] memory completeSet = [
+            "00",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36"
+        ];
+
+        // check if set is complete and reset if so
+        if (
+            _playerNumberCompletionSets[addr].hitNumbers.length ==
+            completeSet.length
+        ) {
+            for (uint256 i = 0; i < completeSet.length; i++) {
+                _playerNumberCompletionSets[addr].numberIsHit[completeSet[i]] = false;
+            }
+            _playerNumberCompletionSets[addr].hitNumbers = new string[](0);
+            _playerNumberCompletionSets[addr].completionCounter++;
+        }
+    }
 
     function _incrementTotalSpins() private {
         _totalSpins++;
@@ -40,10 +107,28 @@ contract Roulette {
         return _playerRewards[player];
     }
 
-    function executeWager(address player, uint256 wagerAmount, uint256 playerRewards) public {
+    function getPlayerNumberCompletionSetsCounter(
+        address player
+    ) public view returns (uint256) {
+        return _playerNumberCompletionSets[player].completionCounter;
+    }
+
+    function getPlayerNumberCompletionSetCurrent(
+        address player
+    ) public view returns (string[] memory) {
+        return _playerNumberCompletionSets[player].hitNumbers;
+    }
+
+    function executeWager(
+        address player,
+        uint256 wagerAmount,
+        uint256 playerRewards,
+        string memory wheelNumber
+    ) public {
         _incrementTotalSpins();
         _incrementTotalAmountWagered(wagerAmount);
         _incrementPlayerSpins(player);
         _incrementPlayerRewards(player, playerRewards);
+        _addToSet(player, wheelNumber);
     }
 }

@@ -1,11 +1,21 @@
+import { useEffect, useState } from 'react';
+
 import { WHEEL_NUMBERS } from "../../common/wheelNumbers";
+
+import {
+    getPlayerNumberCompletionSetCurrent,
+} from "../../common/blockchainWrapper";
 
 const CLASS_NAME = "NumbersHitTracker-component";
 export function NumbersHitTracker(props) {
-    const allHitNumbers = new Set();
-    props.transactionHistory.forEach((tx) => {
-        allHitNumbers.add(tx.spinResult);
-    });
+    const [currentSet, setCurrentSet] = useState(new Set());
+
+    useEffect(() => {
+        setTimeout(async () => {
+            const currentNumbers = await getPlayerNumberCompletionSetCurrent(props.playerAddress);
+            setCurrentSet(new Set(currentNumbers));
+        }, 1000);
+    }, [props.playerAddress, currentSet]);
 
     return (
         <div
@@ -13,18 +23,18 @@ export function NumbersHitTracker(props) {
         >
             {Object.values(WHEEL_NUMBERS).map((wheelNumber, i) => {
 
-                const bgColor = allHitNumbers.has(wheelNumber) ?
+                const backgroundColor = currentSet.has(wheelNumber) ?
                     "yellow" :
                     "inherit";
-                const color = allHitNumbers.has(wheelNumber) ?
+                const color = currentSet.has(wheelNumber) ?
                     "black" :
                     "gray";
                 return (
                     <div className="hit-number"
                         key={i}
                         style={{
-                            backgroundColor: bgColor,
-                            color: color,
+                            backgroundColor,
+                            color,
                         }}
                     >
                         {wheelNumber}

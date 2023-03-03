@@ -452,13 +452,13 @@ ul {
     color: black;
     font-family: monospace;
     font-size: 1.25rem;
-    width: 1200px;
+    width: 1400px;
 }
 
 .balances-table {
     table-layout: fixed;
     border-collapse: collapse;
-    width: 1200px;
+    width: 1400px;
 }
 
 .balances-table * {

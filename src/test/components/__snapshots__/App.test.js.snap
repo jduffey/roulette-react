@@ -175,11 +175,29 @@ Array [
             <th
               style={
                 Object {
-                  "width": "16%",
+                  "width": "10%",
                 }
               }
             >
               Spins
+            </th>
+            <th
+              style={
+                Object {
+                  "width": "10%",
+                }
+              }
+            >
+              ✅ Sets
+            </th>
+            <th
+              style={
+                Object {
+                  "width": "16%",
+                }
+              }
+            >
+              Current Set
             </th>
           </tr>
         </thead>
@@ -2969,7 +2987,7 @@ Array [
     <div
       className="CompletionsCounter-component"
     >
-      0
+      Loading...
     </div>
     <div
       className="NumbersHitGameCounter-component"
@@ -9684,7 +9702,7 @@ Array [
     <div
       className="CompletionsCounter-component"
     >
-      0
+      Loading...
     </div>
     <div
       className="NumbersHitGameCounter-component"
@@ -16399,7 +16417,7 @@ Array [
     <div
       className="CompletionsCounter-component"
     >
-      0
+      Loading...
     </div>
     <div
       className="NumbersHitGameCounter-component"

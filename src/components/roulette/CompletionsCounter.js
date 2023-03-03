@@ -1,16 +1,32 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 
-import { getCompletedSets } from '../../common/getCompletedSets';
+import {
+    getPlayerNumberCompletionSetsCounter,
+} from "../../common/blockchainWrapper";
+
+const formattedChainNumber = (chainNumber, decimals) => {
+    return chainNumber
+        ? parseFloat(chainNumber)
+            .toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals })
+        : "Loading...";
+}
 
 const CLASS_NAME = "CompletionsCounter-component";
 export function CompletionsCounter(props) {
-    const completionsCount = getCompletedSets(props.transactionHistory);
+    const [completionsCount, setCompletionsCount] = useState(0);
+
+    useEffect(() => {
+        setTimeout(async () => {
+            const count = await getPlayerNumberCompletionSetsCounter(props.playerAddress);
+            setCompletionsCount(count);
+        }, 1000);
+    }, [props.playerAddress, completionsCount]);
 
     return (
         <div
             className={CLASS_NAME}
         >
-            {completionsCount}
+            {formattedChainNumber(completionsCount, 0)}
         </div >
     )
 }

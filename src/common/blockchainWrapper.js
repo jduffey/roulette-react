@@ -11,16 +11,17 @@ const HOUSE_ADDRESS = "0x90F79bf6EB2c4f870365E785982E1f101E93b906";
 const TOKEN_CONTRACT_ADDRESS = "0x057ef64E23666F000b34aE31332854aCBd1c8544";
 const ROULETTE_CONTRACT_ADDRESS = "0x261D8c5e9742e6f7f1076Fa1F560894524e19cad";
 
-async function executeWager(address, wagerAmount, playerRewards) {
+async function executeWager(address, wagerAmount, playerRewards, wheelNumber) {
     const contract = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
-        ["function executeWager(address, uint256, uint256)"],
+        ["function executeWager(address, uint256, uint256, string)"],
         provider.getSigner(HOUSE_ADDRESS)
     );
     const tx = await contract.executeWager(
         address,
         wagerAmount,
-        ethers.utils.parseEther(playerRewards)
+        ethers.utils.parseEther(playerRewards),
+        wheelNumber
     );
     return tx;
 }
@@ -50,16 +51,6 @@ async function getEthBalance(address) {
     const balance = await signer.getBalance();
     return ethers.utils.formatEther(balance);
 }
-
-// TODO leaving this for reference
-// async function sendEther(provider, from, to, amount) {
-//     const signer = provider.getSigner(from);
-//     const tx = await signer.sendTransaction({
-//         to: to,
-//         value: ethers.utils.parseEther(amount)
-//     });
-//     return tx;
-// }
 
 async function getBlock() {
     const block = await provider.getBlock();
@@ -139,6 +130,26 @@ async function getPlayerRewards(address) {
     return ethers.utils.formatEther(count);
 }
 
+async function getPlayerNumberCompletionSetsCounter(address) {
+    const contract = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function getPlayerNumberCompletionSetsCounter(address) public view returns (uint256)"],
+        provider.getSigner(address)
+    );
+    const count = await contract.getPlayerNumberCompletionSetsCounter(address);
+    return count;
+}
+
+async function getPlayerNumberCompletionSetCurrent(address) {
+    const contract = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function getPlayerNumberCompletionSetCurrent(address) public view returns (string[])"],
+        provider.getSigner(address)
+    );
+    const currentSet = await contract.getPlayerNumberCompletionSetCurrent(address);
+    return currentSet;
+}
+
 let tokenSymbol;
 (new ethers.Contract(
     TOKEN_CONTRACT_ADDRESS,
@@ -161,6 +172,8 @@ export {
     getJackpotBalance,
     getPlayerSpins,
     getPlayerRewards,
+    getPlayerNumberCompletionSetsCounter,
+    getPlayerNumberCompletionSetCurrent,
     FIRST_PLAYER_ADDRESS,
     SECOND_PLAYER_ADDRESS,
     THIRD_PLAYER_ADDRESS,
@@ -169,3 +182,14 @@ export {
     ROULETTE_CONTRACT_ADDRESS,
     tokenSymbol,
 };
+
+// TODO leaving this for reference
+// How to send ether from one address to another
+// async function sendEther(provider, from, to, amount) {
+//     const signer = provider.getSigner(from);
+//     const tx = await signer.sendTransaction({
+//         to: to,
+//         value: ethers.utils.parseEther(amount)
+//     });
+//     return tx;
+// }

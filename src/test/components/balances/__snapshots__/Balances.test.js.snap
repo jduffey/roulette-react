@@ -71,11 +71,29 @@ exports[`Balances renders 1`] = `
           <th
             style={
               Object {
-                "width": "16%",
+                "width": "10%",
               }
             }
           >
             Spins
+          </th>
+          <th
+            style={
+              Object {
+                "width": "10%",
+              }
+            }
+          >
+            ✅ Sets
+          </th>
+          <th
+            style={
+              Object {
+                "width": "16%",
+              }
+            }
+          >
+            Current Set
           </th>
         </tr>
       </thead>
