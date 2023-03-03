@@ -4,13 +4,6 @@ import {
     getPlayerNumberCompletionSetsCounter,
 } from "../../common/blockchainWrapper";
 
-const formattedChainNumber = (chainNumber, decimals) => {
-    return chainNumber
-        ? parseFloat(chainNumber)
-            .toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals })
-        : "Loading...";
-}
-
 const CLASS_NAME = "CompletionsCounter-component";
 export function CompletionsCounter(props) {
     const [completionsCount, setCompletionsCount] = useState(undefined);
@@ -26,7 +19,7 @@ export function CompletionsCounter(props) {
         <div
             className={CLASS_NAME}
         >
-            {formattedChainNumber(completionsCount, 0)}
+            {completionsCount}
         </div >
     )
 }
