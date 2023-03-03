@@ -6,6 +6,8 @@ import {
 
 import { PendingBet } from '../../common/PendingBet';
 
+import { getCompletedSets } from '../../common/getCompletedSets';
+
 import { BetResultsInfo } from './BetResultsInfo';
 import { Board } from "./Board";
 import { ChipSelection } from './ChipSelection';
@@ -34,7 +36,7 @@ import {
 } from '../../common/blockchainWrapper';
 
 // Uncomment this line to simulate playing the game
-// import { simulatePlayingGame } from '../../common/simulatePlayingGame';
+import { simulatePlayingGame } from '../../common/simulatePlayingGame';
 
 function calculateTotalBetAmount(bets) {
     return bets.reduce((acc, pendingBet) => acc + pendingBet.betAmount, 0);
@@ -70,6 +72,8 @@ export function Roulette(props) {
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
 
     const [playerBalance, setPlayerBalance] = useState(undefined);
+
+    const [completionCount, setCompletionCount] = useState(0);
 
     useEffect(() => {
         let mounted = true;
@@ -169,7 +173,6 @@ export function Roulette(props) {
 
                 // "1% of house take goes to Jackpot"
                 const owedByHouseToJackpot = owedByPlayerToHouse * 0.01;
-
                 if (owedByHouseToJackpot > 0) {
                     console.log("House --> Jackpot", owedByHouseToJackpot);
                     transferFrom(
@@ -214,7 +217,8 @@ export function Roulette(props) {
                 executeWager(
                     playerAddress,
                     calculateTotalBetAmount(pendingBets),
-                    owedByHouseToPlayerRewards.toString()
+                    owedByHouseToPlayerRewards.toString(),
+                    randomWheelNumber
                 ).then(() => {
                     // resolve
                 });
