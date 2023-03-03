@@ -156,8 +156,8 @@ export function Balances() {
         ethBalance: "16%",
         tokenBalance: "16%",
         rewards: "16%",
-        spins: "16%",
-        numberCompletionSetsCounter: "16%",
+        spins: "10%",
+        numberCompletionSetsCounter: "10%",
         numberCompletionSetCurrent: "16%",
     }
 
@@ -187,7 +187,7 @@ export function Balances() {
                             <th style={{ width: columnNamesAndWidths.tokenBalance }}>{tokenSymbol} Balance</th>
                             <th style={{ width: columnNamesAndWidths.rewards }}>Rewards</th>
                             <th style={{ width: columnNamesAndWidths.spins }}>Spins</th>
-                            <th style={{ width: columnNamesAndWidths.numberCompletionSetsCounter }}>Completed Sets</th>
+                            <th style={{ width: columnNamesAndWidths.numberCompletionSetsCounter }}>✅ Sets</th>
                             <th style={{ width: columnNamesAndWidths.numberCompletionSetCurrent }}>Current Set</th>
                         </tr>
                     </thead>
