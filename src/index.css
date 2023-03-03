@@ -228,7 +228,7 @@ ul {
     height: 300px;
     width: 200px;
     border-radius: 24px;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     display: flex;
     flex-direction: column;
@@ -239,16 +239,16 @@ ul {
     box-shadow: 4px 4px 0px 4px black;
 }
 
-.PlayerInfo-component>div {
+/* .PlayerInfo-component>div {
     margin: 8px;
-}
+} */
 
 .HouseInfo-component {
     position: relative;
     left: 1040px;
     bottom: 3920px;
     height: 280px;
-    width: 240px;
+    width: 280px;
     border-radius: 24px;
     font-size: 20px;
     font-weight: bold;
@@ -452,13 +452,13 @@ ul {
     color: black;
     font-family: monospace;
     font-size: 1.25rem;
-    width: 1460px;
+    width: 1200px;
 }
 
 .balances-table {
     table-layout: fixed;
     border-collapse: collapse;
-    width: 1460px;
+    width: 1200px;
 }
 
 .balances-table * {
@@ -469,18 +469,6 @@ ul {
 
 .balances-table-headers th {
     text-align: center;
-}
-
-.Balances-eth-balance {
-    width: 260px;
-}
-
-.Balances-token-balance {
-    width: 260px;
-}
-
-.Balances-button-header {
-    width: 200px;
 }
 
 .Balances-contract-interact-button-column {

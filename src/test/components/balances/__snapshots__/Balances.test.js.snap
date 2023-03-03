@@ -23,36 +23,59 @@ exports[`Balances renders 1`] = `
         <tr
           className="balances-table-headers"
         >
-          <th>
+          <th
+            style={
+              Object {
+                "width": "16%",
+              }
+            }
+          >
             Nickname
           </th>
-          <th>
+          <th
+            style={
+              Object {
+                "width": "16%",
+              }
+            }
+          >
             Address
           </th>
           <th
-            className="Balances-eth-balance"
+            style={
+              Object {
+                "width": "16%",
+              }
+            }
           >
             ETH Balance
           </th>
           <th
-            className="Balances-token-balance"
+            style={
+              Object {
+                "width": "16%",
+              }
+            }
           >
              Balance
           </th>
           <th
-            className="Balances-button-header"
+            style={
+              Object {
+                "width": "16%",
+              }
+            }
           >
-            Get Tokens
+            Rewards
           </th>
           <th
-            className="Balances-button-header"
+            style={
+              Object {
+                "width": "16%",
+              }
+            }
           >
-            Redeem Tokens
-          </th>
-          <th
-            className="Balances-button-header"
-          >
-            Txfr Tokens
+            Spins
           </th>
         </tr>
       </thead>

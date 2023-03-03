@@ -28,9 +28,9 @@ import {
 import {
     transferFrom,
     getTokenBalance,
-    incrementTotalSpins,
-    JACKPOT_ADDRESS,
+    executeWager,
     HOUSE_ADDRESS,
+    ROULETTE_CONTRACT_ADDRESS,
 } from '../../common/blockchainWrapper';
 
 // Uncomment this line to simulate playing the game
@@ -69,7 +69,6 @@ export function Roulette(props) {
     const [spinResults, setSpinResults] = useState([]);
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
 
-    // Retrieved from chain
     const [playerBalance, setPlayerBalance] = useState(undefined);
 
     useEffect(() => {
@@ -149,8 +148,6 @@ export function Roulette(props) {
                     return acc;
                 }, 0);
 
-                // We can say that "1% of house take goes to Jackpot"
-                const owedByHouseToJackpot = owedByPlayerToHouse * 0.01;
 
                 if (owedByHouseToPlayer > 0) {
                     console.log("House --> Player", owedByHouseToPlayer);
@@ -170,13 +167,22 @@ export function Roulette(props) {
                     );
                 }
 
+                // "1% of house take goes to Jackpot"
+                const owedByHouseToJackpot = owedByPlayerToHouse * 0.01;
+
                 if (owedByHouseToJackpot > 0) {
                     console.log("House --> Jackpot", owedByHouseToJackpot);
                     transferFrom(
                         HOUSE_ADDRESS,
-                        JACKPOT_ADDRESS,
+                        ROULETTE_CONTRACT_ADDRESS,
                         owedByHouseToJackpot.toString()
                     );
+                }
+
+                // "1% of house take goes to Player Rewards"
+                const owedByHouseToPlayerRewards = owedByPlayerToHouse * 0.01;
+                if (owedByHouseToPlayerRewards > 0) {
+                    console.log("House --> Rewards", owedByHouseToPlayerRewards);
                 }
 
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
@@ -205,7 +211,11 @@ export function Roulette(props) {
                         setPlayerBalance(bal);
                     });
 
-                incrementTotalSpins().then(() => {
+                executeWager(
+                    playerAddress,
+                    calculateTotalBetAmount(pendingBets),
+                    owedByHouseToPlayerRewards.toString()
+                ).then(() => {
                     // resolve
                 });
             });
@@ -236,6 +246,7 @@ export function Roulette(props) {
                 spinResults={spinResults}
             />
             <PlayerInfo
+                playerAddress={playerAddress}
                 playerBalance={playerBalance}
                 totalBetAmount={calculateTotalBetAmount(pendingBets)}
             />

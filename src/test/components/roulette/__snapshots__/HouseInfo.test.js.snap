@@ -9,15 +9,18 @@ exports[`HouseInfo renders when houseBalance is 0 1`] = `
     <br />
     Loading...
   </div>
-  <br />
   <div>
     Jackpot Balance
     <br />
     Loading...
   </div>
-  <br />
   <div>
-    All-Time Total Spins
+    Total Spins
+    <br />
+    Loading...
+  </div>
+  <div>
+    Total Amount Wagered
     <br />
     Loading...
   </div>
@@ -33,15 +36,18 @@ exports[`HouseInfo renders when houseBalance is 123456.9876 1`] = `
     <br />
     Loading...
   </div>
-  <br />
   <div>
     Jackpot Balance
     <br />
     Loading...
   </div>
-  <br />
   <div>
-    All-Time Total Spins
+    Total Spins
+    <br />
+    Loading...
+  </div>
+  <div>
+    Total Amount Wagered
     <br />
     Loading...
   </div>
@@ -57,15 +63,18 @@ exports[`HouseInfo renders when houseBalance is undefined 1`] = `
     <br />
     Loading...
   </div>
-  <br />
   <div>
     Jackpot Balance
     <br />
     Loading...
   </div>
-  <br />
   <div>
-    All-Time Total Spins
+    Total Spins
+    <br />
+    Loading...
+  </div>
+  <div>
+    Total Amount Wagered
     <br />
     Loading...
   </div>
