@@ -23,7 +23,6 @@ async function executeWager(address, wagerAmount, playerRewards, wheelNumber) {
         ethers.utils.parseEther(playerRewards),
         wheelNumber
     );
-    console.log("executeWager tx: ", tx);
     return tx;
 }
 
@@ -52,16 +51,6 @@ async function getEthBalance(address) {
     const balance = await signer.getBalance();
     return ethers.utils.formatEther(balance);
 }
-
-// TODO leaving this for reference
-// async function sendEther(provider, from, to, amount) {
-//     const signer = provider.getSigner(from);
-//     const tx = await signer.sendTransaction({
-//         to: to,
-//         value: ethers.utils.parseEther(amount)
-//     });
-//     return tx;
-// }
 
 async function getBlock() {
     const block = await provider.getBlock();
@@ -148,7 +137,6 @@ async function getPlayerNumberCompletionSetsCounter(address) {
         provider.getSigner(address)
     );
     const count = await contract.getPlayerNumberCompletionSetsCounter(address);
-    // console.log("count", count);
     return count;
 }
 
@@ -159,7 +147,6 @@ async function getPlayerNumberCompletionSetCurrent(address) {
         provider.getSigner(address)
     );
     const currentSet = await contract.getPlayerNumberCompletionSetCurrent(address);
-    // console.log("currentSet", currentSet);
     return currentSet;
 }
 
@@ -195,3 +182,14 @@ export {
     ROULETTE_CONTRACT_ADDRESS,
     tokenSymbol,
 };
+
+// TODO leaving this for reference
+// How to send ether from one address to another
+// async function sendEther(provider, from, to, amount) {
+//     const signer = provider.getSigner(from);
+//     const tx = await signer.sendTransaction({
+//         to: to,
+//         value: ethers.utils.parseEther(amount)
+//     });
+//     return tx;
+// }

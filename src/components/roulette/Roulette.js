@@ -6,8 +6,6 @@ import {
 
 import { PendingBet } from '../../common/PendingBet';
 
-import { getCompletedSets } from '../../common/getCompletedSets';
-
 import { BetResultsInfo } from './BetResultsInfo';
 import { Board } from "./Board";
 import { ChipSelection } from './ChipSelection';
@@ -72,8 +70,6 @@ export function Roulette(props) {
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
 
     const [playerBalance, setPlayerBalance] = useState(undefined);
-
-    const [completionCount, setCompletionCount] = useState(0);
 
     useEffect(() => {
         let mounted = true;
@@ -264,7 +260,7 @@ export function Roulette(props) {
                 transactionHistory={stateTransactionHistory}
             />
             <CompletionsCounter
-                transactionHistory={stateTransactionHistory}
+                playerAddress={playerAddress}
             />
             <NumbersHitGameCounter
                 transactionHistory={stateTransactionHistory}
