@@ -3,7 +3,6 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "@openzeppelin/contracts": "^4.8.1",
         "ci": "^2.2.0",
         "json-server": "^0.17.2",
         "react": "^18.2.0",
