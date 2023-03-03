@@ -71,7 +71,7 @@ exports[`Balances renders 1`] = `
           <th
             style={
               Object {
-                "width": "16%",
+                "width": "10%",
               }
             }
           >
@@ -80,11 +80,11 @@ exports[`Balances renders 1`] = `
           <th
             style={
               Object {
-                "width": "16%",
+                "width": "10%",
               }
             }
           >
-            Completed Sets
+            ✅ Sets
           </th>
           <th
             style={

@@ -175,7 +175,7 @@ Array [
             <th
               style={
                 Object {
-                  "width": "16%",
+                  "width": "10%",
                 }
               }
             >
@@ -184,11 +184,11 @@ Array [
             <th
               style={
                 Object {
-                  "width": "16%",
+                  "width": "10%",
                 }
               }
             >
-              Completed Sets
+              ✅ Sets
             </th>
             <th
               style={
