@@ -257,7 +257,7 @@ export function Roulette(props) {
                 previousRoundResults={previousRoundResultsForBetResultsInfo}
             />
             <NumbersHitTracker
-                transactionHistory={stateTransactionHistory}
+                playerAddress={playerAddress}
             />
             <CompletionsCounter
                 playerAddress={playerAddress}

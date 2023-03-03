@@ -22,7 +22,7 @@ contract Roulette {
         }
 
         // check if set is complete and reset if so
-        if (_playerNumberCompletionSets[addr].values.length == 5) {
+        if (_playerNumberCompletionSets[addr].values.length == 38) {
             _playerNumberCompletionSets[addr].completionCounter++;
 
             string[38] memory completeSet = [
