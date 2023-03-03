@@ -111,7 +111,6 @@ export function Balances() {
                     acc[cur.address] = cur.count;
                     return acc;
                 }, {});
-                console.log("counts", counts);
                 setPlayerNumberCompletionSetsCounter(counts);
             });
 
@@ -125,7 +124,6 @@ export function Balances() {
                     acc[cur.address] = cur.currentSet;
                     return acc;
                 }, {});
-                console.log("currentSets", currentSets);
                 setPlayerNumberCompletionSetCurrent(currentSets);
             });
 

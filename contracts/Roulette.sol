@@ -10,65 +10,68 @@ contract Roulette {
     mapping(address => NumberCompletionSet) private _playerNumberCompletionSets;
 
     struct NumberCompletionSet {
-        string[] values;
-        mapping(string => bool) is_in;
+        string[] hitNumbers;
+        mapping(string => bool) numberIsHit;
         uint256 completionCounter;
     }
 
     function _addToSet(address addr, string memory wheelNumber) public {
-        if (!_playerNumberCompletionSets[addr].is_in[wheelNumber]) {
-            _playerNumberCompletionSets[addr].values.push(wheelNumber);
-            _playerNumberCompletionSets[addr].is_in[wheelNumber] = true;
+        if (!_playerNumberCompletionSets[addr].numberIsHit[wheelNumber]) {
+            _playerNumberCompletionSets[addr].hitNumbers.push(wheelNumber);
+            _playerNumberCompletionSets[addr].numberIsHit[wheelNumber] = true;
         }
 
-        // check if set is complete and reset if so
-        if (_playerNumberCompletionSets[addr].values.length == 38) {
-            _playerNumberCompletionSets[addr].completionCounter++;
+        string[38] memory completeSet = [
+            "00",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36"
+        ];
 
-            string[38] memory completeSet = [
-                "00",
-                "0",
-                "1",
-                "2",
-                "3",
-                "4",
-                "5",
-                "6",
-                "7",
-                "8",
-                "9",
-                "10",
-                "11",
-                "12",
-                "13",
-                "14",
-                "15",
-                "16",
-                "17",
-                "18",
-                "19",
-                "20",
-                "21",
-                "22",
-                "23",
-                "24",
-                "25",
-                "26",
-                "27",
-                "28",
-                "29",
-                "30",
-                "31",
-                "32",
-                "33",
-                "34",
-                "35",
-                "36"
-            ];
+        // check if set is complete and reset if so
+        if (
+            _playerNumberCompletionSets[addr].hitNumbers.length ==
+            completeSet.length
+        ) {
             for (uint256 i = 0; i < completeSet.length; i++) {
-                _playerNumberCompletionSets[addr].is_in[completeSet[i]] = false;
+                _playerNumberCompletionSets[addr].numberIsHit[completeSet[i]] = false;
             }
-            _playerNumberCompletionSets[addr].values = new string[](0);
+            _playerNumberCompletionSets[addr].hitNumbers = new string[](0);
+            _playerNumberCompletionSets[addr].completionCounter++;
         }
     }
 
@@ -113,7 +116,7 @@ contract Roulette {
     function getPlayerNumberCompletionSetCurrent(
         address player
     ) public view returns (string[] memory) {
-        return _playerNumberCompletionSets[player].values;
+        return _playerNumberCompletionSets[player].hitNumbers;
     }
 
     function executeWager(
