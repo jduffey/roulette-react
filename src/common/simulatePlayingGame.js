@@ -1,8 +1,8 @@
 import { BET_NAMES } from "./betNames";
 
-const NUMBER_OF_BETS_TO_PLACE = 3;
+const NUMBER_OF_BETS_TO_PLACE = 1;
 
-const SECONDS_BETWEEN_BET_PLACEMENTS = .5;
+const SECONDS_BETWEEN_BET_PLACEMENTS = 0.5;
 
 const getRandomElement = (choices) => {
     const index = Math.floor(Math.random() * choices.length);
