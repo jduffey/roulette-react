@@ -244,14 +244,10 @@ because we'll have "invisible" betting options later
     box-shadow: 4px 4px 0px 4px black;
 }
 
-/* .PlayerInfo-component>div {
-    margin: 8px;
-} */
-
 .HouseInfo-component {
     position: relative;
     left: 1040px;
-    bottom: 3920px;
+    bottom: 2600px;
     height: 280px;
     width: 280px;
     border-radius: 24px;

@@ -262,14 +262,14 @@ export function Roulette(props) {
             <CompletionsCounter
                 playerAddress={playerAddress}
             />
-            <NumbersHitGameCounter
+            <HouseInfo
+            />
+            {/* <NumbersHitGameCounter
                 transactionHistory={stateTransactionHistory}
             />
             <NumbersHitGameCounterOverlay
                 transactionHistory={stateTransactionHistory}
-            />
-            <HouseInfo
-            />
+            /> */}
         </div >
     );
 }
