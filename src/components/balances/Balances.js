@@ -4,36 +4,32 @@ import {
     getEthBalance,
     getBlock,
     getTokenBalance,
-    depositEthForTokens,
-    redeemTokensForEth,
-    transferFrom,
     tokenSymbol,
+    getPlayerSpins,
+    getPlayerRewards,
     FIRST_PLAYER_ADDRESS,
     SECOND_PLAYER_ADDRESS,
     THIRD_PLAYER_ADDRESS,
     HOUSE_ADDRESS,
-    JACKPOT_ADDRESS,
     TOKEN_CONTRACT_ADDRESS,
+    ROULETTE_CONTRACT_ADDRESS,
 } from "../../common/blockchainWrapper";
 
 export function Balances() {
     const [ethBalances, setEthBalances] = useState([]);
     const [tokenBalances, setTokenBalances] = useState([]);
+    const [playerRewards, setPlayerRewards] = useState([]);
+    const [playerSpins, setPlayerSpins] = useState([]);
 
     const [block, setBlock] = useState({});
 
-    const [rerender, setRerender] = useState(false);
-
-    const ETH_TO_DEPOSIT = "1";
-    const TOKENS_TO_REDEEM = "100000";
-    const TOKENS_TO_TRANSFER = "10000";
     const NICKNAMES = {
         [FIRST_PLAYER_ADDRESS]: "Player 1 👤",
         [SECOND_PLAYER_ADDRESS]: "Player 2 👤",
         [THIRD_PLAYER_ADDRESS]: "Player 3 👤",
         [HOUSE_ADDRESS]: "House 🏠",
-        [JACKPOT_ADDRESS]: "Jackpot 💰",
         [TOKEN_CONTRACT_ADDRESS]: "Token 📜",
+        [ROULETTE_CONTRACT_ADDRESS]: "Roulette 🎰",
     }
 
     const MS_REFRESH_INTERVAL = 1000;
@@ -45,8 +41,8 @@ export function Balances() {
                 SECOND_PLAYER_ADDRESS,
                 THIRD_PLAYER_ADDRESS,
                 HOUSE_ADDRESS,
-                JACKPOT_ADDRESS,
-                TOKEN_CONTRACT_ADDRESS
+                TOKEN_CONTRACT_ADDRESS,
+                ROULETTE_CONTRACT_ADDRESS,
             ];
 
             const addressWithBalancePromises = addressesInDisplayOrder.map(async (address) => {
@@ -75,6 +71,32 @@ export function Balances() {
                 setTokenBalances(newBalances);
             });
 
+            const addressesWithRewardsPromises = addressesInDisplayOrder.map(async (address) => {
+                const balance = await getPlayerRewards(address);
+                return { address, balance };
+            });
+
+            Promise.all(addressesWithRewardsPromises).then((res) => {
+                const newBalances = res.reduce((acc, cur) => {
+                    acc[cur.address] = cur.balance;
+                    return acc;
+                }, {});
+                setPlayerRewards(newBalances);
+            });
+
+            const addressesWithSpinsPromises = addressesInDisplayOrder.map(async (address) => {
+                const balance = await getPlayerSpins(address);
+                return { address, balance };
+            });
+
+            Promise.all(addressesWithSpinsPromises).then((res) => {
+                const newBalances = res.reduce((acc, cur) => {
+                    acc[cur.address] = cur.balance;
+                    return acc;
+                }, {});
+                setPlayerSpins(newBalances);
+            });
+
             getBlock()
                 .then((blockData) => {
                     setBlock(blockData);
@@ -82,15 +104,26 @@ export function Balances() {
         }, MS_REFRESH_INTERVAL);
 
         return () => clearInterval(interval);
-    }, [rerender]);
+    }, []);
 
     const combinedBalances = Object.keys(ethBalances).reduce((acc, address) => {
         acc[address] = {
             ethBalance: ethBalances[address],
-            tokenBalance: tokenBalances[address]
+            tokenBalance: tokenBalances[address],
+            rewards: playerRewards[address],
+            spins: playerSpins[address],
         };
         return acc;
     }, {});
+
+    const columnNamesAndWidths = {
+        nickname: "16%",
+        address: "16%",
+        ethBalance: "16%",
+        tokenBalance: "16%",
+        rewards: "16%",
+        spins: "16%",
+    }
 
     return (
         <div
@@ -112,18 +145,17 @@ export function Balances() {
                     className="balances-table">
                     <thead>
                         <tr className="balances-table-headers">
-                            <th>Nickname</th>
-                            <th>Address</th>
-                            <th className="Balances-eth-balance">ETH Balance</th>
-                            <th className="Balances-token-balance">{tokenSymbol} Balance</th>
-                            <th className="Balances-button-header">Get Tokens</th>
-                            <th className="Balances-button-header">Redeem Tokens</th>
-                            <th className="Balances-button-header">Txfr Tokens</th>
+                            <th style={{ width: columnNamesAndWidths.nickname }}>Nickname</th>
+                            <th style={{ width: columnNamesAndWidths.address }}>Address</th>
+                            <th style={{ width: columnNamesAndWidths.ethBalance }}>ETH Balance</th>
+                            <th style={{ width: columnNamesAndWidths.tokenBalance }}>{tokenSymbol} Balance</th>
+                            <th style={{ width: columnNamesAndWidths.rewards }}>Rewards</th>
+                            <th style={{ width: columnNamesAndWidths.spins }}>Spins</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance }]) => {
+                            Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance, rewards, spins }]) => {
                                 return (
                                     <tr key={addr}>
                                         <td>{NICKNAMES[addr]}</td>
@@ -138,61 +170,21 @@ export function Balances() {
                                         </td>
                                         <td>
                                             {Number(tokenBalance).toLocaleString(undefined, {
-                                                minimumFractionDigits: 8,
-                                                maximumFractionDigits: 8
+                                                minimumFractionDigits: 2,
+                                                maximumFractionDigits: 2
                                             })}
                                         </td>
-                                        <td
-                                            className="Balances-contract-interact-button-column">
-                                            <button
-                                                className="Balances-contract-interact-button"
-                                                type="button"
-                                                onClick={() => {
-                                                    depositEthForTokens(
-                                                        addr,
-                                                        ETH_TO_DEPOSIT
-                                                    ).then(() => {
-                                                        setRerender(!rerender);
-                                                    });
-                                                }}
-                                            >
-                                                {`Deposit ${ETH_TO_DEPOSIT} ETH`}
-                                            </button>
+                                        <td>
+                                            {Number(rewards).toLocaleString(undefined, {
+                                                minimumFractionDigits: 2,
+                                                maximumFractionDigits: 2
+                                            })}
                                         </td>
-                                        <td
-                                            className="Balances-contract-interact-button-column">
-                                            <button
-                                                className="Balances-contract-interact-button"
-                                                type="button"
-                                                onClick={() => {
-                                                    redeemTokensForEth(
-                                                        addr,
-                                                        TOKENS_TO_REDEEM
-                                                    ).then(() => {
-                                                        setRerender(!rerender);
-                                                    });
-                                                }}
-                                            >
-                                                {`Redeem ${Number(TOKENS_TO_REDEEM).toLocaleString()} ${tokenSymbol}`}
-                                            </button>
-                                        </td>
-                                        <td
-                                            className="Balances-contract-interact-button-column">
-                                            <button
-                                                className="Balances-contract-interact-button"
-                                                type="button"
-                                                onClick={() => {
-                                                    transferFrom(
-                                                        addr,
-                                                        HOUSE_ADDRESS,
-                                                        TOKENS_TO_TRANSFER
-                                                    ).then(() => {
-                                                        setRerender(!rerender);
-                                                    });
-                                                }}
-                                            >
-                                                {`Txfr ${Number(TOKENS_TO_TRANSFER).toLocaleString()} ${tokenSymbol}`}
-                                            </button>
+                                        <td>
+                                            {Number(spins).toLocaleString(undefined, {
+                                                minimumFractionDigits: 0,
+                                                maximumFractionDigits: 0
+                                            })}
                                         </td>
                                     </tr>
                                 );

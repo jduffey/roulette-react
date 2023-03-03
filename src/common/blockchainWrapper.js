@@ -6,31 +6,42 @@ const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
 const FIRST_PLAYER_ADDRESS = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
 const SECOND_PLAYER_ADDRESS = "0x70997970C51812dc3A010C7d01b50e0d17dc79C8";
 const THIRD_PLAYER_ADDRESS = "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC";
-const JACKPOT_ADDRESS = "0x90F79bf6EB2c4f870365E785982E1f101E93b906";
-const HOUSE_ADDRESS = "0x15d34aaf54267db7d7c367839aaf71a00a2c6a65";
+const HOUSE_ADDRESS = "0x90F79bf6EB2c4f870365E785982E1f101E93b906";
 // Contract addresses are calculated from a hash of the deployer's address and nonce.
-const TOKEN_CONTRACT_ADDRESS = "0xbdEd0D2bf404bdcBa897a74E6657f1f12e5C6fb6";
-const ROULETTE_CONTRACT_ADDRESS = "0x2910E325cf29dd912E3476B61ef12F49cb931096";
+const TOKEN_CONTRACT_ADDRESS = "0x057ef64E23666F000b34aE31332854aCBd1c8544";
+const ROULETTE_CONTRACT_ADDRESS = "0x261D8c5e9742e6f7f1076Fa1F560894524e19cad";
 
-async function incrementTotalSpins() {
-    const signer = provider.getSigner(HOUSE_ADDRESS);
-    const incrementTotalSpinsAbi = new ethers.Contract(
+async function executeWager(address, wagerAmount, playerRewards) {
+    const contract = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
-        ["function incrementTotalSpins()"],
-        signer
+        ["function executeWager(address, uint256, uint256)"],
+        provider.getSigner(HOUSE_ADDRESS)
     );
-    const tx = await incrementTotalSpinsAbi.incrementTotalSpins();
+    const tx = await contract.executeWager(
+        address,
+        wagerAmount,
+        ethers.utils.parseEther(playerRewards)
+    );
     return tx;
 }
 
 async function getTotalSpins() {
-    const signer = provider.getSigner(HOUSE_ADDRESS);
-    const getTotalSpinsAbi = new ethers.Contract(
+    const contract = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
         ["function getTotalSpins() public view returns (uint256)"],
-        signer
+        provider.getSigner(HOUSE_ADDRESS)
     );
-    const count = await getTotalSpinsAbi.getTotalSpins();
+    const count = await contract.getTotalSpins();
+    return count;
+}
+
+async function getTotalAmountWagered() {
+    const contract = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function getTotalAmountWagered() public view returns (uint256)"],
+        provider.getSigner(HOUSE_ADDRESS)
+    );
+    const count = await contract.getTotalAmountWagered();
     return count;
 }
 
@@ -56,11 +67,10 @@ async function getBlock() {
 }
 
 async function getTokenBalance(address) {
-    const signer = provider.getSigner(address);
     const token = new ethers.Contract(
         TOKEN_CONTRACT_ADDRESS,
         ["function balanceOf(address) view returns (uint)"],
-        signer
+        provider.getSigner(HOUSE_ADDRESS)
     );
     const balance = await token.balanceOf(address);
     const formattedBalance = ethers.utils.formatEther(balance);
@@ -102,6 +112,33 @@ async function transferFrom(from, to, amount) {
     return tx;
 }
 
+async function getJackpotBalance() {
+    // For now this is just the token balance of the contract
+    // Later the Roulette contract will also handle all payouts and receipts of bets
+    const tokenBalance = await getTokenBalance(ROULETTE_CONTRACT_ADDRESS);
+    return tokenBalance;
+}
+
+async function getPlayerSpins(address) {
+    const contract = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function getPlayerSpins(address) public view returns (uint256)"],
+        provider.getSigner(address)
+    );
+    const count = await contract.getPlayerSpins(address);
+    return count;
+}
+
+async function getPlayerRewards(address) {
+    const contract = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function getPlayerRewards(address) public view returns (uint256)"],
+        provider.getSigner(address)
+    );
+    const count = await contract.getPlayerRewards(address);
+    return ethers.utils.formatEther(count);
+}
+
 let tokenSymbol;
 (new ethers.Contract(
     TOKEN_CONTRACT_ADDRESS,
@@ -118,13 +155,17 @@ export {
     depositEthForTokens,
     redeemTokensForEth,
     transferFrom,
-    incrementTotalSpins,
+    executeWager,
     getTotalSpins,
+    getTotalAmountWagered,
+    getJackpotBalance,
+    getPlayerSpins,
+    getPlayerRewards,
     FIRST_PLAYER_ADDRESS,
     SECOND_PLAYER_ADDRESS,
     THIRD_PLAYER_ADDRESS,
-    JACKPOT_ADDRESS,
     HOUSE_ADDRESS,
     TOKEN_CONTRACT_ADDRESS,
+    ROULETTE_CONTRACT_ADDRESS,
     tokenSymbol,
 };

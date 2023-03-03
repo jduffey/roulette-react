@@ -3,32 +3,38 @@ import { useEffect, useState } from 'react';
 import {
     getTokenBalance,
     getTotalSpins,
-    JACKPOT_ADDRESS,
+    getTotalAmountWagered,
     HOUSE_ADDRESS,
+    getJackpotBalance,
 } from "../../common/blockchainWrapper";
 
-const formattedChainNumber = (chainNumber) => {
+const formattedChainNumber = (chainNumber, decimals) => {
     return chainNumber
-        ? parseFloat(chainNumber).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+        ? parseFloat(chainNumber)
+            .toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals })
         : "Loading...";
 }
 
 const CLASS_NAME = "HouseInfo-component";
 export function HouseInfo() {
     const [houseBalance, setHouseBalance] = useState(undefined);
-    const [jackpotBalance, setJackpotBalance] = useState(undefined);
     const [totalSpins, setTotalSpins] = useState(undefined);
+    const [totalAmountWagered, setTotalAmountWagered] = useState(undefined);
+    const [jackpotBalance, setJackpotBalance] = useState(undefined);
 
     useEffect(() => {
         setTimeout(async () => {
             const houseBal = await getTokenBalance(HOUSE_ADDRESS);
             setHouseBalance(houseBal);
 
-            const jackpotBal = await getTokenBalance(JACKPOT_ADDRESS);
-            setJackpotBalance(jackpotBal);
-
             const spins = await getTotalSpins();
             setTotalSpins(spins);
+
+            const taw = await getTotalAmountWagered();
+            setTotalAmountWagered(taw);
+
+            const jackpotBal = await getJackpotBalance();
+            setJackpotBalance(jackpotBal);
         }, 1000);
 
     }, [totalSpins]);
@@ -40,19 +46,22 @@ export function HouseInfo() {
             <div>
                 House Balance
                 < br />
-                {formattedChainNumber(houseBalance)}
+                {formattedChainNumber(houseBalance, 2)}
             </div>
-            <br />
             <div>
                 Jackpot Balance
                 < br />
-                {formattedChainNumber(jackpotBalance)}
+                {formattedChainNumber(jackpotBalance, 2)}
             </div>
-            <br />
             <div>
-                All-Time Total Spins
+                Total Spins
                 < br />
-                {formattedChainNumber(totalSpins)}
+                {formattedChainNumber(totalSpins, 0)}
+            </div>
+            <div>
+                Total Amount Wagered
+                < br />
+                {formattedChainNumber(totalAmountWagered, 2)}
             </div>
         </div >
     )

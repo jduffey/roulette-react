@@ -127,36 +127,59 @@ Array [
           <tr
             className="balances-table-headers"
           >
-            <th>
+            <th
+              style={
+                Object {
+                  "width": "16%",
+                }
+              }
+            >
               Nickname
             </th>
-            <th>
+            <th
+              style={
+                Object {
+                  "width": "16%",
+                }
+              }
+            >
               Address
             </th>
             <th
-              className="Balances-eth-balance"
+              style={
+                Object {
+                  "width": "16%",
+                }
+              }
             >
               ETH Balance
             </th>
             <th
-              className="Balances-token-balance"
+              style={
+                Object {
+                  "width": "16%",
+                }
+              }
             >
                Balance
             </th>
             <th
-              className="Balances-button-header"
+              style={
+                Object {
+                  "width": "16%",
+                }
+              }
             >
-              Get Tokens
+              Rewards
             </th>
             <th
-              className="Balances-button-header"
+              style={
+                Object {
+                  "width": "16%",
+                }
+              }
             >
-              Redeem Tokens
-            </th>
-            <th
-              className="Balances-button-header"
-            >
-              Txfr Tokens
+              Spins
             </th>
           </tr>
         </thead>
@@ -2364,9 +2387,19 @@ Array [
         Loading...
       </div>
       <div>
-        Total Bet
+        Current Bet
         <br />
         0
+      </div>
+      <div>
+        Player Spins
+        <br />
+        Loading...
+      </div>
+      <div>
+        Player Rewards
+        <br />
+        Loading...
       </div>
     </div>
     <div
@@ -6852,15 +6885,18 @@ Array [
         <br />
         Loading...
       </div>
-      <br />
       <div>
         Jackpot Balance
         <br />
         Loading...
       </div>
-      <br />
       <div>
-        All-Time Total Spins
+        Total Spins
+        <br />
+        Loading...
+      </div>
+      <div>
+        Total Amount Wagered
         <br />
         Loading...
       </div>
@@ -9066,9 +9102,19 @@ Array [
         Loading...
       </div>
       <div>
-        Total Bet
+        Current Bet
         <br />
         0
+      </div>
+      <div>
+        Player Spins
+        <br />
+        Loading...
+      </div>
+      <div>
+        Player Rewards
+        <br />
+        Loading...
       </div>
     </div>
     <div
@@ -13554,15 +13600,18 @@ Array [
         <br />
         Loading...
       </div>
-      <br />
       <div>
         Jackpot Balance
         <br />
         Loading...
       </div>
-      <br />
       <div>
-        All-Time Total Spins
+        Total Spins
+        <br />
+        Loading...
+      </div>
+      <div>
+        Total Amount Wagered
         <br />
         Loading...
       </div>
@@ -15768,9 +15817,19 @@ Array [
         Loading...
       </div>
       <div>
-        Total Bet
+        Current Bet
         <br />
         0
+      </div>
+      <div>
+        Player Spins
+        <br />
+        Loading...
+      </div>
+      <div>
+        Player Rewards
+        <br />
+        Loading...
       </div>
     </div>
     <div
@@ -20256,15 +20315,18 @@ Array [
         <br />
         Loading...
       </div>
-      <br />
       <div>
         Jackpot Balance
         <br />
         Loading...
       </div>
-      <br />
       <div>
-        All-Time Total Spins
+        Total Spins
+        <br />
+        Loading...
+      </div>
+      <div>
+        Total Amount Wagered
         <br />
         Loading...
       </div>
