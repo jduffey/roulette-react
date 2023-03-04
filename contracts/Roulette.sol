@@ -15,6 +15,8 @@ contract Roulette {
         uint256 completionCounter;
     }
 
+    event WagerExecuted(address indexed player, uint256 wagerAmount, uint256 playerRewards, string wheelNumber);
+
     function _addToSet(address addr, string memory wheelNumber) public {
         if (!_playerNumberCompletionSets[addr].numberIsHit[wheelNumber]) {
             _playerNumberCompletionSets[addr].hitNumbers.push(wheelNumber);
@@ -63,10 +65,7 @@ contract Roulette {
         ];
 
         // check if set is complete and reset if so
-        if (
-            _playerNumberCompletionSets[addr].hitNumbers.length ==
-            completeSet.length
-        ) {
+        if (_playerNumberCompletionSets[addr].hitNumbers.length == completeSet.length) {
             for (uint256 i = 0; i < completeSet.length; i++) {
                 _playerNumberCompletionSets[addr].numberIsHit[completeSet[i]] = false;
             }
@@ -107,28 +106,23 @@ contract Roulette {
         return _playerRewards[player];
     }
 
-    function getPlayerNumberCompletionSetsCounter(
-        address player
-    ) public view returns (uint256) {
+    function getPlayerNumberCompletionSetsCounter(address player) public view returns (uint256) {
         return _playerNumberCompletionSets[player].completionCounter;
     }
 
-    function getPlayerNumberCompletionSetCurrent(
-        address player
-    ) public view returns (string[] memory) {
+    function getPlayerNumberCompletionSetCurrent(address player) public view returns (string[] memory) {
         return _playerNumberCompletionSets[player].hitNumbers;
     }
 
-    function executeWager(
-        address player,
-        uint256 wagerAmount,
-        uint256 playerRewards,
-        string memory wheelNumber
-    ) public {
+    function executeWager(address player, uint256 wagerAmount, uint256 playerRewards, string memory wheelNumber)
+        public
+    {
         _incrementTotalSpins();
         _incrementTotalAmountWagered(wagerAmount);
         _incrementPlayerSpins(player);
         _incrementPlayerRewards(player, playerRewards);
         _addToSet(player, wheelNumber);
+
+        emit WagerExecuted(player, wagerAmount, playerRewards, wheelNumber);
     }
 }

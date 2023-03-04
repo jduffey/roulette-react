@@ -11,6 +11,16 @@ const HOUSE_ADDRESS = "0x90F79bf6EB2c4f870365E785982E1f101E93b906";
 const TOKEN_CONTRACT_ADDRESS = "0x057ef64E23666F000b34aE31332854aCBd1c8544";
 const ROULETTE_CONTRACT_ADDRESS = "0x261D8c5e9742e6f7f1076Fa1F560894524e19cad";
 
+const contractForEvents = new ethers.Contract(
+    ROULETTE_CONTRACT_ADDRESS,
+    ['event WagerExecuted(address indexed player, uint256 wagerAmount, uint256 playerRewards, string wheelNumber)'],
+    provider
+);
+
+contractForEvents.on('WagerExecuted', (player, wagerAmount, playerRewards, wheelNumber) => {
+    console.log('WagerExecuted', player, wagerAmount, playerRewards, wheelNumber);
+});
+
 async function executeWager(address, wagerAmount, playerRewards, wheelNumber) {
     const contract = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
