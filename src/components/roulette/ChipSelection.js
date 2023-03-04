@@ -8,6 +8,7 @@ export function ChipSelection(props) {
         >
             {[
                 CHIP_AMOUNTS.CHIP_1,
+                CHIP_AMOUNTS.CHIP_2_HALF,
                 CHIP_AMOUNTS.CHIP_5,
                 CHIP_AMOUNTS.CHIP_25,
                 CHIP_AMOUNTS.CHIP_100,

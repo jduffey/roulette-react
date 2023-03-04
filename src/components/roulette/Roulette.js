@@ -160,8 +160,8 @@ export function Roulette(props) {
                     calculateTotalBetAmount(pendingBets),
                     owedByHouseToPlayerRewards.toString(),
                     randomWheelNumber
-                ).then(() => {
-                    // resolve
+                ).then((response) => {
+                    console.log("Response: ", response);
                 });
             });
     }

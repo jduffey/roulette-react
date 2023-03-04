@@ -2,6 +2,7 @@ import { CHIP_COLORS } from "../../common/standardColors";
 
 const CHIP_AMOUNTS = {
     CHIP_1: 1,
+    CHIP_2_HALF: 2.5,
     CHIP_5: 5,
     CHIP_25: 25,
     CHIP_100: 100,
@@ -11,8 +12,10 @@ const CHIP_AMOUNTS = {
 
 const getChipColorStyles = (chipAmt) => {
     switch (true) {
-        case (chipAmt >= CHIP_AMOUNTS.CHIP_1 && chipAmt < CHIP_AMOUNTS.CHIP_5):
+        case (chipAmt >= CHIP_AMOUNTS.CHIP_1 && chipAmt < CHIP_AMOUNTS.CHIP_2_HALF):
             return Object.assign({}, CHIP_COLORS.CHIP_1);
+        case (chipAmt >= CHIP_AMOUNTS.CHIP_2_HALF && chipAmt < CHIP_AMOUNTS.CHIP_5):
+            return Object.assign({}, CHIP_COLORS.CHIP_2);
         case (chipAmt >= CHIP_AMOUNTS.CHIP_5 && chipAmt < CHIP_AMOUNTS.CHIP_25):
             return Object.assign({}, CHIP_COLORS.CHIP_5);
         case (chipAmt >= CHIP_AMOUNTS.CHIP_25 && chipAmt < CHIP_AMOUNTS.CHIP_100):

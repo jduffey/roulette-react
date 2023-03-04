@@ -6,6 +6,7 @@ import { Home } from "./Home";
 import { Roulette } from "./roulette/Roulette";
 import { SicBo } from "./SicBo";
 import { Balances } from "./balances/Balances";
+import { EventsDashboard } from "./EventsDashboard";
 
 import {
     FIRST_PLAYER_ADDRESS,
@@ -24,6 +25,7 @@ export function App() {
             <Route path="/roulette-p3" element={elementInLayout(<Roulette playerAddress={THIRD_PLAYER_ADDRESS} playerDbEndpoint="/player-3" />)} />
             <Route path="/sic-bo" element={elementInLayout(<SicBo />)} />
             <Route path="/balances" element={elementInLayout(<Balances />)} />
+            <Route path="/events" element={elementInLayout(<EventsDashboard />)} />
         </Routes>
     );
 }
