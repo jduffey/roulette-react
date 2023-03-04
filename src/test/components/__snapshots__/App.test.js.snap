@@ -44,6 +44,12 @@ Array [
       >
         Balances
       </a>
+      <a
+        href="/events"
+        onClick={[Function]}
+      >
+        Events
+      </a>
     </div>
   </div>,
   <div
@@ -102,6 +108,12 @@ Array [
         onClick={[Function]}
       >
         Balances
+      </a>
+      <a
+        href="/events"
+        onClick={[Function]}
+      >
+        Events
       </a>
     </div>
   </div>,
@@ -251,6 +263,12 @@ Array [
         onClick={[Function]}
       >
         Balances
+      </a>
+      <a
+        href="/events"
+        onClick={[Function]}
+      >
+        Events
       </a>
     </div>
   </div>,
@@ -2279,6 +2297,20 @@ Array [
         }
       >
         $1
+      </div>
+      <div
+        className="Chip-component chip-selection-chip"
+        id="chip-2.5"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#FFC0CB",
+            "borderColor": "#000000",
+            "color": "#000000",
+          }
+        }
+      >
+        $2.5
       </div>
       <div
         className="Chip-component chip-selection-chip"
@@ -3061,6 +3093,12 @@ Array [
       >
         Balances
       </a>
+      <a
+        href="/events"
+        onClick={[Function]}
+      >
+        Events
+      </a>
     </div>
   </div>,
   <div
@@ -5088,6 +5126,20 @@ Array [
         }
       >
         $1
+      </div>
+      <div
+        className="Chip-component chip-selection-chip"
+        id="chip-2.5"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#FFC0CB",
+            "borderColor": "#000000",
+            "color": "#000000",
+          }
+        }
+      >
+        $2.5
       </div>
       <div
         className="Chip-component chip-selection-chip"
@@ -5870,6 +5922,12 @@ Array [
       >
         Balances
       </a>
+      <a
+        href="/events"
+        onClick={[Function]}
+      >
+        Events
+      </a>
     </div>
   </div>,
   <div
@@ -7900,6 +7958,20 @@ Array [
       </div>
       <div
         className="Chip-component chip-selection-chip"
+        id="chip-2.5"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#FFC0CB",
+            "borderColor": "#000000",
+            "color": "#000000",
+          }
+        }
+      >
+        $2.5
+      </div>
+      <div
+        className="Chip-component chip-selection-chip"
         id="chip-5"
         onClick={[Function]}
         style={
@@ -8678,6 +8750,12 @@ Array [
         onClick={[Function]}
       >
         Balances
+      </a>
+      <a
+        href="/events"
+        onClick={[Function]}
+      >
+        Events
       </a>
     </div>
   </div>,

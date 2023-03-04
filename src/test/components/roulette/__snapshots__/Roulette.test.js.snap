@@ -2029,6 +2029,20 @@ exports[`Roulette renders 1`] = `
     </div>
     <div
       className="Chip-component chip-selection-chip"
+      id="chip-2.5"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#FFC0CB",
+          "borderColor": "#000000",
+          "color": "#000000",
+        }
+      }
+    >
+      $2.5
+    </div>
+    <div
+      className="Chip-component chip-selection-chip"
       id="chip-5"
       onClick={[Function]}
       style={
