@@ -80,7 +80,7 @@ export function Roulette(props) {
             return;
         }
 
-        getRandomWheelNumber(Date.now())
+        getRandomWheelNumber(`${Date.now()}${playerAddress}`)
             .then(randomWheelNumber => {
                 const copySpinResults = spinResults.slice();
 
