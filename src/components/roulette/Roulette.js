@@ -153,8 +153,8 @@ export function Roulette(props) {
                 console.log("House --> Allocated Rewards in Roulette contract", owedByHouseToPlayersRewards);
                 executeWager(
                     playerAddress,
-                    calculateTotalBetAmount(pendingBets).toString(),
-                    owedByHouseToPlayersRewards.toString(),
+                    calculateTotalBetAmount(pendingBets),
+                    owedByHouseToPlayersRewards,
                     randomWheelNumber
                 ).then((response) => {
                     console.log("Response: ", response);

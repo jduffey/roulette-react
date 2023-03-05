@@ -20,8 +20,8 @@ async function executeWager(address, wagerAmount, playerRewards, wheelNumber) {
     console.log("wagerAmount", wagerAmount);
     const tx = await contract.executeWager(
         address,
-        ethers.utils.parseEther(wagerAmount),
-        ethers.utils.parseEther(playerRewards),
+        ethers.utils.parseEther(wagerAmount.toString()),
+        ethers.utils.parseEther(playerRewards.toString()),
         wheelNumber
     );
     // console.log("tx", tx);
