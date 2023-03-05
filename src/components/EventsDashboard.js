@@ -1,33 +1,36 @@
 import { ethers } from "ethers";
 
-const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
+import { ROULETTE_CONTRACT_ADDRESS } from "../common/blockchainWrapper";
 
-const ROULETTE_CONTRACT_ADDRESS = "0x261D8c5e9742e6f7f1076Fa1F560894524e19cad";
+const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
 
 const contractForEvents = new ethers.Contract(
     ROULETTE_CONTRACT_ADDRESS,
     [
-        'event WagerExecuted(address indexed, uint256, uint256, string)',
-        'event EventBlockData(uint256, uint256)',
+        'event WagerExecuted(address indexed, uint256, uint256, string, string, uint256)',
+        'event EventBlockData(uint256, uint256, uint256)',
     ],
     provider
 );
 
-contractForEvents.on('WagerExecuted', (player, wagerAmount, playerRewards, wheelNumber) => {
+contractForEvents.on('WagerExecuted', (player, wagerAmount, playerRewards, wheelNumber, betName, betAmount) => {
     console.log(
         `WagerExecuted event:
 player: ${player}
 wagerAmount: ${wagerAmount}
 playerRewards: ${playerRewards}
-wheelNumber: ${wheelNumber}`
+wheelNumber: ${wheelNumber}
+betName: ${betName}
+betAmount: ${betAmount}`
     );
 });
 
-contractForEvents.on('EventBlockData', (previousBlockhash, moduluFoo) => {
+contractForEvents.on('EventBlockData', (previousBlockhash, moduluFoo, difficulty) => {
     console.log(
         `EventBlockData event:
 previousBlockhash: ${previousBlockhash.toHexString()}
-moduluFoo: ${moduluFoo}`
+moduluFoo: ${moduluFoo}
+difficulty: ${difficulty.toHexString()}`
     );
 });
 

@@ -19,9 +19,11 @@ contract Roulette {
         address indexed player,
         uint256 wagerAmount,
         uint256 playerRewards,
-        string wheelNumber
+        string wheelNumber,
+        string betName,
+        uint256 betAmount
     );
-    event EventBlockData(uint256 previousBlockhash, uint256 moduloFoo);
+    event EventBlockData(uint256 previousBlockhash, uint256 moduloFoo, uint256 difficulty);
 
     function _addToSet(address addr, string memory wheelNumber) public {
         if (!_playerNumberCompletionSets[addr].numberIsHit[wheelNumber]) {
@@ -71,14 +73,9 @@ contract Roulette {
         ];
 
         // check if set is complete and reset if so
-        if (
-            _playerNumberCompletionSets[addr].hitNumbers.length ==
-            completeSet.length
-        ) {
+        if (_playerNumberCompletionSets[addr].hitNumbers.length == completeSet.length) {
             for (uint256 i = 0; i < completeSet.length; i++) {
-                _playerNumberCompletionSets[addr].numberIsHit[
-                    completeSet[i]
-                ] = false;
+                _playerNumberCompletionSets[addr].numberIsHit[completeSet[i]] = false;
             }
             _playerNumberCompletionSets[addr].hitNumbers = new string[](0);
             _playerNumberCompletionSets[addr].completionCounter++;
@@ -117,15 +114,11 @@ contract Roulette {
         return _playerRewards[player];
     }
 
-    function getPlayerNumberCompletionSetsCounter(
-        address player
-    ) public view returns (uint256) {
+    function getPlayerNumberCompletionSetsCounter(address player) public view returns (uint256) {
         return _playerNumberCompletionSets[player].completionCounter;
     }
 
-    function getPlayerNumberCompletionSetCurrent(
-        address player
-    ) public view returns (string[] memory) {
+    function getPlayerNumberCompletionSetCurrent(address player) public view returns (string[] memory) {
         return _playerNumberCompletionSets[player].hitNumbers;
     }
 
@@ -133,16 +126,20 @@ contract Roulette {
         uint256 blockNumber = block.number;
         uint256 previousBlockhash = uint256(blockhash(blockNumber - 1));
 
+        uint256 randomNumber = block.difficulty;
+
         uint256 moduloFoo = previousBlockhash % 38;
 
-        emit EventBlockData(previousBlockhash, moduloFoo);
+        emit EventBlockData(previousBlockhash, moduloFoo, randomNumber);
     }
 
     function executeWager(
         address player,
         uint256 wagerAmount,
         uint256 playerRewards,
-        string memory wheelNumber
+        string memory wheelNumber,
+        string memory betName,
+        uint256 betAmount
     ) public {
         _incrementTotalSpins();
         _incrementTotalAmountWagered(wagerAmount);
@@ -150,7 +147,7 @@ contract Roulette {
         _incrementPlayerRewards(player, playerRewards);
         _addToSet(player, wheelNumber);
 
-        emit WagerExecuted(player, wagerAmount, playerRewards, wheelNumber);
+        emit WagerExecuted(player, wagerAmount, playerRewards, wheelNumber, betName, betAmount);
 
         _blockDataSpike();
     }

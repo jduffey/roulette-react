@@ -9,12 +9,13 @@ const THIRD_PLAYER_ADDRESS = "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC";
 const HOUSE_ADDRESS = "0x90F79bf6EB2c4f870365E785982E1f101E93b906";
 // Contract addresses are calculated from a hash of the deployer's address and nonce.
 const TOKEN_CONTRACT_ADDRESS = "0x057ef64E23666F000b34aE31332854aCBd1c8544";
-const ROULETTE_CONTRACT_ADDRESS = "0x261D8c5e9742e6f7f1076Fa1F560894524e19cad";
+const RANDOMNESS_PROVIDER_CONTRACT_ADDRESS = "0x261D8c5e9742e6f7f1076Fa1F560894524e19cad";
+const ROULETTE_CONTRACT_ADDRESS = "0xCE3478A9E0167a6Bc5716DC39DbbbfAc38F27623";
 
-async function executeWager(address, wagerAmount, playerRewards, wheelNumber) {
+async function executeWager(address, wagerAmount, playerRewards, wheelNumber, betName, betAmount) {
     const contract = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
-        ["function executeWager(address, uint256, uint256, string)"],
+        ["function executeWager(address, uint256, uint256, string, string, uint256)"],
         provider.getSigner(HOUSE_ADDRESS)
     );
     console.log("wagerAmount", wagerAmount);
@@ -22,7 +23,9 @@ async function executeWager(address, wagerAmount, playerRewards, wheelNumber) {
         address,
         ethers.utils.parseEther(wagerAmount.toString()),
         ethers.utils.parseEther(playerRewards.toString()),
-        wheelNumber
+        wheelNumber,
+        betName,
+        ethers.utils.parseEther(betAmount.toString())
     );
     return tx;
 }

@@ -150,12 +150,16 @@ export function Roulette(props) {
                         setPlayerBalance(bal);
                     });
 
+                console.log("pendingBets", pendingBets);
                 console.log("House --> Allocated Rewards in Roulette contract", owedByHouseToPlayersRewards);
+                const singlePendingBet = pendingBets[0]
                 executeWager(
                     playerAddress,
                     calculateTotalBetAmount(pendingBets),
                     owedByHouseToPlayersRewards,
-                    randomWheelNumber
+                    randomWheelNumber,
+                    singlePendingBet.betName,
+                    singlePendingBet.betAmount
                 ).then((response) => {
                     console.log("Response: ", response);
                 });
