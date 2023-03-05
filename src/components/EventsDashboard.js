@@ -6,7 +6,10 @@ const ROULETTE_CONTRACT_ADDRESS = "0x261D8c5e9742e6f7f1076Fa1F560894524e19cad";
 
 const contractForEvents = new ethers.Contract(
     ROULETTE_CONTRACT_ADDRESS,
-    ['event WagerExecuted(address indexed, uint256, uint256, string)'],
+    [
+        'event WagerExecuted(address indexed, uint256, uint256, string)',
+        'event EventBlockData(uint256, uint256)',
+    ],
     provider
 );
 
@@ -17,6 +20,14 @@ player: ${player}
 wagerAmount: ${wagerAmount}
 playerRewards: ${playerRewards}
 wheelNumber: ${wheelNumber}`
+    );
+});
+
+contractForEvents.on('EventBlockData', (previousBlockhash, moduluFoo) => {
+    console.log(
+        `EventBlockData event:
+previousBlockhash: ${previousBlockhash.toHexString()}
+moduluFoo: ${moduluFoo}`
     );
 });
 
