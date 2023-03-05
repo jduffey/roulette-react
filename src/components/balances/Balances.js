@@ -206,14 +206,14 @@ export function Balances() {
                                         </td>
                                         <td>
                                             {Number(tokenBalance).toLocaleString(undefined, {
-                                                minimumFractionDigits: 2,
-                                                maximumFractionDigits: 2
+                                                minimumFractionDigits: 4,
+                                                maximumFractionDigits: 4
                                             })}
                                         </td>
                                         <td>
                                             {Number(rewards).toLocaleString(undefined, {
-                                                minimumFractionDigits: 2,
-                                                maximumFractionDigits: 2
+                                                minimumFractionDigits: 4,
+                                                maximumFractionDigits: 4
                                             })}
                                         </td>
                                         <td>

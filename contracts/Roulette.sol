@@ -6,7 +6,7 @@ contract Roulette {
     uint256 private _totalAmountWagered;
 
     mapping(address => uint256) private _playerSpins;
-    mapping(address => uint256) private _playerRewards;
+    mapping(address => uint256) private _playerRewards; // Player rewards are aggregated as the jackpot
     mapping(address => NumberCompletionSet) private _playerNumberCompletionSets;
 
     struct NumberCompletionSet {

@@ -17,9 +17,10 @@ async function executeWager(address, wagerAmount, playerRewards, wheelNumber) {
         ["function executeWager(address, uint256, uint256, string)"],
         provider.getSigner(HOUSE_ADDRESS)
     );
+    console.log("wagerAmount", wagerAmount);
     const tx = await contract.executeWager(
         address,
-        wagerAmount,
+        wagerAmount * 10, // TODO: workaround for 2.5 chip and decimals
         ethers.utils.parseEther(playerRewards),
         wheelNumber
     );
