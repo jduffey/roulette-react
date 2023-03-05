@@ -24,7 +24,6 @@ async function executeWager(address, wagerAmount, playerRewards, wheelNumber) {
         ethers.utils.parseEther(playerRewards.toString()),
         wheelNumber
     );
-    // console.log("tx", tx);
     return tx;
 }
 
@@ -66,8 +65,7 @@ async function getTokenBalance(address) {
         provider.getSigner(HOUSE_ADDRESS)
     );
     const balance = await token.balanceOf(address);
-    const formattedBalance = ethers.utils.formatEther(balance);
-    return formattedBalance;
+    return ethers.utils.formatEther(balance);
 }
 
 async function depositEthForTokens(from, amount) {
