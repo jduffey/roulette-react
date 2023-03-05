@@ -2759,7 +2759,7 @@ exports[`Roulette renders 1`] = `
       Loading...
     </div>
     <div>
-      Jackpot Balance
+      Rewards Pool
       <br />
       Loading...
     </div>

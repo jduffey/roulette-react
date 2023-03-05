@@ -10,7 +10,7 @@ exports[`HouseInfo renders when houseBalance is 0 1`] = `
     Loading...
   </div>
   <div>
-    Jackpot Balance
+    Rewards Pool
     <br />
     Loading...
   </div>
@@ -37,7 +37,7 @@ exports[`HouseInfo renders when houseBalance is 123456.9876 1`] = `
     Loading...
   </div>
   <div>
-    Jackpot Balance
+    Rewards Pool
     <br />
     Loading...
   </div>
@@ -64,7 +64,7 @@ exports[`HouseInfo renders when houseBalance is undefined 1`] = `
     Loading...
   </div>
   <div>
-    Jackpot Balance
+    Rewards Pool
     <br />
     Loading...
   </div>
