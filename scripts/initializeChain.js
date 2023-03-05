@@ -12,12 +12,17 @@ function _validateNetwork() {
     }
 }
 
-async function _deployContract(deployer, contractName) {
+async function _deployContract(deployer, contractName, args) {
     const contractFactory = await ethers.getContractFactory(
         contractName,
         deployer
     );
-    const contract = await contractFactory.deploy();
+    let contract;
+    if (args) {
+        contract = await contractFactory.deploy(args);
+    } else {
+        contract = await contractFactory.deploy();
+    }
     await contract.deployed();
 
     console.log(`\n***** CONTRACT DEPLOYED SUCCESSFULLY - ${contractName} *****`);
@@ -69,7 +74,7 @@ async function initializeChain() {
 
     await _deployContract(house, "MyGameToken");
     await _deployContract(house, "RandomnessProvider")
-    await _deployContract(house, "Roulette");
+    await _deployContract(house, "Roulette", "0x261D8c5e9742e6f7f1076Fa1F560894524e19cad");
     await _depositEthForTokens(tokenContractAddress, ethToDeposit);
 }
 

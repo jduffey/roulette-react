@@ -1,7 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
+import "./RandomnessProvider.sol";
+
 contract Roulette {
+    RandomnessProvider private _randomnessProvider;
+
     uint256 private _totalSpins;
     uint256 private _totalAmountWagered;
 
@@ -24,6 +28,11 @@ contract Roulette {
         uint256 betAmount
     );
     event EventBlockData(uint256 previousBlockhash, uint256 moduloFoo, uint256 difficulty);
+    event RandomnessObtained(uint256 randomValue);
+
+    constructor(address randomnessProviderAddress) {
+        _randomnessProvider = RandomnessProvider(randomnessProviderAddress);
+    }
 
     function _addToSet(address addr, string memory wheelNumber) public {
         if (!_playerNumberCompletionSets[addr].numberIsHit[wheelNumber]) {
@@ -150,5 +159,9 @@ contract Roulette {
         emit WagerExecuted(player, wagerAmount, playerRewards, wheelNumber, betName, betAmount);
 
         _blockDataSpike();
+
+        uint256 randValue = _randomnessProvider.randomValue();
+
+        emit RandomnessObtained(randValue);
     }
 }
