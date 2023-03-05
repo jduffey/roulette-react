@@ -31,11 +31,7 @@ export function HouseInfo() {
             setTotalSpins(spins);
 
             const taw = await getTotalAmountWagered();
-            // TODO: workaround for 2.5 decimal chips
-            // a decimal (2.5) is multiplied by 10 in the blockchain wrapper
-            // so that a whole number is sent to the contract
-            const formattedTaw = parseFloat(taw) / 10;
-            setTotalAmountWagered(formattedTaw);
+            setTotalAmountWagered(taw);
 
             const totalRewards = await getRewardsPoolBalance();
             setTotalRewardsPool(totalRewards);

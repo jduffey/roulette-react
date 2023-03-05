@@ -20,7 +20,7 @@ async function executeWager(address, wagerAmount, playerRewards, wheelNumber) {
     console.log("wagerAmount", wagerAmount);
     const tx = await contract.executeWager(
         address,
-        wagerAmount * 10, // TODO: workaround for 2.5 chip and decimals
+        ethers.utils.parseEther(wagerAmount),
         ethers.utils.parseEther(playerRewards),
         wheelNumber
     );
@@ -45,7 +45,7 @@ async function getTotalAmountWagered() {
         provider.getSigner(HOUSE_ADDRESS)
     );
     const count = await contract.getTotalAmountWagered();
-    return count;
+    return ethers.utils.formatEther(count);
 }
 
 async function getEthBalance(address) {
