@@ -119,21 +119,16 @@ export function Roulette(props) {
                     );
                 }
 
-                // "1% of house take goes to Jackpot"
-                const owedByHouseToJackpot = owedByPlayerToHouse * 0.01;
-                if (owedByHouseToJackpot > 0) {
-                    console.log("House --> Jackpot", owedByHouseToJackpot);
+                // "1% of house take goes to Rewards Pool"
+                const owedByHouseToRewardsPool = owedByPlayerToHouse * 0.01;
+                const owedByHouseToPlayersRewards = owedByHouseToRewardsPool;
+                if (owedByHouseToRewardsPool > 0) {
+                    console.log("House --> Roulette Contract", owedByHouseToRewardsPool);
                     transferFrom(
                         HOUSE_ADDRESS,
                         ROULETTE_CONTRACT_ADDRESS,
-                        owedByHouseToJackpot.toString()
+                        owedByHouseToRewardsPool.toString()
                     );
-                }
-
-                // "1% of house take goes to Player Rewards"
-                const owedByHouseToPlayerRewards = owedByPlayerToHouse * 0.01;
-                if (owedByHouseToPlayerRewards > 0) {
-                    console.log("House --> Rewards", owedByHouseToPlayerRewards);
                 }
 
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
@@ -155,10 +150,11 @@ export function Roulette(props) {
                         setPlayerBalance(bal);
                     });
 
+                console.log("House --> Allocated Rewards in Roulette contract", owedByHouseToPlayersRewards);
                 executeWager(
                     playerAddress,
                     calculateTotalBetAmount(pendingBets),
-                    owedByHouseToPlayerRewards.toString(),
+                    owedByHouseToPlayersRewards.toString(),
                     randomWheelNumber
                 ).then((response) => {
                     console.log("Response: ", response);

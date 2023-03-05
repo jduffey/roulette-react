@@ -6,19 +6,19 @@ const ROULETTE_CONTRACT_ADDRESS = "0x261D8c5e9742e6f7f1076Fa1F560894524e19cad";
 
 const contractForEvents = new ethers.Contract(
     ROULETTE_CONTRACT_ADDRESS,
-    ['event WagerExecuted(address indexed player, uint256 wagerAmount, uint256 playerRewards, string wheelNumber)'],
+    ['event WagerExecuted(address indexed, uint256, uint256, string)'],
     provider
 );
 
 contractForEvents.on('WagerExecuted', (player, wagerAmount, playerRewards, wheelNumber) => {
-    console.log(`WagerExecuted event:\nplayer: ${player}\nwagerAmount: ${wagerAmount}\nplayerRewards: ${playerRewards}\nwheelNumber: ${wheelNumber}`);
+    console.log(
+        `WagerExecuted event:
+player: ${player}
+wagerAmount: ${wagerAmount}
+playerRewards: ${playerRewards}
+wheelNumber: ${wheelNumber}`
+    );
 });
-
-
-
-
-
-
 
 export function EventsDashboard() {
     return (

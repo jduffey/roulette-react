@@ -11,8 +11,7 @@ const CHIP_COLORS = {
         color: "#000000",
         borderColor: "#000000",
     },
-    // CHIP_2 background is pink and color is black
-    CHIP_2: {
+    CHIP_2_HALF: {
         backgroundColor: "#FFC0CB",
         color: "#000000",
         borderColor: "#000000",

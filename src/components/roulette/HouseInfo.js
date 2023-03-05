@@ -5,7 +5,7 @@ import {
     getTotalSpins,
     getTotalAmountWagered,
     HOUSE_ADDRESS,
-    getJackpotBalance,
+    getRewardsPoolBalance,
 } from "../../common/blockchainWrapper";
 
 const formattedChainNumber = (chainNumber, decimals) => {
@@ -20,7 +20,7 @@ export function HouseInfo() {
     const [houseBalance, setHouseBalance] = useState(undefined);
     const [totalSpins, setTotalSpins] = useState(undefined);
     const [totalAmountWagered, setTotalAmountWagered] = useState(undefined);
-    const [jackpotBalance, setJackpotBalance] = useState(undefined);
+    const [totalRewardsPool, setTotalRewardsPool] = useState(undefined);
 
     useEffect(() => {
         setTimeout(async () => {
@@ -37,8 +37,8 @@ export function HouseInfo() {
             const formattedTaw = parseFloat(taw) / 10;
             setTotalAmountWagered(formattedTaw);
 
-            const jackpotBal = await getJackpotBalance();
-            setJackpotBalance(jackpotBal);
+            const totalRewards = await getRewardsPoolBalance();
+            setTotalRewardsPool(totalRewards);
         }, 1000);
 
     }, [totalSpins]);
@@ -53,9 +53,9 @@ export function HouseInfo() {
                 {formattedChainNumber(houseBalance, 3)}
             </div>
             <div>
-                Jackpot Balance
+                Rewards Pool
                 < br />
-                {formattedChainNumber(jackpotBalance, 3)}
+                {formattedChainNumber(totalRewardsPool, 3)}
             </div>
             <div>
                 Total Spins

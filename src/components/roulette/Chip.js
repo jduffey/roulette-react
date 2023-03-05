@@ -15,7 +15,7 @@ const getChipColorStyles = (chipAmt) => {
         case (chipAmt >= CHIP_AMOUNTS.CHIP_1 && chipAmt < CHIP_AMOUNTS.CHIP_2_HALF):
             return Object.assign({}, CHIP_COLORS.CHIP_1);
         case (chipAmt >= CHIP_AMOUNTS.CHIP_2_HALF && chipAmt < CHIP_AMOUNTS.CHIP_5):
-            return Object.assign({}, CHIP_COLORS.CHIP_2);
+            return Object.assign({}, CHIP_COLORS.CHIP_2_HALF);
         case (chipAmt >= CHIP_AMOUNTS.CHIP_5 && chipAmt < CHIP_AMOUNTS.CHIP_25):
             return Object.assign({}, CHIP_COLORS.CHIP_5);
         case (chipAmt >= CHIP_AMOUNTS.CHIP_25 && chipAmt < CHIP_AMOUNTS.CHIP_100):
