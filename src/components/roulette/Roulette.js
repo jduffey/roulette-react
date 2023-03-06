@@ -152,7 +152,7 @@ export function Roulette(props) {
 
                 console.log("pendingBets", pendingBets);
                 console.log("House --> Allocated Rewards in Roulette contract", owedByHouseToPlayersRewards);
-                const singlePendingBet = pendingBets[0]
+                const singlePendingBet = pendingBets[0];
                 executeWager(
                     playerAddress,
                     calculateTotalBetAmount(pendingBets),
