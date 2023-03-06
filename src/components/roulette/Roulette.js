@@ -221,7 +221,8 @@ export function Roulette(props) {
             />
             <SpinButton
                 onClick={() => handleSpinButtonClick()}
-                isSpinAllowed={hasABetBeenPlaced(pendingBets) && !wheelIsSpinning}
+                hasABetBeenPlaced={hasABetBeenPlaced(pendingBets)}
+                wheelIsSpinning={wheelIsSpinning}
             />
             <SpinResult
                 spinResult={wheelNumber}
