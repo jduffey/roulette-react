@@ -221,10 +221,11 @@ export function Roulette(props) {
             />
             <SpinButton
                 onClick={() => handleSpinButtonClick()}
-                isSpinAllowed={hasABetBeenPlaced(pendingBets) && wheelIsSpinning}
+                isSpinAllowed={hasABetBeenPlaced(pendingBets) && !wheelIsSpinning}
             />
             <SpinResult
                 spinResult={wheelNumber}
+                playerAddress={playerAddress}
             />
             <MostRecentSpinResults
                 playerAddress={playerAddress}

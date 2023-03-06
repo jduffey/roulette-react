@@ -8,21 +8,21 @@ import {
 
 const CLASS_NAME = "SpinResult-component";
 export function SpinResult(props) {
-    console.log("SpinResult props", props);
-    // const [wheelNumber, setWheelNumber] = useState("?");
+    // console.log("SpinResult props", props);
+    const [mostRecentSpinResult, setMostRecentSpinResult] = useState("...");
 
     useEffect(() => {
+        if (props.spinResult) {
+            setMostRecentSpinResult(props.spinResult);
+        } else {
+            rouletteContractEvents.on('WheelNumber', (playerAddress, wheelNumber) => {
+                if (playerAddress === props.playerAddress) {
+                    setMostRecentSpinResult(parseInt(wheelNumber));
+                }
+            });
+        }
+    }, [mostRecentSpinResult, props.spinResult, props.playerAddress]);
 
-        // rouletteContractEvents.on('WheelNumber', (playerAddress, wheelNumber) => {
-        //     if (playerAddress === props.playerAddress) {
-        //         // console.log(`WheelNumber event: ${wheelNumber}, ${playerAddress}`);
-        //         setWheelNumber(parseInt(wheelNumber));
-        //     }
-        // });
-
-    }, [props.spinResult]);
-
-    // console.log("SpinResult props", props);
     let bgColor = "inherit";
     // const awaitingSpinResultText = "...";
     // if (props.spinResult) {
@@ -32,6 +32,7 @@ export function SpinResult(props) {
     //     ? props.spinResult
     //     : awaitingSpinResultText;
 
+    // TODO: convert 37 to display as 00
     return (
         <div
             className={CLASS_NAME}
@@ -42,7 +43,7 @@ export function SpinResult(props) {
                     backgroundColor: bgColor,
                 }}
             >
-                {props.spinResult}
+                {mostRecentSpinResult}
             </div>
         </div>
     );
