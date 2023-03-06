@@ -22,6 +22,7 @@ import {
     executeWager,
     HOUSE_ADDRESS,
     ROULETTE_CONTRACT_ADDRESS,
+    rouletteContractEvents,
 } from '../../common/blockchainWrapper';
 
 // Uncomment this line to simulate playing the game
@@ -49,6 +50,8 @@ export function Roulette(props) {
 
     const [playerBalance, setPlayerBalance] = useState(undefined);
 
+    const [chainWheelNumber, setChainWheelNumber] = useState(undefined);
+
     useEffect(() => {
         let mounted = true;
 
@@ -58,6 +61,11 @@ export function Roulette(props) {
                     setPlayerBalance(balance);
                 }
             });
+
+        rouletteContractEvents.on('WheelNumber', (wheelNumber) => {
+            console.log(`WheelNumber event: ${wheelNumber}`);
+            setChainWheelNumber(wheelNumber);
+        });
 
         return () => { mounted = false };
     }, [playerDbEndpoint, playerAddress]);
@@ -191,7 +199,7 @@ export function Roulette(props) {
                 isSpinAllowed={isSpinAllowed(pendingBets)}
             />
             <SpinResult
-                spinResult={mostRecentSpinResult}
+                spinResult={parseInt(chainWheelNumber)}
             />
             <MostRecentSpinResults
                 spinResults={spinResults}

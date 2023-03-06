@@ -2,12 +2,13 @@ import { getWheelNumberColor } from "../../common/getWheelNumberColor";
 
 const CLASS_NAME = "SpinResult-component";
 export function SpinResult(props) {
+    console.log("SpinResult props", props);
     let bgColor = "inherit";
     let wheelNumberText = "?";
-    if (props.spinResult) {
-        bgColor = getWheelNumberColor(props.spinResult);
-        wheelNumberText = props.spinResult;
-    }
+    // if (props.spinResult) {
+    //     bgColor = getWheelNumberColor(props.spinResult);
+    // }
+    wheelNumberText = props.spinResult;
 
     return (
         <div

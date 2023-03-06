@@ -217,6 +217,14 @@ let tokenSymbol;
     tokenSymbol = symbol;
 });
 
+const rouletteContractEvents = new ethers.Contract(
+    ROULETTE_CONTRACT_ADDRESS,
+    [
+        'event WheelNumber(uint256)',
+    ],
+    provider
+);
+
 export {
     getEthBalance,
     getBlock,
@@ -240,6 +248,7 @@ export {
     ROULETTE_CONTRACT_ADDRESS,
     RANDOMNESS_PROVIDER_CONTRACT_ADDRESS,
     tokenSymbol,
+    rouletteContractEvents,
 };
 
 // TODO leaving this for reference
