@@ -144,17 +144,16 @@ contract Roulette {
     ) public {
         emit WagerSubmitted(player, wagerAmount, betName);
 
-        _incrementTotalSpins();
-        _incrementTotalAmountWagered(wagerAmount);
-        _incrementPlayerSpins(player);
-        _incrementPlayerRewards(player, playerRewards);
-        _addToSet(player, wheelNumber);
+        uint256 randValue = _randomnessProvider.randomValue(player);
+        emit RandomnessObtained(randValue);
 
-        emit WagerExecuted(player, wagerAmount, playerRewards, wheelNumber, betName, betAmount);
+        // _incrementTotalSpins();
+        // _incrementTotalAmountWagered(wagerAmount);
+        // _incrementPlayerSpins(player);
+        // _incrementPlayerRewards(player, playerRewards);
+        // _addToSet(player, wheelNumber);
 
-        // emit RandomnessObtained(randValue);
-        // uint256 randValue = _randomnessProvider.randomValue(player);
-
+        // emit WagerExecuted(player, wagerAmount, playerRewards, wheelNumber, betName, betAmount);
     }
 }
 

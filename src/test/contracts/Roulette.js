@@ -4,31 +4,29 @@ const { expect } = require("chai");
 
 const { loadFixture } = require("@nomicfoundation/hardhat-network-helpers");
 
-const randomnessProviderAddress = "0x261D8c5e9742e6f7f1076Fa1F560894524e19cad";
-
 describe("Roulette.sol", function () {
+    async function fixtures() {
+        const signers = await ethers.getSigners();
 
-    // Create the fixture
-    async function deployRouletteFixture() {
+        const randomnessProviderContractFactory = await ethers.getContractFactory("RandomnessProvider");
+        await randomnessProviderContractFactory.deploy();
+        const RandomnessProviderContract = await randomnessProviderContractFactory.deploy();
+        await RandomnessProviderContract.deployed();
+
         const rouletteContractFactory = await ethers.getContractFactory("Roulette");
-        const [acct0Signer] = await ethers.getSigners();
-
-        const RouletteContract = await rouletteContractFactory.deploy(randomnessProviderAddress);
-
+        const RouletteContract = await rouletteContractFactory.deploy(RandomnessProviderContract.address);
         await RouletteContract.deployed();
 
-        // Return an object with the things we want to use in our tests
         return {
-            // rouletteContractFactory,
+            RandomnessProviderContract,
             RouletteContract,
-            acct0Signer,
+            signers,
         };
     }
 
     describe("Deployment", function () {
-        // TODO: not important yet
-        // it("sets the randomness provider address", async function () {
-        //     const { RouletteContract } = await loadFixture(deployRouletteFixture);
+        // it("creates an instance of RandomnessProvider", async function () {
+        //     const { RouletteContract } = await loadFixture(fixtures);
         //     expect(await RouletteContract._randomnessProviderAddress()).to.equal(randomnessProviderAddress);
         // });
     });
@@ -37,9 +35,9 @@ describe("Roulette.sol", function () {
         it("should emit a WagerSubmitted event", async function () {
             const {
                 RouletteContract,
-                acct0Signer,
-            } = await loadFixture(deployRouletteFixture);
-            const playerAddress = acct0Signer.address;
+                signers,
+            } = await loadFixture(fixtures);
+            const playerAddress = signers[0].address;
             const wagerAmount = 100;
             const betName = "MyFakeBetName";
 
@@ -53,6 +51,26 @@ describe("Roulette.sol", function () {
             ))
                 .to.emit(RouletteContract, "WagerSubmitted")
                 .withArgs(playerAddress, wagerAmount, betName);
+        });
+
+        it("should emit a RandomnessObtained event", async function () {
+            const {
+                RouletteContract,
+                signers,
+            } = await loadFixture(fixtures);
+            const playerAddress = signers[0].address;
+            const wagerAmount = 100;
+            const betName = "MyFakeBetName";
+
+            await expect(RouletteContract.executeWager(
+                playerAddress,
+                wagerAmount,
+                1,
+                "23",
+                betName,
+                1
+            ))
+                .to.emit(RouletteContract, "RandomnessObtained");
         });
     });
 
