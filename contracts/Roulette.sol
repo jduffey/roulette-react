@@ -30,6 +30,8 @@ contract Roulette {
     );
     event RandomnessObtained(uint256 randomValue);
 
+    event WagerSubmitted(address indexed player, uint256 wagerAmount, string betName);
+
     constructor(address randomnessProviderAddress) {
         _randomnessProviderAddress = randomnessProviderAddress;
         _randomnessProvider = RandomnessProvider(randomnessProviderAddress);
@@ -140,17 +142,19 @@ contract Roulette {
         string memory betName,
         uint256 betAmount
     ) public {
+        emit WagerSubmitted(player, wagerAmount, betName);
+
         _incrementTotalSpins();
         _incrementTotalAmountWagered(wagerAmount);
         _incrementPlayerSpins(player);
         _incrementPlayerRewards(player, playerRewards);
         _addToSet(player, wheelNumber);
 
-        uint256 randValue = _randomnessProvider.randomValue(player);
-
         emit WagerExecuted(player, wagerAmount, playerRewards, wheelNumber, betName, betAmount);
 
-        emit RandomnessObtained(randValue);
+        // emit RandomnessObtained(randValue);
+        // uint256 randValue = _randomnessProvider.randomValue(player);
+
     }
 }
 

@@ -1,3 +1,5 @@
+/* global ethers:readonly */
+
 const { expect } = require("chai");
 
 const { loadFixture } = require("@nomicfoundation/hardhat-network-helpers");
@@ -9,7 +11,7 @@ describe("Roulette.sol", function () {
     // Create the fixture
     async function deployRouletteFixture() {
         const rouletteContractFactory = await ethers.getContractFactory("Roulette");
-        // const [house, player1, player2] = await ethers.getSigners();
+        const [acct0Signer] = await ethers.getSigners();
 
         const RouletteContract = await rouletteContractFactory.deploy(randomnessProviderAddress);
 
@@ -19,31 +21,41 @@ describe("Roulette.sol", function () {
         return {
             // rouletteContractFactory,
             RouletteContract,
-            // house,
-            // player1,
-            // player2,
+            acct0Signer,
         };
     }
 
     describe("Deployment", function () {
-        it("sets the randomness provider address", async function () {
-            const { RouletteContract } = await loadFixture(deployRouletteFixture);
-            expect(await RouletteContract._randomnessProviderAddress()).to.equal(randomnessProviderAddress);
-        });
-
-        // address player,
-        // uint256 wagerAmount,
-        // uint256 playerRewards,
-        // string memory wheelNumber,
-        // string memory betName,
-        // uint256 betAmount
-
-        // it("Should assign the total supply of tokens to the owner", async function () {
-        //     const { hardhatToken, owner } = await loadFixture(deployRouletteFixture);
-        //     const ownerBalance = await hardhatToken.balanceOf(owner.address);
-        //     expect(await hardhatToken.totalSupply()).to.equal(ownerBalance);
+        // TODO: not important yet
+        // it("sets the randomness provider address", async function () {
+        //     const { RouletteContract } = await loadFixture(deployRouletteFixture);
+        //     expect(await RouletteContract._randomnessProviderAddress()).to.equal(randomnessProviderAddress);
         // });
     });
+
+    describe("ExecuteWager", function () {
+        it("should emit a WagerSubmitted event", async function () {
+            const {
+                RouletteContract,
+                acct0Signer,
+            } = await loadFixture(deployRouletteFixture);
+            const playerAddress = acct0Signer.address;
+            const wagerAmount = 100;
+            const betName = "MyFakeBetName";
+
+            await expect(RouletteContract.executeWager(
+                playerAddress,
+                wagerAmount,
+                1,
+                "23",
+                betName,
+                1
+            ))
+                .to.emit(RouletteContract, "WagerSubmitted")
+                .withArgs(playerAddress, wagerAmount, betName);
+        });
+    });
+
 
     // describe("Transactions", function () {
     //     it("Should transfer tokens between accounts", async function () {
