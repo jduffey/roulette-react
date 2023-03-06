@@ -32,6 +32,8 @@ contract Roulette {
 
     event WagerSubmitted(address indexed player, uint256 wagerAmount, string betName);
 
+    event WheelNumber(uint256 wheelNumber);
+
     constructor(address randomnessProviderAddress) {
         _randomnessProviderAddress = randomnessProviderAddress;
         _randomnessProvider = RandomnessProvider(randomnessProviderAddress);
@@ -146,6 +148,8 @@ contract Roulette {
 
         uint256 randValue = _randomnessProvider.randomValue();
         emit RandomnessObtained(randValue);
+
+        emit WheelNumber(0);
 
         // _incrementTotalSpins();
         // _incrementTotalAmountWagered(wagerAmount);

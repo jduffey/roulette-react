@@ -24,6 +24,36 @@ describe("Roulette.sol", function () {
         };
     }
 
+    describe("randomness provider determines the wheel number", function () {
+        ([
+            [0, 0],
+        ]).forEach(([expectedWheelNumber, fakeRandomValue]) => {
+            it(`should return ${expectedWheelNumber} when the randomness provider returns ${fakeRandomValue}`, async function () {
+                const {
+                    MockRandomnessProviderContract,
+                    RouletteContract,
+                    signers,
+                } = await loadFixture(fixtures);
+                const playerAddress = signers[0].address;
+                const wagerAmount = 100;
+                const betName = "MyFakeBetName";
+
+                await MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValue);
+
+                await expect(RouletteContract.executeWager(
+                    playerAddress,
+                    wagerAmount,
+                    1,
+                    "23",
+                    betName,
+                    1
+                ))
+                    .to.emit(RouletteContract, "WheelNumber")
+                    .withArgs(expectedWheelNumber);
+            });
+        });
+    });
+
     describe("ExecuteWager", function () {
         it("should emit a WagerSubmitted event", async function () {
             const {
