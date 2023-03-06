@@ -51,6 +51,10 @@ export function Roulette(props) {
 
     const [latestBlockNumber, setLatestBlockNumber] = useState(0);
 
+    const [spinAllowed, setSpinAllowed] = useState(true);
+
+    const [wheelNumber, setWheelNumber] = useState(null);
+
     useEffect(() => {
         let mounted = true;
 
@@ -62,7 +66,7 @@ export function Roulette(props) {
             });
 
         return () => { mounted = false };
-    }, [playerAddress, latestBlockNumber]);
+    }, [playerAddress, latestBlockNumber, spinAllowed]);
 
     function handleBettingSquareClick(bettingSquareName) {
         if (currentChipAmountSelected > playerBalance) {
@@ -75,6 +79,7 @@ export function Roulette(props) {
         const copyPendingBets = pendingBets.slice();
         copyPendingBets.push(pendingBet);
         setPendingBets(copyPendingBets);
+        // setSpinAllowed(true);
     }
 
     function handleSpinButtonClick() {
@@ -87,6 +92,13 @@ export function Roulette(props) {
             setPendingBets([]);
             return;
         }
+
+        if (!spinAllowed) {
+            console.log("Spin not allowed");
+            return;
+        }
+
+        setSpinAllowed(false);
 
         getRandomWheelNumber(`${Date.now()}${playerAddress}`)
             .then(randomWheelNumber => {
@@ -111,20 +123,20 @@ export function Roulette(props) {
 
                 if (owedByHouseToPlayer > 0) {
                     // console.log("House --> Player", owedByHouseToPlayer);
-                    transferFrom(
-                        HOUSE_ADDRESS,
-                        playerAddress,
-                        owedByHouseToPlayer.toString()
-                    );
+                    // transferFrom(
+                    //     HOUSE_ADDRESS,
+                    //     playerAddress,
+                    //     owedByHouseToPlayer.toString()
+                    // );
                 }
 
                 if (owedByPlayerToHouse > 0) {
                     // console.log("Player --> House", owedByPlayerToHouse);
-                    transferFrom(
-                        playerAddress,
-                        HOUSE_ADDRESS,
-                        owedByPlayerToHouse.toString()
-                    );
+                    // transferFrom(
+                    //     playerAddress,
+                    //     HOUSE_ADDRESS,
+                    //     owedByPlayerToHouse.toString()
+                    // );
                 }
 
                 // "1% of house take goes to Rewards Pool"
@@ -132,11 +144,11 @@ export function Roulette(props) {
                 const owedByHouseToPlayersRewards = owedByHouseToRewardsPool;
                 if (owedByHouseToRewardsPool > 0) {
                     // console.log("House --> Roulette Contract", owedByHouseToRewardsPool);
-                    transferFrom(
-                        HOUSE_ADDRESS,
-                        ROULETTE_CONTRACT_ADDRESS,
-                        owedByHouseToRewardsPool.toString()
-                    );
+                    // transferFrom(
+                    //     HOUSE_ADDRESS,
+                    //     ROULETTE_CONTRACT_ADDRESS,
+                    //     owedByHouseToRewardsPool.toString()
+                    // );
                 }
 
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
@@ -168,14 +180,22 @@ export function Roulette(props) {
                     randomWheelNumber,
                     singlePendingBet.betName,
                     singlePendingBet.betAmount
-                ).then((response) => {
-                    console.log("blockchainWrapper.executeWager() response: ", response);
+                )
+                    .then((response) => {
+                        console.log("blockchainWrapper.executeWager() response: ", response);
 
-                    setLatestBlockNumber(response.blockNumber);
-
-                    // just get the block number then use that to get the logs from that block?
-                    console.log(rouletteContractEvents.filters.WheelNumber(playerAddress));
-                });
+                        console.log("response.blockNumber", response.blockNumber);
+                        setLatestBlockNumber(response.blockNumber);
+                    })
+                    .then(() => {
+                        rouletteContractEvents.on('WheelNumber', (playerAddress, wheelNumber) => {
+                            if (playerAddress === props.playerAddress) {
+                                console.log(`WheelNumber event: ${wheelNumber}, ${playerAddress} -- blockNumber: ${latestBlockNumber + 1}`);
+                                setWheelNumber(parseInt(wheelNumber));
+                                setSpinAllowed(true);
+                            }
+                        });
+                    });
             });
     }
 
@@ -193,10 +213,10 @@ export function Roulette(props) {
             />
             <SpinButton
                 onClick={() => handleSpinButtonClick()}
-                isSpinAllowed={isSpinAllowed(pendingBets)}
+                isSpinAllowed={isSpinAllowed(pendingBets) && spinAllowed}
             />
             <SpinResult
-                playerAddress={playerAddress}
+                spinResult={wheelNumber}
             />
             <MostRecentSpinResults
                 playerAddress={playerAddress}
@@ -219,6 +239,7 @@ export function Roulette(props) {
                 playerAddress={playerAddress}
             />
             <HouseInfo
+                latestBlockNumber={latestBlockNumber}
             />
         </div >
     );

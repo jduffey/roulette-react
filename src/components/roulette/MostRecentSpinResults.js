@@ -9,9 +9,9 @@ export function MostRecentSpinResults(props) {
     const [spinResults, setSpinResults] = useState([]);
 
     rouletteContractEvents.on('WheelNumber', (playerAddress, wheelNumber) => {
-        console.log("WheelNumber event: ", wheelNumber, playerAddress);
+        // console.log("WheelNumber event: ", wheelNumber, playerAddress);
         if (playerAddress === props.playerAddress) {
-            console.log(`WheelNumber event: ${wheelNumber}, ${playerAddress}`);
+            // console.log(`WheelNumber event: ${wheelNumber}, ${playerAddress}`);
             const copySpinResults = [...spinResults];
             copySpinResults.push(parseInt(wheelNumber));
             setSpinResults(copySpinResults);
@@ -19,8 +19,8 @@ export function MostRecentSpinResults(props) {
     });
 
     useEffect(() => {
-        console.log("MostRecentSpinResults useEffect");
-        console.log("spinResults", spinResults);
+        // console.log("MostRecentSpinResults useEffect");
+        // console.log("spinResults", spinResults);
     }, [spinResults, props.playerAddress]);
 
     const numberOfResultsToDisplay = 20;

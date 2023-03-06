@@ -8,18 +8,19 @@ import {
 
 const CLASS_NAME = "SpinResult-component";
 export function SpinResult(props) {
-    const [wheelNumber, setWheelNumber] = useState("?");
+    console.log("SpinResult props", props);
+    // const [wheelNumber, setWheelNumber] = useState("?");
 
     useEffect(() => {
 
-        rouletteContractEvents.on('WheelNumber', (playerAddress, wheelNumber) => {
-            if (playerAddress === props.playerAddress) {
-                console.log(`WheelNumber event: ${wheelNumber}, ${playerAddress}`);
-                setWheelNumber(parseInt(wheelNumber));
-            }
-        });
+        // rouletteContractEvents.on('WheelNumber', (playerAddress, wheelNumber) => {
+        //     if (playerAddress === props.playerAddress) {
+        //         // console.log(`WheelNumber event: ${wheelNumber}, ${playerAddress}`);
+        //         setWheelNumber(parseInt(wheelNumber));
+        //     }
+        // });
 
-    }, [wheelNumber, props.playerAddress]);
+    }, [props.spinResult]);
 
     // console.log("SpinResult props", props);
     let bgColor = "inherit";
@@ -41,7 +42,7 @@ export function SpinResult(props) {
                     backgroundColor: bgColor,
                 }}
             >
-                {wheelNumber}
+                {props.spinResult}
             </div>
         </div>
     );

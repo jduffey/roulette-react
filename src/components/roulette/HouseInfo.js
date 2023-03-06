@@ -16,7 +16,7 @@ const formattedChainNumber = (chainNumber, decimals) => {
 }
 
 const CLASS_NAME = "HouseInfo-component";
-export function HouseInfo() {
+export function HouseInfo(props) {
     const [houseBalance, setHouseBalance] = useState(undefined);
     const [totalSpins, setTotalSpins] = useState(undefined);
     const [totalAmountWagered, setTotalAmountWagered] = useState(undefined);
@@ -43,6 +43,11 @@ export function HouseInfo() {
         <div
             className={CLASS_NAME}
         >
+            <div>
+                Block Height
+                <br />
+                {props.latestBlockNumber}
+            </div>
             <div>
                 House Balance
                 < br />
