@@ -80,6 +80,12 @@ export function Roulette(props) {
             return;
         }
 
+        if (pendingBets.length > 1) {
+            alert("UNDER DEV: You can only place one bet per spin until contract can handle multiple bets.");
+            setPendingBets([]);
+            return;
+        }
+
         getRandomWheelNumber(`${Date.now()}${playerAddress}`)
             .then(randomWheelNumber => {
                 const copySpinResults = spinResults.slice();
@@ -102,7 +108,7 @@ export function Roulette(props) {
                 }, 0);
 
                 if (owedByHouseToPlayer > 0) {
-                    console.log("House --> Player", owedByHouseToPlayer);
+                    // console.log("House --> Player", owedByHouseToPlayer);
                     transferFrom(
                         HOUSE_ADDRESS,
                         playerAddress,
@@ -111,7 +117,7 @@ export function Roulette(props) {
                 }
 
                 if (owedByPlayerToHouse > 0) {
-                    console.log("Player --> House", owedByPlayerToHouse);
+                    // console.log("Player --> House", owedByPlayerToHouse);
                     transferFrom(
                         playerAddress,
                         HOUSE_ADDRESS,
@@ -123,7 +129,7 @@ export function Roulette(props) {
                 const owedByHouseToRewardsPool = owedByPlayerToHouse * 0.01;
                 const owedByHouseToPlayersRewards = owedByHouseToRewardsPool;
                 if (owedByHouseToRewardsPool > 0) {
-                    console.log("House --> Roulette Contract", owedByHouseToRewardsPool);
+                    // console.log("House --> Roulette Contract", owedByHouseToRewardsPool);
                     transferFrom(
                         HOUSE_ADDRESS,
                         ROULETTE_CONTRACT_ADDRESS,
@@ -150,8 +156,8 @@ export function Roulette(props) {
                         setPlayerBalance(bal);
                     });
 
-                console.log("pendingBets", pendingBets);
-                console.log("House --> Allocated Rewards in Roulette contract", owedByHouseToPlayersRewards);
+                // console.log("pendingBets", pendingBets);
+                // console.log("House --> Allocated Rewards in Roulette contract", owedByHouseToPlayersRewards);
                 const singlePendingBet = pendingBets[0];
                 executeWager(
                     playerAddress,
