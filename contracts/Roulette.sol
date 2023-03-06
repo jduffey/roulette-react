@@ -149,7 +149,9 @@ contract Roulette {
         uint256 randValue = _randomnessProvider.randomValue();
         emit RandomnessObtained(randValue);
 
-        emit WheelNumber(0);
+        uint256 wn = randValue % 38;
+
+        emit WheelNumber(wn);
 
         // _incrementTotalSpins();
         // _incrementTotalAmountWagered(wagerAmount);
