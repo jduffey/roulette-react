@@ -39,18 +39,17 @@ function isSpinAllowed(bets) {
 const CLASS_NAME = "Roulette-component";
 export function Roulette(props) {
     const playerAddress = props.playerAddress;
-    const playerDbEndpoint = props.playerDbEndpoint;
 
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
 
     const [pendingBets, setPendingBets] = useState([]);
 
-    const [spinResults, setSpinResults] = useState([]);
+    const [spinResults, setSpinResults] = useState(["36", "36", "36"]);
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
 
     const [playerBalance, setPlayerBalance] = useState(undefined);
 
-    const [chainWheelNumber, setChainWheelNumber] = useState(undefined);
+    const [latestBlockNumber, setLatestBlockNumber] = useState(0);
 
     useEffect(() => {
         let mounted = true;
@@ -62,13 +61,8 @@ export function Roulette(props) {
                 }
             });
 
-        rouletteContractEvents.on('WheelNumber', (wheelNumber) => {
-            console.log(`WheelNumber event: ${wheelNumber}`);
-            setChainWheelNumber(wheelNumber);
-        });
-
         return () => { mounted = false };
-    }, [playerDbEndpoint, playerAddress]);
+    }, [playerAddress, latestBlockNumber]);
 
     function handleBettingSquareClick(bettingSquareName) {
         if (currentChipAmountSelected > playerBalance) {
@@ -148,7 +142,7 @@ export function Roulette(props) {
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
 
                 copySpinResults.push(resultsOfRound.winningWheelNumber);
-                setSpinResults(copySpinResults);
+                setSpinResults(["00", "00", "00"]);
 
                 // TODO update/revisit this note after replacing betsOnBoard (object) with pendingBets (array of PendingBet objects)
                 // TODO bug here? if we don't reset pendingBets then we can continue to click spin, which is not a problem itself,
@@ -175,12 +169,15 @@ export function Roulette(props) {
                     singlePendingBet.betName,
                     singlePendingBet.betAmount
                 ).then((response) => {
-                    console.log("Response: ", response);
+                    console.log("blockchainWrapper.executeWager() response: ", response);
+
+                    setLatestBlockNumber(response.blockNumber);
+
+                    // just get the block number then use that to get the logs from that block?
+                    console.log(rouletteContractEvents.filters.WheelNumber(playerAddress));
                 });
             });
     }
-
-    const mostRecentSpinResult = spinResults.slice(-1)[0];
 
     return (
         <div
@@ -199,10 +196,10 @@ export function Roulette(props) {
                 isSpinAllowed={isSpinAllowed(pendingBets)}
             />
             <SpinResult
-                spinResult={parseInt(chainWheelNumber)}
+                playerAddress={playerAddress}
             />
             <MostRecentSpinResults
-                spinResults={spinResults}
+                playerAddress={playerAddress}
             />
             <PlayerInfo
                 playerAddress={playerAddress}

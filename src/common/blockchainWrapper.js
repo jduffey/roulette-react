@@ -14,74 +14,75 @@ const TOKEN_CONTRACT_ADDRESS = "0x057ef64E23666F000b34aE31332854aCBd1c8544";
 const RANDOMNESS_PROVIDER_CONTRACT_ADDRESS = "0x261D8c5e9742e6f7f1076Fa1F560894524e19cad";
 const ROULETTE_CONTRACT_ADDRESS = "0xCE3478A9E0167a6Bc5716DC39DbbbfAc38F27623";
 
-async function executeWager(address, wagerAmount, playerRewards, wheelNumber, betName, betAmount) {
-    // convert betName to an int
-    const convertedBetName = {
-        [BET_NAMES.STRAIGHT_UP_0]: 0,
-        [BET_NAMES.STRAIGHT_UP_1]: 1,
-        [BET_NAMES.STRAIGHT_UP_2]: 2,
-        [BET_NAMES.STRAIGHT_UP_3]: 3,
-        [BET_NAMES.STRAIGHT_UP_4]: 4,
-        [BET_NAMES.STRAIGHT_UP_5]: 5,
-        [BET_NAMES.STRAIGHT_UP_6]: 6,
-        [BET_NAMES.STRAIGHT_UP_7]: 7,
-        [BET_NAMES.STRAIGHT_UP_8]: 8,
-        [BET_NAMES.STRAIGHT_UP_9]: 9,
-        [BET_NAMES.STRAIGHT_UP_10]: 10,
-        [BET_NAMES.STRAIGHT_UP_11]: 11,
-        [BET_NAMES.STRAIGHT_UP_12]: 12,
-        [BET_NAMES.STRAIGHT_UP_13]: 13,
-        [BET_NAMES.STRAIGHT_UP_14]: 14,
-        [BET_NAMES.STRAIGHT_UP_15]: 15,
-        [BET_NAMES.STRAIGHT_UP_16]: 16,
-        [BET_NAMES.STRAIGHT_UP_17]: 17,
-        [BET_NAMES.STRAIGHT_UP_18]: 18,
-        [BET_NAMES.STRAIGHT_UP_19]: 19,
-        [BET_NAMES.STRAIGHT_UP_20]: 20,
-        [BET_NAMES.STRAIGHT_UP_21]: 21,
-        [BET_NAMES.STRAIGHT_UP_22]: 22,
-        [BET_NAMES.STRAIGHT_UP_23]: 23,
-        [BET_NAMES.STRAIGHT_UP_24]: 24,
-        [BET_NAMES.STRAIGHT_UP_25]: 25,
-        [BET_NAMES.STRAIGHT_UP_26]: 26,
-        [BET_NAMES.STRAIGHT_UP_27]: 27,
-        [BET_NAMES.STRAIGHT_UP_28]: 28,
-        [BET_NAMES.STRAIGHT_UP_29]: 29,
-        [BET_NAMES.STRAIGHT_UP_30]: 30,
-        [BET_NAMES.STRAIGHT_UP_31]: 31,
-        [BET_NAMES.STRAIGHT_UP_32]: 32,
-        [BET_NAMES.STRAIGHT_UP_33]: 33,
-        [BET_NAMES.STRAIGHT_UP_34]: 34,
-        [BET_NAMES.STRAIGHT_UP_35]: 35,
-        [BET_NAMES.STRAIGHT_UP_36]: 36,
-        [BET_NAMES.STRAIGHT_UP_00]: 37,
-        [BET_NAMES.FIRST_18]: 38,
-        [BET_NAMES.SECOND_18]: 39,
-        [BET_NAMES.EVEN]: 40,
-        [BET_NAMES.ODD]: 41,
-        [BET_NAMES.RED]: 42,
-        [BET_NAMES.BLACK]: 43,
-        [BET_NAMES.FIRST_DOZEN]: 44,
-        [BET_NAMES.SECOND_DOZEN]: 45,
-        [BET_NAMES.THIRD_DOZEN]: 46,
-        [BET_NAMES.FIRST_COLUMN]: 47,
-        [BET_NAMES.SECOND_COLUMN]: 48,
-        [BET_NAMES.THIRD_COLUMN]: 49,
-    }[betName];
+// async function executeWager(address, wagerAmount, playerRewards, wheelNumber, betName, betAmount) {
+async function executeWager(address) {
+    // const convertedBetName = {
+    //     [BET_NAMES.STRAIGHT_UP_0]: 0,
+    //     [BET_NAMES.STRAIGHT_UP_1]: 1,
+    //     [BET_NAMES.STRAIGHT_UP_2]: 2,
+    //     [BET_NAMES.STRAIGHT_UP_3]: 3,
+    //     [BET_NAMES.STRAIGHT_UP_4]: 4,
+    //     [BET_NAMES.STRAIGHT_UP_5]: 5,
+    //     [BET_NAMES.STRAIGHT_UP_6]: 6,
+    //     [BET_NAMES.STRAIGHT_UP_7]: 7,
+    //     [BET_NAMES.STRAIGHT_UP_8]: 8,
+    //     [BET_NAMES.STRAIGHT_UP_9]: 9,
+    //     [BET_NAMES.STRAIGHT_UP_10]: 10,
+    //     [BET_NAMES.STRAIGHT_UP_11]: 11,
+    //     [BET_NAMES.STRAIGHT_UP_12]: 12,
+    //     [BET_NAMES.STRAIGHT_UP_13]: 13,
+    //     [BET_NAMES.STRAIGHT_UP_14]: 14,
+    //     [BET_NAMES.STRAIGHT_UP_15]: 15,
+    //     [BET_NAMES.STRAIGHT_UP_16]: 16,
+    //     [BET_NAMES.STRAIGHT_UP_17]: 17,
+    //     [BET_NAMES.STRAIGHT_UP_18]: 18,
+    //     [BET_NAMES.STRAIGHT_UP_19]: 19,
+    //     [BET_NAMES.STRAIGHT_UP_20]: 20,
+    //     [BET_NAMES.STRAIGHT_UP_21]: 21,
+    //     [BET_NAMES.STRAIGHT_UP_22]: 22,
+    //     [BET_NAMES.STRAIGHT_UP_23]: 23,
+    //     [BET_NAMES.STRAIGHT_UP_24]: 24,
+    //     [BET_NAMES.STRAIGHT_UP_25]: 25,
+    //     [BET_NAMES.STRAIGHT_UP_26]: 26,
+    //     [BET_NAMES.STRAIGHT_UP_27]: 27,
+    //     [BET_NAMES.STRAIGHT_UP_28]: 28,
+    //     [BET_NAMES.STRAIGHT_UP_29]: 29,
+    //     [BET_NAMES.STRAIGHT_UP_30]: 30,
+    //     [BET_NAMES.STRAIGHT_UP_31]: 31,
+    //     [BET_NAMES.STRAIGHT_UP_32]: 32,
+    //     [BET_NAMES.STRAIGHT_UP_33]: 33,
+    //     [BET_NAMES.STRAIGHT_UP_34]: 34,
+    //     [BET_NAMES.STRAIGHT_UP_35]: 35,
+    //     [BET_NAMES.STRAIGHT_UP_36]: 36,
+    //     [BET_NAMES.STRAIGHT_UP_00]: 37,
+    //     [BET_NAMES.FIRST_18]: 38,
+    //     [BET_NAMES.SECOND_18]: 39,
+    //     [BET_NAMES.EVEN]: 40,
+    //     [BET_NAMES.ODD]: 41,
+    //     [BET_NAMES.RED]: 42,
+    //     [BET_NAMES.BLACK]: 43,
+    //     [BET_NAMES.FIRST_DOZEN]: 44,
+    //     [BET_NAMES.SECOND_DOZEN]: 45,
+    //     [BET_NAMES.THIRD_DOZEN]: 46,
+    //     [BET_NAMES.FIRST_COLUMN]: 47,
+    //     [BET_NAMES.SECOND_COLUMN]: 48,
+    //     [BET_NAMES.THIRD_COLUMN]: 49,
+    // }[betName];
 
     const contract = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
-        ["function executeWager(address, uint256, uint256, string, uint256, uint256)"],
+        // ["function executeWager(address, uint256, uint256, string, uint256, uint256)"],
+        ["function executeWager(address)"],
         provider.getSigner(HOUSE_ADDRESS)
     );
     // console.log("wagerAmount", wagerAmount);
     const tx = await contract.executeWager(
         address,
-        ethers.utils.parseEther(wagerAmount.toString()),
-        ethers.utils.parseEther(playerRewards.toString()),
-        wheelNumber,
-        convertedBetName,
-        ethers.utils.parseEther(betAmount.toString())
+        // ethers.utils.parseEther(wagerAmount.toString()),
+        // ethers.utils.parseEther(playerRewards.toString()),
+        // wheelNumber,
+        // convertedBetName,
+        // ethers.utils.parseEther(betAmount.toString())
     );
     return tx;
 }
@@ -220,7 +221,7 @@ let tokenSymbol;
 const rouletteContractEvents = new ethers.Contract(
     ROULETTE_CONTRACT_ADDRESS,
     [
-        'event WheelNumber(uint256)',
+        'event WheelNumber(address indexed, uint256)',
     ],
     provider
 );
@@ -250,14 +251,3 @@ export {
     tokenSymbol,
     rouletteContractEvents,
 };
-
-// TODO leaving this for reference
-// How to send ether from one address to another
-// async function sendEther(provider, from, to, amount) {
-//     const signer = provider.getSigner(from);
-//     const tx = await signer.sendTransaction({
-//         to: to,
-//         value: ethers.utils.parseEther(amount)
-//     });
-//     return tx;
-// }

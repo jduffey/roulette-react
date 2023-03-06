@@ -5,7 +5,6 @@ import "./RandomnessProvider.sol";
 
 contract Roulette {
     RandomnessProvider private _randomnessProvider;
-    address public _randomnessProviderAddress; // TODO added for spiking tests; delete later
 
     uint256 private _totalSpins;
     uint256 private _totalAmountWagered;
@@ -29,12 +28,9 @@ contract Roulette {
         uint256 betAmount
     );
 
-    event WagerSubmitted(address indexed player, uint256 wagerAmount, uint256 betName);
-    event RandomnessObtained(uint256 randomValue);
-    event WheelNumber(uint256 wheelNumber);
+    event WheelNumber(address indexed player, uint256 wheelNumber);
 
     constructor(address randomnessProviderAddress) {
-        _randomnessProviderAddress = randomnessProviderAddress;
         _randomnessProvider = RandomnessProvider(randomnessProviderAddress);
     }
 
@@ -135,27 +131,9 @@ contract Roulette {
         return _playerNumberCompletionSets[player].hitNumbers;
     }
 
-    function executeWager(
-        address player,
-        uint256 wagerAmount,
-        uint256 playerRewards,
-        string memory wheelNumber,
-        uint256 betName,
-        uint256 betAmount
-    ) public {
+    function executeWager(address player) public {
         uint256 randValue = _randomnessProvider.randomValue();
         uint256 wn = randValue % 38;
-
-        emit WagerSubmitted(player, wagerAmount, betName);
-        emit RandomnessObtained(randValue);
-        emit WheelNumber(wn);
-
-        // _incrementTotalSpins();
-        // _incrementTotalAmountWagered(wagerAmount);
-        // _incrementPlayerSpins(player);
-        // _incrementPlayerRewards(player, playerRewards);
-        // _addToSet(player, wheelNumber);
-
-        // emit WagerExecuted(player, wagerAmount, playerRewards, wheelNumber, betName, betAmount);
+        emit WheelNumber(player, wn);
     }
 }
