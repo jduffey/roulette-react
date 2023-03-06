@@ -8,28 +8,21 @@ describe("Roulette.sol", function () {
     async function fixtures() {
         const signers = await ethers.getSigners();
 
-        const randomnessProviderContractFactory = await ethers.getContractFactory("RandomnessProvider");
-        await randomnessProviderContractFactory.deploy();
-        const RandomnessProviderContract = await randomnessProviderContractFactory.deploy();
-        await RandomnessProviderContract.deployed();
+        const mockRandomnessProviderContractFactory = await ethers.getContractFactory("MockRandomnessProvider");
+        await mockRandomnessProviderContractFactory.deploy();
+        const MockRandomnessProviderContract = await mockRandomnessProviderContractFactory.deploy();
+        await MockRandomnessProviderContract.deployed();
 
         const rouletteContractFactory = await ethers.getContractFactory("Roulette");
-        const RouletteContract = await rouletteContractFactory.deploy(RandomnessProviderContract.address);
+        const RouletteContract = await rouletteContractFactory.deploy(MockRandomnessProviderContract.address);
         await RouletteContract.deployed();
 
         return {
-            RandomnessProviderContract,
+            MockRandomnessProviderContract,
             RouletteContract,
             signers,
         };
     }
-
-    describe("Deployment", function () {
-        // it("creates an instance of RandomnessProvider", async function () {
-        //     const { RouletteContract } = await loadFixture(fixtures);
-        //     expect(await RouletteContract._randomnessProviderAddress()).to.equal(randomnessProviderAddress);
-        // });
-    });
 
     describe("ExecuteWager", function () {
         it("should emit a WagerSubmitted event", async function () {
@@ -55,12 +48,15 @@ describe("Roulette.sol", function () {
 
         it("should emit a RandomnessObtained event", async function () {
             const {
+                MockRandomnessProviderContract,
                 RouletteContract,
                 signers,
             } = await loadFixture(fixtures);
             const playerAddress = signers[0].address;
             const wagerAmount = 100;
             const betName = "MyFakeBetName";
+
+            await MockRandomnessProviderContract.setFakeRandomValue(123);
 
             await expect(RouletteContract.executeWager(
                 playerAddress,
@@ -70,7 +66,8 @@ describe("Roulette.sol", function () {
                 betName,
                 1
             ))
-                .to.emit(RouletteContract, "RandomnessObtained");
+                .to.emit(RouletteContract, "RandomnessObtained")
+                .withArgs(1234);
         });
     });
 

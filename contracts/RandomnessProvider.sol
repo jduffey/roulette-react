@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-contract RandomnessProvider {
+import {IRandomnessProvider} from "./IRandomnessProvider.sol";
+
+contract RandomnessProvider is IRandomnessProvider {
     event RandomnessGenerated(address calledBy, uint256 randomValue);
 
     function randomValue(address caller) external returns (uint256) {
