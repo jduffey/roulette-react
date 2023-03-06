@@ -27,7 +27,6 @@ contract Roulette {
         string betName,
         uint256 betAmount
     );
-    event EventBlockData(uint256 previousBlockhash, uint256 moduloFoo, uint256 difficulty);
     event RandomnessObtained(uint256 randomValue);
 
     constructor(address randomnessProviderAddress) {
@@ -131,17 +130,6 @@ contract Roulette {
         return _playerNumberCompletionSets[player].hitNumbers;
     }
 
-    function _blockDataSpike() private {
-        uint256 blockNumber = block.number;
-        uint256 previousBlockhash = uint256(blockhash(blockNumber - 1));
-
-        uint256 randomNumber = block.difficulty;
-
-        uint256 moduloFoo = previousBlockhash % 38;
-
-        emit EventBlockData(previousBlockhash, moduloFoo, randomNumber);
-    }
-
     function executeWager(
         address player,
         uint256 wagerAmount,
@@ -156,12 +144,20 @@ contract Roulette {
         _incrementPlayerRewards(player, playerRewards);
         _addToSet(player, wheelNumber);
 
-        emit WagerExecuted(player, wagerAmount, playerRewards, wheelNumber, betName, betAmount);
-
-        _blockDataSpike();
-
         uint256 randValue = _randomnessProvider.randomValue(player);
+
+        emit WagerExecuted(player, wagerAmount, playerRewards, wheelNumber, betName, betAmount);
 
         emit RandomnessObtained(randValue);
     }
 }
+
+// event EventBlockData(uint256 previousBlockhash, uint256 moduloFoo, uint256 difficulty);
+// function _blockDataSpike() private {
+//     uint256 blockNumber = block.number;
+//     uint256 previousBlockhash = uint256(blockhash(blockNumber - 1));
+//     uint256 randomNumber = block.difficulty;
+//     uint256 moduloFoo = previousBlockhash % 38;
+//     emit EventBlockData(previousBlockhash, moduloFoo, randomNumber);
+// }
+// _blockDataSpike();

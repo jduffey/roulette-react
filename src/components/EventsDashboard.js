@@ -5,7 +5,6 @@ import {
     RANDOMNESS_PROVIDER_CONTRACT_ADDRESS,
 } from "../common/blockchainWrapper";
 
-
 const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
 
 const rouletteContract = new ethers.Contract(
@@ -13,7 +12,6 @@ const rouletteContract = new ethers.Contract(
     [
         'event RandomnessObtained(uint256)',
         'event WagerExecuted(address indexed, uint256, uint256, string, string, uint256)',
-        'event EventBlockData(uint256, uint256, uint256)',
     ],
     provider
 );
@@ -31,15 +29,6 @@ playerRewards: ${ethers.utils.formatEther(playerRewards)}
 wheelNumber: ${wheelNumber}
 betName: ${betName}
 betAmount: ${ethers.utils.formatEther(betAmount)}`
-    );
-});
-
-rouletteContract.on('EventBlockData', (previousBlockhash, moduluFoo, difficulty) => {
-    console.log(
-        `EventBlockData event:
-previousBlockhash: ${previousBlockhash.toHexString()}
-moduluFoo: ${moduluFoo}
-difficulty: ${difficulty.toHexString()}`
     );
 });
 
