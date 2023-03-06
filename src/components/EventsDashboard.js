@@ -1,10 +1,14 @@
 import { ethers } from "ethers";
 
-import { ROULETTE_CONTRACT_ADDRESS } from "../common/blockchainWrapper";
+import {
+    ROULETTE_CONTRACT_ADDRESS,
+    RANDOMNESS_PROVIDER_CONTRACT_ADDRESS,
+} from "../common/blockchainWrapper";
+
 
 const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
 
-const contractForEvents = new ethers.Contract(
+const rouletteContract = new ethers.Contract(
     ROULETTE_CONTRACT_ADDRESS,
     [
         'event RandomnessObtained(uint256)',
@@ -14,11 +18,11 @@ const contractForEvents = new ethers.Contract(
     provider
 );
 
-contractForEvents.on('RandomnessObtained', (randomValue) => {
+rouletteContract.on('RandomnessObtained', (randomValue) => {
     console.log(`RandomnessObtained event: ${randomValue.toHexString()}`);
 });
 
-contractForEvents.on('WagerExecuted', (player, wagerAmount, playerRewards, wheelNumber, betName, betAmount) => {
+rouletteContract.on('WagerExecuted', (player, wagerAmount, playerRewards, wheelNumber, betName, betAmount) => {
     console.log(
         `WagerExecuted event:
 player: ${player}
@@ -30,12 +34,28 @@ betAmount: ${betAmount}`
     );
 });
 
-contractForEvents.on('EventBlockData', (previousBlockhash, moduluFoo, difficulty) => {
+rouletteContract.on('EventBlockData', (previousBlockhash, moduluFoo, difficulty) => {
     console.log(
         `EventBlockData event:
 previousBlockhash: ${previousBlockhash.toHexString()}
 moduluFoo: ${moduluFoo}
 difficulty: ${difficulty.toHexString()}`
+    );
+});
+
+const randomnessProviderContract = new ethers.Contract(
+    RANDOMNESS_PROVIDER_CONTRACT_ADDRESS,
+    [
+        'event RandomnessGenerated(address, uint256)',
+    ],
+    provider
+);
+
+randomnessProviderContract.on('RandomnessGenerated', (player, randomValue) => {
+    console.log(
+        `RandomnessGenerated event:
+player: ${player}
+randomValue: ${randomValue.toHexString()}`
     );
 });
 

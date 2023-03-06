@@ -160,7 +160,7 @@ contract Roulette {
 
         _blockDataSpike();
 
-        uint256 randValue = _randomnessProvider.randomValue();
+        uint256 randValue = _randomnessProvider.randomValue(player);
 
         emit RandomnessObtained(randValue);
     }
