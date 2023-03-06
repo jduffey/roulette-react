@@ -5,6 +5,7 @@ import "./RandomnessProvider.sol";
 
 contract Roulette {
     RandomnessProvider private _randomnessProvider;
+    address public _randomnessProviderAddress; // TODO added for spiking tests; delete later
 
     uint256 private _totalSpins;
     uint256 private _totalAmountWagered;
@@ -30,6 +31,7 @@ contract Roulette {
     event RandomnessObtained(uint256 randomValue);
 
     constructor(address randomnessProviderAddress) {
+        _randomnessProviderAddress = randomnessProviderAddress;
         _randomnessProvider = RandomnessProvider(randomnessProviderAddress);
     }
 
