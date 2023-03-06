@@ -9,7 +9,7 @@ import {
 const CLASS_NAME = "SpinResult-component";
 export function SpinResult(props) {
     // console.log("SpinResult props", props);
-    const [mostRecentSpinResult, setMostRecentSpinResult] = useState("...");
+    const [mostRecentSpinResult, setMostRecentSpinResult] = useState("-");
 
     useEffect(() => {
         if (props.spinResult) {
