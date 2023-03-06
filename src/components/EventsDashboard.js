@@ -26,11 +26,11 @@ rouletteContract.on('WagerExecuted', (player, wagerAmount, playerRewards, wheelN
     console.log(
         `WagerExecuted event:
 player: ${player}
-wagerAmount: ${wagerAmount}
-playerRewards: ${playerRewards}
+wagerAmount: ${ethers.utils.formatEther(wagerAmount)}
+playerRewards: ${ethers.utils.formatEther(playerRewards)}
 wheelNumber: ${wheelNumber}
 betName: ${betName}
-betAmount: ${betAmount}`
+betAmount: ${ethers.utils.formatEther(betAmount)}`
     );
 });
 
