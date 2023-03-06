@@ -6,7 +6,7 @@ import {IRandomnessProvider} from "./IRandomnessProvider.sol";
 contract MockRandomnessProvider is IRandomnessProvider {
     uint256 private _fakeRandomValue;
 
-    function randomValue(address caller) external view returns (uint256) {
+    function randomValue() external view returns (uint256) {
         return _fakeRandomValue;
     }
 

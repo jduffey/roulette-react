@@ -2,5 +2,5 @@
 pragma solidity ^0.8.9;
 
 interface IRandomnessProvider {
-    function randomValue(address caller) external returns (uint256);
+    function randomValue() external returns (uint256);
 }

@@ -144,7 +144,7 @@ contract Roulette {
     ) public {
         emit WagerSubmitted(player, wagerAmount, betName);
 
-        uint256 randValue = _randomnessProvider.randomValue(player);
+        uint256 randValue = _randomnessProvider.randomValue();
         emit RandomnessObtained(randValue);
 
         // _incrementTotalSpins();
