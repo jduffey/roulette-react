@@ -17,12 +17,13 @@ import { SpinResult } from './SpinResult';
 import { HouseInfo } from './HouseInfo';
 
 import {
-    transferFrom,
+    // transferFrom,
     getTokenBalance,
     executeWager,
-    HOUSE_ADDRESS,
-    ROULETTE_CONTRACT_ADDRESS,
+    // HOUSE_ADDRESS,
+    // ROULETTE_CONTRACT_ADDRESS,
     rouletteContractEvents,
+    getBlock,
 } from '../../common/blockchainWrapper';
 
 // Uncomment this line to simulate playing the game
@@ -32,7 +33,7 @@ function calculateTotalBetAmount(bets) {
     return bets.reduce((acc, pendingBet) => acc + pendingBet.betAmount, 0);
 }
 
-function isSpinAllowed(bets) {
+function hasABetBeenPlaced(bets) {
     return bets.length > 0;
 }
 
@@ -44,19 +45,26 @@ export function Roulette(props) {
 
     const [pendingBets, setPendingBets] = useState([]);
 
-    const [spinResults, setSpinResults] = useState(["36", "36", "36"]);
+    const [spinResults, setSpinResults] = useState([]);
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
 
     const [playerBalance, setPlayerBalance] = useState(undefined);
 
     const [latestBlockNumber, setLatestBlockNumber] = useState(0);
 
-    const [spinAllowed, setSpinAllowed] = useState(true);
+    const [wheelIsSpinning, setWheelIsSpinning] = useState(false);
 
     const [wheelNumber, setWheelNumber] = useState(null);
 
     useEffect(() => {
         let mounted = true;
+
+        getBlock()
+            .then(block => {
+                if (mounted) {
+                    setLatestBlockNumber(block.number);
+                }
+            });
 
         getTokenBalance(playerAddress)
             .then(balance => {
@@ -66,7 +74,7 @@ export function Roulette(props) {
             });
 
         return () => { mounted = false };
-    }, [playerAddress, latestBlockNumber, spinAllowed]);
+    }, [playerAddress, latestBlockNumber, wheelIsSpinning]);
 
     function handleBettingSquareClick(bettingSquareName) {
         if (currentChipAmountSelected > playerBalance) {
@@ -79,11 +87,11 @@ export function Roulette(props) {
         const copyPendingBets = pendingBets.slice();
         copyPendingBets.push(pendingBet);
         setPendingBets(copyPendingBets);
-        // setSpinAllowed(true);
     }
 
     function handleSpinButtonClick() {
-        if (!isSpinAllowed(pendingBets)) {
+        if (!hasABetBeenPlaced(pendingBets)) {
+            console.log("No bets placed.");
             return;
         }
 
@@ -93,12 +101,12 @@ export function Roulette(props) {
             return;
         }
 
-        if (!spinAllowed) {
-            console.log("Spin not allowed");
+        if (wheelIsSpinning) {
+            console.log("Wheel already spinning; please wait for wheel number.");
             return;
         }
 
-        setSpinAllowed(false);
+        setWheelIsSpinning(true);
 
         getRandomWheelNumber(`${Date.now()}${playerAddress}`)
             .then(randomWheelNumber => {
@@ -154,7 +162,7 @@ export function Roulette(props) {
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
 
                 copySpinResults.push(resultsOfRound.winningWheelNumber);
-                setSpinResults(["00", "00", "00"]);
+                setSpinResults([...copySpinResults]);
 
                 // TODO update/revisit this note after replacing betsOnBoard (object) with pendingBets (array of PendingBet objects)
                 // TODO bug here? if we don't reset pendingBets then we can continue to click spin, which is not a problem itself,
@@ -192,7 +200,7 @@ export function Roulette(props) {
                             if (playerAddress === props.playerAddress) {
                                 console.log(`WheelNumber event: ${wheelNumber}, ${playerAddress} -- blockNumber: ${latestBlockNumber + 1}`);
                                 setWheelNumber(parseInt(wheelNumber));
-                                setSpinAllowed(true);
+                                setWheelIsSpinning(false);
                             }
                         });
                     });
@@ -213,7 +221,7 @@ export function Roulette(props) {
             />
             <SpinButton
                 onClick={() => handleSpinButtonClick()}
-                isSpinAllowed={isSpinAllowed(pendingBets) && spinAllowed}
+                isSpinAllowed={hasABetBeenPlaced(pendingBets) && wheelIsSpinning}
             />
             <SpinResult
                 spinResult={wheelNumber}
