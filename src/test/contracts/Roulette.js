@@ -46,7 +46,7 @@ describe("Roulette.sol", function () {
                 .withArgs(playerAddress, wagerAmount, betName);
         });
 
-        it("should emit a RandomnessObtained event", async function () {
+        it("should emit a RandomnessObtained event with the value returned from the randomness provider", async function () {
             const {
                 MockRandomnessProviderContract,
                 RouletteContract,
@@ -56,7 +56,9 @@ describe("Roulette.sol", function () {
             const wagerAmount = 100;
             const betName = "MyFakeBetName";
 
-            await MockRandomnessProviderContract.setFakeRandomValue(123);
+            const fakeRandomValue = 123;
+
+            await MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValue);
 
             await expect(RouletteContract.executeWager(
                 playerAddress,
@@ -67,7 +69,7 @@ describe("Roulette.sol", function () {
                 1
             ))
                 .to.emit(RouletteContract, "RandomnessObtained")
-                .withArgs(1234);
+                .withArgs(fakeRandomValue);
         });
     });
 
