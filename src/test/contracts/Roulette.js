@@ -122,212 +122,211 @@ describe("Roulette.sol", function () {
                     .withArgs(player1Address, expectedWheelNumber);
             });
         });
+    });
 
-        describe('getPlayerNumberCompletionSetCurrent', () => {
-            it("spin result is added to set", async function () {
-                const {
-                    MockRandomnessProviderContract,
-                    RouletteContract,
-                    player1Address,
-                } = await loadFixture(fixtures);
+    describe('getPlayerNumberCompletionSetCurrent', () => {
+        it("spin result is added to set", async function () {
+            const {
+                MockRandomnessProviderContract,
+                RouletteContract,
+                player1Address,
+            } = await loadFixture(fixtures);
 
-                await MockRandomnessProviderContract.setFakeRandomValue(0);
-                await RouletteContract.executeWager(player1Address);
+            await MockRandomnessProviderContract.setFakeRandomValue(0);
+            await RouletteContract.executeWager(player1Address);
 
-                const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
+            const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
 
-                const expected = [0];
-                expect(actual).to.deep.equal(expected);
-            });
-
-            it("spin result is not added to set belonging to another address", async function () {
-                const {
-                    MockRandomnessProviderContract,
-                    RouletteContract,
-                    player1Address,
-                    player2Address,
-                } = await loadFixture(fixtures);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(0);
-                await RouletteContract.executeWager(player1Address);
-
-                const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player2Address);
-
-                const expected = [];
-                expect(actual).to.deep.equal(expected);
-            });
-
-            it("duplicate spin result does not add to set", async function () {
-                const {
-                    MockRandomnessProviderContract,
-                    RouletteContract,
-                    player1Address,
-                } = await loadFixture(fixtures);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(0);
-                await RouletteContract.executeWager(player1Address);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(0);
-                await RouletteContract.executeWager(player1Address);
-
-                const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
-
-                const expected = [0];
-                expect(actual).to.deep.equal(expected);
-            });
-
-            it("different spin results adds to set", async function () {
-                const {
-                    MockRandomnessProviderContract,
-                    RouletteContract,
-                    player1Address,
-                } = await loadFixture(fixtures);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(0);
-                await RouletteContract.executeWager(player1Address);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(1);
-                await RouletteContract.executeWager(player1Address);
-
-                const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
-
-                const expected = [0, 1];
-                expect(actual).to.deep.equal(expected);
-            });
-
-            it("hitting all spin results resets set", async function () {
-                const {
-                    MockRandomnessProviderContract,
-                    RouletteContract,
-                    player1Address,
-                } = await loadFixture(fixtures);
-
-                // Reminder: these are values supplied by the RandomnessProvider contract, not the spin results
-                const fakeRandomValues = [
-                    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-                    11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-                    21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-                    31, 32, 33, 34, 35, 36, 37
-                ];
-
-                async function setFakeRandomValueAndExecuteWager(fakeRandomValue) {
-                    return new Promise(resolve => {
-                        setTimeout(() => {
-                            MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValue);
-                            RouletteContract.executeWager(player1Address);
-                            resolve();
-                        }, Math.random() * 1000);
-                    });
-                }
-
-                async function processTransactionPromises() {
-                    await Promise.all(fakeRandomValues.map(async fakeRandomValue => {
-                        await setFakeRandomValueAndExecuteWager(fakeRandomValue);
-                    }));
-                }
-
-                await processTransactionPromises();
-
-                const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
-
-                const expected = [];
-                expect(actual).to.deep.equal(expected);
-            });
-
-            it("spin results are added to set again after it is reset", async function () {
-                const {
-                    MockRandomnessProviderContract,
-                    RouletteContract,
-                    player1Address,
-                } = await loadFixture(fixtures);
-
-                const fakeRandomValues = [
-                    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-                    11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-                    21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-                    31, 32, 33, 34, 35, 36, 37
-                ];
-
-                async function setFakeRandomValueAndExecuteWager(fakeRandomValue) {
-                    return new Promise(resolve => {
-                        setTimeout(() => {
-                            MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValue);
-                            RouletteContract.executeWager(player1Address);
-                            resolve();
-                        }, Math.random() * 1000);
-                    });
-                }
-
-                async function processTransactionPromises() {
-                    await Promise.all(fakeRandomValues.map(async fakeRandomValue => {
-                        await setFakeRandomValueAndExecuteWager(fakeRandomValue);
-                    }));
-                }
-
-                await processTransactionPromises();
-
-                await MockRandomnessProviderContract.setFakeRandomValue(0);
-                await RouletteContract.executeWager(player1Address);
-
-                const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
-
-                const expected = [0];
-                expect(actual).to.deep.equal(expected);
-            });
+            const expected = [0];
+            expect(actual).to.deep.equal(expected);
         });
 
-        describe('getPlayerNumberCompletionSetsCounter', () => {
-            it("returns 0 when no sets have been completed", async function () {
-                const {
-                    RouletteContract,
-                    player1Address,
-                } = await loadFixture(fixtures);
+        it("spin result is not added to set belonging to another address", async function () {
+            const {
+                MockRandomnessProviderContract,
+                RouletteContract,
+                player1Address,
+                player2Address,
+            } = await loadFixture(fixtures);
 
-                const actual = await RouletteContract.getPlayerNumberCompletionSetsCounter(player1Address);
+            await MockRandomnessProviderContract.setFakeRandomValue(0);
+            await RouletteContract.executeWager(player1Address);
 
-                const expected = 0;
-                expect(actual).to.equal(expected);
-            });
+            const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player2Address);
 
-            it("returns 1 when one set has been completed", async function () {
-                const {
-                    MockRandomnessProviderContract,
-                    RouletteContract,
-                    player1Address,
-                } = await loadFixture(fixtures);
+            const expected = [];
+            expect(actual).to.deep.equal(expected);
+        });
 
-                // Reminder: these are values supplied by the RandomnessProvider contract, not the spin results
-                const fakeRandomValues = [
-                    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-                    11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-                    21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-                    31, 32, 33, 34, 35, 36, 37
-                ];
+        it("duplicate spin result does not add to set", async function () {
+            const {
+                MockRandomnessProviderContract,
+                RouletteContract,
+                player1Address,
+            } = await loadFixture(fixtures);
 
-                async function setFakeRandomValueAndExecuteWager(fakeRandomValue) {
-                    return new Promise(resolve => {
-                        setTimeout(() => {
-                            MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValue);
-                            RouletteContract.executeWager(player1Address);
-                            resolve();
-                        }, Math.random() * 1000);
-                    });
-                }
+            await MockRandomnessProviderContract.setFakeRandomValue(0);
+            await RouletteContract.executeWager(player1Address);
 
-                async function processTransactionPromises() {
-                    await Promise.all(fakeRandomValues.map(async fakeRandomValue => {
-                        await setFakeRandomValueAndExecuteWager(fakeRandomValue);
-                    }));
-                }
+            await MockRandomnessProviderContract.setFakeRandomValue(0);
+            await RouletteContract.executeWager(player1Address);
 
-                await processTransactionPromises();
+            const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
 
-                const actual = await RouletteContract.getPlayerNumberCompletionSetsCounter(player1Address);
+            const expected = [0];
+            expect(actual).to.deep.equal(expected);
+        });
 
-                const expected = 1;
-                expect(actual).to.equal(expected);
+        it("different spin results adds to set", async function () {
+            const {
+                MockRandomnessProviderContract,
+                RouletteContract,
+                player1Address,
+            } = await loadFixture(fixtures);
 
-            });
+            await MockRandomnessProviderContract.setFakeRandomValue(0);
+            await RouletteContract.executeWager(player1Address);
+
+            await MockRandomnessProviderContract.setFakeRandomValue(1);
+            await RouletteContract.executeWager(player1Address);
+
+            const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
+
+            const expected = [0, 1];
+            expect(actual).to.deep.equal(expected);
+        });
+
+        it("hitting all spin results resets set", async function () {
+            const {
+                MockRandomnessProviderContract,
+                RouletteContract,
+                player1Address,
+            } = await loadFixture(fixtures);
+
+            // Reminder: these are values supplied by the RandomnessProvider contract, not the spin results
+            const fakeRandomValues = [
+                0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+                21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+                31, 32, 33, 34, 35, 36, 37
+            ];
+
+            async function setFakeRandomValueAndExecuteWager(fakeRandomValue) {
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValue);
+                        RouletteContract.executeWager(player1Address);
+                        resolve();
+                    }, Math.random() * 1000);
+                });
+            }
+
+            async function processTransactionPromises() {
+                await Promise.all(fakeRandomValues.map(async fakeRandomValue => {
+                    await setFakeRandomValueAndExecuteWager(fakeRandomValue);
+                }));
+            }
+
+            await processTransactionPromises();
+
+            const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
+
+            const expected = [];
+            expect(actual).to.deep.equal(expected);
+        });
+
+        it("spin results are added to set again after it is reset", async function () {
+            const {
+                MockRandomnessProviderContract,
+                RouletteContract,
+                player1Address,
+            } = await loadFixture(fixtures);
+
+            const fakeRandomValues = [
+                0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+                21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+                31, 32, 33, 34, 35, 36, 37
+            ];
+
+            async function setFakeRandomValueAndExecuteWager(fakeRandomValue) {
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValue);
+                        RouletteContract.executeWager(player1Address);
+                        resolve();
+                    }, Math.random() * 1000);
+                });
+            }
+
+            async function processTransactionPromises() {
+                await Promise.all(fakeRandomValues.map(async fakeRandomValue => {
+                    await setFakeRandomValueAndExecuteWager(fakeRandomValue);
+                }));
+            }
+
+            await processTransactionPromises();
+
+            await MockRandomnessProviderContract.setFakeRandomValue(0);
+            await RouletteContract.executeWager(player1Address);
+
+            const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
+
+            const expected = [0];
+            expect(actual).to.deep.equal(expected);
+        });
+    });
+
+    describe('getPlayerNumberCompletionSetsCounter', () => {
+        it("returns 0 when no sets have been completed", async function () {
+            const {
+                RouletteContract,
+                player1Address,
+            } = await loadFixture(fixtures);
+
+            const actual = await RouletteContract.getPlayerNumberCompletionSetsCounter(player1Address);
+
+            const expected = 0;
+            expect(actual).to.equal(expected);
+        });
+
+        it("returns 1 when one set has been completed", async function () {
+            const {
+                MockRandomnessProviderContract,
+                RouletteContract,
+                player1Address,
+            } = await loadFixture(fixtures);
+
+            // Reminder: these are values supplied by the RandomnessProvider contract, not the spin results
+            const fakeRandomValues = [
+                0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+                21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+                31, 32, 33, 34, 35, 36, 37
+            ];
+
+            async function setFakeRandomValueAndExecuteWager(fakeRandomValue) {
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValue);
+                        RouletteContract.executeWager(player1Address);
+                        resolve();
+                    }, Math.random() * 1000);
+                });
+            }
+
+            async function processTransactionPromises() {
+                await Promise.all(fakeRandomValues.map(async fakeRandomValue => {
+                    await setFakeRandomValueAndExecuteWager(fakeRandomValue);
+                }));
+            }
+
+            await processTransactionPromises();
+
+            const actual = await RouletteContract.getPlayerNumberCompletionSetsCounter(player1Address);
+
+            const expected = 1;
+            expect(actual).to.equal(expected);
 
         });
 
