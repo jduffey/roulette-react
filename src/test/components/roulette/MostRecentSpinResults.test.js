@@ -13,4 +13,7 @@ describe('MostRecentSpinResults', () => {
 
         expect(view).toMatchSnapshot();
     });
+
+    // TODO test for when there are actually spin results
+    // Look at https://stackoverflow.com/questions/54892546/unit-testing-jest-in-reactjs-component-state
 });
