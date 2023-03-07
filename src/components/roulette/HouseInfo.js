@@ -5,7 +5,7 @@ import {
     getTotalSpins,
     getTotalAmountWagered,
     HOUSE_ADDRESS,
-    getJackpotBalance,
+    getRewardsPoolBalance,
 } from "../../common/blockchainWrapper";
 
 const formattedChainNumber = (chainNumber, decimals) => {
@@ -16,11 +16,11 @@ const formattedChainNumber = (chainNumber, decimals) => {
 }
 
 const CLASS_NAME = "HouseInfo-component";
-export function HouseInfo() {
+export function HouseInfo(props) {
     const [houseBalance, setHouseBalance] = useState(undefined);
     const [totalSpins, setTotalSpins] = useState(undefined);
     const [totalAmountWagered, setTotalAmountWagered] = useState(undefined);
-    const [jackpotBalance, setJackpotBalance] = useState(undefined);
+    const [totalRewardsPool, setTotalRewardsPool] = useState(undefined);
 
     useEffect(() => {
         setTimeout(async () => {
@@ -33,8 +33,8 @@ export function HouseInfo() {
             const taw = await getTotalAmountWagered();
             setTotalAmountWagered(taw);
 
-            const jackpotBal = await getJackpotBalance();
-            setJackpotBalance(jackpotBal);
+            const totalRewards = await getRewardsPoolBalance();
+            setTotalRewardsPool(totalRewards);
         }, 1000);
 
     }, [totalSpins]);
@@ -44,14 +44,19 @@ export function HouseInfo() {
             className={CLASS_NAME}
         >
             <div>
-                House Balance
-                < br />
-                {formattedChainNumber(houseBalance, 2)}
+                Block Height
+                <br />
+                {props.latestBlockNumber}
             </div>
             <div>
-                Jackpot Balance
+                House Balance
                 < br />
-                {formattedChainNumber(jackpotBalance, 2)}
+                {formattedChainNumber(houseBalance, 3)}
+            </div>
+            <div>
+                Rewards Pool
+                < br />
+                {formattedChainNumber(totalRewardsPool, 3)}
             </div>
             <div>
                 Total Spins

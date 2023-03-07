@@ -39,7 +39,7 @@ exports[`Chip boundary tests for chip colors when isSelected is false chip amoun
   onClick={[Function]}
   style={
     Object {
-      "backgroundColor": "#DFDFDF",
+      "backgroundColor": "#FFC0CB",
       "borderColor": "#000000",
       "color": "#000000",
     }
@@ -245,7 +245,7 @@ exports[`Chip boundary tests for chip colors when isSelected is true chip amount
   onClick={[Function]}
   style={
     Object {
-      "backgroundColor": "#DFDFDF",
+      "backgroundColor": "#FFC0CB",
       "borderColor": "#000000",
       "boxShadow": "0px 16px 10px 1px rgba(0, 0, 0, 0.6)",
       "color": "#000000",

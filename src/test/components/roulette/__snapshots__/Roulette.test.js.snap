@@ -2029,6 +2029,20 @@ exports[`Roulette renders 1`] = `
     </div>
     <div
       className="Chip-component chip-selection-chip"
+      id="chip-2.5"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#FFC0CB",
+          "borderColor": "#000000",
+          "color": "#000000",
+        }
+      }
+    >
+      $2.5
+    </div>
+    <div
+      className="Chip-component chip-selection-chip"
       id="chip-5"
       onClick={[Function]}
       style={
@@ -2107,7 +2121,7 @@ exports[`Roulette renders 1`] = `
     <span
       style={
         Object {
-          "color": "#999999",
+          "color": "inherit",
         }
       }
     >
@@ -2117,11 +2131,11 @@ exports[`Roulette renders 1`] = `
       className="place-a-bet-message"
       style={
         Object {
-          "zIndex": 1,
+          "zIndex": -1,
         }
       }
     >
-      Place a bet!
+      -
     </span>
   </div>
   <div
@@ -2135,7 +2149,7 @@ exports[`Roulette renders 1`] = `
         }
       }
     >
-      ?
+      -
     </div>
   </div>
   <div
@@ -2206,16 +2220,6 @@ exports[`Roulette renders 1`] = `
         className="bet-info-table-title-text"
       >
         PREVIOUS ROUND RESULTS
-      </div>
-      <div
-        className="bet-info-table-title-spin-result"
-        style={
-          Object {
-            "backgroundColor": "#dfdfdf",
-          }
-        }
-      >
-        ??
       </div>
     </div>
     <table
@@ -2332,7 +2336,7 @@ exports[`Roulette renders 1`] = `
         }
       }
     >
-      00
+      37
     </div>
     <div
       className="hit-number"
@@ -2740,12 +2744,17 @@ exports[`Roulette renders 1`] = `
     className="HouseInfo-component"
   >
     <div>
+      Block Height
+      <br />
+      0
+    </div>
+    <div>
       House Balance
       <br />
       Loading...
     </div>
     <div>
-      Jackpot Balance
+      Rewards Pool
       <br />
       Loading...
     </div>

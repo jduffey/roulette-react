@@ -50,7 +50,7 @@ export function PlayerInfo(props) {
             <div>
                 Player Rewards
                 < br />
-                {formattedChainNumber(playerRewards, 2)}
+                {formattedChainNumber(playerRewards, 3)}
             </div>
         </div >
     )
