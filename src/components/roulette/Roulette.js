@@ -27,7 +27,7 @@ import {
 } from '../../common/blockchainWrapper';
 
 // Uncomment this line to simulate playing the game
-// import { simulatePlayingGame } from '../../common/simulatePlayingGame';
+import { simulatePlayingGame } from '../../common/simulatePlayingGame';
 
 function calculateTotalBetAmount(bets) {
     return bets.reduce((acc, pendingBet) => acc + pendingBet.betAmount, 0);
@@ -96,15 +96,16 @@ export function Roulette(props) {
         }
 
         if (pendingBets.length > 1) {
-            alert("UNDER DEV: You can only place one bet per spin until contract can handle multiple bets.");
+            console.log("UNDER DEV: You can only place one bet per spin until contract can handle multiple bets.");
             setPendingBets([]);
             return;
         }
 
-        if (wheelIsSpinning) {
-            console.log("Wheel already spinning; please wait for wheel number.");
-            return;
-        }
+        // WARN: Disabled to help with simulated testing
+        // if (wheelIsSpinning) {
+        //     console.log("Wheel already spinning; please wait for wheel number.");
+        //     return;
+        // }
 
         setWheelIsSpinning(true);
 
@@ -130,33 +131,18 @@ export function Roulette(props) {
                 }, 0);
 
                 if (owedByHouseToPlayer > 0) {
-                    // console.log("House --> Player", owedByHouseToPlayer);
-                    // transferFrom(
-                    //     HOUSE_ADDRESS,
-                    //     playerAddress,
-                    //     owedByHouseToPlayer.toString()
-                    // );
+                    // TODO replace with contract functionality
                 }
 
                 if (owedByPlayerToHouse > 0) {
-                    // console.log("Player --> House", owedByPlayerToHouse);
-                    // transferFrom(
-                    //     playerAddress,
-                    //     HOUSE_ADDRESS,
-                    //     owedByPlayerToHouse.toString()
-                    // );
+                    // TODO replace with contract functionality
                 }
 
                 // "1% of house take goes to Rewards Pool"
                 const owedByHouseToRewardsPool = owedByPlayerToHouse * 0.01;
-                const owedByHouseToPlayersRewards = owedByHouseToRewardsPool;
+                // const owedByHouseToPlayersRewards = owedByHouseToRewardsPool;
                 if (owedByHouseToRewardsPool > 0) {
-                    // console.log("House --> Roulette Contract", owedByHouseToRewardsPool);
-                    // transferFrom(
-                    //     HOUSE_ADDRESS,
-                    //     ROULETTE_CONTRACT_ADDRESS,
-                    //     owedByHouseToRewardsPool.toString()
-                    // );
+                    // TODO replace with contract functionality
                 }
 
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
@@ -178,16 +164,14 @@ export function Roulette(props) {
                         setPlayerBalance(bal);
                     });
 
-                // console.log("pendingBets", pendingBets);
-                // console.log("House --> Allocated Rewards in Roulette contract", owedByHouseToPlayersRewards);
-                const singlePendingBet = pendingBets[0];
+                // const singlePendingBet = pendingBets[0];
                 executeWager(
                     playerAddress,
-                    calculateTotalBetAmount(pendingBets),
-                    owedByHouseToPlayersRewards,
-                    randomWheelNumber,
-                    singlePendingBet.betName,
-                    singlePendingBet.betAmount
+                    // calculateTotalBetAmount(pendingBets),
+                    // owedByHouseToPlayersRewards,
+                    // randomWheelNumber,
+                    // singlePendingBet.betName,
+                    // singlePendingBet.betAmount
                 )
                     .then((response) => {
                         console.log("blockchainWrapper.executeWager() response: ", response);

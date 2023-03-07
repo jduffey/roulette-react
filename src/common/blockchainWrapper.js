@@ -201,11 +201,11 @@ async function getPlayerNumberCompletionSetsCounter(address) {
 async function getPlayerNumberCompletionSetCurrent(address) {
     const contract = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
-        ["function getPlayerNumberCompletionSetCurrent(address) public view returns (string[])"],
+        ["function getPlayerNumberCompletionSetCurrent(address) public view returns (uint256[])"],
         provider.getSigner(address)
     );
     const currentSet = await contract.getPlayerNumberCompletionSetCurrent(address);
-    return currentSet;
+    return currentSet.map((bigIntNumber) => parseInt(bigIntNumber.toString()));;
 }
 
 let tokenSymbol;
