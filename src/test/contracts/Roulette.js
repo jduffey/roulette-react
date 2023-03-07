@@ -20,7 +20,8 @@ describe("Roulette.sol", function () {
         return {
             MockRandomnessProviderContract,
             RouletteContract,
-            playerAddress: signers[0].address,
+            player1Address: signers[0].address,
+            player2Address: signers[1].address,
         };
     }
 
@@ -109,16 +110,16 @@ describe("Roulette.sol", function () {
                 const {
                     MockRandomnessProviderContract,
                     RouletteContract,
-                    playerAddress,
+                    player1Address,
                 } = await loadFixture(fixtures);
 
                 await MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValue);
 
                 await expect(RouletteContract.executeWager(
-                    playerAddress,
+                    player1Address,
                 ))
                     .to.emit(RouletteContract, "WheelNumber")
-                    .withArgs(playerAddress, expectedWheelNumber);
+                    .withArgs(player1Address, expectedWheelNumber);
             });
         });
 
@@ -127,15 +128,32 @@ describe("Roulette.sol", function () {
                 const {
                     MockRandomnessProviderContract,
                     RouletteContract,
-                    playerAddress,
+                    player1Address,
                 } = await loadFixture(fixtures);
 
                 await MockRandomnessProviderContract.setFakeRandomValue(0);
-                await RouletteContract.executeWager(playerAddress);
+                await RouletteContract.executeWager(player1Address);
 
-                const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(playerAddress);
+                const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
 
                 const expected = [0];
+                expect(actual).to.deep.equal(expected);
+            });
+
+            it("spin result is not added to set belonging to another address", async function () {
+                const {
+                    MockRandomnessProviderContract,
+                    RouletteContract,
+                    player1Address,
+                    player2Address,
+                } = await loadFixture(fixtures);
+
+                await MockRandomnessProviderContract.setFakeRandomValue(0);
+                await RouletteContract.executeWager(player1Address);
+
+                const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player2Address);
+
+                const expected = [];
                 expect(actual).to.deep.equal(expected);
             });
 
@@ -143,16 +161,16 @@ describe("Roulette.sol", function () {
                 const {
                     MockRandomnessProviderContract,
                     RouletteContract,
-                    playerAddress,
+                    player1Address,
                 } = await loadFixture(fixtures);
 
                 await MockRandomnessProviderContract.setFakeRandomValue(0);
-                await RouletteContract.executeWager(playerAddress);
+                await RouletteContract.executeWager(player1Address);
 
                 await MockRandomnessProviderContract.setFakeRandomValue(0);
-                await RouletteContract.executeWager(playerAddress);
+                await RouletteContract.executeWager(player1Address);
 
-                const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(playerAddress);
+                const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
 
                 const expected = [0];
                 expect(actual).to.deep.equal(expected);
@@ -162,16 +180,16 @@ describe("Roulette.sol", function () {
                 const {
                     MockRandomnessProviderContract,
                     RouletteContract,
-                    playerAddress,
+                    player1Address,
                 } = await loadFixture(fixtures);
 
                 await MockRandomnessProviderContract.setFakeRandomValue(0);
-                await RouletteContract.executeWager(playerAddress);
+                await RouletteContract.executeWager(player1Address);
 
                 await MockRandomnessProviderContract.setFakeRandomValue(1);
-                await RouletteContract.executeWager(playerAddress);
+                await RouletteContract.executeWager(player1Address);
 
-                const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(playerAddress);
+                const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
 
                 const expected = [0, 1];
                 expect(actual).to.deep.equal(expected);
@@ -181,7 +199,7 @@ describe("Roulette.sol", function () {
                 const {
                     MockRandomnessProviderContract,
                     RouletteContract,
-                    playerAddress,
+                    player1Address,
                 } = await loadFixture(fixtures);
 
                 // Reminder: these are values supplied by the RandomnessProvider contract, not the spin results
@@ -196,7 +214,7 @@ describe("Roulette.sol", function () {
                     return new Promise(resolve => {
                         setTimeout(() => {
                             MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValue);
-                            RouletteContract.executeWager(playerAddress);
+                            RouletteContract.executeWager(player1Address);
                             resolve();
                         }, Math.random() * 1000);
                     });
@@ -210,7 +228,7 @@ describe("Roulette.sol", function () {
 
                 await processTransactionPromises();
 
-                const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(playerAddress);
+                const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
 
                 const expected = [];
                 expect(actual).to.deep.equal(expected);
@@ -220,7 +238,7 @@ describe("Roulette.sol", function () {
                 const {
                     MockRandomnessProviderContract,
                     RouletteContract,
-                    playerAddress,
+                    player1Address,
                 } = await loadFixture(fixtures);
 
                 const fakeRandomValues = [
@@ -234,7 +252,7 @@ describe("Roulette.sol", function () {
                     return new Promise(resolve => {
                         setTimeout(() => {
                             MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValue);
-                            RouletteContract.executeWager(playerAddress);
+                            RouletteContract.executeWager(player1Address);
                             resolve();
                         }, Math.random() * 1000);
                     });
@@ -249,13 +267,14 @@ describe("Roulette.sol", function () {
                 await processTransactionPromises();
 
                 await MockRandomnessProviderContract.setFakeRandomValue(0);
-                await RouletteContract.executeWager(playerAddress);
+                await RouletteContract.executeWager(player1Address);
 
-                const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(playerAddress);
+                const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
 
                 const expected = [0];
                 expect(actual).to.deep.equal(expected);
             });
         });
+
     });
 });
