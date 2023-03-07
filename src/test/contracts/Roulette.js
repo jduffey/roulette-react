@@ -20,7 +20,7 @@ describe("Roulette.sol", function () {
         return {
             MockRandomnessProviderContract,
             RouletteContract,
-            signers,
+            playerAddress: signers[0].address,
         };
     }
 
@@ -109,9 +109,8 @@ describe("Roulette.sol", function () {
                 const {
                     MockRandomnessProviderContract,
                     RouletteContract,
-                    signers,
+                    playerAddress,
                 } = await loadFixture(fixtures);
-                const playerAddress = signers[0].address;
 
                 await MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValue);
 
@@ -122,5 +121,22 @@ describe("Roulette.sol", function () {
                     .withArgs(playerAddress, expectedWheelNumber);
             });
         });
+
+        it("returns the set of completed numbers", async function () {
+            const {
+                MockRandomnessProviderContract,
+                RouletteContract,
+                playerAddress,
+            } = await loadFixture(fixtures);
+
+            await MockRandomnessProviderContract.setFakeRandomValue(0);
+            await RouletteContract.executeWager(playerAddress);
+
+            const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(playerAddress);
+
+            const expected = [0];
+            expect(actual).to.deep.equal(expected);
+        });
+
     });
 });
