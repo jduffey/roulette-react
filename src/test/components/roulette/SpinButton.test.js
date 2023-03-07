@@ -13,7 +13,6 @@ describe('SpinButton', () => {
             <SpinButton
                 hasABetBeenPlaced={hasABetBeenPlaced}
                 wheelIsSpinning={wheelIsSpinning}
-                onClick={() => {}}
             />;
 
         const view = renderer.create(sut)

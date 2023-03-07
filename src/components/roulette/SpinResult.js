@@ -18,8 +18,8 @@ export function SpinResult(props) {
         } else {
             rouletteContractEvents.on('WheelNumber', (playerAddress, wheelNumber) => {
                 if (playerAddress === props.playerAddress) {
-                    setBgColor(getWheelNumberColor(parseInt(wheelNumber)));
-                    setMostRecentSpinResultText(parseInt(wheelNumber) === 37 ? "00" : parseInt(wheelNumber));
+                    setBgColor(getWheelNumberColor(parseInt(wheelNumber, 10)));
+                    setMostRecentSpinResultText(parseInt(wheelNumber, 10) === 37 ? "00" : parseInt(wheelNumber, 10));
                 }
             });
         }

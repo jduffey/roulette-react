@@ -43,12 +43,6 @@ exports[`NavigationBar renders 1`] = `
     >
       Balances
     </a>
-    <a
-      href="/events"
-      onClick={[Function]}
-    >
-      Events
-    </a>
   </div>
 </div>
 `;

@@ -44,12 +44,6 @@ Array [
       >
         Balances
       </a>
-      <a
-        href="/events"
-        onClick={[Function]}
-      >
-        Events
-      </a>
     </div>
   </div>,
   <div
@@ -108,12 +102,6 @@ Array [
         onClick={[Function]}
       >
         Balances
-      </a>
-      <a
-        href="/events"
-        onClick={[Function]}
-      >
-        Events
       </a>
     </div>
   </div>,
@@ -263,12 +251,6 @@ Array [
         onClick={[Function]}
       >
         Balances
-      </a>
-      <a
-        href="/events"
-        onClick={[Function]}
-      >
-        Events
       </a>
     </div>
   </div>,
@@ -3088,12 +3070,6 @@ Array [
       >
         Balances
       </a>
-      <a
-        href="/events"
-        onClick={[Function]}
-      >
-        Events
-      </a>
     </div>
   </div>,
   <div
@@ -5912,12 +5888,6 @@ Array [
       >
         Balances
       </a>
-      <a
-        href="/events"
-        onClick={[Function]}
-      >
-        Events
-      </a>
     </div>
   </div>,
   <div
@@ -8735,12 +8705,6 @@ Array [
         onClick={[Function]}
       >
         Balances
-      </a>
-      <a
-        href="/events"
-        onClick={[Function]}
-      >
-        Events
       </a>
     </div>
   </div>,

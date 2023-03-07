@@ -1,5 +1,3 @@
-import { getWheelNumberColor } from "../../common/getWheelNumberColor";
-
 const CLASS_NAME = "BetResultsInfo-component";
 export function BetResultsInfo(props) {
     const previousRoundHasBetResults = props.previousRoundResults !== null;
@@ -23,25 +21,6 @@ export function BetResultsInfo(props) {
         totalWinningsText = `$ ${sumWinnings}`;
         totalBetsReturnedText = `$ ${sumBetsReturned}`;
     }
-
-    // const previousWheelNumberDiv = () => {
-    //     const backgroundColor = previousRoundHasBetResults ?
-    //         getWheelNumberColor(props.previousRoundResults.winningWheelNumber)
-    //         : "#dfdfdf";
-
-    //     const wheelNumberText = previousRoundHasBetResults ?
-    //         props.previousRoundResults.winningWheelNumber :
-    //         "??";
-
-    //     return (
-    //         <div
-    //             className="bet-info-table-title-spin-result"
-    //             style={{ backgroundColor }}
-    //         >
-    //             {wheelNumberText}
-    //         </div>
-    //     )
-    // }
 
     const betResultsRows = () => Object.keys(props.previousRoundResults.resultsOfBets).map((betName) => {
         const betAmountOnBet = props.previousRoundResults.resultsOfBets[betName].betAmount;
@@ -69,9 +48,6 @@ export function BetResultsInfo(props) {
                 >
                     PREVIOUS ROUND RESULTS
                 </div>
-
-                {/* {previousWheelNumberDiv()} */}
-
             </div>
             <table className="bet-results-info-table">
                 <tbody>

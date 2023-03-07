@@ -10,7 +10,6 @@ export function NavigationBar() {
                 <Link to="/roulette-p3">Roulette P3</Link>
                 <Link to="/sic-bo">Sic Bo</Link>
                 <Link to="/balances">Balances</Link>
-                <Link to="/events">Events</Link>
             </div>
         </div>
     );

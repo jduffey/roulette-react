@@ -205,7 +205,7 @@ async function getPlayerNumberCompletionSetCurrent(address) {
         provider.getSigner(address)
     );
     const currentSet = await contract.getPlayerNumberCompletionSetCurrent(address);
-    return currentSet.map((bigIntNumber) => parseInt(bigIntNumber.toString()));;
+    return currentSet.map((bigIntNumber) => parseInt(bigIntNumber.toString(), 10));;
 }
 
 let tokenSymbol;

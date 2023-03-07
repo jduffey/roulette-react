@@ -11,12 +11,13 @@ export function MostRecentSpinResults(props) {
     rouletteContractEvents.on('WheelNumber', (playerAddress, wheelNumber) => {
         if (playerAddress === props.playerAddress) {
             const copySpinResults = [...spinResults];
-            copySpinResults.push(parseInt(wheelNumber));
+            copySpinResults.push(parseInt(wheelNumber, 10));
             setSpinResults(copySpinResults.slice(-20)); // Only keep the last 20 results
         }
     });
 
     useEffect(() => {
+        // render
     }, [spinResults, props.playerAddress]);
 
     return (

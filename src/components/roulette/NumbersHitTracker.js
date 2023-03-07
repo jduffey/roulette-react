@@ -26,7 +26,7 @@ export function NumbersHitTracker(props) {
 
                 const wheelNumber = stringyNumber === "00"
                     ? 37
-                    : parseInt(stringyNumber);
+                    : parseInt(stringyNumber, 10);
 
                 const backgroundColor = currentSet.has(wheelNumber) ?
                     "yellow" :

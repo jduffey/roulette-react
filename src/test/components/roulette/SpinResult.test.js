@@ -24,7 +24,7 @@ describe('SpinResult', () => {
     )('renders when spin result is %s', (spinResult) => {
         const convertedSpinResult = spinResult === "00"
             ? 37
-            : parseInt(spinResult);
+            : parseInt(spinResult, 10);
         const sut =
             <SpinResult
                 spinResult={convertedSpinResult}

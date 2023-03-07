@@ -146,9 +146,9 @@ export function Roulette(props) {
                         setLatestBlockNumber(response.blockNumber);
                     })
                     .then(() => {
-                        rouletteContractEvents.on('WheelNumber', (playerAddress, wheelNumber) => {
-                            if (playerAddress === props.playerAddress) {
-                                setWheelNumber(parseInt(wheelNumber));
+                        rouletteContractEvents.on('WheelNumber', (playerAddr, wheelNum) => {
+                            if (playerAddr === props.playerAddress) {
+                                setWheelNumber(parseInt(wheelNum, 10));
                                 setWheelIsSpinning(false);
                             }
                         });

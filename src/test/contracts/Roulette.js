@@ -4,7 +4,7 @@ const { expect } = require("chai");
 
 const { loadFixture } = require("@nomicfoundation/hardhat-network-helpers");
 
-describe("Roulette.sol", function () {
+describe("Roulette.sol", () => {
     async function fixtures() {
         const signers = await ethers.getSigners();
 
@@ -25,7 +25,7 @@ describe("Roulette.sol", function () {
         };
     }
 
-    describe("randomness provider determines the wheel number", function () {
+    describe("randomness provider determines the wheel number", () => {
         ([
             [0, 0],
             [1, 1],
@@ -106,7 +106,7 @@ describe("Roulette.sol", function () {
             [16, "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDA"],
             [15, "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD9"],
         ]).forEach(([expectedWheelNumber, fakeRandomValue]) => {
-            it(`returns ${expectedWheelNumber} when the randomness provider returns ${fakeRandomValue}`, async function () {
+            it(`returns ${expectedWheelNumber} when the randomness provider returns ${fakeRandomValue}`, async () => {
                 const {
                     MockRandomnessProviderContract,
                     RouletteContract,
@@ -125,7 +125,7 @@ describe("Roulette.sol", function () {
     });
 
     describe('getPlayerNumberCompletionSetCurrent', () => {
-        it("spin result is added to set", async function () {
+        it("spin result is added to set", async () => {
             const {
                 MockRandomnessProviderContract,
                 RouletteContract,
@@ -141,7 +141,7 @@ describe("Roulette.sol", function () {
             expect(actual).to.deep.equal(expected);
         });
 
-        it("spin result is not added to set belonging to another address", async function () {
+        it("spin result is not added to set belonging to another address", async () => {
             const {
                 MockRandomnessProviderContract,
                 RouletteContract,
@@ -158,7 +158,7 @@ describe("Roulette.sol", function () {
             expect(actual).to.deep.equal(expected);
         });
 
-        it("duplicate spin result does not add to set", async function () {
+        it("duplicate spin result does not add to set", async () => {
             const {
                 MockRandomnessProviderContract,
                 RouletteContract,
@@ -177,7 +177,7 @@ describe("Roulette.sol", function () {
             expect(actual).to.deep.equal(expected);
         });
 
-        it("different spin results adds to set", async function () {
+        it("different spin results adds to set", async () => {
             const {
                 MockRandomnessProviderContract,
                 RouletteContract,
@@ -196,7 +196,7 @@ describe("Roulette.sol", function () {
             expect(actual).to.deep.equal(expected);
         });
 
-        it("hitting all spin results resets set", async function () {
+        it("hitting all spin results resets set", async () => {
             const {
                 MockRandomnessProviderContract,
                 RouletteContract,
@@ -222,7 +222,7 @@ describe("Roulette.sol", function () {
             }
 
             async function processTransactionPromises() {
-                await Promise.all(fakeRandomValues.map(async fakeRandomValue => {
+                await Promise.all(fakeRandomValues.map(async (fakeRandomValue) => {
                     await setFakeRandomValueAndExecuteWager(fakeRandomValue);
                 }));
             }
@@ -235,7 +235,7 @@ describe("Roulette.sol", function () {
             expect(actual).to.deep.equal(expected);
         });
 
-        it("spin results are added to set again after it is reset", async function () {
+        it("spin results are added to set again after it is reset", async () => {
             const {
                 MockRandomnessProviderContract,
                 RouletteContract,
@@ -260,7 +260,7 @@ describe("Roulette.sol", function () {
             }
 
             async function processTransactionPromises() {
-                await Promise.all(fakeRandomValues.map(async fakeRandomValue => {
+                await Promise.all(fakeRandomValues.map(async (fakeRandomValue) => {
                     await setFakeRandomValueAndExecuteWager(fakeRandomValue);
                 }));
             }
@@ -278,7 +278,7 @@ describe("Roulette.sol", function () {
     });
 
     describe('getPlayerNumberCompletionSetsCounter', () => {
-        it("returns 0 when no sets have been completed", async function () {
+        it("returns 0 when no sets have been completed", async () => {
             const {
                 RouletteContract,
                 player1Address,
@@ -290,7 +290,7 @@ describe("Roulette.sol", function () {
             expect(actual).to.equal(expected);
         });
 
-        it("returns 1 when one set has been completed", async function () {
+        it("returns 1 when one set has been completed", async () => {
             const {
                 MockRandomnessProviderContract,
                 RouletteContract,
@@ -316,7 +316,7 @@ describe("Roulette.sol", function () {
             }
 
             async function processTransactionPromises() {
-                await Promise.all(fakeRandomValues.map(async fakeRandomValue => {
+                await Promise.all(fakeRandomValues.map(async (fakeRandomValue) => {
                     await setFakeRandomValueAndExecuteWager(fakeRandomValue);
                 }));
             }
