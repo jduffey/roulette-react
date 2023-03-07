@@ -2336,7 +2336,7 @@ exports[`Roulette renders 1`] = `
         }
       }
     >
-      00
+      37
     </div>
     <div
       className="hit-number"

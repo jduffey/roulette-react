@@ -125,6 +125,7 @@ contract Roulette {
     function executeWager(address player) public {
         uint256 randValue = _randomnessProvider.randomValue();
         uint256 wheelNumber = randValue % 38;
+
         _addToSet(player, wheelNumber);
         emit WheelNumber(player, wheelNumber);
     }

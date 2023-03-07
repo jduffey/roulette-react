@@ -24,7 +24,7 @@ exports[`NumbersHitTracker renders 1`] = `
       }
     }
   >
-    00
+    37
   </div>
   <div
     className="hit-number"

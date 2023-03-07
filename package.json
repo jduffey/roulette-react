@@ -14,6 +14,7 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test --coverage",
+        "test-chain": "npx hardhat test src/test/contracts/*",
         "start-chain": "npx hardhat node",
         "init-chain": "npx hardhat run scripts/initializeChain.js --network localhost",
         "eject": "react-scripts eject"
