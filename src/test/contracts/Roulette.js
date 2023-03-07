@@ -215,6 +215,47 @@ describe("Roulette.sol", function () {
                 const expected = [];
                 expect(actual).to.deep.equal(expected);
             });
+
+            it("spin results are added to set again after it is reset", async function () {
+                const {
+                    MockRandomnessProviderContract,
+                    RouletteContract,
+                    playerAddress,
+                } = await loadFixture(fixtures);
+
+                const fakeRandomValues = [
+                    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                    11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+                    21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+                    31, 32, 33, 34, 35, 36, 37
+                ];
+
+                async function setFakeRandomValueAndExecuteWager(fakeRandomValue) {
+                    return new Promise(resolve => {
+                        setTimeout(() => {
+                            MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValue);
+                            RouletteContract.executeWager(playerAddress);
+                            resolve();
+                        }, Math.random() * 1000);
+                    });
+                }
+
+                async function processTransactionPromises() {
+                    await Promise.all(fakeRandomValues.map(async fakeRandomValue => {
+                        await setFakeRandomValueAndExecuteWager(fakeRandomValue);
+                    }));
+                }
+
+                await processTransactionPromises();
+
+                await MockRandomnessProviderContract.setFakeRandomValue(0);
+                await RouletteContract.executeWager(playerAddress);
+
+                const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(playerAddress);
+
+                const expected = [0];
+                expect(actual).to.deep.equal(expected);
+            });
         });
     });
 });
