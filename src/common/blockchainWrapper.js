@@ -153,7 +153,6 @@ async function redeemTokensForEth(from, amount) {
 }
 
 async function transferFrom(from, to, amount) {
-    // console.log("transferFrom", from, to, amount);
     const signer = provider.getSigner(from);
     const token = new ethers.Contract(
         TOKEN_CONTRACT_ADDRESS,

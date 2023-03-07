@@ -9,28 +9,22 @@ export function MostRecentSpinResults(props) {
     const [spinResults, setSpinResults] = useState([]);
 
     rouletteContractEvents.on('WheelNumber', (playerAddress, wheelNumber) => {
-        // console.log("WheelNumber event: ", wheelNumber, playerAddress);
         if (playerAddress === props.playerAddress) {
-            // console.log(`WheelNumber event: ${wheelNumber}, ${playerAddress}`);
-            const copySpinResults = [...spinResults];
+            const copySpinResults = [...spinResults.slice(-20)]; // Only keep the last 20 results
             copySpinResults.push(parseInt(wheelNumber));
             setSpinResults(copySpinResults);
         }
     });
 
     useEffect(() => {
-        // console.log("MostRecentSpinResults useEffect");
-        // console.log("spinResults", spinResults);
     }, [spinResults, props.playerAddress]);
 
-    const numberOfResultsToDisplay = 20;
-    const truncatedSpinResults = spinResults.slice(-numberOfResultsToDisplay);
     return (
         <div
             className={CLASS_NAME}
         >
             <ul>
-                {truncatedSpinResults.map((_, i, arr) => {
+                {spinResults.map((_, i, arr) => {
                     const wheelNumber = arr[arr.length - 1 - i];
                     return (
                         <div className="recent-spin-result"
