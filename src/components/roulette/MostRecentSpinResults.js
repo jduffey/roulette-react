@@ -33,7 +33,7 @@ export function MostRecentSpinResults(props) {
                                 backgroundColor: getWheelNumberColor(wheelNumber),
                             }}
                         >
-                            {wheelNumber}
+                            {wheelNumber === 37 ? "00" : wheelNumber}
                         </div>
                     );
                 })}
