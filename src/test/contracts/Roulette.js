@@ -112,21 +112,14 @@ describe("Roulette.sol", function () {
                     signers,
                 } = await loadFixture(fixtures);
                 const playerAddress = signers[0].address;
-                const wagerAmount = 100;
-                const betName = 0;
 
                 await MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValue);
 
                 await expect(RouletteContract.executeWager(
                     playerAddress,
-                    wagerAmount,
-                    1,
-                    "23",
-                    betName,
-                    1
                 ))
                     .to.emit(RouletteContract, "WheelNumber")
-                    .withArgs(expectedWheelNumber);
+                    .withArgs(playerAddress, expectedWheelNumber);
             });
         });
     });
