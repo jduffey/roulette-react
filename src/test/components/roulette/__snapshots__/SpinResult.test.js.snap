@@ -8,11 +8,11 @@ exports[`SpinResult renders when spin result is 0 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#016D29",
+        "backgroundColor": "inherit",
       }
     }
   >
-    0
+    -
   </div>
 </div>
 `;
@@ -25,11 +25,11 @@ exports[`SpinResult renders when spin result is 00 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#016D29",
+        "backgroundColor": "inherit",
       }
     }
   >
-    00
+    -
   </div>
 </div>
 `;
@@ -59,11 +59,11 @@ exports[`SpinResult renders when spin result is 2 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#222222",
+        "backgroundColor": "inherit",
       }
     }
   >
-    2
+    -
   </div>
 </div>
 `;
@@ -93,11 +93,11 @@ exports[`SpinResult renders when spin result is 4 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#222222",
+        "backgroundColor": "inherit",
       }
     }
   >
-    4
+    -
   </div>
 </div>
 `;
@@ -127,11 +127,11 @@ exports[`SpinResult renders when spin result is 6 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#222222",
+        "backgroundColor": "inherit",
       }
     }
   >
-    6
+    -
   </div>
 </div>
 `;
@@ -161,11 +161,11 @@ exports[`SpinResult renders when spin result is 8 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#222222",
+        "backgroundColor": "inherit",
       }
     }
   >
-    8
+    -
   </div>
 </div>
 `;
@@ -195,11 +195,11 @@ exports[`SpinResult renders when spin result is 10 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#222222",
+        "backgroundColor": "inherit",
       }
     }
   >
-    10
+    -
   </div>
 </div>
 `;
@@ -229,11 +229,11 @@ exports[`SpinResult renders when spin result is 12 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#d94848",
+        "backgroundColor": "inherit",
       }
     }
   >
-    12
+    -
   </div>
 </div>
 `;
@@ -263,11 +263,11 @@ exports[`SpinResult renders when spin result is 14 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#d94848",
+        "backgroundColor": "inherit",
       }
     }
   >
-    14
+    -
   </div>
 </div>
 `;
@@ -297,11 +297,11 @@ exports[`SpinResult renders when spin result is 16 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#d94848",
+        "backgroundColor": "inherit",
       }
     }
   >
-    16
+    -
   </div>
 </div>
 `;
@@ -331,11 +331,11 @@ exports[`SpinResult renders when spin result is 18 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#d94848",
+        "backgroundColor": "inherit",
       }
     }
   >
-    18
+    -
   </div>
 </div>
 `;
@@ -365,11 +365,11 @@ exports[`SpinResult renders when spin result is 20 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#222222",
+        "backgroundColor": "inherit",
       }
     }
   >
-    20
+    -
   </div>
 </div>
 `;
@@ -399,11 +399,11 @@ exports[`SpinResult renders when spin result is 22 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#222222",
+        "backgroundColor": "inherit",
       }
     }
   >
-    22
+    -
   </div>
 </div>
 `;
@@ -433,11 +433,11 @@ exports[`SpinResult renders when spin result is 24 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#222222",
+        "backgroundColor": "inherit",
       }
     }
   >
-    24
+    -
   </div>
 </div>
 `;
@@ -467,11 +467,11 @@ exports[`SpinResult renders when spin result is 26 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#222222",
+        "backgroundColor": "inherit",
       }
     }
   >
-    26
+    -
   </div>
 </div>
 `;
@@ -501,11 +501,11 @@ exports[`SpinResult renders when spin result is 28 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#222222",
+        "backgroundColor": "inherit",
       }
     }
   >
-    28
+    -
   </div>
 </div>
 `;
@@ -535,11 +535,11 @@ exports[`SpinResult renders when spin result is 30 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#d94848",
+        "backgroundColor": "inherit",
       }
     }
   >
-    30
+    -
   </div>
 </div>
 `;
@@ -569,11 +569,11 @@ exports[`SpinResult renders when spin result is 32 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#d94848",
+        "backgroundColor": "inherit",
       }
     }
   >
-    32
+    -
   </div>
 </div>
 `;
@@ -603,11 +603,11 @@ exports[`SpinResult renders when spin result is 34 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#d94848",
+        "backgroundColor": "inherit",
       }
     }
   >
-    34
+    -
   </div>
 </div>
 `;
@@ -637,11 +637,11 @@ exports[`SpinResult renders when spin result is 36 1`] = `
     className="spin-result-label"
     style={
       Object {
-        "backgroundColor": "#d94848",
+        "backgroundColor": "inherit",
       }
     }
   >
-    36
+    -
   </div>
 </div>
 `;
@@ -658,7 +658,7 @@ exports[`SpinResult renders when spin result is not defined (null) 1`] = `
       }
     }
   >
-    ?
+    -
   </div>
 </div>
 `;
@@ -675,7 +675,7 @@ exports[`SpinResult renders when spin result is not defined (undefined) 1`] = `
       }
     }
   >
-    ?
+    -
   </div>
 </div>
 `;

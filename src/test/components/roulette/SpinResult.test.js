@@ -22,9 +22,12 @@ describe('SpinResult', () => {
     it.each(
         Object.values(WHEEL_NUMBERS).map((wheelNumber) => wheelNumber)
     )('renders when spin result is %s', (spinResult) => {
+        const convertedSpinResult = spinResult === "00"
+            ? 37
+            : parseInt(spinResult);
         const sut =
             <SpinResult
-                spinResult={spinResult}
+                spinResult={convertedSpinResult}
             />;
 
         const tree = renderer.create(sut);

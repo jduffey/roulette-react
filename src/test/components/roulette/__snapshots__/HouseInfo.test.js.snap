@@ -5,6 +5,10 @@ exports[`HouseInfo renders when houseBalance is 0 1`] = `
   className="HouseInfo-component"
 >
   <div>
+    Block Height
+    <br />
+  </div>
+  <div>
     House Balance
     <br />
     Loading...
@@ -32,6 +36,10 @@ exports[`HouseInfo renders when houseBalance is 123456.9876 1`] = `
   className="HouseInfo-component"
 >
   <div>
+    Block Height
+    <br />
+  </div>
+  <div>
     House Balance
     <br />
     Loading...
@@ -58,6 +66,10 @@ exports[`HouseInfo renders when houseBalance is undefined 1`] = `
 <div
   className="HouseInfo-component"
 >
+  <div>
+    Block Height
+    <br />
+  </div>
   <div>
     House Balance
     <br />

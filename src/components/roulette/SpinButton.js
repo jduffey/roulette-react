@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const CLASS_NAME = 'SpinButton-component';
 export function SpinButton(props) {
-    const [extraMessage, setExtraMessage] = useState('');
+    const [extraMessage, setExtraMessage] = useState('-');
     const [zIndex, setZIndex] = useState(-1);
     const [color, setColor] = useState('inherit');
     const [shouldDisplayExtraMessage, setShouldDisplayExtraMessage] = useState(false);

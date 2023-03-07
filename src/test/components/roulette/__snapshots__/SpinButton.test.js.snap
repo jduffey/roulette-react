@@ -1,35 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SpinButton renders when isSpinAllowed is false 1`] = `
-<div
-  className="SpinButton-component"
-  id="spin-button"
-  onClick={[Function]}
-  role="button"
->
-  <span
-    style={
-      Object {
-        "color": "#999999",
-      }
-    }
-  >
-    SPIN
-  </span>
-  <span
-    className="place-a-bet-message"
-    style={
-      Object {
-        "zIndex": 1,
-      }
-    }
-  >
-    Place a bet!
-  </span>
-</div>
-`;
-
-exports[`SpinButton renders when isSpinAllowed is true 1`] = `
+exports[`SpinButton renders when: hasABetBeenPlaced is false, wheelIsSpinning is false 1`] = `
 <div
   className="SpinButton-component"
   id="spin-button"
@@ -53,7 +24,94 @@ exports[`SpinButton renders when isSpinAllowed is true 1`] = `
       }
     }
   >
-    Place a bet!
+    -
+  </span>
+</div>
+`;
+
+exports[`SpinButton renders when: hasABetBeenPlaced is false, wheelIsSpinning is true 1`] = `
+<div
+  className="SpinButton-component"
+  id="spin-button"
+  onClick={[Function]}
+  role="button"
+>
+  <span
+    style={
+      Object {
+        "color": "inherit",
+      }
+    }
+  >
+    SPIN
+  </span>
+  <span
+    className="place-a-bet-message"
+    style={
+      Object {
+        "zIndex": -1,
+      }
+    }
+  >
+    -
+  </span>
+</div>
+`;
+
+exports[`SpinButton renders when: hasABetBeenPlaced is true, wheelIsSpinning is false 1`] = `
+<div
+  className="SpinButton-component"
+  id="spin-button"
+  onClick={[Function]}
+  role="button"
+>
+  <span
+    style={
+      Object {
+        "color": "inherit",
+      }
+    }
+  >
+    SPIN
+  </span>
+  <span
+    className="place-a-bet-message"
+    style={
+      Object {
+        "zIndex": -1,
+      }
+    }
+  >
+    PLACE A BET
+  </span>
+</div>
+`;
+
+exports[`SpinButton renders when: hasABetBeenPlaced is true, wheelIsSpinning is true 1`] = `
+<div
+  className="SpinButton-component"
+  id="spin-button"
+  onClick={[Function]}
+  role="button"
+>
+  <span
+    style={
+      Object {
+        "color": "#999999",
+      }
+    }
+  >
+    SPIN
+  </span>
+  <span
+    className="place-a-bet-message"
+    style={
+      Object {
+        "zIndex": 1,
+      }
+    }
+  >
+    SPINNING...
   </span>
 </div>
 `;
