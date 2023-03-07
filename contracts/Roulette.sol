@@ -6,11 +6,11 @@ import "./RandomnessProvider.sol";
 contract Roulette {
     RandomnessProvider private _randomnessProvider;
 
-    uint256 private _totalSpins;
-    uint256 private _totalAmountWagered;
+    // uint256 private _totalSpins;
+    // uint256 private _totalAmountWagered;
 
-    mapping(address => uint256) private _playerSpins;
-    mapping(address => uint256) private _playerRewards;
+    // mapping(address => uint256) private _playerSpins;
+    // mapping(address => uint256) private _playerRewards;
     mapping(address => NumberCompletionSet) private _playerNumberCompletionSets;
 
     struct NumberCompletionSet {
@@ -82,37 +82,37 @@ contract Roulette {
         }
     }
 
-    function _incrementTotalSpins() private {
-        _totalSpins++;
-    }
+    // function _incrementTotalSpins() private {
+    //     _totalSpins++;
+    // }
 
-    function _incrementTotalAmountWagered(uint256 amount) private {
-        _totalAmountWagered += amount;
-    }
+    // function _incrementTotalAmountWagered(uint256 amount) private {
+    //     _totalAmountWagered += amount;
+    // }
 
-    function _incrementPlayerSpins(address player) private {
-        _playerSpins[player]++;
-    }
+    // function _incrementPlayerSpins(address player) private {
+    //     _playerSpins[player]++;
+    // }
 
-    function _incrementPlayerRewards(address player, uint256 amount) private {
-        _playerRewards[player] += amount;
-    }
+    // function _incrementPlayerRewards(address player, uint256 amount) private {
+    //     _playerRewards[player] += amount;
+    // }
 
-    function getTotalSpins() public view returns (uint256) {
-        return _totalSpins;
-    }
+    // function getTotalSpins() public view returns (uint256) {
+    //     return _totalSpins;
+    // }
 
-    function getTotalAmountWagered() public view returns (uint256) {
-        return _totalAmountWagered;
-    }
+    // function getTotalAmountWagered() public view returns (uint256) {
+    //     return _totalAmountWagered;
+    // }
 
-    function getPlayerSpins(address player) public view returns (uint256) {
-        return _playerSpins[player];
-    }
+    // function getPlayerSpins(address player) public view returns (uint256) {
+    //     return _playerSpins[player];
+    // }
 
-    function getPlayerRewards(address player) public view returns (uint256) {
-        return _playerRewards[player];
-    }
+    // function getPlayerRewards(address player) public view returns (uint256) {
+    //     return _playerRewards[player];
+    // }
 
     function getPlayerNumberCompletionSetsCounter(address player) public view returns (uint256) {
         return _playerNumberCompletionSets[player].completionCounter;
