@@ -17,11 +17,16 @@ export function NumbersHitTracker(props) {
         }, 1000);
     }, [props.playerAddress, currentSet]);
 
+
     return (
         <div
             className={CLASS_NAME}
         >
-            {Object.values(WHEEL_NUMBERS).map((wheelNumber, i) => {
+            {Object.values(WHEEL_NUMBERS).map((stringyNumber, i) => {
+
+                const wheelNumber = stringyNumber === "00"
+                    ? 37
+                    : parseInt(stringyNumber, 10);
 
                 const backgroundColor = currentSet.has(wheelNumber) ?
                     "yellow" :

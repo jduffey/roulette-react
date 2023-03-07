@@ -1,13 +1,29 @@
+import { useEffect, useState } from "react";
+
 import { getWheelNumberColor } from "../../common/getWheelNumberColor";
+
+import {
+    rouletteContractEvents,
+} from "../../common/blockchainWrapper";
 
 const CLASS_NAME = "SpinResult-component";
 export function SpinResult(props) {
-    let bgColor = "inherit";
-    let wheelNumberText = "?";
-    if (props.spinResult) {
-        bgColor = getWheelNumberColor(props.spinResult);
-        wheelNumberText = props.spinResult;
-    }
+    const [mostRecentSpinResultText, setMostRecentSpinResultText] = useState("-");
+    const [bgColor, setBgColor] = useState("inherit");
+
+    useEffect(() => {
+        if (props.spinResult) {
+            setBgColor(getWheelNumberColor(props.spinResult));
+            setMostRecentSpinResultText(props.spinResult === 37 ? "00" : props.spinResult);
+        } else {
+            rouletteContractEvents.on('WheelNumber', (playerAddress, wheelNumber) => {
+                if (playerAddress === props.playerAddress) {
+                    setBgColor(getWheelNumberColor(parseInt(wheelNumber, 10)));
+                    setMostRecentSpinResultText(parseInt(wheelNumber, 10) === 37 ? "00" : parseInt(wheelNumber, 10));
+                }
+            });
+        }
+    }, [mostRecentSpinResultText, props.spinResult, props.playerAddress]);
 
     return (
         <div
@@ -19,7 +35,7 @@ export function SpinResult(props) {
                     backgroundColor: bgColor,
                 }}
             >
-                {wheelNumberText}
+                {mostRecentSpinResultText}
             </div>
         </div>
     );

@@ -22,6 +22,20 @@ exports[`ChipSelection renders when currentChipAmountSelected is 1 1`] = `
   </div>
   <div
     className="Chip-component chip-selection-chip"
+    id="chip-2.5"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#FFC0CB",
+        "borderColor": "#000000",
+        "color": "#000000",
+      }
+    }
+  >
+    $2.5
+  </div>
+  <div
+    className="Chip-component chip-selection-chip"
     id="chip-5"
     onClick={[Function]}
     style={
@@ -110,6 +124,20 @@ exports[`ChipSelection renders when currentChipAmountSelected is 5 1`] = `
     }
   >
     $1
+  </div>
+  <div
+    className="Chip-component chip-selection-chip"
+    id="chip-2.5"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#FFC0CB",
+        "borderColor": "#000000",
+        "color": "#000000",
+      }
+    }
+  >
+    $2.5
   </div>
   <div
     className="Chip-component chip-selection-chip"
@@ -206,6 +234,20 @@ exports[`ChipSelection renders when currentChipAmountSelected is 25 1`] = `
   </div>
   <div
     className="Chip-component chip-selection-chip"
+    id="chip-2.5"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#FFC0CB",
+        "borderColor": "#000000",
+        "color": "#000000",
+      }
+    }
+  >
+    $2.5
+  </div>
+  <div
+    className="Chip-component chip-selection-chip"
     id="chip-5"
     onClick={[Function]}
     style={
@@ -296,6 +338,20 @@ exports[`ChipSelection renders when currentChipAmountSelected is 100 1`] = `
     }
   >
     $1
+  </div>
+  <div
+    className="Chip-component chip-selection-chip"
+    id="chip-2.5"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#FFC0CB",
+        "borderColor": "#000000",
+        "color": "#000000",
+      }
+    }
+  >
+    $2.5
   </div>
   <div
     className="Chip-component chip-selection-chip"
@@ -392,6 +448,20 @@ exports[`ChipSelection renders when currentChipAmountSelected is 500 1`] = `
   </div>
   <div
     className="Chip-component chip-selection-chip"
+    id="chip-2.5"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#FFC0CB",
+        "borderColor": "#000000",
+        "color": "#000000",
+      }
+    }
+  >
+    $2.5
+  </div>
+  <div
+    className="Chip-component chip-selection-chip"
     id="chip-5"
     onClick={[Function]}
     style={
@@ -482,6 +552,20 @@ exports[`ChipSelection renders when currentChipAmountSelected is 1000 1`] = `
     }
   >
     $1
+  </div>
+  <div
+    className="Chip-component chip-selection-chip"
+    id="chip-2.5"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#FFC0CB",
+        "borderColor": "#000000",
+        "color": "#000000",
+      }
+    }
+  >
+    $2.5
   </div>
   <div
     className="Chip-component chip-selection-chip"

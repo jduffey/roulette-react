@@ -12,16 +12,6 @@ exports[`BetResultsInfo renders when previousRoundResults is null 1`] = `
     >
       PREVIOUS ROUND RESULTS
     </div>
-    <div
-      className="bet-info-table-title-spin-result"
-      style={
-        Object {
-          "backgroundColor": "#dfdfdf",
-        }
-      }
-    >
-      ??
-    </div>
   </div>
   <table
     className="bet-results-info-table"
@@ -127,16 +117,6 @@ exports[`BetResultsInfo renders winning wheel numbers with different color backg
       className="bet-info-table-title-text"
     >
       PREVIOUS ROUND RESULTS
-    </div>
-    <div
-      className="bet-info-table-title-spin-result"
-      style={
-        Object {
-          "backgroundColor": "#016D29",
-        }
-      }
-    >
-      0
     </div>
   </div>
   <table
@@ -260,16 +240,6 @@ exports[`BetResultsInfo renders winning wheel numbers with different color backg
     >
       PREVIOUS ROUND RESULTS
     </div>
-    <div
-      className="bet-info-table-title-spin-result"
-      style={
-        Object {
-          "backgroundColor": "#d94848",
-        }
-      }
-    >
-      1
-    </div>
   </div>
   <table
     className="bet-results-info-table"
@@ -392,16 +362,6 @@ exports[`BetResultsInfo renders winning wheel numbers with different color backg
     >
       PREVIOUS ROUND RESULTS
     </div>
-    <div
-      className="bet-info-table-title-spin-result"
-      style={
-        Object {
-          "backgroundColor": "#222222",
-        }
-      }
-    >
-      2
-    </div>
   </div>
   <table
     className="bet-results-info-table"
@@ -523,16 +483,6 @@ exports[`BetResultsInfo renders with bets 1`] = `
       className="bet-info-table-title-text"
     >
       PREVIOUS ROUND RESULTS
-    </div>
-    <div
-      className="bet-info-table-title-spin-result"
-      style={
-        Object {
-          "backgroundColor": "#016D29",
-        }
-      }
-    >
-      0
     </div>
   </div>
   <table
@@ -1169,54 +1119,6 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          1st 12
-        </td>
-        <td
-          className="bet-results-info-table-bet-amount"
-        >
-          $ -999
-        </td>
-        <td>
-          $ -999
-        </td>
-        <td>
-          $ -999
-        </td>
-      </tr>
-      <tr>
-        <td>
-          2nd 12
-        </td>
-        <td
-          className="bet-results-info-table-bet-amount"
-        >
-          $ -999
-        </td>
-        <td>
-          $ -999
-        </td>
-        <td>
-          $ -999
-        </td>
-      </tr>
-      <tr>
-        <td>
-          3rd 12
-        </td>
-        <td
-          className="bet-results-info-table-bet-amount"
-        >
-          $ -999
-        </td>
-        <td>
-          $ -999
-        </td>
-        <td>
-          $ -999
-        </td>
-      </tr>
-      <tr>
-        <td>
           1 to 18
         </td>
         <td
@@ -1281,6 +1183,86 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
+          Red
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Black
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          1st 12
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          2nd 12
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
+          3rd 12
+        </td>
+        <td
+          className="bet-results-info-table-bet-amount"
+        >
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+        <td>
+          $ -999
+        </td>
+      </tr>
+      <tr>
+        <td>
           1st Column
         </td>
         <td
@@ -1314,38 +1296,6 @@ exports[`BetResultsInfo renders with bets 1`] = `
       <tr>
         <td>
           3rd Column
-        </td>
-        <td
-          className="bet-results-info-table-bet-amount"
-        >
-          $ -999
-        </td>
-        <td>
-          $ -999
-        </td>
-        <td>
-          $ -999
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Red
-        </td>
-        <td
-          className="bet-results-info-table-bet-amount"
-        >
-          $ -999
-        </td>
-        <td>
-          $ -999
-        </td>
-        <td>
-          $ -999
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Black
         </td>
         <td
           className="bet-results-info-table-bet-amount"

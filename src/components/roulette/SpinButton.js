@@ -1,7 +1,23 @@
+import { useEffect, useState } from "react";
+
 const CLASS_NAME = 'SpinButton-component';
 export function SpinButton(props) {
-    const zIndex = props.isSpinAllowed ? -1 : 1;
-    const color = props.isSpinAllowed ? 'inherit' : '#999999';
+    const [extraMessage, setExtraMessage] = useState('-');
+    const [zIndex, setZIndex] = useState(-1);
+    const [color, setColor] = useState('inherit');
+    const [shouldDisplayExtraMessage, setShouldDisplayExtraMessage] = useState(false);
+
+    useEffect(() => {
+        setShouldDisplayExtraMessage(!props.hasABetBeenPlaced || props.wheelIsSpinning);
+        setZIndex(shouldDisplayExtraMessage ? 1 : -1);
+        setColor(shouldDisplayExtraMessage ? '#999999' : 'inherit');
+        setExtraMessage(
+            props.wheelIsSpinning
+                ? 'SPINNING...'
+                : 'PLACE A BET'
+        );
+    }, [shouldDisplayExtraMessage, props.hasABetBeenPlaced, props.wheelIsSpinning]);
+
     return (
         <div
             id="spin-button"
@@ -22,7 +38,7 @@ export function SpinButton(props) {
                     zIndex,
                 }}
             >
-                Place a bet!
+                {extraMessage}
             </span>
         </div>
     );

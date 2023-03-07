@@ -4,14 +4,16 @@ import { SpinButton } from '../../../components/roulette/SpinButton';
 
 describe('SpinButton', () => {
     it.each([
-        [false],
-        [true],
-    ])('renders when isSpinAllowed is %s', (isSpinAllowed) => {
+        [false, false],
+        [true, false],
+        [false, true],
+        [true, true],
+    ])('renders when: hasABetBeenPlaced is %s, wheelIsSpinning is %s', (hasABetBeenPlaced, wheelIsSpinning) => {
         const sut =
-            SpinButton({
-                isSpinAllowed,
-                onClick: () => "ON_CLICK",
-            });
+            <SpinButton
+                hasABetBeenPlaced={hasABetBeenPlaced}
+                wheelIsSpinning={wheelIsSpinning}
+            />;
 
         const view = renderer.create(sut)
 

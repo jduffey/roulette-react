@@ -11,6 +11,11 @@ const CHIP_COLORS = {
         color: "#000000",
         borderColor: "#000000",
     },
+    CHIP_2_HALF: {
+        backgroundColor: "#FFC0CB",
+        color: "#000000",
+        borderColor: "#000000",
+    },
     CHIP_5: {
         backgroundColor: "#D94848",
         color: "#FFFFFF",
