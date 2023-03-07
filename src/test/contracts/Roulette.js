@@ -184,119 +184,31 @@ describe("Roulette.sol", function () {
                     playerAddress,
                 } = await loadFixture(fixtures);
 
-                await MockRandomnessProviderContract.setFakeRandomValue(0);
-                await RouletteContract.executeWager(playerAddress);
+                // Reminder: these are values supplied by the RandomnessProvider contract, not the spin results
+                const fakeRandomValues = [
+                    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                    11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+                    21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+                    31, 32, 33, 34, 35, 36, 37
+                ];
 
-                await MockRandomnessProviderContract.setFakeRandomValue(1);
-                await RouletteContract.executeWager(playerAddress);
+                async function setFakeRandomValueAndExecuteWager(fakeRandomValue) {
+                    return new Promise(resolve => {
+                        setTimeout(() => {
+                            MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValue);
+                            RouletteContract.executeWager(playerAddress);
+                            resolve();
+                        }, Math.random() * 1000);
+                    });
+                }
 
-                await MockRandomnessProviderContract.setFakeRandomValue(2);
-                await RouletteContract.executeWager(playerAddress);
+                async function processTransactionPromises() {
+                    await Promise.all(fakeRandomValues.map(async fakeRandomValue => {
+                        await setFakeRandomValueAndExecuteWager(fakeRandomValue);
+                    }));
+                }
 
-                await MockRandomnessProviderContract.setFakeRandomValue(3);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(4);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(5);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(6);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(7);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(8);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(9);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(10);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(11);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(12);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(13);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(14);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(15);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(16);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(17);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(18);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(19);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(20);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(21);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(22);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(23);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(24);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(25);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(26);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(27);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(28);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(29);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(30);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(31);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(32);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(33);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(34);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(35);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(36);
-                await RouletteContract.executeWager(playerAddress);
-
-                await MockRandomnessProviderContract.setFakeRandomValue(37);
-                await RouletteContract.executeWager(playerAddress);
+                await processTransactionPromises();
 
                 const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(playerAddress);
 
