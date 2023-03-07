@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 
-import { BET_NAMES } from "./betNames";
+// import { BET_NAMES } from "./betNames";
 
 const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
 
@@ -128,40 +128,40 @@ async function getTokenBalance(address) {
     return ethers.utils.formatEther(balance);
 }
 
-async function depositEthForTokens(from, amount) {
-    const signer = provider.getSigner(from);
-    const token = new ethers.Contract(
-        TOKEN_CONTRACT_ADDRESS,
-        ["function deposit() payable"],
-        signer
-    );
-    const tx = await token.deposit({
-        value: ethers.utils.parseEther(amount)
-    });
-    return tx;
-}
+// async function depositEthForTokens(from, amount) {
+//     const signer = provider.getSigner(from);
+//     const token = new ethers.Contract(
+//         TOKEN_CONTRACT_ADDRESS,
+//         ["function deposit() payable"],
+//         signer
+//     );
+//     const tx = await token.deposit({
+//         value: ethers.utils.parseEther(amount)
+//     });
+//     return tx;
+// }
 
-async function redeemTokensForEth(from, amount) {
-    const signer = provider.getSigner(from);
-    const token = new ethers.Contract(
-        TOKEN_CONTRACT_ADDRESS,
-        ["function withdraw(uint)"],
-        signer
-    );
-    const tx = await token.withdraw(ethers.utils.parseEther(amount));
-    return tx;
-}
+// async function redeemTokensForEth(from, amount) {
+//     const signer = provider.getSigner(from);
+//     const token = new ethers.Contract(
+//         TOKEN_CONTRACT_ADDRESS,
+//         ["function withdraw(uint)"],
+//         signer
+//     );
+//     const tx = await token.withdraw(ethers.utils.parseEther(amount));
+//     return tx;
+// }
 
-async function transferFrom(from, to, amount) {
-    const signer = provider.getSigner(from);
-    const token = new ethers.Contract(
-        TOKEN_CONTRACT_ADDRESS,
-        ["function transferFrom(address, address, uint) returns (bool)"],
-        signer
-    );
-    const tx = await token.transferFrom(from, to, ethers.utils.parseEther(amount));
-    return tx;
-}
+// async function transferFrom(from, to, amount) {
+//     const signer = provider.getSigner(from);
+//     const token = new ethers.Contract(
+//         TOKEN_CONTRACT_ADDRESS,
+//         ["function transferFrom(address, address, uint) returns (bool)"],
+//         signer
+//     );
+//     const tx = await token.transferFrom(from, to, ethers.utils.parseEther(amount));
+//     return tx;
+// }
 
 async function getRewardsPoolBalance() {
     const tokenBalance = await getTokenBalance(ROULETTE_CONTRACT_ADDRESS);
@@ -226,13 +226,13 @@ const rouletteContractEvents = new ethers.Contract(
 );
 
 export {
+    executeWager,
     getEthBalance,
     getBlock,
     getTokenBalance,
-    depositEthForTokens,
-    redeemTokensForEth,
-    transferFrom,
-    executeWager,
+    // depositEthForTokens,
+    // redeemTokensForEth,
+    // transferFrom,
     getTotalSpins,
     getTotalAmountWagered,
     getRewardsPoolBalance,

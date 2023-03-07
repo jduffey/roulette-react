@@ -10,9 +10,9 @@ export function MostRecentSpinResults(props) {
 
     rouletteContractEvents.on('WheelNumber', (playerAddress, wheelNumber) => {
         if (playerAddress === props.playerAddress) {
-            const copySpinResults = [...spinResults.slice(-20)]; // Only keep the last 20 results
+            const copySpinResults = [...spinResults];
             copySpinResults.push(parseInt(wheelNumber));
-            setSpinResults(copySpinResults);
+            setSpinResults(copySpinResults.slice(-20)); // Only keep the last 20 results
         }
     });
 

@@ -17,11 +17,8 @@ import { SpinResult } from './SpinResult';
 import { HouseInfo } from './HouseInfo';
 
 import {
-    // transferFrom,
     getTokenBalance,
     executeWager,
-    // HOUSE_ADDRESS,
-    // ROULETTE_CONTRACT_ADDRESS,
     rouletteContractEvents,
     getBlock,
 } from '../../common/blockchainWrapper';
@@ -42,18 +39,11 @@ export function Roulette(props) {
     const playerAddress = props.playerAddress;
 
     const [currentChipAmountSelected, setCurrentChipAmountSelected] = useState(1);
-
-    const [pendingBets, setPendingBets] = useState([]);
-
-    const [spinResults, setSpinResults] = useState([]);
-    const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
-
-    const [playerBalance, setPlayerBalance] = useState(undefined);
-
     const [latestBlockNumber, setLatestBlockNumber] = useState(0);
-
+    const [pendingBets, setPendingBets] = useState([]);
+    const [playerBalance, setPlayerBalance] = useState(undefined);
+    const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
     const [wheelIsSpinning, setWheelIsSpinning] = useState(false);
-
     const [wheelNumber, setWheelNumber] = useState(null);
 
     useEffect(() => {
@@ -101,18 +91,15 @@ export function Roulette(props) {
             return;
         }
 
-        // WARN: Disabled to help with simulated testing
-        // if (wheelIsSpinning) {
-        //     console.log("Wheel already spinning; please wait for wheel number.");
-        //     return;
-        // }
+        if (wheelIsSpinning) {
+            console.log("Wheel already spinning; please wait for wheel number.");
+            return;
+        }
 
         setWheelIsSpinning(true);
 
         getRandomWheelNumber(`${Date.now()}${playerAddress}`)
             .then(randomWheelNumber => {
-                const copySpinResults = spinResults.slice();
-
                 const resultsOfRound = getCompleteResultsOfRound(playerBalance, pendingBets, randomWheelNumber);
 
                 // Go through each bet and sum the total owed back to the player
@@ -147,16 +134,6 @@ export function Roulette(props) {
 
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
 
-                copySpinResults.push(resultsOfRound.winningWheelNumber);
-                setSpinResults([...copySpinResults]);
-
-                // TODO update/revisit this note after replacing betsOnBoard (object) with pendingBets (array of PendingBet objects)
-                // TODO bug here? if we don't reset pendingBets then we can continue to click spin, which is not a problem itself,
-                // but on continuing to click does not charge the player for the bet placed, but it DOES award them winnings if they win.
-                // So we maybe need to refactor this component to ensure that the player's balance is in fact deducted for the bet placed.
-                // This may involve the reworking/splitting the concepts of:
-                // 1. what the player is actually able to bet at any given time (i.e. the funds they "own" minus whatever bets they've already placed)
-                // 2. what the player "owns" (i.e. if they had an option to clear all bets on the board, what would their balance be)
                 setPendingBets([]);
 
                 getTokenBalance(playerAddress)
@@ -164,25 +141,13 @@ export function Roulette(props) {
                         setPlayerBalance(bal);
                     });
 
-                // const singlePendingBet = pendingBets[0];
-                executeWager(
-                    playerAddress,
-                    // calculateTotalBetAmount(pendingBets),
-                    // owedByHouseToPlayersRewards,
-                    // randomWheelNumber,
-                    // singlePendingBet.betName,
-                    // singlePendingBet.betAmount
-                )
+                executeWager(playerAddress)
                     .then((response) => {
-                        console.log("blockchainWrapper.executeWager() response: ", response);
-
-                        console.log("response.blockNumber", response.blockNumber);
                         setLatestBlockNumber(response.blockNumber);
                     })
                     .then(() => {
                         rouletteContractEvents.on('WheelNumber', (playerAddress, wheelNumber) => {
                             if (playerAddress === props.playerAddress) {
-                                console.log(`WheelNumber event: ${wheelNumber}, ${playerAddress} -- blockNumber: ${latestBlockNumber + 1}`);
                                 setWheelNumber(parseInt(wheelNumber));
                                 setWheelIsSpinning(false);
                             }
