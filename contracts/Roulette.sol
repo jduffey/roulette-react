@@ -19,7 +19,8 @@ contract Roulette {
         uint256 completionCounter;
     }
 
-    event WheelNumber(address indexed player, uint256 wheelNumber);
+    // Rename to ExecutedWager
+    event ExecutedWager(address indexed player, uint256 wheelNumber);
 
     constructor(address randomnessProviderAddress) {
         _randomnessProvider = RandomnessProvider(randomnessProviderAddress);
@@ -127,6 +128,6 @@ contract Roulette {
         uint256 wheelNumber = randValue % 38;
 
         _addToSet(player, wheelNumber);
-        emit WheelNumber(player, wheelNumber);
+        emit ExecutedWager(player, wheelNumber);
     }
 }

@@ -140,7 +140,7 @@ let tokenSymbol;
 const rouletteContractEvents = new ethers.Contract(
     ROULETTE_CONTRACT_ADDRESS,
     [
-        'event WheelNumber(address indexed, uint256)',
+        'event ExecutedWager(address indexed, uint256)',
     ],
     provider
 );

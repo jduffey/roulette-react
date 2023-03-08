@@ -118,7 +118,7 @@ describe("Roulette.sol", () => {
                 await expect(RouletteContract.executeWager(
                     player1Address,
                 ))
-                    .to.emit(RouletteContract, "WheelNumber")
+                    .to.emit(RouletteContract, "ExecutedWager")
                     .withArgs(player1Address, expectedWheelNumber);
             });
         });

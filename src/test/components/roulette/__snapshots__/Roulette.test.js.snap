@@ -2173,12 +2173,12 @@ exports[`Roulette renders 1`] = `
     <div>
       Player Spins
       <br />
-      Loading...
+      DISABLED
     </div>
     <div>
       Player Rewards
       <br />
-      Loading...
+      DISABLED
     </div>
   </div>
   <div
@@ -2756,17 +2756,17 @@ exports[`Roulette renders 1`] = `
     <div>
       Rewards Pool
       <br />
-      Loading...
+      DISABLED
     </div>
     <div>
       Total Spins
       <br />
-      Loading...
+      DISABLED
     </div>
     <div>
       Total Amount Wagered
       <br />
-      Loading...
+      DISABLED
     </div>
   </div>
 </div>
