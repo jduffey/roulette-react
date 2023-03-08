@@ -129,5 +129,8 @@ contract Roulette {
 
         _addToSet(player, wheelNumber);
         emit ExecutedWager(player, wheelNumber);
+
+        // Txfr 1 token from Player to Roulette
+
     }
 }
