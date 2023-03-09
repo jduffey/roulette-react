@@ -6,40 +6,48 @@ const { loadFixture } = require("@nomicfoundation/hardhat-network-helpers");
 
 describe("Token contract", function () {
     async function deployTokenFixture() {
-        const [acct1] = await ethers.getSigners();
+        const [acct0, acct1] = await ethers.getSigners();
 
         const MyGameTokenFactory = await ethers.getContractFactory("MyGameToken");
         const MyGameToken = await MyGameTokenFactory.deploy();
         await MyGameToken.deployed();
 
-        return { MyGameToken, acct1 };
+        return { MyGameToken, acct0, acct1 };
     }
 
     describe("deposit()", function () {
         it("assigns 100,000 tokens per ETH deposited to depositor address", async function () {
-            const { MyGameToken, acct1 } = await loadFixture(deployTokenFixture);
+            const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
 
             await MyGameToken.deposit({ value: ethers.utils.parseEther("1") });
 
-            const actual = await MyGameToken.balanceOf(acct1.address);
+            const actual = await MyGameToken.balanceOf(acct0.address);
 
             const expected = ethers.utils.parseEther("100000");
             expect(actual).to.equal(expected);
         });
 
         it("emits a Deposit event with depositor address, ETH deposited, and tokens issued", async function () {
-            const { MyGameToken, acct1 } = await loadFixture(deployTokenFixture);
+            const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
 
             await expect(MyGameToken.deposit({ value: ethers.utils.parseEther("1") }))
                 .to.emit(MyGameToken, "Deposit")
-                .withArgs(acct1.address, ethers.utils.parseEther("1"));
+                .withArgs(acct0.address, ethers.utils.parseEther("1"));
         });
+    });
 
-        // it("Should assign the total supply of tokens to the owner", async function () {
-        //     const { hardhatToken, owner } = await loadFixture(deployTokenFixture);
-        //     const ownerBalance = await hardhatToken.balanceOf(owner.address);
-        //     expect(await hardhatToken.totalSupply()).to.equal(ownerBalance);
-        // });
+    describe("totalSupply()", function () {
+        it("returns the total supply of tokens", async function () {
+            const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
+
+            await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
+            await MyGameToken.connect(acct1).deposit({ value: ethers.utils.parseEther("1.5") });
+
+            const actual = await MyGameToken.totalSupply();
+
+            const expected = ethers.utils.parseEther("250000");
+            expect(actual).to.equal(expected);
+        });
     });
 
     // describe("Transactions", function () {

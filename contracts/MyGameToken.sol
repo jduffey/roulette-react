@@ -33,9 +33,9 @@ contract MyGameToken {
     //     emit Withdrawal(msg.sender, wad);
     // }
 
-    // function totalSupply() public view returns (uint256) {
-    //     return address(this).balance * _tokensPerEth;
-    // }
+    function totalSupply() public view returns (uint256) {
+        return address(this).balance * _tokensPerEth;
+    }
 
     // function approve(address guy, uint256 wad) public returns (bool) {
     //     allowance[msg.sender][guy] = wad;
