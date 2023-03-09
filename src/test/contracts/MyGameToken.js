@@ -56,31 +56,44 @@ describe("Token contract", function () {
                 .to.be.revertedWith("Insufficient token balance");
         });
 
-        it("reduces the balance of the depositor by the amount withdrawn", async function () {
+        it("does not revert if the withdraw amount is equal to the balance", async function () {
             const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
 
-            await MyGameToken.deposit({ value: ethers.utils.parseEther("1") });
+            await MyGameToken.deposit({ value: ethers.utils.parseEther("3.5") });
 
-            await MyGameToken.withdraw(ethers.utils.parseEther("12345"));
-
-            const actual = await MyGameToken.balanceOf(acct0.address);
-
-            const expected = ethers.utils.parseEther("87655");
-            expect(actual).to.equal(expected);
+            await expect(MyGameToken.withdraw(ethers.utils.parseEther("350000")))
+                .to.not.be.reverted;
         });
-    });
 
-    describe("totalSupply()", function () {
-        it("returns the total supply of tokens", async function () {
-            const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
+        [
+            [ethers.utils.parseEther("1"), ethers.utils.parseEther("100000"), ethers.utils.parseEther("0")],
+            [ethers.utils.parseEther("1"), ethers.utils.parseEther("99999"), ethers.utils.parseEther("1")],
+        ].forEach(([depositAmount, withdrawAmount, expectedTokenBal]) => {
+            it("reduces the balance of the depositor by the amount withdrawn", async function () {
+                const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
 
-            await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
-            await MyGameToken.connect(acct1).deposit({ value: ethers.utils.parseEther("1.5") });
+                await MyGameToken.deposit({ value: depositAmount });
 
-            const actual = await MyGameToken.totalSupply();
+                await MyGameToken.withdraw(withdrawAmount);
 
-            const expected = ethers.utils.parseEther("250000");
-            expect(actual).to.equal(expected);
+                const actual = await MyGameToken.balanceOf(acct0.address);
+
+                expect(actual).to.equal(expectedTokenBal);
+            });
+        });
+
+        describe("totalSupply()", function () {
+            it("returns the total supply of tokens", async function () {
+                const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
+
+                await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
+                await MyGameToken.connect(acct1).deposit({ value: ethers.utils.parseEther("1.5") });
+
+                const actual = await MyGameToken.totalSupply();
+
+                const expected = ethers.utils.parseEther("250000");
+                expect(actual).to.equal(expected);
+            });
         });
     });
 });
