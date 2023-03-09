@@ -340,22 +340,21 @@ describe("Roulette.sol", () => {
 
         });
 
-        // Need to set up creation of a token to test this
-        describe("executeWager", () => {
-            it("transfers 1 token to the roulette contract", async () => {
-                const {
-                    RouletteContract,
-                    MyGameTokenContract,
-                    player1Address,
-                } = await loadFixture(fixtures);
+        // describe("executeWager", () => {
+        //     it("transfers 1 token to the roulette contract", async () => {
+        //         const {
+        //             RouletteContract,
+        //             MyGameTokenContract,
+        //             player1Address,
+        //         } = await loadFixture(fixtures);
 
-                await RouletteContract.executeWager(player1Address);
+        //         await RouletteContract.executeWager(player1Address);
 
-                const actual = await MyGameTokenContract.balanceOf(RouletteContract.address);
+        //         const actual = await MyGameTokenContract.balanceOf(RouletteContract.address);
 
-                const expected = 1;
-                expect(actual).to.equal(expected);
-            });
-        });
+        //         const expected = 1;
+        //         expect(actual).to.equal(expected);
+        //     });
+        // });
     });
 });

@@ -7,13 +7,13 @@ contract MyGameToken {
     uint8 public decimals = 18;
     uint256 private _tokensPerEth = 100_000;
 
-    event Approval(address indexed src, address indexed guy, uint256 wad);
+    // event Approval(address indexed src, address indexed guy, uint256 wad);
     event Transfer(address indexed src, address indexed dst, uint256 wad);
     event Deposit(address indexed dst, uint256 wad);
     event Withdrawal(address indexed src, uint256 wad);
 
     mapping(address => uint256) public balanceOf;
-    mapping(address => mapping(address => uint256)) public allowance;
+    // mapping(address => mapping(address => uint256)) public allowance;
 
     receive() external payable {
         deposit();
@@ -37,11 +37,11 @@ contract MyGameToken {
         return address(this).balance * _tokensPerEth;
     }
 
-    function approve(address guy, uint256 wad) public returns (bool) {
-        allowance[msg.sender][guy] = wad;
-        emit Approval(msg.sender, guy, wad);
-        return true;
-    }
+    // function approve(address guy, uint256 wad) public returns (bool) {
+    //     allowance[msg.sender][guy] = wad;
+    //     emit Approval(msg.sender, guy, wad);
+    //     return true;
+    // }
 
     function transfer(address dst, uint256 wad) public returns (bool) {
         return transferFrom(msg.sender, dst, wad);
@@ -50,10 +50,10 @@ contract MyGameToken {
     function transferFrom(address src, address dst, uint256 wad) public returns (bool) {
         require(balanceOf[src] >= wad);
 
-        if (src != msg.sender && allowance[src][msg.sender] != type(uint256).max) {
-            require(allowance[src][msg.sender] >= wad);
-            allowance[src][msg.sender] -= wad;
-        }
+        // if (src != msg.sender && allowance[src][msg.sender] != type(uint256).max) {
+        //     require(allowance[src][msg.sender] >= wad);
+        //     allowance[src][msg.sender] -= wad;
+        // }
 
         balanceOf[src] -= wad;
         balanceOf[dst] += wad;
