@@ -30,7 +30,7 @@ contract MyGameToken {
     //     balanceOf[msg.sender] -= wad;
     //     uint256 etherOwed = wad / _tokensPerEth;
     //     payable(msg.sender).transfer(etherOwed);
-    //     emit Withdrawal(msg.sender, wad);
+    //     // emit Withdrawal(msg.sender, wad);
     // }
 
     function totalSupply() public view returns (uint256) {
