@@ -25,13 +25,13 @@ contract MyGameToken {
         emit Deposit(msg.sender, msg.value);
     }
 
-    // function withdraw(uint256 wad) public {
-    //     require(balanceOf[msg.sender] >= wad, "Insufficient token balance");
-    //     balanceOf[msg.sender] -= wad;
-    //     uint256 etherOwed = wad / _tokensPerEth;
-    //     payable(msg.sender).transfer(etherOwed);
-    //     // emit Withdrawal(msg.sender, wad);
-    // }
+    function withdraw(uint256 wad) public {
+        require(balanceOf[msg.sender] >= wad, "Insufficient token balance");
+        balanceOf[msg.sender] -= wad;
+        // uint256 etherOwed = wad / _tokensPerEth;
+        // payable(msg.sender).transfer(etherOwed);
+        // emit Withdrawal(msg.sender, wad);
+    }
 
     function totalSupply() public view returns (uint256) {
         return address(this).balance * _tokensPerEth;
