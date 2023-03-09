@@ -27,6 +27,14 @@ describe("Token contract", function () {
             expect(actual).to.equal(expected);
         });
 
+        it("emits a Deposit event with depositor address, ETH deposited, and tokens issued", async function () {
+            const { MyGameToken, acct1 } = await loadFixture(deployTokenFixture);
+
+            await expect(MyGameToken.deposit({ value: ethers.utils.parseEther("1") }))
+                .to.emit(MyGameToken, "Deposit")
+                .withArgs(acct1.address, ethers.utils.parseEther("1"));
+        });
+
         // it("Should assign the total supply of tokens to the owner", async function () {
         //     const { hardhatToken, owner } = await loadFixture(deployTokenFixture);
         //     const ownerBalance = await hardhatToken.balanceOf(owner.address);
