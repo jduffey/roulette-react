@@ -5,7 +5,7 @@ pragma solidity ^0.8.9;
 contract MyGameToken {
     string public name = "My Game Token";
     string public symbol = "GAME";
-    // uint8 public decimals = 18;
+    uint8 public decimals = 18;
     uint256 private _tokensPerEth = 100_000;
 
     // event Approval(address indexed src, address indexed guy, uint256 wad);

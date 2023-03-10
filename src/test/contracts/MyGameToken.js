@@ -16,6 +16,14 @@ describe("Token contract", function () {
         return { MyGameToken, acct0, acct1 };
     }
 
+    it("has common ERC20 properties", async function () {
+        const { MyGameToken } = await loadFixture(deployTokenFixture);
+
+        expect(await MyGameToken.name()).to.equal("My Game Token");
+        expect(await MyGameToken.symbol()).to.equal("GAME");
+        expect(await MyGameToken.decimals()).to.equal(18);
+    });
+
     describe("deposit()", function () {
         it("assigns 100,000 tokens per ETH deposited", async function () {
             const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
