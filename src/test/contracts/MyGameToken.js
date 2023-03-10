@@ -3,6 +3,7 @@
 const { expect } = require("chai");
 
 const { loadFixture } = require("@nomicfoundation/hardhat-network-helpers");
+const { ethers } = require("hardhat");
 
 describe("Token contract", function () {
     async function deployTokenFixture() {
@@ -49,51 +50,48 @@ describe("Token contract", function () {
     });
 
     describe("withdraw()", function () {
-        it("reverts if the withdraw amount exceeds the balance", async function () {
+        it("reverts if the withdraw amount exceeds the token balance", async function () {
             const { MyGameToken } = await loadFixture(deployTokenFixture);
 
             await expect(MyGameToken.withdraw(ethers.utils.parseEther("1")))
                 .to.be.revertedWith("Insufficient token balance");
         });
 
-        it("does not revert if the withdraw amount is equal to the balance", async function () {
-            const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
+        describe("reduces the token balance", () => {
+            [
+                [ethers.utils.parseEther("1"), ethers.utils.parseEther("100000"), ethers.utils.parseEther("0")],
+                [ethers.utils.parseEther("1"), ethers.utils.parseEther("99999"), ethers.utils.parseEther("1")],
+            ].forEach(([depositAmount, withdrawAmount, expectedTokenBal]) => {
+                it(
+                    `deposit: ${ethers.utils.formatEther(depositAmount)} ETH, ` +
+                    `withdraw: ${ethers.utils.formatEther(withdrawAmount)} tokens, ` +
+                    `expected token balance: ${ethers.utils.formatEther(expectedTokenBal)}`, async () => {
+                        const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
 
-            await MyGameToken.deposit({ value: ethers.utils.parseEther("3.5") });
+                        await MyGameToken.deposit({ value: depositAmount });
 
-            await expect(MyGameToken.withdraw(ethers.utils.parseEther("350000")))
-                .to.not.be.reverted;
-        });
+                        await MyGameToken.withdraw(withdrawAmount);
 
-        [
-            [ethers.utils.parseEther("1"), ethers.utils.parseEther("100000"), ethers.utils.parseEther("0")],
-            [ethers.utils.parseEther("1"), ethers.utils.parseEther("99999"), ethers.utils.parseEther("1")],
-        ].forEach(([depositAmount, withdrawAmount, expectedTokenBal]) => {
-            it("reduces the balance of the depositor by the amount withdrawn", async function () {
-                const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
+                        const actual = await MyGameToken.balanceOf(acct0.address);
 
-                await MyGameToken.deposit({ value: depositAmount });
-
-                await MyGameToken.withdraw(withdrawAmount);
-
-                const actual = await MyGameToken.balanceOf(acct0.address);
-
-                expect(actual).to.equal(expectedTokenBal);
+                        expect(actual).to.equal(expectedTokenBal);
+                    });
             });
         });
+    });
 
-        describe("totalSupply()", function () {
-            it("returns the total supply of tokens", async function () {
-                const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
+    describe("totalSupply()", function () {
+        it("returns the total supply of tokens", async function () {
+            const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
-                await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
-                await MyGameToken.connect(acct1).deposit({ value: ethers.utils.parseEther("1.5") });
+            await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
+            await MyGameToken.connect(acct1).deposit({ value: ethers.utils.parseEther("1.5") });
+            await MyGameToken.connect(acct0).withdraw(ethers.utils.parseEther("30000"));
 
-                const actual = await MyGameToken.totalSupply();
+            const actual = await MyGameToken.totalSupply();
 
-                const expected = ethers.utils.parseEther("250000");
-                expect(actual).to.equal(expected);
-            });
+            const expected = ethers.utils.parseEther("220000");
+            expect(actual).to.equal(expected);
         });
     });
 });

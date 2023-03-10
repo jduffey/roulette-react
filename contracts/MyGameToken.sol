@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
+/*
+A token that acts like WETH but with a 1:100,000 ratio.*/
 contract MyGameToken {
     string public name = "My Game Token";
     string public symbol = "GAME";
@@ -28,8 +30,8 @@ contract MyGameToken {
     function withdraw(uint256 wad) public {
         require(balanceOf[msg.sender] >= wad, "Insufficient token balance");
         balanceOf[msg.sender] -= wad;
-        // uint256 etherOwed = wad / _tokensPerEth;
-        // payable(msg.sender).transfer(etherOwed);
+        uint256 etherOwed = wad / _tokensPerEth;
+        payable(msg.sender).transfer(etherOwed);
         // emit Withdrawal(msg.sender, wad);
     }
 
