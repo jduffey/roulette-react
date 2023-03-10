@@ -24,6 +24,22 @@ describe("Token contract", function () {
         expect(await MyGameToken.decimals()).to.equal(18);
     });
 
+    describe("receive()", function () {
+        it("assigns 100,000 tokens per ETH transferred", async function () {
+            const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
+
+            await acct0.sendTransaction({
+                to: MyGameToken.address,
+                value: ethers.utils.parseEther("1"),
+            });
+
+            const actual = await MyGameToken.balanceOf(acct0.address);
+
+            const expected = ethers.utils.parseEther("100000");
+            expect(actual).to.equal(expected);
+        });
+    });
+
     describe("deposit()", function () {
         it("assigns 100,000 tokens per ETH deposited", async function () {
             const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);

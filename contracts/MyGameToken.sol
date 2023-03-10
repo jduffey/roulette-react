@@ -16,9 +16,9 @@ contract MyGameToken {
     mapping(address => uint256) public balanceOf;
     // mapping(address => mapping(address => uint256)) public allowance;
 
-    // receive() external payable {
-    //     deposit();
-    // }
+    receive() external payable {
+        deposit();
+    }
 
     function deposit() public payable {
         _mint(msg.value);
