@@ -57,21 +57,21 @@ describe("Token contract", function () {
         });
     });
 
-    describe("withdraw()", function () {
-        it("reverts if the withdraw amount exceeds the token balance", async function () {
+    describe("redeem()", function () {
+        it("reverts if the redemption amount exceeds the token balance", async function () {
             const { MyGameToken } = await loadFixture(deployTokenFixture);
 
-            await expect(MyGameToken.withdraw(ethers.utils.parseEther("1")))
+            await expect(MyGameToken.redeem(ethers.utils.parseEther("1")))
                 .to.be.revertedWith("Insufficient token balance");
         });
 
-        it("emits a Withdraw event", async function () {
+        it("emits a Redeem event", async function () {
             const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
 
             await MyGameToken.deposit({ value: ethers.utils.parseEther("1") });
 
-            await expect(MyGameToken.withdraw(ethers.utils.parseEther("56789")))
-                .to.emit(MyGameToken, "Withdraw")
+            await expect(MyGameToken.redeem(ethers.utils.parseEther("56789")))
+                .to.emit(MyGameToken, "Redeem")
                 .withArgs(acct0.address, ethers.utils.parseEther("56789"));
         });
 
@@ -79,16 +79,16 @@ describe("Token contract", function () {
             [
                 [ethers.utils.parseEther("1"), ethers.utils.parseEther("100000"), ethers.utils.parseEther("0")],
                 [ethers.utils.parseEther("1"), ethers.utils.parseEther("99999"), ethers.utils.parseEther("1")],
-            ].forEach(([depositAmount, withdrawAmount, expectedTokenBal]) => {
+            ].forEach(([depositAmt, redemptionAmt, expectedTokenBal]) => {
                 it(
-                    `deposit: ${ethers.utils.formatEther(depositAmount)} ETH, ` +
-                    `withdraw: ${ethers.utils.formatEther(withdrawAmount)} tokens, ` +
+                    `deposit: ${ethers.utils.formatEther(depositAmt)} ETH, ` +
+                    `redeem: ${ethers.utils.formatEther(redemptionAmt)} tokens, ` +
                     `expected token balance: ${ethers.utils.formatEther(expectedTokenBal)}`, async () => {
                         const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
 
-                        await MyGameToken.deposit({ value: depositAmount });
+                        await MyGameToken.deposit({ value: depositAmt });
 
-                        await MyGameToken.withdraw(withdrawAmount);
+                        await MyGameToken.redeem(redemptionAmt);
 
                         const actual = await MyGameToken.balanceOf(acct0.address);
 
@@ -104,7 +104,7 @@ describe("Token contract", function () {
 
             await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
             await MyGameToken.connect(acct1).deposit({ value: ethers.utils.parseEther("1.5") });
-            await MyGameToken.connect(acct0).withdraw(ethers.utils.parseEther("30000"));
+            await MyGameToken.connect(acct0).redeem(ethers.utils.parseEther("30000"));
 
             const actual = await MyGameToken.totalSupply();
 

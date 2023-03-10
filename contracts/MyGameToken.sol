@@ -10,8 +10,8 @@ contract MyGameToken {
 
     // event Approval(address indexed src, address indexed guy, uint256 wad);
     // event Transfer(address indexed src, address indexed dst, uint256 wad);
-    event Deposit(address indexed addr, uint256 ethDeposit);
-    event Withdraw(address indexed src, uint256 tokensToWithdraw);
+    event Deposit(address indexed addr, uint256 ethDeposited);
+    event Redeem(address indexed src, uint256 tokensRedeemed);
 
     mapping(address => uint256) public balanceOf;
     // mapping(address => mapping(address => uint256)) public allowance;
@@ -25,15 +25,15 @@ contract MyGameToken {
         emit Deposit(msg.sender, msg.value);
     }
 
-    function withdraw(uint256 tokensToWithdraw) public {
-        require(balanceOf[msg.sender] >= tokensToWithdraw, "Insufficient token balance");
-        _burn(tokensToWithdraw);
-        emit Withdraw(msg.sender, tokensToWithdraw);
+    function redeem(uint256 tokensToRedeem) public {
+        require(balanceOf[msg.sender] >= tokensToRedeem, "Insufficient token balance");
+        _burn(tokensToRedeem);
+        emit Redeem(msg.sender, tokensToRedeem);
     }
 
-    function _burn(uint256 tokensToWithdraw) private {
-        balanceOf[msg.sender] -= tokensToWithdraw;
-        uint256 etherOwed = tokensToWithdraw / _tokensPerEth;
+    function _burn(uint256 tokensToRedeem) private {
+        balanceOf[msg.sender] -= tokensToRedeem;
+        uint256 etherOwed = tokensToRedeem / _tokensPerEth;
         payable(msg.sender).transfer(etherOwed);
     }
 
