@@ -9,7 +9,7 @@ contract MyGameToken {
     uint256 private _tokensPerEth = 100_000;
 
     // event Approval(address indexed src, address indexed guy, uint256 wad);
-    // event Transfer(address indexed src, address indexed dst, uint256 wad);
+    event Transfer(address indexed src, address indexed dst, uint256 wad);
     event Deposit(address indexed addr, uint256 ethDeposited);
     event Redeem(address indexed src, uint256 tokensRedeemed);
 
@@ -67,7 +67,7 @@ contract MyGameToken {
         balanceOf[src] -= tokensToTransfer;
         balanceOf[dst] += tokensToTransfer;
 
-        // emit Transfer(src, dst, wad);
+        emit Transfer(src, dst, tokensToTransfer);
 
         // return true;
     }

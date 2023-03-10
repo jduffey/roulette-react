@@ -163,6 +163,17 @@ describe("Token contract", function () {
             expect(actual).to.equal(expected);
         });
 
+        it("emits a Transfer event", async function () {
+            const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
+
+            await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
+
+            await expect(MyGameToken.connect(acct0).transfer(acct1.address, ethers.utils.parseEther("5678")))
+
+                .to.emit(MyGameToken, "Transfer")
+                .withArgs(acct0.address, acct1.address, ethers.utils.parseEther("5678"));
+        });
+
         // it("reverts if the sender attempts to transfer to the zero address", async function () {
         //     const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
 
