@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-/*
-A token that acts like WETH but with a 1:100,000 ratio.*/
+//A token that acts like WETH but with a 1:100,000 ratio.
 contract MyGameToken {
     string public name = "My Game Token";
     string public symbol = "GAME";
@@ -17,9 +16,9 @@ contract MyGameToken {
     mapping(address => uint256) public balanceOf;
     // mapping(address => mapping(address => uint256)) public allowance;
 
-    receive() external payable {
-        deposit();
-    }
+    // receive() external payable {
+    //     deposit();
+    // }
 
     function deposit() public payable {
         uint256 tokensToCredit = msg.value * _tokensPerEth;
