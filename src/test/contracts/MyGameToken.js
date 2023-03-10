@@ -128,4 +128,75 @@ describe("Token contract", function () {
             expect(actual).to.equal(expected);
         });
     });
+
+    describe("transfer()", function () {
+        it("reverts if the sender does not have enough tokens", async function () {
+            const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
+
+            await expect(MyGameToken.connect(acct0).transfer(acct1.address, ethers.utils.parseEther("1")))
+                .to.be.revertedWith("Insufficient token balance");
+        });
+
+        it("increases recipient token balance", async function () {
+            const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
+
+            await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
+
+            await MyGameToken.connect(acct0).transfer(acct1.address, ethers.utils.parseEther("5678"));
+
+            const actual = await MyGameToken.balanceOf(acct1.address);
+
+            const expected = ethers.utils.parseEther("5678");
+            expect(actual).to.equal(expected);
+        });
+
+        it("decreases sender token balance", async function () {
+            const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
+
+            await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
+
+            await MyGameToken.connect(acct0).transfer(acct1.address, ethers.utils.parseEther("5678"));
+
+            const actual = await MyGameToken.balanceOf(acct0.address);
+
+            const expected = ethers.utils.parseEther("94322");
+            expect(actual).to.equal(expected);
+        });
+
+        // it("reverts if the sender attempts to transfer to the zero address", async function () {
+        //     const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
+
+        //     await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
+
+        //     await expect(MyGameToken.connect(acct0).transfer(ethers.constants.AddressZero, ethers.utils.parseEther("1")))
+        //         .to.be.revertedWith("Cannot transfer to zero address");
+        // });
+
+        // it("reverts if the sender attempts to transfer more tokens than they have", async function () {
+        //     const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
+
+        //     await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
+
+        //     await expect(MyGameToken.connect(acct0).transfer(acct0.address, ethers.utils.parseEther("1.000000000000000001")))
+        //         .to.be.revertedWith("Insufficient token balance");
+        // });
+
+        // it("reverts if the sender attempts to transfer 0 tokens", async function () {
+        //     const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
+
+        //     await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
+
+        //     await expect(MyGameToken.connect(acct0).transfer(acct0.address, ethers.utils.parseEther("0")))
+        //         .to.be.revertedWith("Cannot transfer 0 tokens");
+        // });
+
+        // it("reverts if the sender attempts to transfer to the token contract", async function () {
+        //     const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
+
+        //     await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
+
+        //     await expect(MyGameToken.connect(acct0).transfer(MyGameToken.address, ethers.utils.parseEther("1")))
+        //         .to.be.revertedWith("Cannot transfer to token contract");
+        // });
+    });
 });

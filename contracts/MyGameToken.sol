@@ -52,23 +52,23 @@ contract MyGameToken {
     //     return true;
     // }
 
-    // function transfer(address dst, uint256 wad) public returns (bool) {
-    //     return transferFrom(msg.sender, dst, wad);
-    // }
+    function transfer(address dst, uint256 wad) public returns (bool) {
+        return transferFrom(msg.sender, dst, wad);
+    }
 
-    // function transferFrom(address src, address dst, uint256 wad) public returns (bool) {
-    //     require(balanceOf[src] >= wad);
+    function transferFrom(address src, address dst, uint256 tokensToTransfer) public returns (bool) {
+        require(balanceOf[src] >= tokensToTransfer, "Insufficient token balance");
 
-    //     // if (src != msg.sender && allowance[src][msg.sender] != type(uint256).max) {
-    //     //     require(allowance[src][msg.sender] >= wad);
-    //     //     allowance[src][msg.sender] -= wad;
-    //     // }
+        // if (src != msg.sender && allowance[src][msg.sender] != type(uint256).max) {
+        //     require(allowance[src][msg.sender] >= wad);
+        //     allowance[src][msg.sender] -= wad;
+        // }
 
-    //     balanceOf[src] -= wad;
-    //     balanceOf[dst] += wad;
+        balanceOf[src] -= tokensToTransfer;
+        balanceOf[dst] += tokensToTransfer;
 
-    //     emit Transfer(src, dst, wad);
+        // emit Transfer(src, dst, wad);
 
-    //     return true;
-    // }
+        // return true;
+    }
 }
