@@ -21,17 +21,25 @@ contract MyGameToken {
     // }
 
     function deposit() public payable {
-        uint256 tokensToCredit = msg.value * _tokensPerEth;
-        balanceOf[msg.sender] += tokensToCredit;
+        _mint(msg.value);
         emit Deposit(msg.sender, msg.value);
     }
 
     function withdraw(uint256 tokensToWithdraw) public {
         require(balanceOf[msg.sender] >= tokensToWithdraw, "Insufficient token balance");
+        _burn(tokensToWithdraw);
+        emit Withdraw(msg.sender, tokensToWithdraw);
+    }
+
+    function _burn(uint256 tokensToWithdraw) private {
         balanceOf[msg.sender] -= tokensToWithdraw;
         uint256 etherOwed = tokensToWithdraw / _tokensPerEth;
         payable(msg.sender).transfer(etherOwed);
-        emit Withdraw(msg.sender, tokensToWithdraw);
+    }
+
+    function _mint(uint256 value) private {
+        uint256 tokensToCredit = value * _tokensPerEth;
+        balanceOf[msg.sender] += tokensToCredit;
     }
 
     function totalSupply() public view returns (uint256) {
