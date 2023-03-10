@@ -40,7 +40,7 @@ describe("Token contract", function () {
             expect(actual).to.equal(expected);
         });
 
-        it("emits a Deposit event with depositor address, ETH deposited, and tokens issued", async function () {
+        it("emits a Deposit event", async function () {
             const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
 
             await expect(MyGameToken.deposit({ value: ethers.utils.parseEther("1") }))
@@ -55,6 +55,16 @@ describe("Token contract", function () {
 
             await expect(MyGameToken.withdraw(ethers.utils.parseEther("1")))
                 .to.be.revertedWith("Insufficient token balance");
+        });
+
+        it("emits a Withdraw event", async function () {
+            const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
+
+            await MyGameToken.deposit({ value: ethers.utils.parseEther("1") });
+
+            await expect(MyGameToken.withdraw(ethers.utils.parseEther("56789")))
+                .to.emit(MyGameToken, "Withdraw")
+                .withArgs(acct0.address, ethers.utils.parseEther("56789"));
         });
 
         describe("reduces the token balance", () => {

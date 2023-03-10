@@ -12,7 +12,7 @@ contract MyGameToken {
     // event Approval(address indexed src, address indexed guy, uint256 wad);
     // event Transfer(address indexed src, address indexed dst, uint256 wad);
     event Deposit(address indexed addr, uint256 ethDeposit);
-    // event Withdrawal(address indexed src, uint256 wad);
+    event Withdraw(address indexed src, uint256 wad);
 
     mapping(address => uint256) public balanceOf;
     // mapping(address => mapping(address => uint256)) public allowance;
@@ -32,7 +32,7 @@ contract MyGameToken {
         balanceOf[msg.sender] -= wad;
         uint256 etherOwed = wad / _tokensPerEth;
         payable(msg.sender).transfer(etherOwed);
-        // emit Withdrawal(msg.sender, wad);
+        emit Withdraw(msg.sender, wad);
     }
 
     function totalSupply() public view returns (uint256) {
