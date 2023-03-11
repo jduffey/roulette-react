@@ -130,6 +130,18 @@ describe("MyGameToken contract", () => {
     });
 
     describe("approve()", () => {
+        it("sets the allowance to the most recent value", async () => {
+            const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
+
+            await MyGameToken.connect(acct0).approve(acct1.address, ethers.utils.parseEther("12345"));
+            await MyGameToken.connect(acct0).approve(acct1.address, ethers.utils.parseEther("321"));
+
+            const actual = await MyGameToken.allowance(acct0.address, acct1.address);
+
+            const expected = ethers.utils.parseEther("321");
+            expect(actual).to.equal(expected);
+        });
+
         it("emits an Approval event", async () => {
             const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 

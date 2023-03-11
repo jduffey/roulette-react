@@ -47,7 +47,9 @@ contract MyGameToken {
     }
 
     function approve(address guy, uint256 wad) public returns (bool) {
-        allowance[msg.sender][guy] = wad; // TODO untested operator
+        // Be aware of the following attack scenario:
+        // https://blockchain-projects.readthedocs.io/multiple_withdrawal.html
+        allowance[msg.sender][guy] = wad;
         emit Approval(msg.sender, guy, wad);
         return true;
     }
