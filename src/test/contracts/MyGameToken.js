@@ -129,6 +129,12 @@ describe("Token contract", function () {
         });
     });
 
+    // describe("approve()", function () {
+    //     it("emits an Approval event", async function () {
+    //         // TODO: implement
+    //     });
+    // });
+
     describe("transfer()", function () {
         it("reverts if the sender does not have enough tokens", async function () {
             const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
