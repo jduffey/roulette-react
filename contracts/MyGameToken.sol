@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
+//A token that acts like WETH but with a 1:100,000 ratio.
 contract MyGameToken {
     string public name = "My Game Token";
     string public symbol = "GAME";
@@ -9,8 +10,8 @@ contract MyGameToken {
 
     event Approval(address indexed src, address indexed guy, uint256 wad);
     event Transfer(address indexed src, address indexed dst, uint256 wad);
-    event Deposit(address indexed dst, uint256 wad);
-    event Withdrawal(address indexed src, uint256 wad);
+    event Deposit(address indexed addr, uint256 ethDeposited);
+    event Redeem(address indexed src, uint256 tokensRedeemed);
 
     mapping(address => uint256) public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;
@@ -20,17 +21,25 @@ contract MyGameToken {
     }
 
     function deposit() public payable {
-        uint256 tokensToCredit = msg.value * _tokensPerEth;
-        balanceOf[msg.sender] += tokensToCredit;
+        _mint(msg.value);
         emit Deposit(msg.sender, msg.value);
     }
 
-    function withdraw(uint256 wad) public {
-        require(balanceOf[msg.sender] >= wad, "Insufficient token balance");
-        balanceOf[msg.sender] -= wad;
-        uint256 etherOwed = wad / _tokensPerEth;
+    function redeem(uint256 tokensToRedeem) public {
+        require(balanceOf[msg.sender] >= tokensToRedeem, "Insufficient token balance");
+        _burn(tokensToRedeem);
+        emit Redeem(msg.sender, tokensToRedeem);
+    }
+
+    function _burn(uint256 tokensToRedeem) private {
+        balanceOf[msg.sender] -= tokensToRedeem;
+        uint256 etherOwed = tokensToRedeem / _tokensPerEth;
         payable(msg.sender).transfer(etherOwed);
-        emit Withdrawal(msg.sender, wad);
+    }
+
+    function _mint(uint256 value) private {
+        uint256 tokensToCredit = value * _tokensPerEth;
+        balanceOf[msg.sender] += tokensToCredit;
     }
 
     function totalSupply() public view returns (uint256) {
@@ -38,6 +47,8 @@ contract MyGameToken {
     }
 
     function approve(address guy, uint256 wad) public returns (bool) {
+        // Be aware of the following attack scenario:
+        // https://blockchain-projects.readthedocs.io/multiple_withdrawal.html
         allowance[msg.sender][guy] = wad;
         emit Approval(msg.sender, guy, wad);
         return true;
@@ -47,18 +58,20 @@ contract MyGameToken {
         return transferFrom(msg.sender, dst, wad);
     }
 
-    function transferFrom(address src, address dst, uint256 wad) public returns (bool) {
-        require(balanceOf[src] >= wad);
+    function transferFrom(address src, address dst, uint256 tokensToTransfer) public returns (bool) {
+        require(balanceOf[src] >= tokensToTransfer, "Insufficient token balance");
 
-        if (src != msg.sender && allowance[src][msg.sender] != type(uint256).max) {
-            require(allowance[src][msg.sender] >= wad);
-            allowance[src][msg.sender] -= wad;
+        // What is allowance[src][msg.sender] != type(uint256).max for?
+        // if (src != msg.sender && allowance[src][msg.sender] != type(uint256).max) {
+        if (src != msg.sender) {
+            require(allowance[src][msg.sender] >= tokensToTransfer, "Insufficient allowance");
+            allowance[src][msg.sender] -= tokensToTransfer;
         }
 
-        balanceOf[src] -= wad;
-        balanceOf[dst] += wad;
+        balanceOf[src] -= tokensToTransfer;
+        balanceOf[dst] += tokensToTransfer;
 
-        emit Transfer(src, dst, wad);
+        emit Transfer(src, dst, tokensToTransfer);
 
         return true;
     }

@@ -7,19 +7,29 @@ const { loadFixture } = require("@nomicfoundation/hardhat-network-helpers");
 describe("Roulette.sol", () => {
     async function fixtures() {
         const signers = await ethers.getSigners();
+        const deployerSigner = signers[4];
+        // console.log(deployerSigner);
 
-        const mockRandomnessProviderContractFactory = await ethers.getContractFactory("MockRandomnessProvider");
+        const mockRandomnessProviderContractFactory = await ethers.getContractFactory("MockRandomnessProvider", deployerSigner);
         await mockRandomnessProviderContractFactory.deploy();
         const MockRandomnessProviderContract = await mockRandomnessProviderContractFactory.deploy();
         await MockRandomnessProviderContract.deployed();
+        // console.log(MockRandomnessProviderContract);
 
-        const rouletteContractFactory = await ethers.getContractFactory("Roulette");
+        const rouletteContractFactory = await ethers.getContractFactory("Roulette", deployerSigner);
         const RouletteContract = await rouletteContractFactory.deploy(MockRandomnessProviderContract.address);
         await RouletteContract.deployed();
+        // console.log(RouletteContract);
+
+        const myGameTokenContractFactory = await ethers.getContractFactory("MyGameToken", deployerSigner);
+        const MyGameTokenContract = await myGameTokenContractFactory.deploy();
+        await MyGameTokenContract.deployed();
+        // console.log(MyGameTokenContract);
 
         return {
             MockRandomnessProviderContract,
             RouletteContract,
+            MyGameTokenContract,
             player1Address: signers[0].address,
             player2Address: signers[1].address,
         };
@@ -118,7 +128,7 @@ describe("Roulette.sol", () => {
                 await expect(RouletteContract.executeWager(
                     player1Address,
                 ))
-                    .to.emit(RouletteContract, "WheelNumber")
+                    .to.emit(RouletteContract, "ExecutedWager")
                     .withArgs(player1Address, expectedWheelNumber);
             });
         });
@@ -330,5 +340,21 @@ describe("Roulette.sol", () => {
 
         });
 
+        // describe("executeWager", () => {
+        //     it("transfers 1 token to the roulette contract", async () => {
+        //         const {
+        //             RouletteContract,
+        //             MyGameTokenContract,
+        //             player1Address,
+        //         } = await loadFixture(fixtures);
+
+        //         await RouletteContract.executeWager(player1Address);
+
+        //         const actual = await MyGameTokenContract.balanceOf(RouletteContract.address);
+
+        //         const expected = 1;
+        //         expect(actual).to.equal(expected);
+        //     });
+        // });
     });
 });

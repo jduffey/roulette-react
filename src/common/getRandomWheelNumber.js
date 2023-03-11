@@ -55,7 +55,7 @@ async function getRandomIntBetweenZeroInclusiveAndMaxExclusive(max, entropy) {
     };
 }
 
-export const getRandomWheelNumber = async (entropy) => {
+export const DEPRECTAED_getRandomWheelNumber = async (entropy) => {
     const randomnessData = await getRandomIntBetweenZeroInclusiveAndMaxExclusive(Object.keys(WHEEL_NUMBERS).length, entropy);
 
     // TODO leaving here as reminder to extract and test

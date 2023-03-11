@@ -16,7 +16,7 @@ export function SpinResult(props) {
             setBgColor(getWheelNumberColor(props.spinResult));
             setMostRecentSpinResultText(props.spinResult === 37 ? "00" : props.spinResult);
         } else {
-            rouletteContractEvents.on('WheelNumber', (playerAddress, wheelNumber) => {
+            rouletteContractEvents.on('ExecutedWager', (playerAddress, wheelNumber) => {
                 if (playerAddress === props.playerAddress) {
                     setBgColor(getWheelNumberColor(parseInt(wheelNumber, 10)));
                     setMostRecentSpinResultText(parseInt(wheelNumber, 10) === 37 ? "00" : parseInt(wheelNumber, 10));

@@ -87,26 +87,6 @@ async function executeWager(address) {
     return tx;
 }
 
-async function getTotalSpins() {
-    const contract = new ethers.Contract(
-        ROULETTE_CONTRACT_ADDRESS,
-        ["function getTotalSpins() public view returns (uint256)"],
-        provider.getSigner(HOUSE_ADDRESS)
-    );
-    const count = await contract.getTotalSpins();
-    return count;
-}
-
-async function getTotalAmountWagered() {
-    const contract = new ethers.Contract(
-        ROULETTE_CONTRACT_ADDRESS,
-        ["function getTotalAmountWagered() public view returns (uint256)"],
-        provider.getSigner(HOUSE_ADDRESS)
-    );
-    const count = await contract.getTotalAmountWagered();
-    return ethers.utils.formatEther(count);
-}
-
 async function getEthBalance(address) {
     const signer = provider.getSigner(address);
     const balance = await signer.getBalance();
@@ -127,6 +107,90 @@ async function getTokenBalance(address) {
     const balance = await token.balanceOf(address);
     return ethers.utils.formatEther(balance);
 }
+
+async function getPlayerNumberCompletionSetsCounter(address) {
+    const contract = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function getPlayerNumberCompletionSetsCounter(address) public view returns (uint256)"],
+        provider.getSigner(address)
+    );
+    const count = await contract.getPlayerNumberCompletionSetsCounter(address);
+    return count;
+}
+
+async function getPlayerNumberCompletionSetCurrent(address) {
+    const contract = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function getPlayerNumberCompletionSetCurrent(address) public view returns (uint256[])"],
+        provider.getSigner(address)
+    );
+    const currentSet = await contract.getPlayerNumberCompletionSetCurrent(address);
+    return currentSet.map((bigIntNumber) => parseInt(bigIntNumber.toString(), 10));;
+}
+
+let tokenSymbol;
+(new ethers.Contract(
+    TOKEN_CONTRACT_ADDRESS,
+    ["function symbol() view returns (string)"],
+    provider
+)).symbol().then((symbol) => {
+    tokenSymbol = symbol;
+});
+
+const rouletteContractEvents = new ethers.Contract(
+    ROULETTE_CONTRACT_ADDRESS,
+    [
+        'event ExecutedWager(address indexed, uint256)',
+    ],
+    provider
+);
+
+export {
+    executeWager,
+    getEthBalance,
+    getBlock,
+    getTokenBalance,
+    // depositEthForTokens,
+    // redeemTokensForEth,
+    // transferFrom,
+    // getTotalSpins,
+    // getTotalAmountWagered,
+    // getRewardsPoolBalance,
+    // getPlayerSpins,
+    // getPlayerRewards,
+    getPlayerNumberCompletionSetsCounter,
+    getPlayerNumberCompletionSetCurrent,
+    FIRST_PLAYER_ADDRESS,
+    SECOND_PLAYER_ADDRESS,
+    THIRD_PLAYER_ADDRESS,
+    HOUSE_ADDRESS,
+    TOKEN_CONTRACT_ADDRESS,
+    ROULETTE_CONTRACT_ADDRESS,
+    RANDOMNESS_PROVIDER_CONTRACT_ADDRESS,
+    tokenSymbol,
+    rouletteContractEvents,
+};
+
+
+// async function getTotalSpins() {
+//     const contract = new ethers.Contract(
+//         ROULETTE_CONTRACT_ADDRESS,
+//         ["function getTotalSpins() public view returns (uint256)"],
+//         provider.getSigner(HOUSE_ADDRESS)
+//     );
+//     const count = await contract.getTotalSpins();
+//     return count;
+// }
+
+// async function getTotalAmountWagered() {
+//     const contract = new ethers.Contract(
+//         ROULETTE_CONTRACT_ADDRESS,
+//         ["function getTotalAmountWagered() public view returns (uint256)"],
+//         provider.getSigner(HOUSE_ADDRESS)
+//     );
+//     const count = await contract.getTotalAmountWagered();
+//     return ethers.utils.formatEther(count);
+// }
 
 // async function depositEthForTokens(from, amount) {
 //     const signer = provider.getSigner(from);
@@ -163,90 +227,27 @@ async function getTokenBalance(address) {
 //     return tx;
 // }
 
-async function getRewardsPoolBalance() {
-    const tokenBalance = await getTokenBalance(ROULETTE_CONTRACT_ADDRESS);
-    return tokenBalance;
-}
+// async function getRewardsPoolBalance() {
+//     const tokenBalance = await getTokenBalance(ROULETTE_CONTRACT_ADDRESS);
+//     return tokenBalance;
+// }
 
-async function getPlayerSpins(address) {
-    const contract = new ethers.Contract(
-        ROULETTE_CONTRACT_ADDRESS,
-        ["function getPlayerSpins(address) public view returns (uint256)"],
-        provider.getSigner(address)
-    );
-    const count = await contract.getPlayerSpins(address);
-    return count;
-}
+// async function getPlayerSpins(address) {
+//     const contract = new ethers.Contract(
+//         ROULETTE_CONTRACT_ADDRESS,
+//         ["function getPlayerSpins(address) public view returns (uint256)"],
+//         provider.getSigner(address)
+//     );
+//     const count = await contract.getPlayerSpins(address);
+//     return count;
+// }
 
-async function getPlayerRewards(address) {
-    const contract = new ethers.Contract(
-        ROULETTE_CONTRACT_ADDRESS,
-        ["function getPlayerRewards(address) public view returns (uint256)"],
-        provider.getSigner(address)
-    );
-    const count = await contract.getPlayerRewards(address);
-    return ethers.utils.formatEther(count);
-}
-
-async function getPlayerNumberCompletionSetsCounter(address) {
-    const contract = new ethers.Contract(
-        ROULETTE_CONTRACT_ADDRESS,
-        ["function getPlayerNumberCompletionSetsCounter(address) public view returns (uint256)"],
-        provider.getSigner(address)
-    );
-    const count = await contract.getPlayerNumberCompletionSetsCounter(address);
-    return count;
-}
-
-async function getPlayerNumberCompletionSetCurrent(address) {
-    const contract = new ethers.Contract(
-        ROULETTE_CONTRACT_ADDRESS,
-        ["function getPlayerNumberCompletionSetCurrent(address) public view returns (uint256[])"],
-        provider.getSigner(address)
-    );
-    const currentSet = await contract.getPlayerNumberCompletionSetCurrent(address);
-    return currentSet.map((bigIntNumber) => parseInt(bigIntNumber.toString(), 10));;
-}
-
-let tokenSymbol;
-(new ethers.Contract(
-    TOKEN_CONTRACT_ADDRESS,
-    ["function symbol() view returns (string)"],
-    provider
-)).symbol().then((symbol) => {
-    tokenSymbol = symbol;
-});
-
-const rouletteContractEvents = new ethers.Contract(
-    ROULETTE_CONTRACT_ADDRESS,
-    [
-        'event WheelNumber(address indexed, uint256)',
-    ],
-    provider
-);
-
-export {
-    executeWager,
-    getEthBalance,
-    getBlock,
-    getTokenBalance,
-    // depositEthForTokens,
-    // redeemTokensForEth,
-    // transferFrom,
-    getTotalSpins,
-    getTotalAmountWagered,
-    getRewardsPoolBalance,
-    getPlayerSpins,
-    getPlayerRewards,
-    getPlayerNumberCompletionSetsCounter,
-    getPlayerNumberCompletionSetCurrent,
-    FIRST_PLAYER_ADDRESS,
-    SECOND_PLAYER_ADDRESS,
-    THIRD_PLAYER_ADDRESS,
-    HOUSE_ADDRESS,
-    TOKEN_CONTRACT_ADDRESS,
-    ROULETTE_CONTRACT_ADDRESS,
-    RANDOMNESS_PROVIDER_CONTRACT_ADDRESS,
-    tokenSymbol,
-    rouletteContractEvents,
-};
+// async function getPlayerRewards(address) {
+//     const contract = new ethers.Contract(
+//         ROULETTE_CONTRACT_ADDRESS,
+//         ["function getPlayerRewards(address) public view returns (uint256)"],
+//         provider.getSigner(address)
+//     );
+//     const count = await contract.getPlayerRewards(address);
+//     return ethers.utils.formatEther(count);
+// }

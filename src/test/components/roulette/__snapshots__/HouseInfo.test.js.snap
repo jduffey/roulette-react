@@ -16,17 +16,17 @@ exports[`HouseInfo renders when houseBalance is 0 1`] = `
   <div>
     Rewards Pool
     <br />
-    Loading...
+    DISABLED
   </div>
   <div>
     Total Spins
     <br />
-    Loading...
+    DISABLED
   </div>
   <div>
     Total Amount Wagered
     <br />
-    Loading...
+    DISABLED
   </div>
 </div>
 `;
@@ -47,17 +47,17 @@ exports[`HouseInfo renders when houseBalance is 123456.9876 1`] = `
   <div>
     Rewards Pool
     <br />
-    Loading...
+    DISABLED
   </div>
   <div>
     Total Spins
     <br />
-    Loading...
+    DISABLED
   </div>
   <div>
     Total Amount Wagered
     <br />
-    Loading...
+    DISABLED
   </div>
 </div>
 `;
@@ -78,17 +78,17 @@ exports[`HouseInfo renders when houseBalance is undefined 1`] = `
   <div>
     Rewards Pool
     <br />
-    Loading...
+    DISABLED
   </div>
   <div>
     Total Spins
     <br />
-    Loading...
+    DISABLED
   </div>
   <div>
     Total Amount Wagered
     <br />
-    Loading...
+    DISABLED
   </div>
 </div>
 `;

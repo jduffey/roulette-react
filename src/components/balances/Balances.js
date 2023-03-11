@@ -5,8 +5,8 @@ import {
     getBlock,
     getTokenBalance,
     tokenSymbol,
-    getPlayerSpins,
-    getPlayerRewards,
+    // getPlayerSpins,
+    // getPlayerRewards,
     getPlayerNumberCompletionSetsCounter,
     getPlayerNumberCompletionSetCurrent,
     FIRST_PLAYER_ADDRESS,
@@ -20,8 +20,8 @@ import {
 export function Balances() {
     const [ethBalances, setEthBalances] = useState([]);
     const [tokenBalances, setTokenBalances] = useState([]);
-    const [playerRewards, setPlayerRewards] = useState([]);
-    const [playerSpins, setPlayerSpins] = useState([]);
+    // const [playerRewards, setPlayerRewards] = useState("DISABLED");
+    // const [playerSpins, setPlayerSpins] = useState("DISABLED");
     const [playerNumberCompletionSetsCounter, setPlayerNumberCompletionSetsCounter] = useState([]);
     const [playerNumberCompletionSetCurrent, setPlayerNumberCompletionSetCurrent] = useState([]);
 
@@ -75,31 +75,31 @@ export function Balances() {
                 setTokenBalances(newBalances);
             });
 
-            const addressesWithRewardsPromises = addressesInDisplayOrder.map(async (address) => {
-                const balance = await getPlayerRewards(address);
-                return { address, balance };
-            });
+            // const addressesWithRewardsPromises = addressesInDisplayOrder.map(async (address) => {
+            //     const balance = await getPlayerRewards(address);
+            //     return { address, balance };
+            // });
 
-            Promise.all(addressesWithRewardsPromises).then((res) => {
-                const newBalances = res.reduce((acc, cur) => {
-                    acc[cur.address] = cur.balance;
-                    return acc;
-                }, {});
-                setPlayerRewards(newBalances);
-            });
+            // Promise.all(addressesWithRewardsPromises).then((res) => {
+            //     const newBalances = res.reduce((acc, cur) => {
+            //         acc[cur.address] = cur.balance;
+            //         return acc;
+            //     }, {});
+            //     setPlayerRewards(newBalances);
+            // });
 
-            const addressesWithSpinsPromises = addressesInDisplayOrder.map(async (address) => {
-                const count = await getPlayerSpins(address);
-                return { address, count };
-            });
+            // const addressesWithSpinsPromises = addressesInDisplayOrder.map(async (address) => {
+            //     const count = await getPlayerSpins(address);
+            //     return { address, count };
+            // });
 
-            Promise.all(addressesWithSpinsPromises).then((res) => {
-                const counts = res.reduce((acc, cur) => {
-                    acc[cur.address] = cur.count;
-                    return acc;
-                }, {});
-                setPlayerSpins(counts);
-            });
+            // Promise.all(addressesWithSpinsPromises).then((res) => {
+            //     const counts = res.reduce((acc, cur) => {
+            //         acc[cur.address] = cur.count;
+            //         return acc;
+            //     }, {});
+            //     setPlayerSpins(counts);
+            // });
 
             const addressesWithNumberCompletionSetsCounterPromises = addressesInDisplayOrder.map(async (address) => {
                 const count = await getPlayerNumberCompletionSetsCounter(address);
@@ -140,8 +140,8 @@ export function Balances() {
         acc[address] = {
             ethBalance: ethBalances[address],
             tokenBalance: tokenBalances[address],
-            rewards: playerRewards[address],
-            spins: playerSpins[address],
+            // rewards: playerRewards[address],
+            // spins: playerSpins[address],
             numberCompletionSetsCounter: playerNumberCompletionSetsCounter[address],
             numberCompletionSetCurrent: playerNumberCompletionSetCurrent[address],
         };
@@ -191,7 +191,7 @@ export function Balances() {
                     </thead>
                     <tbody>
                         {
-                            Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance, rewards, spins, numberCompletionSetsCounter, numberCompletionSetCurrent }]) => {
+                            Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance, _rewards, _spins, numberCompletionSetsCounter, numberCompletionSetCurrent }]) => {
                                 return (
                                     <tr key={addr}>
                                         <td>{NICKNAMES[addr]}</td>
@@ -211,16 +211,18 @@ export function Balances() {
                                             })}
                                         </td>
                                         <td>
-                                            {Number(rewards).toLocaleString(undefined, {
+                                            {/* {Number(rewards).toLocaleString(undefined, {
                                                 minimumFractionDigits: 4,
                                                 maximumFractionDigits: 4
-                                            })}
+                                            })} */}
+                                            {"DISABLED"}
                                         </td>
                                         <td>
-                                            {Number(spins).toLocaleString(undefined, {
+                                            {/* {Number(spins).toLocaleString(undefined, {
                                                 minimumFractionDigits: 0,
                                                 maximumFractionDigits: 0
-                                            })}
+                                            })} */}
+                                            {"DISABLED"}
                                         </td>
                                         <td>
                                             {Number(numberCompletionSetsCounter).toLocaleString(undefined, {

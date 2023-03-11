@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import {
-    getPlayerSpins,
-    getPlayerRewards,
+    // getPlayerSpins,
+    // getPlayerRewards,
 } from "../../common/blockchainWrapper";
 
 const formattedChainNumber = (chainNumber, decimals) => {
@@ -14,19 +14,19 @@ const formattedChainNumber = (chainNumber, decimals) => {
 
 const CLASS_NAME = "PlayerInfo-component";
 export function PlayerInfo(props) {
-    const [playerSpinCount, setPlayerSpinCount] = useState(undefined);
-    const [playerRewards, setPlayerRewards] = useState(undefined);
+    // const [playerSpinCount, setPlayerSpinCount] = useState(undefined);
+    // const [playerRewards, setPlayerRewards] = useState(undefined);
 
     useEffect(() => {
-        setTimeout(async () => {
-            const spins = await getPlayerSpins(props.playerAddress);
-            setPlayerSpinCount(spins);
+        // setTimeout(async () => {
+        //     const spins = await getPlayerSpins(props.playerAddress);
+        //     setPlayerSpinCount(spins);
 
-            const rewards = await getPlayerRewards(props.playerAddress);
-            setPlayerRewards(rewards);
-        }, 1000);
+        //     const rewards = await getPlayerRewards(props.playerAddress);
+        //     setPlayerRewards(rewards);
+        // }, 1000);
 
-    }, [props.playerAddress, playerSpinCount]);
+    }, [props.playerAddress]);
 
     return (
         <div
@@ -45,12 +45,14 @@ export function PlayerInfo(props) {
             <div>
                 Player Spins
                 < br />
-                {formattedChainNumber(playerSpinCount, 0)}
+                {/* {formattedChainNumber(playerSpinCount, 0)} */}
+                {"DISABLED"}
             </div>
             <div>
                 Player Rewards
                 < br />
-                {formattedChainNumber(playerRewards, 3)}
+                {/* {formattedChainNumber(playerRewards, 3)} */}
+                {"DISABLED"}
             </div>
         </div >
     )

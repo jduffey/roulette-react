@@ -17,12 +17,12 @@ exports[`PlayerInfo renders when playerBalance is 123456.354215 and totalBetAmou
   <div>
     Player Spins
     <br />
-    Loading...
+    DISABLED
   </div>
   <div>
     Player Rewards
     <br />
-    Loading...
+    DISABLED
   </div>
 </div>
 `;
@@ -44,12 +44,12 @@ exports[`PlayerInfo renders when playerBalance is undefined and totalBetAmount i
   <div>
     Player Spins
     <br />
-    Loading...
+    DISABLED
   </div>
   <div>
     Player Rewards
     <br />
-    Loading...
+    DISABLED
   </div>
 </div>
 `;
