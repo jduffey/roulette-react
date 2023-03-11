@@ -209,6 +209,38 @@ describe("Token contract", function () {
                         .to.be.revertedWith("Insufficient allowance");
                 });
             });
+
+            describe("successful scenarios", () => {
+                it("increases recipient token balance", async function () {
+                    const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
+
+                    await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
+
+                    await MyGameToken.connect(acct0).approve(acct1.address, ethers.utils.parseEther("5678"));
+
+                    await MyGameToken.connect(acct1).transferFrom(acct0.address, acct1.address, ethers.utils.parseEther("5678"));
+
+                    const actual = await MyGameToken.balanceOf(acct1.address);
+
+                    const expected = ethers.utils.parseEther("5678");
+                    expect(actual).to.equal(expected);
+                });
+
+                it("decreases sender token balance", async function () {
+                    const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
+
+                    await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
+
+                    await MyGameToken.connect(acct0).approve(acct1.address, ethers.utils.parseEther("5678"));
+
+                    await MyGameToken.connect(acct1).transferFrom(acct0.address, acct1.address, ethers.utils.parseEther("5678"));
+
+                    const actual = await MyGameToken.balanceOf(acct0.address);
+
+                    const expected = ethers.utils.parseEther("94322");
+                    expect(actual).to.equal(expected);
+                });
+            });
         });
     });
 });

@@ -46,11 +46,11 @@ contract MyGameToken {
         return address(this).balance * _tokensPerEth;
     }
 
-    // function approve(address guy, uint256 wad) public returns (bool) {
-    //     allowance[msg.sender][guy] = wad;
-    //     emit Approval(msg.sender, guy, wad);
-    //     return true;
-    // }
+    function approve(address guy, uint256 wad) public returns (bool) {
+        allowance[msg.sender][guy] = wad;
+        // emit Approval(msg.sender, guy, wad);
+        return true;
+    }
 
     function transfer(address dst, uint256 wad) public returns (bool) {
         return transferFrom(msg.sender, dst, wad);
