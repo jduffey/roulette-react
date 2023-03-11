@@ -18,26 +18,26 @@ const formattedChainNumber = (chainNumber, decimals) => {
 const CLASS_NAME = "HouseInfo-component";
 export function HouseInfo(props) {
     const [houseBalance, setHouseBalance] = useState(undefined);
-    const [totalSpins, setTotalSpins] = useState("DISABLED");
-    const [totalAmountWagered, setTotalAmountWagered] = useState("DISABLED");
-    const [totalRewardsPool, setTotalRewardsPool] = useState("DISABLED");
+    // const [totalSpins, setTotalSpins] = useState("DISABLED");
+    // const [totalAmountWagered, setTotalAmountWagered] = useState("DISABLED");
+    // const [totalRewardsPool, setTotalRewardsPool] = useState("DISABLED");
 
     useEffect(() => {
-        // setTimeout(async () => {
-        //     const houseBal = await getTokenBalance(HOUSE_ADDRESS);
-        //     setHouseBalance(houseBal);
+        setTimeout(async () => {
+            const houseBal = await getTokenBalance(HOUSE_ADDRESS);
+            setHouseBalance(houseBal);
 
-        //     const spins = await getTotalSpins();
-        //     setTotalSpins(spins);
+            // const spins = await getTotalSpins();
+            // setTotalSpins(spins);
 
-        //     const taw = await getTotalAmountWagered();
-        //     setTotalAmountWagered(taw);
+            // const taw = await getTotalAmountWagered();
+            // setTotalAmountWagered(taw);
 
-        //     const totalRewards = await getRewardsPoolBalance();
-        //     setTotalRewardsPool(totalRewards);
-        // }, 1000);
+            // const totalRewards = await getRewardsPoolBalance();
+            // setTotalRewardsPool(totalRewards);
+        }, 1000);
 
-    }, [totalSpins]);
+    }, []);
 
     return (
         <div

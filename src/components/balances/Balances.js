@@ -20,8 +20,8 @@ import {
 export function Balances() {
     const [ethBalances, setEthBalances] = useState([]);
     const [tokenBalances, setTokenBalances] = useState([]);
-    const [playerRewards, setPlayerRewards] = useState("DISABLED");
-    const [playerSpins, setPlayerSpins] = useState("DISABLED");
+    // const [playerRewards, setPlayerRewards] = useState("DISABLED");
+    // const [playerSpins, setPlayerSpins] = useState("DISABLED");
     const [playerNumberCompletionSetsCounter, setPlayerNumberCompletionSetsCounter] = useState([]);
     const [playerNumberCompletionSetCurrent, setPlayerNumberCompletionSetCurrent] = useState([]);
 
@@ -140,8 +140,8 @@ export function Balances() {
         acc[address] = {
             ethBalance: ethBalances[address],
             tokenBalance: tokenBalances[address],
-            rewards: playerRewards[address],
-            spins: playerSpins[address],
+            // rewards: playerRewards[address],
+            // spins: playerSpins[address],
             numberCompletionSetsCounter: playerNumberCompletionSetsCounter[address],
             numberCompletionSetCurrent: playerNumberCompletionSetCurrent[address],
         };
