@@ -191,7 +191,7 @@ export function Balances() {
                     </thead>
                     <tbody>
                         {
-                            Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance, rewards, spins, numberCompletionSetsCounter, numberCompletionSetCurrent }]) => {
+                            Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance, _rewards, _spins, numberCompletionSetsCounter, numberCompletionSetCurrent }]) => {
                                 return (
                                     <tr key={addr}>
                                         <td>{NICKNAMES[addr]}</td>

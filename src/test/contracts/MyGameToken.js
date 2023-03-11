@@ -63,7 +63,7 @@ describe("MyGameToken contract", () => {
             expect(actual).to.equal(expected);
         });
 
-        it("emits a Deposit event", async  () => {
+        it("emits a Deposit event", async () => {
             const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
 
             await expect(MyGameToken.deposit({ value: ethers.utils.parseEther("1") }))
