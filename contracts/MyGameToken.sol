@@ -63,7 +63,7 @@ contract MyGameToken {
         // if (src != msg.sender && allowance[src][msg.sender] != type(uint256).max) {
         if (src != msg.sender) {
             require(allowance[src][msg.sender] >= tokensToTransfer, "Insufficient allowance");
-            // allowance[src][msg.sender] -= wad;
+            allowance[src][msg.sender] -= tokensToTransfer;
         }
 
         balanceOf[src] -= tokensToTransfer;

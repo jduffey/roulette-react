@@ -212,6 +212,19 @@ describe("MyGameToken contract", function () {
                     await expect(MyGameToken.connect(acct1).transferFrom(acct0.address, acct1.address, ethers.utils.parseEther("1")))
                         .to.be.revertedWith("Insufficient allowance");
                 });
+
+                it("caller runs out of allowance to send tokens", async function () {
+                    const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
+
+                    await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
+
+                    await MyGameToken.connect(acct0).approve(acct1.address, ethers.utils.parseEther("5678"));
+
+                    await MyGameToken.connect(acct1).transferFrom(acct0.address, acct1.address, ethers.utils.parseEther("5678"));
+
+                    await expect(MyGameToken.connect(acct1).transferFrom(acct0.address, acct1.address, ethers.utils.parseEther("1")))
+                        .to.be.revertedWith("Insufficient allowance");
+                });
             });
 
             describe("successful scenarios", () => {
