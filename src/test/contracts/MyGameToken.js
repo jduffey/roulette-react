@@ -164,11 +164,17 @@ describe("MyGameToken contract", () => {
 
             await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
 
-            await MyGameToken.connect(acct0).transfer(acct1.address, ethers.utils.parseEther("5678"));
+            // Transfer twice to test that the balance is cumulative and not merely set to the value of the transfer
+            // i.e. we need
+            //    balanceOf[dst] += tokensToTransfer;
+            // and not
+            //    balanceOf[dst] = tokensToTransfer;
+            await MyGameToken.connect(acct0).transfer(acct1.address, ethers.utils.parseEther("250"));
+            await MyGameToken.connect(acct0).transfer(acct1.address, ethers.utils.parseEther("150"));
 
             const actual = await MyGameToken.balanceOf(acct1.address);
 
-            const expected = ethers.utils.parseEther("5678");
+            const expected = ethers.utils.parseEther("400");
             expect(actual).to.equal(expected);
         });
 
@@ -277,11 +283,12 @@ describe("MyGameToken contract", () => {
 
                     await MyGameToken.connect(acct0).approve(acct1.address, ethers.utils.parseEther("5678"));
 
-                    await MyGameToken.connect(acct1).transferFrom(acct0.address, acct1.address, ethers.utils.parseEther("5678"));
+                    await MyGameToken.connect(acct1).transferFrom(acct0.address, acct1.address, ethers.utils.parseEther("1230"));
+                    await MyGameToken.connect(acct1).transferFrom(acct0.address, acct1.address, ethers.utils.parseEther("70"));
 
                     const actual = await MyGameToken.balanceOf(acct1.address);
 
-                    const expected = ethers.utils.parseEther("5678");
+                    const expected = ethers.utils.parseEther("1300");
                     expect(actual).to.equal(expected);
                 });
 
