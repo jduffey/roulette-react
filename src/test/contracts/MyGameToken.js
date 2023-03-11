@@ -179,26 +179,16 @@ describe("Token contract", function () {
                 .to.emit(MyGameToken, "Transfer")
                 .withArgs(acct0.address, acct1.address, ethers.utils.parseEther("5678"));
         });
-
-        // TODO: unsure on how to test this boolean
-        // it("returns true if the transfer is successful", async function () {
-        //     const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
-
-        //     await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
-
-        //     const actualTx = await MyGameToken.transfer(acct1.address, ethers.utils.parseEther("5678"));
-
-        //     // ????
-        //     // const actual = await actualTx.wait();
-        //     // console.log(actual);
-        //     // expect(actual.status).to.equal(1);
-        // });
     });
 
     describe("transferFrom()", function () {
         describe("msg.sender is token owner", () => {
-            // No tests needed here(?), as transfer() is already tested
-            // transferFrom() uses add'l logic only if msg.sender is not the source of the tokens to be transferred
+            it("reverts if the sender does not have enough tokens", async function () {
+                const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
+
+                await expect(MyGameToken.connect(acct0).transferFrom(acct0.address, acct1.address, ethers.utils.parseEther("1")))
+                    .to.be.revertedWith("Insufficient token balance");
+            });
         });
 
         describe("msg.sender is not token owner", () => {
