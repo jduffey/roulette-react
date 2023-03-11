@@ -5,7 +5,7 @@ const { expect } = require("chai");
 const { loadFixture } = require("@nomicfoundation/hardhat-network-helpers");
 const { ethers } = require("hardhat");
 
-describe("MyGameToken contract", function () {
+describe("MyGameToken contract", () => {
     async function deployTokenFixture() {
         const [acct0, acct1] = await ethers.getSigners();
 
@@ -16,7 +16,7 @@ describe("MyGameToken contract", function () {
         return { MyGameToken, acct0, acct1 };
     }
 
-    it("has common ERC20 properties", async function () {
+    it("has common ERC20 properties", async () => {
         const { MyGameToken } = await loadFixture(deployTokenFixture);
 
         expect(await MyGameToken.name()).to.equal("My Game Token");
@@ -24,8 +24,8 @@ describe("MyGameToken contract", function () {
         expect(await MyGameToken.decimals()).to.equal(18);
     });
 
-    describe("receive()", function () {
-        it("assigns 100,000 tokens per ETH transferred", async function () {
+    describe("receive()", () => {
+        it("assigns 100,000 tokens per ETH transferred", async () => {
             const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
 
             await acct0.sendTransaction({
@@ -40,8 +40,8 @@ describe("MyGameToken contract", function () {
         });
     });
 
-    describe("deposit()", function () {
-        it("assigns 100,000 tokens per ETH deposited", async function () {
+    describe("deposit()", () => {
+        it("assigns 100,000 tokens per ETH deposited", async () => {
             const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
 
             await MyGameToken.deposit({ value: ethers.utils.parseEther("1") });
@@ -52,7 +52,7 @@ describe("MyGameToken contract", function () {
             expect(actual).to.equal(expected);
         });
 
-        it("assigns the deposited ETH to the token contract", async function () {
+        it("assigns the deposited ETH to the token contract", async () => {
             const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
             await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
@@ -64,7 +64,7 @@ describe("MyGameToken contract", function () {
             expect(actual).to.equal(expected);
         });
 
-        it("emits a Deposit event", async function () {
+        it("emits a Deposit event", async  () => {
             const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
 
             await expect(MyGameToken.deposit({ value: ethers.utils.parseEther("1") }))
@@ -73,15 +73,15 @@ describe("MyGameToken contract", function () {
         });
     });
 
-    describe("redeem()", function () {
-        it("reverts if the redemption amount exceeds the token balance", async function () {
+    describe("redeem()", () => {
+        it("reverts if the redemption amount exceeds the token balance", async () => {
             const { MyGameToken } = await loadFixture(deployTokenFixture);
 
             await expect(MyGameToken.redeem(ethers.utils.parseEther("1")))
                 .to.be.revertedWith("Insufficient token balance");
         });
 
-        it("emits a Redeem event", async function () {
+        it("emits a Redeem event", async () => {
             const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
 
             await MyGameToken.deposit({ value: ethers.utils.parseEther("1") });
@@ -114,8 +114,8 @@ describe("MyGameToken contract", function () {
         });
     });
 
-    describe("totalSupply()", function () {
-        it("returns the total supply of tokens", async function () {
+    describe("totalSupply()", () => {
+        it("returns the total supply of tokens", async () => {
             const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
             await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
@@ -129,8 +129,8 @@ describe("MyGameToken contract", function () {
         });
     });
 
-    describe("approve()", function () {
-        it("emits an Approval event", async function () {
+    describe("approve()", () => {
+        it("emits an Approval event", async () => {
             const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
             await expect(MyGameToken.connect(acct0).approve(acct1.address, ethers.utils.parseEther("1")))
@@ -139,15 +139,15 @@ describe("MyGameToken contract", function () {
         });
     });
 
-    describe("transfer()", function () {
-        it("reverts if the msg.sender does not have enough tokens", async function () {
+    describe("transfer()", () => {
+        it("reverts if the msg.sender does not have enough tokens", async () => {
             const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
             await expect(MyGameToken.connect(acct0).transfer(acct1.address, ethers.utils.parseEther("1")))
                 .to.be.revertedWith("Insufficient token balance");
         });
 
-        it("increases recipient token balance", async function () {
+        it("increases recipient token balance", async () => {
             const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
             await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
@@ -160,7 +160,7 @@ describe("MyGameToken contract", function () {
             expect(actual).to.equal(expected);
         });
 
-        it("decreases sender token balance", async function () {
+        it("decreases sender token balance", async () => {
             const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
             await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
@@ -173,7 +173,7 @@ describe("MyGameToken contract", function () {
             expect(actual).to.equal(expected);
         });
 
-        it("emits a Transfer event", async function () {
+        it("emits a Transfer event", async () => {
             const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
             await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
@@ -185,9 +185,9 @@ describe("MyGameToken contract", function () {
         });
     });
 
-    describe("transferFrom()", function () {
+    describe("transferFrom()", () => {
         describe("msg.sender is token owner", () => {
-            it("reverts if the source does not have enough tokens", async function () {
+            it("reverts if the source does not have enough tokens", async () => {
                 const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
                 await expect(MyGameToken.connect(acct0).transferFrom(acct0.address, acct1.address, ethers.utils.parseEther("1")))
@@ -197,14 +197,14 @@ describe("MyGameToken contract", function () {
 
         describe("msg.sender is not token owner", () => {
             describe("reversion scenarios", () => {
-                it("source does not have enough tokens", async function () {
+                it("source does not have enough tokens", async () => {
                     const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
                     await expect(MyGameToken.connect(acct1).transferFrom(acct0.address, acct1.address, ethers.utils.parseEther("1")))
                         .to.be.revertedWith("Insufficient token balance");
                 });
 
-                it("caller does not have allowance to send tokens", async function () {
+                it("caller does not have allowance to send tokens", async () => {
                     const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
                     await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
@@ -213,7 +213,7 @@ describe("MyGameToken contract", function () {
                         .to.be.revertedWith("Insufficient allowance");
                 });
 
-                it("caller runs out of allowance to send tokens", async function () {
+                it("caller runs out of allowance to send tokens", async () => {
                     const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
                     await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
@@ -228,7 +228,7 @@ describe("MyGameToken contract", function () {
             });
 
             describe("successful scenarios", () => {
-                it("increases recipient token balance", async function () {
+                it("increases recipient token balance", async () => {
                     const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
                     await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
@@ -243,7 +243,7 @@ describe("MyGameToken contract", function () {
                     expect(actual).to.equal(expected);
                 });
 
-                it("decreases source token balance", async function () {
+                it("decreases source token balance", async () => {
                     const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
                     await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
