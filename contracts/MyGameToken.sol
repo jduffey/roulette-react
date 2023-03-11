@@ -59,7 +59,9 @@ contract MyGameToken {
     function transferFrom(address src, address dst, uint256 tokensToTransfer) public returns (bool) {
         require(balanceOf[src] >= tokensToTransfer, "Insufficient token balance");
 
-        if (src != msg.sender && allowance[src][msg.sender] != type(uint256).max) {
+        // What is allowance[src][msg.sender] != type(uint256).max for?
+        // if (src != msg.sender && allowance[src][msg.sender] != type(uint256).max) {
+        if (src != msg.sender) {
             require(allowance[src][msg.sender] >= tokensToTransfer, "Insufficient allowance");
             // allowance[src][msg.sender] -= wad;
         }
