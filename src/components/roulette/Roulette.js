@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { PendingBet } from '../../common/PendingBet';
 import { getCompleteResultsOfRound } from '../../common/getCompleteResultsOfRound';
-import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
+import { DEPRECTAED_getRandomWheelNumber } from '../../common/getRandomWheelNumber';
 import { CompletionsCounter } from './CompletionsCounter';
 
 import { BetResultsInfo } from './BetResultsInfo';
@@ -98,7 +98,7 @@ export function Roulette(props) {
 
         setWheelIsSpinning(true);
 
-        getRandomWheelNumber(`${Date.now()}${playerAddress}`)
+        DEPRECTAED_getRandomWheelNumber(`${Date.now()}${playerAddress}`)
             .then(randomWheelNumber => {
                 const resultsOfRound = getCompleteResultsOfRound(playerBalance, pendingBets, randomWheelNumber);
 
@@ -146,7 +146,7 @@ export function Roulette(props) {
                         setLatestBlockNumber(response.blockNumber);
                     })
                     .then(() => {
-                        rouletteContractEvents.on('WheelNumber', (playerAddr, wheelNum) => {
+                        rouletteContractEvents.on('ExecutedWager', (playerAddr, wheelNum) => {
                             if (playerAddr === props.playerAddress) {
                                 setWheelNumber(parseInt(wheelNum, 10));
                                 setWheelIsSpinning(false);

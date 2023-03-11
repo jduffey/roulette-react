@@ -78,13 +78,15 @@ async function initializeChain() {
     await _depositEthForTokens(tokenContractAddress, ethToDeposit);
 }
 
-initializeChain()
-    .then(() => {
-        console.log("\n✅ Chain initialized successfully ✅");
-        process.exit(0);
-    })
-    .catch((error) => {
-        console.log("\n❌ Error initializing chain ❌");
-        console.error(error);
-        process.exit(1);
-    });
+setTimeout(() => {
+    initializeChain()
+        .then(() => {
+            console.log("\n✅ Chain initialized successfully ✅");
+            process.exit(0);
+        })
+        .catch((error) => {
+            console.log("\n❌ Error initializing chain ❌");
+            console.error(error);
+            process.exit(1);
+        });
+}, 2000); // Set a delay so that CI pipeline can wait for the chain to start before deploying contracts

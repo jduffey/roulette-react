@@ -43,7 +43,7 @@ export const getWheelNumberColor = (wheelNumber) => {
             return STANDARD_COLORS.FELT_BLACK;
 
         case 0:
-        case 37:
+        case 37: // "00"
             return STANDARD_COLORS.FELT_GREEN;
 
         default:

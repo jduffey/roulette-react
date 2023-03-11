@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 
 import {
     getTokenBalance,
-    getTotalSpins,
-    getTotalAmountWagered,
+    // getTotalSpins,
+    // getTotalAmountWagered,
+    // getRewardsPoolBalance,
     HOUSE_ADDRESS,
-    getRewardsPoolBalance,
 } from "../../common/blockchainWrapper";
 
 const formattedChainNumber = (chainNumber, decimals) => {
@@ -18,26 +18,26 @@ const formattedChainNumber = (chainNumber, decimals) => {
 const CLASS_NAME = "HouseInfo-component";
 export function HouseInfo(props) {
     const [houseBalance, setHouseBalance] = useState(undefined);
-    const [totalSpins, setTotalSpins] = useState(undefined);
-    const [totalAmountWagered, setTotalAmountWagered] = useState(undefined);
-    const [totalRewardsPool, setTotalRewardsPool] = useState(undefined);
+    // const [totalSpins, setTotalSpins] = useState("DISABLED");
+    // const [totalAmountWagered, setTotalAmountWagered] = useState("DISABLED");
+    // const [totalRewardsPool, setTotalRewardsPool] = useState("DISABLED");
 
     useEffect(() => {
         setTimeout(async () => {
             const houseBal = await getTokenBalance(HOUSE_ADDRESS);
             setHouseBalance(houseBal);
 
-            const spins = await getTotalSpins();
-            setTotalSpins(spins);
+            // const spins = await getTotalSpins();
+            // setTotalSpins(spins);
 
-            const taw = await getTotalAmountWagered();
-            setTotalAmountWagered(taw);
+            // const taw = await getTotalAmountWagered();
+            // setTotalAmountWagered(taw);
 
-            const totalRewards = await getRewardsPoolBalance();
-            setTotalRewardsPool(totalRewards);
+            // const totalRewards = await getRewardsPoolBalance();
+            // setTotalRewardsPool(totalRewards);
         }, 1000);
 
-    }, [totalSpins]);
+    }, []);
 
     return (
         <div
@@ -56,17 +56,20 @@ export function HouseInfo(props) {
             <div>
                 Rewards Pool
                 < br />
-                {formattedChainNumber(totalRewardsPool, 3)}
+                {/* {formattedChainNumber(totalRewardsPool, 3)} */}
+                {"DISABLED"}
             </div>
             <div>
                 Total Spins
                 < br />
-                {formattedChainNumber(totalSpins, 0)}
+                {/* {formattedChainNumber(totalSpins, 0)} */}
+                {"DISABLED"}
             </div>
             <div>
                 Total Amount Wagered
                 < br />
-                {formattedChainNumber(totalAmountWagered, 2)}
+                {/* {formattedChainNumber(totalAmountWagered, 2)} */}
+                {"DISABLED"}
             </div>
         </div >
     )
