@@ -5,7 +5,7 @@ const { expect } = require("chai");
 const { loadFixture } = require("@nomicfoundation/hardhat-network-helpers");
 const { ethers } = require("hardhat");
 
-describe("Token contract", function () {
+describe("MyGameToken contract", function () {
     async function deployTokenFixture() {
         const [acct0, acct1] = await ethers.getSigners();
 
@@ -140,7 +140,7 @@ describe("Token contract", function () {
     });
 
     describe("transfer()", function () {
-        it("reverts if the sender does not have enough tokens", async function () {
+        it("reverts if the msg.sender does not have enough tokens", async function () {
             const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
             await expect(MyGameToken.connect(acct0).transfer(acct1.address, ethers.utils.parseEther("1")))
@@ -230,7 +230,7 @@ describe("Token contract", function () {
                     expect(actual).to.equal(expected);
                 });
 
-                it("decreases sender token balance", async function () {
+                it("decreases source token balance", async function () {
                     const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
                     await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
