@@ -129,11 +129,15 @@ describe("Token contract", function () {
         });
     });
 
-    // describe("approve()", function () {
-    //     it("emits an Approval event", async function () {
-    //         // TODO: implement
-    //     });
-    // });
+    describe("approve()", function () {
+        it("emits an Approval event", async function () {
+            const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
+
+            await expect(MyGameToken.connect(acct0).approve(acct1.address, ethers.utils.parseEther("1")))
+                .to.emit(MyGameToken, "Approval")
+                .withArgs(acct0.address, acct1.address, ethers.utils.parseEther("1"));
+        });
+    });
 
     describe("transfer()", function () {
         it("reverts if the sender does not have enough tokens", async function () {

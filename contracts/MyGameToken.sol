@@ -8,7 +8,7 @@ contract MyGameToken {
     uint8 public decimals = 18;
     uint256 private _tokensPerEth = 100_000;
 
-    // event Approval(address indexed src, address indexed guy, uint256 wad);
+    event Approval(address indexed src, address indexed guy, uint256 wad);
     event Transfer(address indexed src, address indexed dst, uint256 wad);
     event Deposit(address indexed addr, uint256 ethDeposited);
     event Redeem(address indexed src, uint256 tokensRedeemed);
@@ -48,7 +48,7 @@ contract MyGameToken {
 
     function approve(address guy, uint256 wad) public returns (bool) {
         allowance[msg.sender][guy] = wad;
-        // emit Approval(msg.sender, guy, wad);
+        emit Approval(msg.sender, guy, wad);
         return true;
     }
 
