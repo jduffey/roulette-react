@@ -47,7 +47,7 @@ contract MyGameToken {
     }
 
     function approve(address guy, uint256 wad) public returns (bool) {
-        allowance[msg.sender][guy] = wad;
+        allowance[msg.sender][guy] = wad; // TODO untested operator
         emit Approval(msg.sender, guy, wad);
         return true;
     }

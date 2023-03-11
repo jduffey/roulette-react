@@ -44,10 +44,11 @@ describe("MyGameToken contract", () => {
             const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
 
             await MyGameToken.deposit({ value: ethers.utils.parseEther("1") });
+            await MyGameToken.deposit({ value: ethers.utils.parseEther("1.5") });
 
             const actual = await MyGameToken.balanceOf(acct0.address);
 
-            const expected = ethers.utils.parseEther("100000");
+            const expected = ethers.utils.parseEther("250000");
             expect(actual).to.equal(expected);
         });
 
