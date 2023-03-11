@@ -69,6 +69,6 @@ contract MyGameToken {
 
         emit Transfer(src, dst, tokensToTransfer);
 
-        // return true;
+        // return true; // How to test this value?
     }
 }

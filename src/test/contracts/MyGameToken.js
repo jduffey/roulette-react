@@ -196,13 +196,20 @@ describe("Token contract", function () {
     });
 
     describe("transferFrom()", function () {
-        it("reverts if the sender does not have allowance to send tokens", async function () {
-            const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
+        describe("msg.sender is token owner", () => {
+            // No tests needed here(?), as transfer() is already tested
+            // transferFrom() uses add'l logic only if msg.sender is not the source of the tokens to be transferred
+        });
 
-            await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
+        describe("msg.sender is not token owner", () => {
+            it("reverts if the sender does not have allowance to send tokens", async function () {
+                const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
-            await expect(MyGameToken.connect(acct1).transferFrom(acct0.address, acct1.address, ethers.utils.parseEther("1")))
-                .to.be.revertedWith("Insufficient allowance");
+                await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
+
+                await expect(MyGameToken.connect(acct1).transferFrom(acct0.address, acct1.address, ethers.utils.parseEther("1")))
+                    .to.be.revertedWith("Insufficient allowance");
+            });
         });
     });
 });
