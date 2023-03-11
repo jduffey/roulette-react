@@ -14,7 +14,7 @@ contract MyGameToken {
     event Redeem(address indexed src, uint256 tokensRedeemed);
 
     mapping(address => uint256) public balanceOf;
-    // mapping(address => mapping(address => uint256)) public allowance;
+    mapping(address => mapping(address => uint256)) public allowance;
 
     receive() external payable {
         deposit();
@@ -59,10 +59,10 @@ contract MyGameToken {
     function transferFrom(address src, address dst, uint256 tokensToTransfer) public returns (bool) {
         require(balanceOf[src] >= tokensToTransfer, "Insufficient token balance");
 
-        // if (src != msg.sender && allowance[src][msg.sender] != type(uint256).max) {
-        //     require(allowance[src][msg.sender] >= wad);
-        //     allowance[src][msg.sender] -= wad;
-        // }
+        if (src != msg.sender && allowance[src][msg.sender] != type(uint256).max) {
+            require(allowance[src][msg.sender] >= tokensToTransfer, "Insufficient allowance");
+            // allowance[src][msg.sender] -= wad;
+        }
 
         balanceOf[src] -= tokensToTransfer;
         balanceOf[dst] += tokensToTransfer;

@@ -196,6 +196,13 @@ describe("Token contract", function () {
     });
 
     describe("transferFrom()", function () {
-        // Don't forget me!
+        it("reverts if the sender does not have allowance to send tokens", async function () {
+            const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
+
+            await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
+
+            await expect(MyGameToken.connect(acct1).transferFrom(acct0.address, acct1.address, ethers.utils.parseEther("1")))
+                .to.be.revertedWith("Insufficient allowance");
+        });
     });
 });
