@@ -30,5 +30,4 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
     - run: npm run test-chain
-    - run: npm run start-chain
-    - run: npm run init-chain
+    - run: npm run start-chain & npm run init-chain

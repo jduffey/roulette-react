@@ -77,7 +77,7 @@ async function initializeChain() {
         await _deployContract(house, "RandomnessProvider")
         await _deployContract(house, "Roulette", "0x261D8c5e9742e6f7f1076Fa1F560894524e19cad");
         await _depositEthForTokens(tokenContractAddress, ethToDeposit);
-    }, 1000); // Set a delay so that CI pipeline can wait for the chain to start before deploying contracts
+    }, 5000); // Set a delay so that CI pipeline can wait for the chain to start before deploying contracts
 }
 
 initializeChain()
