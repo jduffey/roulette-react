@@ -183,7 +183,7 @@ describe("Token contract", function () {
 
     describe("transferFrom()", function () {
         describe("msg.sender is token owner", () => {
-            it("reverts if the sender does not have enough tokens", async function () {
+            it("reverts if the source does not have enough tokens", async function () {
                 const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
                 await expect(MyGameToken.connect(acct0).transferFrom(acct0.address, acct1.address, ethers.utils.parseEther("1")))
@@ -192,7 +192,14 @@ describe("Token contract", function () {
         });
 
         describe("msg.sender is not token owner", () => {
-            it("reverts if the sender does not have allowance to send tokens", async function () {
+            it("reverts if the source does not have enough tokens", async function () {
+                const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
+
+                await expect(MyGameToken.connect(acct1).transferFrom(acct0.address, acct1.address, ethers.utils.parseEther("1")))
+                    .to.be.revertedWith("Insufficient token balance");
+            });
+
+            it("reverts if caller does not have allowance to send tokens", async function () {
                 const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
                 await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
