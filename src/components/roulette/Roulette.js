@@ -102,36 +102,6 @@ export function Roulette(props) {
             .then(randomWheelNumber => {
                 const resultsOfRound = getCompleteResultsOfRound(playerBalance, pendingBets, randomWheelNumber);
 
-                // Go through each bet and sum the total owed back to the player
-                const owedByHouseToPlayer = Object.entries(resultsOfRound.resultsOfBets).reduce((acc, [_betName, individualBetResult]) => {
-                    if (individualBetResult.didBetWin) {
-                        acc += individualBetResult.winningsOnBet;
-                    }
-                    return acc;
-                }, 0);
-
-                const owedByPlayerToHouse = Object.entries(resultsOfRound.resultsOfBets).reduce((acc, [_betName, individualBetResult]) => {
-                    if (!individualBetResult.didBetWin) {
-                        acc += individualBetResult.betAmount;
-                    }
-                    return acc;
-                }, 0);
-
-                if (owedByHouseToPlayer > 0) {
-                    // TODO replace with contract functionality
-                }
-
-                if (owedByPlayerToHouse > 0) {
-                    // TODO replace with contract functionality
-                }
-
-                // "1% of house take goes to Rewards Pool"
-                const owedByHouseToRewardsPool = owedByPlayerToHouse * 0.01;
-                // const owedByHouseToPlayersRewards = owedByHouseToRewardsPool;
-                if (owedByHouseToRewardsPool > 0) {
-                    // TODO replace with contract functionality
-                }
-
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
 
                 setPendingBets([]);
