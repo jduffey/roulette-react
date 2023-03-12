@@ -140,7 +140,7 @@ describe("MyGameToken contract", () => {
     });
 
     describe("transfer()", () => {
-        it("reverts if the msg.sender does not have enough tokens", async () => {
+        it("reverts if msg.sender does not have enough tokens", async () => {
             const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
             await expect(MyGameToken.connect(acct0).transfer(acct1.address, ethers.utils.parseEther("1")))
@@ -223,7 +223,7 @@ describe("MyGameToken contract", () => {
                         .to.be.revertedWith("Insufficient allowance");
                 });
 
-                it("caller runs out of allowance to send tokens", async () => {
+                it("caller has allowance but then runs out of allowance to send tokens", async () => {
                     const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
                     await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
