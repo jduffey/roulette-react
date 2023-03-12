@@ -2170,16 +2170,6 @@ exports[`Roulette renders 1`] = `
       <br />
       0
     </div>
-    <div>
-      Player Spins
-      <br />
-      DISABLED
-    </div>
-    <div>
-      Player Rewards
-      <br />
-      DISABLED
-    </div>
   </div>
   <div
     className="PendingBetsTable-component"
@@ -2336,7 +2326,7 @@ exports[`Roulette renders 1`] = `
         }
       }
     >
-      37
+      00
     </div>
     <div
       className="hit-number"
@@ -2752,21 +2742,6 @@ exports[`Roulette renders 1`] = `
       House Balance
       <br />
       Loading...
-    </div>
-    <div>
-      Rewards Pool
-      <br />
-      DISABLED
-    </div>
-    <div>
-      Total Spins
-      <br />
-      DISABLED
-    </div>
-    <div>
-      Total Amount Wagered
-      <br />
-      DISABLED
     </div>
   </div>
 </div>

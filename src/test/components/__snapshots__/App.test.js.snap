@@ -142,24 +142,6 @@ Array [
             <th
               style={
                 Object {
-                  "width": "16%",
-                }
-              }
-            >
-              Rewards
-            </th>
-            <th
-              style={
-                Object {
-                  "width": "10%",
-                }
-              }
-            >
-              Spins
-            </th>
-            <th
-              style={
-                Object {
                   "width": "10%",
                 }
               }
@@ -2387,16 +2369,6 @@ Array [
         <br />
         0
       </div>
-      <div>
-        Player Spins
-        <br />
-        DISABLED
-      </div>
-      <div>
-        Player Rewards
-        <br />
-        DISABLED
-      </div>
     </div>
     <div
       className="PendingBetsTable-component"
@@ -2553,7 +2525,7 @@ Array [
           }
         }
       >
-        37
+        00
       </div>
       <div
         className="hit-number"
@@ -2969,21 +2941,6 @@ Array [
         House Balance
         <br />
         Loading...
-      </div>
-      <div>
-        Rewards Pool
-        <br />
-        DISABLED
-      </div>
-      <div>
-        Total Spins
-        <br />
-        DISABLED
-      </div>
-      <div>
-        Total Amount Wagered
-        <br />
-        DISABLED
       </div>
     </div>
   </div>,
