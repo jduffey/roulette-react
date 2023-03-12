@@ -1,10 +1,3 @@
-import { useEffect } from 'react';
-
-import {
-    // getPlayerSpins,
-    // getPlayerRewards,
-} from "../../common/blockchainWrapper";
-
 const formattedChainNumber = (chainNumber, decimals) => {
     return chainNumber
         ? parseFloat(chainNumber)
@@ -14,20 +7,6 @@ const formattedChainNumber = (chainNumber, decimals) => {
 
 const CLASS_NAME = "PlayerInfo-component";
 export function PlayerInfo(props) {
-    // const [playerSpinCount, setPlayerSpinCount] = useState(undefined);
-    // const [playerRewards, setPlayerRewards] = useState(undefined);
-
-    useEffect(() => {
-        // setTimeout(async () => {
-        //     const spins = await getPlayerSpins(props.playerAddress);
-        //     setPlayerSpinCount(spins);
-
-        //     const rewards = await getPlayerRewards(props.playerAddress);
-        //     setPlayerRewards(rewards);
-        // }, 1000);
-
-    }, [props.playerAddress]);
-
     return (
         <div
             className={CLASS_NAME}
@@ -41,18 +20,6 @@ export function PlayerInfo(props) {
                 Current Bet
                 < br />
                 {props.totalBetAmount.toLocaleString()}
-            </div>
-            <div>
-                Player Spins
-                < br />
-                {/* {formattedChainNumber(playerSpinCount, 0)} */}
-                {"DISABLED"}
-            </div>
-            <div>
-                Player Rewards
-                < br />
-                {/* {formattedChainNumber(playerRewards, 3)} */}
-                {"DISABLED"}
             </div>
         </div >
     )

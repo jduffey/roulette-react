@@ -8,23 +8,19 @@ describe("Roulette.sol", () => {
     async function fixtures() {
         const signers = await ethers.getSigners();
         const deployerSigner = signers[4];
-        // console.log(deployerSigner);
 
         const mockRandomnessProviderContractFactory = await ethers.getContractFactory("MockRandomnessProvider", deployerSigner);
         await mockRandomnessProviderContractFactory.deploy();
         const MockRandomnessProviderContract = await mockRandomnessProviderContractFactory.deploy();
         await MockRandomnessProviderContract.deployed();
-        // console.log(MockRandomnessProviderContract);
 
         const rouletteContractFactory = await ethers.getContractFactory("Roulette", deployerSigner);
         const RouletteContract = await rouletteContractFactory.deploy(MockRandomnessProviderContract.address);
         await RouletteContract.deployed();
-        // console.log(RouletteContract);
 
         const myGameTokenContractFactory = await ethers.getContractFactory("MyGameToken", deployerSigner);
         const MyGameTokenContract = await myGameTokenContractFactory.deploy();
         await MyGameTokenContract.deployed();
-        // console.log(MyGameTokenContract);
 
         return {
             MockRandomnessProviderContract,
@@ -214,6 +210,7 @@ describe("Roulette.sol", () => {
             } = await loadFixture(fixtures);
 
             // Reminder: these are values supplied by the RandomnessProvider contract, not the spin results
+            // They are stand-ins for uint256 values
             const fakeRandomValues = [
                 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
                 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
@@ -307,7 +304,6 @@ describe("Roulette.sol", () => {
                 player1Address,
             } = await loadFixture(fixtures);
 
-            // Reminder: these are values supplied by the RandomnessProvider contract, not the spin results
             const fakeRandomValues = [
                 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
                 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
@@ -339,22 +335,5 @@ describe("Roulette.sol", () => {
             expect(actual).to.equal(expected);
 
         });
-
-        // describe("executeWager", () => {
-        //     it("transfers 1 token to the roulette contract", async () => {
-        //         const {
-        //             RouletteContract,
-        //             MyGameTokenContract,
-        //             player1Address,
-        //         } = await loadFixture(fixtures);
-
-        //         await RouletteContract.executeWager(player1Address);
-
-        //         const actual = await MyGameTokenContract.balanceOf(RouletteContract.address);
-
-        //         const expected = 1;
-        //         expect(actual).to.equal(expected);
-        //     });
-        // });
     });
 });
