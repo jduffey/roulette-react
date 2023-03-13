@@ -17,6 +17,11 @@ export function PlayerInfo(props) {
                 {formattedChainNumber(props.playerBalance, 2)}
             </div>
             <div>
+                Player Allowance
+                < br />
+                {formattedChainNumber(props.playerAllowance, 2)}
+            </div>
+            <div>
                 Current Bet
                 < br />
                 {props.totalBetAmount.toLocaleString()}

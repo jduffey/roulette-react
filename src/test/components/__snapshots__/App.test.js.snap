@@ -142,6 +142,15 @@ Array [
             <th
               style={
                 Object {
+                  "width": "16%",
+                }
+              }
+            >
+               Allowance
+            </th>
+            <th
+              style={
+                Object {
                   "width": "10%",
                 }
               }
@@ -2361,6 +2370,11 @@ Array [
     >
       <div>
         Player Balance
+        <br />
+        Loading...
+      </div>
+      <div>
+        Player Allowance
         <br />
         Loading...
       </div>

@@ -55,6 +55,29 @@ async function _depositEthForTokens(tokenContractAddress, ethDepositAmounts) {
     });
 }
 
+async function _approveAllowanceForRouletteContract(players, tokenContractAddress) {
+    const approveTxs =
+        players.map(async (player) => {
+            const tokenContract = new ethers.Contract(
+                tokenContractAddress,
+                ["function approve(address, uint)"],
+                player
+            );
+            const tx = await tokenContract.approve(
+                "0xCE3478A9E0167a6Bc5716DC39DbbbfAc38F27623",
+                ethers.utils.parseEther("100000")
+            );
+            return tx;
+        });
+
+    const resolvedTxs = await Promise.all(approveTxs);
+
+    console.log("\n***** ADDRESS APPROVALS *****");
+    resolvedTxs.forEach((tx) => {
+        console.log(`${tx.from} approved ${ethers.utils.formatEther(tx.value)} ETH`);
+    });
+}
+
 async function initializeChain() {
     _validateNetwork();
 
@@ -76,6 +99,7 @@ async function initializeChain() {
     await _deployContract(house, "RandomnessProvider")
     await _deployContract(house, "Roulette", "0x261D8c5e9742e6f7f1076Fa1F560894524e19cad");
     await _depositEthForTokens(tokenContractAddress, ethToDeposit);
+    await _approveAllowanceForRouletteContract(players, tokenContractAddress);
 }
 
 setTimeout(() => {

@@ -2166,6 +2166,11 @@ exports[`Roulette renders 1`] = `
       Loading...
     </div>
     <div>
+      Player Allowance
+      <br />
+      Loading...
+    </div>
+    <div>
       Current Bet
       <br />
       0

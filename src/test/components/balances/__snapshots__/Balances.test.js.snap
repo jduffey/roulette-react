@@ -62,6 +62,15 @@ exports[`Balances renders 1`] = `
           <th
             style={
               Object {
+                "width": "16%",
+              }
+            }
+          >
+             Allowance
+          </th>
+          <th
+            style={
+              Object {
                 "width": "10%",
               }
             }

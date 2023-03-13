@@ -45,6 +45,16 @@ async function getTokenBalance(address) {
     return ethers.utils.formatEther(balance);
 }
 
+async function getPlayerAllowance(address) {
+    const token = new ethers.Contract(
+        TOKEN_CONTRACT_ADDRESS,
+        ["function allowance(address, address) view returns (uint)"],
+        provider.getSigner(HOUSE_ADDRESS)
+    );
+    const allowance = await token.allowance(address, ROULETTE_CONTRACT_ADDRESS);
+    return ethers.utils.formatEther(allowance);
+}
+
 async function getPlayerNumberCompletionSetsCounter(address) {
     const contract = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
@@ -87,6 +97,7 @@ export {
     getEthBalance,
     getBlock,
     getTokenBalance,
+    getPlayerAllowance,
     getPlayerNumberCompletionSetsCounter,
     getPlayerNumberCompletionSetCurrent,
     FIRST_PLAYER_ADDRESS,

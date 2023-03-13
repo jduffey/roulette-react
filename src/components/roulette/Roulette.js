@@ -18,6 +18,7 @@ import { HouseInfo } from './HouseInfo';
 
 import {
     getTokenBalance,
+    getPlayerAllowance,
     executeWager,
     rouletteContractEvents,
     getBlock,
@@ -42,6 +43,7 @@ export function Roulette(props) {
     const [latestBlockNumber, setLatestBlockNumber] = useState(0);
     const [pendingBets, setPendingBets] = useState([]);
     const [playerBalance, setPlayerBalance] = useState(undefined);
+    const [playerAllowance, setPlayerAllowance] = useState(undefined);
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
     const [wheelIsSpinning, setWheelIsSpinning] = useState(false);
     const [wheelNumber, setWheelNumber] = useState(null);
@@ -60,6 +62,13 @@ export function Roulette(props) {
             .then(balance => {
                 if (mounted) {
                     setPlayerBalance(balance);
+                }
+            });
+
+        getPlayerAllowance(playerAddress)
+            .then(allowance => {
+                if (mounted) {
+                    setPlayerAllowance(allowance);
                 }
             });
 
@@ -111,6 +120,11 @@ export function Roulette(props) {
                         setPlayerBalance(bal);
                     });
 
+                getPlayerAllowance(playerAddress)
+                    .then(allowance => {
+                        setPlayerAllowance(allowance);
+                    });
+
                 executeWager(playerAddress)
                     .then((response) => {
                         setLatestBlockNumber(response.blockNumber);
@@ -151,8 +165,8 @@ export function Roulette(props) {
                 playerAddress={playerAddress}
             />
             <PlayerInfo
-                playerAddress={playerAddress}
                 playerBalance={playerBalance}
+                playerAllowance={playerAllowance}
                 totalBetAmount={calculateTotalBetAmount(pendingBets)}
             />
             <PendingBetsTable
