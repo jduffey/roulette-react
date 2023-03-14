@@ -64,7 +64,7 @@ async function _approveAllowanceForRouletteContract(players, tokenContractAddres
                 player
             );
             const tx = await tokenContract.approve(
-                "0xCE3478A9E0167a6Bc5716DC39DbbbfAc38F27623",
+                "0x66f42162e1bd0b35848db3737a70629e7aa4fd51",
                 ethers.utils.parseEther("100000")
             );
             return tx;
@@ -74,7 +74,7 @@ async function _approveAllowanceForRouletteContract(players, tokenContractAddres
 
     console.log("\n***** ADDRESS APPROVALS *****");
     resolvedTxs.forEach((tx) => {
-        console.log(`${tx.from} approved ${ethers.utils.formatEther(tx.value)} ETH`);
+        console.log(`${tx.from} approved ${"100000"} GAME tokens`);
     });
 }
 

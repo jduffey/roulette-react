@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.12;
+
+import "hardhat/console.sol";
 
 // A token that acts like WETH but with a 1:100,000 ratio.
 contract MyGameToken {
@@ -26,7 +28,7 @@ contract MyGameToken {
     }
 
     function redeem(uint256 tokensToRedeem) public {
-        require(balanceOf[msg.sender] >= tokensToRedeem, "Insufficient token balance");
+        require(balanceOf[msg.sender] >= tokensToRedeem, "Insufficient token balance on redeem()");
         _burn(tokensToRedeem);
         emit Redeem(msg.sender, tokensToRedeem);
     }
@@ -59,7 +61,9 @@ contract MyGameToken {
     }
 
     function transferFrom(address src, address dst, uint256 tokensToTransfer) public returns (bool) {
-        require(balanceOf[src] >= tokensToTransfer, "Insufficient token balance");
+        console.log("This MyGameToken contract's address is", address(this));
+        console.log("transferFrom() called with", src, dst, tokensToTransfer);
+        require(balanceOf[src] >= tokensToTransfer, "Insufficient token balance on transferFrom()");
 
         // What is allowance[src][msg.sender] != type(uint256).max for?
         // if (src != msg.sender && allowance[src][msg.sender] != type(uint256).max) {

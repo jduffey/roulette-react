@@ -22,6 +22,7 @@ import {
     executeWager,
     rouletteContractEvents,
     getBlock,
+    ROULETTE_CONTRACT_ADDRESS,
 } from '../../common/blockchainWrapper';
 
 // Uncomment this line to simulate playing the game
@@ -65,7 +66,7 @@ export function Roulette(props) {
                 }
             });
 
-        getPlayerAllowance(playerAddress)
+        getPlayerAllowance(playerAddress, ROULETTE_CONTRACT_ADDRESS)
             .then(allowance => {
                 if (mounted) {
                     setPlayerAllowance(allowance);
@@ -120,11 +121,12 @@ export function Roulette(props) {
                         setPlayerBalance(bal);
                     });
 
-                getPlayerAllowance(playerAddress)
+                getPlayerAllowance(playerAddress, ROULETTE_CONTRACT_ADDRESS)
                     .then(allowance => {
                         setPlayerAllowance(allowance);
                     });
 
+                console.log(playerAddress);
                 executeWager(playerAddress)
                     .then((response) => {
                         setLatestBlockNumber(response.blockNumber);
