@@ -35,6 +35,22 @@ describe("MyGameToken contract", () => {
             expect(await MyGameToken.balanceOf(acct0.address))
                 .to.equal(ethers.utils.parseEther("100000"));
         });
+
+        it("increases the contract's ether balance when ether is sent", async () => {
+            const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
+
+            const initialBalance = await ethers.provider.getBalance(MyGameToken.address);
+            const sendAmount = ethers.utils.parseEther("1.0");
+
+            await acct0.sendTransaction({
+                to: MyGameToken.address,
+                value: sendAmount,
+            });
+
+            const newBalance = await ethers.provider.getBalance(MyGameToken.address);
+            expect(newBalance.sub(initialBalance)).to.equal(sendAmount);
+        });
+
     });
 
     describe("deposit()", () => {
