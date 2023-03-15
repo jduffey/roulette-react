@@ -59,6 +59,8 @@ contract MyGameToken {
     }
 
     function transferFrom(address src, address dst, uint256 tokensToTransfer) public returns (bool) {
+        require(src != address(0), "Cannot transfer from zero address");
+        require(dst != address(0), "Cannot transfer to zero address");
         require(balanceOf[src] >= tokensToTransfer, "Insufficient token balance");
 
         // What is allowance[src][msg.sender] != type(uint256).max for?

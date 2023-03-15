@@ -213,6 +213,15 @@ describe("MyGameToken contract", () => {
                 .to.be.revertedWith("Insufficient token balance");
         });
 
+        it("reverts if attempting to transfer tokens to the zero address", async () => {
+            const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
+
+            await MyGameToken.connect(acct0).deposit({ value: ethers.utils.parseEther("1") });
+
+            await expect(MyGameToken.connect(acct0).transfer(ethers.constants.AddressZero, ethers.utils.parseEther("1")))
+                .to.be.revertedWith("Cannot transfer to zero address");
+        });
+
         it("can transfer the entire token balance (boundary condition)", async () => {
             const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
@@ -273,6 +282,13 @@ describe("MyGameToken contract", () => {
 
         describe("msg.sender is not token owner", () => {
             describe("reversion scenarios", () => {
+                it("source is zero address", async () => {
+                    const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
+
+                    await expect(MyGameToken.connect(acct0).transferFrom(ethers.constants.AddressZero, acct1.address, ethers.utils.parseEther("1")))
+                        .to.be.revertedWith("Cannot transfer from zero address");
+                });
+
                 it("source does not have enough tokens", async () => {
                     const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
