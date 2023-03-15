@@ -2,9 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { WHEEL_NUMBERS } from "../../common/wheelNumbers";
 
-import {
-    getPlayerNumberCompletionSetCurrent,
-} from "../../common/blockchainWrapper";
+import { getPlayerNumberCompletionSetCurrent } from "../../common/blockchainWrapper";
 
 const CLASS_NAME = "NumbersHitTracker-component";
 export function NumbersHitTracker(props) {
@@ -16,7 +14,6 @@ export function NumbersHitTracker(props) {
             setCurrentSet(new Set(currentNumbers));
         }, 1000);
     }, [props.playerAddress, currentSet]);
-
 
     return (
         <div
@@ -42,7 +39,7 @@ export function NumbersHitTracker(props) {
                             color,
                         }}
                     >
-                        {wheelNumber}
+                        {wheelNumber === 37 ? "00" : wheelNumber}
                     </div>
                 );
             })}

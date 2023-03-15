@@ -18,6 +18,7 @@ import { HouseInfo } from './HouseInfo';
 
 import {
     getTokenBalance,
+    getPlayerAllowance,
     executeWager,
     rouletteContractEvents,
     getBlock,
@@ -42,6 +43,7 @@ export function Roulette(props) {
     const [latestBlockNumber, setLatestBlockNumber] = useState(0);
     const [pendingBets, setPendingBets] = useState([]);
     const [playerBalance, setPlayerBalance] = useState(undefined);
+    const [playerAllowance, setPlayerAllowance] = useState(undefined);
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
     const [wheelIsSpinning, setWheelIsSpinning] = useState(false);
     const [wheelNumber, setWheelNumber] = useState(null);
@@ -60,6 +62,13 @@ export function Roulette(props) {
             .then(balance => {
                 if (mounted) {
                     setPlayerBalance(balance);
+                }
+            });
+
+        getPlayerAllowance(playerAddress)
+            .then(allowance => {
+                if (mounted) {
+                    setPlayerAllowance(allowance);
                 }
             });
 
@@ -102,36 +111,6 @@ export function Roulette(props) {
             .then(randomWheelNumber => {
                 const resultsOfRound = getCompleteResultsOfRound(playerBalance, pendingBets, randomWheelNumber);
 
-                // Go through each bet and sum the total owed back to the player
-                const owedByHouseToPlayer = Object.entries(resultsOfRound.resultsOfBets).reduce((acc, [_betName, individualBetResult]) => {
-                    if (individualBetResult.didBetWin) {
-                        acc += individualBetResult.winningsOnBet;
-                    }
-                    return acc;
-                }, 0);
-
-                const owedByPlayerToHouse = Object.entries(resultsOfRound.resultsOfBets).reduce((acc, [_betName, individualBetResult]) => {
-                    if (!individualBetResult.didBetWin) {
-                        acc += individualBetResult.betAmount;
-                    }
-                    return acc;
-                }, 0);
-
-                if (owedByHouseToPlayer > 0) {
-                    // TODO replace with contract functionality
-                }
-
-                if (owedByPlayerToHouse > 0) {
-                    // TODO replace with contract functionality
-                }
-
-                // "1% of house take goes to Rewards Pool"
-                const owedByHouseToRewardsPool = owedByPlayerToHouse * 0.01;
-                // const owedByHouseToPlayersRewards = owedByHouseToRewardsPool;
-                if (owedByHouseToRewardsPool > 0) {
-                    // TODO replace with contract functionality
-                }
-
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
 
                 setPendingBets([]);
@@ -139,6 +118,11 @@ export function Roulette(props) {
                 getTokenBalance(playerAddress)
                     .then(bal => {
                         setPlayerBalance(bal);
+                    });
+
+                getPlayerAllowance(playerAddress)
+                    .then(allowance => {
+                        setPlayerAllowance(allowance);
                     });
 
                 executeWager(playerAddress)
@@ -181,8 +165,8 @@ export function Roulette(props) {
                 playerAddress={playerAddress}
             />
             <PlayerInfo
-                playerAddress={playerAddress}
                 playerBalance={playerBalance}
+                playerAllowance={playerAllowance}
                 totalBetAmount={calculateTotalBetAmount(pendingBets)}
             />
             <PendingBetsTable

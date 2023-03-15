@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 
 import { getWheelNumberColor } from "../../common/getWheelNumberColor";
 
-import {
-    rouletteContractEvents,
-} from "../../common/blockchainWrapper";
+import { rouletteContractEvents } from "../../common/blockchainWrapper";
 
 const CLASS_NAME = "SpinResult-component";
 export function SpinResult(props) {

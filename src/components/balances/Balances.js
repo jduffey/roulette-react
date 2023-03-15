@@ -4,9 +4,8 @@ import {
     getEthBalance,
     getBlock,
     getTokenBalance,
+    getPlayerAllowance,
     tokenSymbol,
-    // getPlayerSpins,
-    // getPlayerRewards,
     getPlayerNumberCompletionSetsCounter,
     getPlayerNumberCompletionSetCurrent,
     FIRST_PLAYER_ADDRESS,
@@ -20,8 +19,7 @@ import {
 export function Balances() {
     const [ethBalances, setEthBalances] = useState([]);
     const [tokenBalances, setTokenBalances] = useState([]);
-    // const [playerRewards, setPlayerRewards] = useState("DISABLED");
-    // const [playerSpins, setPlayerSpins] = useState("DISABLED");
+    const [playerAllowances, setPlayerAllowances] = useState([]);
     const [playerNumberCompletionSetsCounter, setPlayerNumberCompletionSetsCounter] = useState([]);
     const [playerNumberCompletionSetCurrent, setPlayerNumberCompletionSetCurrent] = useState([]);
 
@@ -75,31 +73,18 @@ export function Balances() {
                 setTokenBalances(newBalances);
             });
 
-            // const addressesWithRewardsPromises = addressesInDisplayOrder.map(async (address) => {
-            //     const balance = await getPlayerRewards(address);
-            //     return { address, balance };
-            // });
+            const addressesWithAllowancePromises = addressesInDisplayOrder.map(async (address) => {
+                const allowance = await getPlayerAllowance(address);
+                return { address, allowance };
+            });
 
-            // Promise.all(addressesWithRewardsPromises).then((res) => {
-            //     const newBalances = res.reduce((acc, cur) => {
-            //         acc[cur.address] = cur.balance;
-            //         return acc;
-            //     }, {});
-            //     setPlayerRewards(newBalances);
-            // });
-
-            // const addressesWithSpinsPromises = addressesInDisplayOrder.map(async (address) => {
-            //     const count = await getPlayerSpins(address);
-            //     return { address, count };
-            // });
-
-            // Promise.all(addressesWithSpinsPromises).then((res) => {
-            //     const counts = res.reduce((acc, cur) => {
-            //         acc[cur.address] = cur.count;
-            //         return acc;
-            //     }, {});
-            //     setPlayerSpins(counts);
-            // });
+            Promise.all(addressesWithAllowancePromises).then((res) => {
+                const newAllowances = res.reduce((acc, cur) => {
+                    acc[cur.address] = cur.allowance;
+                    return acc;
+                }, {});
+                setPlayerAllowances(newAllowances);
+            });
 
             const addressesWithNumberCompletionSetsCounterPromises = addressesInDisplayOrder.map(async (address) => {
                 const count = await getPlayerNumberCompletionSetsCounter(address);
@@ -140,8 +125,7 @@ export function Balances() {
         acc[address] = {
             ethBalance: ethBalances[address],
             tokenBalance: tokenBalances[address],
-            // rewards: playerRewards[address],
-            // spins: playerSpins[address],
+            tokenAllowance: playerAllowances[address],
             numberCompletionSetsCounter: playerNumberCompletionSetsCounter[address],
             numberCompletionSetCurrent: playerNumberCompletionSetCurrent[address],
         };
@@ -153,8 +137,7 @@ export function Balances() {
         address: "16%",
         ethBalance: "16%",
         tokenBalance: "16%",
-        rewards: "16%",
-        spins: "10%",
+        tokenAllowance: "16%",
         numberCompletionSetsCounter: "10%",
         numberCompletionSetCurrent: "16%",
     }
@@ -183,15 +166,25 @@ export function Balances() {
                             <th style={{ width: columnNamesAndWidths.address }}>Address</th>
                             <th style={{ width: columnNamesAndWidths.ethBalance }}>ETH Balance</th>
                             <th style={{ width: columnNamesAndWidths.tokenBalance }}>{tokenSymbol} Balance</th>
-                            <th style={{ width: columnNamesAndWidths.rewards }}>Rewards</th>
-                            <th style={{ width: columnNamesAndWidths.spins }}>Spins</th>
+                            <th style={{ width: columnNamesAndWidths.tokenAllowance }}>{tokenSymbol} Allowance</th>
                             <th style={{ width: columnNamesAndWidths.numberCompletionSetsCounter }}>✅ Sets</th>
                             <th style={{ width: columnNamesAndWidths.numberCompletionSetCurrent }}>Current Set</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            Object.entries(combinedBalances).map(([addr, { ethBalance, tokenBalance, _rewards, _spins, numberCompletionSetsCounter, numberCompletionSetCurrent }]) => {
+                            Object.entries(combinedBalances).map((
+                                [
+                                    addr,
+                                    {
+                                        ethBalance,
+                                        tokenBalance,
+                                        tokenAllowance,
+                                        numberCompletionSetsCounter,
+                                        numberCompletionSetCurrent
+                                    },
+                                ]
+                            ) => {
                                 return (
                                     <tr key={addr}>
                                         <td>{NICKNAMES[addr]}</td>
@@ -211,19 +204,13 @@ export function Balances() {
                                             })}
                                         </td>
                                         <td>
-                                            {/* {Number(rewards).toLocaleString(undefined, {
+                                            {Number(tokenAllowance).toLocaleString(undefined, {
                                                 minimumFractionDigits: 4,
                                                 maximumFractionDigits: 4
-                                            })} */}
-                                            {"DISABLED"}
+                                            })}
                                         </td>
-                                        <td>
-                                            {/* {Number(spins).toLocaleString(undefined, {
-                                                minimumFractionDigits: 0,
-                                                maximumFractionDigits: 0
-                                            })} */}
-                                            {"DISABLED"}
-                                        </td>
+
+
                                         <td>
                                             {Number(numberCompletionSetsCounter).toLocaleString(undefined, {
                                                 minimumFractionDigits: 0,
