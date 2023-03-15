@@ -74,7 +74,7 @@ export function Balances() {
             });
 
             const addressesWithAllowancePromises = addressesInDisplayOrder.map(async (address) => {
-                const allowance = await getPlayerAllowance(address, ROULETTE_CONTRACT_ADDRESS);
+                const allowance = await getPlayerAllowance(address);
                 return { address, allowance };
             });
 

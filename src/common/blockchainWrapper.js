@@ -10,21 +10,17 @@ const HOUSE_ADDRESS = "0x90F79bf6EB2c4f870365E785982E1f101E93b906";
 // Contract addresses are calculated from a hash of the deployer's address and nonce.
 const TOKEN_CONTRACT_ADDRESS = "0x057ef64E23666F000b34aE31332854aCBd1c8544";
 const RANDOMNESS_PROVIDER_CONTRACT_ADDRESS = "0x261D8c5e9742e6f7f1076Fa1F560894524e19cad";
-const ROULETTE_CONTRACT_ADDRESS = "0xCE3478A9E0167a6Bc5716DC39DbbbfAc38F27623"
-// const ROULETTE_CONTRACT_ADDRESS = "0x66f42162e1bd0b35848db3737a70629e7aa4fd51";
+const ROULETTE_CONTRACT_ADDRESS = "0xCE3478A9E0167a6Bc5716DC39DbbbfAc38F27623";
 
 async function executeWager(address) {
-    console.log("executeWager address", address);
     const contract = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
         ["function executeWager(address)"],
-        provider.getSigner(address)
+        provider.getSigner(HOUSE_ADDRESS)
     );
-    console.log("executeWager contract", contract);
     const tx = await contract.executeWager(
         address,
     );
-    console.log("executeWager tx", tx);
     return tx;
 }
 
@@ -49,13 +45,13 @@ async function getTokenBalance(address) {
     return ethers.utils.formatEther(balance);
 }
 
-async function getPlayerAllowance(playerAddress, destinationAddress) {
+async function getPlayerAllowance(address) {
     const token = new ethers.Contract(
         TOKEN_CONTRACT_ADDRESS,
         ["function allowance(address, address) view returns (uint)"],
-        provider.getSigner(destinationAddress)
+        provider.getSigner(HOUSE_ADDRESS)
     );
-    const allowance = await token.allowance(playerAddress, destinationAddress);
+    const allowance = await token.allowance(address, ROULETTE_CONTRACT_ADDRESS);
     return ethers.utils.formatEther(allowance);
 }
 

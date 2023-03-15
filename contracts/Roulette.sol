@@ -1,18 +1,10 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.9;
 
-import "./MyGameToken.sol";
 import "./RandomnessProvider.sol";
-
-import "hardhat/console.sol";
-
-abstract contract ERC20Token {
-    function transferFrom(address src, address dst, uint256 wad) public virtual returns (bool);
-}
 
 contract Roulette {
     RandomnessProvider private _randomnessProvider;
-    MyGameToken private _myGameToken;
 
     mapping(address => NumberCompletionSet) private _playerNumberCompletionSets;
 
@@ -26,7 +18,6 @@ contract Roulette {
 
     constructor(address randomnessProviderAddress) {
         _randomnessProvider = RandomnessProvider(randomnessProviderAddress);
-        // _myGameToken = MyGameToken(0xCE3478A9E0167a6Bc5716DC39DbbbfAc38F27623);
     }
 
     function _addToSet(address addr, uint256 wheelNumber) public {
@@ -95,15 +86,10 @@ contract Roulette {
     }
 
     function executeWager(address player) public {
-        console.log("Executing wager for player: %s", player);
-        console.log("This Roulette contract address: %s", address(this));
         uint256 randValue = _randomnessProvider.randomValue();
         uint256 wheelNumber = randValue % 38;
 
         _addToSet(player, wheelNumber);
-
-        _myGameToken.transferFrom(player, address(this), 1);
-
         emit ExecutedWager(player, wheelNumber);
     }
 }
