@@ -289,6 +289,13 @@ describe("MyGameToken contract", () => {
                         .to.be.revertedWith("Cannot transfer from zero address");
                 });
 
+                it("destination is zero address", async () => {
+                    const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
+
+                    await expect(MyGameToken.connect(acct0).transferFrom(acct0.address, ethers.constants.AddressZero, ethers.utils.parseEther("1")))
+                        .to.be.revertedWith("Cannot transfer to zero address");
+                });
+
                 it("source does not have enough tokens", async () => {
                     const { MyGameToken, acct0, acct1 } = await loadFixture(deployTokenFixture);
 
