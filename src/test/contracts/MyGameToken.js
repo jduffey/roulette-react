@@ -24,7 +24,7 @@ describe("MyGameToken contract", () => {
     });
 
     describe("receive()", () => {
-        it("assigns 100,000 tokens per ETH transferred", async () => {
+        it("assigns 100,000 tokens per ETH transferred to the transferring address", async () => {
             const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
 
             await acct0.sendTransaction({
@@ -40,17 +40,21 @@ describe("MyGameToken contract", () => {
             const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
 
             const initialBalance = await ethers.provider.getBalance(MyGameToken.address);
-            const sendAmount = ethers.utils.parseEther("1.0");
+            const firstSendAmount = ethers.utils.parseEther("1.0");
+            const secondSendAmount = ethers.utils.parseEther("1.5");
 
             await acct0.sendTransaction({
                 to: MyGameToken.address,
-                value: sendAmount,
+                value: firstSendAmount,
+            });
+            await acct0.sendTransaction({
+                to: MyGameToken.address,
+                value: secondSendAmount,
             });
 
             const newBalance = await ethers.provider.getBalance(MyGameToken.address);
-            expect(newBalance.sub(initialBalance)).to.equal(sendAmount);
+            expect(newBalance.sub(initialBalance)).to.equal(firstSendAmount.add(secondSendAmount));
         });
-
     });
 
     describe("deposit()", () => {
