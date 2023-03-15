@@ -147,6 +147,29 @@ describe("MyGameToken contract", () => {
             expect(balBeforeRedemptions.sub(balAfterRedemptions))
                 .to.equal(expected);
         });
+
+        it("increases the user's ether balance after successful redemption", async () => {
+            const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
+
+            const sendAmount = ethers.utils.parseEther("1");
+            const redemptionAmount = ethers.utils.parseEther("4321");
+
+            await acct0.sendTransaction({
+                to: MyGameToken.address,
+                value: sendAmount,
+            });
+
+            const balBeforeRedemptions = await ethers.provider.getBalance(acct0.address);
+            const tx = await MyGameToken.connect(acct0).redeem(redemptionAmount);
+
+            const txReceipt = await tx.wait();
+            const gasUsed = txReceipt.gasUsed.mul(tx.gasPrice);
+
+            const balAfterRedemptions = await ethers.provider.getBalance(acct0.address);
+            const expected = ethers.utils.parseEther("0.04321");
+            expect(balAfterRedemptions.sub(balBeforeRedemptions).add(gasUsed))
+                .to.equal(expected);
+        });
     });
 
     describe("totalSupply()", () => {
