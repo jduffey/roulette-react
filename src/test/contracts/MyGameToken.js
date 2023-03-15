@@ -124,6 +124,29 @@ describe("MyGameToken contract", () => {
                     });
             });
         });
+
+        it("decreases the contract's ether balance after successful redemption", async () => {
+            const { MyGameToken, acct0 } = await loadFixture(deployTokenFixture);
+
+            const sendAmount = ethers.utils.parseEther("1");
+            const firstRedeemAmount = ethers.utils.parseEther("50000");
+            const secondRedeemAmount = ethers.utils.parseEther("20000");
+
+
+            await acct0.sendTransaction({
+                to: MyGameToken.address,
+                value: sendAmount,
+            });
+
+            const balBeforeRedemptions = await ethers.provider.getBalance(MyGameToken.address);
+            await MyGameToken.connect(acct0).redeem(firstRedeemAmount);
+            await MyGameToken.connect(acct0).redeem(secondRedeemAmount);
+
+            const balAfterRedemptions = await ethers.provider.getBalance(MyGameToken.address);
+            const expected = ethers.utils.parseEther("0.7");
+            expect(balBeforeRedemptions.sub(balAfterRedemptions))
+                .to.equal(expected);
+        });
     });
 
     describe("totalSupply()", () => {
