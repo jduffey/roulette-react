@@ -1,80 +1,40 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+
 // A token that acts like WETH but with a 1:100,000 ratio.
-contract MyGameToken {
-    string public name = "My Game Token";
-    string public symbol = "GAME";
-    uint8 public decimals = 18;
+contract MyGameToken is ERC20, ReentrancyGuard {
+    using SafeMath for uint256;
+
     uint256 private _tokensPerEth = 100_000;
 
-    event Approval(address indexed src, address indexed guy, uint256 wad);
-    event Transfer(address indexed src, address indexed dst, uint256 wad);
     event Deposit(address indexed addr, uint256 ethDeposited);
     event Redeem(address indexed src, uint256 tokensRedeemed);
 
-    mapping(address => uint256) public balanceOf;
-    mapping(address => mapping(address => uint256)) public allowance;
+    constructor() ERC20("My Game Token", "GAME") {}
 
     receive() external payable {
         deposit();
     }
 
-    function deposit() public payable {
-        _mint(msg.value);
+    function deposit() public payable nonReentrant {
+        uint256 tokensToCredit = msg.value.mul(_tokensPerEth);
+        _mint(msg.sender, tokensToCredit);
         emit Deposit(msg.sender, msg.value);
     }
 
-    function redeem(uint256 tokensToRedeem) public {
-        require(balanceOf[msg.sender] >= tokensToRedeem, "Insufficient token balance");
-        _burn(tokensToRedeem);
+    function redeem(uint256 tokensToRedeem) public nonReentrant {
+        require(balanceOf(msg.sender) >= tokensToRedeem, "Insufficient token balance - CUSTOM MESSAGE, REPLACE MAYBE");
+        uint256 etherOwed = tokensToRedeem.div(_tokensPerEth);
+        _burn(msg.sender, tokensToRedeem);
+        payable(msg.sender).transfer(etherOwed);
         emit Redeem(msg.sender, tokensToRedeem);
     }
 
-    function _burn(uint256 tokensToRedeem) private {
-        balanceOf[msg.sender] -= tokensToRedeem;
-        uint256 etherOwed = tokensToRedeem / _tokensPerEth;
-        payable(msg.sender).transfer(etherOwed);
-    }
-
-    function _mint(uint256 value) private {
-        uint256 tokensToCredit = value * _tokensPerEth;
-        balanceOf[msg.sender] += tokensToCredit;
-    }
-
-    function totalSupply() public view returns (uint256) {
-        return address(this).balance * _tokensPerEth;
-    }
-
-    function approve(address guy, uint256 wad) public returns (bool) {
-        // Be aware of the following attack scenario:
-        // https://blockchain-projects.readthedocs.io/multiple_withdrawal.html
-        allowance[msg.sender][guy] = wad;
-        emit Approval(msg.sender, guy, wad);
-        return true;
-    }
-
-    function transfer(address dst, uint256 wad) public returns (bool) {
-        return transferFrom(msg.sender, dst, wad);
-    }
-
-    function transferFrom(address src, address dst, uint256 tokensToTransfer) public returns (bool) {
-        require(src != address(0), "Cannot transfer from zero address");
-        require(dst != address(0), "Cannot transfer to zero address");
-        require(balanceOf[src] >= tokensToTransfer, "Insufficient token balance");
-
-        // What is allowance[src][msg.sender] != type(uint256).max for?
-        // if (src != msg.sender && allowance[src][msg.sender] != type(uint256).max) {
-        if (src != msg.sender) {
-            require(allowance[src][msg.sender] >= tokensToTransfer, "Insufficient allowance");
-            allowance[src][msg.sender] -= tokensToTransfer;
-        }
-
-        balanceOf[src] -= tokensToTransfer;
-        balanceOf[dst] += tokensToTransfer;
-
-        emit Transfer(src, dst, tokensToTransfer);
-
-        return true;
+    function totalSupply() public view override returns (uint256) {
+        return address(this).balance.mul(_tokensPerEth);
     }
 }

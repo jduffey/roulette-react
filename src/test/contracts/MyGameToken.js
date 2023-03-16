@@ -92,7 +92,7 @@ describe("MyGameToken contract", () => {
             const { MyGameToken } = await loadFixture(deployTokenFixture);
 
             await expect(MyGameToken.redeem(ethers.utils.parseEther("1")))
-                .to.be.revertedWith("Insufficient token balance");
+                .to.be.revertedWith("Insufficient token balance - CUSTOM MESSAGE, REPLACE MAYBE");
         });
 
         it("emits a Redeem event", async () => {
