@@ -9,22 +9,20 @@ export const NewHome = () => {
                     justifyContent: 'space-evenly'
                 }}
             >
-                <NewHomeGameSelectionBox
-                    gameName="Chuck-A-Luck"
-                    gameImageUrl="https://via.placeholder.com/211x137"
-                />
-                <NewHomeGameSelectionBox
-                    gameName="Three Card Poker"
-                    gameImageUrl="https://via.placeholder.com/211x137"
-                />
-                <NewHomeGameSelectionBox
-                    gameName="Roulette"
-                    gameImageUrl="https://via.placeholder.com/211x137"
-                />
-                <NewHomeGameSelectionBox
-                    gameName="Sic Bo"
-                    gameImageUrl="https://via.placeholder.com/211x137"
-                />
+                {
+                    [
+                        ['Chuck-A-Luck', 'https://via.placeholder.com/211x137'],
+                        ['Three Card Poker', 'https://via.placeholder.com/211x137'],
+                        ['Roulette', 'https://via.placeholder.com/211x137'],
+                        ['Sic Bo', 'https://via.placeholder.com/211x137']
+                    ].map(([gameName, gameImageUrl]) => (
+                        <NewHomeGameSelectionBox
+                            key={gameName}
+                            gameName={gameName}
+                            gameImageUrl={gameImageUrl}
+                        />
+                    ))
+                }
             </div>
             <div
                 style={{
@@ -32,22 +30,41 @@ export const NewHome = () => {
                     justifyContent: 'space-evenly'
                 }}
             >
-                <NewHomeGameSelectionBox
-                    gameName="Blackjack"
-                    gameImageUrl="https://via.placeholder.com/211x137"
-                />
-                <NewHomeGameSelectionBox
-                    gameName="Baccarat"
-                    gameImageUrl="https://via.placeholder.com/211x137"
-                />
-                <NewHomeGameSelectionBox
-                    gameName="Craps"
-                    gameImageUrl="https://via.placeholder.com/211x137"
-                />
-                <NewHomeGameSelectionBox
-                    gameName="Keno"
-                    gameImageUrl="https://via.placeholder.com/211x137"
-                />
+                {
+                    [
+                        ['Blackjack', 'https://via.placeholder.com/211x137'],
+                        ['Baccarat', 'https://via.placeholder.com/211x137'],
+                        ['Craps', 'https://via.placeholder.com/211x137'],
+                        ['Keno', 'https://via.placeholder.com/211x137']
+                    ].map(([gameName, gameImageUrl]) => (
+                        <NewHomeGameSelectionBox
+                            key={gameName}
+                            gameName={gameName}
+                            gameImageUrl={gameImageUrl}
+                        />
+                    ))
+                }
+            </div>
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'space-evenly'
+                }}
+            >
+                {
+                    [
+                        ['Space Poker', 'https://via.placeholder.com/211x137'],
+                        ['Diamond Miner', 'https://via.placeholder.com/211x137'],
+                        ['Gift Tree', 'https://via.placeholder.com/211x137'],
+                        ['Coin Flip', 'https://via.placeholder.com/211x137']
+                    ].map(([gameName, gameImageUrl]) => (
+                        <NewHomeGameSelectionBox
+                            key={gameName}
+                            gameName={gameName}
+                            gameImageUrl={gameImageUrl}
+                        />
+                    ))
+                }
             </div>
         </>
     );
