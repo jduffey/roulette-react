@@ -3,10 +3,12 @@ import { NewHomeGameSelectionBox } from "./NewHomeGameSelectionBox";
 export const NewHome = () => {
     const containerStyle = {
         display: 'flex',
-        flexWrap: 'wrap', // Enable wrapping of children
-        margin: '0 auto', // Center the container
-        maxWidth: '1024px', // Max width of the container
-        gap: '20px' // Space between boxes
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        margin: 'auto',
+        maxWidth: '1024px',
+        gap: '20px',
+        // outline: '1px solid red'
     };
 
     return (
