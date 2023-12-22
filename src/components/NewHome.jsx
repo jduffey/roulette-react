@@ -6,9 +6,9 @@ export const NewHome = () => {
         flexWrap: 'wrap',
         justifyContent: 'center',
         margin: 'auto',
-        maxWidth: '1024px',
+        maxWidth: '1200px',
         gap: '20px',
-        // outline: '1px solid red'
+        outline: '1px solid red'
     };
 
     return (
