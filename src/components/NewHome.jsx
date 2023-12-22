@@ -6,7 +6,8 @@ export const NewHome = () => {
             <div
                 style={{
                     display: 'flex',
-                    justifyContent: 'space-evenly'
+                    justifyContent: 'space-evenly',
+                    marginBottom: 24
                 }}
             >
                 {
@@ -28,7 +29,8 @@ export const NewHome = () => {
             <div
                 style={{
                     display: 'flex',
-                    justifyContent: 'space-evenly'
+                    justifyContent: 'space-evenly',
+                    marginBottom: 24
                 }}
             >
                 {
@@ -50,7 +52,8 @@ export const NewHome = () => {
             <div
                 style={{
                     display: 'flex',
-                    justifyContent: 'space-evenly'
+                    justifyContent: 'space-evenly',
+                    marginBottom: 24
                 }}
             >
                 {
