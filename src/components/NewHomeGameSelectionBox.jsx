@@ -8,11 +8,11 @@ export const NewHomeGameSelectionBox = ({
     const [hover, setHover] = useState(false);
 
     const boxStyle = {
-        width: 250.33,
-        height: 247.42,
+        width: 256,
+        height: 252,
         position: 'relative',
         background: disabled ? 'grey' : 'white',
-        borderRadius: 15,
+        borderRadius: 16,
         border: '4px black solid',
         boxShadow: '4px 6px 0px 0px #000000',
         opacity: disabled ? 0.5 : 1,
@@ -21,17 +21,18 @@ export const NewHomeGameSelectionBox = ({
     };
 
     const textStyle = {
-        width: 210.66,
-        height: 40.56,
+        width: 256,
+        height: 40,
         position: 'absolute',
-        left: 20,
-        top: 188,
+        bottom: 30,
         textAlign: 'center',
         color: 'black',
         fontSize: hover ? '18px' : '16px',
         fontFamily: 'Lexend Mega',
         fontWeight: '700',
-        wordWrap: 'break-word'
+        wordWrap: 'break-word',
+        lineHeight: '40px',
+        // outline: '1px solid red',
     };
 
     return (
@@ -42,12 +43,12 @@ export const NewHomeGameSelectionBox = ({
         >
             <img
                 style={{
-                    width: 210.66,
-                    height: 136.56,
+                    width: 220,
+                    height: 140,
                     position: 'absolute',
-                    left: 20.52,
-                    top: 21.63,
-                    borderRadius: 10,
+                    left: 14,
+                    top: 14,
+                    borderRadius: 12,
                     border: '4px black solid',
                 }}
                 src={gameImageUrl}
