@@ -1,16 +1,19 @@
 export const NewHomeGameSelectionBox = ({
     gameName,
-    gameImageUrl
+    gameImageUrl,
+    disabled = false
 }) => {
     return (
         <div style={{
             width: 250.33,
             height: 247.42,
             position: 'relative',
-            background: 'white',
+            background: disabled ? 'grey' : 'white',
             borderRadius: 15,
             border: '4px black solid',
-            boxShadow: '4px 6px 0px 0px #000000'
+            boxShadow: '4px 6px 0px 0px #000000',
+            opacity: disabled ? 0.5 : 1,
+            // pointerEvents: disabled ? 'none' : 'auto'
         }}
         >
             <img

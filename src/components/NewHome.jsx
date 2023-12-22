@@ -14,12 +14,13 @@ export const NewHome = () => {
                         ['Chuck-A-Luck', 'https://via.placeholder.com/211x137'],
                         ['Three Card Poker', 'https://via.placeholder.com/211x137'],
                         ['Roulette', 'https://via.placeholder.com/211x137'],
-                        ['Sic Bo', 'https://via.placeholder.com/211x137']
-                    ].map(([gameName, gameImageUrl]) => (
+                        ['Sic Bo', 'https://via.placeholder.com/211x137', true]
+                    ].map(([gameName, gameImageUrl, disbaled]) => (
                         <NewHomeGameSelectionBox
                             key={gameName}
                             gameName={gameName}
                             gameImageUrl={gameImageUrl}
+                            disabled={disbaled}
                         />
                     ))
                 }
@@ -35,12 +36,13 @@ export const NewHome = () => {
                         ['Blackjack', 'https://via.placeholder.com/211x137'],
                         ['Baccarat', 'https://via.placeholder.com/211x137'],
                         ['Craps', 'https://via.placeholder.com/211x137'],
-                        ['Keno', 'https://via.placeholder.com/211x137']
-                    ].map(([gameName, gameImageUrl]) => (
+                        ['Keno', 'https://via.placeholder.com/211x137', true]
+                    ].map(([gameName, gameImageUrl, disabled]) => (
                         <NewHomeGameSelectionBox
                             key={gameName}
                             gameName={gameName}
                             gameImageUrl={gameImageUrl}
+                            disabled={disabled}
                         />
                     ))
                 }
@@ -54,14 +56,15 @@ export const NewHome = () => {
                 {
                     [
                         ['Space Poker', 'https://via.placeholder.com/211x137'],
-                        ['Diamond Miner', 'https://via.placeholder.com/211x137'],
-                        ['Gift Tree', 'https://via.placeholder.com/211x137'],
-                        ['Coin Flip', 'https://via.placeholder.com/211x137']
-                    ].map(([gameName, gameImageUrl]) => (
+                        ['Diamond Miner', 'https://via.placeholder.com/211x137', true],
+                        ['Gift Tree', 'https://via.placeholder.com/211x137', true],
+                        ['Coin Flip', 'https://via.placeholder.com/211x137', true]
+                    ].map(([gameName, gameImageUrl, disabled]) => (
                         <NewHomeGameSelectionBox
                             key={gameName}
                             gameName={gameName}
                             gameImageUrl={gameImageUrl}
+                            disabled={disabled}
                         />
                     ))
                 }
