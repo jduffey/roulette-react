@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { Layout } from "./Layout";
 
 import { Home } from "./Home";
+import { NewHome } from "./NewHome";
 import { Roulette } from "./roulette/Roulette";
 import { SicBo } from "./SicBo";
 import { Balances } from "./balances/Balances";
@@ -15,6 +16,7 @@ export function App() {
     return (
         <Routes>
             <Route path="/" element={elementInLayout(<Home />)} />
+            <Route path="/new-home" element={elementInLayout(<NewHome />)} />
             <Route path="/roulette" element={elementInLayout(<Roulette playerAddress={FIRST_PLAYER_ADDRESS} />)} />
             <Route path="/sic-bo" element={elementInLayout(<SicBo />)} />
             <Route path="/balances" element={elementInLayout(<Balances />)} />
