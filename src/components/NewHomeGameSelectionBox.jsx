@@ -5,12 +5,13 @@ export const NewHomeGameSelectionBox = ({
     gameName,
     gameImageUrl,
     linkTo,
-    disabled = false,
 }) => {
     const [hover, setHover] = useState(false);
 
+    const isDisabled = typeof linkTo === 'undefined';
+
     const boxBackgroundColor =
-        disabled ?
+        isDisabled ?
             'grey' :
             hover
                 ? '#FDFD96'
@@ -24,9 +25,9 @@ export const NewHomeGameSelectionBox = ({
         borderRadius: 16,
         border: '4px black solid',
         boxShadow: '4px 6px 0px 0px #000000',
-        opacity: disabled ? 0.5 : 1,
-        pointerEvents: disabled ? 'none' : 'auto',
-        cursor: disabled ? 'default' : 'pointer',
+        opacity: isDisabled ? 0.5 : 1,
+        pointerEvents: isDisabled ? 'none' : 'auto',
+        cursor: isDisabled ? 'default' : 'pointer',
         // outline: '1px solid red',
     };
 

@@ -17,22 +17,21 @@ export const NewHome = () => {
                 [
                     ['Chuck-A-Luck', 'https://placehold.co/220x140'],
                     ['Three Card Poker', 'https://placehold.co/220x140'],
-                    ['Roulette', 'https://placehold.co/220x140', false, '/roulette'],
-                    ['Sic Bo', 'https://placehold.co/220x140', true],
+                    ['Roulette', 'https://placehold.co/220x140', '/roulette'],
+                    ['Sic Bo', 'https://placehold.co/220x140', '/sic-bo'],
                     ['Blackjack', 'https://placehold.co/220x140'],
                     ['Baccarat', 'https://placehold.co/220x140'],
-                    ['Keno', 'https://placehold.co/220x140', true],
+                    ['Keno', 'https://placehold.co/220x140'],
                     ['Space Poker', 'https://placehold.co/220x140'],
-                    ['Diamond Miner', 'https://placehold.co/220x140', true],
-                    ['Gift Tree', 'https://placehold.co/220x140', true],
-                    ['Coin Flip', 'https://placehold.co/220x140', true]
-                ].map(([gameName, gameImageUrl, disabled, linkTo]) => (
+                    ['Diamond Miner', 'https://placehold.co/220x140'],
+                    ['Gift Tree', 'https://placehold.co/220x140'],
+                    ['Coin Flip', 'https://placehold.co/220x140']
+                ].map(([gameName, gameImageUrl, linkTo]) => (
                     <NewHomeGameSelectionBox
                         key={gameName}
                         gameName={gameName}
                         gameImageUrl={gameImageUrl}
                         linkTo={linkTo}
-                        disabled={disabled}
                     />
                 ))
             }
