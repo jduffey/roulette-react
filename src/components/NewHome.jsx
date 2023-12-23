@@ -15,17 +15,17 @@ export const NewHome = () => {
         <div style={containerStyle}>
             {
                 [
-                    ['Chuck-A-Luck', 'https://placehold.co/220x140'],
-                    ['Three Card Poker', 'https://placehold.co/220x140'],
+                    ['Chuck-A-Luck', 'https://placehold.co/220x140', '/chuck-a-luck'],
+                    ['Three Card Poker', 'https://placehold.co/220x140', '/three-card-poker'],
                     ['Roulette', 'https://placehold.co/220x140', '/roulette'],
                     ['Sic Bo', 'https://placehold.co/220x140', '/sic-bo'],
-                    ['Blackjack', 'https://placehold.co/220x140'],
-                    ['Baccarat', 'https://placehold.co/220x140'],
-                    ['Keno', 'https://placehold.co/220x140'],
-                    ['Space Poker', 'https://placehold.co/220x140'],
-                    ['Diamond Miner', 'https://placehold.co/220x140'],
-                    ['Gift Tree', 'https://placehold.co/220x140'],
-                    ['Coin Flip', 'https://placehold.co/220x140']
+                    ['Blackjack', 'https://placehold.co/220x140', '/blackjack'],
+                    ['Baccarat', 'https://placehold.co/220x140', '/baccarat'],
+                    ['Keno', 'https://placehold.co/220x140', '/keno'],
+                    ['Space Poker', 'https://placehold.co/220x140', '/space-poker'],
+                    ['Diamond Miner', 'https://placehold.co/220x140', '/diamond-miner'],
+                    ['Gift Tree', 'https://placehold.co/220x140', '/gift-tree'],
+                    ['Coin Flip', 'https://placehold.co/220x140', '/coin-flip'],
                 ].map(([gameName, gameImageUrl, linkTo]) => (
                     <NewHomeGameSelectionBox
                         key={gameName}

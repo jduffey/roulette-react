@@ -6,8 +6,18 @@ import { App } from "../../components/App";
 describe("App", () => {
     it.each([
         ["/"],
+        ["/new-home"],
+        ["/chuck-a-luck"],
+        ["/three-card-poker"],
         ["/roulette"],
         ["/sic-bo"],
+        ["/blackjack"],
+        ["/baccarat"],
+        ["/keno"],
+        ["/space-poker"],
+        ["/diamond-miner"],
+        ["/gift-tree"],
+        ["/coin-flip"],
         ["/balances"],
     ])("renders route \"%s\"", (path) => {
         const view = renderer.create(

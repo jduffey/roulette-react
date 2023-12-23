@@ -1,4 +1,4 @@
-export function SicBo() {
+export function SpacePoker() {
     return (
         <div
             style={{
@@ -6,7 +6,7 @@ export function SicBo() {
                 fontSize: "4rem",
             }}
         >
-            PLACEHOLDER PAGE FOR SIC BO
+            SPACE POKER
         </div>
     );
 }
