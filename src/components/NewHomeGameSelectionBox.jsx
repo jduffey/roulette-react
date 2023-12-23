@@ -7,17 +7,25 @@ export const NewHomeGameSelectionBox = ({
 }) => {
     const [hover, setHover] = useState(false);
 
+    const boxBackgroundColor =
+        disabled ?
+            'grey' :
+            hover
+                ? '#FDFD96'
+                : 'white';
+
     const boxStyle = {
         width: 256,
         height: 252,
         position: 'relative',
-        background: disabled ? 'grey' : 'white',
+        backgroundColor: boxBackgroundColor,
         borderRadius: 16,
         border: '4px black solid',
         boxShadow: '4px 6px 0px 0px #000000',
         opacity: disabled ? 0.5 : 1,
         pointerEvents: disabled ? 'none' : 'auto',
-        cursor: disabled ? 'default' : 'pointer'
+        cursor: disabled ? 'default' : 'pointer',
+        // outline: '1px solid red',
     };
 
     const textStyle = {
