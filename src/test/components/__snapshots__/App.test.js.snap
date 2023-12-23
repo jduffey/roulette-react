@@ -15,16 +15,738 @@ Array [
         Home
       </a>
       <a
-        href="/roulette"
+        href="/balances"
         onClick={[Function]}
       >
-        Roulette
+        Balances
       </a>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "flexWrap": "wrap",
+        "gap": "20px",
+        "justifyContent": "center",
+        "margin": "auto",
+        "maxWidth": "1200px",
+      }
+    }
+  >
+    <a
+      href="/chuck-a-luck"
+      onClick={[Function]}
+    >
+      <div
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={
+          Object {
+            "backgroundColor": "white",
+            "border": "4px black solid",
+            "borderRadius": 16,
+            "boxShadow": "4px 6px 0px 0px #000000",
+            "cursor": "pointer",
+            "height": 252,
+            "opacity": 1,
+            "pointerEvents": "auto",
+            "position": "relative",
+            "width": 256,
+          }
+        }
+      >
+        <img
+          alt="placeholder for Chuck-A-Luck"
+          src="https://placehold.co/220x140"
+          style={
+            Object {
+              "border": "4px black solid",
+              "borderRadius": 12,
+              "height": 140,
+              "left": 14,
+              "position": "absolute",
+              "top": 14,
+              "width": 220,
+            }
+          }
+        />
+        <div
+          style={
+            Object {
+              "bottom": 30,
+              "color": "black",
+              "fontFamily": "Lexend Mega",
+              "fontSize": "16px",
+              "fontWeight": "700",
+              "height": 40,
+              "lineHeight": "40px",
+              "position": "absolute",
+              "textAlign": "center",
+              "width": 256,
+              "wordWrap": "break-word",
+            }
+          }
+        >
+          Chuck-A-Luck
+        </div>
+      </div>
+    </a>
+    <a
+      href="/three-card-poker"
+      onClick={[Function]}
+    >
+      <div
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={
+          Object {
+            "backgroundColor": "white",
+            "border": "4px black solid",
+            "borderRadius": 16,
+            "boxShadow": "4px 6px 0px 0px #000000",
+            "cursor": "pointer",
+            "height": 252,
+            "opacity": 1,
+            "pointerEvents": "auto",
+            "position": "relative",
+            "width": 256,
+          }
+        }
+      >
+        <img
+          alt="placeholder for Three Card Poker"
+          src="https://placehold.co/220x140"
+          style={
+            Object {
+              "border": "4px black solid",
+              "borderRadius": 12,
+              "height": 140,
+              "left": 14,
+              "position": "absolute",
+              "top": 14,
+              "width": 220,
+            }
+          }
+        />
+        <div
+          style={
+            Object {
+              "bottom": 30,
+              "color": "black",
+              "fontFamily": "Lexend Mega",
+              "fontSize": "16px",
+              "fontWeight": "700",
+              "height": 40,
+              "lineHeight": "40px",
+              "position": "absolute",
+              "textAlign": "center",
+              "width": 256,
+              "wordWrap": "break-word",
+            }
+          }
+        >
+          Three Card Poker
+        </div>
+      </div>
+    </a>
+    <a
+      href="/roulette"
+      onClick={[Function]}
+    >
+      <div
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={
+          Object {
+            "backgroundColor": "white",
+            "border": "4px black solid",
+            "borderRadius": 16,
+            "boxShadow": "4px 6px 0px 0px #000000",
+            "cursor": "pointer",
+            "height": 252,
+            "opacity": 1,
+            "pointerEvents": "auto",
+            "position": "relative",
+            "width": 256,
+          }
+        }
+      >
+        <img
+          alt="placeholder for Roulette"
+          src="https://placehold.co/220x140"
+          style={
+            Object {
+              "border": "4px black solid",
+              "borderRadius": 12,
+              "height": 140,
+              "left": 14,
+              "position": "absolute",
+              "top": 14,
+              "width": 220,
+            }
+          }
+        />
+        <div
+          style={
+            Object {
+              "bottom": 30,
+              "color": "black",
+              "fontFamily": "Lexend Mega",
+              "fontSize": "16px",
+              "fontWeight": "700",
+              "height": 40,
+              "lineHeight": "40px",
+              "position": "absolute",
+              "textAlign": "center",
+              "width": 256,
+              "wordWrap": "break-word",
+            }
+          }
+        >
+          Roulette
+        </div>
+      </div>
+    </a>
+    <a
+      href="/new-roulette"
+      onClick={[Function]}
+    >
+      <div
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={
+          Object {
+            "backgroundColor": "white",
+            "border": "4px black solid",
+            "borderRadius": 16,
+            "boxShadow": "4px 6px 0px 0px #000000",
+            "cursor": "pointer",
+            "height": 252,
+            "opacity": 1,
+            "pointerEvents": "auto",
+            "position": "relative",
+            "width": 256,
+          }
+        }
+      >
+        <img
+          alt="placeholder for New Roulette"
+          src="https://placehold.co/220x140"
+          style={
+            Object {
+              "border": "4px black solid",
+              "borderRadius": 12,
+              "height": 140,
+              "left": 14,
+              "position": "absolute",
+              "top": 14,
+              "width": 220,
+            }
+          }
+        />
+        <div
+          style={
+            Object {
+              "bottom": 30,
+              "color": "black",
+              "fontFamily": "Lexend Mega",
+              "fontSize": "16px",
+              "fontWeight": "700",
+              "height": 40,
+              "lineHeight": "40px",
+              "position": "absolute",
+              "textAlign": "center",
+              "width": 256,
+              "wordWrap": "break-word",
+            }
+          }
+        >
+          New Roulette
+        </div>
+      </div>
+    </a>
+    <a
+      href="/sic-bo"
+      onClick={[Function]}
+    >
+      <div
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={
+          Object {
+            "backgroundColor": "white",
+            "border": "4px black solid",
+            "borderRadius": 16,
+            "boxShadow": "4px 6px 0px 0px #000000",
+            "cursor": "pointer",
+            "height": 252,
+            "opacity": 1,
+            "pointerEvents": "auto",
+            "position": "relative",
+            "width": 256,
+          }
+        }
+      >
+        <img
+          alt="placeholder for Sic Bo"
+          src="https://placehold.co/220x140"
+          style={
+            Object {
+              "border": "4px black solid",
+              "borderRadius": 12,
+              "height": 140,
+              "left": 14,
+              "position": "absolute",
+              "top": 14,
+              "width": 220,
+            }
+          }
+        />
+        <div
+          style={
+            Object {
+              "bottom": 30,
+              "color": "black",
+              "fontFamily": "Lexend Mega",
+              "fontSize": "16px",
+              "fontWeight": "700",
+              "height": 40,
+              "lineHeight": "40px",
+              "position": "absolute",
+              "textAlign": "center",
+              "width": 256,
+              "wordWrap": "break-word",
+            }
+          }
+        >
+          Sic Bo
+        </div>
+      </div>
+    </a>
+    <a
+      href="/blackjack"
+      onClick={[Function]}
+    >
+      <div
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={
+          Object {
+            "backgroundColor": "white",
+            "border": "4px black solid",
+            "borderRadius": 16,
+            "boxShadow": "4px 6px 0px 0px #000000",
+            "cursor": "pointer",
+            "height": 252,
+            "opacity": 1,
+            "pointerEvents": "auto",
+            "position": "relative",
+            "width": 256,
+          }
+        }
+      >
+        <img
+          alt="placeholder for Blackjack"
+          src="https://placehold.co/220x140"
+          style={
+            Object {
+              "border": "4px black solid",
+              "borderRadius": 12,
+              "height": 140,
+              "left": 14,
+              "position": "absolute",
+              "top": 14,
+              "width": 220,
+            }
+          }
+        />
+        <div
+          style={
+            Object {
+              "bottom": 30,
+              "color": "black",
+              "fontFamily": "Lexend Mega",
+              "fontSize": "16px",
+              "fontWeight": "700",
+              "height": 40,
+              "lineHeight": "40px",
+              "position": "absolute",
+              "textAlign": "center",
+              "width": 256,
+              "wordWrap": "break-word",
+            }
+          }
+        >
+          Blackjack
+        </div>
+      </div>
+    </a>
+    <a
+      href="/baccarat"
+      onClick={[Function]}
+    >
+      <div
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={
+          Object {
+            "backgroundColor": "white",
+            "border": "4px black solid",
+            "borderRadius": 16,
+            "boxShadow": "4px 6px 0px 0px #000000",
+            "cursor": "pointer",
+            "height": 252,
+            "opacity": 1,
+            "pointerEvents": "auto",
+            "position": "relative",
+            "width": 256,
+          }
+        }
+      >
+        <img
+          alt="placeholder for Baccarat"
+          src="https://placehold.co/220x140"
+          style={
+            Object {
+              "border": "4px black solid",
+              "borderRadius": 12,
+              "height": 140,
+              "left": 14,
+              "position": "absolute",
+              "top": 14,
+              "width": 220,
+            }
+          }
+        />
+        <div
+          style={
+            Object {
+              "bottom": 30,
+              "color": "black",
+              "fontFamily": "Lexend Mega",
+              "fontSize": "16px",
+              "fontWeight": "700",
+              "height": 40,
+              "lineHeight": "40px",
+              "position": "absolute",
+              "textAlign": "center",
+              "width": 256,
+              "wordWrap": "break-word",
+            }
+          }
+        >
+          Baccarat
+        </div>
+      </div>
+    </a>
+    <a
+      href="/keno"
+      onClick={[Function]}
+    >
+      <div
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={
+          Object {
+            "backgroundColor": "white",
+            "border": "4px black solid",
+            "borderRadius": 16,
+            "boxShadow": "4px 6px 0px 0px #000000",
+            "cursor": "pointer",
+            "height": 252,
+            "opacity": 1,
+            "pointerEvents": "auto",
+            "position": "relative",
+            "width": 256,
+          }
+        }
+      >
+        <img
+          alt="placeholder for Keno"
+          src="https://placehold.co/220x140"
+          style={
+            Object {
+              "border": "4px black solid",
+              "borderRadius": 12,
+              "height": 140,
+              "left": 14,
+              "position": "absolute",
+              "top": 14,
+              "width": 220,
+            }
+          }
+        />
+        <div
+          style={
+            Object {
+              "bottom": 30,
+              "color": "black",
+              "fontFamily": "Lexend Mega",
+              "fontSize": "16px",
+              "fontWeight": "700",
+              "height": 40,
+              "lineHeight": "40px",
+              "position": "absolute",
+              "textAlign": "center",
+              "width": 256,
+              "wordWrap": "break-word",
+            }
+          }
+        >
+          Keno
+        </div>
+      </div>
+    </a>
+    <a
+      href="/space-poker"
+      onClick={[Function]}
+    >
+      <div
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={
+          Object {
+            "backgroundColor": "white",
+            "border": "4px black solid",
+            "borderRadius": 16,
+            "boxShadow": "4px 6px 0px 0px #000000",
+            "cursor": "pointer",
+            "height": 252,
+            "opacity": 1,
+            "pointerEvents": "auto",
+            "position": "relative",
+            "width": 256,
+          }
+        }
+      >
+        <img
+          alt="placeholder for Space Poker"
+          src="https://placehold.co/220x140"
+          style={
+            Object {
+              "border": "4px black solid",
+              "borderRadius": 12,
+              "height": 140,
+              "left": 14,
+              "position": "absolute",
+              "top": 14,
+              "width": 220,
+            }
+          }
+        />
+        <div
+          style={
+            Object {
+              "bottom": 30,
+              "color": "black",
+              "fontFamily": "Lexend Mega",
+              "fontSize": "16px",
+              "fontWeight": "700",
+              "height": 40,
+              "lineHeight": "40px",
+              "position": "absolute",
+              "textAlign": "center",
+              "width": 256,
+              "wordWrap": "break-word",
+            }
+          }
+        >
+          Space Poker
+        </div>
+      </div>
+    </a>
+    <a
+      href="/diamond-miner"
+      onClick={[Function]}
+    >
+      <div
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={
+          Object {
+            "backgroundColor": "white",
+            "border": "4px black solid",
+            "borderRadius": 16,
+            "boxShadow": "4px 6px 0px 0px #000000",
+            "cursor": "pointer",
+            "height": 252,
+            "opacity": 1,
+            "pointerEvents": "auto",
+            "position": "relative",
+            "width": 256,
+          }
+        }
+      >
+        <img
+          alt="placeholder for Diamond Miner"
+          src="https://placehold.co/220x140"
+          style={
+            Object {
+              "border": "4px black solid",
+              "borderRadius": 12,
+              "height": 140,
+              "left": 14,
+              "position": "absolute",
+              "top": 14,
+              "width": 220,
+            }
+          }
+        />
+        <div
+          style={
+            Object {
+              "bottom": 30,
+              "color": "black",
+              "fontFamily": "Lexend Mega",
+              "fontSize": "16px",
+              "fontWeight": "700",
+              "height": 40,
+              "lineHeight": "40px",
+              "position": "absolute",
+              "textAlign": "center",
+              "width": 256,
+              "wordWrap": "break-word",
+            }
+          }
+        >
+          Diamond Miner
+        </div>
+      </div>
+    </a>
+    <a
+      href="/gift-tree"
+      onClick={[Function]}
+    >
+      <div
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={
+          Object {
+            "backgroundColor": "white",
+            "border": "4px black solid",
+            "borderRadius": 16,
+            "boxShadow": "4px 6px 0px 0px #000000",
+            "cursor": "pointer",
+            "height": 252,
+            "opacity": 1,
+            "pointerEvents": "auto",
+            "position": "relative",
+            "width": 256,
+          }
+        }
+      >
+        <img
+          alt="placeholder for Gift Tree"
+          src="https://placehold.co/220x140"
+          style={
+            Object {
+              "border": "4px black solid",
+              "borderRadius": 12,
+              "height": 140,
+              "left": 14,
+              "position": "absolute",
+              "top": 14,
+              "width": 220,
+            }
+          }
+        />
+        <div
+          style={
+            Object {
+              "bottom": 30,
+              "color": "black",
+              "fontFamily": "Lexend Mega",
+              "fontSize": "16px",
+              "fontWeight": "700",
+              "height": 40,
+              "lineHeight": "40px",
+              "position": "absolute",
+              "textAlign": "center",
+              "width": 256,
+              "wordWrap": "break-word",
+            }
+          }
+        >
+          Gift Tree
+        </div>
+      </div>
+    </a>
+    <a
+      href="/coin-flip"
+      onClick={[Function]}
+    >
+      <div
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={
+          Object {
+            "backgroundColor": "white",
+            "border": "4px black solid",
+            "borderRadius": 16,
+            "boxShadow": "4px 6px 0px 0px #000000",
+            "cursor": "pointer",
+            "height": 252,
+            "opacity": 1,
+            "pointerEvents": "auto",
+            "position": "relative",
+            "width": 256,
+          }
+        }
+      >
+        <img
+          alt="placeholder for Coin Flip"
+          src="https://placehold.co/220x140"
+          style={
+            Object {
+              "border": "4px black solid",
+              "borderRadius": 12,
+              "height": 140,
+              "left": 14,
+              "position": "absolute",
+              "top": 14,
+              "width": 220,
+            }
+          }
+        />
+        <div
+          style={
+            Object {
+              "bottom": 30,
+              "color": "black",
+              "fontFamily": "Lexend Mega",
+              "fontSize": "16px",
+              "fontWeight": "700",
+              "height": 40,
+              "lineHeight": "40px",
+              "position": "absolute",
+              "textAlign": "center",
+              "width": 256,
+              "wordWrap": "break-word",
+            }
+          }
+        >
+          Coin Flip
+        </div>
+      </div>
+    </a>
+  </div>,
+]
+`;
+
+exports[`App renders route "/baccarat" 1`] = `
+Array [
+  <div
+    className="NavigationBar-component"
+  >
+    <div
+      className="NavigationBar-links"
+    >
       <a
-        href="/sic-bo"
+        href="/"
         onClick={[Function]}
       >
-        Sic Bo
+        Home
       </a>
       <a
         href="/balances"
@@ -37,12 +759,13 @@ Array [
   <div
     style={
       Object {
-        "color": "white",
-        "fontSize": "4rem",
+        "height": 1024,
+        "outline": "1px solid red",
+        "width": 1440,
       }
     }
   >
-    PLACEHOLDER PAGE FOR HOME
+    BACCARAT
   </div>,
 ]
 `;
@@ -60,18 +783,6 @@ Array [
         onClick={[Function]}
       >
         Home
-      </a>
-      <a
-        href="/roulette"
-        onClick={[Function]}
-      >
-        Roulette
-      </a>
-      <a
-        href="/sic-bo"
-        onClick={[Function]}
-      >
-        Sic Bo
       </a>
       <a
         href="/balances"
@@ -175,7 +886,7 @@ Array [
 ]
 `;
 
-exports[`App renders route "/roulette" 1`] = `
+exports[`App renders route "/blackjack" 1`] = `
 Array [
   <div
     className="NavigationBar-component"
@@ -190,16 +901,256 @@ Array [
         Home
       </a>
       <a
-        href="/roulette"
+        href="/balances"
         onClick={[Function]}
       >
-        Roulette
+        Balances
+      </a>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "height": 1024,
+        "outline": "1px solid red",
+        "width": 1440,
+      }
+    }
+  >
+    BLACKJACK
+  </div>,
+]
+`;
+
+exports[`App renders route "/chuck-a-luck" 1`] = `
+Array [
+  <div
+    className="NavigationBar-component"
+  >
+    <div
+      className="NavigationBar-links"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
       </a>
       <a
-        href="/sic-bo"
+        href="/balances"
         onClick={[Function]}
       >
-        Sic Bo
+        Balances
+      </a>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "height": 1024,
+        "outline": "1px solid red",
+        "width": 1440,
+      }
+    }
+  >
+    CHUCK-A-LUCK
+  </div>,
+]
+`;
+
+exports[`App renders route "/coin-flip" 1`] = `
+Array [
+  <div
+    className="NavigationBar-component"
+  >
+    <div
+      className="NavigationBar-links"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
+      </a>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "height": 1024,
+        "outline": "1px solid red",
+        "width": 1440,
+      }
+    }
+  >
+    COIN FLIP
+  </div>,
+]
+`;
+
+exports[`App renders route "/diamond-miner" 1`] = `
+Array [
+  <div
+    className="NavigationBar-component"
+  >
+    <div
+      className="NavigationBar-links"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
+      </a>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "height": 1024,
+        "outline": "1px solid red",
+        "width": 1440,
+      }
+    }
+  >
+    DIAMOND MINER
+  </div>,
+]
+`;
+
+exports[`App renders route "/gift-tree" 1`] = `
+Array [
+  <div
+    className="NavigationBar-component"
+  >
+    <div
+      className="NavigationBar-links"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
+      </a>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "height": 1024,
+        "outline": "1px solid red",
+        "width": 1440,
+      }
+    }
+  >
+    GIFT TREE
+  </div>,
+]
+`;
+
+exports[`App renders route "/keno" 1`] = `
+Array [
+  <div
+    className="NavigationBar-component"
+  >
+    <div
+      className="NavigationBar-links"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
+      </a>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "height": 1024,
+        "outline": "1px solid red",
+        "width": 1440,
+      }
+    }
+  >
+    KENO
+  </div>,
+]
+`;
+
+exports[`App renders route "/new-roulette" 1`] = `
+Array [
+  <div
+    className="NavigationBar-component"
+  >
+    <div
+      className="NavigationBar-links"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
+      </a>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "height": 1024,
+        "outline": "1px solid red",
+        "width": 1440,
+      }
+    }
+  >
+    NEW ROULETTE
+  </div>,
+]
+`;
+
+exports[`App renders route "/roulette" 1`] = `
+Array [
+  <div
+    className="NavigationBar-component"
+  >
+    <div
+      className="NavigationBar-links"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
       </a>
       <a
         href="/balances"
@@ -2976,16 +3927,40 @@ Array [
         Home
       </a>
       <a
-        href="/roulette"
+        href="/balances"
         onClick={[Function]}
       >
-        Roulette
+        Balances
       </a>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "height": 1024,
+        "outline": "1px solid red",
+        "width": 1440,
+      }
+    }
+  >
+    SIC BO
+  </div>,
+]
+`;
+
+exports[`App renders route "/space-poker" 1`] = `
+Array [
+  <div
+    className="NavigationBar-component"
+  >
+    <div
+      className="NavigationBar-links"
+    >
       <a
-        href="/sic-bo"
+        href="/"
         onClick={[Function]}
       >
-        Sic Bo
+        Home
       </a>
       <a
         href="/balances"
@@ -2998,12 +3973,49 @@ Array [
   <div
     style={
       Object {
-        "color": "white",
-        "fontSize": "4rem",
+        "height": 1024,
+        "outline": "1px solid red",
+        "width": 1440,
       }
     }
   >
-    PLACEHOLDER PAGE FOR SIC BO
+    SPACE POKER
+  </div>,
+]
+`;
+
+exports[`App renders route "/three-card-poker" 1`] = `
+Array [
+  <div
+    className="NavigationBar-component"
+  >
+    <div
+      className="NavigationBar-links"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
+      </a>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "height": 1024,
+        "outline": "1px solid red",
+        "width": 1440,
+      }
+    }
+  >
+    THREE CARD POKER
   </div>,
 ]
 `;

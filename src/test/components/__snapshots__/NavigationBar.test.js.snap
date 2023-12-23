@@ -14,18 +14,6 @@ exports[`NavigationBar renders 1`] = `
       Home
     </a>
     <a
-      href="/roulette"
-      onClick={[Function]}
-    >
-      Roulette
-    </a>
-    <a
-      href="/sic-bo"
-      onClick={[Function]}
-    >
-      Sic Bo
-    </a>
-    <a
       href="/balances"
       onClick={[Function]}
     >

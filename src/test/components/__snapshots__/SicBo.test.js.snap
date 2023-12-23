@@ -4,11 +4,12 @@ exports[`SicBo renders 1`] = `
 <div
   style={
     Object {
-      "color": "white",
-      "fontSize": "4rem",
+      "height": 1024,
+      "outline": "1px solid red",
+      "width": 1440,
     }
   }
 >
-  PLACEHOLDER PAGE FOR SIC BO
+  SIC BO
 </div>
 `;
