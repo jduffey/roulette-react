@@ -6,6 +6,7 @@ import { Home } from "./Home";
 import { ChuckALuck } from "./chuck-a-luck/ChuckALuck";
 import { ThreeCardPoker } from "./three-card-poker/ThreeCardPoker";
 import { Roulette } from "./roulette/Roulette";
+import { NewRoulette } from "./new-roulette/NewRoulette";
 import { SicBo } from "./sic-bo/SicBo";
 import { Blackjack } from "./blackjack/Blackjack";
 import { Baccarat } from "./baccarat/Baccarat";
@@ -29,6 +30,7 @@ export function App() {
             <Route path="/chuck-a-luck" element={elementInLayout(<ChuckALuck />)} />
             <Route path="/three-card-poker" element={elementInLayout(<ThreeCardPoker />)} />
             <Route path="/roulette" element={elementInLayout(<Roulette playerAddress={FIRST_PLAYER_ADDRESS} />)} />
+            <Route path="/new-roulette" element={elementInLayout(<NewRoulette />)} />
             <Route path="/sic-bo" element={elementInLayout(<SicBo />)} />
             <Route path="/blackjack" element={elementInLayout(<Blackjack />)} />
             <Route path="/baccarat" element={elementInLayout(<Baccarat />)} />

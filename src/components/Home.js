@@ -1,4 +1,4 @@
-import { NewHomeGameSelectionBox } from "./NewHomeGameSelectionBox";
+import { GameSelectionBox } from "./GameSelectionBox";
 
 export const Home = () => {
     const containerStyle = {
@@ -18,6 +18,7 @@ export const Home = () => {
                     ['Chuck-A-Luck', 'https://placehold.co/220x140', '/chuck-a-luck'],
                     ['Three Card Poker', 'https://placehold.co/220x140', '/three-card-poker'],
                     ['Roulette', 'https://placehold.co/220x140', '/roulette'],
+                    ['New Roulette', 'https://placehold.co/220x140', '/new-roulette'],
                     ['Sic Bo', 'https://placehold.co/220x140', '/sic-bo'],
                     ['Blackjack', 'https://placehold.co/220x140', '/blackjack'],
                     ['Baccarat', 'https://placehold.co/220x140', '/baccarat'],
@@ -27,7 +28,7 @@ export const Home = () => {
                     ['Gift Tree', 'https://placehold.co/220x140', '/gift-tree'],
                     ['Coin Flip', 'https://placehold.co/220x140', '/coin-flip'],
                 ].map(([gameName, gameImageUrl, linkTo]) => (
-                    <NewHomeGameSelectionBox
+                    <GameSelectionBox
                         key={gameName}
                         gameName={gameName}
                         gameImageUrl={gameImageUrl}

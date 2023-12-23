@@ -188,6 +188,64 @@ exports[`Home renders 1`] = `
     </div>
   </a>
   <a
+    href="/new-roulette"
+    onClick={[Function]}
+  >
+    <div
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      style={
+        Object {
+          "backgroundColor": "white",
+          "border": "4px black solid",
+          "borderRadius": 16,
+          "boxShadow": "4px 6px 0px 0px #000000",
+          "cursor": "pointer",
+          "height": 252,
+          "opacity": 1,
+          "pointerEvents": "auto",
+          "position": "relative",
+          "width": 256,
+        }
+      }
+    >
+      <img
+        alt="placeholder for New Roulette"
+        src="https://placehold.co/220x140"
+        style={
+          Object {
+            "border": "4px black solid",
+            "borderRadius": 12,
+            "height": 140,
+            "left": 14,
+            "position": "absolute",
+            "top": 14,
+            "width": 220,
+          }
+        }
+      />
+      <div
+        style={
+          Object {
+            "bottom": 30,
+            "color": "black",
+            "fontFamily": "Lexend Mega",
+            "fontSize": "16px",
+            "fontWeight": "700",
+            "height": 40,
+            "lineHeight": "40px",
+            "position": "absolute",
+            "textAlign": "center",
+            "width": 256,
+            "wordWrap": "break-word",
+          }
+        }
+      >
+        New Roulette
+      </div>
+    </div>
+  </a>
+  <a
     href="/sic-bo"
     onClick={[Function]}
   >

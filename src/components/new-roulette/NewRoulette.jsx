@@ -1,4 +1,4 @@
-export function SpacePoker() {
+export function NewRoulette() {
     return (
         <div
             style={{
@@ -7,7 +7,7 @@ export function SpacePoker() {
                 outline: '1px solid red',
             }}
         >
-            SPACE POKER
+            NEW ROULETTE
         </div>
     );
 }

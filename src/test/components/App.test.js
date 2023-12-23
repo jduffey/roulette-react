@@ -6,9 +6,11 @@ import { App } from "../../components/App";
 describe("App", () => {
     it.each([
         ["/"],
+
         ["/chuck-a-luck"],
         ["/three-card-poker"],
         ["/roulette"],
+        ["/new-roulette"],
         ["/sic-bo"],
         ["/blackjack"],
         ["/baccarat"],
@@ -17,6 +19,7 @@ describe("App", () => {
         ["/diamond-miner"],
         ["/gift-tree"],
         ["/coin-flip"],
+
         ["/balances"],
     ])("renders route \"%s\"", (path) => {
         const view = renderer.create(
