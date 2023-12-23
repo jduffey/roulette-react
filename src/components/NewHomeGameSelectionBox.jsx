@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 
 export const NewHomeGameSelectionBox = ({
     gameName,
     gameImageUrl,
-    disabled = false
+    linkTo,
+    disabled = false,
 }) => {
     const [hover, setHover] = useState(false);
 
@@ -44,27 +46,29 @@ export const NewHomeGameSelectionBox = ({
     };
 
     return (
-        <div
-            style={boxStyle}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-        >
-            <img
-                style={{
-                    width: 220,
-                    height: 140,
-                    position: 'absolute',
-                    left: 14,
-                    top: 14,
-                    borderRadius: 12,
-                    border: '4px black solid',
-                }}
-                src={gameImageUrl}
-                alt={`placeholder for ${gameName}`}
-            />
-            <div style={textStyle}>
-                {gameName}
+        <Link to={linkTo}>
+            <div
+                style={boxStyle}
+                onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
+            >
+                <img
+                    style={{
+                        width: 220,
+                        height: 140,
+                        position: 'absolute',
+                        left: 14,
+                        top: 14,
+                        borderRadius: 12,
+                        border: '4px black solid',
+                    }}
+                    src={gameImageUrl}
+                    alt={`placeholder for ${gameName}`}
+                />
+                <div style={textStyle}>
+                    {gameName}
+                </div>
             </div>
-        </div>
+        </Link>
     );
 };
