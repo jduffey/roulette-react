@@ -15,462 +15,6 @@ Array [
         Home
       </a>
       <a
-        href="/new-home"
-        onClick={[Function]}
-      >
-        New Home
-      </a>
-      <a
-        href="/balances"
-        onClick={[Function]}
-      >
-        Balances
-      </a>
-    </div>
-  </div>,
-  <div
-    style={
-      Object {
-        "color": "white",
-        "fontSize": "4rem",
-      }
-    }
-  >
-    PLACEHOLDER PAGE FOR HOME
-  </div>,
-]
-`;
-
-exports[`App renders route "/baccarat" 1`] = `
-Array [
-  <div
-    className="NavigationBar-component"
-  >
-    <div
-      className="NavigationBar-links"
-    >
-      <a
-        href="/"
-        onClick={[Function]}
-      >
-        Home
-      </a>
-      <a
-        href="/new-home"
-        onClick={[Function]}
-      >
-        New Home
-      </a>
-      <a
-        href="/balances"
-        onClick={[Function]}
-      >
-        Balances
-      </a>
-    </div>
-  </div>,
-  <div
-    style={
-      Object {
-        "color": "white",
-        "fontSize": "4rem",
-      }
-    }
-  >
-    BACCARAT
-  </div>,
-]
-`;
-
-exports[`App renders route "/balances" 1`] = `
-Array [
-  <div
-    className="NavigationBar-component"
-  >
-    <div
-      className="NavigationBar-links"
-    >
-      <a
-        href="/"
-        onClick={[Function]}
-      >
-        Home
-      </a>
-      <a
-        href="/new-home"
-        onClick={[Function]}
-      >
-        New Home
-      </a>
-      <a
-        href="/balances"
-        onClick={[Function]}
-      >
-        Balances
-      </a>
-    </div>
-  </div>,
-  <div
-    className="Balances-component"
-  >
-    <div>
-      <div>
-        hash: undefined
-      </div>
-      <div>
-        number: undefined
-      </div>
-      <div>
-        timestamp: undefined
-      </div>
-    </div>
-    <div>
-      <table
-        className="balances-table"
-      >
-        <thead>
-          <tr
-            className="balances-table-headers"
-          >
-            <th
-              style={
-                Object {
-                  "width": "16%",
-                }
-              }
-            >
-              Nickname
-            </th>
-            <th
-              style={
-                Object {
-                  "width": "16%",
-                }
-              }
-            >
-              Address
-            </th>
-            <th
-              style={
-                Object {
-                  "width": "16%",
-                }
-              }
-            >
-              ETH Balance
-            </th>
-            <th
-              style={
-                Object {
-                  "width": "16%",
-                }
-              }
-            >
-               Balance
-            </th>
-            <th
-              style={
-                Object {
-                  "width": "16%",
-                }
-              }
-            >
-               Allowance
-            </th>
-            <th
-              style={
-                Object {
-                  "width": "10%",
-                }
-              }
-            >
-              ✅ Sets
-            </th>
-            <th
-              style={
-                Object {
-                  "width": "16%",
-                }
-              }
-            >
-              Current Set
-            </th>
-          </tr>
-        </thead>
-        <tbody />
-      </table>
-    </div>
-  </div>,
-]
-`;
-
-exports[`App renders route "/blackjack" 1`] = `
-Array [
-  <div
-    className="NavigationBar-component"
-  >
-    <div
-      className="NavigationBar-links"
-    >
-      <a
-        href="/"
-        onClick={[Function]}
-      >
-        Home
-      </a>
-      <a
-        href="/new-home"
-        onClick={[Function]}
-      >
-        New Home
-      </a>
-      <a
-        href="/balances"
-        onClick={[Function]}
-      >
-        Balances
-      </a>
-    </div>
-  </div>,
-  <div
-    style={
-      Object {
-        "color": "white",
-        "fontSize": "4rem",
-      }
-    }
-  >
-    BLACKJACK
-  </div>,
-]
-`;
-
-exports[`App renders route "/chuck-a-luck" 1`] = `
-Array [
-  <div
-    className="NavigationBar-component"
-  >
-    <div
-      className="NavigationBar-links"
-    >
-      <a
-        href="/"
-        onClick={[Function]}
-      >
-        Home
-      </a>
-      <a
-        href="/new-home"
-        onClick={[Function]}
-      >
-        New Home
-      </a>
-      <a
-        href="/balances"
-        onClick={[Function]}
-      >
-        Balances
-      </a>
-    </div>
-  </div>,
-  <div
-    style={
-      Object {
-        "color": "white",
-        "fontSize": "4rem",
-      }
-    }
-  >
-    CHUCK-A-LUCK
-  </div>,
-]
-`;
-
-exports[`App renders route "/coin-flip" 1`] = `
-Array [
-  <div
-    className="NavigationBar-component"
-  >
-    <div
-      className="NavigationBar-links"
-    >
-      <a
-        href="/"
-        onClick={[Function]}
-      >
-        Home
-      </a>
-      <a
-        href="/new-home"
-        onClick={[Function]}
-      >
-        New Home
-      </a>
-      <a
-        href="/balances"
-        onClick={[Function]}
-      >
-        Balances
-      </a>
-    </div>
-  </div>,
-  <div
-    style={
-      Object {
-        "color": "white",
-        "fontSize": "4rem",
-      }
-    }
-  >
-    COIN FLIP
-  </div>,
-]
-`;
-
-exports[`App renders route "/diamond-miner" 1`] = `
-Array [
-  <div
-    className="NavigationBar-component"
-  >
-    <div
-      className="NavigationBar-links"
-    >
-      <a
-        href="/"
-        onClick={[Function]}
-      >
-        Home
-      </a>
-      <a
-        href="/new-home"
-        onClick={[Function]}
-      >
-        New Home
-      </a>
-      <a
-        href="/balances"
-        onClick={[Function]}
-      >
-        Balances
-      </a>
-    </div>
-  </div>,
-  <div
-    style={
-      Object {
-        "color": "white",
-        "fontSize": "4rem",
-      }
-    }
-  >
-    DIAMOND MINER
-  </div>,
-]
-`;
-
-exports[`App renders route "/gift-tree" 1`] = `
-Array [
-  <div
-    className="NavigationBar-component"
-  >
-    <div
-      className="NavigationBar-links"
-    >
-      <a
-        href="/"
-        onClick={[Function]}
-      >
-        Home
-      </a>
-      <a
-        href="/new-home"
-        onClick={[Function]}
-      >
-        New Home
-      </a>
-      <a
-        href="/balances"
-        onClick={[Function]}
-      >
-        Balances
-      </a>
-    </div>
-  </div>,
-  <div
-    style={
-      Object {
-        "color": "white",
-        "fontSize": "4rem",
-      }
-    }
-  >
-    GIFT TREE
-  </div>,
-]
-`;
-
-exports[`App renders route "/keno" 1`] = `
-Array [
-  <div
-    className="NavigationBar-component"
-  >
-    <div
-      className="NavigationBar-links"
-    >
-      <a
-        href="/"
-        onClick={[Function]}
-      >
-        Home
-      </a>
-      <a
-        href="/new-home"
-        onClick={[Function]}
-      >
-        New Home
-      </a>
-      <a
-        href="/balances"
-        onClick={[Function]}
-      >
-        Balances
-      </a>
-    </div>
-  </div>,
-  <div
-    style={
-      Object {
-        "color": "white",
-        "fontSize": "4rem",
-      }
-    }
-  >
-    KENO
-  </div>,
-]
-`;
-
-exports[`App renders route "/new-home" 1`] = `
-Array [
-  <div
-    className="NavigationBar-component"
-  >
-    <div
-      className="NavigationBar-links"
-    >
-      <a
-        href="/"
-        onClick={[Function]}
-      >
-        Home
-      </a>
-      <a
-        href="/new-home"
-        onClick={[Function]}
-      >
-        New Home
-      </a>
-      <a
         href="/balances"
         onClick={[Function]}
       >
@@ -1132,7 +676,7 @@ Array [
 ]
 `;
 
-exports[`App renders route "/roulette" 1`] = `
+exports[`App renders route "/baccarat" 1`] = `
 Array [
   <div
     className="NavigationBar-component"
@@ -1147,10 +691,365 @@ Array [
         Home
       </a>
       <a
-        href="/new-home"
+        href="/balances"
         onClick={[Function]}
       >
-        New Home
+        Balances
+      </a>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "color": "white",
+        "fontSize": "4rem",
+      }
+    }
+  >
+    BACCARAT
+  </div>,
+]
+`;
+
+exports[`App renders route "/balances" 1`] = `
+Array [
+  <div
+    className="NavigationBar-component"
+  >
+    <div
+      className="NavigationBar-links"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
+      </a>
+    </div>
+  </div>,
+  <div
+    className="Balances-component"
+  >
+    <div>
+      <div>
+        hash: undefined
+      </div>
+      <div>
+        number: undefined
+      </div>
+      <div>
+        timestamp: undefined
+      </div>
+    </div>
+    <div>
+      <table
+        className="balances-table"
+      >
+        <thead>
+          <tr
+            className="balances-table-headers"
+          >
+            <th
+              style={
+                Object {
+                  "width": "16%",
+                }
+              }
+            >
+              Nickname
+            </th>
+            <th
+              style={
+                Object {
+                  "width": "16%",
+                }
+              }
+            >
+              Address
+            </th>
+            <th
+              style={
+                Object {
+                  "width": "16%",
+                }
+              }
+            >
+              ETH Balance
+            </th>
+            <th
+              style={
+                Object {
+                  "width": "16%",
+                }
+              }
+            >
+               Balance
+            </th>
+            <th
+              style={
+                Object {
+                  "width": "16%",
+                }
+              }
+            >
+               Allowance
+            </th>
+            <th
+              style={
+                Object {
+                  "width": "10%",
+                }
+              }
+            >
+              ✅ Sets
+            </th>
+            <th
+              style={
+                Object {
+                  "width": "16%",
+                }
+              }
+            >
+              Current Set
+            </th>
+          </tr>
+        </thead>
+        <tbody />
+      </table>
+    </div>
+  </div>,
+]
+`;
+
+exports[`App renders route "/blackjack" 1`] = `
+Array [
+  <div
+    className="NavigationBar-component"
+  >
+    <div
+      className="NavigationBar-links"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
+      </a>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "color": "white",
+        "fontSize": "4rem",
+      }
+    }
+  >
+    BLACKJACK
+  </div>,
+]
+`;
+
+exports[`App renders route "/chuck-a-luck" 1`] = `
+Array [
+  <div
+    className="NavigationBar-component"
+  >
+    <div
+      className="NavigationBar-links"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
+      </a>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "color": "white",
+        "fontSize": "4rem",
+      }
+    }
+  >
+    CHUCK-A-LUCK
+  </div>,
+]
+`;
+
+exports[`App renders route "/coin-flip" 1`] = `
+Array [
+  <div
+    className="NavigationBar-component"
+  >
+    <div
+      className="NavigationBar-links"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
+      </a>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "color": "white",
+        "fontSize": "4rem",
+      }
+    }
+  >
+    COIN FLIP
+  </div>,
+]
+`;
+
+exports[`App renders route "/diamond-miner" 1`] = `
+Array [
+  <div
+    className="NavigationBar-component"
+  >
+    <div
+      className="NavigationBar-links"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
+      </a>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "color": "white",
+        "fontSize": "4rem",
+      }
+    }
+  >
+    DIAMOND MINER
+  </div>,
+]
+`;
+
+exports[`App renders route "/gift-tree" 1`] = `
+Array [
+  <div
+    className="NavigationBar-component"
+  >
+    <div
+      className="NavigationBar-links"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
+      </a>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "color": "white",
+        "fontSize": "4rem",
+      }
+    }
+  >
+    GIFT TREE
+  </div>,
+]
+`;
+
+exports[`App renders route "/keno" 1`] = `
+Array [
+  <div
+    className="NavigationBar-component"
+  >
+    <div
+      className="NavigationBar-links"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+      <a
+        href="/balances"
+        onClick={[Function]}
+      >
+        Balances
+      </a>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "color": "white",
+        "fontSize": "4rem",
+      }
+    }
+  >
+    KENO
+  </div>,
+]
+`;
+
+exports[`App renders route "/roulette" 1`] = `
+Array [
+  <div
+    className="NavigationBar-component"
+  >
+    <div
+      className="NavigationBar-links"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
       </a>
       <a
         href="/balances"
@@ -3927,12 +3826,6 @@ Array [
         Home
       </a>
       <a
-        href="/new-home"
-        onClick={[Function]}
-      >
-        New Home
-      </a>
-      <a
         href="/balances"
         onClick={[Function]}
       >
@@ -3968,12 +3861,6 @@ Array [
         Home
       </a>
       <a
-        href="/new-home"
-        onClick={[Function]}
-      >
-        New Home
-      </a>
-      <a
         href="/balances"
         onClick={[Function]}
       >
@@ -4007,12 +3894,6 @@ Array [
         onClick={[Function]}
       >
         Home
-      </a>
-      <a
-        href="/new-home"
-        onClick={[Function]}
-      >
-        New Home
       </a>
       <a
         href="/balances"

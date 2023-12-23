@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import { Layout } from "./Layout";
 
 import { Home } from "./Home";
-import { NewHome } from "./NewHome";
 import { ChuckALuck } from "./chuck-a-luck/ChuckALuck";
 import { ThreeCardPoker } from "./three-card-poker/ThreeCardPoker";
 import { Roulette } from "./roulette/Roulette";
@@ -26,7 +25,6 @@ export function App() {
     return (
         <Routes>
             <Route path="/" element={elementInLayout(<Home />)} />
-            <Route path="/new-home" element={elementInLayout(<NewHome />)} />
 
             <Route path="/chuck-a-luck" element={elementInLayout(<ChuckALuck />)} />
             <Route path="/three-card-poker" element={elementInLayout(<ThreeCardPoker />)} />
