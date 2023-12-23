@@ -14,6 +14,12 @@ exports[`NavigationBar renders 1`] = `
       Home
     </a>
     <a
+      href="/new-home"
+      onClick={[Function]}
+    >
+      New Home
+    </a>
+    <a
       href="/roulette"
       onClick={[Function]}
     >
