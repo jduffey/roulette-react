@@ -2,12 +2,25 @@ import { useState } from 'react';
 
 const RouletteWheel = () => {
     const [spinning, setSpinning] = useState(false);
-    const segments = Array.from({ length: 2 }, (_, i) => i + 1);
+    const numberOfSegments = 38;
+    const segments = Array.from({ length: numberOfSegments }, (_, i) => i + 1);
 
     const startSpinning = () => {
         setSpinning(true);
         setTimeout(() => setSpinning(false), 5000);
     };
+
+    const displayNumber = (value) => {
+        if (value === 37) return '00';
+        if (value === 38) return '0';
+        return value;
+    }
+
+    const displayColor = (value) => {
+        if (value === 37 || value === 38) return 'green';
+        if (value % 2 === 0) return 'red';
+        return 'black';
+    }
 
     return (
         <div>
@@ -15,13 +28,18 @@ const RouletteWheel = () => {
                 {segments.map((number, index) => (
                     <div
                         key={index}
-                        className={`segment ${index % 2 === 0 ? 'red' : 'black'}`}
+                        className={`segment ${displayColor(number)}`}
                         style={{
-                            transform: `rotate(${180 * index}deg)`,
+                            transform: `rotate(${360 / numberOfSegments * index}deg) translate(0%, 0%)`,
                             zIndex: index,
+                            clipPath: `polygon(50% 100%, 46% 0%, 54% 0%)`
                         }}
                     >
-                        <div className="number">{number}</div>
+                        <div className="number">
+                            {
+                                displayNumber(number)
+                            }
+                        </div>
                     </div>
                 ))}
             </div>
