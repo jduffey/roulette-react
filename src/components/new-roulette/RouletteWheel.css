@@ -39,7 +39,7 @@
 }
 
 .spin {
-    animation: spin 2s linear;
+    animation: spin 1s linear;
 }
 
 @keyframes spin {
@@ -48,6 +48,6 @@
     }
 
     to {
-        transform: rotate(720deg);
+        transform: rotate(360deg);
     }
 }
