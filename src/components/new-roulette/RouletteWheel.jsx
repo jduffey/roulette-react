@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const RouletteWheel = () => {
     const [spinning, setSpinning] = useState(false);
-    const segments = Array.from({ length: 36 }, (_, i) => i + 1);
+    const segments = Array.from({ length: 2 }, (_, i) => i + 1);
 
     const startSpinning = () => {
         setSpinning(true);
@@ -15,14 +15,13 @@ const RouletteWheel = () => {
                 {segments.map((number, index) => (
                     <div
                         key={index}
-                        className="segment"
-                        style={{ transform: `rotate(${10 * index}deg)` }}
+                        className={`segment ${index % 2 === 0 ? 'red' : 'black'}`}
+                        style={{
+                            transform: `rotate(${180 * index}deg)`,
+                            zIndex: index,
+                        }}
                     >
-                        <div
-                            className={`number ${index % 2 === 0 ? 'red' : 'black'}`}
-                        >
-                            {number}
-                        </div>
+                        <div className="number">{number}</div>
                     </div>
                 ))}
             </div>
