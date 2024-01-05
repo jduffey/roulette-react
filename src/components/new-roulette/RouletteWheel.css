@@ -1,0 +1,43 @@
+.wheel {
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    border: 8px solid black;
+    position: relative;
+    background-color: bisque;
+}
+
+.segment {
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    transform-origin: bottom;
+    display: flex;
+    justify-content: center;
+}
+
+.number {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid black;
+    font-size: 24px;
+}
+
+.spin {
+    animation: spin 2s linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
