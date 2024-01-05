@@ -15,14 +15,17 @@ export const Home = () => {
         <div style={containerStyle}>
             {
                 [
-                    ['Chuck-A-Luck', 'https://placehold.co/220x140', '/chuck-a-luck'],
-                    ['Three Card Poker', 'https://placehold.co/220x140', '/three-card-poker'],
                     ['Roulette', 'https://placehold.co/220x140', '/roulette'],
                     ['New Roulette', 'https://placehold.co/220x140', '/new-roulette'],
                     ['Sic Bo', 'https://placehold.co/220x140', '/sic-bo'],
+                    ['Three Card Poker', 'https://placehold.co/220x140', '/three-card-poker'],
+                    ['Chuck-A-Luck', 'https://placehold.co/220x140', '/chuck-a-luck'],
                     ['Blackjack', 'https://placehold.co/220x140', '/blackjack'],
-                    ['Baccarat', 'https://placehold.co/220x140', '/baccarat'],
+                    ['Big Six', 'https://placehold.co/220x140', '/big-six'],
                     ['Keno', 'https://placehold.co/220x140', '/keno'],
+                    ['Basic Slots', 'https://placehold.co/220x140', '/basic-slots'],
+                    ['Advanced Slots', 'https://placehold.co/220x140', '/advanced-slots'],
+                    ['Baccarat', 'https://placehold.co/220x140', '/baccarat'],
                     ['Space Poker', 'https://placehold.co/220x140', '/space-poker'],
                     ['Diamond Miner', 'https://placehold.co/220x140', '/diamond-miner'],
                     ['Gift Tree', 'https://placehold.co/220x140', '/gift-tree'],
