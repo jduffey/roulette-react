@@ -1,13 +1,18 @@
 import { useState } from 'react';
 
 const RouletteWheel = () => {
-    const [spinning, setSpinning] = useState(false);
+    const [rotation, setRotation] = useState(0);
+    const numberOfSegments = 38;
 
     const rouletteNumbers = [0, 28, 9, 26, 30, 11, 7, 20, 32, 17, 5, 22, 34, 15, 3, 24, 36, 13, 1, 37, 27, 10, 25, 29, 12, 8, 19, 31, 18, 6, 21, 33, 16, 4, 23, 35, 14, 2];
 
     const startSpinning = () => {
-        setSpinning(true);
-        setTimeout(() => setSpinning(false), 5000);
+        const randomIndex = Math.floor(Math.random() * numberOfSegments); // Generate a random index
+        const degreesPerSegment = 360 / numberOfSegments;
+        const extraSpins = 3;
+        const finalRotation = extraSpins * 360 + (randomIndex * degreesPerSegment);
+
+        setRotation(prev => prev + finalRotation);
     };
 
     const displayNumber = (value) => {
@@ -29,13 +34,13 @@ const RouletteWheel = () => {
 
     return (
         <div>
-            <div className={`wheel ${spinning ? 'spin' : ''}`}>
+            <div className={`wheel`} style={{ transform: `rotate(${rotation}deg)` }}>
                 {rouletteNumbers.map((number, index) => (
                     <div
                         key={index}
                         className={`segment ${displayColor(number)}`}
                         style={{
-                            transform: `rotate(${360 / rouletteNumbers.length * index}deg) translate(0%, 0%)`,
+                            transform: `rotate(${360 / numberOfSegments * index}deg) translate(0%, 0%)`,
                             zIndex: index,
                             clipPath,
                         }}
