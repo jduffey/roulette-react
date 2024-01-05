@@ -9,7 +9,7 @@ const RouletteWheel = () => {
     const startSpinning = () => {
         const randomIndex = Math.floor(Math.random() * numberOfSegments); // Generate a random index
         const degreesPerSegment = 360 / numberOfSegments;
-        const extraSpins = 3;
+        const extraSpins = 1;
         const finalRotation = extraSpins * 360 + (randomIndex * degreesPerSegment);
 
         setRotation(prev => prev + finalRotation);
@@ -45,7 +45,7 @@ const RouletteWheel = () => {
                             clipPath,
                         }}
                     >
-                        <div className="number">
+                        <div className={`number ${displayColor(number)}`}>
                             {displayNumber(number)}
                         </div>
                     </div>
