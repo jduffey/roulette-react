@@ -29,7 +29,7 @@ const RouletteWheel = () => {
         return redNumbers.includes(value) ? 'red' : 'black';
     };
 
-    const clipPathCompensation = 4.147;
+    const clipPathCompensation = 3.8;
     const clipPath = `polygon(50% 100%, ${50 - clipPathCompensation}% 0%, ${50 + clipPathCompensation}% 0%)`;
 
     return (
@@ -50,13 +50,13 @@ const RouletteWheel = () => {
                         </div>
                     </div>
                 ))}
+                <div className="inner-larger-circle"></div>
+                <div className="inner-smaller-circle" >
+                </div>
             </div>
-            <button
-                style={{
-                    width: '800px',
-                    height: '100px',
-                }}
-                onClick={startSpinning}>Spin</button>
+            <div className='button-container'>
+                <button onClick={startSpinning} >Spin</button>
+            </div>
         </div>
     );
 };
