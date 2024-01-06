@@ -9,7 +9,7 @@ const RouletteWheel = () => {
     const startSpinning = () => {
         const randomIndex = Math.floor(Math.random() * numberOfSegments); // Generate a random index
         const degreesPerSegment = 360 / numberOfSegments;
-        const extraSpins = 1;
+        const extraSpins = 2;
         const finalRotation = extraSpins * 360 + (randomIndex * degreesPerSegment);
 
         setRotation(prev => prev + finalRotation);
@@ -34,6 +34,7 @@ const RouletteWheel = () => {
 
     return (
         <div>
+            <div className="arrow"></div>
             <div className={`wheel`} style={{ transform: `rotate(${rotation}deg)` }}>
                 {rouletteNumbers.map((number, index) => (
                     <div

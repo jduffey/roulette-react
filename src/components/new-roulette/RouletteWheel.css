@@ -72,6 +72,17 @@ button {
     margin-top: 8px;
 }
 
+.arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid black;
+    transform: translate(384px, -20px);
+    z-index: 999;
+}
+
 .red {
     background-color: red;
 }
