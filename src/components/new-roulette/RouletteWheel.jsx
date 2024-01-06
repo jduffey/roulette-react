@@ -2,17 +2,28 @@ import { useState } from 'react';
 
 const RouletteWheel = () => {
     const [rotation, setRotation] = useState(0);
+    const [winningNumber, setWinningNumber] = useState(null);
     const numberOfSegments = 38;
 
     const rouletteNumbers = [0, 28, 9, 26, 30, 11, 7, 20, 32, 17, 5, 22, 34, 15, 3, 24, 36, 13, 1, 37, 27, 10, 25, 29, 12, 8, 19, 31, 18, 6, 21, 33, 16, 4, 23, 35, 14, 2];
 
     const startSpinning = () => {
-        const randomIndex = Math.floor(Math.random() * numberOfSegments); // Generate a random index
+        const randomIndex = Math.floor(Math.random() * numberOfSegments);
+        // const randomIndex = 1;
+        console.log('randomIndex', randomIndex);
         const degreesPerSegment = 360 / numberOfSegments;
-        const extraSpins = 2;
+        // console.log('degreesPerSegment', degreesPerSegment);
+        const extraSpins = 0;
         const finalRotation = extraSpins * 360 + (randomIndex * degreesPerSegment);
+        console.log('finalRotation', finalRotation);
 
-        setRotation(prev => prev + finalRotation);
+        setRotation(prev => (prev + finalRotation) % 360);
+
+        setTimeout(() => {
+            const winningNumber = rouletteNumbers[rouletteNumbers.length - randomIndex];
+            console.log('winningNumber', winningNumber);
+            setWinningNumber(winningNumber);
+        }, 3000);
     };
 
     const displayNumber = (value) => {
@@ -58,6 +69,11 @@ const RouletteWheel = () => {
             <div className='button-container'>
                 <button onClick={startSpinning} >SPIN</button>
             </div>
+            {winningNumber !== null && (
+                <div className="winning-number-display">
+                    Winning Number: {winningNumber}
+                </div>
+            )}
         </div>
     );
 };
