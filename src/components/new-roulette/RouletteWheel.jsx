@@ -55,7 +55,7 @@ const RouletteWheel = () => {
                 </div>
             </div>
             <div className='button-container'>
-                <button onClick={startSpinning} >Spin</button>
+                <button onClick={startSpinning} >SPIN</button>
             </div>
         </div>
     );
