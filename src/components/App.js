@@ -22,6 +22,7 @@ import { ThreeCardPoker } from "./three-card-poker/ThreeCardPoker";
 import { Balances } from "./balances/Balances";
 
 import { FIRST_PLAYER_ADDRESS } from "../common/blockchainWrapper";
+import ChipSelection from "./common/ChipSelection";
 
 const elementInLayout = (element) => <Layout>{element}</Layout>
 
@@ -29,6 +30,8 @@ export function App() {
     return (
         <Routes>
             <Route path="/" element={elementInLayout(<Home />)} />
+
+            <Route path="/scratchpad" element={<ChipSelection />} />
 
             <Route path="/advanced-slots" element={elementInLayout(<AdvancedSlots />)} />
             <Route path="/baccarat" element={elementInLayout(<Baccarat />)} />
