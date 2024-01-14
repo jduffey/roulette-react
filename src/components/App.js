@@ -10,7 +10,7 @@ import { BigSix } from "./big-six/BigSix";
 import { Blackjack } from "./blackjack/Blackjack";
 import { ChuckALuck } from "./chuck-a-luck/ChuckALuck";
 import { CoinFlip } from "./coin-flip/CoinFlip";
-import { DiamondMiner } from "./diamond-miner/DiamondMiner";
+import DiamondMiner from "./diamond-miner/DiamondMiner";
 import { GiftTree } from "./gift-tree/GiftTree";
 import { Keno } from "./keno/Keno";
 import { NewRoulette } from "./new-roulette/NewRoulette";
