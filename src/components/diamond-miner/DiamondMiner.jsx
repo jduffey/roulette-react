@@ -1,6 +1,9 @@
+import React, { useState } from 'react';
 import Diamond from './diamond.svg';
 
 const DiamondMiner = () => {
+    const [hoveredDiamond, setHoveredDiamond] = useState(null);
+
     const diamondContainerStyle = {
         display: 'inline-flex',
         flexDirection: 'column',
@@ -10,11 +13,25 @@ const DiamondMiner = () => {
         borderRadius: '20px',
     };
 
-    const diamondStyle = {
+    const diamondStyle = (isHovered) => ({
         margin: '12px',
         border: '6px solid black',
         borderRadius: '20px',
         padding: '16px',
+        background: isHovered ? 'inherit' : 'black',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    });
+
+    const imageStyle = {
+        visibility: 'hidden',
+        maxWidth: '100%',
+        maxHeight: '100%',
+    };
+
+    const hoverStyle = {
+        visibility: 'visible',
     };
 
     const parentStyle = {
@@ -27,23 +44,22 @@ const DiamondMiner = () => {
     };
 
     return (
-        <div style={parentStyle}        >
+        <div style={parentStyle}>
             <div style={diamondContainerStyle}>
-                <div>
-                    <img style={diamondStyle} src={Diamond} alt="diamond" />
-                    <img style={diamondStyle} src={Diamond} alt="diamond" />
-                    <img style={diamondStyle} src={Diamond} alt="diamond" />
-                </div>
-                <div>
-                    <img style={diamondStyle} src={Diamond} alt="diamond" />
-                    <img style={diamondStyle} src={Diamond} alt="diamond" />
-                    <img style={diamondStyle} src={Diamond} alt="diamond" />
-                </div>
-                <div>
-                    <img style={diamondStyle} src={Diamond} alt="diamond" />
-                    <img style={diamondStyle} src={Diamond} alt="diamond" />
-                    <img style={diamondStyle} src={Diamond} alt="diamond" />
-                </div>
+                {[0, 1, 2].map(index => (
+                    <div
+                        key={index}
+                        style={diamondStyle(hoveredDiamond === index)}
+                        onMouseOver={() => setHoveredDiamond(index)}
+                        onMouseOut={() => setHoveredDiamond(null)}
+                    >
+                        <img
+                            style={hoveredDiamond === index ? hoverStyle : imageStyle}
+                            src={Diamond}
+                            alt={`diamond-${index}`}
+                        />
+                    </div>
+                ))}
             </div>
         </div>
     );
