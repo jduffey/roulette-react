@@ -9,12 +9,16 @@ export function PayoutScheduleHelper() {
             }}>
             <div
                 style={{
+                    position: 'absolute',
+                    top: '60px',
+                    left: '276px',
+                    width: '888px',
+                    height: '60px',
                     color: 'white',
                     fontSize: 48,
                     fontFamily: 'Lexend Mega',
                     fontWeight: '700',
                     wordWrap: 'break-word',
-                    width: '100%',
                     textAlign: 'center',
                 }}>
                 PAYOUT SCHEDULE HELPER
@@ -78,6 +82,70 @@ export function PayoutScheduleHelper() {
                     fontWeight: '700',
                 }}>
                 SET TOTAL OUTCOMES
+            </div>
+            <div
+                style={{
+                    position: 'absolute',
+                    top: '340px',
+                    left: '170px',
+                    width: '556px',
+                    height: '35px',
+                    color: 'white',
+                    fontSize: 28,
+                    fontFamily: 'Lexend Mega',
+                    fontWeight: '700',
+                    wordWrap: 'break-word',
+                    textAlign: 'right',
+                }}>
+                TOTAL WINNING OUTCOMES:
+            </div>
+            <div
+                style={{
+                    position: 'absolute',
+                    top: '380px',
+                    left: '170px',
+                    width: '556px',
+                    height: '35px',
+                    color: 'white',
+                    fontSize: 28,
+                    fontFamily: 'Lexend Mega',
+                    fontWeight: '700',
+                    wordWrap: 'break-word',
+                    textAlign: 'right',
+                }}>
+                TOTAL ODDS OF WINNING:
+            </div>
+            <div
+                style={{
+                    position: 'absolute',
+                    top: '420px',
+                    left: '170px',
+                    width: '556px',
+                    height: '35px',
+                    color: 'white',
+                    fontSize: 28,
+                    fontFamily: 'Lexend Mega',
+                    fontWeight: '700',
+                    wordWrap: 'break-word',
+                    textAlign: 'right',
+                }}>
+                MONOTONIC PLAYER EV:
+            </div>
+            <div
+                style={{
+                    position: 'absolute',
+                    top: '460px',
+                    left: '170px',
+                    width: '556px',
+                    height: '35px',
+                    color: 'white',
+                    fontSize: 28,
+                    fontFamily: 'Lexend Mega',
+                    fontWeight: '700',
+                    wordWrap: 'break-word',
+                    textAlign: 'right',
+                }}>
+                MONOTONIC HOUSE EDGE:
             </div>
         </div >
     );
