@@ -19,6 +19,36 @@ export function PayoutScheduleHelper() {
                 }}>
                 PAYOUT SCHEDULE HELPER
             </div>
-        </div>
+            <div style={{
+                width: '518px',
+                height: '68px',
+                background: '#FFA17B',
+                boxShadow: '4px 6px 0px black',
+                borderRadius: 15,
+                border: '4px black solid',
+                textAlign: 'center',
+                fontSize: 28,
+                lineHeight: '68px',
+                fontFamily: 'Lexend Mega',
+                fontWeight: '700',
+            }}>
+                SET TARGET HOUSE EDGE
+            </div>
+            <div style={{
+                width: '518px',
+                height: '68px',
+                background: '#FFA17B',
+                boxShadow: '4px 6px 0px black',
+                borderRadius: 15,
+                border: '4px black solid',
+                textAlign: 'center',
+                fontSize: 28,
+                lineHeight: '68px',
+                fontFamily: 'Lexend Mega',
+                fontWeight: '700',
+            }}>
+                SET TOTAL OUTCOMES
+            </div>
+        </div >
     );
 }
