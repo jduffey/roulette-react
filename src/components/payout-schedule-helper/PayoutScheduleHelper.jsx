@@ -20,6 +20,20 @@ export function PayoutScheduleHelper() {
                 PAYOUT SCHEDULE HELPER
             </div>
             <div style={{
+                width: '390px',
+                height: '63px',
+                background: '#D9D9D9',
+                borderRadius: 15,
+                border: '4px black solid',
+            }} />
+            <div style={{
+                width: '390px',
+                height: '63px',
+                background: '#D9D9D9',
+                borderRadius: 15,
+                border: '4px black solid',
+            }} />
+            <div style={{
                 width: '518px',
                 height: '68px',
                 background: '#FFA17B',
