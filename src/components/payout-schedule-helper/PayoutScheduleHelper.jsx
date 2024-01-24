@@ -147,6 +147,62 @@ export function PayoutScheduleHelper() {
                 }}>
                 MONOTONIC HOUSE EDGE:
             </div>
+            <div
+                style={{
+                    position: 'absolute',
+                    top: '340px',
+                    left: '740px',
+                    height: '35px',
+                    color: '#FDFD96',
+                    fontSize: 28,
+                    fontFamily: 'Lexend Mega',
+                    fontWeight: '700',
+                    wordWrap: 'break-word',
+                }}>
+                546 OF 1326
+            </div>
+            <div
+                style={{
+                    position: 'absolute',
+                    top: '380px',
+                    left: '740px',
+                    height: '35px',
+                    color: '#FDFD96',
+                    fontSize: 28,
+                    fontFamily: 'Lexend Mega',
+                    fontWeight: '700',
+                    wordWrap: 'break-word',
+                }}>
+                41.176471 %
+            </div>
+            <div
+                style={{
+                    position: 'absolute',
+                    top: '420px',
+                    left: '740px',
+                    height: '35px',
+                    color: '#FDFD96',
+                    fontSize: 28,
+                    fontFamily: 'Lexend Mega',
+                    fontWeight: '700',
+                    wordWrap: 'break-word',
+                }}>
+                0.947210
+            </div>
+            <div
+                style={{
+                    position: 'absolute',
+                    top: '460px',
+                    left: '740px',
+                    height: '35px',
+                    color: '#FDFD96',
+                    fontSize: 28,
+                    fontFamily: 'Lexend Mega',
+                    fontWeight: '700',
+                    wordWrap: 'break-word',
+                }}>
+                0.052790 (5.580694 % FROM TARGET)
+            </div>
         </div >
     );
 }
