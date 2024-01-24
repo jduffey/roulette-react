@@ -19,48 +19,64 @@ export function PayoutScheduleHelper() {
                 }}>
                 PAYOUT SCHEDULE HELPER
             </div>
-            <div style={{
-                width: '390px',
-                height: '63px',
-                background: '#D9D9D9',
-                borderRadius: 15,
-                border: '4px black solid',
-            }} />
-            <div style={{
-                width: '390px',
-                height: '63px',
-                background: '#D9D9D9',
-                borderRadius: 15,
-                border: '4px black solid',
-            }} />
-            <div style={{
-                width: '518px',
-                height: '68px',
-                background: '#FFA17B',
-                boxShadow: '4px 6px 0px black',
-                borderRadius: 15,
-                border: '4px black solid',
-                textAlign: 'center',
-                fontSize: 28,
-                lineHeight: '68px',
-                fontFamily: 'Lexend Mega',
-                fontWeight: '700',
-            }}>
+            <div
+                style={{
+                    position: 'absolute',
+                    top: '158px',
+                    left: '250px',
+                    width: '390px',
+                    height: '63px',
+                    background: '#D9D9D9',
+                    borderRadius: 15,
+                    border: '4px black solid',
+                }} />
+            <div
+                style={{
+                    position: 'absolute',
+                    top: '247px',
+                    left: '250px',
+                    width: '390px',
+                    height: '63px',
+                    background: '#D9D9D9',
+                    borderRadius: 15,
+                    border: '4px black solid',
+                }} />
+            <div
+                style={{
+                    position: 'absolute',
+                    top: '153px',
+                    left: '671px',
+                    width: '518px',
+                    height: '68px',
+                    background: '#FFA17B',
+                    boxShadow: '4px 6px 0px black',
+                    borderRadius: 15,
+                    border: '4px black solid',
+                    textAlign: 'center',
+                    fontSize: 28,
+                    lineHeight: '68px',
+                    fontFamily: 'Lexend Mega',
+                    fontWeight: '700',
+                }}>
                 SET TARGET HOUSE EDGE
             </div>
-            <div style={{
-                width: '518px',
-                height: '68px',
-                background: '#FFA17B',
-                boxShadow: '4px 6px 0px black',
-                borderRadius: 15,
-                border: '4px black solid',
-                textAlign: 'center',
-                fontSize: 28,
-                lineHeight: '68px',
-                fontFamily: 'Lexend Mega',
-                fontWeight: '700',
-            }}>
+            <div
+                style={{
+                    position: 'absolute',
+                    top: '243px',
+                    left: '671px',
+                    width: '518px',
+                    height: '68px',
+                    background: '#FFA17B',
+                    boxShadow: '4px 6px 0px black',
+                    borderRadius: 15,
+                    border: '4px black solid',
+                    textAlign: 'center',
+                    fontSize: 28,
+                    lineHeight: '68px',
+                    fontFamily: 'Lexend Mega',
+                    fontWeight: '700',
+                }}>
                 SET TOTAL OUTCOMES
             </div>
         </div >
