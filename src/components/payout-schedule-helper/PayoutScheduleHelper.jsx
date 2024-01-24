@@ -203,6 +203,64 @@ export function PayoutScheduleHelper() {
                 }}>
                 0.052790 (5.580694 % FROM TARGET)
             </div>
+            <div
+                style={{
+                    position: 'absolute',
+                    top: '515px',
+                    left: '308px',
+                    width: '297px',
+                    height: '55px',
+                    background: '#A388EE',
+                    boxShadow: '4px 6px 0px black',
+                    borderRadius: 15,
+                    border: '4px black solid',
+                    textAlign: 'center',
+                    fontSize: 21,
+                    lineHeight: '55px',
+                    fontFamily: 'Lexend Mega',
+                    fontWeight: '700',
+                }}>
+                ADD ENTRY
+            </div>
+            <div style={{
+                position: 'absolute',
+                top: '515px',
+                left: '629px',
+                width: '249px',
+                height: '63px',
+                background: '#D9D9D9',
+                borderRadius: 15,
+                border: '4px black solid',
+            }} />
+            <div style={{
+                position: 'absolute',
+                top: '515px',
+                left: '894px',
+                width: '249px',
+                height: '63px',
+                background: '#D9D9D9',
+                borderRadius: 15,
+                border: '4px black solid',
+            }} />
+            <div style={{
+                position: 'absolute',
+                top: '1010px',
+                left: '625px',
+                width: '192px',
+                height: '34px',
+                background: '#FFB2EF',
+                boxShadow: '4px 6px 0px black',
+                borderRadius: 15,
+                border: '4px black solid',
+                fontSize: 18,
+                lineHeight: '34px',
+                fontFamily: 'Lexend Mega',
+                fontWeight: '700',
+                wordWrap: 'break-word',
+                textAlign: 'center',
+            }}>
+                CLEAR TABLE
+            </div>
         </div >
     );
 }
