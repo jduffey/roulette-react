@@ -20,6 +20,7 @@ import { SpacePoker } from "./space-poker/SpacePoker";
 import { ThreeCardPoker } from "./three-card-poker/ThreeCardPoker";
 
 import { Balances } from "./balances/Balances";
+import { PayoutScheduleHelper } from "./payout-schedule-helper/PayoutScheduleHelper";
 
 import { FIRST_PLAYER_ADDRESS } from "../common/blockchainWrapper";
 
@@ -47,6 +48,7 @@ export function App() {
             <Route path="/three-card-poker" element={elementInLayout(<ThreeCardPoker />)} />
 
             <Route path="/balances" element={elementInLayout(<Balances />)} />
+            <Route path="/payout-schedule-helper" element={elementInLayout(<PayoutScheduleHelper />)} />
         </Routes>
     );
 }
