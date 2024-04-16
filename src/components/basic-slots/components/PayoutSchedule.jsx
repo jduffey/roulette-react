@@ -6,82 +6,132 @@ export function PayoutSchedule() {
                 height: 444,
                 borderRadius: 30,
                 backgroundColor: '#00B5FF',
+                display: 'flex',
+                flexDirection: 'column'
             }}
         >
+            {/* Top Title Row */}
             <div
                 style={{
-                    width: 516,
-                    height: 60,
+                    width: '100%',
                     display: 'flex',
-                    justifyContent: 'center',
+                    flexDirection: 'column',
                     alignItems: 'center',
+                    justifyContent: 'center',
                     fontSize: 40,
                     fontWeight: 'bold',
                     borderTopLeftRadius: 30,
                     borderTopRightRadius: 30,
-                    rotate: '-4deg',
+                    backgroundColor: 'white',
                     color: '#FFE24B',
                     '-webkit-text-stroke-color': 'black',
                     '-webkit-text-stroke-width': '2px',
+                    textShadow: '2px 4px 4px rgba(0,0,0)'
                 }}
             >
-                <StarSvg /> WINNING <StarSvg />
+                <div>WINNING</div>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <StarSvg />
+                    <span>COMBINATIONS</span>
+                    <StarSvg />
+                </div>
             </div>
+
+            {/* Seven Icons Row with stylized $2000 */}
             <div
                 style={{
-                    width: 516,
-                    height: 60,
+                    width: '100%',
                     display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    fontSize: 24,
-                    fontWeight: 'bold',
-                    color: 'white',
-                    '-webkit-text-stroke-color': 'black',
-                    '-webkit-text-stroke-width': '2px',
-                }}
-            >
-                COMBINATIONS
-            </div>
-            <div
-                style={{
-                    padding: 2,
-                }}
-            >
-                <SlotIconSeven />
-                <SlotIconSeven />
-                <SlotIconSeven />
-            </div>
-            <div
-                style={{
-                    width: 516,
-                    height: 160,
-                    display: 'flex',
-                    justifyContent: 'center',
+                    justifyContent: 'space-around',
                     alignItems: 'center',
                     fontSize: 24,
                     fontWeight: 'bold',
                     backgroundColor: 'white',
+                    padding: 10
                 }}
             >
+                <SlotIconSeven />
+                <SlotIconSeven />
+                <SlotIconSeven />
                 <div
                     style={{
-                        width: 516,
-                        display: 'flex',
-                        justifyContent: 'right',
-                        alignItems: 'center',
                         fontSize: 70,
                         fontWeight: 'bold',
                         color: '#74EE15',
-                        rotate: '6deg',
+                        '-webkit-text-stroke-color': 'black',
+                        '-webkit-text-stroke-width': '2px',
+                        textShadow: "2px 4px 4px rgba(0,0,0)"
                     }}
                 >
                     $2000
                 </div>
             </div>
-        </div >
+
+            {/* Two Seven Icons Row with $200 */}
+            <div
+                style={{
+                    width: '100%',
+                    display: 'flex',
+                    justifyContent: 'space-around',
+                    alignItems: 'center',
+                    fontSize: 24,
+                    fontWeight: 'bold',
+                    backgroundColor: '#00B5FF',
+                    padding: 10
+                }}
+            >
+                <SlotIconSeven />
+                <SlotIconSeven />
+                <div
+                    style={{
+                        fontSize: 70,
+                        fontWeight: 'bold',
+                        color: 'black',
+                    }}
+                >
+                    $200
+                </div>
+            </div>
+
+            {/* One Seven Icon Row with $20 */}
+            <div
+                style={{
+                    width: '100%',
+                    display: 'flex',
+                    justifyContent: 'space-around',
+                    alignItems: 'center',
+                    fontSize: 24,
+                    fontWeight: 'bold',
+                    backgroundColor: 'white',
+                    padding: 10
+                }}
+            >
+                <SlotIconSeven />
+                <div
+                    style={{
+                        fontSize: 70,
+                        fontWeight: 'bold',
+                        color: 'black',
+                    }}
+                >
+                    $20
+                </div>
+            </div>
+
+            {/* Bottom Short Blue Row */}
+            <div
+                style={{
+                    width: '100%',
+                    height: 20,
+                    backgroundColor: '#00B5FF',
+                }}
+            >
+                {/* Empty for color symmetry */}
+            </div>
+        </div>
     );
 }
+
 
 const StarSvg = () => (
     <svg width="48" height="46" viewBox="0 0 48 46" fill="none" xmlns="http://www.w3.org/2000/svg">
