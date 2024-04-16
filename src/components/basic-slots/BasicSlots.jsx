@@ -1,3 +1,5 @@
+import { PayoutSchedule } from "./components/PayoutSchedule";
+
 export function BasicSlots() {
     return (
         <div
@@ -7,7 +9,7 @@ export function BasicSlots() {
                 outline: '1px solid red',
             }}
         >
-            BASIC SLOTS
+            <PayoutSchedule />
         </div>
     );
 }
