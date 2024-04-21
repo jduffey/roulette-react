@@ -13,6 +13,7 @@ import { CoinFlip } from "./coin-flip/CoinFlip";
 import { DiamondMiner } from "./diamond-miner/DiamondMiner";
 import { GiftTree } from "./gift-tree/GiftTree";
 import { Keno } from "./keno/Keno";
+import { ManageFunds } from "./manage-funds/ManageFunds";
 import { NewRoulette } from "./new-roulette/NewRoulette";
 import { Roulette } from "./roulette/Roulette";
 import { SicBo } from "./sic-bo/SicBo";
@@ -47,6 +48,7 @@ export function App() {
             <Route path="/three-card-poker" element={elementInLayout(<ThreeCardPoker />)} />
 
             <Route path="/balances" element={elementInLayout(<Balances />)} />
+            <Route path="/manage-funds" element={elementInLayout(<ManageFunds />)} />
         </Routes>
     );
 }

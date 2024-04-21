@@ -6,6 +6,7 @@ export function NavigationBar() {
             <div className="NavigationBar-links">
                 <Link to="/">Home</Link>
                 <Link to="/balances">Balances</Link>
+                <Link to="/manage-funds">Manage Funds</Link>
             </div>
         </div>
     );
