@@ -1,3 +1,4 @@
+import ButtonContainer from "./ButtonContainer";
 import DepositEthButton from "./DepositEthButton";
 import WithdrawEthButton from "./WithdrawEthButton";
 
@@ -8,10 +9,15 @@ export function ManageFunds() {
                 width: 1440,
                 height: 1024,
                 outline: '1px solid red',
+                backgroundColor: '#FFFFFF',
             }}
         >
-            <DepositEthButton />
-            <WithdrawEthButton />
+            <ButtonContainer
+                children={[
+                    <DepositEthButton />,
+                    <WithdrawEthButton />,
+                ]}
+            />
         </div>
     );
 }
