@@ -1,8 +1,8 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 export function ManageFunds() {
-    const [ethBalances, setEthBalances] = useState([]);
-    console.log(ethBalances);
+    // const [ethBalances, setEthBalances] = useState([]);
+    // console.log(ethBalances);
 
     return (
         <div
