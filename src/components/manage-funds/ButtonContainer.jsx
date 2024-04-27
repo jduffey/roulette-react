@@ -10,7 +10,7 @@ const Container = ({ children }) => {
                 display: 'inline-flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: '#D9D9D9',
+                backgroundColor: 'lightyellow',
                 borderRadius: '20px',
                 padding: '30px',
                 gap: '40px',
