@@ -1,9 +1,13 @@
+import { useEffect, useState } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import ButtonContainer from "./ButtonContainer";
-import DepositEthButton from "./DepositEthButton";
+import TransactionButtonContainer from "./TransactionButtonContainer";
 import PageTitle from "./PageTitle";
-import WithdrawEthButton from "./WithdrawEthButton";
 import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableRow } from "@mui/material";
+import {
+    getEthBalance,
+    FIRST_PLAYER_ADDRESS,
+    HOUSE_ADDRESS
+} from "../../common/blockchainWrapper";
 
 const playerTransactions = [
     { date: "2023-06-01", amount: "100 ETH", type: "Deposit" },
@@ -44,6 +48,9 @@ const transactionHistoryTableTheme = createTheme({
                     '&:nth-of-type(even)': {
                         backgroundColor: '#e0e0e0',
                     },
+                    '&:hover': {
+                        backgroundColor: '#a9a9a9',
+                    },
                 }
             }
         },
@@ -60,6 +67,22 @@ const transactionHistoryTableTheme = createTheme({
 });
 
 export function ManageFunds() {
+    const [ethBalances, setEthBalances] = useState({
+        player: '0',
+        house: '0',
+    });
+
+    useEffect(
+        function fetchBalances() {
+            (async () => {
+                const playerBalance = await getEthBalance(FIRST_PLAYER_ADDRESS);
+                const houseBalance = await getEthBalance(HOUSE_ADDRESS);
+                setEthBalances({ player: playerBalance, house: houseBalance });
+            })();
+        },
+        []
+    );
+
     return (
         <Box
             sx={{
@@ -81,14 +104,14 @@ export function ManageFunds() {
                     marginTop: "36px",
                 }}
             >
-                <PlayerBox />
-                <HouseBox />
+                <PlayerBox balance={ethBalances.player} />
+                <HouseBox balance={ethBalances.house} />
             </Box>
         </Box>
     );
 }
 
-const PlayerBox = () => (
+const PlayerBox = ({ balance }) => (
     <Box sx={{
         display: "flex",
         flexDirection: "column",
@@ -122,7 +145,7 @@ const PlayerBox = () => (
                     color: "#000000",
                 }}
             >
-                834.9332 ETH
+                {balance} ♦︎
             </Typography>
         </Box>
         <ThemeProvider theme={transactionHistoryTableTheme}>
@@ -146,12 +169,12 @@ const PlayerBox = () => (
             position: "absolute",
             bottom: "16px"
         }}>
-            <ButtonContainer children={[<DepositEthButton />, <WithdrawEthButton />]} />
+            <TransactionButtonContainer />
         </Box>
     </Box>
 );
 
-const HouseBox = () => (
+const HouseBox = ({ balance }) => (
     <Box sx={{
         display: "flex",
         flexDirection: "column",
@@ -184,12 +207,12 @@ const HouseBox = () => (
                     color: "#000000",
                 }}
             >
-                9434.0046 ETH
+                {balance} ♦︎
             </Typography>
         </Box>
         <ThemeProvider theme={transactionHistoryTableTheme}>
             <TableContainer sx={{
-                height: "90%",
+                height: "92.5%",
             }}>
                 <Table>
                     <TableBody>

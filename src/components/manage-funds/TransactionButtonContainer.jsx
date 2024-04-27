@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import DepositEthButton from './DepositEthButton';
 import WithdrawEthButton from './WithdrawEthButton';
 
-const Container = ({ children }) => {
+const TransactionButtonContainer = () => {
     return (
         <Box
             sx={{
@@ -17,21 +17,13 @@ const Container = ({ children }) => {
                 '& > *': {
                     // Shift up to compensate for the the shadow on the buttons
                     transform: 'translateY(-2px)',
-                  },
+                },
             }}
         >
-            {children}
+            <DepositEthButton />
+            <WithdrawEthButton />
         </Box>
     );
 };
 
-const ButtonContainer = () => {
-    return (
-        <Container>
-            <DepositEthButton />
-            <WithdrawEthButton />
-        </Container>
-    );
-};
-
-export default ButtonContainer;
+export default TransactionButtonContainer;
