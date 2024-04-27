@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import DepositEthButton from './DepositEthButton';
-import WithdrawEthButton from './WithdrawEthButton';
+import TransactionButton from './TransactionButton';
 
 const TransactionButtonContainer = () => {
     return (
@@ -13,8 +12,8 @@ const TransactionButtonContainer = () => {
                 gap: '40px'
             }}
         >
-            <DepositEthButton />
-            <WithdrawEthButton />
+            <TransactionButton backgroundColor="#A388EE" text="Deposit" />
+            <TransactionButton backgroundColor="#FFA07A" text="Withdraw" />
         </Box>
     );
 };

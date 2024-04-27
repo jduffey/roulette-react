@@ -14,7 +14,10 @@ const colorAnimation = keyframes`
   }
 `;
 
-const WithdrawEthButton = () => {
+const TransactionButton = ({
+    backgroundColor,
+    text,
+}) => {
     const handleMouseDown = (event) => {
         event.currentTarget.blur();
     };
@@ -28,13 +31,13 @@ const WithdrawEthButton = () => {
                 height: 55,
                 borderRadius: '15px',
                 border: '4px solid #000000',
-                backgroundColor: '#FFA07A',
+                backgroundColor: backgroundColor,
                 boxShadow: '2px 4px 0px rgba(0, 0, 0)',
                 '&:focus .MuiTypography-root': {
                     animation: `${colorAnimation} 0.5s forwards`,
                 },
                 '&:hover': {
-                    backgroundColor: '#FFA07A',
+                    backgroundColor: backgroundColor,
                     boxShadow: '2px 4px 0px rgba(0, 0, 0)',
                     '& .MuiTypography-root': {
                         fontSize: '20px',
@@ -51,10 +54,10 @@ const WithdrawEthButton = () => {
                     color: '#000000',
                 }}
             >
-                Withdraw
+                {text}
             </Typography>
         </Button>
     );
 };
 
-export default WithdrawEthButton;
+export default TransactionButton;
