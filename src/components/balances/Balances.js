@@ -165,8 +165,8 @@ export function Balances() {
                             <th style={{ width: columnNamesAndWidths.nickname }}>Nickname</th>
                             <th style={{ width: columnNamesAndWidths.address }}>Address</th>
                             <th style={{ width: columnNamesAndWidths.ethBalance }}>ETH Balance</th>
-                            <th style={{ width: columnNamesAndWidths.tokenBalance }}>{tokenSymbol} Balance</th>
-                            <th style={{ width: columnNamesAndWidths.tokenAllowance }}>{tokenSymbol} Allowance</th>
+                            <th style={{ width: columnNamesAndWidths.tokenBalance }}>{tokenSymbol ?? "Token"} Balance</th>
+                            <th style={{ width: columnNamesAndWidths.tokenAllowance }}>{tokenSymbol ?? "Token"} Allowance</th>
                             <th style={{ width: columnNamesAndWidths.numberCompletionSetsCounter }}>✅ Sets</th>
                             <th style={{ width: columnNamesAndWidths.numberCompletionSetCurrent }}>Current Set</th>
                         </tr>
