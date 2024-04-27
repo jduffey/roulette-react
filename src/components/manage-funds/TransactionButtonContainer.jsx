@@ -8,16 +8,9 @@ const TransactionButtonContainer = () => {
         <Box
             sx={{
                 display: 'inline-flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'lightyellow',
-                borderRadius: '20px',
-                padding: '30px',
-                gap: '40px',
-                '& > *': {
-                    // Shift up to compensate for the the shadow on the buttons
-                    transform: 'translateY(-2px)',
-                },
+                paddingLeft: '30px',
+                paddingRight: '30px',
+                gap: '40px'
             }}
         >
             <DepositEthButton />

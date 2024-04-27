@@ -59,7 +59,7 @@ const transactionHistoryTableTheme = createTheme({
                 root: {
                     width: '80%',
                     borderRadius: '20px',
-                    border: '2px solid #000000',
+                    border: '6px solid #000000',
                 }
             }
         }
@@ -101,7 +101,7 @@ export function ManageFunds() {
                     justifyContent: "space-around",
                     width: "100%",
                     height: "100%",
-                    marginTop: "36px",
+                    marginTop: "16px",
                 }}
             >
                 <PlayerBox balance={ethBalances.player} />
@@ -123,26 +123,25 @@ const PlayerBox = ({ balance }) => (
             display: "flex",
             width: "77.5%",
             justifyContent: "space-between",
-            marginBottom: "8px",
+            alignItems: "baseline",
+            marginBottom: "16px",
         }}>
             <Typography
-                variant="h4"
                 sx={{
                     fontFamily: "Lexend Mega, sans-serif",
                     fontWeight: "bold",
                     fontSize: "24px",
-                    color: "#000000",
+                    color: "#000000"
                 }}
             >
                 Player
             </Typography>
             <Typography
-                variant="h4"
                 sx={{
                     fontFamily: "Lexend Mega, sans-serif",
                     fontWeight: "bold",
                     fontSize: "20px",
-                    color: "#000000",
+                    color: "#000000"
                 }}
             >
                 {balance} ♦︎
@@ -150,7 +149,7 @@ const PlayerBox = ({ balance }) => (
         </Box>
         <ThemeProvider theme={transactionHistoryTableTheme}>
             <TableContainer sx={{
-                height: "80%",
+                height: "85%",
             }}>
                 <Table>
                     <TableBody>
@@ -185,10 +184,10 @@ const HouseBox = ({ balance }) => (
             display: "flex",
             width: "77.5%",
             justifyContent: "space-between",
-            marginBottom: "8px",
+            alignItems: "baseline",
+            marginBottom: "16px",
         }}>
             <Typography
-                variant="h4"
                 sx={{
                     fontFamily: "Lexend Mega, sans-serif",
                     fontWeight: "bold",
@@ -199,7 +198,6 @@ const HouseBox = ({ balance }) => (
                 House
             </Typography>
             <Typography
-                variant="h4"
                 sx={{
                     fontFamily: "Lexend Mega, sans-serif",
                     fontWeight: "bold",
@@ -212,7 +210,7 @@ const HouseBox = ({ balance }) => (
         </Box>
         <ThemeProvider theme={transactionHistoryTableTheme}>
             <TableContainer sx={{
-                height: "92.5%",
+                height: "90%",
             }}>
                 <Table>
                     <TableBody>

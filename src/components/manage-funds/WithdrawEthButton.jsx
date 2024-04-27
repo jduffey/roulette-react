@@ -21,7 +21,6 @@ const WithdrawEthButton = () => {
 
     return (
         <Button
-            variant="contained"
             onMouseDown={handleMouseDown}
             disableRipple={true}
             sx={{
@@ -31,7 +30,6 @@ const WithdrawEthButton = () => {
                 border: '4px solid #000000',
                 backgroundColor: '#FFA07A',
                 boxShadow: '2px 4px 0px rgba(0, 0, 0)',
-                textTransform: 'none',
                 '&:focus .MuiTypography-root': {
                     animation: `${colorAnimation} 0.5s forwards`,
                 },
@@ -45,7 +43,6 @@ const WithdrawEthButton = () => {
             }}
         >
             <Typography
-                variant="button"
                 sx={{
                     fontFamily: 'Lexend Mega, sans-serif',
                     fontWeight: 'bold',
