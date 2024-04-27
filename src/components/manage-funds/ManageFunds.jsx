@@ -1,9 +1,7 @@
-// import { useState } from "react";
+import DepositEthButton from "./DepositEthButton";
+import WithdrawEthButton from "./WithdrawEthButton";
 
 export function ManageFunds() {
-    // const [ethBalances, setEthBalances] = useState([]);
-    // console.log(ethBalances);
-
     return (
         <div
             style={{
@@ -12,7 +10,8 @@ export function ManageFunds() {
                 outline: '1px solid red',
             }}
         >
-            MANAGE FUNDS
+            <DepositEthButton />
+            <WithdrawEthButton />
         </div>
     );
 }
