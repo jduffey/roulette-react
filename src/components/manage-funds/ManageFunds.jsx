@@ -68,8 +68,8 @@ const transactionHistoryTableTheme = createTheme({
 
 export function ManageFunds() {
     const [ethBalances, setEthBalances] = useState({
-        player: '0',
-        house: '0',
+        player: '-',
+        house: '-',
     });
 
     useEffect(
