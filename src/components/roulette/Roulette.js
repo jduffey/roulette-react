@@ -96,8 +96,7 @@ export function Roulette(props) {
         }
 
         if (pendingBets.length > 1) {
-            console.log("UNDER DEV: You can only place one bet per spin until contract can handle multiple bets.");
-            setPendingBets([]);
+            alert("Only one bet per spin is supported right now. Please remove extra bets or wait for multi-bet support.");
             return;
         }
 

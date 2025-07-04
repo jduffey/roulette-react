@@ -5,7 +5,7 @@ import {
     getBlock,
     getTokenBalance,
     getPlayerAllowance,
-    tokenSymbol,
+    getTokenSymbol,
     getPlayerNumberCompletionSetsCounter,
     getPlayerNumberCompletionSetCurrent,
     FIRST_PLAYER_ADDRESS,
@@ -22,6 +22,7 @@ export function Balances() {
     const [playerAllowances, setPlayerAllowances] = useState([]);
     const [playerNumberCompletionSetsCounter, setPlayerNumberCompletionSetsCounter] = useState([]);
     const [playerNumberCompletionSetCurrent, setPlayerNumberCompletionSetCurrent] = useState([]);
+    const [symbol, setSymbol] = useState('');
 
     const [block, setBlock] = useState({});
 
@@ -112,6 +113,8 @@ export function Balances() {
                 setPlayerNumberCompletionSetCurrent(currentSets);
             });
 
+            getTokenSymbol().then(setSymbol);
+
             getBlock()
                 .then((blockData) => {
                     setBlock(blockData);
@@ -165,8 +168,8 @@ export function Balances() {
                             <th style={{ width: columnNamesAndWidths.nickname }}>Nickname</th>
                             <th style={{ width: columnNamesAndWidths.address }}>Address</th>
                             <th style={{ width: columnNamesAndWidths.ethBalance }}>ETH Balance</th>
-                            <th style={{ width: columnNamesAndWidths.tokenBalance }}>{tokenSymbol} Balance</th>
-                            <th style={{ width: columnNamesAndWidths.tokenAllowance }}>{tokenSymbol} Allowance</th>
+                            <th style={{ width: columnNamesAndWidths.tokenBalance }}>{symbol} Balance</th>
+                            <th style={{ width: columnNamesAndWidths.tokenAllowance }}>{symbol} Allowance</th>
                             <th style={{ width: columnNamesAndWidths.numberCompletionSetsCounter }}>✅ Sets</th>
                             <th style={{ width: columnNamesAndWidths.numberCompletionSetCurrent }}>Current Set</th>
                         </tr>

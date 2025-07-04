@@ -33,13 +33,13 @@ Solidity generates `rand % 38` → values **0-37** where `37` represents «00».
 
 ---
 
-### 5.  `tokenSymbol` exported as a **mutable variable** – React never re-renders
+### 5.  `tokenSymbol` exported as a **mutable variable** – React never re-renders **(FIXED)**
 ```64:85:src/common/blockchainWrapper.js
 let tokenSymbol;
 ...
 )).symbol().then((symbol) => { tokenSymbol = symbol; });
 ```
-`Balances` reads it once at import-time; the async assignment happens later so the table header prints "undefined Balance".  Needs `useState`/context instead.
+Resolved by replacing with `getTokenSymbol()` async getter and state-driven symbol in Balances component.
 
 ---
 
@@ -51,15 +51,11 @@ if (currentChipAmountSelected > playerBalance) {
 
 ---
 
-### 7.  Multiple-bet safeguard just **drops all bets**
+### 7.  Multiple-bet safeguard just **drops all bets** **(FIXED)**
 ```96:103:src/components/roulette/Roulette.js
-if (pendingBets.length > 1) {
-    console.log("UNDER DEV: You can only place one bet per spin until contract can handle multiple bets.");
-    setPendingBets([]);              // ← silently discards wagers
-    return;
-}
+alert("Only one bet per spin is supported right now. Please remove extra bets or wait for multi-bet support.");
 ```
-User loses their selected bets without notice; should either block extra bet UI-side or support batching.
+Now shows alert and preserves existing bets instead of silently clearing them.
 
 ---
 

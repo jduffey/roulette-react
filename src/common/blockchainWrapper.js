@@ -75,14 +75,17 @@ async function getPlayerNumberCompletionSetCurrent(address) {
     return currentSet.map((bigIntNumber) => parseInt(bigIntNumber.toString(), 10));;
 }
 
-let tokenSymbol;
-(new ethers.Contract(
-    TOKEN_CONTRACT_ADDRESS,
-    ["function symbol() view returns (string)"],
-    provider
-)).symbol().then((symbol) => {
-    tokenSymbol = symbol;
-});
+let _cachedTokenSymbol = null;
+async function getTokenSymbol() {
+    if (_cachedTokenSymbol) return _cachedTokenSymbol;
+    const token = new ethers.Contract(
+        TOKEN_CONTRACT_ADDRESS,
+        ["function symbol() view returns (string)"],
+        provider
+    );
+    _cachedTokenSymbol = await token.symbol();
+    return _cachedTokenSymbol;
+}
 
 const rouletteContractEvents = new ethers.Contract(
     ROULETTE_CONTRACT_ADDRESS,
@@ -107,6 +110,6 @@ export {
     TOKEN_CONTRACT_ADDRESS,
     ROULETTE_CONTRACT_ADDRESS,
     RANDOMNESS_PROVIDER_CONTRACT_ADDRESS,
-    tokenSymbol,
+    getTokenSymbol,
     rouletteContractEvents,
 };

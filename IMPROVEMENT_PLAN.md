@@ -49,3 +49,5 @@ Below is a prioritized list of improvements for the repository. Each item contai
 11. **Gameplay UX fixes — IN PROGRESS**
    • ✅ Balance validation now accounts for pending bets and uses numeric comparison.
    • ✅ Renamed getRandomWheelNumber to fix import typo.
+   • ✅ Token symbol now fetched asynchronously and re-renders correctly.
+   • ✅ Multi-bet safeguard alerts user instead of discarding bets.
