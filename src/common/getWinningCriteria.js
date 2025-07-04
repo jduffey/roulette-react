@@ -79,6 +79,8 @@ export const getWinningCriteria = (wheelNumber) => {
             return new Set([BET_NAMES.STRAIGHT_UP_35, BET_NAMES.SECOND_18, BET_NAMES.THIRD_DOZEN, BET_NAMES.ODD, BET_NAMES.BLACK, BET_NAMES.SECOND_COLUMN]);
         case WHEEL_NUMBERS.WN_36:
             return new Set([BET_NAMES.STRAIGHT_UP_36, BET_NAMES.SECOND_18, BET_NAMES.THIRD_DOZEN, BET_NAMES.EVEN, BET_NAMES.RED, BET_NAMES.THIRD_COLUMN]);
+        case 37: // "00" emitted by the Solidity contract
+            return new Set([BET_NAMES.STRAIGHT_UP_00]);
         default:
             throw new Error("Invalid wheel number", wheelNumber);
     }

@@ -49,6 +49,7 @@ describe(`${getCompleteResultsOfRound.name}`, () => {
         [WHEEL_NUMBERS.WN_34, [BET_NAMES.STRAIGHT_UP_34, BET_NAMES.SECOND_18, BET_NAMES.THIRD_DOZEN, BET_NAMES.EVEN, BET_NAMES.RED, BET_NAMES.FIRST_COLUMN], -2],
         [WHEEL_NUMBERS.WN_35, [BET_NAMES.STRAIGHT_UP_35, BET_NAMES.SECOND_18, BET_NAMES.THIRD_DOZEN, BET_NAMES.ODD, BET_NAMES.BLACK, BET_NAMES.SECOND_COLUMN], -2],
         [WHEEL_NUMBERS.WN_36, [BET_NAMES.STRAIGHT_UP_36, BET_NAMES.SECOND_18, BET_NAMES.THIRD_DOZEN, BET_NAMES.EVEN, BET_NAMES.RED, BET_NAMES.THIRD_COLUMN], -2],
+        [37, [BET_NAMES.STRAIGHT_UP_00], -14],
     ])("same bet on each option, spin result %s", (spinResult, expectedWinningBets, expectedNetDifferenceInBalance) => {
         const pendingBets = Object.values(BET_NAMES).reduce((acc, betName) => {
             const pendingBet = new PendingBet(betName, BET_AMOUNT);
