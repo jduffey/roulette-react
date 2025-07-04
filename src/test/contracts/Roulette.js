@@ -218,23 +218,11 @@ describe("Roulette.sol", () => {
                 31, 32, 33, 34, 35, 36, 37
             ];
 
-            async function setFakeRandomValueAndExecuteWager(fakeRandomValue) {
-                return new Promise(resolve => {
-                    setTimeout(() => {
-                        MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValue);
-                        RouletteContract.executeWager(player1Address);
-                        resolve();
-                    }, Math.random() * 1000);
-                });
+            // Execute wagers sequentially to avoid race conditions
+            for (let i = 0; i < fakeRandomValues.length; i++) {
+                await MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValues[i]);
+                await RouletteContract.executeWager(player1Address);
             }
-
-            async function processTransactionPromises() {
-                await Promise.all(fakeRandomValues.map(async (fakeRandomValue) => {
-                    await setFakeRandomValueAndExecuteWager(fakeRandomValue);
-                }));
-            }
-
-            await processTransactionPromises();
 
             const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
 
@@ -256,23 +244,11 @@ describe("Roulette.sol", () => {
                 31, 32, 33, 34, 35, 36, 37
             ];
 
-            async function setFakeRandomValueAndExecuteWager(fakeRandomValue) {
-                return new Promise(resolve => {
-                    setTimeout(() => {
-                        MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValue);
-                        RouletteContract.executeWager(player1Address);
-                        resolve();
-                    }, Math.random() * 1000);
-                });
+            // Execute wagers sequentially to avoid race conditions
+            for (let i = 0; i < fakeRandomValues.length; i++) {
+                await MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValues[i]);
+                await RouletteContract.executeWager(player1Address);
             }
-
-            async function processTransactionPromises() {
-                await Promise.all(fakeRandomValues.map(async (fakeRandomValue) => {
-                    await setFakeRandomValueAndExecuteWager(fakeRandomValue);
-                }));
-            }
-
-            await processTransactionPromises();
 
             await MockRandomnessProviderContract.setFakeRandomValue(0);
             await RouletteContract.executeWager(player1Address);
@@ -311,23 +287,11 @@ describe("Roulette.sol", () => {
                 31, 32, 33, 34, 35, 36, 37
             ];
 
-            async function setFakeRandomValueAndExecuteWager(fakeRandomValue) {
-                return new Promise(resolve => {
-                    setTimeout(() => {
-                        MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValue);
-                        RouletteContract.executeWager(player1Address);
-                        resolve();
-                    }, Math.random() * 1000);
-                });
+            // Execute wagers sequentially to avoid race conditions
+            for (let i = 0; i < fakeRandomValues.length; i++) {
+                await MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValues[i]);
+                await RouletteContract.executeWager(player1Address);
             }
-
-            async function processTransactionPromises() {
-                await Promise.all(fakeRandomValues.map(async (fakeRandomValue) => {
-                    await setFakeRandomValueAndExecuteWager(fakeRandomValue);
-                }));
-            }
-
-            await processTransactionPromises();
 
             const actual = await RouletteContract.getPlayerNumberCompletionSetsCounter(player1Address);
 
