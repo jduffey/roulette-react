@@ -15,11 +15,13 @@ function _addToSet(address addr, uint256 wheelNumber) public {
 
 ---
 
-### 2.  Insecure RNG on–chain
+### 2.  Insecure RNG on–chain **(WON'T FIX - DEMO ONLY)**
 ```5:9:contracts/RandomnessProvider.sol
 uint256 randVal = uint256(keccak256(abi.encodePacked(blockhash(block.number - 1), block.difficulty)));
 ```
 `blockhash`/`difficulty` are miner-controllable and totally predictable for contracts that pay out value.  A verifiable source such as Chainlink VRF is required for fairness.
+
+**Note:** This is intentionally left as-is because the project is for local demo/testing only with no real value at stake. See detailed comment in `RandomnessProvider.sol` for rationale.
 
 ---
 
