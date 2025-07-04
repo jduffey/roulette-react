@@ -100,4 +100,47 @@ Submitting multiple transactions in parallel led to inconsistent contract state 
 
 ---
 
+### 14.  **Event Listener Memory Leaks** in Multiple Components **(FIXED)**
+```11:16:src/components/roulette/MostRecentSpinResults.js
+rouletteContractEvents.on('ExecutedWager', (playerAddress, wheelNumber) => {
+```
+```17:23:src/components/roulette/SpinResult.js
+rouletteContractEvents.on('ExecutedWager', (playerAddress, wheelNumber) => {
+```
+Event listeners were registered on every render without cleanup, causing memory leaks and duplicate event handling. Fixed by moving listeners to useEffect with proper cleanup functions.
+
+---
+
+### 15.  **Infinite Re-render Loop** in NumbersHitTracker **(FIXED)**
+```11:16:src/components/roulette/NumbersHitTracker.js
+}, [props.playerAddress, currentSet]);
+```
+Component had `currentSet` in dependency array while also updating it, causing infinite loops. Fixed by removing from dependencies and adding proper event-based updates with debouncing.
+
+---
+
+### 16.  **Race Condition** Between Frontend and Blockchain **(FIXED)**
+```107:136:src/components/roulette/Roulette.js
+getRandomWheelNumber(`${Date.now()}${playerAddress}`)
+```
+Frontend generated random numbers locally before blockchain confirmation, creating inconsistent state. Fixed by waiting for blockchain events and using actual blockchain results.
+
+---
+
+### 17.  **Missing Transaction Error Handling** **(FIXED)**
+```90:137:src/components/roulette/Roulette.js
+executeWager(playerAddress).then((response) => {
+```
+No error handling for failed blockchain transactions. Added try-catch blocks and user-friendly error messages.
+
+---
+
+### 18.  **Precision Issues** with ETH Balance Comparisons **(FIXED)**
+```78:82:src/components/roulette/Roulette.js
+if (currentChipAmountSelected > availableBalance) {
+```
+Using parseFloat for ETH values caused precision errors. Fixed by using ethers.js BigNumber for all balance calculations.
+
+---
+
 *(End of file – please update as additional bugs are discovered)*

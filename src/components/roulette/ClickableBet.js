@@ -31,7 +31,7 @@ function ClickableBet(props) {
                 </div>
                 <Chip
                     auxiliaryClassName="betting-square-chip"
-                    key={props.chipAmount}
+                    key={props.betAmount}
                     onClick={props.onClick}
                     chipAmount={props.betAmount}
                 />

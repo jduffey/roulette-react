@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { ethers } from 'ethers';
 
 import { PendingBet } from '../../common/PendingBet';
 import { getCompleteResultsOfRound } from '../../common/getCompleteResultsOfRound';
-import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
 import { CompletionsCounter } from './CompletionsCounter';
 
 import { BetResultsInfo } from './BetResultsInfo';
@@ -47,38 +47,46 @@ export function Roulette(props) {
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
     const [wheelIsSpinning, setWheelIsSpinning] = useState(false);
     const [wheelNumber, setWheelNumber] = useState(null);
+    const [error, setError] = useState(null);
+    const eventListenerRef = useRef(null);
 
     useEffect(() => {
         let mounted = true;
 
-        getBlock()
-            .then(block => {
+        const fetchData = async () => {
+            try {
+                const [block, balance, allowance] = await Promise.all([
+                    getBlock(),
+                    getTokenBalance(playerAddress),
+                    getPlayerAllowance(playerAddress)
+                ]);
+
                 if (mounted) {
                     setLatestBlockNumber(block.number);
-                }
-            });
-
-        getTokenBalance(playerAddress)
-            .then(balance => {
-                if (mounted) {
                     setPlayerBalance(balance);
-                }
-            });
-
-        getPlayerAllowance(playerAddress)
-            .then(allowance => {
-                if (mounted) {
                     setPlayerAllowance(allowance);
+                    setError(null);
                 }
-            });
+            } catch (err) {
+                if (mounted) {
+                    console.error("Error fetching blockchain data:", err);
+                    setError("Failed to fetch blockchain data");
+                }
+            }
+        };
+
+        fetchData();
 
         return () => { mounted = false };
-    }, [playerAddress, latestBlockNumber, wheelIsSpinning]);
+    }, [playerAddress, wheelIsSpinning]);
 
     function handleBettingSquareClick(bettingSquareName) {
-        const availableBalance = (playerBalance !== undefined ? parseFloat(playerBalance) : 0) - calculateTotalBetAmount(pendingBets);
+        const balanceInWei = playerBalance !== undefined ? ethers.utils.parseEther(playerBalance) : ethers.BigNumber.from(0);
+        const totalBetInWei = ethers.utils.parseEther(calculateTotalBetAmount(pendingBets).toString());
+        const chipAmountInWei = ethers.utils.parseEther(currentChipAmountSelected.toString());
+        const availableBalanceInWei = balanceInWei.sub(totalBetInWei);
 
-        if (currentChipAmountSelected > availableBalance) {
+        if (chipAmountInWei.gt(availableBalanceInWei)) {
             alert("You don't have enough money to place that bet!");
             return;
         }
@@ -89,7 +97,7 @@ export function Roulette(props) {
         setPendingBets(copyPendingBets);
     }
 
-    function handleSpinButtonClick() {
+    async function handleSpinButtonClick() {
         if (!hasABetBeenPlaced(pendingBets)) {
             console.log("No bets placed.");
             return;
@@ -106,44 +114,84 @@ export function Roulette(props) {
         }
 
         setWheelIsSpinning(true);
+        setError(null);
 
-        getRandomWheelNumber(`${Date.now()}${playerAddress}`)
-            .then(randomWheelNumber => {
-                const resultsOfRound = getCompleteResultsOfRound(playerBalance, pendingBets, randomWheelNumber);
+        try {
+            // Set up event listener before executing wager
+            const handleExecutedWager = (playerAddr, wheelNum) => {
+                if (playerAddr === props.playerAddress) {
+                    const receivedWheelNumber = parseInt(wheelNum, 10);
+                    setWheelNumber(receivedWheelNumber);
+                    
+                    // Calculate results based on actual blockchain result
+                    const resultsOfRound = getCompleteResultsOfRound(
+                        playerBalance, 
+                        pendingBets, 
+                        receivedWheelNumber
+                    );
+                    setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
+                    setPendingBets([]);
+                    setWheelIsSpinning(false);
 
-                setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
+                    // Clean up event listener
+                    if (eventListenerRef.current) {
+                        rouletteContractEvents.off('ExecutedWager', eventListenerRef.current);
+                        eventListenerRef.current = null;
+                    }
 
-                setPendingBets([]);
-
-                getTokenBalance(playerAddress)
-                    .then(bal => {
+                    // Refresh balances after spin
+                    Promise.all([
+                        getTokenBalance(playerAddress),
+                        getPlayerAllowance(playerAddress)
+                    ]).then(([bal, allowance]) => {
                         setPlayerBalance(bal);
-                    });
-
-                getPlayerAllowance(playerAddress)
-                    .then(allowance => {
                         setPlayerAllowance(allowance);
+                    }).catch(err => {
+                        console.error("Error refreshing balances:", err);
                     });
+                }
+            };
 
-                executeWager(playerAddress)
-                    .then((response) => {
-                        setLatestBlockNumber(response.blockNumber);
-                    })
-                    .then(() => {
-                        rouletteContractEvents.on('ExecutedWager', (playerAddr, wheelNum) => {
-                            if (playerAddr === props.playerAddress) {
-                                setWheelNumber(parseInt(wheelNum, 10));
-                                setWheelIsSpinning(false);
-                            }
-                        });
-                    });
-            });
+            // Store reference to clean up if needed
+            eventListenerRef.current = handleExecutedWager;
+            rouletteContractEvents.on('ExecutedWager', handleExecutedWager);
+
+            // Execute the wager on blockchain
+            const tx = await executeWager(playerAddress);
+            const receipt = await tx.wait(); // Wait for transaction confirmation
+            setLatestBlockNumber(receipt.blockNumber);
+
+        } catch (err) {
+            console.error("Error executing wager:", err);
+            setError("Failed to execute wager. Please try again.");
+            setWheelIsSpinning(false);
+            
+            // Clean up event listener on error
+            if (eventListenerRef.current) {
+                rouletteContractEvents.off('ExecutedWager', eventListenerRef.current);
+                eventListenerRef.current = null;
+            }
+        }
     }
+
+    // Cleanup event listener on unmount
+    useEffect(() => {
+        return () => {
+            if (eventListenerRef.current) {
+                rouletteContractEvents.off('ExecutedWager', eventListenerRef.current);
+            }
+        };
+    }, []);
 
     return (
         <div
             className={CLASS_NAME}
         >
+            {error && (
+                <div className="error-message" style={{ color: 'red', padding: '10px' }}>
+                    {error}
+                </div>
+            )}
             <Board
                 onClick={(bettingSquareName) => handleBettingSquareClick(bettingSquareName)}
                 pendingBets={pendingBets}
