@@ -1,7 +1,7 @@
 const formattedChainNumber = (chainNumber, decimals) => {
     return chainNumber
         ? parseFloat(chainNumber)
-            .toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals })
+            .toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })
         : "Loading...";
 }
 
@@ -24,7 +24,7 @@ export function PlayerInfo(props) {
             <div>
                 Current Bet
                 < br />
-                {props.totalBetAmount.toLocaleString()}
+                {props.totalBetAmount.toLocaleString('en-US')}
             </div>
         </div >
     )

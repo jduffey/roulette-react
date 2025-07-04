@@ -67,32 +67,26 @@ Renamed export and imports, added alias for backward compatibility.
 
 ---
 
-### 9.  Loss-of-funds rounding in `MyGameToken.redeem()`
+### 9.  Loss-of-funds rounding in `MyGameToken.redeem()` **(FIXED)**
 ```39:46:contracts/MyGameToken.sol
 uint256 etherOwed = tokensToRedeem / _tokensPerEth;
 ```
-Integer division truncates – redeeming amounts **not perfectly divisible by 100 000** burns tokens with no ETH returned.
+Added divisibility check (`require(tokensToRedeem % _tokensPerEth == 0)`) to prevent fractional redemption and loss-of-funds.
 
 ---
 
-### 10.  `RandomnessProvider` (frontend) accepts digests of any length
-`getRandomElement()` never validates the supplied 64-char hex digest, so shorter strings silently skew randomness.
+### 10.  `RandomnessProvider` (frontend) accepts digests of any length **(FIXED)**
+Validation added in constructor to throw if digest is not a 64-character hex string.
 
 ---
 
-### 11.  Hard-coded addresses & contract IDs
-```6:15:src/common/blockchainWrapper.js
-const FIRST_PLAYER_ADDRESS = "0xf39Fd…";
-```
-Breaks on any chain/network other than the developer's local Hardhat instance.
+### 11.  Hard-coded addresses & contract IDs **(FIXED)**
+Addresses now read from `process.env.REACT_APP_*` variables with sensible fall-backs, allowing multi-network deployments.
 
 ---
 
-### 12.  Locale-sensitive snapshot tests
-```7:9:src/test/components/roulette/PlayerInfo.test.js
-[123456.354215, 56789] // TODO this test will fail if run in an environment with a different locale
-```
-Tests fail on systems that use commas for decimal separators.
+### 12.  Locale-sensitive snapshot tests **(FIXED)**
+`PlayerInfo` now formats numbers with the `en-US` locale, making snapshots deterministic across environments.
 
 ---
 

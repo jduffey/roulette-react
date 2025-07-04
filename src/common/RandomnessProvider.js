@@ -2,6 +2,9 @@
 
 export class RandomnessProvider {
     constructor(collection, digest) {
+        if (!/^[0-9a-fA-F]{64}$/.test(digest)) {
+            throw new RangeError("Digest must be a 64-character hexadecimal string");
+        }
         this._collection = collection;
         this._digest = digest;
     }

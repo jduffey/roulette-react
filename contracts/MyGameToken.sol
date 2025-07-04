@@ -27,6 +27,7 @@ contract MyGameToken {
 
     function redeem(uint256 tokensToRedeem) public {
         require(balanceOf[msg.sender] >= tokensToRedeem, "Insufficient token balance");
+        require(tokensToRedeem % _tokensPerEth == 0, "Redeem amount must be multiple of token-to-ETH ratio");
         _burn(tokensToRedeem);
         emit Redeem(msg.sender, tokensToRedeem);
     }
