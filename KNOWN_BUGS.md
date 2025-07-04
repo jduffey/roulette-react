@@ -7,7 +7,7 @@ Below is an (incomplete) catalogue of **current, confirmed defects** in the repo
 
 ---
 
-### 1.  `_addToSet` is **public** – anyone can tamper with player stats
+### 1.  `_addToSet` is **public** – anyone can tamper with player stats **(FIXED)**
 ```18:26:contracts/Roulette.sol
 function _addToSet(address addr, uint256 wheelNumber) public {
 ```
@@ -97,6 +97,14 @@ Breaks on any chain/network other than the developer's local Hardhat instance.
 [123456.354215, 56789] // TODO this test will fail if run in an environment with a different locale
 ```
 Tests fail on systems that use commas for decimal separators.
+
+---
+
+### 13.  Concurrent execution in Solidity tests caused **race conditions** **(FIXED)**
+```220:340:src/test/contracts/Roulette.js
+// Promise.all() replaced with sequential for-loops to ensure proper state updates
+```
+Submitting multiple transactions in parallel led to inconsistent contract state and failing tests. Rewrote the test logic to run wagers sequentially, eliminating race conditions. See commit d404cc5.
 
 ---
 

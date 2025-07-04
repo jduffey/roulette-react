@@ -20,7 +20,7 @@ contract Roulette {
         _randomnessProvider = RandomnessProvider(randomnessProviderAddress);
     }
 
-    function _addToSet(address addr, uint256 wheelNumber) public {
+    function _addToSet(address addr, uint256 wheelNumber) internal {
         if (!_playerNumberCompletionSets[addr].numberIsHit[wheelNumber]) {
             _playerNumberCompletionSets[addr].hitNumbers.push(wheelNumber);
             _playerNumberCompletionSets[addr].numberIsHit[wheelNumber] = true;
