@@ -45,3 +45,7 @@ Below is a prioritized list of improvements for the repository. Each item contai
     • Use React-Testing-Library for user-flow tests (placing bets, signing tx).
     • Add snapshot tests for game components.
     • Track coverage and aim for >80% lines/statements.
+
+11. **Gameplay UX fixes — IN PROGRESS**
+   • ✅ Balance validation now accounts for pending bets and uses numeric comparison.
+   • ✅ Renamed getRandomWheelNumber to fix import typo.

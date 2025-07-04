@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { PendingBet } from '../../common/PendingBet';
 import { getCompleteResultsOfRound } from '../../common/getCompleteResultsOfRound';
-import { DEPRECTAED_getRandomWheelNumber } from '../../common/getRandomWheelNumber';
+import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
 import { CompletionsCounter } from './CompletionsCounter';
 
 import { BetResultsInfo } from './BetResultsInfo';
@@ -76,8 +76,9 @@ export function Roulette(props) {
     }, [playerAddress, latestBlockNumber, wheelIsSpinning]);
 
     function handleBettingSquareClick(bettingSquareName) {
-        if (currentChipAmountSelected > playerBalance) {
-            // TODO: replace player balance with playerBalance - sum(pendingBets)
+        const availableBalance = (playerBalance !== undefined ? parseFloat(playerBalance) : 0) - calculateTotalBetAmount(pendingBets);
+
+        if (currentChipAmountSelected > availableBalance) {
             alert("You don't have enough money to place that bet!");
             return;
         }
@@ -107,7 +108,7 @@ export function Roulette(props) {
 
         setWheelIsSpinning(true);
 
-        DEPRECTAED_getRandomWheelNumber(`${Date.now()}${playerAddress}`)
+        getRandomWheelNumber(`${Date.now()}${playerAddress}`)
             .then(randomWheelNumber => {
                 const resultsOfRound = getCompleteResultsOfRound(playerBalance, pendingBets, randomWheelNumber);
 

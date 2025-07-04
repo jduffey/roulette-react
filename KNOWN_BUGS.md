@@ -43,7 +43,7 @@ let tokenSymbol;
 
 ---
 
-### 6.  Balance check uses **string vs number** & ignores pending bets
+### 6.  Balance check uses **string vs number** & ignores pending bets **(FIXED)**
 ```66:72:src/components/roulette/Roulette.js
 if (currentChipAmountSelected > playerBalance) {
 ```
@@ -63,11 +63,11 @@ User loses their selected bets without notice; should either block extra bet UI-
 
 ---
 
-### 8.  Typo: `DEPRECTAED_getRandomWheelNumber`
+### 8.  Typo: `DEPRECTAED_getRandomWheelNumber` **(FIXED)**
 ```7:7:src/components/roulette/Roulette.js
-import { DEPRECTAED_getRandomWheelNumber } from '../../common/getRandomWheelNumber';
+import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
 ```
-Spelling error propagates through code & tests.
+Renamed export and imports, added alias for backward compatibility.
 
 ---
 

@@ -55,7 +55,7 @@ async function getRandomIntBetweenZeroInclusiveAndMaxExclusive(max, entropy) {
     };
 }
 
-export const DEPRECTAED_getRandomWheelNumber = async (entropy) => {
+export const getRandomWheelNumber = async (entropy) => {
     const randomnessData = await getRandomIntBetweenZeroInclusiveAndMaxExclusive(Object.keys(WHEEL_NUMBERS).length, entropy);
 
     // TODO leaving here as reminder to extract and test
@@ -67,3 +67,6 @@ export const DEPRECTAED_getRandomWheelNumber = async (entropy) => {
 
     return randomWheelNumber;
 }
+
+// Deprecated alias kept for backward compatibility (to be removed in future major release)
+export const DEPRECTAED_getRandomWheelNumber = getRandomWheelNumber;
