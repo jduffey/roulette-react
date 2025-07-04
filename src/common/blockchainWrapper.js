@@ -31,7 +31,7 @@ async function getEthBalance(address) {
 }
 
 async function getBlock() {
-    const block = await provider.getBlock();
+    const block = await provider.getBlock("latest");
     return block;
 }
 

@@ -23,20 +23,13 @@ uint256 randVal = uint256(keccak256(abi.encodePacked(blockhash(block.number - 1)
 
 ---
 
-### 3.  Wheel number **mismatch (off-by-one)** between Solidity and React
-Solidity generates `rand % 38` → values **0-37** where `37` represents «00».  The front-end enum however stops at `WN_36` and stores «00» as string "00", so a value of `37` coming from the contract has **no mapping** on the UI (and many helpers throw).
-```1:41:src/common/wheelNumbers.js
-WN_36: "36",
-```
-No `WN_37` entry.
+### 3.  Wheel number **mismatch (off-by-one)** between Solidity and React **(FIXED)**
+Solidity generates `rand % 38` → values **0-37** where `37` represents «00».  The front-end enum however stopped at `WN_36`, so value `37` broke helpers.  Added handling for `37` in `getWinningCriteria` and tests (see commit fixing-#3-wheel-mismatch).
 
 ---
 
-### 4.  `provider.getBlock()` called **without a block tag**
-```25:33:src/common/blockchainWrapper.js
-const block = await provider.getBlock();
-```
-Ethers v5 expects a block number/hash.  Passing `undefined` throws in many providers.  Intended call is probably `getBlockNumber()` *or* `getBlock("latest")`.
+### 4.  `provider.getBlock()` called **without a block tag** **(FIXED)**
+`blockchainWrapper.getBlock()` now explicitly requests `provider.getBlock("latest")`, preventing errors on strict providers.
 
 ---
 
