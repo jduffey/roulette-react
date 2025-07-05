@@ -203,6 +203,17 @@ because we'll have "invisible" betting options later
     align-items: center;
 }
 
+.ClearBetsButton-component {
+    position: relative;
+    left: 900px;
+    top: -80px;
+    width: 200px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .SpinResult-component {
     position: relative;
     left: 1120px;

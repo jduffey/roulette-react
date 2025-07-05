@@ -8,6 +8,7 @@ import { CompletionsCounter } from './CompletionsCounter';
 import { BetResultsInfo } from './BetResultsInfo';
 import { Board } from "./Board";
 import { ChipSelection } from './ChipSelection';
+import { ClearBetsButton } from './ClearBetsButton';
 import { PendingBetsTable } from './PendingBetsTable';
 import { MostRecentSpinResults } from './MostRecentSpinResults';
 import { NumbersHitTracker } from './NumbersHitTracker';
@@ -21,6 +22,7 @@ import {
     getPlayerAllowance,
     executeWager,
     placeBet,
+    clearBets,
     getPendingBets,
     rouletteContractEvents,
     getBlock,
@@ -193,6 +195,41 @@ export function Roulette(props) {
             });
     }
 
+    function handleClearBetsClick() {
+        if (pendingBets.length === 0) {
+            alert("No bets to clear!");
+            return;
+        }
+
+        if (wheelIsSpinning) {
+            alert("Cannot clear bets while wheel is spinning!");
+            return;
+        }
+
+        // Optimistically clear UI
+        setPendingBets([]);
+
+        // Clear bets on the blockchain
+        clearBets()
+            .then((tx) => {
+                console.log('Bets cleared:', tx);
+                return tx.wait(); // wait for mining to ensure block number is available
+            })
+            .then((receipt) => {
+                // Update latest block number from mined receipt
+                setLatestBlockNumber(receipt.blockNumber);
+                // Refresh balances after transaction is mined
+                refreshBalances();
+                refreshPendingBets();
+            })
+            .catch((error) => {
+                console.error('Error clearing bets:', error);
+                alert('Failed to clear bets. Please try again.');
+                // Restore pending bets on error
+                refreshPendingBets();
+            });
+    }
+
     return (
         <div
             className={CLASS_NAME}
@@ -208,6 +245,11 @@ export function Roulette(props) {
             <SpinButton
                 onClick={() => handleSpinButtonClick()}
                 hasABetBeenPlaced={hasABetBeenPlaced(pendingBets)}
+                wheelIsSpinning={wheelIsSpinning}
+            />
+            <ClearBetsButton
+                onClick={() => handleClearBetsClick()}
+                pendingBets={pendingBets}
                 wheelIsSpinning={wheelIsSpinning}
             />
             <SpinResult

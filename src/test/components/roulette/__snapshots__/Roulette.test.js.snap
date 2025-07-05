@@ -2139,6 +2139,30 @@ exports[`Roulette renders 1`] = `
     </span>
   </div>
   <div
+    className="ClearBetsButton-component"
+  >
+    <button
+      className="clear-bets-button"
+      disabled={true}
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#cccccc",
+          "border": "none",
+          "borderRadius": "8px",
+          "color": "white",
+          "cursor": "not-allowed",
+          "fontSize": "16px",
+          "fontWeight": "bold",
+          "opacity": 0.6,
+          "padding": "12px 24px",
+        }
+      }
+    >
+      Clear All Bets
+    </button>
+  </div>
+  <div
     className="SpinResult-component"
   >
     <div
