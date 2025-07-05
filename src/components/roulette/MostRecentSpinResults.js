@@ -8,7 +8,7 @@ const CLASS_NAME = "MostRecentSpinResults-component";
 export function MostRecentSpinResults(props) {
     const [spinResults, setSpinResults] = useState([]);
 
-    rouletteContractEvents.on('ExecutedWager', (playerAddress, wheelNumber) => {
+    rouletteContractEvents.on('ExecutedWager', (playerAddress, wheelNumber, totalWinnings, totalBetsReturned) => {
         if (playerAddress === props.playerAddress) {
             const copySpinResults = [...spinResults];
             copySpinResults.push(parseInt(wheelNumber, 10));

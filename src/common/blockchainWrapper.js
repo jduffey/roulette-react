@@ -133,7 +133,9 @@ async function getTokenSymbol() {
 const rouletteContractEvents = new ethers.Contract(
     ROULETTE_CONTRACT_ADDRESS,
     [
-        'event ExecutedWager(address indexed, uint256)',
+        'event ExecutedWager(address indexed, uint256, uint256, uint256)',
+        'event BetPlaced(address indexed, string, uint256)',
+        'event BetCleared(address indexed)',
     ],
     provider
 );
