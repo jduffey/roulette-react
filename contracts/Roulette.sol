@@ -2,11 +2,14 @@
 pragma solidity ^0.8.9;
 
 import "./RandomnessProvider.sol";
+import "./MyGameToken.sol";
 
 contract Roulette {
     RandomnessProvider private _randomnessProvider;
+    MyGameToken private _gameToken;
 
     mapping(address => NumberCompletionSet) private _playerNumberCompletionSets;
+    mapping(address => PendingBet[]) private _pendingBets;
 
     struct NumberCompletionSet {
         uint256[] hitNumbers;
@@ -14,10 +17,57 @@ contract Roulette {
         uint256 completionCounter;
     }
 
-    event ExecutedWager(address indexed player, uint256 wheelNumber);
+    struct PendingBet {
+        string betName;
+        uint256 betAmount;
+    }
 
-    constructor(address randomnessProviderAddress) {
+    event BetPlaced(address indexed player, string betName, uint256 betAmount);
+    event ExecutedWager(address indexed player, uint256 wheelNumber, uint256 totalWinnings, uint256 totalBetsReturned);
+    event BetCleared(address indexed player);
+
+    constructor(address randomnessProviderAddress, address gameTokenAddress) {
         _randomnessProvider = RandomnessProvider(randomnessProviderAddress);
+        _gameToken = MyGameToken(gameTokenAddress);
+    }
+
+    function placeBet(string memory betName, uint256 betAmount) public {
+        require(betAmount > 0, "Bet amount must be greater than 0");
+        require(_gameToken.balanceOf(msg.sender) >= betAmount, "Insufficient token balance");
+        require(_gameToken.allowance(msg.sender, address(this)) >= betAmount, "Insufficient allowance");
+
+        // Transfer tokens from player to contract
+        require(_gameToken.transferFrom(msg.sender, address(this), betAmount), "Token transfer failed");
+
+        _pendingBets[msg.sender].push(PendingBet(betName, betAmount));
+        emit BetPlaced(msg.sender, betName, betAmount);
+    }
+
+    function clearBets() public {
+        uint256 totalBetAmount = 0;
+        for (uint256 i = 0; i < _pendingBets[msg.sender].length; i++) {
+            totalBetAmount += _pendingBets[msg.sender][i].betAmount;
+        }
+
+        if (totalBetAmount > 0) {
+            // Return tokens to player
+            require(_gameToken.transfer(msg.sender, totalBetAmount), "Token return failed");
+        }
+
+        delete _pendingBets[msg.sender];
+        emit BetCleared(msg.sender);
+    }
+
+    function getPendingBets(address player) public view returns (PendingBet[] memory) {
+        return _pendingBets[player];
+    }
+
+    function getTotalPendingBetAmount(address player) public view returns (uint256) {
+        uint256 total = 0;
+        for (uint256 i = 0; i < _pendingBets[player].length; i++) {
+            total += _pendingBets[player][i].betAmount;
+        }
+        return total;
     }
 
     function _addToSet(address addr, uint256 wheelNumber) internal {
@@ -86,10 +136,96 @@ contract Roulette {
     }
 
     function executeWager(address player) public {
+        require(_pendingBets[player].length > 0, "No pending bets");
+        
         uint256 randValue = _randomnessProvider.randomValue();
         uint256 wheelNumber = randValue % 38;
 
+        // Calculate winnings based on pending bets
+        uint256 totalWinnings = 0;
+        uint256 totalBetsReturned = 0;
+        
+        for (uint256 i = 0; i < _pendingBets[player].length; i++) {
+            PendingBet memory bet = _pendingBets[player][i];
+            bool didBetWin = _checkBetWin(bet.betName, wheelNumber);
+            
+            if (didBetWin) {
+                uint256 multiplier = _getBetMultiplier(bet.betName);
+                totalWinnings += bet.betAmount * multiplier;
+                totalBetsReturned += bet.betAmount;
+            }
+        }
+
+        // Transfer winnings and returned bets to player
+        uint256 totalPayout = totalWinnings + totalBetsReturned;
+        if (totalPayout > 0) {
+            require(_gameToken.transfer(player, totalPayout), "Winnings transfer failed");
+        }
+
         _addToSet(player, wheelNumber);
-        emit ExecutedWager(player, wheelNumber);
+        delete _pendingBets[player];
+        
+        emit ExecutedWager(player, wheelNumber, totalWinnings, totalBetsReturned);
+    }
+
+    function _checkBetWin(string memory betName, uint256 wheelNumber) internal pure returns (bool) {
+        // This is a simplified version - you'd need to implement the full roulette logic
+        // For now, just check straight up bets
+        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("STRAIGHT_UP_0")) && wheelNumber == 0) {
+            return true;
+        }
+        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("STRAIGHT_UP_00")) && wheelNumber == 37) {
+            return true;
+        }
+        
+        // Check numbers 1-36
+        for (uint256 i = 1; i <= 36; i++) {
+            string memory straightUpBet = string(abi.encodePacked("STRAIGHT_UP_", _uint2str(i)));
+            if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked(straightUpBet)) && wheelNumber == i) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
+    function _getBetMultiplier(string memory betName) internal pure returns (uint256) {
+        // Straight up bets pay 35:1
+        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("STRAIGHT_UP_0")) ||
+            keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("STRAIGHT_UP_00"))) {
+            return 35;
+        }
+        
+        // Check if it's a straight up bet for numbers 1-36
+        for (uint256 i = 1; i <= 36; i++) {
+            string memory straightUpBet = string(abi.encodePacked("STRAIGHT_UP_", _uint2str(i)));
+            if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked(straightUpBet))) {
+                return 35;
+            }
+        }
+        
+        return 0;
+    }
+
+    function _uint2str(uint256 _i) internal pure returns (string memory) {
+        if (_i == 0) {
+            return "0";
+        }
+        uint256 j = _i;
+        uint256 length;
+        while (j != 0) {
+            length++;
+            j /= 10;
+        }
+        bytes memory bstr = new bytes(length);
+        uint256 k = length;
+        while (_i != 0) {
+            k -= 1;
+            uint8 temp = (48 + uint8(_i - _i / 10 * 10));
+            bytes1 b1 = bytes1(temp);
+            bstr[k] = b1;
+            _i /= 10;
+        }
+        return string(bstr);
     }
 }

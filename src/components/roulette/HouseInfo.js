@@ -16,13 +16,27 @@ const CLASS_NAME = "HouseInfo-component";
 export function HouseInfo(props) {
     const [houseBalance, setHouseBalance] = useState(undefined);
 
-    useEffect(() => {
-        setTimeout(async () => {
+    const refreshHouseBalance = async () => {
+        try {
             const houseBal = await getTokenBalance(HOUSE_ADDRESS);
             setHouseBalance(houseBal);
-        }, 1000);
+        } catch (error) {
+            console.error('Error refreshing house balance:', error);
+        }
+    };
 
+    useEffect(() => {
+        // Initial load with a small delay to ensure contracts are ready
+        const timer = setTimeout(refreshHouseBalance, 1000);
+        return () => clearTimeout(timer);
     }, []);
+
+    // Refresh house balance when block number changes (indicating new transactions)
+    useEffect(() => {
+        if (props.latestBlockNumber > 0) {
+            refreshHouseBalance();
+        }
+    }, [props.latestBlockNumber]);
 
     return (
         <div

@@ -20,6 +20,10 @@ import {
     getTokenBalance,
     getPlayerAllowance,
     executeWager,
+    placeBet,
+    clearBets,
+    getPendingBets,
+    getTotalPendingBetAmount,
     rouletteContractEvents,
     getBlock,
 } from '../../common/blockchainWrapper';
@@ -48,32 +52,63 @@ export function Roulette(props) {
     const [wheelIsSpinning, setWheelIsSpinning] = useState(false);
     const [wheelNumber, setWheelNumber] = useState(null);
 
+    const refreshBalances = async () => {
+        try {
+            const [balance, allowance] = await Promise.all([
+                getTokenBalance(playerAddress),
+                getPlayerAllowance(playerAddress)
+            ]);
+            setPlayerBalance(balance);
+            setPlayerAllowance(allowance);
+        } catch (error) {
+            console.error('Error refreshing balances:', error);
+        }
+    };
+
+    const refreshPendingBets = async () => {
+        try {
+            const bets = await getPendingBets(playerAddress);
+            setPendingBets(bets);
+        } catch (error) {
+            console.error('Error refreshing pending bets:', error);
+        }
+    };
+
     useEffect(() => {
         let mounted = true;
 
-        getBlock()
-            .then(block => {
+        const initializeData = async () => {
+            try {
+                const [block, balance, allowance, bets] = await Promise.all([
+                    getBlock(),
+                    getTokenBalance(playerAddress),
+                    getPlayerAllowance(playerAddress),
+                    getPendingBets(playerAddress)
+                ]);
+
                 if (mounted) {
                     setLatestBlockNumber(block.number);
-                }
-            });
-
-        getTokenBalance(playerAddress)
-            .then(balance => {
-                if (mounted) {
                     setPlayerBalance(balance);
-                }
-            });
-
-        getPlayerAllowance(playerAddress)
-            .then(allowance => {
-                if (mounted) {
                     setPlayerAllowance(allowance);
+                    setPendingBets(bets);
                 }
-            });
+            } catch (error) {
+                console.error('Error initializing data:', error);
+            }
+        };
+
+        initializeData();
 
         return () => { mounted = false };
-    }, [playerAddress, latestBlockNumber, wheelIsSpinning]);
+    }, [playerAddress]);
+
+    // Refresh balances when block number changes (indicating a new transaction)
+    useEffect(() => {
+        if (latestBlockNumber > 0) {
+            refreshBalances();
+            refreshPendingBets();
+        }
+    }, [latestBlockNumber]);
 
     function handleBettingSquareClick(bettingSquareName) {
         const availableBalance = (playerBalance !== undefined ? parseFloat(playerBalance) : 0) - calculateTotalBetAmount(pendingBets);
@@ -83,10 +118,27 @@ export function Roulette(props) {
             return;
         }
 
-        const pendingBet = new PendingBet(bettingSquareName, currentChipAmountSelected);
-        const copyPendingBets = pendingBets.slice();
-        copyPendingBets.push(pendingBet);
-        setPendingBets(copyPendingBets);
+        // Optimistically update UI while transaction is pending
+        const newBet = new PendingBet(bettingSquareName, currentChipAmountSelected);
+        setPendingBets(prev => [...prev, newBet]);
+
+        // Place bet on the blockchain
+        placeBet(bettingSquareName, currentChipAmountSelected)
+            .then((tx) => {
+                console.log('Bet placed:', tx);
+                return tx.wait(); // wait for mining to ensure block number is available
+            })
+            .then((receipt) => {
+                // Update latest block number from mined receipt
+                setLatestBlockNumber(receipt.blockNumber);
+                // Refresh pending bets & balances from chain
+                refreshPendingBets();
+                refreshBalances();
+            })
+            .catch((error) => {
+                console.error('Error placing bet:', error);
+                alert('Failed to place bet. Please try again.');
+            });
     }
 
     function handleSpinButtonClick() {
@@ -113,30 +165,33 @@ export function Roulette(props) {
 
                 setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
 
-                setPendingBets([]);
-
-                getTokenBalance(playerAddress)
-                    .then(bal => {
-                        setPlayerBalance(bal);
-                    });
-
-                getPlayerAllowance(playerAddress)
-                    .then(allowance => {
-                        setPlayerAllowance(allowance);
-                    });
-
                 executeWager(playerAddress)
-                    .then((response) => {
-                        setLatestBlockNumber(response.blockNumber);
+                    .then((response) => response.wait()) // wait for mining first
+                    .then((receipt) => {
+                        // Use mined block number
+                        setLatestBlockNumber(receipt.blockNumber);
+                        // Refresh balances after transaction is mined
+                        refreshBalances();
+                        refreshPendingBets();
                     })
                     .then(() => {
-                        rouletteContractEvents.on('ExecutedWager', (playerAddr, wheelNum) => {
+                        rouletteContractEvents.on('ExecutedWager', (playerAddr, wheelNum, totalWinnings, totalBetsReturned) => {
                             if (playerAddr === props.playerAddress) {
                                 setWheelNumber(parseInt(wheelNum, 10));
                                 setWheelIsSpinning(false);
                             }
                         });
+                    })
+                    .catch((error) => {
+                        console.error('Error executing wager:', error);
+                        setWheelIsSpinning(false);
+                        alert('Failed to execute wager. Please try again.');
                     });
+            })
+            .catch((error) => {
+                console.error('Error getting random wheel number:', error);
+                setWheelIsSpinning(false);
+                alert('Failed to get random number. Please try again.');
             });
     }
 

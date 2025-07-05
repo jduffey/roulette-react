@@ -24,6 +24,49 @@ async function executeWager(address) {
     return tx;
 }
 
+async function placeBet(betName, betAmount) {
+    const contract = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function placeBet(string,uint256)"],
+        provider.getSigner()
+    );
+    const tx = await contract.placeBet(betName, ethers.utils.parseEther(betAmount.toString()));
+    return tx;
+}
+
+async function clearBets() {
+    const contract = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function clearBets()"],
+        provider.getSigner()
+    );
+    const tx = await contract.clearBets();
+    return tx;
+}
+
+async function getPendingBets(address) {
+    const contract = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function getPendingBets(address) view returns (tuple(string betName, uint256 betAmount)[])"],
+        provider.getSigner()
+    );
+    const bets = await contract.getPendingBets(address);
+    return bets.map(bet => ({
+        betName: bet.betName,
+        betAmount: parseFloat(ethers.utils.formatEther(bet.betAmount))
+    }));
+}
+
+async function getTotalPendingBetAmount(address) {
+    const contract = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function getTotalPendingBetAmount(address) view returns (uint256)"],
+        provider.getSigner()
+    );
+    const amount = await contract.getTotalPendingBetAmount(address);
+    return parseFloat(ethers.utils.formatEther(amount));
+}
+
 async function getEthBalance(address) {
     const signer = provider.getSigner(address);
     const balance = await signer.getBalance();
@@ -97,6 +140,10 @@ const rouletteContractEvents = new ethers.Contract(
 
 export {
     executeWager,
+    placeBet,
+    clearBets,
+    getPendingBets,
+    getTotalPendingBetAmount,
     getEthBalance,
     getBlock,
     getTokenBalance,

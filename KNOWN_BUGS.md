@@ -100,4 +100,29 @@ Submitting multiple transactions in parallel led to inconsistent contract state 
 
 ---
 
+### 14.  Player and house balances don't update after transactions **(FIXED)**
+**Problem**: Balances remained static after placing bets and spinning the wheel.
+
+**Root Causes**:
+- Roulette contract didn't handle actual token transfers (only tracked completion sets)
+- Balance updates happened before transaction confirmation
+- House balance only loaded once on component mount
+- Missing proper transaction confirmation flow
+
+**Solution**:
+- Updated `Roulette.sol` to handle real betting with `placeBet()`, `clearBets()`, and proper payout logic
+- Implemented transaction confirmation flow in `Roulette.js` component
+- Added automatic balance refresh on block number changes
+- Fixed `HouseInfo.js` to update with new transactions
+- Updated initialization script to pass token contract address to Roulette constructor
+
+**Files Modified**:
+- `contracts/Roulette.sol` - Added betting logic and token transfers
+- `src/common/blockchainWrapper.js` - Added new contract functions
+- `src/components/roulette/Roulette.js` - Fixed balance update timing
+- `src/components/roulette/HouseInfo.js` - Added balance refresh logic
+- `scripts/initializeChain.js` - Updated contract deployment
+
+---
+
 *(End of file – please update as additional bugs are discovered)*
