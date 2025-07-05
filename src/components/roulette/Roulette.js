@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 import { PendingBet } from '../../common/PendingBet';
 import { getCompleteResultsOfRound } from '../../common/getCompleteResultsOfRound';
@@ -21,9 +21,7 @@ import {
     getPlayerAllowance,
     executeWager,
     placeBet,
-    clearBets,
     getPendingBets,
-    getTotalPendingBetAmount,
     rouletteContractEvents,
     getBlock,
 } from '../../common/blockchainWrapper';
@@ -52,7 +50,7 @@ export function Roulette(props) {
     const [wheelIsSpinning, setWheelIsSpinning] = useState(false);
     const [wheelNumber, setWheelNumber] = useState(null);
 
-    const refreshBalances = async () => {
+    const refreshBalances = useCallback(async () => {
         try {
             const [balance, allowance] = await Promise.all([
                 getTokenBalance(playerAddress),
@@ -63,16 +61,16 @@ export function Roulette(props) {
         } catch (error) {
             console.error('Error refreshing balances:', error);
         }
-    };
+    }, [playerAddress]);
 
-    const refreshPendingBets = async () => {
+    const refreshPendingBets = useCallback(async () => {
         try {
             const bets = await getPendingBets(playerAddress);
             setPendingBets(bets);
         } catch (error) {
             console.error('Error refreshing pending bets:', error);
         }
-    };
+    }, [playerAddress]);
 
     useEffect(() => {
         let mounted = true;
@@ -108,7 +106,7 @@ export function Roulette(props) {
             refreshBalances();
             refreshPendingBets();
         }
-    }, [latestBlockNumber]);
+    }, [latestBlockNumber, refreshBalances, refreshPendingBets]);
 
     function handleBettingSquareClick(bettingSquareName) {
         const availableBalance = (playerBalance !== undefined ? parseFloat(playerBalance) : 0) - calculateTotalBetAmount(pendingBets);
