@@ -1,6 +1,7 @@
 /* global ethers:readonly */
 
 const { expect } = require("chai");
+const { anyValue } = require("@nomicfoundation/hardhat-chai-matchers/withArgs");
 
 const { loadFixture } = require("@nomicfoundation/hardhat-network-helpers");
 
@@ -14,13 +15,16 @@ describe("Roulette.sol", () => {
         const MockRandomnessProviderContract = await mockRandomnessProviderContractFactory.deploy();
         await MockRandomnessProviderContract.deployed();
 
-        const rouletteContractFactory = await ethers.getContractFactory("Roulette", deployerSigner);
-        const RouletteContract = await rouletteContractFactory.deploy(MockRandomnessProviderContract.address);
-        await RouletteContract.deployed();
-
         const myGameTokenContractFactory = await ethers.getContractFactory("MyGameToken", deployerSigner);
         const MyGameTokenContract = await myGameTokenContractFactory.deploy();
         await MyGameTokenContract.deployed();
+
+        const rouletteContractFactory = await ethers.getContractFactory("Roulette", deployerSigner);
+        const RouletteContract = await rouletteContractFactory.deploy(
+            MockRandomnessProviderContract.address,
+            MyGameTokenContract.address
+        );
+        await RouletteContract.deployed();
 
         return {
             MockRandomnessProviderContract,
@@ -29,6 +33,21 @@ describe("Roulette.sol", () => {
             player1Address: signers[0].address,
             player2Address: signers[1].address,
         };
+    }
+
+    async function placeBetForPlayer(tokenContract, rouletteContract, playerAddress, amountEther = "1") {
+        await tokenContract.transfer(playerAddress, ethers.utils.parseEther(amountEther));
+        const playerSigner = await ethers.getSigner(playerAddress);
+        await tokenContract.connect(playerSigner).approve(rouletteContract.address, ethers.utils.parseEther(amountEther));
+        await rouletteContract.connect(playerSigner).placeBet("STRAIGHT_UP_0", ethers.utils.parseEther(amountEther));
+    }
+
+    async function spinWithBet(randomnessProvider, rouletteContract, tokenContract, playerAddress, fakeRandomValue) {
+        await placeBetForPlayer(tokenContract, rouletteContract, playerAddress);
+        if (fakeRandomValue !== undefined) {
+            await randomnessProvider.setFakeRandomValue(fakeRandomValue);
+        }
+        await rouletteContract.executeWager(playerAddress);
     }
 
     describe("randomness provider determines the wheel number", () => {
@@ -119,13 +138,14 @@ describe("Roulette.sol", () => {
                     player1Address,
                 } = await loadFixture(fixtures);
 
-                await MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValue);
+                // Give player tokens and approve Roulette contract
+                await spinWithBet(MockRandomnessProviderContract, RouletteContract, MyGameTokenContract, player1Address, fakeRandomValue);
 
                 await expect(RouletteContract.executeWager(
                     player1Address,
                 ))
                     .to.emit(RouletteContract, "ExecutedWager")
-                    .withArgs(player1Address, expectedWheelNumber);
+                    .withArgs(player1Address, expectedWheelNumber, anyValue, anyValue);
             });
         });
     });
@@ -138,8 +158,8 @@ describe("Roulette.sol", () => {
                 player1Address,
             } = await loadFixture(fixtures);
 
-            await MockRandomnessProviderContract.setFakeRandomValue(0);
-            await RouletteContract.executeWager(player1Address);
+            // setup bet
+            await spinWithBet(MockRandomnessProviderContract, RouletteContract, MyGameTokenContract, player1Address, 0);
 
             const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
 
@@ -155,8 +175,8 @@ describe("Roulette.sol", () => {
                 player2Address,
             } = await loadFixture(fixtures);
 
-            await MockRandomnessProviderContract.setFakeRandomValue(0);
-            await RouletteContract.executeWager(player1Address);
+            // setup bet
+            await spinWithBet(MockRandomnessProviderContract, RouletteContract, MyGameTokenContract, player1Address, 0);
 
             const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player2Address);
 
@@ -171,11 +191,10 @@ describe("Roulette.sol", () => {
                 player1Address,
             } = await loadFixture(fixtures);
 
-            await MockRandomnessProviderContract.setFakeRandomValue(0);
-            await RouletteContract.executeWager(player1Address);
+            // setup bet
+            await spinWithBet(MockRandomnessProviderContract, RouletteContract, MyGameTokenContract, player1Address, 0);
 
-            await MockRandomnessProviderContract.setFakeRandomValue(0);
-            await RouletteContract.executeWager(player1Address);
+            await spinWithBet(MockRandomnessProviderContract, RouletteContract, MyGameTokenContract, player1Address, 0);
 
             const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
 
@@ -190,11 +209,10 @@ describe("Roulette.sol", () => {
                 player1Address,
             } = await loadFixture(fixtures);
 
-            await MockRandomnessProviderContract.setFakeRandomValue(0);
-            await RouletteContract.executeWager(player1Address);
+            // setup bet
+            await spinWithBet(MockRandomnessProviderContract, RouletteContract, MyGameTokenContract, player1Address, 0);
 
-            await MockRandomnessProviderContract.setFakeRandomValue(1);
-            await RouletteContract.executeWager(player1Address);
+            await spinWithBet(MockRandomnessProviderContract, RouletteContract, MyGameTokenContract, player1Address, 1);
 
             const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
 
@@ -220,8 +238,7 @@ describe("Roulette.sol", () => {
 
             // Execute wagers sequentially to avoid race conditions
             for (let i = 0; i < fakeRandomValues.length; i++) {
-                await MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValues[i]);
-                await RouletteContract.executeWager(player1Address);
+                await spinWithBet(MockRandomnessProviderContract, RouletteContract, MyGameTokenContract, player1Address, fakeRandomValues[i]);
             }
 
             const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
@@ -246,12 +263,10 @@ describe("Roulette.sol", () => {
 
             // Execute wagers sequentially to avoid race conditions
             for (let i = 0; i < fakeRandomValues.length; i++) {
-                await MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValues[i]);
-                await RouletteContract.executeWager(player1Address);
+                await spinWithBet(MockRandomnessProviderContract, RouletteContract, MyGameTokenContract, player1Address, fakeRandomValues[i]);
             }
 
-            await MockRandomnessProviderContract.setFakeRandomValue(0);
-            await RouletteContract.executeWager(player1Address);
+            await spinWithBet(MockRandomnessProviderContract, RouletteContract, MyGameTokenContract, player1Address, 0);
 
             const actual = await RouletteContract.getPlayerNumberCompletionSetCurrent(player1Address);
 
@@ -289,8 +304,7 @@ describe("Roulette.sol", () => {
 
             // Execute wagers sequentially to avoid race conditions
             for (let i = 0; i < fakeRandomValues.length; i++) {
-                await MockRandomnessProviderContract.setFakeRandomValue(fakeRandomValues[i]);
-                await RouletteContract.executeWager(player1Address);
+                await spinWithBet(MockRandomnessProviderContract, RouletteContract, MyGameTokenContract, player1Address, fakeRandomValues[i]);
             }
 
             const actual = await RouletteContract.getPlayerNumberCompletionSetsCounter(player1Address);

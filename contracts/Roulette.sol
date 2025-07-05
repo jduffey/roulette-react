@@ -7,6 +7,7 @@ import "./MyGameToken.sol";
 contract Roulette {
     RandomnessProvider private _randomnessProvider;
     MyGameToken private _gameToken;
+    address private immutable _house;
 
     mapping(address => NumberCompletionSet) private _playerNumberCompletionSets;
     mapping(address => PendingBet[]) private _pendingBets;
@@ -28,7 +29,8 @@ contract Roulette {
 
     constructor(address randomnessProviderAddress, address gameTokenAddress) {
         _randomnessProvider = RandomnessProvider(randomnessProviderAddress);
-        _gameToken = MyGameToken(gameTokenAddress);
+        _gameToken = MyGameToken(payable(gameTokenAddress));
+        _house = msg.sender;
     }
 
     function placeBet(string memory betName, uint256 betAmount) public {
@@ -144,6 +146,7 @@ contract Roulette {
         // Calculate winnings based on pending bets
         uint256 totalWinnings = 0;
         uint256 totalBetsReturned = 0;
+        uint256 totalStake = 0;
         
         for (uint256 i = 0; i < _pendingBets[player].length; i++) {
             PendingBet memory bet = _pendingBets[player][i];
@@ -154,12 +157,19 @@ contract Roulette {
                 totalWinnings += bet.betAmount * multiplier;
                 totalBetsReturned += bet.betAmount;
             }
+            totalStake += bet.betAmount;
         }
 
         // Transfer winnings and returned bets to player
         uint256 totalPayout = totalWinnings + totalBetsReturned;
         if (totalPayout > 0) {
             require(_gameToken.transfer(player, totalPayout), "Winnings transfer failed");
+        }
+
+        // Transfer house share (losing bets) to house address
+        uint256 houseShare = totalStake - totalBetsReturned;
+        if (houseShare > 0) {
+            require(_gameToken.transfer(_house, houseShare), "House transfer failed");
         }
 
         _addToSet(player, wheelNumber);
