@@ -1,11 +1,8 @@
 import { useEffect, useState, useCallback } from 'react';
 
 import { PendingBet } from '../../common/PendingBet';
-import { getCompleteResultsOfRound } from '../../common/getCompleteResultsOfRound';
-import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
 import { CompletionsCounter } from './CompletionsCounter';
 
-import { BetResultsInfo } from './BetResultsInfo';
 import { Board } from "./Board";
 import { ChipSelection } from './ChipSelection';
 import { ClearBetsButton } from './ClearBetsButton';
@@ -48,7 +45,6 @@ export function Roulette(props) {
     const [pendingBets, setPendingBets] = useState([]);
     const [playerBalance, setPlayerBalance] = useState(undefined);
     const [playerAllowance, setPlayerAllowance] = useState(undefined);
-    const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
     const [wheelIsSpinning, setWheelIsSpinning] = useState(false);
     const [wheelNumber, setWheelNumber] = useState(null);
 
@@ -299,9 +295,6 @@ export function Roulette(props) {
             />
             <PendingBetsTable
                 pendingBets={pendingBets}
-            />
-            <BetResultsInfo
-                previousRoundResults={previousRoundResultsForBetResultsInfo}
             />
             <NumbersHitTracker
                 playerAddress={playerAddress}
