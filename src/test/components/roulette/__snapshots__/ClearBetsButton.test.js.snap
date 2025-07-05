@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClearBetsButton renders disabled when there are no bets 1`] = `
+<div
+  className="ClearBetsButton-component"
+>
+  <button
+    className="clear-bets-button"
+    disabled={true}
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#cccccc",
+        "border": "none",
+        "borderRadius": "8px",
+        "color": "white",
+        "cursor": "not-allowed",
+        "fontSize": "16px",
+        "fontWeight": "bold",
+        "opacity": 0.6,
+        "padding": "12px 24px",
+      }
+    }
+  >
+    Clear All Bets
+  </button>
+</div>
+`;
+
+exports[`ClearBetsButton renders disabled when wheel is spinning 1`] = `
+<div
+  className="ClearBetsButton-component"
+>
+  <button
+    className="clear-bets-button"
+    disabled={true}
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#cccccc",
+        "border": "none",
+        "borderRadius": "8px",
+        "color": "white",
+        "cursor": "not-allowed",
+        "fontSize": "16px",
+        "fontWeight": "bold",
+        "opacity": 0.6,
+        "padding": "12px 24px",
+      }
+    }
+  >
+    Clear All Bets
+  </button>
+</div>
+`;
+
+exports[`ClearBetsButton renders enabled when there are bets and wheel is not spinning 1`] = `
+<div
+  className="ClearBetsButton-component"
+>
+  <button
+    className="clear-bets-button"
+    disabled={false}
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#ff4444",
+        "border": "none",
+        "borderRadius": "8px",
+        "color": "white",
+        "cursor": "pointer",
+        "fontSize": "16px",
+        "fontWeight": "bold",
+        "opacity": 1,
+        "padding": "12px 24px",
+      }
+    }
+  >
+    Clear All Bets
+  </button>
+</div>
+`;

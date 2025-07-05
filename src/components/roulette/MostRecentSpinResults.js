@@ -8,17 +8,24 @@ const CLASS_NAME = "MostRecentSpinResults-component";
 export function MostRecentSpinResults(props) {
     const [spinResults, setSpinResults] = useState([]);
 
-    rouletteContractEvents.on('ExecutedWager', (playerAddress, wheelNumber) => {
-        if (playerAddress === props.playerAddress) {
-            const copySpinResults = [...spinResults];
-            copySpinResults.push(parseInt(wheelNumber, 10));
-            setSpinResults(copySpinResults.slice(-20)); // Only keep the last 20 results
-        }
-    });
-
     useEffect(() => {
-        // render
-    }, [spinResults, props.playerAddress]);
+        const handleExecutedWager = (playerAddress, wheelNumber, totalWinnings, totalBetsReturned) => {
+            if (playerAddress === props.playerAddress) {
+                setSpinResults(prevResults => {
+                    const copySpinResults = [...prevResults];
+                    copySpinResults.push(parseInt(wheelNumber, 10));
+                    return copySpinResults.slice(-20); // Only keep the last 20 results
+                });
+            }
+        };
+
+        rouletteContractEvents.on('ExecutedWager', handleExecutedWager);
+
+        // Cleanup event listener
+        return () => {
+            rouletteContractEvents.off('ExecutedWager', handleExecutedWager);
+        };
+    }, [props.playerAddress]);
 
     return (
         <div

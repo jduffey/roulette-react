@@ -13,15 +13,25 @@ export function SpinResult(props) {
         if (props.spinResult) {
             setBgColor(getWheelNumberColor(props.spinResult));
             setMostRecentSpinResultText(props.spinResult === 37 ? "00" : props.spinResult);
-        } else {
-            rouletteContractEvents.on('ExecutedWager', (playerAddress, wheelNumber) => {
-                if (playerAddress === props.playerAddress) {
-                    setBgColor(getWheelNumberColor(parseInt(wheelNumber, 10)));
-                    setMostRecentSpinResultText(parseInt(wheelNumber, 10) === 37 ? "00" : parseInt(wheelNumber, 10));
-                }
-            });
         }
-    }, [mostRecentSpinResultText, props.spinResult, props.playerAddress]);
+    }, [props.spinResult]);
+
+    useEffect(() => {
+        const handleExecutedWager = (playerAddress, wheelNumber, totalWinnings, totalBetsReturned) => {
+            if (playerAddress === props.playerAddress) {
+                const wheelNum = parseInt(wheelNumber, 10);
+                setBgColor(getWheelNumberColor(wheelNum));
+                setMostRecentSpinResultText(wheelNum === 37 ? "00" : wheelNum);
+            }
+        };
+
+        rouletteContractEvents.on('ExecutedWager', handleExecutedWager);
+
+        // Cleanup event listener
+        return () => {
+            rouletteContractEvents.off('ExecutedWager', handleExecutedWager);
+        };
+    }, [props.playerAddress]);
 
     return (
         <div
