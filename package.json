@@ -13,11 +13,12 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test --coverage",
+        "test": "react-scripts test",
         "test-chain": "npx hardhat test src/test/contracts/*",
+        "eject": "react-scripts eject",
         "start-chain": "npx hardhat node",
         "init-chain": "npx hardhat run scripts/initializeChain.js --network localhost",
-        "eject": "react-scripts eject"
+        "setup": "npm install && echo 'Starting local blockchain...' && npm run start-chain & sleep 5 && echo 'Initializing blockchain...' && npm run init-chain && echo 'Setup complete! Run npm start to launch the app.'"
     },
     "eslintConfig": {
         "extends": [

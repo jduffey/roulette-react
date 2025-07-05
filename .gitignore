@@ -27,3 +27,6 @@ yarn-error.log*
 # hardhat stuff
 cache/
 artifacts/
+
+# deployment files
+contract-addresses.json

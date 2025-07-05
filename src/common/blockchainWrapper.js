@@ -7,7 +7,7 @@ const FIRST_PLAYER_ADDRESS = process.env.REACT_APP_FIRST_PLAYER_ADDRESS || "0xf3
 const SECOND_PLAYER_ADDRESS = process.env.REACT_APP_SECOND_PLAYER_ADDRESS || "0x70997970C51812dc3A010C7d01b50e0d17dc79C8";
 const THIRD_PLAYER_ADDRESS = process.env.REACT_APP_THIRD_PLAYER_ADDRESS || "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC";
 const HOUSE_ADDRESS = process.env.REACT_APP_HOUSE_ADDRESS || "0x90F79bf6EB2c4f870365E785982E1f101E93b906";
-// Contract addresses are calculated from a hash of the deployer's address and nonce.
+// Contract addresses from the latest deployment
 const TOKEN_CONTRACT_ADDRESS = process.env.REACT_APP_TOKEN_CONTRACT_ADDRESS || "0x057ef64E23666F000b34aE31332854aCBd1c8544";
 const RANDOMNESS_PROVIDER_CONTRACT_ADDRESS = process.env.REACT_APP_RANDOMNESS_PROVIDER_CONTRACT_ADDRESS || "0x261D8c5e9742e6f7f1076Fa1F560894524e19cad";
 const ROULETTE_CONTRACT_ADDRESS = process.env.REACT_APP_ROULETTE_CONTRACT_ADDRESS || "0xCE3478A9E0167a6Bc5716DC39DbbbfAc38F27623";
@@ -22,6 +22,49 @@ async function executeWager(address) {
         address,
     );
     return tx;
+}
+
+async function placeBet(betName, betAmount) {
+    const contract = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function placeBet(string,uint256)"],
+        provider.getSigner()
+    );
+    const tx = await contract.placeBet(betName, ethers.utils.parseEther(betAmount.toString()));
+    return tx;
+}
+
+async function clearBets() {
+    const contract = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function clearBets()"],
+        provider.getSigner()
+    );
+    const tx = await contract.clearBets();
+    return tx;
+}
+
+async function getPendingBets(address) {
+    const contract = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function getPendingBets(address) view returns (tuple(string betName, uint256 betAmount)[])"],
+        provider.getSigner()
+    );
+    const bets = await contract.getPendingBets(address);
+    return bets.map(bet => ({
+        betName: bet.betName,
+        betAmount: parseFloat(ethers.utils.formatEther(bet.betAmount))
+    }));
+}
+
+async function getTotalPendingBetAmount(address) {
+    const contract = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function getTotalPendingBetAmount(address) view returns (uint256)"],
+        provider.getSigner()
+    );
+    const amount = await contract.getTotalPendingBetAmount(address);
+    return parseFloat(ethers.utils.formatEther(amount));
 }
 
 async function getEthBalance(address) {
@@ -97,6 +140,10 @@ const rouletteContractEvents = new ethers.Contract(
 
 export {
     executeWager,
+    placeBet,
+    clearBets,
+    getPendingBets,
+    getTotalPendingBetAmount,
     getEthBalance,
     getBlock,
     getTokenBalance,
