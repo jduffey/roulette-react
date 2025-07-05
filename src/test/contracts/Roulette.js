@@ -19,12 +19,18 @@ describe("Roulette.sol", () => {
         const MyGameTokenContract = await myGameTokenContractFactory.deploy();
         await MyGameTokenContract.deployed();
 
+        // Mint initial tokens to deployer by depositing ETH
+        await MyGameTokenContract.deposit({ value: ethers.utils.parseEther("100") });
+
         const rouletteContractFactory = await ethers.getContractFactory("Roulette", deployerSigner);
         const RouletteContract = await rouletteContractFactory.deploy(
             MockRandomnessProviderContract.address,
             MyGameTokenContract.address
         );
         await RouletteContract.deployed();
+
+        // Provide the Roulette contract with an initial bankroll of tokens to cover payouts
+        await MyGameTokenContract.transfer(RouletteContract.address, ethers.utils.parseEther("1000000"));
 
         return {
             MockRandomnessProviderContract,
@@ -47,7 +53,8 @@ describe("Roulette.sol", () => {
         if (fakeRandomValue !== undefined) {
             await randomnessProvider.setFakeRandomValue(fakeRandomValue);
         }
-        await rouletteContract.executeWager(playerAddress);
+        const tx = await rouletteContract.executeWager(playerAddress);
+        return tx;
     }
 
     describe("randomness provider determines the wheel number", () => {
@@ -135,15 +142,14 @@ describe("Roulette.sol", () => {
                 const {
                     MockRandomnessProviderContract,
                     RouletteContract,
+                    MyGameTokenContract,
                     player1Address,
                 } = await loadFixture(fixtures);
 
-                // Give player tokens and approve Roulette contract
-                await spinWithBet(MockRandomnessProviderContract, RouletteContract, MyGameTokenContract, player1Address, fakeRandomValue);
+                // Give player tokens and approve Roulette contract, capturing the wager execution
+                const tx = await spinWithBet(MockRandomnessProviderContract, RouletteContract, MyGameTokenContract, player1Address, fakeRandomValue);
 
-                await expect(RouletteContract.executeWager(
-                    player1Address,
-                ))
+                await expect(tx)
                     .to.emit(RouletteContract, "ExecutedWager")
                     .withArgs(player1Address, expectedWheelNumber, anyValue, anyValue);
             });
@@ -155,6 +161,7 @@ describe("Roulette.sol", () => {
             const {
                 MockRandomnessProviderContract,
                 RouletteContract,
+                MyGameTokenContract,
                 player1Address,
             } = await loadFixture(fixtures);
 
@@ -171,6 +178,7 @@ describe("Roulette.sol", () => {
             const {
                 MockRandomnessProviderContract,
                 RouletteContract,
+                MyGameTokenContract,
                 player1Address,
                 player2Address,
             } = await loadFixture(fixtures);
@@ -188,6 +196,7 @@ describe("Roulette.sol", () => {
             const {
                 MockRandomnessProviderContract,
                 RouletteContract,
+                MyGameTokenContract,
                 player1Address,
             } = await loadFixture(fixtures);
 
@@ -206,6 +215,7 @@ describe("Roulette.sol", () => {
             const {
                 MockRandomnessProviderContract,
                 RouletteContract,
+                MyGameTokenContract,
                 player1Address,
             } = await loadFixture(fixtures);
 
@@ -224,6 +234,7 @@ describe("Roulette.sol", () => {
             const {
                 MockRandomnessProviderContract,
                 RouletteContract,
+                MyGameTokenContract,
                 player1Address,
             } = await loadFixture(fixtures);
 
@@ -251,6 +262,7 @@ describe("Roulette.sol", () => {
             const {
                 MockRandomnessProviderContract,
                 RouletteContract,
+                MyGameTokenContract,
                 player1Address,
             } = await loadFixture(fixtures);
 
@@ -279,6 +291,7 @@ describe("Roulette.sol", () => {
         it("returns 0 when no sets have been completed", async () => {
             const {
                 RouletteContract,
+                MyGameTokenContract,
                 player1Address,
             } = await loadFixture(fixtures);
 
@@ -292,6 +305,7 @@ describe("Roulette.sol", () => {
             const {
                 MockRandomnessProviderContract,
                 RouletteContract,
+                MyGameTokenContract,
                 player1Address,
             } = await loadFixture(fixtures);
 
