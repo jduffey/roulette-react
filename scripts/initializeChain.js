@@ -75,6 +75,33 @@ async function _approveAllowanceForRouletteContract(players, tokenContractAddres
     });
 }
 
+async function _updateBlockchainWrapperAddresses(addresses) {
+    const fs = require('fs');
+    const path = require('path');
+    
+    const blockchainWrapperPath = path.join(__dirname, '../src/common/blockchainWrapper.js');
+    let content = fs.readFileSync(blockchainWrapperPath, 'utf8');
+
+    // Update the contract addresses
+    content = content.replace(
+        /const TOKEN_CONTRACT_ADDRESS = process\.env\.REACT_APP_TOKEN_CONTRACT_ADDRESS \|\| "[^"]*";/,
+        `const TOKEN_CONTRACT_ADDRESS = process.env.REACT_APP_TOKEN_CONTRACT_ADDRESS || "${addresses.TOKEN_CONTRACT_ADDRESS}";`
+    );
+
+    content = content.replace(
+        /const RANDOMNESS_PROVIDER_CONTRACT_ADDRESS = process\.env\.REACT_APP_RANDOMNESS_PROVIDER_CONTRACT_ADDRESS \|\| "[^"]*";/,
+        `const RANDOMNESS_PROVIDER_CONTRACT_ADDRESS = process.env.REACT_APP_RANDOMNESS_PROVIDER_CONTRACT_ADDRESS || "${addresses.RANDOMNESS_PROVIDER_CONTRACT_ADDRESS}";`
+    );
+
+    content = content.replace(
+        /const ROULETTE_CONTRACT_ADDRESS = process\.env\.REACT_APP_ROULETTE_CONTRACT_ADDRESS \|\| "[^"]*";/,
+        `const ROULETTE_CONTRACT_ADDRESS = process.env.REACT_APP_ROULETTE_CONTRACT_ADDRESS || "${addresses.ROULETTE_CONTRACT_ADDRESS}";`
+    );
+
+    fs.writeFileSync(blockchainWrapperPath, content);
+    console.log('✅ Contract addresses updated in blockchainWrapper.js');
+}
+
 async function initializeChain() {
     _validateNetwork();
 
@@ -112,6 +139,9 @@ async function initializeChain() {
     fs.writeFileSync('./contract-addresses.json', JSON.stringify(addresses, null, 2));
     console.log('\n***** CONTRACT ADDRESSES SAVED *****');
     console.log('Contract addresses have been saved to contract-addresses.json');
+
+    // Update the blockchainWrapper.js file with the new addresses
+    await _updateBlockchainWrapperAddresses(addresses);
 }
 
 setTimeout(() => {
