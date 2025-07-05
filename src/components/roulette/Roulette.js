@@ -1,8 +1,11 @@
 import { useEffect, useState, useCallback } from 'react';
 
 import { PendingBet } from '../../common/PendingBet';
+import { getCompleteResultsOfRound } from '../../common/getCompleteResultsOfRound';
+import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
 import { CompletionsCounter } from './CompletionsCounter';
 
+import { BetResultsInfo } from './BetResultsInfo';
 import { Board } from "./Board";
 import { ChipSelection } from './ChipSelection';
 import { ClearBetsButton } from './ClearBetsButton';
@@ -45,6 +48,7 @@ export function Roulette(props) {
     const [pendingBets, setPendingBets] = useState([]);
     const [playerBalance, setPlayerBalance] = useState(undefined);
     const [playerAllowance, setPlayerAllowance] = useState(undefined);
+    const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
     const [wheelIsSpinning, setWheelIsSpinning] = useState(false);
     const [wheelNumber, setWheelNumber] = useState(null);
 
@@ -126,6 +130,25 @@ export function Roulette(props) {
 
         const handleExecutedWager = (playerAddress, wheelNumber, totalWinnings, totalBetsReturned) => {
             if (playerAddress === props.playerAddress) {
+                // Convert wheel number to proper format for getWinningCriteria
+                let parsedWheelNumber;
+                const numericWheelNumber = parseInt(wheelNumber, 10);
+                if (numericWheelNumber === 37) {
+                    // "00" is represented as 37 in the contract
+                    parsedWheelNumber = "00";
+                } else {
+                    // Convert to string for other numbers
+                    parsedWheelNumber = numericWheelNumber.toString();
+                }
+
+                // Calculate and store previous round results for display
+                const previousRoundResults = getCompleteResultsOfRound(
+                    playerBalance || 0,
+                    pendingBets,
+                    parsedWheelNumber
+                );
+                setPreviousRoundResultsForBetResultsInfo(previousRoundResults);
+                
                 // Refresh all data when wager is executed
                 refreshBalances();
                 refreshPendingBets();
@@ -197,7 +220,9 @@ export function Roulette(props) {
         // Set up event listener BEFORE starting the transaction
         const handleExecutedWager = (playerAddr, wheelNum, totalWinnings, totalBetsReturned) => {
             if (playerAddr === props.playerAddress) {
-                setWheelNumber(parseInt(wheelNum, 10));
+                // Keep wheel number as number for consistency with other components
+                const numericWheelNumber = parseInt(wheelNum, 10);
+                setWheelNumber(numericWheelNumber);
                 setWheelIsSpinning(false);
                 // Remove the listener after handling the event
                 rouletteContractEvents.off('ExecutedWager', handleExecutedWager);
@@ -295,6 +320,9 @@ export function Roulette(props) {
             />
             <PendingBetsTable
                 pendingBets={pendingBets}
+            />
+            <BetResultsInfo
+                previousRoundResults={previousRoundResultsForBetResultsInfo}
             />
             <NumbersHitTracker
                 playerAddress={playerAddress}
