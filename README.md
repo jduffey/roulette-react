@@ -29,19 +29,39 @@ A decentralized roulette game built with React and Solidity, featuring real-time
    cd roulette-react
    ```
 
-2. **Install dependencies**
+2. **One-command setup** (Recommended)
+   ```bash
+   npm run setup
+   ```
+   This will install dependencies, start the blockchain, deploy contracts, and update addresses automatically.
+
+3. **Start the React application**
+   ```bash
+   npm start
+   ```
+
+### Manual Installation (Alternative)
+
+If you prefer to run each step manually:
+
+1. **Install dependencies**
    ```bash
    npm install
    ```
 
-3. **Start the local blockchain**
+2. **Start the local blockchain**
    ```bash
    npx hardhat node
    ```
 
-4. **Initialize the blockchain** (in a new terminal)
+3. **Initialize the blockchain** (in a new terminal)
    ```bash
    npx hardhat run scripts/initializeChain.js --network localhost
+   ```
+
+4. **Update contract addresses** (in a new terminal)
+   ```bash
+   npm run update-addresses
    ```
 
 5. **Start the React application**

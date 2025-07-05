@@ -10,7 +10,8 @@ This will:
 1. Install all dependencies
 2. Start the local blockchain
 3. Deploy and initialize all contracts
-4. Set up the game environment
+4. Automatically update contract addresses in the frontend
+5. Set up the game environment
 
 After setup completes, run:
 ```bash
@@ -36,7 +37,12 @@ If you prefer to run each step manually:
    npm run init-chain
    ```
 
-4. **Start the app** (in another terminal)
+4. **Update contract addresses** (in another terminal)
+   ```bash
+   npm run update-addresses
+   ```
+
+5. **Start the app** (in another terminal)
    ```bash
    npm start
    ```
@@ -67,6 +73,8 @@ If you prefer to run each step manually:
 - **"Insufficient allowance"**: Run `npm run init-chain` again
 - **"Network error"**: Make sure the blockchain is running with `npm run start-chain`
 - **"Contract not found"**: Check that initialization completed successfully
+- **"call revert exception"**: Run `npm run update-addresses` to sync contract addresses
+- **Contract addresses mismatch**: The setup script now automatically handles this - just run `npm run setup`
 
 ## Next Steps
 

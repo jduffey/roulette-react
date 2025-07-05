@@ -12,22 +12,19 @@ function _validateNetwork() {
     }
 }
 
-async function _deployContract(deployer, contractName, args) {
+async function _deployContract(deployer, contractName, args = []) {
     const contractFactory = await ethers.getContractFactory(
         contractName,
         deployer
     );
-    let contract;
-    if (args) {
-        contract = await contractFactory.deploy(args);
-    } else {
-        contract = await contractFactory.deploy();
-    }
+    const contract = await contractFactory.deploy(...args);
     await contract.deployed();
 
     console.log(`\n***** CONTRACT DEPLOYED SUCCESSFULLY - ${contractName} *****`);
     console.log(`${contract.address} <- Deployment address`);
     console.log(`${contract.signer.address} <- Deployer address`);
+
+    return contract;
 }
 
 async function _depositEthForTokens(tokenContractAddress, ethDepositAmounts) {
@@ -55,7 +52,7 @@ async function _depositEthForTokens(tokenContractAddress, ethDepositAmounts) {
     });
 }
 
-async function _approveAllowanceForRouletteContract(players, tokenContractAddress) {
+async function _approveAllowanceForRouletteContract(players, tokenContractAddress, rouletteContractAddress) {
     const approveTxs =
         players.map(async (player) => {
             const tokenContract = new ethers.Contract(
@@ -64,7 +61,7 @@ async function _approveAllowanceForRouletteContract(players, tokenContractAddres
                 player
             );
             const tx = await tokenContract.approve(
-                "0xCE3478A9E0167a6Bc5716DC39DbbbfAc38F27623",
+                rouletteContractAddress,
                 ethers.utils.parseEther("100000")
             );
             return tx;
@@ -74,7 +71,7 @@ async function _approveAllowanceForRouletteContract(players, tokenContractAddres
 
     console.log("\n***** ADDRESS APPROVALS *****");
     resolvedTxs.forEach((tx) => {
-        console.log(`${tx.from} approved ${ethers.utils.formatEther(tx.value)} ETH`);
+        console.log(`${tx.from} approved 100000 tokens for roulette contract`);
     });
 }
 
@@ -87,7 +84,14 @@ async function initializeChain() {
     const players = signers.slice(0, -1); // All but the last signer are players
     const [house] = signers.slice(-1);    // The last signer is the House
 
-    const tokenContractAddress = ethers.utils.getContractAddress({ from: house.address, nonce: 0 });
+    // Deploy contracts and capture their instances/addresses
+    const tokenContract = await _deployContract(house, "MyGameToken");
+    const randomnessProviderContract = await _deployContract(house, "RandomnessProvider");
+
+    const rouletteContract = await _deployContract(house, "Roulette", [
+        randomnessProviderContract.address,
+        tokenContract.address
+    ]);
 
     const ethToDeposit = players.reduce((acc, player) => {
         acc[player.address] = 1;
@@ -95,11 +99,19 @@ async function initializeChain() {
     }, {});
     ethToDeposit[house.address] = 10;
 
-    await _deployContract(house, "MyGameToken");
-    await _deployContract(house, "RandomnessProvider")
-    await _deployContract(house, "Roulette", ["0x261D8c5e9742e6f7f1076Fa1F560894524e19cad", tokenContractAddress]);
-    await _depositEthForTokens(tokenContractAddress, ethToDeposit);
-    await _approveAllowanceForRouletteContract(players, tokenContractAddress);
+    await _depositEthForTokens(tokenContract.address, ethToDeposit);
+    await _approveAllowanceForRouletteContract(players, tokenContract.address, rouletteContract.address);
+
+    // Write contract addresses to a file for the frontend to use
+    const fs = require('fs');
+    const addresses = {
+        TOKEN_CONTRACT_ADDRESS: tokenContract.address,
+        RANDOMNESS_PROVIDER_CONTRACT_ADDRESS: randomnessProviderContract.address,
+        ROULETTE_CONTRACT_ADDRESS: rouletteContract.address
+    };
+    fs.writeFileSync('./contract-addresses.json', JSON.stringify(addresses, null, 2));
+    console.log('\n***** CONTRACT ADDRESSES SAVED *****');
+    console.log('Contract addresses have been saved to contract-addresses.json');
 }
 
 setTimeout(() => {
