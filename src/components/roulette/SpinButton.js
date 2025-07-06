@@ -5,11 +5,9 @@ export function SpinButton(props) {
     const [extraMessage, setExtraMessage] = useState('-');
     const [zIndex, setZIndex] = useState(-1);
     const [color, setColor] = useState('inherit');
-    const [shouldDisplayExtraMessage, setShouldDisplayExtraMessage] = useState(false);
 
     useEffect(() => {
         const shouldDisplay = !props.hasABetBeenPlaced || props.wheelIsSpinning;
-        setShouldDisplayExtraMessage(shouldDisplay);
         setZIndex(shouldDisplay ? 1 : -1);
         setColor(shouldDisplay ? '#999999' : 'inherit');
         setExtraMessage(
