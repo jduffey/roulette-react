@@ -44,14 +44,14 @@ export function NumbersHitTracker(props) {
                         // Flash for 3 seconds (3000ms) at twice per second (500ms intervals)
                         const flashInterval = setInterval(() => {
                             setFlashState(prev => !prev);
-                        }, 500);
+                        }, 250);
                         
-                        // Stop flashing after 3 seconds
+                        // Stop flashing after 2 seconds
                         setTimeout(() => {
                             clearInterval(flashInterval);
                             setNewlyHitNumbers(new Set()); // Clear newly hit numbers
                             setFlashState(false);
-                        }, 3000);
+                        }, 2000);
                     }
                     
                     setPreviousSet(currentSet);
