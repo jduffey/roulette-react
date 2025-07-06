@@ -7,6 +7,8 @@ import { getPlayerNumberCompletionSetCurrent, rouletteContractEvents } from "../
 const CLASS_NAME = "NumbersHitTracker-component";
 export function NumbersHitTracker(props) {
     const [currentSet, setCurrentSet] = useState(new Set());
+    const [newlyHitNumbers, setNewlyHitNumbers] = useState(new Set());
+    const [flashState, setFlashState] = useState(false);
 
     // Initialize the current set on component mount
     useEffect(() => {
@@ -29,7 +31,29 @@ export function NumbersHitTracker(props) {
                 try {
                     // Get the updated completion set from the blockchain
                     const currentNumbers = await getPlayerNumberCompletionSetCurrent(props.playerAddress);
-                    setCurrentSet(new Set(currentNumbers));
+                    const newSet = new Set(currentNumbers);
+                    
+                    // Find newly hit numbers (numbers in current set but not in previous set)
+                    const newlyHit = new Set([...newSet].filter(num => !currentSet.has(num)));
+                    
+                    if (newlyHit.size > 0) {
+                        setNewlyHitNumbers(newlyHit);
+                        
+                        // Start flashing animation for newly hit numbers
+                        // Flash for 3 seconds (3000ms) at twice per second (500ms intervals)
+                        const flashInterval = setInterval(() => {
+                            setFlashState(prev => !prev);
+                        }, 250);
+                        
+                        // Stop flashing after 2 seconds
+                        setTimeout(() => {
+                            clearInterval(flashInterval);
+                            setNewlyHitNumbers(new Set()); // Clear newly hit numbers
+                            setFlashState(false);
+                        }, 2000);
+                    }
+                    
+                    setCurrentSet(newSet);
                 } catch (error) {
                     console.error('Error updating numbers hit tracker:', error);
                 }
@@ -42,7 +66,7 @@ export function NumbersHitTracker(props) {
         return () => {
             rouletteContractEvents.off('ExecutedWager', handleExecutedWager);
         };
-    }, [props.playerAddress]);
+    }, [props.playerAddress, currentSet]);
 
     return (
         <div
@@ -54,12 +78,23 @@ export function NumbersHitTracker(props) {
                     ? 37
                     : parseInt(stringyNumber, 10);
 
-                const backgroundColor = currentSet.has(wheelNumber) ?
-                    "yellow" :
-                    "inherit";
-                const color = currentSet.has(wheelNumber) ?
-                    "black" :
-                    "gray";
+                const isHit = currentSet.has(wheelNumber);
+                const isNewlyHit = newlyHitNumbers.has(wheelNumber);
+                
+                let backgroundColor;
+                if (isNewlyHit) {
+                    // Flash between orange and yellow for newly hit numbers
+                    backgroundColor = flashState ? "orange" : "yellow";
+                } else if (isHit) {
+                    // Regular yellow for previously hit numbers
+                    backgroundColor = "yellow";
+                } else {
+                    // Default background for non-hit numbers
+                    backgroundColor = "inherit";
+                }
+
+                const color = isHit ? "black" : "gray";
+
                 return (
                     <div className="hit-number"
                         key={i}
