@@ -6,7 +6,7 @@ import {
 } from "../../common/blockchainWrapper";
 
 const formattedChainNumber = (chainNumber, decimals) => {
-    return chainNumber
+    return chainNumber !== null && chainNumber !== undefined
         ? parseFloat(chainNumber)
             .toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals })
         : "Loading...";
@@ -49,7 +49,7 @@ export function HouseInfo(props) {
             </div>
             <div>
                 House Balance
-                < br />
+                <br />
                 {formattedChainNumber(houseBalance, 3)}
             </div>
         </div >

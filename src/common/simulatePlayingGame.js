@@ -11,11 +11,19 @@ const getRandomElement = (choices) => {
     return choices[index];
 };
 
-setInterval(() => {
-    let betsPlaced = 0;
-    setInterval(() => {
-        if (betsPlaced++ >= NUMBER_OF_BETS_TO_PLACE) return;
+// Track the current state of the simulation
+let betsPlaced = 0;
+let isSimulationActive = true;
 
+// Single interval that handles both betting and spinning
+const simulationInterval = setInterval(() => {
+    if (!isSimulationActive) {
+        clearInterval(simulationInterval);
+        return;
+    }
+
+    if (betsPlaced < NUMBER_OF_BETS_TO_PLACE) {
+        // Place a bet
         const selectedChipAmt = getRandomElement([
             CHIP_AMOUNTS.CHIP_1,
             CHIP_AMOUNTS.CHIP_2_HALF,
@@ -31,10 +39,29 @@ setInterval(() => {
         const selectedChipElement = document.getElementById(`chip-${selectedChipAmt}`);
         const betElement = document.getElementById(selectedBet);
 
-        selectedChipElement.click(selectedChipAmt);
-        betElement.click();
-    }, SECONDS_BETWEEN_BET_PLACEMENTS * 1000);
+        if (selectedChipElement && betElement) {
+            selectedChipElement.click(selectedChipAmt);
+            betElement.click();
+        }
+        
+        betsPlaced++;
+    } else {
+        // All bets placed, now spin
+        const spinButtonElement = document.getElementById("spin-button");
+        if (spinButtonElement) {
+            spinButtonElement.click();
+        }
+        
+        // Reset for next cycle
+        betsPlaced = 0;
+        
+        // Optional: Stop simulation after one complete cycle
+        // isSimulationActive = false;
+    }
+}, SECONDS_BETWEEN_BET_PLACEMENTS * 1000);
 
-    const spinButtonElement = document.getElementById("spin-button");
-    spinButtonElement.click();
-}, (NUMBER_OF_BETS_TO_PLACE + 1) * SECONDS_BETWEEN_BET_PLACEMENTS * 1000);
+// Export function to stop simulation if needed
+export const stopSimulation = () => {
+    isSimulationActive = false;
+    clearInterval(simulationInterval);
+};

@@ -5,7 +5,7 @@ import {
 } from "../../common/blockchainWrapper";
 
 const formattedChainNumber = (chainNumber, decimals) => {
-    return chainNumber
+    return chainNumber !== null && chainNumber !== undefined
         ? parseFloat(chainNumber)
             .toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals })
         : "Loading...";
@@ -20,7 +20,7 @@ export function CompletionsCounter(props) {
             const count = await getPlayerNumberCompletionSetsCounter(props.playerAddress);
             setCompletionsCount(count);
         }, 1000);
-    }, [props.playerAddress, completionsCount]);
+    }, [props.playerAddress]);
 
     return (
         <div

@@ -8,7 +8,7 @@ function NumbersHitGameCounter(props) {
         >
             {Array(300).fill("").map((_, i) => {
                 const bgColor = i < gameCounter ? "yellow" : "inherit";
-                const outline = [40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 220, 230, 240, 250, 260, 270, 280, 290, 300].includes(i) ? "1px solid black" : "none";
+                const outline = [40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300].includes(i) ? "1px solid black" : "none";
                 return (
                     <div className="game-counter-bar-element"
                         key={i}
