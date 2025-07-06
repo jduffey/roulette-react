@@ -2,12 +2,12 @@ import { useEffect, useState, useCallback } from 'react';
 
 import { PendingBet } from '../../common/PendingBet';
 import { getCompleteResultsOfRound } from '../../common/getCompleteResultsOfRound';
-import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
 import { CompletionsCounter } from './CompletionsCounter';
 
 import { BetResultsInfo } from './BetResultsInfo';
 import { Board } from "./Board";
 import { ChipSelection } from './ChipSelection';
+import { ClearBetsButton } from './ClearBetsButton';
 import { PendingBetsTable } from './PendingBetsTable';
 import { MostRecentSpinResults } from './MostRecentSpinResults';
 import { NumbersHitTracker } from './NumbersHitTracker';
@@ -21,6 +21,7 @@ import {
     getPlayerAllowance,
     executeWager,
     placeBet,
+    clearBets,
     getPendingBets,
     rouletteContractEvents,
     getBlock,
@@ -108,6 +109,64 @@ export function Roulette(props) {
         }
     }, [latestBlockNumber, refreshBalances, refreshPendingBets]);
 
+    // Set up global event listeners for consistent updates
+    useEffect(() => {
+        const handleBetPlaced = (playerAddress, betName, betAmount) => {
+            if (playerAddress === props.playerAddress) {
+                // Refresh pending bets when a bet is placed
+                refreshPendingBets();
+                refreshBalances();
+            }
+        };
+
+        const handleBetCleared = (playerAddress) => {
+            if (playerAddress === props.playerAddress) {
+                // Refresh pending bets when bets are cleared
+                refreshPendingBets();
+                refreshBalances();
+            }
+        };
+
+        const handleExecutedWager = (playerAddress, wheelNumber, totalWinnings, totalBetsReturned) => {
+            if (playerAddress === props.playerAddress) {
+                // Convert wheel number to proper format for getWinningCriteria
+                let parsedWheelNumber;
+                const numericWheelNumber = parseInt(wheelNumber, 10);
+                if (numericWheelNumber === 37) {
+                    // "00" is represented as 37 in the contract
+                    parsedWheelNumber = "00";
+                } else {
+                    // Convert to string for other numbers
+                    parsedWheelNumber = numericWheelNumber.toString();
+                }
+
+                // Calculate and store previous round results for display
+                const previousRoundResults = getCompleteResultsOfRound(
+                    playerBalance || 0,
+                    pendingBets,
+                    parsedWheelNumber
+                );
+                setPreviousRoundResultsForBetResultsInfo(previousRoundResults);
+                
+                // Refresh all data when wager is executed
+                refreshBalances();
+                refreshPendingBets();
+            }
+        };
+
+        // Set up event listeners
+        rouletteContractEvents.on('BetPlaced', handleBetPlaced);
+        rouletteContractEvents.on('BetCleared', handleBetCleared);
+        rouletteContractEvents.on('ExecutedWager', handleExecutedWager);
+
+        // Cleanup event listeners
+        return () => {
+            rouletteContractEvents.off('BetPlaced', handleBetPlaced);
+            rouletteContractEvents.off('BetCleared', handleBetCleared);
+            rouletteContractEvents.off('ExecutedWager', handleExecutedWager);
+        };
+    }, [props.playerAddress, refreshBalances, refreshPendingBets, playerBalance, pendingBets]);
+
     function handleBettingSquareClick(bettingSquareName) {
         const availableBalance = (playerBalance !== undefined ? parseFloat(playerBalance) : 0) - calculateTotalBetAmount(pendingBets);
 
@@ -157,39 +216,70 @@ export function Roulette(props) {
 
         setWheelIsSpinning(true);
 
-        getRandomWheelNumber(`${Date.now()}${playerAddress}`)
-            .then(randomWheelNumber => {
-                const resultsOfRound = getCompleteResultsOfRound(playerBalance, pendingBets, randomWheelNumber);
+        // Set up event listener BEFORE starting the transaction
+        const handleExecutedWager = (playerAddr, wheelNum, totalWinnings, totalBetsReturned) => {
+            if (playerAddr === props.playerAddress) {
+                // Keep wheel number as number for consistency with other components
+                const numericWheelNumber = parseInt(wheelNum, 10);
+                setWheelNumber(numericWheelNumber);
+                setWheelIsSpinning(false);
+                // Remove the listener after handling the event
+                rouletteContractEvents.off('ExecutedWager', handleExecutedWager);
+            }
+        };
 
-                setPreviousRoundResultsForBetResultsInfo(resultsOfRound);
+        rouletteContractEvents.on('ExecutedWager', handleExecutedWager);
 
-                executeWager(playerAddress)
-                    .then((response) => response.wait()) // wait for mining first
-                    .then((receipt) => {
-                        // Use mined block number
-                        setLatestBlockNumber(receipt.blockNumber);
-                        // Refresh balances after transaction is mined
-                        refreshBalances();
-                        refreshPendingBets();
-                    })
-                    .then(() => {
-                        rouletteContractEvents.on('ExecutedWager', (playerAddr, wheelNum, totalWinnings, totalBetsReturned) => {
-                            if (playerAddr === props.playerAddress) {
-                                setWheelNumber(parseInt(wheelNum, 10));
-                                setWheelIsSpinning(false);
-                            }
-                        });
-                    })
-                    .catch((error) => {
-                        console.error('Error executing wager:', error);
-                        setWheelIsSpinning(false);
-                        alert('Failed to execute wager. Please try again.');
-                    });
+        // Execute the wager transaction
+        executeWager(playerAddress)
+            .then((response) => response.wait()) // wait for mining
+            .then((receipt) => {
+                // Update block number and refresh data
+                setLatestBlockNumber(receipt.blockNumber);
+                refreshBalances();
+                refreshPendingBets();
             })
             .catch((error) => {
-                console.error('Error getting random wheel number:', error);
+                console.error('Error executing wager:', error);
                 setWheelIsSpinning(false);
-                alert('Failed to get random number. Please try again.');
+                alert('Failed to execute wager. Please try again.');
+                // Remove the listener on error
+                rouletteContractEvents.off('ExecutedWager', handleExecutedWager);
+            });
+    }
+
+    function handleClearBetsClick() {
+        if (pendingBets.length === 0) {
+            alert("No bets to clear!");
+            return;
+        }
+
+        if (wheelIsSpinning) {
+            alert("Cannot clear bets while wheel is spinning!");
+            return;
+        }
+
+        // Optimistically clear UI
+        setPendingBets([]);
+
+        // Clear bets on the blockchain
+        clearBets()
+            .then((tx) => {
+                console.log('Bets cleared:', tx);
+                return tx.wait(); // wait for mining to ensure block number is available
+            })
+            .then((receipt) => {
+                // Update latest block number from mined receipt
+                setLatestBlockNumber(receipt.blockNumber);
+                // Refresh balances after transaction is mined
+                refreshBalances();
+                refreshPendingBets();
+            })
+            .catch((error) => {
+                console.error('Error clearing bets:', error);
+                alert('Failed to clear bets. Please try again.');
+                // Restore pending bets on error
+                refreshPendingBets();
             });
     }
 
@@ -208,6 +298,11 @@ export function Roulette(props) {
             <SpinButton
                 onClick={() => handleSpinButtonClick()}
                 hasABetBeenPlaced={hasABetBeenPlaced(pendingBets)}
+                wheelIsSpinning={wheelIsSpinning}
+            />
+            <ClearBetsButton
+                onClick={() => handleClearBetsClick()}
+                pendingBets={pendingBets}
                 wheelIsSpinning={wheelIsSpinning}
             />
             <SpinResult
