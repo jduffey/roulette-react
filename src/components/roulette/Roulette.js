@@ -2,7 +2,6 @@ import { useEffect, useState, useCallback } from 'react';
 
 import { PendingBet } from '../../common/PendingBet';
 import { getCompleteResultsOfRound } from '../../common/getCompleteResultsOfRound';
-import { getRandomWheelNumber } from '../../common/getRandomWheelNumber';
 import { CompletionsCounter } from './CompletionsCounter';
 
 import { BetResultsInfo } from './BetResultsInfo';
@@ -166,7 +165,7 @@ export function Roulette(props) {
             rouletteContractEvents.off('BetCleared', handleBetCleared);
             rouletteContractEvents.off('ExecutedWager', handleExecutedWager);
         };
-    }, [props.playerAddress, refreshBalances, refreshPendingBets]);
+    }, [props.playerAddress, refreshBalances, refreshPendingBets, playerBalance, pendingBets]);
 
     function handleBettingSquareClick(bettingSquareName) {
         const availableBalance = (playerBalance !== undefined ? parseFloat(playerBalance) : 0) - calculateTotalBetAmount(pendingBets);
