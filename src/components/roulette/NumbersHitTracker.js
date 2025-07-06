@@ -7,7 +7,6 @@ import { getPlayerNumberCompletionSetCurrent, rouletteContractEvents } from "../
 const CLASS_NAME = "NumbersHitTracker-component";
 export function NumbersHitTracker(props) {
     const [currentSet, setCurrentSet] = useState(new Set());
-    const [previousSet, setPreviousSet] = useState(new Set());
     const [newlyHitNumbers, setNewlyHitNumbers] = useState(new Set());
     const [flashState, setFlashState] = useState(false);
 
@@ -54,7 +53,6 @@ export function NumbersHitTracker(props) {
                         }, 2000);
                     }
                     
-                    setPreviousSet(currentSet);
                     setCurrentSet(newSet);
                 } catch (error) {
                     console.error('Error updating numbers hit tracker:', error);
