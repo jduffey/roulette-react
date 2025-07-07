@@ -72,57 +72,61 @@ contract Roulette {
         return total;
     }
 
+    /// @dev Complete set of roulette wheel numbers (0-36 + 00)
+    uint8[38] private constant COMPLETE_WHEEL_SET = [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37
+    ];
+
+    /// @dev Adds a wheel number to the player's completion set and checks for completion
+    /// @param addr The player's address
+    /// @param wheelNumber The wheel number that was hit
     function _addToSet(address addr, uint256 wheelNumber) internal {
         if (!_playerNumberCompletionSets[addr].numberIsHit[wheelNumber]) {
             _playerNumberCompletionSets[addr].hitNumbers.push(wheelNumber);
             _playerNumberCompletionSets[addr].numberIsHit[wheelNumber] = true;
         }
 
-        uint8[38] memory completeSet = [
-            0,
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10,
-            11,
-            12,
-            13,
-            14,
-            15,
-            16,
-            17,
-            18,
-            19,
-            20,
-            21,
-            22,
-            23,
-            24,
-            25,
-            26,
-            27,
-            28,
-            29,
-            30,
-            31,
-            32,
-            33,
-            34,
-            35,
-            36,
-            37
-        ];
-
         // check if set is complete and reset if so
-        if (_playerNumberCompletionSets[addr].hitNumbers.length == completeSet.length) {
-            for (uint256 i = 0; i < completeSet.length; i++) {
-                _playerNumberCompletionSets[addr].numberIsHit[completeSet[i]] = false;
+        if (_playerNumberCompletionSets[addr].hitNumbers.length == COMPLETE_WHEEL_SET.length) {
+            for (uint256 i = 0; i < COMPLETE_WHEEL_SET.length; i++) {
+                _playerNumberCompletionSets[addr].numberIsHit[COMPLETE_WHEEL_SET[i]] = false;
             }
             _playerNumberCompletionSets[addr].hitNumbers = new uint256[](0);
             _playerNumberCompletionSets[addr].completionCounter++;
