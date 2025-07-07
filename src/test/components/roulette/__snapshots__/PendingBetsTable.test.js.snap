@@ -7,7 +7,9 @@ exports[`PendingBetsTable renders with bets 1`] = `
   <div
     className="pending-bets-info-table-title-text"
   >
-    Pending Bets
+    Pending Bets (
+    3
+    )
   </div>
   <table
     className="pending-bets-info-table"
@@ -26,6 +28,9 @@ exports[`PendingBetsTable renders with bets 1`] = `
         <th>
           Bet Amount
         </th>
+        <th>
+          Action
+        </th>
       </tr>
       <tr>
         <td>
@@ -35,6 +40,27 @@ exports[`PendingBetsTable renders with bets 1`] = `
           className="pending-bets-info-table-bet-amount"
         >
           $ 10
+        </td>
+        <td>
+          <button
+            aria-label="Remove foo bet"
+            className="remove-bet-button"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#ff4444",
+                "border": "none",
+                "borderRadius": "50%",
+                "color": "white",
+                "cursor": "pointer",
+                "fontSize": "12px",
+                "height": "24px",
+                "width": "24px",
+              }
+            }
+          >
+            ✕
+          </button>
         </td>
       </tr>
       <tr>
@@ -46,6 +72,27 @@ exports[`PendingBetsTable renders with bets 1`] = `
         >
           $ 20
         </td>
+        <td>
+          <button
+            aria-label="Remove bar bet"
+            className="remove-bet-button"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#ff4444",
+                "border": "none",
+                "borderRadius": "50%",
+                "color": "white",
+                "cursor": "pointer",
+                "fontSize": "12px",
+                "height": "24px",
+                "width": "24px",
+              }
+            }
+          >
+            ✕
+          </button>
+        </td>
       </tr>
       <tr>
         <td>
@@ -55,6 +102,27 @@ exports[`PendingBetsTable renders with bets 1`] = `
           className="pending-bets-info-table-bet-amount"
         >
           $ 30
+        </td>
+        <td>
+          <button
+            aria-label="Remove baz bet"
+            className="remove-bet-button"
+            onClick={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#ff4444",
+                "border": "none",
+                "borderRadius": "50%",
+                "color": "white",
+                "cursor": "pointer",
+                "fontSize": "12px",
+                "height": "24px",
+                "width": "24px",
+              }
+            }
+          >
+            ✕
+          </button>
         </td>
       </tr>
     </tbody>
@@ -69,7 +137,9 @@ exports[`PendingBetsTable renders with no bets 1`] = `
   <div
     className="pending-bets-info-table-title-text"
   >
-    Pending Bets
+    Pending Bets (
+    0
+    )
   </div>
   <table
     className="pending-bets-info-table"
@@ -87,6 +157,9 @@ exports[`PendingBetsTable renders with no bets 1`] = `
         </th>
         <th>
           Bet Amount
+        </th>
+        <th>
+          Action
         </th>
       </tr>
     </tbody>

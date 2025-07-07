@@ -2206,7 +2206,9 @@ exports[`Roulette renders 1`] = `
     <div
       className="pending-bets-info-table-title-text"
     >
-      Pending Bets
+      Pending Bets (
+      0
+      )
     </div>
     <table
       className="pending-bets-info-table"
@@ -2224,6 +2226,9 @@ exports[`Roulette renders 1`] = `
           </th>
           <th>
             Bet Amount
+          </th>
+          <th>
+            Action
           </th>
         </tr>
       </tbody>

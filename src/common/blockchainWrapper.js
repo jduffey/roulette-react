@@ -44,6 +44,16 @@ async function clearBets() {
     return tx;
 }
 
+async function removeBet(betIndex) {
+    const contract = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function removeBet(uint256)"],
+        provider.getSigner()
+    );
+    const tx = await contract.removeBet(betIndex);
+    return tx;
+}
+
 async function getPendingBets(address) {
     const contract = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
@@ -136,6 +146,7 @@ const rouletteContractEvents = new ethers.Contract(
         'event ExecutedWager(address indexed, uint256, uint256, uint256)',
         'event BetPlaced(address indexed, string, uint256)',
         'event BetCleared(address indexed)',
+        'event BetRemoved(address indexed, uint256, uint256)',
     ],
     provider
 );
@@ -144,6 +155,7 @@ export {
     executeWager,
     placeBet,
     clearBets,
+    removeBet,
     getPendingBets,
     getTotalPendingBetAmount,
     getEthBalance,

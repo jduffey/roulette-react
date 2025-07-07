@@ -3539,7 +3539,9 @@ Array [
       <div
         className="pending-bets-info-table-title-text"
       >
-        Pending Bets
+        Pending Bets (
+        0
+        )
       </div>
       <table
         className="pending-bets-info-table"
@@ -3557,6 +3559,9 @@ Array [
             </th>
             <th>
               Bet Amount
+            </th>
+            <th>
+              Action
             </th>
           </tr>
         </tbody>

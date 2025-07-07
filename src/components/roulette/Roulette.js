@@ -22,6 +22,7 @@ import {
     executeWager,
     placeBet,
     clearBets,
+    removeBet,
     getPendingBets,
     rouletteContractEvents,
     getBlock,
@@ -154,20 +155,41 @@ export function Roulette(props) {
             }
         };
 
+        const handleBetRemoved = (playerAddress, betIndex, betAmount) => {
+            if (playerAddress === props.playerAddress) {
+                // Refresh pending bets when a bet is removed
+                refreshPendingBets();
+                refreshBalances();
+            }
+        };
+
         // Set up event listeners
         rouletteContractEvents.on('BetPlaced', handleBetPlaced);
         rouletteContractEvents.on('BetCleared', handleBetCleared);
+        rouletteContractEvents.on('BetRemoved', handleBetRemoved);
         rouletteContractEvents.on('ExecutedWager', handleExecutedWager);
 
         // Cleanup event listeners
         return () => {
             rouletteContractEvents.off('BetPlaced', handleBetPlaced);
             rouletteContractEvents.off('BetCleared', handleBetCleared);
+            rouletteContractEvents.off('BetRemoved', handleBetRemoved);
             rouletteContractEvents.off('ExecutedWager', handleExecutedWager);
         };
     }, [props.playerAddress, refreshBalances, refreshPendingBets, playerBalance, pendingBets]);
 
+    // Rate limiting protection
+    const BET_RATE_LIMIT = 1000; // 1 second between bets
+    let lastBetTime = 0;
+
     function handleBettingSquareClick(bettingSquareName) {
+        const now = Date.now();
+        if (now - lastBetTime < BET_RATE_LIMIT) {
+            alert("Please wait before placing another bet!");
+            return;
+        }
+        lastBetTime = now;
+
         const availableBalance = (playerBalance !== undefined ? parseFloat(playerBalance) : 0) - calculateTotalBetAmount(pendingBets);
 
         if (currentChipAmountSelected > availableBalance) {
@@ -204,8 +226,16 @@ export function Roulette(props) {
             return;
         }
 
-        if (pendingBets.length > 1) {
-            alert("Only one bet per spin is supported right now. Please remove extra bets or wait for multi-bet support.");
+        // Validate total bet amount doesn't exceed balance
+        const totalBetAmount = pendingBets.reduce((total, bet) => total + bet.betAmount, 0);
+        if (totalBetAmount > playerBalance) {
+            alert("Total bet amount exceeds available balance!");
+            return;
+        }
+
+        // Add bet count validation
+        if (pendingBets.length > 20) { // Match contract limit
+            alert("Maximum 20 bets per spin allowed!");
             return;
         }
 
@@ -245,6 +275,33 @@ export function Roulette(props) {
                 alert('Failed to execute wager. Please try again.');
                 // Remove the listener on error
                 rouletteContractEvents.off('ExecutedWager', handleExecutedWager);
+            });
+    }
+
+    function handleRemoveBet(betIndex) {
+        if (wheelIsSpinning) {
+            alert("Cannot remove bets while wheel is spinning!");
+            return;
+        }
+
+        // Optimistically update UI
+        setPendingBets(prev => prev.filter((_, index) => index !== betIndex));
+
+        // Remove bet on blockchain
+        removeBet(betIndex)
+            .then((tx) => {
+                console.log('Bet removed:', tx);
+                return tx.wait();
+            })
+            .then((receipt) => {
+                setLatestBlockNumber(receipt.blockNumber);
+                refreshBalances();
+                refreshPendingBets();
+            })
+            .catch((error) => {
+                console.error('Error removing bet:', error);
+                alert('Failed to remove bet. Please try again.');
+                refreshPendingBets(); // Restore on error
             });
     }
 
@@ -319,6 +376,8 @@ export function Roulette(props) {
             />
             <PendingBetsTable
                 pendingBets={pendingBets}
+                wheelIsSpinning={wheelIsSpinning}
+                onRemoveBet={handleRemoveBet}
             />
             <BetResultsInfo
                 previousRoundResults={previousRoundResultsForBetResultsInfo}
