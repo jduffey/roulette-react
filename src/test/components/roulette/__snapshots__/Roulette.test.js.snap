@@ -2757,7 +2757,7 @@ exports[`Roulette renders 1`] = `
   <div
     className="CompletionsCounter-component"
   >
-    Loading...
+    0
   </div>
   <div
     className="HouseInfo-component"
