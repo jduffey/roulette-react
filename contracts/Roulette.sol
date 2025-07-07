@@ -11,8 +11,8 @@ contract Roulette {
 
     // Security constants
     uint256 public constant MAX_BETS_PER_SPIN = 20;
-    uint256 public constant MIN_BET_AMOUNT = 0.01 ether;
-    uint256 public constant MAX_BET_AMOUNT = 100 ether;
+    uint256 public constant MIN_BET_AMOUNT = 0.01 ether; // 0.01 ETH = $0.01
+    uint256 public constant MAX_BET_AMOUNT = 1000 ether; // 1000 ETH = $1000 (matches highest chip)
     
     // Reentrancy protection
     bool private _locked;
@@ -359,5 +359,29 @@ contract Roulette {
         }
         
         return false;
+    }
+
+    function placeMultipleBets(string[] memory betNames, uint256[] memory betAmounts) public nonReentrant onlyPlayer {
+        require(betNames.length == betAmounts.length, "Array lengths must match");
+        require(betNames.length > 0, "No bets provided");
+        require(betNames.length <= 10, "Too many bets in batch");
+        require(_pendingBets[msg.sender].length + betNames.length <= MAX_BETS_PER_SPIN, "Too many total bets");
+
+        uint256 totalAmount = 0;
+        for (uint256 i = 0; i < betAmounts.length; i++) {
+            require(betAmounts[i] >= MIN_BET_AMOUNT, "Bet amount too low");
+            require(betAmounts[i] <= MAX_BET_AMOUNT, "Bet amount too high");
+            require(_validateBetName(betNames[i]), "Invalid bet name");
+            totalAmount += betAmounts[i];
+        }
+
+        require(_gameToken.balanceOf(msg.sender) >= totalAmount, "Insufficient balance");
+        require(_gameToken.allowance(msg.sender, address(this)) >= totalAmount, "Insufficient allowance");
+        require(_gameToken.transferFrom(msg.sender, address(this), totalAmount), "Token transfer failed");
+
+        for (uint256 i = 0; i < betNames.length; i++) {
+            _pendingBets[msg.sender].push(PendingBet(betNames[i], betAmounts[i]));
+            emit BetPlaced(msg.sender, betNames[i], betAmounts[i]);
+        }
     }
 }

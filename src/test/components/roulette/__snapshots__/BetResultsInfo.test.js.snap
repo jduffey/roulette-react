@@ -511,7 +511,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_0
+          STRAIGHT_UP_0
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -527,7 +527,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_00
+          STRAIGHT_UP_00
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -543,7 +543,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_1
+          STRAIGHT_UP_1
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -559,7 +559,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_2
+          STRAIGHT_UP_2
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -575,7 +575,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_3
+          STRAIGHT_UP_3
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -591,7 +591,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_4
+          STRAIGHT_UP_4
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -607,7 +607,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_5
+          STRAIGHT_UP_5
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -623,7 +623,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_6
+          STRAIGHT_UP_6
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -639,7 +639,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_7
+          STRAIGHT_UP_7
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -655,7 +655,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_8
+          STRAIGHT_UP_8
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -671,7 +671,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_9
+          STRAIGHT_UP_9
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -687,7 +687,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_10
+          STRAIGHT_UP_10
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -703,7 +703,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_11
+          STRAIGHT_UP_11
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -719,7 +719,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_12
+          STRAIGHT_UP_12
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -735,7 +735,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_13
+          STRAIGHT_UP_13
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -751,7 +751,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_14
+          STRAIGHT_UP_14
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -767,7 +767,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_15
+          STRAIGHT_UP_15
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -783,7 +783,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_16
+          STRAIGHT_UP_16
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -799,7 +799,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_17
+          STRAIGHT_UP_17
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -815,7 +815,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_18
+          STRAIGHT_UP_18
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -831,7 +831,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_19
+          STRAIGHT_UP_19
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -847,7 +847,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_20
+          STRAIGHT_UP_20
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -863,7 +863,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_21
+          STRAIGHT_UP_21
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -879,7 +879,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_22
+          STRAIGHT_UP_22
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -895,7 +895,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_23
+          STRAIGHT_UP_23
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -911,7 +911,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_24
+          STRAIGHT_UP_24
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -927,7 +927,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_25
+          STRAIGHT_UP_25
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -943,7 +943,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_26
+          STRAIGHT_UP_26
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -959,7 +959,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_27
+          STRAIGHT_UP_27
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -975,7 +975,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_28
+          STRAIGHT_UP_28
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -991,7 +991,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_29
+          STRAIGHT_UP_29
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -1007,7 +1007,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_30
+          STRAIGHT_UP_30
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -1023,7 +1023,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_31
+          STRAIGHT_UP_31
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -1039,7 +1039,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_32
+          STRAIGHT_UP_32
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -1055,7 +1055,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_33
+          STRAIGHT_UP_33
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -1071,7 +1071,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_34
+          STRAIGHT_UP_34
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -1087,7 +1087,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_35
+          STRAIGHT_UP_35
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -1103,7 +1103,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          StraightUp_36
+          STRAIGHT_UP_36
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -1119,7 +1119,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          1 to 18
+          LOW_NUMBERS
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -1135,7 +1135,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          19 to 36
+          HIGH_NUMBERS
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -1151,7 +1151,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          Even
+          EVEN
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -1167,7 +1167,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          Odd
+          ODD
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -1183,7 +1183,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          Red
+          RED
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -1199,7 +1199,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          Black
+          BLACK
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -1215,7 +1215,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          1st 12
+          FIRST_DOZEN
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -1231,7 +1231,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          2nd 12
+          SECOND_DOZEN
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -1247,7 +1247,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          3rd 12
+          THIRD_DOZEN
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -1263,7 +1263,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          1st Column
+          FIRST_COLUMN
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -1279,7 +1279,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          2nd Column
+          SECOND_COLUMN
         </td>
         <td
           className="bet-results-info-table-bet-amount"
@@ -1295,7 +1295,7 @@ exports[`BetResultsInfo renders with bets 1`] = `
       </tr>
       <tr>
         <td>
-          3rd Column
+          THIRD_COLUMN
         </td>
         <td
           className="bet-results-info-table-bet-amount"

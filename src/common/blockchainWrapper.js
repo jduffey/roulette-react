@@ -151,6 +151,18 @@ const rouletteContractEvents = new ethers.Contract(
     provider
 );
 
+async function placeMultipleBets(betNames, betAmounts) {
+    const contract = new ethers.Contract(
+        ROULETTE_CONTRACT_ADDRESS,
+        ["function placeMultipleBets(string[],uint256[])", "event BetPlaced(address,string,uint256)"],
+        provider.getSigner()
+    );
+    // Convert betAmounts to Wei (treating amounts as ETH, not dollars)
+    const betAmountsWei = betAmounts.map(amount => ethers.utils.parseEther(amount.toString()));
+    const tx = await contract.placeMultipleBets(betNames, betAmountsWei);
+    return tx;
+}
+
 export {
     executeWager,
     placeBet,
@@ -173,4 +185,5 @@ export {
     RANDOMNESS_PROVIDER_CONTRACT_ADDRESS,
     getTokenSymbol,
     rouletteContractEvents,
+    placeMultipleBets,
 };

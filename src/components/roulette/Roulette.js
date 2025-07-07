@@ -21,6 +21,7 @@ import {
     getPlayerAllowance,
     executeWager,
     placeBet,
+    placeMultipleBets,
     clearBets,
     removeBet,
     getPendingBets,
@@ -197,30 +198,12 @@ export function Roulette(props) {
             return;
         }
 
-        // Optimistically update UI while transaction is pending
+        // Only update UI state, do not call contract
         const newBet = new PendingBet(bettingSquareName, currentChipAmountSelected);
         setPendingBets(prev => [...prev, newBet]);
-
-        // Place bet on the blockchain
-        placeBet(bettingSquareName, currentChipAmountSelected)
-            .then((tx) => {
-                console.log('Bet placed:', tx);
-                return tx.wait(); // wait for mining to ensure block number is available
-            })
-            .then((receipt) => {
-                // Update latest block number from mined receipt
-                setLatestBlockNumber(receipt.blockNumber);
-                // Refresh pending bets & balances from chain
-                refreshPendingBets();
-                refreshBalances();
-            })
-            .catch((error) => {
-                console.error('Error placing bet:', error);
-                alert('Failed to place bet. Please try again.');
-            });
     }
 
-    function handleSpinButtonClick() {
+    async function handleSpinButtonClick() {
         if (!hasABetBeenPlaced(pendingBets)) {
             console.log("No bets placed.");
             return;
@@ -245,6 +228,32 @@ export function Roulette(props) {
         }
 
         setWheelIsSpinning(true);
+
+        // Place bets on-chain before spinning
+        try {
+            console.log('Placing bets:', pendingBets);
+            if (pendingBets.length === 1) {
+                console.log('Placing single bet:', pendingBets[0]);
+                await placeBet(pendingBets[0].betName, pendingBets[0].betAmount);
+            } else {
+                const betNames = pendingBets.map(bet => bet.betName);
+                const betAmounts = pendingBets.map(bet => bet.betAmount);
+                console.log('Placing multiple bets:', { betNames, betAmounts });
+                await placeMultipleBets(betNames, betAmounts);
+            }
+            console.log('Bets placed successfully');
+        } catch (error) {
+            console.error('Error placing bets:', error);
+            console.error('Error details:', {
+                message: error.message,
+                code: error.code,
+                reason: error.reason,
+                data: error.data
+            });
+            setWheelIsSpinning(false);
+            alert('Failed to place bets. Please try again. Error: ' + (error.reason || error.message));
+            return;
+        }
 
         // Set up event listener BEFORE starting the transaction
         const handleExecutedWager = (playerAddr, wheelNum, totalWinnings, totalBetsReturned) => {

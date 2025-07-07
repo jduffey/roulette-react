@@ -1342,7 +1342,7 @@ Array [
     >
       <div
         className="ClickableBet-component"
-        id="StraightUp_1"
+        id="STRAIGHT_UP_1"
         onClick={[Function]}
         role="button"
         style={
@@ -1382,7 +1382,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_4"
+        id="STRAIGHT_UP_4"
         onClick={[Function]}
         role="button"
         style={
@@ -1422,7 +1422,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_7"
+        id="STRAIGHT_UP_7"
         onClick={[Function]}
         role="button"
         style={
@@ -1462,7 +1462,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_10"
+        id="STRAIGHT_UP_10"
         onClick={[Function]}
         role="button"
         style={
@@ -1502,7 +1502,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_13"
+        id="STRAIGHT_UP_13"
         onClick={[Function]}
         role="button"
         style={
@@ -1542,7 +1542,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_16"
+        id="STRAIGHT_UP_16"
         onClick={[Function]}
         role="button"
         style={
@@ -1582,7 +1582,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_19"
+        id="STRAIGHT_UP_19"
         onClick={[Function]}
         role="button"
         style={
@@ -1622,7 +1622,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_22"
+        id="STRAIGHT_UP_22"
         onClick={[Function]}
         role="button"
         style={
@@ -1662,7 +1662,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_25"
+        id="STRAIGHT_UP_25"
         onClick={[Function]}
         role="button"
         style={
@@ -1702,7 +1702,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_28"
+        id="STRAIGHT_UP_28"
         onClick={[Function]}
         role="button"
         style={
@@ -1742,7 +1742,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_31"
+        id="STRAIGHT_UP_31"
         onClick={[Function]}
         role="button"
         style={
@@ -1782,7 +1782,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_34"
+        id="STRAIGHT_UP_34"
         onClick={[Function]}
         role="button"
         style={
@@ -1822,7 +1822,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_2"
+        id="STRAIGHT_UP_2"
         onClick={[Function]}
         role="button"
         style={
@@ -1862,7 +1862,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_5"
+        id="STRAIGHT_UP_5"
         onClick={[Function]}
         role="button"
         style={
@@ -1902,7 +1902,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_8"
+        id="STRAIGHT_UP_8"
         onClick={[Function]}
         role="button"
         style={
@@ -1942,7 +1942,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_11"
+        id="STRAIGHT_UP_11"
         onClick={[Function]}
         role="button"
         style={
@@ -1982,7 +1982,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_14"
+        id="STRAIGHT_UP_14"
         onClick={[Function]}
         role="button"
         style={
@@ -2022,7 +2022,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_17"
+        id="STRAIGHT_UP_17"
         onClick={[Function]}
         role="button"
         style={
@@ -2062,7 +2062,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_20"
+        id="STRAIGHT_UP_20"
         onClick={[Function]}
         role="button"
         style={
@@ -2102,7 +2102,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_23"
+        id="STRAIGHT_UP_23"
         onClick={[Function]}
         role="button"
         style={
@@ -2142,7 +2142,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_26"
+        id="STRAIGHT_UP_26"
         onClick={[Function]}
         role="button"
         style={
@@ -2182,7 +2182,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_29"
+        id="STRAIGHT_UP_29"
         onClick={[Function]}
         role="button"
         style={
@@ -2222,7 +2222,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_32"
+        id="STRAIGHT_UP_32"
         onClick={[Function]}
         role="button"
         style={
@@ -2262,7 +2262,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_35"
+        id="STRAIGHT_UP_35"
         onClick={[Function]}
         role="button"
         style={
@@ -2302,7 +2302,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_3"
+        id="STRAIGHT_UP_3"
         onClick={[Function]}
         role="button"
         style={
@@ -2342,7 +2342,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_6"
+        id="STRAIGHT_UP_6"
         onClick={[Function]}
         role="button"
         style={
@@ -2382,7 +2382,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_9"
+        id="STRAIGHT_UP_9"
         onClick={[Function]}
         role="button"
         style={
@@ -2422,7 +2422,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_12"
+        id="STRAIGHT_UP_12"
         onClick={[Function]}
         role="button"
         style={
@@ -2462,7 +2462,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_15"
+        id="STRAIGHT_UP_15"
         onClick={[Function]}
         role="button"
         style={
@@ -2502,7 +2502,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_18"
+        id="STRAIGHT_UP_18"
         onClick={[Function]}
         role="button"
         style={
@@ -2542,7 +2542,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_21"
+        id="STRAIGHT_UP_21"
         onClick={[Function]}
         role="button"
         style={
@@ -2582,7 +2582,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_24"
+        id="STRAIGHT_UP_24"
         onClick={[Function]}
         role="button"
         style={
@@ -2622,7 +2622,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_27"
+        id="STRAIGHT_UP_27"
         onClick={[Function]}
         role="button"
         style={
@@ -2662,7 +2662,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_30"
+        id="STRAIGHT_UP_30"
         onClick={[Function]}
         role="button"
         style={
@@ -2702,7 +2702,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_33"
+        id="STRAIGHT_UP_33"
         onClick={[Function]}
         role="button"
         style={
@@ -2742,7 +2742,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_36"
+        id="STRAIGHT_UP_36"
         onClick={[Function]}
         role="button"
         style={
@@ -2782,7 +2782,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_0"
+        id="STRAIGHT_UP_0"
         onClick={[Function]}
         role="button"
         style={
@@ -2822,7 +2822,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="StraightUp_00"
+        id="STRAIGHT_UP_00"
         onClick={[Function]}
         role="button"
         style={
@@ -2862,7 +2862,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="1st 12"
+        id="FIRST_DOZEN"
         onClick={[Function]}
         role="button"
         style={
@@ -2902,7 +2902,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="2nd 12"
+        id="SECOND_DOZEN"
         onClick={[Function]}
         role="button"
         style={
@@ -2942,7 +2942,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="3rd 12"
+        id="THIRD_DOZEN"
         onClick={[Function]}
         role="button"
         style={
@@ -2982,7 +2982,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="1st Column"
+        id="FIRST_COLUMN"
         onClick={[Function]}
         role="button"
         style={
@@ -3022,7 +3022,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="2nd Column"
+        id="SECOND_COLUMN"
         onClick={[Function]}
         role="button"
         style={
@@ -3062,7 +3062,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="3rd Column"
+        id="THIRD_COLUMN"
         onClick={[Function]}
         role="button"
         style={
@@ -3102,7 +3102,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="1 to 18"
+        id="LOW_NUMBERS"
         onClick={[Function]}
         role="button"
         style={
@@ -3142,7 +3142,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="Even"
+        id="EVEN"
         onClick={[Function]}
         role="button"
         style={
@@ -3182,7 +3182,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="Red"
+        id="RED"
         onClick={[Function]}
         role="button"
         style={
@@ -3222,7 +3222,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="Black"
+        id="BLACK"
         onClick={[Function]}
         role="button"
         style={
@@ -3262,7 +3262,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="Odd"
+        id="ODD"
         onClick={[Function]}
         role="button"
         style={
@@ -3302,7 +3302,7 @@ Array [
       </div>
       <div
         className="ClickableBet-component"
-        id="19 to 36"
+        id="HIGH_NUMBERS"
         onClick={[Function]}
         role="button"
         style={
