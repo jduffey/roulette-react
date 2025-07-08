@@ -4110,6 +4110,30 @@ Array [
         <br />
         Loading...
       </div>
+      <div>
+        Contract Balance
+        <br />
+        Loading...
+      </div>
+      <button
+        disabled={false}
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#ff4444",
+            "border": "none",
+            "borderRadius": "8px",
+            "color": "white",
+            "cursor": "pointer",
+            "fontSize": "14px",
+            "fontWeight": "bold",
+            "marginTop": "10px",
+            "padding": "8px 16px",
+          }
+        }
+      >
+        Fund Contract (1000)
+      </button>
     </div>
   </div>,
 ]
