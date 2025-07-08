@@ -28,7 +28,6 @@ import {
     rouletteContractEvents,
     getBlock,
     getRouletteContractTokenBalance,
-    fundRouletteContract,
 } from '../../common/blockchainWrapper';
 
 // Uncomment this line to simulate playing the game
@@ -54,7 +53,7 @@ export function Roulette(props) {
     const [previousRoundResultsForBetResultsInfo, setPreviousRoundResultsForBetResultsInfo] = useState(null);
     const [wheelIsSpinning, setWheelIsSpinning] = useState(false);
     const [wheelNumber, setWheelNumber] = useState(null);
-    const [rouletteContractBalance, setRouletteContractBalance] = useState(0);
+    // const [rouletteContractBalance, setRouletteContractBalance] = useState(0);
 
     const refreshBalances = useCallback(async () => {
         console.log('🔍 refreshBalances called');
@@ -103,19 +102,19 @@ export function Roulette(props) {
         }
     }, [playerAddress]);
 
-    const refreshRouletteContractBalance = useCallback(async () => {
-        console.log('🔍 refreshRouletteContractBalance called');
-        try {
-            const balance = await getRouletteContractTokenBalance();
-            console.log('🔍 Roulette contract balance:', balance);
-            setRouletteContractBalance(balance);
-        } catch (error) {
-            console.error('❌ Error refreshing Roulette contract balance:', error);
-        }
-    }, []);
+    // const refreshRouletteContractBalance = useCallback(async () => {
+    //     console.log('🔍 refreshRouletteContractBalance called');
+    //     try {
+    //         const balance = await getRouletteContractTokenBalance();
+    //         console.log('🔍 Roulette contract balance:', balance);
+    //         setRouletteContractBalance(balance);
+    //     } catch (error) {
+    //         console.error('❌ Error refreshing Roulette contract balance:', error);
+    //     }
+    // }, []);
 
     useEffect(() => {
-        let mounted = true;
+        // let mounted = true;
 
         const initializeData = async () => {
             console.log('🔍 initializeData called');
@@ -126,8 +125,8 @@ export function Roulette(props) {
                 await refreshBalances();
                 console.log('🔍 Refreshing pending bets...');
                 await refreshPendingBets();
-                console.log('🔍 Refreshing Roulette contract balance...');
-                await refreshRouletteContractBalance();
+                // console.log('🔍 Refreshing Roulette contract balance...');
+                // await refreshRouletteContractBalance();
                 console.log('🔍 Getting latest block...');
                 const block = await getBlock();
                 console.log('🔍 Latest block:', block.number);
@@ -146,8 +145,8 @@ export function Roulette(props) {
 
         initializeData();
 
-        return () => { mounted = false };
-    }, [playerAddress]);
+        // return () => { mounted = false };
+    }, [playerAddress, refreshBalances, refreshPendingBets]);
 
     // Refresh balances when block number changes (indicating a new transaction)
     useEffect(() => {
@@ -502,16 +501,16 @@ export function Roulette(props) {
             });
     }
 
-    const fundContract = async () => {
-        console.log('🔍 fundContract called');
-        try {
-            await fundRouletteContract(1000); // Fund with 1000 tokens
-            await refreshRouletteContractBalance();
-        } catch (error) {
-            console.error('❌ Error funding contract:', error);
-            alert('Failed to fund contract. Please try again.');
-        }
-    };
+    // const fundContract = async () => {
+    //     console.log('🔍 fundContract called');
+    //     try {
+    //         await fundRouletteContract(1000); // Fund with 1000 tokens
+    //         await refreshRouletteContractBalance();
+    //     } catch (error) {
+    //         console.error('❌ Error funding contract:', error);
+    //         alert('Failed to fund contract. Please try again.');
+    //     }
+    // };
 
     return (
         <div
