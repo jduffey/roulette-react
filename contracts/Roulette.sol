@@ -17,6 +17,11 @@ contract Roulette {
     // Reentrancy protection
     bool private _locked;
 
+    // Bet type mappings for efficient validation
+    mapping(bytes32 => bool) private _validBetTypes;
+    mapping(bytes32 => uint256) private _betMultipliers;
+    mapping(uint256 => bool) private _redNumbers;
+
     mapping(address => NumberCompletionSet) private _playerNumberCompletionSets;
     mapping(address => PendingBet[]) private _pendingBets;
 
@@ -27,11 +32,11 @@ contract Roulette {
     }
 
     struct PendingBet {
-        string betName;
+        bytes32 betType; // Use bytes32 instead of string for efficiency
         uint256 betAmount;
     }
 
-    event BetPlaced(address indexed player, string betName, uint256 betAmount);
+    event BetPlaced(address indexed player, bytes32 betType, uint256 betAmount);
     event BetRemoved(address indexed player, uint256 betIndex, uint256 betAmount);
     event ExecutedWager(address indexed player, uint256 wheelNumber, uint256 totalWinnings, uint256 totalBetsReturned);
     event BetCleared(address indexed player);
@@ -53,6 +58,68 @@ contract Roulette {
         _randomnessProvider = RandomnessProvider(randomnessProviderAddress);
         _gameToken = MyGameToken(payable(gameTokenAddress));
         _house = msg.sender;
+        _initializeBetTypes();
+    }
+
+    function _initializeBetTypes() private {
+        // Initialize valid bet types
+        _validBetTypes[keccak256(abi.encodePacked("RED"))] = true;
+        _validBetTypes[keccak256(abi.encodePacked("BLACK"))] = true;
+        _validBetTypes[keccak256(abi.encodePacked("EVEN"))] = true;
+        _validBetTypes[keccak256(abi.encodePacked("ODD"))] = true;
+        _validBetTypes[keccak256(abi.encodePacked("FIRST_DOZEN"))] = true;
+        _validBetTypes[keccak256(abi.encodePacked("SECOND_DOZEN"))] = true;
+        _validBetTypes[keccak256(abi.encodePacked("THIRD_DOZEN"))] = true;
+        _validBetTypes[keccak256(abi.encodePacked("FIRST_COLUMN"))] = true;
+        _validBetTypes[keccak256(abi.encodePacked("SECOND_COLUMN"))] = true;
+        _validBetTypes[keccak256(abi.encodePacked("THIRD_COLUMN"))] = true;
+        _validBetTypes[keccak256(abi.encodePacked("LOW_NUMBERS"))] = true;
+        _validBetTypes[keccak256(abi.encodePacked("HIGH_NUMBERS"))] = true;
+        _validBetTypes[keccak256(abi.encodePacked("STRAIGHT_UP_0"))] = true;
+        _validBetTypes[keccak256(abi.encodePacked("STRAIGHT_UP_00"))] = true;
+
+        // Initialize multipliers
+        _betMultipliers[keccak256(abi.encodePacked("RED"))] = 1;
+        _betMultipliers[keccak256(abi.encodePacked("BLACK"))] = 1;
+        _betMultipliers[keccak256(abi.encodePacked("EVEN"))] = 1;
+        _betMultipliers[keccak256(abi.encodePacked("ODD"))] = 1;
+        _betMultipliers[keccak256(abi.encodePacked("LOW_NUMBERS"))] = 1;
+        _betMultipliers[keccak256(abi.encodePacked("HIGH_NUMBERS"))] = 1;
+        _betMultipliers[keccak256(abi.encodePacked("FIRST_DOZEN"))] = 2;
+        _betMultipliers[keccak256(abi.encodePacked("SECOND_DOZEN"))] = 2;
+        _betMultipliers[keccak256(abi.encodePacked("THIRD_DOZEN"))] = 2;
+        _betMultipliers[keccak256(abi.encodePacked("FIRST_COLUMN"))] = 2;
+        _betMultipliers[keccak256(abi.encodePacked("SECOND_COLUMN"))] = 2;
+        _betMultipliers[keccak256(abi.encodePacked("THIRD_COLUMN"))] = 2;
+        _betMultipliers[keccak256(abi.encodePacked("STRAIGHT_UP_0"))] = 35;
+        _betMultipliers[keccak256(abi.encodePacked("STRAIGHT_UP_00"))] = 35;
+
+        // Initialize red numbers
+        _redNumbers[1] = true;
+        _redNumbers[3] = true;
+        _redNumbers[5] = true;
+        _redNumbers[7] = true;
+        _redNumbers[9] = true;
+        _redNumbers[12] = true;
+        _redNumbers[14] = true;
+        _redNumbers[16] = true;
+        _redNumbers[18] = true;
+        _redNumbers[19] = true;
+        _redNumbers[21] = true;
+        _redNumbers[23] = true;
+        _redNumbers[25] = true;
+        _redNumbers[27] = true;
+        _redNumbers[30] = true;
+        _redNumbers[32] = true;
+        _redNumbers[34] = true;
+        _redNumbers[36] = true;
+
+        // Initialize straight up bets 1-36
+        for (uint256 i = 1; i <= 36; i++) {
+            bytes32 betType = keccak256(abi.encodePacked("STRAIGHT_UP_", _uint2str(i)));
+            _validBetTypes[betType] = true;
+            _betMultipliers[betType] = 35;
+        }
     }
 
     function placeBet(string memory betName, uint256 betAmount) public nonReentrant onlyPlayer {
@@ -61,13 +128,15 @@ contract Roulette {
         require(_pendingBets[msg.sender].length < MAX_BETS_PER_SPIN, "Too many bets");
         require(_gameToken.balanceOf(msg.sender) >= betAmount, "Insufficient token balance");
         require(_gameToken.allowance(msg.sender, address(this)) >= betAmount, "Insufficient allowance");
-        require(_validateBetName(betName), "Invalid bet name");
+        
+        bytes32 betType = keccak256(abi.encodePacked(betName));
+        require(_validBetTypes[betType], "Invalid bet name");
 
         // Transfer tokens from player to contract
         require(_gameToken.transferFrom(msg.sender, address(this), betAmount), "Token transfer failed");
 
-        _pendingBets[msg.sender].push(PendingBet(betName, betAmount));
-        emit BetPlaced(msg.sender, betName, betAmount);
+        _pendingBets[msg.sender].push(PendingBet(betType, betAmount));
+        emit BetPlaced(msg.sender, betType, betAmount);
     }
 
     function removeBet(uint256 betIndex) public nonReentrant onlyPlayer {
@@ -89,6 +158,8 @@ contract Roulette {
     function clearBets() public nonReentrant onlyPlayer {
         uint256 totalBetAmount = 0;
         for (uint256 i = 0; i < _pendingBets[msg.sender].length; i++) {
+            // Check for overflow
+            require(totalBetAmount + _pendingBets[msg.sender][i].betAmount >= totalBetAmount, "Overflow in total bet amount calculation");
             totalBetAmount += _pendingBets[msg.sender][i].betAmount;
         }
 
@@ -108,6 +179,8 @@ contract Roulette {
     function getTotalPendingBetAmount(address player) public view returns (uint256) {
         uint256 total = 0;
         for (uint256 i = 0; i < _pendingBets[player].length; i++) {
+            // Check for overflow
+            require(total + _pendingBets[player][i].betAmount >= total, "Overflow in total calculation");
             total += _pendingBets[player][i].betAmount;
         }
         return total;
@@ -163,13 +236,19 @@ contract Roulette {
         
         for (uint256 i = 0; i < _pendingBets[player].length; i++) {
             PendingBet memory bet = _pendingBets[player][i];
-            bool didBetWin = _checkBetWin(bet.betName, wheelNumber);
+            bool didBetWin = _checkBetWin(bet.betType, wheelNumber);
             
             if (didBetWin) {
-                uint256 multiplier = _getBetMultiplier(bet.betName);
-                totalWinnings += bet.betAmount * multiplier;
+                uint256 multiplier = _betMultipliers[bet.betType];
+                uint256 winnings = bet.betAmount * multiplier;
+                // Check for overflow in winnings calculation
+                require(winnings / multiplier == bet.betAmount, "Overflow in winnings calculation");
+                require(totalWinnings + winnings >= totalWinnings, "Overflow in total winnings");
+                totalWinnings += winnings;
+                require(totalBetsReturned + bet.betAmount >= totalBetsReturned, "Overflow in total bets returned");
                 totalBetsReturned += bet.betAmount;
             }
+            require(totalStake + bet.betAmount >= totalStake, "Overflow in total stake");
             totalStake += bet.betAmount;
         }
 
@@ -191,117 +270,72 @@ contract Roulette {
         emit ExecutedWager(player, wheelNumber, totalWinnings, totalBetsReturned);
     }
 
-    function _checkBetWin(string memory betName, uint256 wheelNumber) internal pure returns (bool) {
-        // Straight up bets (already implemented)
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("STRAIGHT_UP_0")) && wheelNumber == 0) {
+    function _checkBetWin(bytes32 betType, uint256 wheelNumber) internal view returns (bool) {
+        // Straight up bets
+        if (betType == keccak256(abi.encodePacked("STRAIGHT_UP_0")) && wheelNumber == 0) {
             return true;
         }
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("STRAIGHT_UP_00")) && wheelNumber == 37) {
+        if (betType == keccak256(abi.encodePacked("STRAIGHT_UP_00")) && wheelNumber == 37) {
             return true;
         }
         
-        // Numbers 1-36
+        // Check for straight up bets 1-36
         for (uint256 i = 1; i <= 36; i++) {
-            string memory straightUpBet = string(abi.encodePacked("STRAIGHT_UP_", _uint2str(i)));
-            if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked(straightUpBet)) && wheelNumber == i) {
+            if (betType == keccak256(abi.encodePacked("STRAIGHT_UP_", _uint2str(i))) && wheelNumber == i) {
                 return true;
             }
         }
         
         // Outside bets
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("RED")) && _isRed(wheelNumber)) {
+        if (betType == keccak256(abi.encodePacked("RED")) && _isRed(wheelNumber)) {
             return true;
         }
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("BLACK")) && _isBlack(wheelNumber)) {
+        if (betType == keccak256(abi.encodePacked("BLACK")) && _isBlack(wheelNumber)) {
             return true;
         }
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("EVEN")) && _isEven(wheelNumber)) {
+        if (betType == keccak256(abi.encodePacked("EVEN")) && _isEven(wheelNumber)) {
             return true;
         }
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("ODD")) && _isOdd(wheelNumber)) {
+        if (betType == keccak256(abi.encodePacked("ODD")) && _isOdd(wheelNumber)) {
             return true;
         }
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("FIRST_DOZEN")) && wheelNumber >= 1 && wheelNumber <= 12) {
+        if (betType == keccak256(abi.encodePacked("FIRST_DOZEN")) && wheelNumber >= 1 && wheelNumber <= 12) {
             return true;
         }
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("SECOND_DOZEN")) && wheelNumber >= 13 && wheelNumber <= 24) {
+        if (betType == keccak256(abi.encodePacked("SECOND_DOZEN")) && wheelNumber >= 13 && wheelNumber <= 24) {
             return true;
         }
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("THIRD_DOZEN")) && wheelNumber >= 25 && wheelNumber <= 36) {
+        if (betType == keccak256(abi.encodePacked("THIRD_DOZEN")) && wheelNumber >= 25 && wheelNumber <= 36) {
             return true;
         }
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("FIRST_COLUMN")) && wheelNumber % 3 == 1 && wheelNumber != 0 && wheelNumber != 37) {
+        if (betType == keccak256(abi.encodePacked("FIRST_COLUMN")) && wheelNumber % 3 == 1 && wheelNumber != 0 && wheelNumber != 37) {
             return true;
         }
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("SECOND_COLUMN")) && wheelNumber % 3 == 2 && wheelNumber != 0 && wheelNumber != 37) {
+        if (betType == keccak256(abi.encodePacked("SECOND_COLUMN")) && wheelNumber % 3 == 2 && wheelNumber != 0 && wheelNumber != 37) {
             return true;
         }
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("THIRD_COLUMN")) && wheelNumber % 3 == 0 && wheelNumber != 0 && wheelNumber != 37) {
+        if (betType == keccak256(abi.encodePacked("THIRD_COLUMN")) && wheelNumber % 3 == 0 && wheelNumber != 0 && wheelNumber != 37) {
             return true;
         }
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("LOW_NUMBERS")) && wheelNumber >= 1 && wheelNumber <= 18) {
+        if (betType == keccak256(abi.encodePacked("LOW_NUMBERS")) && wheelNumber >= 1 && wheelNumber <= 18) {
             return true;
         }
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("HIGH_NUMBERS")) && wheelNumber >= 19 && wheelNumber <= 36) {
+        if (betType == keccak256(abi.encodePacked("HIGH_NUMBERS")) && wheelNumber >= 19 && wheelNumber <= 36) {
             return true;
         }
         
         return false;
-    }
-
-    function _getBetMultiplier(string memory betName) internal pure returns (uint256) {
-        // Straight up bets pay 35:1
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("STRAIGHT_UP_0")) ||
-            keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("STRAIGHT_UP_00"))) {
-            return 35;
-        }
-        
-        // Check if it's a straight up bet for numbers 1-36
-        for (uint256 i = 1; i <= 36; i++) {
-            string memory straightUpBet = string(abi.encodePacked("STRAIGHT_UP_", _uint2str(i)));
-            if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked(straightUpBet))) {
-                return 35;
-            }
-        }
-        
-        // Outside bets
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("RED")) ||
-            keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("BLACK")) ||
-            keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("EVEN")) ||
-            keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("ODD")) ||
-            keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("LOW_NUMBERS")) ||
-            keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("HIGH_NUMBERS"))) {
-            return 1; // 1:1 payout
-        }
-        
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("FIRST_DOZEN")) ||
-            keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("SECOND_DOZEN")) ||
-            keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("THIRD_DOZEN"))) {
-            return 2; // 2:1 payout
-        }
-        
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("FIRST_COLUMN")) ||
-            keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("SECOND_COLUMN")) ||
-            keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("THIRD_COLUMN"))) {
-            return 2; // 2:1 payout
-        }
-        
-        return 0;
     }
 
     // Helper functions
-    function _isRed(uint256 wheelNumber) internal pure returns (bool) {
+    function _isRed(uint256 wheelNumber) internal view returns (bool) {
         if (wheelNumber == 0 || wheelNumber == 37) return false;
-        uint8[18] memory redNumbers = [1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36];
-        for (uint256 i = 0; i < redNumbers.length; i++) {
-            if (wheelNumber == redNumbers[i]) return true;
-        }
-        return false;
+        return _redNumbers[wheelNumber];
     }
 
-    function _isBlack(uint256 wheelNumber) internal pure returns (bool) {
+    function _isBlack(uint256 wheelNumber) internal view returns (bool) {
         if (wheelNumber == 0 || wheelNumber == 37) return false;
-        return !_isRed(wheelNumber);
+        return !_redNumbers[wheelNumber];
     }
 
     function _isEven(uint256 wheelNumber) internal pure returns (bool) {
@@ -334,44 +368,21 @@ contract Roulette {
         return string(bstr);
     }
 
-    function _validateBetName(string memory betName) internal pure returns (bool) {
-        bytes memory betNameBytes = bytes(betName);
-        require(betNameBytes.length > 0, "Empty bet name");
-        require(betNameBytes.length <= 50, "Bet name too long");
-        
-        // Check for valid bet types
-        string[12] memory validBets = ["RED", "BLACK", "EVEN", "ODD", "FIRST_DOZEN", "SECOND_DOZEN", "THIRD_DOZEN", "FIRST_COLUMN", "SECOND_COLUMN", "THIRD_COLUMN", "LOW_NUMBERS", "HIGH_NUMBERS"];
-        for (uint256 i = 0; i < validBets.length; i++) {
-            if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked(validBets[i]))) {
-                return true;
-            }
-        }
-        
-        // Check for straight up bets
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("STRAIGHT_UP_0"))) return true;
-        if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked("STRAIGHT_UP_00"))) return true;
-        
-        for (uint256 i = 1; i <= 36; i++) {
-            string memory straightUpBet = string(abi.encodePacked("STRAIGHT_UP_", _uint2str(i)));
-            if (keccak256(abi.encodePacked(betName)) == keccak256(abi.encodePacked(straightUpBet))) {
-                return true;
-            }
-        }
-        
-        return false;
-    }
-
     function placeMultipleBets(string[] memory betNames, uint256[] memory betAmounts) public nonReentrant onlyPlayer {
         require(betNames.length == betAmounts.length, "Array lengths must match");
         require(betNames.length > 0, "No bets provided");
         require(betNames.length <= 10, "Too many bets in batch");
         require(_pendingBets[msg.sender].length + betNames.length <= MAX_BETS_PER_SPIN, "Too many total bets");
+        require(betNames.length <= 20, "Maximum 20 bets allowed per transaction");
 
         uint256 totalAmount = 0;
         for (uint256 i = 0; i < betAmounts.length; i++) {
             require(betAmounts[i] >= MIN_BET_AMOUNT, "Bet amount too low");
             require(betAmounts[i] <= MAX_BET_AMOUNT, "Bet amount too high");
-            require(_validateBetName(betNames[i]), "Invalid bet name");
+            bytes32 betType = keccak256(abi.encodePacked(betNames[i]));
+            require(_validBetTypes[betType], "Invalid bet name");
+            // Check for overflow
+            require(totalAmount + betAmounts[i] >= totalAmount, "Overflow in total amount calculation");
             totalAmount += betAmounts[i];
         }
 
@@ -380,8 +391,9 @@ contract Roulette {
         require(_gameToken.transferFrom(msg.sender, address(this), totalAmount), "Token transfer failed");
 
         for (uint256 i = 0; i < betNames.length; i++) {
-            _pendingBets[msg.sender].push(PendingBet(betNames[i], betAmounts[i]));
-            emit BetPlaced(msg.sender, betNames[i], betAmounts[i]);
+            bytes32 betType = keccak256(abi.encodePacked(betNames[i]));
+            _pendingBets[msg.sender].push(PendingBet(betType, betAmounts[i]));
+            emit BetPlaced(msg.sender, betType, betAmounts[i]);
         }
     }
 }

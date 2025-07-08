@@ -13,25 +13,65 @@ const RANDOMNESS_PROVIDER_CONTRACT_ADDRESS = process.env.REACT_APP_RANDOMNESS_PR
 const ROULETTE_CONTRACT_ADDRESS = process.env.REACT_APP_ROULETTE_CONTRACT_ADDRESS || "0xCE3478A9E0167a6Bc5716DC39DbbbfAc38F27623";
 
 async function executeWager(address) {
-    const contract = new ethers.Contract(
-        ROULETTE_CONTRACT_ADDRESS,
-        ["function executeWager(address)"],
-        provider.getSigner(HOUSE_ADDRESS)
-    );
-    const tx = await contract.executeWager(
-        address,
-    );
-    return tx;
+    console.log('🔍 executeWager called with address:', address);
+    console.log('🔍 Using ROULETTE_CONTRACT_ADDRESS:', ROULETTE_CONTRACT_ADDRESS);
+    console.log('🔍 Using HOUSE_ADDRESS:', HOUSE_ADDRESS);
+    
+    try {
+        const contract = new ethers.Contract(
+            ROULETTE_CONTRACT_ADDRESS,
+            ["function executeWager(address)"],
+            provider.getSigner(HOUSE_ADDRESS)
+        );
+        console.log('🔍 Contract instance created successfully');
+        
+        console.log('🔍 Calling executeWager on contract...');
+        const tx = await contract.executeWager(address);
+        console.log('🔍 executeWager transaction sent:', tx.hash);
+        return tx;
+    } catch (error) {
+        console.error('❌ Error in executeWager:', error);
+        console.error('❌ Error details:', {
+            message: error.message,
+            code: error.code,
+            reason: error.reason,
+            data: error.data,
+            stack: error.stack
+        });
+        throw error;
+    }
 }
 
 async function placeBet(betName, betAmount) {
-    const contract = new ethers.Contract(
-        ROULETTE_CONTRACT_ADDRESS,
-        ["function placeBet(string,uint256)"],
-        provider.getSigner()
-    );
-    const tx = await contract.placeBet(betName, ethers.utils.parseEther(betAmount.toString()));
-    return tx;
+    console.log('🔍 placeBet called with:', { betName, betAmount });
+    console.log('🔍 Using ROULETTE_CONTRACT_ADDRESS:', ROULETTE_CONTRACT_ADDRESS);
+    
+    try {
+        const contract = new ethers.Contract(
+            ROULETTE_CONTRACT_ADDRESS,
+            ["function placeBet(string,uint256)"],
+            provider.getSigner()
+        );
+        console.log('🔍 Contract instance created for placeBet');
+        
+        const betAmountWei = ethers.utils.parseEther(betAmount.toString());
+        console.log('🔍 Converted bet amount to Wei:', betAmountWei.toString());
+        
+        console.log('🔍 Calling placeBet on contract...');
+        const tx = await contract.placeBet(betName, betAmountWei);
+        console.log('🔍 placeBet transaction sent:', tx.hash);
+        return tx;
+    } catch (error) {
+        console.error('❌ Error in placeBet:', error);
+        console.error('❌ Error details:', {
+            message: error.message,
+            code: error.code,
+            reason: error.reason,
+            data: error.data,
+            stack: error.stack
+        });
+        throw error;
+    }
 }
 
 async function clearBets() {
@@ -55,16 +95,78 @@ async function removeBet(betIndex) {
 }
 
 async function getPendingBets(address) {
-    const contract = new ethers.Contract(
-        ROULETTE_CONTRACT_ADDRESS,
-        ["function getPendingBets(address) view returns (tuple(string betName, uint256 betAmount)[])"],
-        provider.getSigner()
-    );
-    const bets = await contract.getPendingBets(address);
-    return bets.map(bet => ({
-        betName: bet.betName,
-        betAmount: parseFloat(ethers.utils.formatEther(bet.betAmount))
-    }));
+    console.log('🔍 getPendingBets called with address:', address);
+    console.log('🔍 Using ROULETTE_CONTRACT_ADDRESS:', ROULETTE_CONTRACT_ADDRESS);
+    
+    try {
+        const contract = new ethers.Contract(
+            ROULETTE_CONTRACT_ADDRESS,
+            ["function getPendingBets(address) view returns (tuple(bytes32 betType, uint256 betAmount)[])"],
+            provider.getSigner()
+        );
+        console.log('🔍 Contract instance created for getPendingBets');
+        
+        console.log('🔍 Calling getPendingBets on contract...');
+        const bets = await contract.getPendingBets(address);
+        console.log('🔍 Raw bets from contract:', bets);
+        
+        const convertedBets = bets.map(bet => {
+            // Convert bytes32 betType back to original bet name
+            const betTypeHash = bet.betType;
+            console.log('🔍 Processing bet with hash:', betTypeHash);
+            let betName = "UNKNOWN";
+            
+            // Check for known bet types by comparing hashes
+            const betTypes = [
+                "RED", "BLACK", "EVEN", "ODD", "FIRST_DOZEN", "SECOND_DOZEN", "THIRD_DOZEN",
+                "FIRST_COLUMN", "SECOND_COLUMN", "THIRD_COLUMN", "LOW_NUMBERS", "HIGH_NUMBERS",
+                "STRAIGHT_UP_0", "STRAIGHT_UP_00"
+            ];
+            
+            for (const type of betTypes) {
+                const typeHash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(type));
+                console.log(`🔍 Comparing ${type}: ${typeHash} === ${betTypeHash}?`);
+                if (typeHash === betTypeHash) {
+                    betName = type;
+                    console.log('🔍 Found match:', betName);
+                    break;
+                }
+            }
+            
+            // Check for straight up bets 1-36
+            if (betName === "UNKNOWN") {
+                for (let i = 1; i <= 36; i++) {
+                    const straightUpBet = `STRAIGHT_UP_${i}`;
+                    const straightUpHash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(straightUpBet));
+                    if (straightUpHash === betTypeHash) {
+                        betName = straightUpBet;
+                        console.log('🔍 Found straight up bet match:', betName);
+                        break;
+                    }
+                }
+            }
+            
+            const result = {
+                betName: betName,
+                betAmount: parseFloat(ethers.utils.formatEther(bet.betAmount))
+            };
+            console.log('🔍 Converted bet:', result);
+            return result;
+        });
+        
+        console.log('🔍 Final converted bets:', convertedBets);
+        return convertedBets;
+    } catch (error) {
+        console.error('❌ Error in getPendingBets:', error);
+        console.error('❌ Error details:', {
+            message: error.message,
+            code: error.code,
+            reason: error.reason,
+            data: error.data,
+            stack: error.stack
+        });
+        throw error;
+    }
 }
 
 async function getTotalPendingBetAmount(address) {
@@ -144,7 +246,7 @@ const rouletteContractEvents = new ethers.Contract(
     ROULETTE_CONTRACT_ADDRESS,
     [
         'event ExecutedWager(address indexed, uint256, uint256, uint256)',
-        'event BetPlaced(address indexed, string, uint256)',
+        'event BetPlaced(address indexed, bytes32, uint256)',
         'event BetCleared(address indexed)',
         'event BetRemoved(address indexed, uint256, uint256)',
     ],
@@ -152,15 +254,97 @@ const rouletteContractEvents = new ethers.Contract(
 );
 
 async function placeMultipleBets(betNames, betAmounts) {
-    const contract = new ethers.Contract(
-        ROULETTE_CONTRACT_ADDRESS,
-        ["function placeMultipleBets(string[],uint256[])", "event BetPlaced(address,string,uint256)"],
-        provider.getSigner()
-    );
-    // Convert betAmounts to Wei (treating amounts as ETH, not dollars)
-    const betAmountsWei = betAmounts.map(amount => ethers.utils.parseEther(amount.toString()));
-    const tx = await contract.placeMultipleBets(betNames, betAmountsWei);
-    return tx;
+    console.log('🔍 placeMultipleBets called with:', { betNames, betAmounts });
+    console.log('🔍 Using ROULETTE_CONTRACT_ADDRESS:', ROULETTE_CONTRACT_ADDRESS);
+    
+    try {
+        const contract = new ethers.Contract(
+            ROULETTE_CONTRACT_ADDRESS,
+            ["function placeMultipleBets(string[],uint256[])", "event BetPlaced(address,string,uint256)"],
+            provider.getSigner()
+        );
+        console.log('🔍 Contract instance created for placeMultipleBets');
+        
+        // Convert betAmounts to Wei (treating amounts as ETH, not dollars)
+        const betAmountsWei = betAmounts.map(amount => ethers.utils.parseEther(amount.toString()));
+        console.log('🔍 Converted bet amounts to Wei:', betAmountsWei.map(w => w.toString()));
+        
+        console.log('🔍 Calling placeMultipleBets on contract...');
+        const tx = await contract.placeMultipleBets(betNames, betAmountsWei);
+        console.log('🔍 placeMultipleBets transaction sent:', tx.hash);
+        return tx;
+    } catch (error) {
+        console.error('❌ Error in placeMultipleBets:', error);
+        console.error('❌ Error details:', {
+            message: error.message,
+            code: error.code,
+            reason: error.reason,
+            data: error.data,
+            stack: error.stack
+        });
+        throw error;
+    }
+}
+
+async function getRouletteContractTokenBalance() {
+    console.log('🔍 getRouletteContractTokenBalance called');
+    console.log('🔍 Using TOKEN_CONTRACT_ADDRESS:', TOKEN_CONTRACT_ADDRESS);
+    console.log('🔍 Using ROULETTE_CONTRACT_ADDRESS:', ROULETTE_CONTRACT_ADDRESS);
+    
+    try {
+        const token = new ethers.Contract(
+            TOKEN_CONTRACT_ADDRESS,
+            ["function balanceOf(address) view returns (uint)"],
+            provider.getSigner(HOUSE_ADDRESS)
+        );
+        const balance = await token.balanceOf(ROULETTE_CONTRACT_ADDRESS);
+        const balanceEth = ethers.utils.formatEther(balance);
+        console.log('🔍 Roulette contract token balance:', balanceEth);
+        return balanceEth;
+    } catch (error) {
+        console.error('❌ Error getting Roulette contract token balance:', error);
+        throw error;
+    }
+}
+
+async function fundRouletteContract(amount) {
+    console.log('🔍 fundRouletteContract called with amount:', amount);
+    console.log('🔍 Using TOKEN_CONTRACT_ADDRESS:', TOKEN_CONTRACT_ADDRESS);
+    console.log('🔍 Using ROULETTE_CONTRACT_ADDRESS:', ROULETTE_CONTRACT_ADDRESS);
+    console.log('🔍 Using HOUSE_ADDRESS:', HOUSE_ADDRESS);
+    
+    try {
+        const token = new ethers.Contract(
+            TOKEN_CONTRACT_ADDRESS,
+            ["function transfer(address,uint256)"],
+            provider.getSigner(HOUSE_ADDRESS)
+        );
+        
+        const amountWei = ethers.utils.parseEther(amount.toString());
+        console.log('🔍 Transferring', amountWei.toString(), 'tokens to Roulette contract...');
+        
+        const tx = await token.transfer(ROULETTE_CONTRACT_ADDRESS, amountWei);
+        console.log('🔍 Fund transaction sent:', tx.hash);
+        
+        const receipt = await tx.wait();
+        console.log('🔍 Fund transaction confirmed in block:', receipt.blockNumber);
+        
+        // Check new balance
+        const newBalance = await getRouletteContractTokenBalance();
+        console.log('🔍 Roulette contract new balance:', newBalance);
+        
+        return receipt;
+    } catch (error) {
+        console.error('❌ Error funding Roulette contract:', error);
+        console.error('❌ Error details:', {
+            message: error.message,
+            code: error.code,
+            reason: error.reason,
+            data: error.data,
+            stack: error.stack
+        });
+        throw error;
+    }
 }
 
 export {
@@ -186,4 +370,6 @@ export {
     getTokenSymbol,
     rouletteContractEvents,
     placeMultipleBets,
+    getRouletteContractTokenBalance,
+    fundRouletteContract,
 };
