@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 
 import {
     getTokenBalance,
+    getRouletteContractTokenBalance,
+    fundRouletteContract,
     HOUSE_ADDRESS,
 } from "../../common/blockchainWrapper";
 
@@ -15,6 +17,8 @@ const formattedChainNumber = (chainNumber, decimals) => {
 const CLASS_NAME = "HouseInfo-component";
 export function HouseInfo(props) {
     const [houseBalance, setHouseBalance] = useState(undefined);
+    const [rouletteContractBalance, setRouletteContractBalance] = useState(undefined);
+    const [isFunding, setIsFunding] = useState(false);
 
     const refreshHouseBalance = async () => {
         try {
@@ -25,16 +29,43 @@ export function HouseInfo(props) {
         }
     };
 
+    const refreshRouletteContractBalance = async () => {
+        try {
+            const contractBal = await getRouletteContractTokenBalance();
+            setRouletteContractBalance(contractBal);
+        } catch (error) {
+            console.error('Error refreshing Roulette contract balance:', error);
+        }
+    };
+
+    const handleFundContract = async () => {
+        setIsFunding(true);
+        try {
+            await fundRouletteContract(1000); // Fund with 1000 tokens
+            await refreshHouseBalance();
+            await refreshRouletteContractBalance();
+        } catch (error) {
+            console.error('Error funding contract:', error);
+            alert('Failed to fund contract. Please try again.');
+        } finally {
+            setIsFunding(false);
+        }
+    };
+
     useEffect(() => {
         // Initial load with a small delay to ensure contracts are ready
-        const timer = setTimeout(refreshHouseBalance, 1000);
+        const timer = setTimeout(() => {
+            refreshHouseBalance();
+            refreshRouletteContractBalance();
+        }, 1000);
         return () => clearTimeout(timer);
     }, []);
 
-    // Refresh house balance when block number changes (indicating new transactions)
+    // Refresh balances when block number changes (indicating new transactions)
     useEffect(() => {
         if (props.latestBlockNumber > 0) {
             refreshHouseBalance();
+            refreshRouletteContractBalance();
         }
     }, [props.latestBlockNumber]);
 
@@ -52,6 +83,28 @@ export function HouseInfo(props) {
                 <br />
                 {formattedChainNumber(houseBalance, 3)}
             </div>
+            <div>
+                Contract Balance
+                <br />
+                {formattedChainNumber(rouletteContractBalance, 3)}
+            </div>
+            <button
+                onClick={handleFundContract}
+                disabled={isFunding}
+                style={{
+                    backgroundColor: isFunding ? "#cccccc" : "#ff4444",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "8px",
+                    padding: "8px 16px",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    cursor: isFunding ? "not-allowed" : "pointer",
+                    marginTop: "10px"
+                }}
+            >
+                {isFunding ? "Funding..." : "Fund Contract (1000)"}
+            </button>
         </div >
     )
 }

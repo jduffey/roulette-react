@@ -8,7 +8,7 @@ const { loadFixture } = require("@nomicfoundation/hardhat-network-helpers");
 describe("Roulette.sol", () => {
     async function fixtures() {
         const signers = await ethers.getSigners();
-        const deployerSigner = signers[4];
+        const deployerSigner = signers[0];
 
         const mockRandomnessProviderContractFactory = await ethers.getContractFactory("MockRandomnessProvider", deployerSigner);
         await mockRandomnessProviderContractFactory.deploy();
@@ -36,8 +36,8 @@ describe("Roulette.sol", () => {
             MockRandomnessProviderContract,
             RouletteContract,
             MyGameTokenContract,
-            player1Address: signers[0].address,
-            player2Address: signers[1].address,
+            player1Address: signers[1].address,
+            player2Address: signers[2].address,
         };
     }
 
@@ -51,9 +51,13 @@ describe("Roulette.sol", () => {
     async function spinWithBet(randomnessProvider, rouletteContract, tokenContract, playerAddress, fakeRandomValue) {
         await placeBetForPlayer(tokenContract, rouletteContract, playerAddress);
         if (fakeRandomValue !== undefined) {
-            await randomnessProvider.setFakeRandomValue(fakeRandomValue);
+            const signers = await ethers.getSigners();
+            const deployerSigner = signers[0];
+            await randomnessProvider.connect(deployerSigner).setFakeRandomValue(fakeRandomValue);
         }
-        const tx = await rouletteContract.executeWager(playerAddress);
+        const signers = await ethers.getSigners();
+        const deployerSigner = signers[0];
+        const tx = await rouletteContract.connect(deployerSigner).executeWager(playerAddress);
         return tx;
     }
 
