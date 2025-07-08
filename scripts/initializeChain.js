@@ -75,6 +75,36 @@ async function _approveAllowanceForRouletteContract(players, tokenContractAddres
     });
 }
 
+async function _fundRouletteContract(house, tokenContractAddress, rouletteContractAddress) {
+    console.log("\n***** FUNDING ROULETTE CONTRACT *****");
+    
+    // Fund the Roulette contract with tokens to cover potential winnings
+    // Calculate how much we need: max bet amount * max multiplier * number of max bets
+    // Max bet: 1000 tokens, Max multiplier: 35x, Max bets: 20
+    // So we need: 1000 * 35 * 20 = 700,000 tokens
+    const fundingAmount = ethers.utils.parseEther("10000"); // Start with 10,000 tokens
+    
+    const tokenContract = new ethers.Contract(
+        tokenContractAddress,
+        ["function transfer(address,uint256)"],
+        house
+    );
+    
+    const tx = await tokenContract.transfer(rouletteContractAddress, fundingAmount);
+    await tx.wait();
+    
+    console.log(`${house.address} funded Roulette contract with ${ethers.utils.formatEther(fundingAmount)} tokens`);
+    
+    // Verify the funding
+    const tokenContractForBalance = new ethers.Contract(
+        tokenContractAddress,
+        ["function balanceOf(address) view returns (uint)"],
+        house
+    );
+    const balance = await tokenContractForBalance.balanceOf(rouletteContractAddress);
+    console.log(`Roulette contract balance: ${ethers.utils.formatEther(balance)} tokens`);
+}
+
 async function _updateBlockchainWrapperAddresses(addresses) {
     const fs = require('fs');
     const path = require('path');
@@ -128,6 +158,7 @@ async function initializeChain() {
 
     await _depositEthForTokens(tokenContract.address, ethToDeposit);
     await _approveAllowanceForRouletteContract(players, tokenContract.address, rouletteContract.address);
+    await _fundRouletteContract(house, tokenContract.address, rouletteContract.address);
 
     // Write contract addresses to a file for the frontend to use
     const fs = require('fs');

@@ -12,16 +12,26 @@ const TOKEN_CONTRACT_ADDRESS = process.env.REACT_APP_TOKEN_CONTRACT_ADDRESS || "
 const RANDOMNESS_PROVIDER_CONTRACT_ADDRESS = process.env.REACT_APP_RANDOMNESS_PROVIDER_CONTRACT_ADDRESS || "0x261D8c5e9742e6f7f1076Fa1F560894524e19cad";
 const ROULETTE_CONTRACT_ADDRESS = process.env.REACT_APP_ROULETTE_CONTRACT_ADDRESS || "0xCE3478A9E0167a6Bc5716DC39DbbbfAc38F27623";
 
+// First player's private key (from Hardhat's default accounts)
+const FIRST_PLAYER_PRIVATE_KEY = "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
+
+// Create a signer for the first player
+const firstPlayerSigner = new ethers.Wallet(FIRST_PLAYER_PRIVATE_KEY, provider);
+
 async function executeWager(address) {
     console.log('🔍 executeWager called with address:', address);
     console.log('🔍 Using ROULETTE_CONTRACT_ADDRESS:', ROULETTE_CONTRACT_ADDRESS);
-    console.log('🔍 Using HOUSE_ADDRESS:', HOUSE_ADDRESS);
+    console.log('🔍 Using FIRST_PLAYER_ADDRESS:', FIRST_PLAYER_ADDRESS);
     
     try {
+        // Always use the first player signer
+        const signerAddress = await firstPlayerSigner.getAddress();
+        console.log('🔍 Using first player signer address:', signerAddress);
+        
         const contract = new ethers.Contract(
             ROULETTE_CONTRACT_ADDRESS,
             ["function executeWager(address)"],
-            provider.getSigner(HOUSE_ADDRESS)
+            firstPlayerSigner
         );
         console.log('🔍 Contract instance created successfully');
         
@@ -50,7 +60,7 @@ async function placeBet(betName, betAmount) {
         const contract = new ethers.Contract(
             ROULETTE_CONTRACT_ADDRESS,
             ["function placeBet(string,uint256)"],
-            provider.getSigner()
+            firstPlayerSigner
         );
         console.log('🔍 Contract instance created for placeBet');
         
@@ -78,7 +88,7 @@ async function clearBets() {
     const contract = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
         ["function clearBets()"],
-        provider.getSigner()
+        firstPlayerSigner
     );
     const tx = await contract.clearBets();
     return tx;
@@ -88,7 +98,7 @@ async function removeBet(betIndex) {
     const contract = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
         ["function removeBet(uint256)"],
-        provider.getSigner()
+        firstPlayerSigner
     );
     const tx = await contract.removeBet(betIndex);
     return tx;
@@ -102,7 +112,7 @@ async function getPendingBets(address) {
         const contract = new ethers.Contract(
             ROULETTE_CONTRACT_ADDRESS,
             ["function getPendingBets(address) view returns (tuple(bytes32 betType, uint256 betAmount)[])"],
-            provider.getSigner()
+            firstPlayerSigner
         );
         console.log('🔍 Contract instance created for getPendingBets');
         
@@ -173,15 +183,14 @@ async function getTotalPendingBetAmount(address) {
     const contract = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
         ["function getTotalPendingBetAmount(address) view returns (uint256)"],
-        provider.getSigner()
+        firstPlayerSigner
     );
     const amount = await contract.getTotalPendingBetAmount(address);
     return parseFloat(ethers.utils.formatEther(amount));
 }
 
 async function getEthBalance(address) {
-    const signer = provider.getSigner(address);
-    const balance = await signer.getBalance();
+    const balance = await provider.getBalance(address);
     return ethers.utils.formatEther(balance);
 }
 
@@ -194,7 +203,7 @@ async function getTokenBalance(address) {
     const token = new ethers.Contract(
         TOKEN_CONTRACT_ADDRESS,
         ["function balanceOf(address) view returns (uint)"],
-        provider.getSigner(HOUSE_ADDRESS)
+        firstPlayerSigner
     );
     const balance = await token.balanceOf(address);
     return ethers.utils.formatEther(balance);
@@ -204,7 +213,7 @@ async function getPlayerAllowance(address) {
     const token = new ethers.Contract(
         TOKEN_CONTRACT_ADDRESS,
         ["function allowance(address, address) view returns (uint)"],
-        provider.getSigner(HOUSE_ADDRESS)
+        firstPlayerSigner
     );
     const allowance = await token.allowance(address, ROULETTE_CONTRACT_ADDRESS);
     return ethers.utils.formatEther(allowance);
@@ -214,7 +223,7 @@ async function getPlayerNumberCompletionSetsCounter(address) {
     const contract = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
         ["function getPlayerNumberCompletionSetsCounter(address) public view returns (uint256)"],
-        provider.getSigner(address)
+        firstPlayerSigner
     );
     const count = await contract.getPlayerNumberCompletionSetsCounter(address);
     return count;
@@ -224,7 +233,7 @@ async function getPlayerNumberCompletionSetCurrent(address) {
     const contract = new ethers.Contract(
         ROULETTE_CONTRACT_ADDRESS,
         ["function getPlayerNumberCompletionSetCurrent(address) public view returns (uint256[])"],
-        provider.getSigner(address)
+        firstPlayerSigner
     );
     const currentSet = await contract.getPlayerNumberCompletionSetCurrent(address);
     return currentSet.map((bigIntNumber) => parseInt(bigIntNumber.toString(), 10));;
@@ -261,7 +270,7 @@ async function placeMultipleBets(betNames, betAmounts) {
         const contract = new ethers.Contract(
             ROULETTE_CONTRACT_ADDRESS,
             ["function placeMultipleBets(string[],uint256[])", "event BetPlaced(address,string,uint256)"],
-            provider.getSigner()
+            firstPlayerSigner
         );
         console.log('🔍 Contract instance created for placeMultipleBets');
         
@@ -295,7 +304,7 @@ async function getRouletteContractTokenBalance() {
         const token = new ethers.Contract(
             TOKEN_CONTRACT_ADDRESS,
             ["function balanceOf(address) view returns (uint)"],
-            provider.getSigner(HOUSE_ADDRESS)
+            firstPlayerSigner
         );
         const balance = await token.balanceOf(ROULETTE_CONTRACT_ADDRESS);
         const balanceEth = ethers.utils.formatEther(balance);
@@ -311,13 +320,13 @@ async function fundRouletteContract(amount) {
     console.log('🔍 fundRouletteContract called with amount:', amount);
     console.log('🔍 Using TOKEN_CONTRACT_ADDRESS:', TOKEN_CONTRACT_ADDRESS);
     console.log('🔍 Using ROULETTE_CONTRACT_ADDRESS:', ROULETTE_CONTRACT_ADDRESS);
-    console.log('🔍 Using HOUSE_ADDRESS:', HOUSE_ADDRESS);
+    console.log('🔍 Using FIRST_PLAYER_ADDRESS:', FIRST_PLAYER_ADDRESS);
     
     try {
         const token = new ethers.Contract(
             TOKEN_CONTRACT_ADDRESS,
             ["function transfer(address,uint256)"],
-            provider.getSigner(HOUSE_ADDRESS)
+            firstPlayerSigner
         );
         
         const amountWei = ethers.utils.parseEther(amount.toString());
