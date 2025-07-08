@@ -2,9 +2,9 @@ import { BET_NAMES } from "./betNames";
 
 import { CHIP_AMOUNTS } from "../components/roulette/Chip";
 
-const NUMBER_OF_BETS_TO_PLACE = 1;
+const NUMBER_OF_BETS_TO_PLACE = 3;
 
-const SECONDS_BETWEEN_BET_PLACEMENTS = 3;
+const SECONDS_BETWEEN_BET_PLACEMENTS = 5;
 
 const getRandomElement = (choices) => {
     const index = Math.floor(Math.random() * choices.length);
